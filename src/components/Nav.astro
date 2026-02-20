@@ -73,7 +73,7 @@ const solutions = [
 					id="solutions-menu"
 					role="menu"
 					aria-label="Solutions"
-					class="absolute left-0 mt-2 w-80 rounded-2xl border border-border bg-white p-2 shadow-2xl shadow-black/10 ring-1 ring-border backdrop-blur-xl"
+					class="absolute left-0 mt-2 w-80 rounded-2xl border border-white/10 bg-bg-light p-2 shadow-2xl shadow-black/30 ring-1 ring-white/5 backdrop-blur-xl"
 				>
 					{solutions.map((item) => {
 						const active = pathname.startsWith(item.href);
@@ -81,28 +81,28 @@ const solutions = [
 							<a
 								role="menuitem"
 								href={item.href}
-								class={`block rounded-xl px-3 py-3 transition hover:bg-bg-alt focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${active ? 'bg-bg-alt' : ''}`}
+								class={`block rounded-xl px-3 py-3 transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${active ? 'bg-white/10' : ''}`}
 								aria-current={active ? 'page' : undefined}
 							>
-								<p class={`text-sm font-semibold ${active ? 'text-text-primary' : item.accent}`}>{item.label}</p>
+								<p class={`text-sm font-semibold ${active ? 'text-white' : item.accent}`}>{item.label}</p>
 								<p class="mt-0.5 text-xs leading-relaxed text-text-secondary">{item.description}</p>
 							</a>
 						);
 					})}
 
-					<div class="my-1 border-t border-border" />
+					<div class="my-1 border-t border-white/10" />
 
 					<a
 						role="menuitem"
 						href="/how-it-works/"
-						class={`block rounded-xl px-3 py-2.5 text-sm transition hover:bg-bg-alt focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${isHowItWorks ? 'bg-bg-alt text-text-primary font-semibold' : 'text-text-secondary hover:text-text-primary'}`}
+						class={`block rounded-xl px-3 py-2.5 text-sm transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${isHowItWorks ? 'bg-white/10 text-white font-semibold' : 'text-text-secondary hover:text-white'}`}
 					>
 						How It Works
 					</a>
 					<a
 						role="menuitem"
 						href="/how-pricing-works/"
-						class="block rounded-xl px-3 py-2.5 text-sm text-text-secondary transition hover:bg-bg-alt hover:text-text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+						class="block rounded-xl px-3 py-2.5 text-sm text-text-secondary transition hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
 					>
 						How Pricing Works
 					</a>
