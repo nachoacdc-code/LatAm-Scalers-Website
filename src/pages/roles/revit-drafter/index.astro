@@ -30,9 +30,9 @@ const bookingExternal = isExternalUrl(bookingUrl);
 			<div class="mx-auto max-w-6xl px-6 py-16 sm:py-20">
 				<div class="grid items-center gap-10 lg:grid-cols-2">
 					<div>
-						<p class="text-sm font-semibold tracking-wide text-sky-300">Roles</p>
+						<p class="text-sm font-semibold tracking-wide text-accent">Roles</p>
 						<h1 class="mt-4 text-4xl font-semibold tracking-tight text-white sm:text-5xl">Dedicated Remote Revit Drafter</h1>
-						<p class="mt-4 max-w-prose text-base leading-relaxed text-slate-300 sm:text-lg">
+						<p class="mt-4 max-w-prose text-base leading-relaxed text-text-secondary sm:text-lg">
 							Vetted drafting specialists for production support, construction documentation, and fast redline iterations —
 							aligned to your templates and workflow.
 						</p>
@@ -41,7 +41,7 @@ const bookingExternal = isExternalUrl(bookingUrl);
 							<a
 								href={bookingUrl}
 								{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
-								class="inline-flex items-center justify-center rounded bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+								class="inline-flex items-center justify-center rounded bg-accent px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:"
 								data-book-call
 							>
 								Book a 15-Min Call
@@ -57,23 +57,23 @@ const bookingExternal = isExternalUrl(bookingUrl);
 
 					<div class="relative">
 						<div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 shadow-sm">
-							<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">At a glance</p>
+							<p class="text-xs font-semibold uppercase tracking-wide text-text-secondary">At a glance</p>
 							<ul class="mt-4 grid gap-3 sm:grid-cols-2">
 								<li class="rounded-xl border border-white/10 bg-white/5 p-4">
-									<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Output</p>
-									<p class="mt-2 text-sm text-slate-200">CD sets, sheets, details, model updates</p>
+									<p class="text-xs font-semibold uppercase tracking-wide text-text-secondary">Output</p>
+									<p class="mt-2 text-sm text-text-secondary">CD sets, sheets, details, model updates</p>
 								</li>
 								<li class="rounded-xl border border-white/10 bg-white/5 p-4">
-									<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Workflow</p>
-									<p class="mt-2 text-sm text-slate-200">Redlines, versioning, QA checkpoints</p>
+									<p class="text-xs font-semibold uppercase tracking-wide text-text-secondary">Workflow</p>
+									<p class="mt-2 text-sm text-text-secondary">Redlines, versioning, QA checkpoints</p>
 								</li>
 								<li class="rounded-xl border border-white/10 bg-white/5 p-4">
-									<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Tools</p>
-									<p class="mt-2 text-sm text-slate-200">Revit (plus firm-specific standards)</p>
+									<p class="text-xs font-semibold uppercase tracking-wide text-text-secondary">Tools</p>
+									<p class="mt-2 text-sm text-text-secondary">Revit (plus firm-specific standards)</p>
 								</li>
 								<li class="rounded-xl border border-white/10 bg-white/5 p-4">
-									<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Options</p>
-									<p class="mt-2 text-sm text-slate-200">20h/40h or team scaling</p>
+									<p class="text-xs font-semibold uppercase tracking-wide text-text-secondary">Options</p>
+									<p class="mt-2 text-sm text-text-secondary">20h/40h or team scaling</p>
 								</li>
 							</ul>
 						</div>
@@ -83,7 +83,7 @@ const bookingExternal = isExternalUrl(bookingUrl);
 		</section>
 
 		<div class="mx-auto max-w-6xl px-6 py-12">
-			<section class="rounded-2xl border border-border bg-slate-900/40 shadow-sm p-6">
+			<section class="rounded-2xl border border-border bg-bg-alt/40 shadow-sm p-6">
 				<h2 class="text-xl font-semibold text-text-primary">Role overview</h2>
 				<p class="mt-3 text-sm leading-relaxed text-text-secondary sm:text-base">
 					TODO: Expand with scannable sections (overview, why remote works, options, sample outputs, proof, CTAs).

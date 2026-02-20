@@ -27,16 +27,16 @@ const bookingExternal = isExternalUrl(bookingUrl);
 	<main class="">
 		<section class="relative overflow-hidden bg-primary">
 			<div class="mx-auto max-w-6xl px-6 py-16 sm:py-20">
-				<p class="text-sm font-semibold tracking-wide text-sky-300">Roles</p>
+				<p class="text-sm font-semibold tracking-wide text-accent">Roles</p>
 				<h1 class="mt-4 text-4xl font-semibold tracking-tight text-white sm:text-5xl">Dedicated Remote PPC Manager</h1>
-				<p class="mt-4 max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
+				<p class="mt-4 max-w-prose text-sm leading-relaxed text-text-secondary sm:text-base">
 					TODO: Add subheadline + scannable sections (overview, why remote works, options, sample outputs, proof, CTAs).
 				</p>
 				<div class="mt-6 flex flex-wrap gap-3">
 					<a
 						href={bookingUrl}
 						{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
-						class="inline-flex items-center justify-center rounded bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+						class="inline-flex items-center justify-center rounded bg-accent px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:"
 						data-book-call
 					>
 						Book a 15-Min Call

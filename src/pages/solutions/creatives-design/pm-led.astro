@@ -28,11 +28,11 @@ const bookingExternal = isExternalUrl(bookingUrl);
 		<section class="relative overflow-hidden">
 			<div class="grid items-center gap-10 lg:grid-cols-2">
 				<div>
-					<p class="text-sm font-semibold tracking-wide text-sky-300">Creative &amp; Design</p>
+					<p class="text-sm font-semibold tracking-wide text-accent">Creative &amp; Design</p>
 					<h1 class="mt-4 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
 						PM-Led Dedicated Design Team
 					</h1>
-					<p class="mt-4 max-w-prose text-base leading-relaxed text-slate-300 sm:text-lg">
+					<p class="mt-4 max-w-prose text-base leading-relaxed text-text-secondary sm:text-lg">
 						A managed design team with a PM-led workflow — clear intake, predictable turnaround, and structured
 						revisions. Built for teams that need consistent output without managing every detail.
 					</p>
@@ -41,14 +41,14 @@ const bookingExternal = isExternalUrl(bookingUrl);
 						<a
 							href={bookingUrl}
 							{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
-							class="inline-flex items-center justify-center rounded bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+							class="inline-flex items-center justify-center rounded bg-accent px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:"
 							data-book-call
 						>
 							Book a 15-Min Call
 						</a>
 						<a
 							href="/solutions/creatives-design/"
-							class="inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+							class="inline-flex items-center justify-center rounded-xl border border-white/20 bg-white/5 px-5 py-2.5 text-sm font-semibold text-text-primary transition hover:bg-bg-alt focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:"
 						>
 							Back to overview
 						</a>
@@ -56,29 +56,29 @@ const bookingExternal = isExternalUrl(bookingUrl);
 				</div>
 
 				<div class="relative">
-					<div class="rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900/60 to-slate-950 p-6 shadow-sm">
-						<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Best for</p>
+					<div class="rounded-2xl border border-primary/10 bg-primary p-6 shadow-sm">
+						<p class="text-xs font-semibold uppercase tracking-wide text-text-secondary">Best for</p>
 						<ul class="mt-4 grid gap-3 sm:grid-cols-2">
-							<li class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
-								<p class="text-sm font-semibold text-slate-100">Predictable output</p>
-								<p class="mt-2 text-sm text-slate-300">Weekly capacity with clear prioritization.</p>
+							<li class="rounded-xl border border-border bg-white shadow-sm p-4">
+								<p class="text-sm font-semibold text-text-primary">Predictable output</p>
+								<p class="mt-2 text-sm text-text-secondary">Weekly capacity with clear prioritization.</p>
 							</li>
-							<li class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
-								<p class="text-sm font-semibold text-slate-100">Less overhead</p>
-								<p class="mt-2 text-sm text-slate-300">PM runs the workflow and keeps delivery moving.</p>
+							<li class="rounded-xl border border-border bg-white shadow-sm p-4">
+								<p class="text-sm font-semibold text-text-primary">Less overhead</p>
+								<p class="mt-2 text-sm text-text-secondary">PM runs the workflow and keeps delivery moving.</p>
 							</li>
-							<li class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
-								<p class="text-sm font-semibold text-slate-100">Stakeholder-heavy work</p>
-								<p class="mt-2 text-sm text-slate-300">Structured feedback and revisions reduce churn.</p>
+							<li class="rounded-xl border border-border bg-white shadow-sm p-4">
+								<p class="text-sm font-semibold text-text-primary">Stakeholder-heavy work</p>
+								<p class="mt-2 text-sm text-text-secondary">Structured feedback and revisions reduce churn.</p>
 							</li>
-							<li class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
-								<p class="text-sm font-semibold text-slate-100">Scaling demands</p>
-								<p class="mt-2 text-sm text-slate-300">Add designers as volume increases.</p>
+							<li class="rounded-xl border border-border bg-white shadow-sm p-4">
+								<p class="text-sm font-semibold text-text-primary">Scaling demands</p>
+								<p class="mt-2 text-sm text-text-secondary">Add designers as volume increases.</p>
 							</li>
 						</ul>
 					</div>
-					<div class="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-sky-500/10 blur-3xl" />
-					<div class="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-indigo-500/10 blur-3xl" />
+					<div class="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-accent/10 blur-3xl" />
+					<div class="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-design/5 blur-3xl" />
 				</div>
 			</div>
 		</section>
@@ -95,10 +95,10 @@ const bookingExternal = isExternalUrl(bookingUrl);
 					{ title: 'Design + iterate', body: 'Designers execute with structured feedback loops.' },
 					{ title: 'Deliver', body: 'Final files + specs packaged for handoff.' },
 				].map((step, idx) => (
-					<li class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-						<p class="text-xs font-semibold uppercase tracking-wide text-sky-300">Step {idx + 1}</p>
-						<p class="mt-2 text-sm font-semibold text-slate-100">{step.title}</p>
-						<p class="mt-2 text-sm leading-relaxed text-slate-300">{step.body}</p>
+					<li class="rounded-2xl border border-border bg-white shadow-sm p-6">
+						<p class="text-xs font-semibold uppercase tracking-wide text-accent">Step {idx + 1}</p>
+						<p class="mt-2 text-sm font-semibold text-text-primary">{step.title}</p>
+						<p class="mt-2 text-sm leading-relaxed text-text-secondary">{step.body}</p>
 					</li>
 				))}
 			</ol>
@@ -109,33 +109,33 @@ const bookingExternal = isExternalUrl(bookingUrl);
 			<h2 id="turnaround" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
 				Turnaround (examples)
 			</h2>
-			<p class="mt-3 max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
+			<p class="mt-3 max-w-prose text-sm leading-relaxed text-text-secondary sm:text-base">
 				These are typical ranges — complexity and scope affect timing.
 			</p>
-			<div class="mt-6 overflow-hidden rounded-2xl border border-slate-800">
+			<div class="mt-6 overflow-hidden rounded-2xl border border-border">
 				<table class="w-full text-left text-sm">
-					<thead class="bg-slate-950/60 text-xs font-semibold uppercase tracking-wide text-slate-400">
+					<thead class="bg-bg-light text-xs font-semibold uppercase tracking-wide text-text-secondary">
 						<tr>
 							<th class="px-5 py-3">Request type</th>
 							<th class="px-5 py-3">Typical turnaround</th>
 						</tr>
 					</thead>
-					<tbody class="divide-y divide-slate-800 bg-slate-900/30">
+					<tbody class="divide-y divide-slate-800 bg-bg-alt/30">
 						<tr>
-							<td class="px-5 py-4 text-slate-200">Ad creative variations</td>
-							<td class="px-5 py-4 text-slate-300">1–2 business days</td>
+							<td class="px-5 py-4 text-text-secondary">Ad creative variations</td>
+							<td class="px-5 py-4 text-text-secondary">1–2 business days</td>
 						</tr>
 						<tr>
-							<td class="px-5 py-4 text-slate-200">Landing page section</td>
-							<td class="px-5 py-4 text-slate-300">2–4 business days</td>
+							<td class="px-5 py-4 text-text-secondary">Landing page section</td>
+							<td class="px-5 py-4 text-text-secondary">2–4 business days</td>
 						</tr>
 						<tr>
-							<td class="px-5 py-4 text-slate-200">Deck refresh</td>
-							<td class="px-5 py-4 text-slate-300">2–5 business days</td>
+							<td class="px-5 py-4 text-text-secondary">Deck refresh</td>
+							<td class="px-5 py-4 text-text-secondary">2–5 business days</td>
 						</tr>
 						<tr>
-							<td class="px-5 py-4 text-slate-200">Light brand system updates</td>
-							<td class="px-5 py-4 text-slate-300">3–7 business days</td>
+							<td class="px-5 py-4 text-text-secondary">Light brand system updates</td>
+							<td class="px-5 py-4 text-text-secondary">3–7 business days</td>
 						</tr>
 					</tbody>
 				</table>
@@ -148,15 +148,15 @@ const bookingExternal = isExternalUrl(bookingUrl);
 				Staffing &amp; revisions
 			</h2>
 			<div class="mt-6 grid gap-4 md:grid-cols-2">
-				<div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-					<h3 class="text-base font-semibold text-slate-100">Team composition</h3>
-					<p class="mt-3 text-sm leading-relaxed text-slate-300">
+				<div class="rounded-2xl border border-border bg-white shadow-sm p-6">
+					<h3 class="text-base font-semibold text-text-primary">Team composition</h3>
+					<p class="mt-3 text-sm leading-relaxed text-text-secondary">
 						A PM plus one or more designers based on demand. Add specialist roles as needed (web, brand, decks).
 					</p>
 				</div>
-				<div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-					<h3 class="text-base font-semibold text-slate-100">Revision cadence</h3>
-					<p class="mt-3 text-sm leading-relaxed text-slate-300">
+				<div class="rounded-2xl border border-border bg-white shadow-sm p-6">
+					<h3 class="text-base font-semibold text-text-primary">Revision cadence</h3>
+					<p class="mt-3 text-sm leading-relaxed text-text-secondary">
 						Structured feedback rounds with clear handoff checkpoints to reduce churn and keep work moving.
 					</p>
 				</div>
@@ -166,35 +166,35 @@ const bookingExternal = isExternalUrl(bookingUrl);
 		{/* PROOF */}
 		<section class="mt-12" aria-labelledby="proof-pm-led">
 			<h2 id="proof-pm-led" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Proof</h2>
-			<p class="mt-3 max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
+			<p class="mt-3 max-w-prose text-sm leading-relaxed text-text-secondary sm:text-base">
 				{/* TODO: Replace with testimonials carousel. */}
 				Testimonials placeholder (to be filled).
 			</p>
 			<div class="mt-6 grid gap-4 md:grid-cols-3">
 				{[1, 2, 3].map((i) => (
-					<figure class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-						<blockquote class="text-sm leading-relaxed text-slate-200">“TODO testimonial {i}.”</blockquote>
-						<figcaption class="mt-3 text-xs text-slate-400">— TODO, anonymized</figcaption>
+					<figure class="rounded-2xl border border-border bg-white shadow-sm p-6">
+						<blockquote class="text-sm leading-relaxed text-text-secondary">“TODO testimonial {i}.”</blockquote>
+						<figcaption class="mt-3 text-xs text-text-secondary">— TODO, anonymized</figcaption>
 					</figure>
 				))}
 			</div>
 		</section>
 
 		{/* DESIGN BRIEF KIT */}
-		<section class="mt-12 rounded-2xl border border-slate-800 bg-slate-900/40 p-6" aria-labelledby="brief-kit-pm">
+		<section class="mt-12 rounded-2xl border border-border bg-white shadow-sm p-6" aria-labelledby="brief-kit-pm">
 			<h2 id="brief-kit-pm" class="text-xl font-semibold text-white">Design Brief Kit</h2>
-			<p class="mt-3 text-sm leading-relaxed text-slate-300 sm:text-base">
+			<p class="mt-3 text-sm leading-relaxed text-text-secondary sm:text-base">
 				{/* TODO: Add downloadable brief kit assets. */}
 				Placeholder: brief kit template + intake checklist (to be filled).
 			</p>
 		</section>
 
 		{/* FINAL CTA */}
-		<section class="mt-14 rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900/60 to-slate-950 p-6 sm:p-8">
+		<section class="mt-14 rounded-2xl border border-primary/10 bg-primary p-6 sm:p-8">
 			<div class="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
 				<div>
 					<h2 class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Ready for PM-led design delivery?</h2>
-					<p class="mt-2 max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
+					<p class="mt-2 max-w-prose text-sm leading-relaxed text-text-secondary sm:text-base">
 						Book a call to discuss your workflow — we’ll recommend a team setup and start fast.
 					</p>
 				</div>
@@ -202,14 +202,14 @@ const bookingExternal = isExternalUrl(bookingUrl);
 					<a
 						href={bookingUrl}
 						{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
-						class="inline-flex items-center justify-center rounded bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+						class="inline-flex items-center justify-center rounded bg-accent px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:"
 						data-book-call
 					>
 						Book a 15-Min Call
 					</a>
 					<a
 						href="/solutions/creatives-design/dedicated/"
-						class="inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+						class="inline-flex items-center justify-center rounded-xl border border-white/20 bg-white/5 px-5 py-2.5 text-sm font-semibold text-text-primary transition hover:bg-bg-alt focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:"
 					>
 						Prefer a designer seat?
 					</a>
