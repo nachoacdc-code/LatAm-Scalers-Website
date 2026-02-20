@@ -38,22 +38,16 @@ const bookingExternal = isExternalUrl(bookingUrl);
 
 	<main>
 
-		<!-- ═══════════════════════════════════════════════════════
-		     SECTION 1 — HERO
-		     ═══════════════════════════════════════════════════════ -->
-		<section class="relative overflow-hidden border-b border-slate-800/60 bg-slate-950 py-16 sm:py-24" aria-labelledby="hero-heading">
-			<!-- Background glow accents -->
-			<div class="pointer-events-none absolute -left-32 -top-32 h-96 w-96 rounded-full bg-sky-500/8 blur-3xl" aria-hidden="true"></div>
-			<div class="pointer-events-none absolute -right-32 bottom-0 h-80 w-80 rounded-full bg-indigo-500/8 blur-3xl" aria-hidden="true"></div>
-
+		<!-- SECTION 1 — HERO (dark bg-primary) -->
+		<section class="relative overflow-hidden bg-primary py-16 sm:py-24" aria-labelledby="hero-heading">
 			<div class="mx-auto max-w-6xl px-6">
 				<div class="grid items-center gap-12 lg:grid-cols-2">
 					<div class="js-fade-in">
-						<p class="text-sm font-semibold uppercase tracking-widest text-sky-400">Dedicated LATAM Specialists</p>
+						<p class="text-sm font-semibold uppercase tracking-widest text-accent">Dedicated LATAM Specialists</p>
 						<h1 id="hero-heading" class="mt-4 text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
 							Scale Your US Team with Dedicated LATAM Specialists — Matched in Under One Week
 						</h1>
-						<p class="mt-5 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
+						<p class="mt-5 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">
 							Pre-vetted AEC, design, and marketing professionals. 50–70% cost savings. Month-to-month flexibility. Free replacement guarantee.
 						</p>
 
@@ -61,14 +55,14 @@ const bookingExternal = isExternalUrl(bookingUrl);
 							<a
 								href={bookingUrl}
 								{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
-								class="inline-flex min-h-[48px] items-center justify-center rounded bg-sky-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+								class="inline-flex min-h-[48px] items-center justify-center rounded bg-accent px-6 py-3 text-sm font-semibold text-white transition hover:bg-accent/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
 								data-book-call
 							>
 								Book a 15-Minute Scoping Call
 							</a>
 							<a
 								href="/#contact"
-								class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-slate-700 bg-slate-900/60 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+								class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
 								data-open-tell-us="home-hero"
 							>
 								Tell Us What You Need
@@ -76,30 +70,29 @@ const bookingExternal = isExternalUrl(bookingUrl);
 						</div>
 					</div>
 
-					<!-- Value prop card -->
 					<div class="js-fade-in relative">
-						<div class="rounded-2xl border border-slate-700/60 bg-slate-900/60 p-6 shadow-xl shadow-black/30 backdrop-blur-sm">
-							<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Why teams choose LatAm Scalers</p>
+						<div class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-xl backdrop-blur-sm">
+							<p class="text-xs font-semibold uppercase tracking-wide text-white/50">Why teams choose LatAm Scalers</p>
 							<div class="mt-4 grid grid-cols-2 gap-3">
-								<div class="rounded-xl border border-slate-800 bg-slate-950/50 p-4">
-									<p class="text-xs font-semibold uppercase tracking-wide text-sky-400">Speed</p>
-									<p class="mt-2 text-sm font-semibold text-slate-100">Shortlist in 48 hrs</p>
-									<p class="mt-1 text-xs text-slate-400">Vetted, ready to start</p>
+								<div class="rounded-xl border border-white/10 bg-white/5 p-4">
+									<p class="text-xs font-semibold uppercase tracking-wide text-accent">Speed</p>
+									<p class="mt-2 text-sm font-semibold text-white">Shortlist in 48 hrs</p>
+									<p class="mt-1 text-xs text-white/50">Vetted, ready to start</p>
 								</div>
-								<div class="rounded-xl border border-slate-800 bg-slate-950/50 p-4">
-									<p class="text-xs font-semibold uppercase tracking-wide text-sky-400">Alignment</p>
-									<p class="mt-2 text-sm font-semibold text-slate-100">US time zones</p>
-									<p class="mt-1 text-xs text-slate-400">0–3 hr overlap, fluent English</p>
+								<div class="rounded-xl border border-white/10 bg-white/5 p-4">
+									<p class="text-xs font-semibold uppercase tracking-wide text-accent">Alignment</p>
+									<p class="mt-2 text-sm font-semibold text-white">US time zones</p>
+									<p class="mt-1 text-xs text-white/50">0–3 hr overlap, fluent English</p>
 								</div>
-								<div class="rounded-xl border border-slate-800 bg-slate-950/50 p-4">
-									<p class="text-xs font-semibold uppercase tracking-wide text-sky-400">Flexibility</p>
-									<p class="mt-2 text-sm font-semibold text-slate-100">Month-to-month</p>
-									<p class="mt-1 text-xs text-slate-400">Scale up or down anytime</p>
+								<div class="rounded-xl border border-white/10 bg-white/5 p-4">
+									<p class="text-xs font-semibold uppercase tracking-wide text-accent">Flexibility</p>
+									<p class="mt-2 text-sm font-semibold text-white">Month-to-month</p>
+									<p class="mt-1 text-xs text-white/50">Scale up or down anytime</p>
 								</div>
-								<div class="rounded-xl border border-slate-800 bg-slate-950/50 p-4">
-									<p class="text-xs font-semibold uppercase tracking-wide text-sky-400">Guarantee</p>
-									<p class="mt-2 text-sm font-semibold text-slate-100">Free replacement</p>
-									<p class="mt-1 text-xs text-slate-400">If the fit isn't right</p>
+								<div class="rounded-xl border border-white/10 bg-white/5 p-4">
+									<p class="text-xs font-semibold uppercase tracking-wide text-accent">Guarantee</p>
+									<p class="mt-2 text-sm font-semibold text-white">Free replacement</p>
+									<p class="mt-1 text-xs text-white/50">If the fit isn't right</p>
 								</div>
 							</div>
 						</div>
@@ -108,67 +101,60 @@ const bookingExternal = isExternalUrl(bookingUrl);
 			</div>
 		</section>
 
-		<!-- ═══════════════════════════════════════════════════════
-		     SECTION 2 — TRUST BAR
-		     ═══════════════════════════════════════════════════════ -->
-		<section class="border-b border-slate-800/60 bg-slate-900/70 py-6" aria-label="Trust indicators">
+		<!-- SECTION 2 — TRUST BAR (dark strip) -->
+		<section class="bg-bg-dark py-6" aria-label="Trust indicators">
 			<div class="mx-auto max-w-6xl px-6">
 				<div class="flex flex-wrap items-center justify-center gap-6 sm:gap-10 lg:justify-between">
 
 					<div class="js-fade-in flex items-center gap-3">
-						<div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-sky-500/30 bg-sky-500/10">
-							<!-- Clock icon -->
-							<svg class="h-4 w-4 text-sky-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" d="M12 6v6l4 2"/></svg>
+						<div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-accent/30 bg-accent/10">
+							<svg class="h-4 w-4 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" d="M12 6v6l4 2"/></svg>
 						</div>
 						<div>
-							<p class="text-sm font-semibold text-slate-100">Matched in 48 hrs</p>
-							<p class="text-xs text-slate-400">Shortlist delivered fast</p>
+							<p class="text-sm font-semibold text-white">Matched in 48 hrs</p>
+							<p class="text-xs text-white/50">Shortlist delivered fast</p>
 						</div>
 					</div>
 
 					<div class="js-fade-in flex items-center gap-3">
-						<div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-sky-500/30 bg-sky-500/10">
-							<!-- Shield icon -->
-							<svg class="h-4 w-4 text-sky-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/></svg>
+						<div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-accent/30 bg-accent/10">
+							<svg class="h-4 w-4 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/></svg>
 						</div>
 						<div>
-							<p class="text-sm font-semibold text-slate-100">
-								<a href="/about/how-we-vet/" class="transition hover:text-sky-300 focus:outline-none focus-visible:underline">5-Stage Vetted</a>
+							<p class="text-sm font-semibold text-white">
+								<a href="/about/how-we-vet/" class="transition hover:text-accent focus:outline-none focus-visible:underline">5-Stage Vetted</a>
 							</p>
-							<p class="text-xs text-slate-400">Top 1% of applicants</p>
+							<p class="text-xs text-white/50">Top 1% of applicants</p>
 						</div>
 					</div>
 
 					<div class="js-fade-in flex items-center gap-3">
-						<div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-sky-500/30 bg-sky-500/10">
-							<!-- Dollar icon -->
-							<svg class="h-4 w-4 text-sky-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33"/></svg>
+						<div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-accent/30 bg-accent/10">
+							<svg class="h-4 w-4 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33"/></svg>
 						</div>
 						<div>
-							<p class="text-sm font-semibold text-slate-100">50–70% cost savings</p>
-							<p class="text-xs text-slate-400">vs. US equivalent hire</p>
+							<p class="text-sm font-semibold text-white">50–70% cost savings</p>
+							<p class="text-xs text-white/50">vs. US equivalent hire</p>
 						</div>
 					</div>
 
 					<div class="js-fade-in flex items-center gap-3">
-						<div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-sky-500/30 bg-sky-500/10">
-							<!-- Refresh icon -->
-							<svg class="h-4 w-4 text-sky-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"/></svg>
+						<div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-accent/30 bg-accent/10">
+							<svg class="h-4 w-4 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"/></svg>
 						</div>
 						<div>
-							<p class="text-sm font-semibold text-slate-100">Free replacement</p>
-							<p class="text-xs text-slate-400">If the fit isn't right</p>
+							<p class="text-sm font-semibold text-white">Free replacement</p>
+							<p class="text-xs text-white/50">If the fit isn't right</p>
 						</div>
 					</div>
 
 					<div class="js-fade-in hidden items-center gap-3 lg:flex">
-						<div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-sky-500/30 bg-sky-500/10">
-							<!-- Globe icon -->
-							<svg class="h-4 w-4 text-sky-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+						<div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-accent/30 bg-accent/10">
+							<svg class="h-4 w-4 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
 						</div>
 						<div>
-							<p class="text-sm font-semibold text-slate-100">US timezone overlap</p>
-							<p class="text-xs text-slate-400">Real-time collaboration</p>
+							<p class="text-sm font-semibold text-white">US timezone overlap</p>
+							<p class="text-xs text-white/50">Real-time collaboration</p>
 						</div>
 					</div>
 
@@ -176,43 +162,41 @@ const bookingExternal = isExternalUrl(bookingUrl);
 			</div>
 		</section>
 
-		<!-- ═══════════════════════════════════════════════════════
-		     SECTION 3 — PROBLEM STATEMENT
-		     ═══════════════════════════════════════════════════════ -->
-		<section class="border-b border-slate-800/60 bg-slate-950 py-16 sm:py-20" aria-labelledby="problem-heading">
+		<!-- SECTION 3 — PROBLEM STATEMENT (light) -->
+		<section class="bg-bg-light py-16 sm:py-20" aria-labelledby="problem-heading">
 			<div class="mx-auto max-w-6xl px-6">
 				<div class="js-fade-in max-w-2xl">
-					<p class="text-sm font-semibold uppercase tracking-widest text-sky-400">The talent gap is real</p>
-					<h2 id="problem-heading" class="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+					<p class="text-sm font-semibold uppercase tracking-widest text-accent">The talent gap is real</p>
+					<h2 id="problem-heading" class="mt-3 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
 						US Companies Face a Structural Talent Crisis
 					</h2>
-					<p class="mt-4 text-base leading-relaxed text-slate-300">
+					<p class="mt-4 text-base leading-relaxed text-text-secondary">
 						Hiring pipelines are broken, timelines are slipping, and costs keep climbing. The problem isn't effort — it's supply.
 					</p>
 				</div>
 
 				<div class="mt-10 grid gap-4 sm:grid-cols-3">
-					<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-						<p class="text-xs font-semibold uppercase tracking-wide text-sky-300">AEC</p>
-						<p class="mt-3 text-3xl font-semibold text-white">94%</p>
-						<p class="mt-2 text-sm font-semibold text-slate-100">of firms report workforce shortages</p>
-						<p class="mt-2 text-sm leading-relaxed text-slate-400">
+					<div class="js-fade-in rounded-2xl border border-border bg-white p-6 shadow-sm">
+						<p class="text-xs font-semibold uppercase tracking-wide text-aec">AEC</p>
+						<p class="mt-3 text-3xl font-semibold text-text-primary">94%</p>
+						<p class="mt-2 text-sm font-semibold text-text-primary">of firms report workforce shortages</p>
+						<p class="mt-2 text-sm leading-relaxed text-text-secondary">
 							AEC firms are turning down projects they can't staff. Demand is growing; the local talent pipeline isn't keeping up.
 						</p>
 					</div>
-					<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-						<p class="text-xs font-semibold uppercase tracking-wide text-violet-400">Design</p>
-						<p class="mt-3 text-3xl font-semibold text-white">45%</p>
-						<p class="mt-2 text-sm font-semibold text-slate-100">longer hiring cycles for design roles</p>
-						<p class="mt-2 text-sm leading-relaxed text-slate-400">
+					<div class="js-fade-in rounded-2xl border border-border bg-white p-6 shadow-sm">
+						<p class="text-xs font-semibold uppercase tracking-wide text-design">Design</p>
+						<p class="mt-3 text-3xl font-semibold text-text-primary">45%</p>
+						<p class="mt-2 text-sm font-semibold text-text-primary">longer hiring cycles for design roles</p>
+						<p class="mt-2 text-sm leading-relaxed text-text-secondary">
 							Creative capacity bottlenecks stall launches and campaigns. Finding reliable design talent takes months, not days.
 						</p>
 					</div>
-					<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-						<p class="text-xs font-semibold uppercase tracking-wide text-emerald-400">Marketing</p>
-						<p class="mt-3 text-3xl font-semibold text-white">3.8%</p>
-						<p class="mt-2 text-sm font-semibold text-slate-100">unemployment in marketing roles</p>
-						<p class="mt-2 text-sm leading-relaxed text-slate-400">
+					<div class="js-fade-in rounded-2xl border border-border bg-white p-6 shadow-sm">
+						<p class="text-xs font-semibold uppercase tracking-wide text-marketing">Marketing</p>
+						<p class="mt-3 text-3xl font-semibold text-text-primary">3.8%</p>
+						<p class="mt-2 text-sm font-semibold text-text-primary">unemployment in marketing roles</p>
+						<p class="mt-2 text-sm leading-relaxed text-text-secondary">
 							Experienced channel operators are rare and expensive. Teams run understaffed while pipelines stall.
 						</p>
 					</div>
@@ -220,79 +204,74 @@ const bookingExternal = isExternalUrl(bookingUrl);
 			</div>
 		</section>
 
-		<!-- ═══════════════════════════════════════════════════════
-		     SECTION 4 — SOLUTION CARDS
-		     ═══════════════════════════════════════════════════════ -->
-		<section class="border-b border-slate-800/60 bg-slate-900/50 py-16 sm:py-20" aria-labelledby="solutions-heading">
+		<!-- SECTION 4 — SOLUTION CARDS (alt bg) -->
+		<section class="bg-bg-alt py-16 sm:py-20" aria-labelledby="solutions-heading">
 			<div class="mx-auto max-w-6xl px-6">
 				<div class="js-fade-in max-w-2xl">
-					<p class="text-sm font-semibold uppercase tracking-widest text-sky-400">Choose your solution</p>
-					<h2 id="solutions-heading" class="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+					<p class="text-sm font-semibold uppercase tracking-widest text-accent">Choose your solution</p>
+					<h2 id="solutions-heading" class="mt-3 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
 						Dedicated Specialists in Three Core Verticals
 					</h2>
-					<p class="mt-4 text-base leading-relaxed text-slate-300">
+					<p class="mt-4 text-base leading-relaxed text-text-secondary">
 						Each engagement is dedicated — not a marketplace listing, not a subscription box. A specialist working exclusively for your team.
 					</p>
 				</div>
 
 				<div class="mt-10 grid gap-5 lg:grid-cols-3">
 
-					<!-- AEC -->
-					<article class="js-fade-in js-hover-lift rounded-2xl border border-sky-500/20 bg-slate-900/60 p-6 transition-all duration-200 hover:-translate-y-1 hover:border-sky-500/40 hover:shadow-lg hover:shadow-sky-500/5">
+					<article class="js-fade-in rounded-2xl border border-aec/20 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-aec/40 hover:shadow-lg">
 						<div class="flex items-center justify-between">
-							<p class="text-xs font-semibold uppercase tracking-wide text-sky-300">AEC Talent</p>
-							<span class="rounded-full border border-sky-500/20 bg-sky-500/10 px-2.5 py-0.5 text-xs font-semibold text-sky-300">From ~$3,500/mo</span>
+							<p class="text-xs font-semibold uppercase tracking-wide text-aec">AEC Talent</p>
+							<span class="rounded-full border border-aec/20 bg-aec/10 px-2.5 py-0.5 text-xs font-semibold text-aec">From ~$3,500/mo</span>
 						</div>
-						<h3 class="mt-3 text-lg font-semibold text-white">Architecture, Engineering & Construction</h3>
-						<p class="mt-3 text-sm leading-relaxed text-slate-300">
+						<h3 class="mt-3 text-lg font-semibold text-text-primary">Architecture, Engineering & Construction</h3>
+						<p class="mt-3 text-sm leading-relaxed text-text-secondary">
 							Revit modelers, BIM coordinators, CAD drafters, and MEP specialists who integrate into your firm's workflow and standards.
 						</p>
-						<ul class="mt-4 grid gap-2 text-sm text-slate-300">
-							<li class="flex items-center gap-2"><span class="text-sky-400" aria-hidden="true">→</span> BIM coordination &amp; Revit modeling</li>
-							<li class="flex items-center gap-2"><span class="text-sky-400" aria-hidden="true">→</span> CAD drafting &amp; construction documents</li>
-							<li class="flex items-center gap-2"><span class="text-sky-400" aria-hidden="true">→</span> MEP engineering support</li>
+						<ul class="mt-4 grid gap-2 text-sm text-text-secondary">
+							<li class="flex items-center gap-2"><span class="text-aec" aria-hidden="true">→</span> BIM coordination &amp; Revit modeling</li>
+							<li class="flex items-center gap-2"><span class="text-aec" aria-hidden="true">→</span> CAD drafting &amp; construction documents</li>
+							<li class="flex items-center gap-2"><span class="text-aec" aria-hidden="true">→</span> MEP engineering support</li>
 						</ul>
-						<a href="/solutions/aec-talent/" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-sky-300 transition hover:text-sky-200 focus:outline-none focus-visible:underline">
+						<a href="/solutions/aec-talent/" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-aec transition hover:text-aec/80 focus:outline-none focus-visible:underline">
 							Explore AEC talent <span aria-hidden="true">&rarr;</span>
 						</a>
 					</article>
 
-					<!-- Design -->
-					<article class="js-fade-in js-hover-lift rounded-2xl border border-violet-500/20 bg-slate-900/60 p-6 transition-all duration-200 hover:-translate-y-1 hover:border-violet-500/40 hover:shadow-lg hover:shadow-violet-500/5">
+					<article class="js-fade-in rounded-2xl border border-design/20 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-design/40 hover:shadow-lg">
 						<div class="flex items-center justify-between">
-							<p class="text-xs font-semibold uppercase tracking-wide text-violet-400">Creative & Design</p>
-							<span class="rounded-full border border-violet-500/20 bg-violet-500/10 px-2.5 py-0.5 text-xs font-semibold text-violet-300">From ~$2,800/mo</span>
+							<p class="text-xs font-semibold uppercase tracking-wide text-design">Creative & Design</p>
+							<span class="rounded-full border border-design/20 bg-design/10 px-2.5 py-0.5 text-xs font-semibold text-design">From ~$2,800/mo</span>
 						</div>
-						<h3 class="mt-3 text-lg font-semibold text-white">Dedicated Designers & Managed Creative Teams</h3>
-						<p class="mt-3 text-sm leading-relaxed text-slate-300">
+						<h3 class="mt-3 text-lg font-semibold text-text-primary">Dedicated Designers & Managed Creative Teams</h3>
+						<p class="mt-3 text-sm leading-relaxed text-text-secondary">
 							Brand, product, and performance designers. Or a PM-led managed creative team for predictable output without agency markup.
 						</p>
-						<ul class="mt-4 grid gap-2 text-sm text-slate-300">
-							<li class="flex items-center gap-2"><span class="text-violet-400" aria-hidden="true">→</span> UI/UX, brand &amp; visual design</li>
-							<li class="flex items-center gap-2"><span class="text-violet-400" aria-hidden="true">→</span> Motion, web &amp; performance creative</li>
-							<li class="flex items-center gap-2"><span class="text-violet-400" aria-hidden="true">→</span> Managed creative teams with PM</li>
+						<ul class="mt-4 grid gap-2 text-sm text-text-secondary">
+							<li class="flex items-center gap-2"><span class="text-design" aria-hidden="true">→</span> UI/UX, brand &amp; visual design</li>
+							<li class="flex items-center gap-2"><span class="text-design" aria-hidden="true">→</span> Motion, web &amp; performance creative</li>
+							<li class="flex items-center gap-2"><span class="text-design" aria-hidden="true">→</span> Managed creative teams with PM</li>
 						</ul>
-						<a href="/solutions/creatives-design/" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-violet-400 transition hover:text-violet-300 focus:outline-none focus-visible:underline">
+						<a href="/solutions/creatives-design/" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-design transition hover:text-design/80 focus:outline-none focus-visible:underline">
 							Explore design talent <span aria-hidden="true">&rarr;</span>
 						</a>
 					</article>
 
-					<!-- Marketing -->
-					<article class="js-fade-in js-hover-lift rounded-2xl border border-emerald-500/20 bg-slate-900/60 p-6 transition-all duration-200 hover:-translate-y-1 hover:border-emerald-500/40 hover:shadow-lg hover:shadow-emerald-500/5">
+					<article class="js-fade-in rounded-2xl border border-marketing/20 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-marketing/40 hover:shadow-lg">
 						<div class="flex items-center justify-between">
-							<p class="text-xs font-semibold uppercase tracking-wide text-emerald-400">Marketing Talent</p>
-							<span class="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2.5 py-0.5 text-xs font-semibold text-emerald-300">From ~$2,500/mo</span>
+							<p class="text-xs font-semibold uppercase tracking-wide text-marketing">Marketing Talent</p>
+							<span class="rounded-full border border-marketing/20 bg-marketing/10 px-2.5 py-0.5 text-xs font-semibold text-marketing">From ~$2,500/mo</span>
 						</div>
-						<h3 class="mt-3 text-lg font-semibold text-white">SEO, Paid Media, Lifecycle & Marketing Ops</h3>
-						<p class="mt-3 text-sm leading-relaxed text-slate-300">
+						<h3 class="mt-3 text-lg font-semibold text-text-primary">SEO, Paid Media, Lifecycle & Marketing Ops</h3>
+						<p class="mt-3 text-sm leading-relaxed text-text-secondary">
 							Channel owners who embed into your stack — HubSpot-certified operators, SEO specialists, PPC managers, lifecycle strategists.
 						</p>
-						<ul class="mt-4 grid gap-2 text-sm text-slate-300">
-							<li class="flex items-center gap-2"><span class="text-emerald-400" aria-hidden="true">→</span> SEO, content &amp; paid media</li>
-							<li class="flex items-center gap-2"><span class="text-emerald-400" aria-hidden="true">→</span> Lifecycle &amp; email marketing</li>
-							<li class="flex items-center gap-2"><span class="text-emerald-400" aria-hidden="true">→</span> MarOps, RevOps &amp; HubSpot</li>
+						<ul class="mt-4 grid gap-2 text-sm text-text-secondary">
+							<li class="flex items-center gap-2"><span class="text-marketing" aria-hidden="true">→</span> SEO, content &amp; paid media</li>
+							<li class="flex items-center gap-2"><span class="text-marketing" aria-hidden="true">→</span> Lifecycle &amp; email marketing</li>
+							<li class="flex items-center gap-2"><span class="text-marketing" aria-hidden="true">→</span> MarOps, RevOps &amp; HubSpot</li>
 						</ul>
-						<a href="/solutions/marketing-talent/" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-400 transition hover:text-emerald-300 focus:outline-none focus-visible:underline">
+						<a href="/solutions/marketing-talent/" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-marketing transition hover:text-marketing/80 focus:outline-none focus-visible:underline">
 							Explore marketing talent <span aria-hidden="true">&rarr;</span>
 						</a>
 					</article>
@@ -301,100 +280,76 @@ const bookingExternal = isExternalUrl(bookingUrl);
 			</div>
 		</section>
 
-		<!-- ═══════════════════════════════════════════════════════
-		     SECTION 5 — HOW IT WORKS
-		     ═══════════════════════════════════════════════════════ -->
-		<section class="border-b border-slate-800/60 bg-slate-950 py-16 sm:py-20" aria-labelledby="how-it-works-heading">
+		<!-- SECTION 5 — HOW IT WORKS (light) -->
+		<section class="bg-bg-light py-16 sm:py-20" aria-labelledby="how-it-works-heading">
 			<div class="mx-auto max-w-6xl px-6">
 				<div class="js-fade-in max-w-2xl">
-					<p class="text-sm font-semibold uppercase tracking-widest text-sky-400">Simple process</p>
-					<h2 id="how-it-works-heading" class="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+					<p class="text-sm font-semibold uppercase tracking-widest text-accent">Simple process</p>
+					<h2 id="how-it-works-heading" class="mt-3 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
 						How It Works
 					</h2>
-					<p class="mt-4 text-base leading-relaxed text-slate-300">
+					<p class="mt-4 text-base leading-relaxed text-text-secondary">
 						Designed for speed, quality, and low risk — from scoping call to productive specialist in days, not months.
 					</p>
 				</div>
 
 				<ol class="mt-10 grid gap-4 lg:grid-cols-5">
 					{[
-						{
-							n: '01',
-							title: 'Tell us your needs',
-							body: 'Roles, tools, timeline, and what "good" looks like — so we match accurately.',
-						},
-						{
-							n: '02',
-							title: 'Get a shortlist in 48 hrs',
-							body: 'We deliver vetted specialists aligned to your workflow and standards.',
-						},
-						{
-							n: '03',
-							title: 'Interview (optional)',
-							body: 'Meet top matches — or skip it and start faster. Your call.',
-						},
-						{
-							n: '04',
-							title: 'Start month-to-month',
-							body: 'Fast onboarding. No long-term contracts. Month-to-month flexibility.',
-						},
-						{
-							n: '05',
-							title: 'Scale or replace freely',
-							body: 'Add capacity for peak loads — and get a free replacement guarantee.',
-						},
+						{ n: '01', title: 'Tell us your needs', body: 'Roles, tools, timeline, and what "good" looks like — so we match accurately.' },
+						{ n: '02', title: 'Get a shortlist in 48 hrs', body: 'We deliver vetted specialists aligned to your workflow and standards.' },
+						{ n: '03', title: 'Interview (optional)', body: 'Meet top matches — or skip it and start faster. Your call.' },
+						{ n: '04', title: 'Start month-to-month', body: 'Fast onboarding. No long-term contracts. Month-to-month flexibility.' },
+						{ n: '05', title: 'Scale or replace freely', body: 'Add capacity for peak loads — and get a free replacement guarantee.' },
 					].map((step) => (
-						<li class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+						<li class="js-fade-in rounded-2xl border border-border bg-white p-6 shadow-sm">
 							<div class="flex items-center gap-3">
-								<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-700 bg-slate-950/60">
-									<span class="text-sm font-bold text-sky-400">{step.n}</span>
+								<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-border bg-bg-alt">
+									<span class="text-sm font-bold text-accent">{step.n}</span>
 								</div>
-								<p class="text-sm font-semibold text-slate-100">{step.title}</p>
+								<p class="text-sm font-semibold text-text-primary">{step.title}</p>
 							</div>
-							<p class="mt-3 text-sm leading-relaxed text-slate-400">{step.body}</p>
+							<p class="mt-3 text-sm leading-relaxed text-text-secondary">{step.body}</p>
 						</li>
 					))}
 				</ol>
 
 				<div class="mt-8 text-center">
-					<a href="/how-it-works/" class="inline-flex items-center gap-1.5 text-sm font-semibold text-sky-400 transition hover:text-sky-300 focus:outline-none focus-visible:underline">
+					<a href="/how-it-works/" class="inline-flex items-center gap-1.5 text-sm font-semibold text-accent transition hover:text-accent/80 focus:outline-none focus-visible:underline">
 						See the full process with branching paths <span aria-hidden="true">&rarr;</span>
 					</a>
 				</div>
 			</div>
 		</section>
 
-		<!-- ═══════════════════════════════════════════════════════
-		     SECTION 6 — WHY LATAM (dark, with animated counters)
-		     ═══════════════════════════════════════════════════════ -->
-		<section class="border-b border-slate-800/60 bg-gradient-to-b from-slate-900 to-slate-950 py-16 sm:py-20" aria-labelledby="why-latam-heading">
+		<!-- SECTION 6 — WHY LATAM (dark, with animated counters) -->
+		<section class="bg-primary py-16 sm:py-20" aria-labelledby="why-latam-heading">
 			<div class="mx-auto max-w-6xl px-6">
 				<div class="js-fade-in max-w-2xl">
-					<p class="text-sm font-semibold uppercase tracking-widest text-sky-400">The LATAM advantage</p>
+					<p class="text-sm font-semibold uppercase tracking-widest text-accent">The LATAM advantage</p>
 					<h2 id="why-latam-heading" class="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
 						Why LATAM Specialists Work for US Teams
 					</h2>
 				</div>
 
 				<div class="mt-10 grid gap-5 sm:grid-cols-3">
-					<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/60 p-8 text-center">
+					<div class="js-fade-in rounded-2xl border border-white/10 bg-white/5 p-8 text-center backdrop-blur-sm">
 						<p class="js-counter text-5xl font-bold text-white" data-target="70" data-suffix="%">0%</p>
-						<p class="mt-2 text-sm font-semibold text-sky-400">Cost Savings</p>
-						<p class="mt-3 text-sm leading-relaxed text-slate-400">
+						<p class="mt-2 text-sm font-semibold text-accent">Cost Savings</p>
+						<p class="mt-3 text-sm leading-relaxed text-white/60">
 							50–70% lower than a comparable US hire — without sacrificing quality or commitment.
 						</p>
 					</div>
-					<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/60 p-8 text-center">
+					<div class="js-fade-in rounded-2xl border border-white/10 bg-white/5 p-8 text-center backdrop-blur-sm">
 						<p class="js-counter text-5xl font-bold text-white" data-target="3" data-prefix="0–" data-suffix=" hrs">0 hrs</p>
-						<p class="mt-2 text-sm font-semibold text-sky-400">Timezone Overlap</p>
-						<p class="mt-3 text-sm leading-relaxed text-slate-400">
+						<p class="mt-2 text-sm font-semibold text-accent">Timezone Overlap</p>
+						<p class="mt-3 text-sm leading-relaxed text-white/60">
 							LATAM time zones align with the US — real-time collaboration, same-day feedback loops.
 						</p>
 					</div>
-					<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/60 p-8 text-center">
+					<div class="js-fade-in rounded-2xl border border-white/10 bg-white/5 p-8 text-center backdrop-blur-sm">
 						<p class="js-counter text-5xl font-bold text-white" data-target="7" data-prefix="&lt;" data-suffix=" days">&lt;1 day</p>
-						<p class="mt-2 text-sm font-semibold text-sky-400">Time to Match</p>
-						<p class="mt-3 text-sm leading-relaxed text-slate-400">
+						<p class="mt-2 text-sm font-semibold text-accent">Time to Match</p>
+						<p class="mt-3 text-sm leading-relaxed text-white/60">
 							Shortlist in 48 hours. Onboard in under a week. Start shipping work within days.
 						</p>
 					</div>
@@ -402,75 +357,70 @@ const bookingExternal = isExternalUrl(bookingUrl);
 			</div>
 		</section>
 
-		<!-- ═══════════════════════════════════════════════════════
-		     SECTION 7 — FLEXIBLE OPTIONS
-		     ═══════════════════════════════════════════════════════ -->
-		<section class="border-b border-slate-800/60 bg-slate-950 py-16 sm:py-20" aria-labelledby="options-heading">
+		<!-- SECTION 7 — FLEXIBLE OPTIONS (alt bg) -->
+		<section class="bg-bg-alt py-16 sm:py-20" aria-labelledby="options-heading">
 			<div class="mx-auto max-w-6xl px-6">
 				<div class="js-fade-in flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
 					<div>
-						<p class="text-sm font-semibold uppercase tracking-widest text-sky-400">Engagement models</p>
-						<h2 id="options-heading" class="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+						<p class="text-sm font-semibold uppercase tracking-widest text-accent">Engagement models</p>
+						<h2 id="options-heading" class="mt-3 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
 							Flexible Options for Every Stage
 						</h2>
 					</div>
-					<a href="/how-pricing-works/" class="shrink-0 text-sm font-semibold text-sky-400 transition hover:text-sky-300 focus:outline-none focus-visible:underline">
+					<a href="/how-pricing-works/" class="shrink-0 text-sm font-semibold text-accent transition hover:text-accent/80 focus:outline-none focus-visible:underline">
 						How pricing works &rarr;
 					</a>
 				</div>
 
 				<div class="mt-10 grid gap-5 lg:grid-cols-3">
-					<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-						<div class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-700 bg-slate-950/60">
-							<svg class="h-5 w-5 text-sky-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/></svg>
+					<div class="js-fade-in rounded-2xl border border-border bg-white p-6 shadow-sm">
+						<div class="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-bg-alt">
+							<svg class="h-5 w-5 text-accent" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/></svg>
 						</div>
-						<h3 class="mt-4 text-base font-semibold text-slate-100">Individual Specialist</h3>
-						<p class="mt-3 text-sm leading-relaxed text-slate-300">
+						<h3 class="mt-4 text-base font-semibold text-text-primary">Individual Specialist</h3>
+						<p class="mt-3 text-sm leading-relaxed text-text-secondary">
 							A dedicated full-time (40h/week) or part-time (20h/week) specialist embedded into your team and tools.
 						</p>
-						<p class="mt-4 text-xs font-semibold text-sky-400">Best for: Consistent capacity, channel ownership, embedded workflows</p>
+						<p class="mt-4 text-xs font-semibold text-accent">Best for: Consistent capacity, channel ownership, embedded workflows</p>
 					</div>
-					<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-						<div class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-700 bg-slate-950/60">
-							<svg class="h-5 w-5 text-sky-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"/></svg>
+					<div class="js-fade-in rounded-2xl border border-border bg-white p-6 shadow-sm">
+						<div class="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-bg-alt">
+							<svg class="h-5 w-5 text-accent" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"/></svg>
 						</div>
-						<h3 class="mt-4 text-base font-semibold text-slate-100">Team Scaling (Pod)</h3>
-						<p class="mt-3 text-sm leading-relaxed text-slate-300">
+						<h3 class="mt-4 text-base font-semibold text-text-primary">Team Scaling (Pod)</h3>
+						<p class="mt-3 text-sm leading-relaxed text-text-secondary">
 							A pod of complementary specialists — with optional PM coordination — for end-to-end execution and higher throughput.
 						</p>
-						<p class="mt-4 text-xs font-semibold text-sky-400">Best for: Multi-role projects, peak loads, parallel execution</p>
+						<p class="mt-4 text-xs font-semibold text-accent">Best for: Multi-role projects, peak loads, parallel execution</p>
 					</div>
-					<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-						<div class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-700 bg-slate-950/60">
-							<svg class="h-5 w-5 text-sky-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+					<div class="js-fade-in rounded-2xl border border-border bg-white p-6 shadow-sm">
+						<div class="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-bg-alt">
+							<svg class="h-5 w-5 text-accent" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
 						</div>
-						<h3 class="mt-4 text-base font-semibold text-slate-100">Hourly Packages</h3>
-						<p class="mt-3 text-sm leading-relaxed text-slate-300">
+						<h3 class="mt-4 text-base font-semibold text-text-primary">Hourly Packages</h3>
+						<p class="mt-3 text-sm leading-relaxed text-text-secondary">
 							Blocks of hours for audits, sprints, overflow support, or urgent deliverables — without a monthly commitment.
 						</p>
-						<p class="mt-4 text-xs font-semibold text-sky-400">Best for: Defined projects, one-off needs, testing before committing</p>
+						<p class="mt-4 text-xs font-semibold text-accent">Best for: Defined projects, one-off needs, testing before committing</p>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<!-- ═══════════════════════════════════════════════════════
-		     SECTION 8 — SOCIAL PROOF / VETTING FUNNEL
-		     ═══════════════════════════════════════════════════════ -->
-		<section class="border-b border-slate-800/60 bg-slate-900/60 py-16 sm:py-20" aria-labelledby="proof-heading">
+		<!-- SECTION 8 — SOCIAL PROOF / VETTING FUNNEL (dark) -->
+		<section class="bg-bg-dark py-16 sm:py-20" aria-labelledby="proof-heading">
 			<div class="mx-auto max-w-6xl px-6">
 				<div class="js-fade-in max-w-2xl">
-					<p class="text-sm font-semibold uppercase tracking-widest text-sky-400">How we vet</p>
+					<p class="text-sm font-semibold uppercase tracking-widest text-accent">How we vet</p>
 					<h2 id="proof-heading" class="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
 						Only the Top 1% Make It Through
 					</h2>
-					<p class="mt-4 text-base leading-relaxed text-slate-300">
+					<p class="mt-4 text-base leading-relaxed text-white/70">
 						Every specialist passes a 5-stage vetting process before joining our network.
-						<a href="/about/how-we-vet/" class="ml-1 font-semibold text-sky-400 transition hover:text-sky-300 focus:outline-none focus-visible:underline">See how we vet &rarr;</a>
+						<a href="/about/how-we-vet/" class="ml-1 font-semibold text-accent transition hover:text-accent/80 focus:outline-none focus-visible:underline">See how we vet &rarr;</a>
 					</p>
 				</div>
 
-				<!-- Vetting funnel infographic -->
 				<div class="js-fade-in mt-10 overflow-x-auto">
 					<div class="flex min-w-max items-center gap-0">
 						{[
@@ -481,14 +431,14 @@ const bookingExternal = isExternalUrl(bookingUrl);
 							{ stage: '5', label: 'Final Interview', stat: '5', desc: 'placed' },
 						].map((s, i, arr) => (
 							<div class="flex items-center">
-								<div class={`flex flex-col items-center rounded-2xl border border-slate-700/60 px-5 py-5 text-center ${i === arr.length - 1 ? 'border-sky-500/40 bg-sky-500/10' : 'bg-slate-900/60'}`} style={`min-width: ${120 - i * 10}px`}>
-									<span class="text-xs font-semibold uppercase tracking-wide text-slate-500">Stage {s.stage}</span>
-									<span class={`mt-1.5 text-2xl font-bold ${i === arr.length - 1 ? 'text-sky-300' : 'text-white'}`}>{s.stat}</span>
-									<span class="text-xs text-slate-400">{s.desc}</span>
-									<span class="mt-1 text-xs font-semibold text-slate-300">{s.label}</span>
+								<div class={`flex flex-col items-center rounded-2xl border px-5 py-5 text-center ${i === arr.length - 1 ? 'border-accent/40 bg-accent/10' : 'border-white/10 bg-white/5'}`} style={`min-width: ${120 - i * 10}px`}>
+									<span class="text-xs font-semibold uppercase tracking-wide text-white/40">Stage {s.stage}</span>
+									<span class={`mt-1.5 text-2xl font-bold ${i === arr.length - 1 ? 'text-accent' : 'text-white'}`}>{s.stat}</span>
+									<span class="text-xs text-white/50">{s.desc}</span>
+									<span class="mt-1 text-xs font-semibold text-white/70">{s.label}</span>
 								</div>
 								{i < arr.length - 1 && (
-									<svg class="mx-1 h-4 w-4 shrink-0 text-slate-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+									<svg class="mx-1 h-4 w-4 shrink-0 text-white/20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
 										<path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 0 1 .02-1.06L11.168 10 7.23 6.29a.75.75 0 1 1 1.04-1.08l4.5 4.25a.75.75 0 0 1 0 1.08l-4.5 4.25a.75.75 0 0 1-1.06-.02Z" clip-rule="evenodd"/>
 									</svg>
 								)}
@@ -497,44 +447,42 @@ const bookingExternal = isExternalUrl(bookingUrl);
 					</div>
 				</div>
 
-				<p class="mt-6 text-center text-sm text-slate-500">
+				<p class="mt-6 text-center text-sm text-white/40">
 					Out of every 500 applicants, only ~5 specialists are placed. That's the 1% you get.
 				</p>
 			</div>
 		</section>
 
-		<!-- ═══════════════════════════════════════════════════════
-		     SECTION 9 — POPULAR ROLES (6 cards, 2 per category)
-		     ═══════════════════════════════════════════════════════ -->
-		<section class="border-b border-slate-800/60 bg-slate-950 py-16 sm:py-20" aria-labelledby="roles-heading">
+		<!-- SECTION 9 — POPULAR ROLES (light) -->
+		<section class="bg-bg-light py-16 sm:py-20" aria-labelledby="roles-heading">
 			<div class="mx-auto max-w-6xl px-6">
 				<div class="js-fade-in flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
 					<div>
-						<p class="text-sm font-semibold uppercase tracking-widest text-sky-400">Popular roles</p>
-						<h2 id="roles-heading" class="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+						<p class="text-sm font-semibold uppercase tracking-widest text-accent">Popular roles</p>
+						<h2 id="roles-heading" class="mt-3 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
 							Browse by Role
 						</h2>
 					</div>
-					<a href="/roles/" class="shrink-0 text-sm font-semibold text-sky-400 transition hover:text-sky-300 focus:outline-none focus-visible:underline">
+					<a href="/roles/" class="shrink-0 text-sm font-semibold text-accent transition hover:text-accent/80 focus:outline-none focus-visible:underline">
 						View all roles &rarr;
 					</a>
 				</div>
 
 				<div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 					{[
-						{ label: 'Architectural Designer', category: 'AEC', accent: 'text-sky-300', border: 'border-sky-500/20', href: '/roles/architectural-designer/' },
-						{ label: 'BIM Coordinator', category: 'AEC', accent: 'text-sky-300', border: 'border-sky-500/20', href: '/roles/bim-coordinator/' },
-						{ label: 'Brand / Visual Designer', category: 'Design', accent: 'text-violet-400', border: 'border-violet-500/20', href: '/roles/brand-visual-designer/' },
-						{ label: 'UI/UX Designer', category: 'Design', accent: 'text-violet-400', border: 'border-violet-500/20', href: '/roles/ui-ux-designer/' },
-						{ label: 'SEO Specialist', category: 'Marketing', accent: 'text-emerald-400', border: 'border-emerald-500/20', href: '/roles/seo-specialist/' },
-						{ label: 'PPC Manager', category: 'Marketing', accent: 'text-emerald-400', border: 'border-emerald-500/20', href: '/roles/ppc-manager/' },
+						{ label: 'Architectural Designer', category: 'AEC', accent: 'text-aec', border: 'border-aec/20', href: '/roles/architectural-designer/' },
+						{ label: 'BIM Coordinator', category: 'AEC', accent: 'text-aec', border: 'border-aec/20', href: '/roles/bim-coordinator/' },
+						{ label: 'Brand / Visual Designer', category: 'Design', accent: 'text-design', border: 'border-design/20', href: '/roles/brand-visual-designer/' },
+						{ label: 'UI/UX Designer', category: 'Design', accent: 'text-design', border: 'border-design/20', href: '/roles/ui-ux-designer/' },
+						{ label: 'SEO Specialist', category: 'Marketing', accent: 'text-marketing', border: 'border-marketing/20', href: '/roles/seo-specialist/' },
+						{ label: 'PPC Manager', category: 'Marketing', accent: 'text-marketing', border: 'border-marketing/20', href: '/roles/ppc-manager/' },
 					].map((role) => (
 						<a
 							href={role.href}
-							class={`js-fade-in js-hover-lift group rounded-2xl border ${role.border} bg-slate-900/50 p-6 transition-all duration-200 hover:-translate-y-1 hover:bg-slate-900 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300`}
+							class={`js-fade-in group rounded-2xl border ${role.border} bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-accent`}
 						>
 							<p class={`text-xs font-semibold uppercase tracking-wide ${role.accent}`}>{role.category}</p>
-							<p class="mt-2 text-base font-semibold text-slate-100 group-hover:text-white">{role.label}</p>
+							<p class="mt-2 text-base font-semibold text-text-primary group-hover:text-accent">{role.label}</p>
 							<p class={`mt-3 text-xs font-semibold ${role.accent}`}>View role page &rarr;</p>
 						</a>
 					))}
@@ -542,78 +490,76 @@ const bookingExternal = isExternalUrl(bookingUrl);
 			</div>
 		</section>
 
-		<!-- ═══════════════════════════════════════════════════════
-		     SECTION 10 — TIER PATHWAYS
-		     ═══════════════════════════════════════════════════════ -->
-		<section class="border-b border-slate-800/60 bg-slate-900/50 py-16 sm:py-20" aria-labelledby="tiers-heading">
+		<!-- SECTION 10 — TIER PATHWAYS (alt bg) -->
+		<section class="bg-bg-alt py-16 sm:py-20" aria-labelledby="tiers-heading">
 			<div class="mx-auto max-w-6xl px-6">
 				<div class="js-fade-in max-w-2xl">
-					<p class="text-sm font-semibold uppercase tracking-widest text-sky-400">Which path fits your team?</p>
-					<h2 id="tiers-heading" class="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+					<p class="text-sm font-semibold uppercase tracking-widest text-accent">Which path fits your team?</p>
+					<h2 id="tiers-heading" class="mt-3 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
 						Built for Teams at Every Stage
 					</h2>
 				</div>
 
 				<div class="mt-10 grid gap-5 lg:grid-cols-3">
-					<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-						<p class="text-xs font-semibold uppercase tracking-wide text-sky-400">Start Fast</p>
-						<h3 class="mt-3 text-xl font-semibold text-white">For Founders & Small Teams</h3>
-						<p class="mt-3 text-sm leading-relaxed text-slate-300">
+					<div class="js-fade-in rounded-2xl border border-border bg-white p-6 shadow-sm">
+						<p class="text-xs font-semibold uppercase tracking-wide text-accent">Start Fast</p>
+						<h3 class="mt-3 text-xl font-semibold text-text-primary">For Founders & Small Teams</h3>
+						<p class="mt-3 text-sm leading-relaxed text-text-secondary">
 							1–25 people. You need execution capacity without the overhead of a US hire. Start with one dedicated specialist and scale from there.
 						</p>
-						<ul class="mt-4 grid gap-2 text-sm text-slate-400">
-							<li class="flex items-start gap-2"><span class="mt-0.5 text-sky-500" aria-hidden="true">✓</span> Single specialist, FT or PT</li>
-							<li class="flex items-start gap-2"><span class="mt-0.5 text-sky-500" aria-hidden="true">✓</span> Month-to-month flexibility</li>
-							<li class="flex items-start gap-2"><span class="mt-0.5 text-sky-500" aria-hidden="true">✓</span> Matched in under one week</li>
+						<ul class="mt-4 grid gap-2 text-sm text-text-secondary">
+							<li class="flex items-start gap-2"><span class="mt-0.5 text-accent" aria-hidden="true">✓</span> Single specialist, FT or PT</li>
+							<li class="flex items-start gap-2"><span class="mt-0.5 text-accent" aria-hidden="true">✓</span> Month-to-month flexibility</li>
+							<li class="flex items-start gap-2"><span class="mt-0.5 text-accent" aria-hidden="true">✓</span> Matched in under one week</li>
 						</ul>
 						<a
 							href={bookingUrl}
 							{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
-							class="mt-6 inline-flex min-h-[44px] w-full items-center justify-center rounded bg-sky-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+							class="mt-6 inline-flex min-h-[44px] w-full items-center justify-center rounded bg-accent px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-accent/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
 							data-book-call
 						>
 							Book a scoping call
 						</a>
 					</div>
 
-					<div class="js-fade-in rounded-2xl border border-sky-500/30 bg-slate-900/60 p-6 ring-1 ring-sky-500/20">
+					<div class="js-fade-in rounded-2xl border border-accent/30 bg-white p-6 shadow-sm ring-1 ring-accent/20">
 						<div class="flex items-center justify-between">
-							<p class="text-xs font-semibold uppercase tracking-wide text-sky-400">Scale Smart</p>
-							<span class="rounded-full bg-sky-500/15 px-2.5 py-0.5 text-xs font-semibold text-sky-300">Most popular</span>
+							<p class="text-xs font-semibold uppercase tracking-wide text-accent">Scale Smart</p>
+							<span class="rounded-full bg-accent/10 px-2.5 py-0.5 text-xs font-semibold text-accent">Most popular</span>
 						</div>
-						<h3 class="mt-3 text-xl font-semibold text-white">For Growing Teams</h3>
-						<p class="mt-3 text-sm leading-relaxed text-slate-300">
+						<h3 class="mt-3 text-xl font-semibold text-text-primary">For Growing Teams</h3>
+						<p class="mt-3 text-sm leading-relaxed text-text-secondary">
 							25–200 people. You need multiple specialists across roles or a production pod to hit deadlines without burning out your core team.
 						</p>
-						<ul class="mt-4 grid gap-2 text-sm text-slate-400">
-							<li class="flex items-start gap-2"><span class="mt-0.5 text-sky-500" aria-hidden="true">✓</span> Multiple specialists or pod</li>
-							<li class="flex items-start gap-2"><span class="mt-0.5 text-sky-500" aria-hidden="true">✓</span> Optional PM coordination</li>
-							<li class="flex items-start gap-2"><span class="mt-0.5 text-sky-500" aria-hidden="true">✓</span> Cross-vertical combinations</li>
+						<ul class="mt-4 grid gap-2 text-sm text-text-secondary">
+							<li class="flex items-start gap-2"><span class="mt-0.5 text-accent" aria-hidden="true">✓</span> Multiple specialists or pod</li>
+							<li class="flex items-start gap-2"><span class="mt-0.5 text-accent" aria-hidden="true">✓</span> Optional PM coordination</li>
+							<li class="flex items-start gap-2"><span class="mt-0.5 text-accent" aria-hidden="true">✓</span> Cross-vertical combinations</li>
 						</ul>
 						<a
 							href={bookingUrl}
 							{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
-							class="mt-6 inline-flex min-h-[44px] w-full items-center justify-center rounded bg-sky-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+							class="mt-6 inline-flex min-h-[44px] w-full items-center justify-center rounded bg-accent px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-accent/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
 							data-book-call
 						>
 							Book a scoping call
 						</a>
 					</div>
 
-					<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-						<p class="text-xs font-semibold uppercase tracking-wide text-sky-400">Enterprise Ready</p>
-						<h3 class="mt-3 text-xl font-semibold text-white">For Larger Organizations</h3>
-						<p class="mt-3 text-sm leading-relaxed text-slate-300">
+					<div class="js-fade-in rounded-2xl border border-border bg-white p-6 shadow-sm">
+						<p class="text-xs font-semibold uppercase tracking-wide text-accent">Enterprise Ready</p>
+						<h3 class="mt-3 text-xl font-semibold text-text-primary">For Larger Organizations</h3>
+						<p class="mt-3 text-sm leading-relaxed text-text-secondary">
 							200+ people. You need a reliable, scalable talent pipeline across departments — with account management and structured onboarding.
 						</p>
-						<ul class="mt-4 grid gap-2 text-sm text-slate-400">
-							<li class="flex items-start gap-2"><span class="mt-0.5 text-sky-500" aria-hidden="true">✓</span> Multi-team deployment</li>
-							<li class="flex items-start gap-2"><span class="mt-0.5 text-sky-500" aria-hidden="true">✓</span> Dedicated account manager</li>
-							<li class="flex items-start gap-2"><span class="mt-0.5 text-sky-500" aria-hidden="true">✓</span> Structured onboarding program</li>
+						<ul class="mt-4 grid gap-2 text-sm text-text-secondary">
+							<li class="flex items-start gap-2"><span class="mt-0.5 text-accent" aria-hidden="true">✓</span> Multi-team deployment</li>
+							<li class="flex items-start gap-2"><span class="mt-0.5 text-accent" aria-hidden="true">✓</span> Dedicated account manager</li>
+							<li class="flex items-start gap-2"><span class="mt-0.5 text-accent" aria-hidden="true">✓</span> Structured onboarding program</li>
 						</ul>
 						<a
 							href="/#contact"
-							class="mt-6 inline-flex min-h-[44px] w-full items-center justify-center rounded-xl border border-slate-700 bg-slate-900 px-4 py-2.5 text-sm font-semibold text-slate-100 transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+							class="mt-6 inline-flex min-h-[44px] w-full items-center justify-center rounded-xl border border-border bg-bg-light px-4 py-2.5 text-sm font-semibold text-text-primary transition hover:bg-bg-alt focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
 							data-open-tell-us="tier-enterprise"
 						>
 							Tell us your needs
@@ -623,51 +569,47 @@ const bookingExternal = isExternalUrl(bookingUrl);
 			</div>
 		</section>
 
-		<!-- ═══════════════════════════════════════════════════════
-		     SECTION 11 — FINAL CTA
-		     ═══════════════════════════════════════════════════════ -->
-		<section class="border-b border-slate-800/60 bg-slate-950 py-16 sm:py-20" aria-labelledby="final-cta-heading">
+		<!-- SECTION 11 — FINAL CTA (dark) -->
+		<section class="bg-primary py-16 sm:py-20" aria-labelledby="final-cta-heading">
 			<div class="mx-auto max-w-6xl px-6">
-				<div class="js-fade-in rounded-2xl border border-slate-700/60 bg-gradient-to-br from-slate-900 to-slate-950 p-8 text-center shadow-xl shadow-black/30 sm:p-12">
+				<div class="js-fade-in rounded-2xl border border-white/10 bg-white/5 p-8 text-center shadow-xl backdrop-blur-sm sm:p-12">
 					<h2 id="final-cta-heading" class="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
 						Ready to Add Reliable Capacity?
 					</h2>
-					<p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slate-300">
+					<p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-white/70">
 						Tell us what you need — we'll present vetted LATAM specialists within 48 hours. No commitment required to start the conversation.
 					</p>
 					<div class="mt-8 flex flex-wrap items-center justify-center gap-4">
 						<a
 							href={bookingUrl}
 							{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
-							class="inline-flex min-h-[48px] items-center justify-center rounded bg-sky-600 px-8 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+							class="inline-flex min-h-[48px] items-center justify-center rounded bg-accent px-8 py-3 text-sm font-semibold text-white transition hover:bg-accent/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
 							data-book-call
 						>
 							Book a 15-Minute Scoping Call
 						</a>
 						<a
 							href="/#contact"
-							class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-slate-700 bg-slate-900/60 px-8 py-3 text-sm font-semibold text-slate-100 transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+							class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-white/20 bg-white/5 px-8 py-3 text-sm font-semibold text-white transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
 							data-open-tell-us="home-final-cta"
 						>
 							Tell Us What You Need
 						</a>
 					</div>
-					<p class="mt-5 text-xs text-slate-500">No long-term contracts · Month-to-month · Free replacement guarantee</p>
+					<p class="mt-5 text-xs text-white/40">No long-term contracts · Month-to-month · Free replacement guarantee</p>
 				</div>
 			</div>
 		</section>
 
-		<!-- ═══════════════════════════════════════════════════════
-		     SECTION 12 — CONTACT + CALENDLY
-		     ═══════════════════════════════════════════════════════ -->
-		<section id="contact" class="bg-slate-950 pb-20 pt-16 sm:pb-24 sm:pt-20" aria-labelledby="contact-heading">
+		<!-- SECTION 12 — CONTACT + CALENDLY (light) -->
+		<section id="contact" class="bg-bg-light pb-20 pt-16 sm:pb-24 sm:pt-20" aria-labelledby="contact-heading">
 			<div class="mx-auto max-w-6xl px-6">
 				<div class="js-fade-in max-w-2xl">
-					<p class="text-sm font-semibold uppercase tracking-widest text-sky-400">Get in touch</p>
-					<h2 id="contact-heading" class="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+					<p class="text-sm font-semibold uppercase tracking-widest text-accent">Get in touch</p>
+					<h2 id="contact-heading" class="mt-3 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
 						Let's Talk About Your Needs
 					</h2>
-					<p class="mt-4 text-base leading-relaxed text-slate-300">
+					<p class="mt-4 text-base leading-relaxed text-text-secondary">
 						Tell us your role requirements, timeline, and stack — we'll suggest the best engagement model and match you with vetted specialists.
 					</p>
 				</div>
@@ -680,11 +622,7 @@ const bookingExternal = isExternalUrl(bookingUrl);
 		</section>
 
 	</main>
-<!-- ═══════════════════════════════════════════════════════
-	     MICRO-INTERACTIONS
-	     - Scroll-triggered fade-ins via Intersection Observer
-	     - Counter animation for Why LATAM metrics
-	     ═══════════════════════════════════════════════════════ -->
+
 	<style>
 		.js-fade-in {
 			opacity: 0;
@@ -698,7 +636,6 @@ const bookingExternal = isExternalUrl(bookingUrl);
 	</style>
 
 	<script is:inline>
-		// Scroll fade-ins
 		(function () {
 			var els = document.querySelectorAll('.js-fade-in');
 			if (!els.length) return;
@@ -713,7 +650,6 @@ const bookingExternal = isExternalUrl(bookingUrl);
 			els.forEach(function (el) { io.observe(el); });
 		})();
 
-		// Counter animation for Why LATAM metrics
 		(function () {
 			var counters = document.querySelectorAll('.js-counter');
 			if (!counters.length) return;
@@ -729,7 +665,6 @@ const bookingExternal = isExternalUrl(bookingUrl);
 					function step(ts) {
 						if (!start) start = ts;
 						var progress = Math.min((ts - start) / duration, 1);
-						// ease out cubic
 						var eased = 1 - Math.pow(1 - progress, 3);
 						var current = Math.round(eased * target);
 						el.textContent = prefix + current + suffix;
