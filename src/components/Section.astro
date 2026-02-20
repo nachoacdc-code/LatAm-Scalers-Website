@@ -1,0 +1,29 @@
+---
+export type Props = {
+	variant?: 'light' | 'alt' | 'dark';
+	id?: string;
+	class?: string;
+	as?: string;
+};
+
+const {
+	variant = 'light',
+	id,
+	class: className = '',
+	as: Tag = 'section',
+} = Astro.props;
+
+const variants: Record<string, string> = {
+	light: 'bg-bg-light text-text-primary',
+	alt: 'bg-bg-alt text-text-primary',
+	dark: 'bg-bg-dark text-white',
+};
+
+const classes = `${variants[variant]} ${className}`.trim();
+---
+
+<Tag id={id} class={classes}>
+	<div class="mx-auto max-w-6xl px-6 py-16 sm:py-20">
+		<slot />
+	</div>
+</Tag>

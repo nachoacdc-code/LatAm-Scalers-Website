@@ -1,7 +1,31 @@
-@import "tailwindcss"; /* Tailwind base/components/utilities */
+@import "tailwindcss";
 
-/* App-wide defaults */
-html {
-	color-scheme: dark;
+@theme {
+	--color-primary: #1B2B4B;
+	--color-accent: #2563EB;
+	--color-amber: #F59E0B;
+	--color-success: #059669;
+
+	--color-bg-light: #F8FAFC;
+	--color-bg-alt: #F1F5F9;
+	--color-bg-dark: #0F172A;
+
+	--color-text-primary: #1E293B;
+	--color-text-secondary: #64748B;
+	--color-border: #E2E8F0;
+
+	--color-aec: #3B82F6;
+	--color-design: #8B5CF6;
+	--color-marketing: #10B981;
+
+	--font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
+html {
+	color-scheme: light;
+}
+
+::selection {
+	background-color: var(--color-accent);
+	color: white;
+}

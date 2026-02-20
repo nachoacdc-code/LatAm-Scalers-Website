@@ -7,7 +7,7 @@ import Footer from '../components/Footer.astro';
 import { BOOKING_URL, isExternalUrl } from '../lib/cta';
 
 const meta = {
-	title: 'Scale Your US Team with Top Vetted Remote Talent from Latin America | TalentCompany',
+	title: 'Scale Your US Team with Top Vetted Remote Talent from Latin America | LatAm Scalers',
 	description:
 		'Scale your US team with vetted remote talent across AEC, marketing, and creative & design. Full-time, part-time, hourly packages, or custom teams — presented in 48 hours.',
 };
@@ -18,7 +18,7 @@ const canonical = new URL('/', baseUrl).toString();
 const orgJsonLd = {
 	'@context': 'https://schema.org',
 	'@type': 'Organization',
-	name: 'TalentCompany',
+	name: 'LatAm Scalers',
 	url: baseUrl,
 	sameAs: [],
 };
@@ -337,7 +337,7 @@ const bookingExternal = isExternalUrl(bookingUrl);
 			</div>
 
 			<div class="mt-8 grid gap-6 lg:grid-cols-2">
-				<ContactForm subject="TalentCompany â€” new inquiry (homepage)" />
+				<ContactForm subject="LatAm Scalers â€” new inquiry (homepage)" />
 				<CalendlyEmbed url={import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com/your-org/15min'} />
 			</div>
 		</section>

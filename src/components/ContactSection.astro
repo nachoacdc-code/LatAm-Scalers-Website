@@ -11,16 +11,16 @@ export type Props = {
 
 const {
 	title = 'Contact',
-	description = 'Tell us what you need and weâ€™ll suggest the best engagement model.',
-	subject = 'TalentCompany â€” new inquiry',
+	description = "Tell us what you need and we'll suggest the best engagement model.",
+	subject = 'LatAm Scalers — new inquiry',
 	calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com/your-org/15min',
 } = Astro.props;
 ---
 
 <section id="contact" class="pb-16 pt-10 sm:pb-20 sm:pt-14" aria-labelledby="contact-title">
 	<div class="flex flex-col gap-2">
-		<h2 id="contact-title" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">{title}</h2>
-		<p class="max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">{description}</p>
+		<h2 id="contact-title" class="text-2xl font-semibold tracking-tight sm:text-3xl">{title}</h2>
+		<p class="max-w-prose text-sm leading-relaxed text-text-secondary sm:text-base">{description}</p>
 	</div>
 
 	<div class="mt-8 grid gap-6 lg:grid-cols-2">
@@ -28,4 +28,3 @@ const {
 		<CalendlyEmbed url={calendlyUrl} />
 	</div>
 </section>
-

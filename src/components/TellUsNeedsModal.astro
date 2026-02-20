@@ -6,7 +6,7 @@ export type Props = {
 	subject?: string;
 };
 
-const subject = Astro.props.subject ?? 'TalentCompany — Tell Us Your Needs';
+const subject = Astro.props.subject ?? 'LatAm Scalers — Tell Us Your Needs';
 const formAction = getFormspreeAction();
 const bookingUrl = BOOKING_URL;
 const shouldLoadCalendlyWidget = isCalendlyUrl(bookingUrl);
@@ -291,7 +291,7 @@ const bookingExternal = isExternalUrl(bookingUrl);
   });
 
   // Local save utilities
-  const STORAGE_KEY = 'talentcompany_submissions_v1';
+  const STORAGE_KEY = 'latamscalers_submissions_v1';
   function readLocal() {
     try {
       return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');

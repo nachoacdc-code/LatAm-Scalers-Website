@@ -1,0 +1,12 @@
+---
+export type Props = {
+	class?: string;
+	as?: string;
+};
+
+const { class: className = '', as: Tag = 'div' } = Astro.props;
+---
+
+<Tag class={`mx-auto max-w-6xl px-6 ${className}`.trim()}>
+	<slot />
+</Tag>
