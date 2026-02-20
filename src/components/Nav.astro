@@ -3,69 +3,90 @@ import { BOOKING_URL, isExternalUrl } from '../lib/cta';
 
 const pathname = Astro.url.pathname;
 
-const isSolutions =
-	pathname.startsWith('/solutions/') ||
-	pathname.startsWith('/aec/') ||
-	pathname.startsWith('/design/') ||
-	pathname.startsWith('/marketing/');
+const isHome = pathname === '/';
+const isSolutions = pathname.startsWith('/solutions/');
 const isRoles = pathname.startsWith('/roles/');
-const isHowItWorks = pathname.startsWith('/how-it-works');
+const isHowItWorks = pathname.startsWith('/how-it-works/');
 
 const bookingUrl = BOOKING_URL;
 const bookingExternal = isExternalUrl(bookingUrl);
 
 const linkBase =
-	'transition hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-primary';
+	'transition hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950';
 const linkDesktopBase = `rounded-md px-1 py-2 ${linkBase}`;
 const linkMobileBase = `rounded-xl px-3 py-3 ${linkBase}`;
 const linkActive = 'text-white font-semibold';
 
-const solutions = [
-	{
-		label: 'AEC Talent',
-		description: 'BIM coordination, Revit modeling, CAD drafting & engineering support',
-		href: '/solutions/aec-talent/',
-		accent: 'text-aec',
+const links = {
+	home: { label: 'Home', href: '/' },
+	solutions: {
+		label: 'Solutions',
+		items: [
+			{ label: 'AEC Talent', href: '/solutions/aec-talent/' },
+			{ label: 'Creative & Design Talent', href: '/solutions/creatives-design/' },
+			{ label: 'Marketing Talent', href: '/solutions/marketing-talent/' },
+		],
 	},
-	{
-		label: 'Creative & Design',
-		description: 'Dedicated designers or PM-led managed creative teams',
-		href: '/solutions/creatives-design/',
-		accent: 'text-design',
+	roles: {
+		label: 'Roles',
+		groups: [
+			{
+				title: 'AEC Roles',
+				items: [{ label: 'Architectural Designer', href: '/roles/architectural-designer/' }],
+			},
+			{
+				title: 'Marketing Roles',
+				items: [{ label: 'SEO Specialist', href: '/roles/seo-specialist/' }],
+			},
+			{
+				title: 'Creative & Design Roles',
+				items: [{ label: 'Brand / Visual Designer', href: '/roles/brand-visual-designer/' }],
+			},
+		],
+		all: { label: 'Explore all roles', href: '/roles/' },
 	},
-	{
-		label: 'Marketing Talent',
-		description: 'SEO, paid media, lifecycle, content & marketing ops specialists',
-		href: '/solutions/marketing-talent/',
-		accent: 'text-marketing',
-	},
-];
+	howItWorks: { label: 'How It Works', href: '/how-it-works/' },
+	cta: { label: 'Book a Call', href: bookingUrl },
+};
 ---
 
-<header class="sticky top-0 z-50 border-b border-primary/10 bg-primary backdrop-blur">
+<header class="sticky top-0 z-50 border-b border-slate-800 bg-slate-950/80 backdrop-blur">
 	<div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
 		<a
 			href="/"
-			class="text-sm font-semibold tracking-tight text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
-			aria-label="LatAm Scalers — home"
+			class="text-sm font-semibold tracking-tight text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
 		>
 			LatAm Scalers
 		</a>
 
-		<!-- Desktop nav -->
-		<nav class="hidden items-center gap-6 text-sm text-white/70 md:flex" aria-label="Primary">
+		<nav class="hidden items-center gap-6 text-sm text-slate-200 md:flex" aria-label="Primary">
+			<a
+				href={links.home.href}
+				class={`${linkDesktopBase} ${isHome ? linkActive : ''}`}
+				aria-current={isHome ? 'page' : undefined}
+			>
+				{links.home.label}
+			</a>
 
-			<!-- Solutions mega menu -->
 			<details class="group relative" data-nav-dropdown="solutions">
 				<summary
-					class={`flex cursor-pointer list-none items-center gap-1.5 ${linkDesktopBase} ${isSolutions ? linkActive : ''}`}
+					class={`flex cursor-pointer list-none items-center gap-2 ${linkDesktopBase} ${isSolutions ? linkActive : ''}`}
 					aria-haspopup="menu"
 					aria-expanded="false"
 					aria-controls="solutions-menu"
 				>
-					<span>Solutions</span>
-					<svg class="h-3.5 w-3.5 text-white/40 transition group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-						<path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08Z" clip-rule="evenodd" />
+					<span>{links.solutions.label}</span>
+					<svg
+						class="h-4 w-4 text-slate-300 transition group-open:rotate-180"
+						viewBox="0 0 20 20"
+						fill="currentColor"
+						aria-hidden="true"
+					>
+						<path
+							fill-rule="evenodd"
+							d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08Z"
+							clip-rule="evenodd"
+						/>
 					</svg>
 				</summary>
 
@@ -73,143 +94,236 @@ const solutions = [
 					id="solutions-menu"
 					role="menu"
 					aria-label="Solutions"
-					class="absolute left-0 mt-2 w-80 rounded-2xl border border-white/10 bg-bg-light p-2 shadow-2xl shadow-black/30 ring-1 ring-white/5 backdrop-blur-xl"
+					class="absolute left-0 mt-2 w-72 rounded-2xl border border-slate-700/60 bg-slate-900/95 p-2 shadow-2xl shadow-black/40 ring-1 ring-slate-700/40 backdrop-blur-xl"
 				>
-					{solutions.map((item) => {
-						const active = pathname.startsWith(item.href);
-						return (
-							<a
-								role="menuitem"
-								href={item.href}
-								class={`block rounded-xl px-3 py-3 transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${active ? 'bg-white/10' : ''}`}
-								aria-current={active ? 'page' : undefined}
-							>
-								<p class={`text-sm font-semibold ${active ? 'text-white' : item.accent}`}>{item.label}</p>
-								<p class="mt-0.5 text-xs leading-relaxed text-text-secondary">{item.description}</p>
-							</a>
-						);
-					})}
+					{links.solutions.items.map((item) => (
+						(() => {
+							const active = pathname.startsWith(item.href);
+							return (
+						<a
+							role="menuitem"
+							href={item.href}
+							class={`block rounded-xl px-3 py-2 text-sm text-slate-200 transition hover:bg-slate-800/70 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${active ? 'bg-slate-800/70 text-white font-semibold' : ''}`}
+							aria-current={active ? 'page' : undefined}
+						>
+							{item.label}
+						</a>
+							);
+						})()
+					))}
+				</div>
+			</details>
 
-					<div class="my-1 border-t border-white/10" />
+			<details class="group relative" data-nav-dropdown="roles">
+				<summary
+					class={`flex cursor-pointer list-none items-center gap-2 ${linkDesktopBase} ${isRoles ? linkActive : ''}`}
+					aria-haspopup="menu"
+					aria-expanded="false"
+					aria-controls="roles-menu"
+				>
+					<span>{links.roles.label}</span>
+					<svg
+						class="h-4 w-4 text-slate-300 transition group-open:rotate-180"
+						viewBox="0 0 20 20"
+						fill="currentColor"
+						aria-hidden="true"
+					>
+						<path
+							fill-rule="evenodd"
+							d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08Z"
+							clip-rule="evenodd"
+						/>
+					</svg>
+				</summary>
 
-					<a
-						role="menuitem"
-						href="/how-it-works/"
-						class={`block rounded-xl px-3 py-2.5 text-sm transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${isHowItWorks ? 'bg-white/10 text-white font-semibold' : 'text-text-secondary hover:text-white'}`}
-					>
-						How It Works
-					</a>
-					<a
-						role="menuitem"
-						href="/how-pricing-works/"
-						class="block rounded-xl px-3 py-2.5 text-sm text-text-secondary transition hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-					>
-						How Pricing Works
-					</a>
+				<div
+					id="roles-menu"
+					role="menu"
+					aria-label="Roles"
+					class="absolute left-1/2 mt-2 w-[44rem] max-w-[calc(100vw-2rem)] -translate-x-1/2 rounded-2xl border border-slate-700/60 bg-slate-900/95 p-4 shadow-2xl shadow-black/40 ring-1 ring-slate-700/40 backdrop-blur-xl"
+				>
+					<div class="grid gap-6 md:grid-cols-3">
+						{links.roles.groups.map((group) => (
+							<div>
+								<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">{group.title}</p>
+								<div class="mt-3 grid gap-1">
+									{group.items.map((item) => {
+										const active = pathname.startsWith(item.href);
+										return (
+											<a
+												role="menuitem"
+												href={item.href}
+												class={`block rounded-xl px-3 py-2 text-sm text-slate-200 transition hover:bg-slate-800/70 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${active ? 'bg-slate-800/70 text-white font-semibold' : ''}`}
+												aria-current={active ? 'page' : undefined}
+											>
+												{item.label}
+											</a>
+										);
+									})}
+									<a
+										role="menuitem"
+										href={links.roles.all.href}
+										class={`mt-2 block rounded-xl px-3 py-2 text-sm font-semibold text-sky-300 transition hover:bg-slate-800/70 hover:text-sky-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${pathname === links.roles.all.href ? 'bg-slate-800/70' : ''}`}
+									>
+										{links.roles.all.label} <span aria-hidden="true">→</span>
+									</a>
+								</div>
+							</div>
+						))}
+					</div>
 				</div>
 			</details>
 
 			<a
-				href="/roles/"
-				class={`${linkDesktopBase} ${isRoles ? linkActive : ''}`}
-				aria-current={isRoles ? 'page' : undefined}
-			>
-				Roles
-			</a>
-
-			<a
-				href="/how-it-works/"
+				href={links.howItWorks.href}
 				class={`${linkDesktopBase} ${isHowItWorks ? linkActive : ''}`}
 				aria-current={isHowItWorks ? 'page' : undefined}
 			>
-				How It Works
+				{links.howItWorks.label}
 			</a>
 
 			<a
-				href={bookingUrl}
+				href={links.cta.href}
 				{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
-				class="ml-1 inline-flex items-center justify-center rounded bg-accent px-4 py-2 text-sm font-semibold text-white transition hover:bg-accent/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+				class="ml-1 inline-flex items-center justify-center rounded bg-sky-600 px-4 py-2 font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
 				data-book-call
 			>
-				Get Started
+				{links.cta.label}
 			</a>
 		</nav>
 
-		<!-- Mobile: Get Started always visible + hamburger -->
-		<div class="flex items-center gap-2 md:hidden">
-			<a
-				href={bookingUrl}
-				{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
-				class="inline-flex items-center justify-center rounded bg-accent px-3 py-2 text-sm font-semibold text-white transition hover:bg-accent/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-				data-book-call
-			>
-				Get Started
-			</a>
-			<button
-				type="button"
-				class="inline-flex items-center justify-center rounded-lg border border-white/10 bg-white/5 p-2 text-white transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-				aria-label="Open menu"
-				aria-expanded="false"
-				aria-controls="mobile-menu"
-				data-nav-mobile-toggle
-			>
-				<svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-icon-menu>
-					<path fill-rule="evenodd" d="M2 4.75A.75.75 0 0 1 2.75 4h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 4.75Zm0 5.25a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 10Zm0 5.25a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
-				</svg>
-				<svg class="hidden h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-icon-close>
-					<path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
-				</svg>
-			</button>
-		</div>
+		<button
+			type="button"
+			class="inline-flex items-center justify-center rounded-lg border border-slate-800 bg-slate-900/50 px-3 py-2 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 md:hidden"
+			aria-label="Open menu"
+			aria-expanded="false"
+			aria-controls="mobile-menu"
+			data-nav-mobile-toggle
+		>
+			Menu
+		</button>
 	</div>
 
-	<!-- Mobile menu (full-screen overlay) -->
-	<div id="mobile-menu" class="hidden border-t border-white/10 bg-primary md:hidden" data-nav-mobile-menu>
-		<nav class="mx-auto max-w-6xl px-6 py-5" aria-label="Mobile primary">
-			<div class="flex flex-col gap-2 text-sm text-white/80">
+	<div id="mobile-menu" class="hidden border-t border-slate-800 bg-slate-950/95 md:hidden" data-nav-mobile-menu>
+		<nav class="mx-auto max-w-6xl px-6 py-4" aria-label="Mobile primary">
+			<div class="flex flex-col gap-2 text-sm text-slate-200">
+				<a
+					href={links.home.href}
+					class={`${linkMobileBase} transition hover:bg-slate-900 hover:text-white ${isHome ? linkActive : ''}`}
+					aria-current={isHome ? 'page' : undefined}
+				>
+					{links.home.label}
+				</a>
 
-				<p class="px-3 pt-1 text-xs font-semibold uppercase tracking-wide text-white/40">Solutions</p>
-				<div class="grid gap-2">
-					{solutions.map((item) => {
-						const active = pathname.startsWith(item.href);
-						return (
+				<details class="group rounded-xl border border-slate-700/60 bg-slate-900/40" data-nav-dropdown="solutions-mobile">
+					<summary
+						class="flex cursor-pointer list-none items-center justify-between gap-3 rounded-xl px-3 py-3 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+						aria-haspopup="menu"
+						aria-expanded="false"
+						aria-controls="solutions-menu-mobile"
+					>
+						<span>{links.solutions.label}</span>
+						<svg
+							class="h-4 w-4 text-slate-300 transition group-open:rotate-180"
+							viewBox="0 0 20 20"
+							fill="currentColor"
+							aria-hidden="true"
+						>
+							<path
+								fill-rule="evenodd"
+								d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08Z"
+								clip-rule="evenodd"
+							/>
+						</svg>
+					</summary>
+
+					<div id="solutions-menu-mobile" role="menu" aria-label="Solutions" class="px-2 pb-2">
+						{links.solutions.items.map((item) => (
+							(() => {
+								const active = pathname.startsWith(item.href);
+								return (
 							<a
+								role="menuitem"
 								href={item.href}
-								class={`flex min-h-[48px] items-start gap-3 rounded-xl border border-white/10 px-4 py-3 transition hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${active ? 'bg-white/10 text-white' : ''}`}
+								class={`mt-1 block rounded-xl px-3 py-2 text-sm text-slate-200 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${active ? 'bg-slate-900 text-white font-semibold' : ''}`}
 								aria-current={active ? 'page' : undefined}
 							>
-								<div>
-									<p class={`text-sm font-semibold ${active ? 'text-white' : item.accent}`}>{item.label}</p>
-									<p class="mt-0.5 text-xs text-white/50">{item.description}</p>
-								</div>
+								{item.label}
 							</a>
-						);
-					})}
-				</div>
+								);
+							})()
+						))}
+					</div>
+				</details>
 
-				<div class="my-1 border-t border-white/10" />
+				<details class="group rounded-xl border border-slate-700/60 bg-slate-900/40" data-nav-dropdown="roles-mobile">
+					<summary
+						class={`flex cursor-pointer list-none items-center justify-between gap-3 rounded-xl px-3 py-3 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${isRoles ? linkActive : ''}`}
+						aria-haspopup="menu"
+						aria-expanded="false"
+						aria-controls="roles-menu-mobile"
+					>
+						<span>{links.roles.label}</span>
+						<svg
+							class="h-4 w-4 text-slate-300 transition group-open:rotate-180"
+							viewBox="0 0 20 20"
+							fill="currentColor"
+							aria-hidden="true"
+						>
+							<path
+								fill-rule="evenodd"
+								d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08Z"
+								clip-rule="evenodd"
+							/>
+						</svg>
+					</summary>
+
+					<div id="roles-menu-mobile" role="menu" aria-label="Roles" class="px-2 pb-2">
+						{links.roles.groups.map((group) => (
+							<div class="mt-2 rounded-xl border border-slate-800 bg-slate-950/40 p-3">
+								<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">{group.title}</p>
+								<div class="mt-2 grid gap-1">
+									{group.items.map((item) => {
+										const active = pathname.startsWith(item.href);
+										return (
+											<a
+												role="menuitem"
+												href={item.href}
+												class={`block rounded-xl px-3 py-2 text-sm text-slate-200 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${active ? 'bg-slate-900 text-white font-semibold' : ''}`}
+												aria-current={active ? 'page' : undefined}
+											>
+												{item.label}
+											</a>
+										);
+									})}
+									<a
+										role="menuitem"
+										href={links.roles.all.href}
+										class="mt-1 block rounded-xl px-3 py-2 text-sm font-semibold text-sky-300 transition hover:bg-slate-900 hover:text-sky-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+									>
+										{links.roles.all.label} <span aria-hidden="true">→</span>
+									</a>
+								</div>
+							</div>
+						))}
+					</div>
+				</details>
 
 				<a
-					href="/roles/"
-					class={`min-h-[48px] flex items-center ${linkMobileBase} transition hover:bg-white/10 hover:text-white ${isRoles ? linkActive : ''}`}
-					aria-current={isRoles ? 'page' : undefined}
-				>
-					Roles
-				</a>
-
-				<a
-					href="/how-it-works/"
-					class={`min-h-[48px] flex items-center ${linkMobileBase} transition hover:bg-white/10 hover:text-white ${isHowItWorks ? linkActive : ''}`}
+					href={links.howItWorks.href}
+					class={`${linkMobileBase} transition hover:bg-slate-900 hover:text-white ${isHowItWorks ? linkActive : ''}`}
 					aria-current={isHowItWorks ? 'page' : undefined}
 				>
-					How It Works
+					{links.howItWorks.label}
 				</a>
 
 				<a
-					href="/how-pricing-works/"
-					class="min-h-[48px] flex items-center rounded-xl px-3 py-3 text-white/60 transition hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+					href={links.cta.href}
+					{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+					class="mt-2 inline-flex w-full items-center justify-center rounded bg-sky-600 px-4 py-3 font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+					data-book-call
 				>
-					How Pricing Works
+					{links.cta.label}
 				</a>
 			</div>
 		</nav>
@@ -222,33 +336,31 @@ const solutions = [
 
   const mobileToggle = header.querySelector('[data-nav-mobile-toggle]');
   const mobileMenu = header.querySelector('[data-nav-mobile-menu]');
-  const iconMenu = header.querySelector('[data-icon-menu]');
-  const iconClose = header.querySelector('[data-icon-close]');
 
   function setMobile(open) {
     if (!mobileToggle || !mobileMenu) return;
     mobileMenu.classList.toggle('hidden', !open);
     mobileToggle.setAttribute('aria-expanded', String(open));
     mobileToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-    if (iconMenu) iconMenu.classList.toggle('hidden', open);
-    if (iconClose) iconClose.classList.toggle('hidden', !open);
   }
 
   mobileToggle?.addEventListener('click', () => {
     const open = mobileToggle.getAttribute('aria-expanded') !== 'true';
     setMobile(open);
     if (open) {
-      const first = mobileMenu?.querySelector('a, button, [tabindex]:not([tabindex="-1"])');
+      const first = mobileMenu?.querySelector('a, summary, button, [tabindex]:not([tabindex="-1"])');
       first?.focus?.();
     }
   });
 
+  // Close mobile on Escape or outside click.
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape') return;
     if (mobileToggle?.getAttribute('aria-expanded') === 'true') {
       setMobile(false);
       mobileToggle?.focus?.();
     }
+    // Close any open dropdowns.
     header.querySelectorAll('details[open]').forEach((d) => d.removeAttribute('open'));
   });
 
@@ -259,54 +371,85 @@ const solutions = [
     }
   });
 
+  // Get desktop dropdowns (in the primary nav, not mobile menu)
   const desktopDropdowns = header.querySelectorAll('nav[aria-label="Primary"] details[data-nav-dropdown]');
-
+  
+  // Close all other dropdowns when clicking on a summary
+  // Use pointerdown which fires BEFORE the native details toggle
   desktopDropdowns.forEach((details) => {
     const summary = details.querySelector('summary');
+    
+    // Initialize aria-expanded
     summary?.setAttribute('aria-expanded', String(details.hasAttribute('open')));
-
+    
+    // Close other dropdowns BEFORE native toggle (pointerdown fires first)
     summary?.addEventListener('pointerdown', () => {
       desktopDropdowns.forEach((other) => {
         if (other !== details && other.hasAttribute('open')) {
           other.removeAttribute('open');
-          other.querySelector('summary')?.setAttribute('aria-expanded', 'false');
+          const otherSummary = other.querySelector('summary');
+          otherSummary?.setAttribute('aria-expanded', 'false');
         }
       });
     });
-
+    
+    // Sync aria-expanded on toggle
     details.addEventListener('toggle', () => {
       summary?.setAttribute('aria-expanded', String(details.hasAttribute('open')));
     });
   });
 
+  // Hover-to-open on desktop pointer devices
   const canHover = window.matchMedia?.('(hover: hover) and (pointer: fine)')?.matches;
   if (canHover) {
     desktopDropdowns.forEach((details) => {
       let closeTimer = null;
-
-      details.addEventListener('mouseenter', () => {
-        if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
+      
+      const handleMouseEnter = () => {
+        if (closeTimer) {
+          clearTimeout(closeTimer);
+          closeTimer = null;
+        }
+        // Close all other dropdowns first
         desktopDropdowns.forEach((other) => {
           if (other !== details && other.hasAttribute('open')) {
             other.removeAttribute('open');
-            other.querySelector('summary')?.setAttribute('aria-expanded', 'false');
+            const otherSummary = other.querySelector('summary');
+            otherSummary?.setAttribute('aria-expanded', 'false');
           }
         });
+        // Then open this dropdown
         if (!details.hasAttribute('open')) {
           details.setAttribute('open', '');
-          details.querySelector('summary')?.setAttribute('aria-expanded', 'true');
+          const summary = details.querySelector('summary');
+          summary?.setAttribute('aria-expanded', 'true');
         }
-      });
-
-      details.addEventListener('mouseleave', () => {
+      };
+      
+      const handleMouseLeave = () => {
         if (closeTimer) clearTimeout(closeTimer);
         closeTimer = setTimeout(() => {
           details.removeAttribute('open');
-          details.querySelector('summary')?.setAttribute('aria-expanded', 'false');
+          const summary = details.querySelector('summary');
+          summary?.setAttribute('aria-expanded', 'false');
         }, 150);
-      });
+      };
+      
+      details.addEventListener('mouseenter', handleMouseEnter);
+      details.addEventListener('mouseleave', handleMouseLeave);
     });
   }
+
+  // Mobile dropdowns - let native details behavior work, just sync aria
+  const mobileDropdowns = header.querySelectorAll('[data-nav-mobile-menu] details[data-nav-dropdown]');
+  
+  mobileDropdowns.forEach((details) => {
+    const summary = details.querySelector('summary');
+    const sync = () => summary?.setAttribute('aria-expanded', String(details.hasAttribute('open')));
+    sync();
+    details.addEventListener('toggle', sync);
+  });
 })();
 	</script>
 </header>
+

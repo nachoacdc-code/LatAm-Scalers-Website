@@ -6,12 +6,12 @@ import CalendlyEmbed from '../components/CalendlyEmbed.astro';
 import { BOOKING_URL, isExternalUrl } from '../lib/cta';
 
 const meta = {
-	title: 'LatAm Scalers | Dedicated LATAM Talent for US Teams — AEC, Design, Marketing',
+	title: 'Scale Your US Team with Top Vetted Remote Talent from Latin America | LatAm Scalers',
 	description:
-		'Pre-vetted AEC, design, and marketing specialists from Latin America — dedicated to your US team. 50–70% cost savings, matched in under one week, month-to-month flexibility.',
+		'Scale your US team with vetted remote talent across AEC, marketing, and creative & design. Full-time, part-time, hourly packages, or custom teams — presented in 48 hours.',
 };
 
-const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const baseUrl = Astro.site ?? 'https://talentcompany-site.vercel.app';
 const canonical = new URL('/', baseUrl).toString();
 
 const orgJsonLd = {
@@ -19,12 +19,12 @@ const orgJsonLd = {
 	'@type': 'Organization',
 	name: 'LatAm Scalers',
 	url: baseUrl,
-	description: meta.description,
 	sameAs: [],
 };
 
 const bookingUrl = BOOKING_URL;
 const bookingExternal = isExternalUrl(bookingUrl);
+
 ---
 
 <Layout>
@@ -36,676 +36,309 @@ const bookingExternal = isExternalUrl(bookingUrl);
 		jsonLd={orgJsonLd}
 	/>
 
-	<main>
-
-		<!-- SECTION 1 — HERO (dark bg-primary) -->
-		<section class="relative overflow-hidden bg-primary py-16 sm:py-24" aria-labelledby="hero-heading">
-			<div class="mx-auto max-w-6xl px-6">
-				<div class="grid items-center gap-12 lg:grid-cols-2">
-					<div class="js-fade-in">
-						<p class="text-sm font-semibold uppercase tracking-widest text-accent">Dedicated LATAM Specialists</p>
-						<h1 id="hero-heading" class="mt-4 text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
-							Scale Your US Team with Dedicated LATAM Specialists — Matched in Under One Week
-						</h1>
-						<p class="mt-5 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">
-							Pre-vetted AEC, design, and marketing professionals. 50–70% cost savings. Month-to-month flexibility. Free replacement guarantee.
-						</p>
-
-						<div class="mt-8 flex flex-wrap gap-3">
-							<a
-								href={bookingUrl}
-								{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
-								class="inline-flex min-h-[48px] items-center justify-center rounded bg-accent px-6 py-3 text-sm font-semibold text-white transition hover:bg-accent/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
-								data-book-call
-							>
-								Book a 15-Minute Scoping Call
-							</a>
-							<a
-								href="/#contact"
-								class="inline-flex min-h-[48px] items-center justify-center rounded border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
-								data-open-tell-us="home-hero"
-							>
-								Tell Us What You Need
-							</a>
-						</div>
-					</div>
-
-					<div class="js-fade-in relative">
-						<div class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-xl backdrop-blur-sm">
-							<p class="text-xs font-semibold uppercase tracking-wide text-white/50">Why teams choose LatAm Scalers</p>
-							<div class="mt-4 grid grid-cols-2 gap-3">
-								<div class="rounded-xl border border-white/10 bg-white/5 p-4">
-									<p class="text-xs font-semibold uppercase tracking-wide text-accent">Speed</p>
-									<p class="mt-2 text-sm font-semibold text-white">Shortlist in 48 hrs</p>
-									<p class="mt-1 text-xs text-white/50">Vetted, ready to start</p>
-								</div>
-								<div class="rounded-xl border border-white/10 bg-white/5 p-4">
-									<p class="text-xs font-semibold uppercase tracking-wide text-accent">Alignment</p>
-									<p class="mt-2 text-sm font-semibold text-white">US time zones</p>
-									<p class="mt-1 text-xs text-white/50">0–3 hr overlap, fluent English</p>
-								</div>
-								<div class="rounded-xl border border-white/10 bg-white/5 p-4">
-									<p class="text-xs font-semibold uppercase tracking-wide text-accent">Flexibility</p>
-									<p class="mt-2 text-sm font-semibold text-white">Month-to-month</p>
-									<p class="mt-1 text-xs text-white/50">Scale up or down anytime</p>
-								</div>
-								<div class="rounded-xl border border-white/10 bg-white/5 p-4">
-									<p class="text-xs font-semibold uppercase tracking-wide text-accent">Guarantee</p>
-									<p class="mt-2 text-sm font-semibold text-white">Free replacement</p>
-									<p class="mt-1 text-xs text-white/50">If the fit isn't right</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<!-- SECTION 2 — TRUST BAR (dark strip) -->
-		<section class="bg-bg-dark py-6" aria-label="Trust indicators">
-			<div class="mx-auto max-w-6xl px-6">
-				<div class="flex flex-wrap items-center justify-center gap-6 sm:gap-10 lg:justify-between">
-
-					<div class="js-fade-in flex items-center gap-3">
-						<div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-accent/30 bg-accent/10">
-							<svg class="h-4 w-4 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" d="M12 6v6l4 2"/></svg>
-						</div>
-						<div>
-							<p class="text-sm font-semibold text-white">Matched in 48 hrs</p>
-							<p class="text-xs text-white/50">Shortlist delivered fast</p>
-						</div>
-					</div>
-
-					<div class="js-fade-in flex items-center gap-3">
-						<div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-accent/30 bg-accent/10">
-							<svg class="h-4 w-4 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/></svg>
-						</div>
-						<div>
-							<p class="text-sm font-semibold text-white">
-								<a href="/about/how-we-vet/" class="transition hover:text-accent focus:outline-none focus-visible:underline">5-Stage Vetted</a>
-							</p>
-							<p class="text-xs text-white/50">Top 1% of applicants</p>
-						</div>
-					</div>
-
-					<div class="js-fade-in flex items-center gap-3">
-						<div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-accent/30 bg-accent/10">
-							<svg class="h-4 w-4 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33"/></svg>
-						</div>
-						<div>
-							<p class="text-sm font-semibold text-white">50–70% cost savings</p>
-							<p class="text-xs text-white/50">vs. US equivalent hire</p>
-						</div>
-					</div>
-
-					<div class="js-fade-in flex items-center gap-3">
-						<div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-accent/30 bg-accent/10">
-							<svg class="h-4 w-4 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"/></svg>
-						</div>
-						<div>
-							<p class="text-sm font-semibold text-white">Free replacement</p>
-							<p class="text-xs text-white/50">If the fit isn't right</p>
-						</div>
-					</div>
-
-					<div class="js-fade-in hidden items-center gap-3 lg:flex">
-						<div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-accent/30 bg-accent/10">
-							<svg class="h-4 w-4 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-						</div>
-						<div>
-							<p class="text-sm font-semibold text-white">US timezone overlap</p>
-							<p class="text-xs text-white/50">Real-time collaboration</p>
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</section>
-
-		<!-- SECTION 3 — PROBLEM STATEMENT (light) -->
-		<section class="bg-bg-light py-16 sm:py-20" aria-labelledby="problem-heading">
-			<div class="mx-auto max-w-6xl px-6">
-				<div class="js-fade-in max-w-2xl">
-					<p class="text-sm font-semibold uppercase tracking-widest text-accent">The talent gap is real</p>
-					<h2 id="problem-heading" class="mt-3 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
-						US Companies Face a Structural Talent Crisis
-					</h2>
-					<p class="mt-4 text-base leading-relaxed text-text-secondary">
-						Hiring pipelines are broken, timelines are slipping, and costs keep climbing. The problem isn't effort — it's supply.
+	<main class="mx-auto max-w-6xl px-6">
+		{/* HERO */}
+		<section class="relative overflow-hidden py-14 sm:py-20">
+			<div class="grid items-center gap-10 lg:grid-cols-2">
+				<div>
+					<h1 class="text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+						Scale Your US Team with Top Vetted Remote Talent from Latin America
+					</h1>
+					<p class="mt-4 max-w-prose text-base leading-relaxed text-slate-300 sm:text-lg">
+						Dedicated specialists in AEC, marketing, and creative &amp; design. Full-time, part-time, hourly packages,
+						or custom teams — presented in 48 hours, optional interviews, month-to-month flexibility.
 					</p>
-				</div>
 
-				<div class="mt-10 grid gap-4 sm:grid-cols-3">
-					<div class="js-fade-in rounded-2xl border border-white/10 bg-white/5 p-6">
-						<p class="text-xs font-semibold uppercase tracking-wide text-aec">AEC</p>
-						<p class="mt-3 text-3xl font-semibold text-white">94%</p>
-						<p class="mt-2 text-sm font-semibold text-white">of firms report workforce shortages</p>
-						<p class="mt-2 text-sm leading-relaxed text-text-secondary">
-							AEC firms are turning down projects they can't staff. Demand is growing; the local talent pipeline isn't keeping up.
-						</p>
-					</div>
-					<div class="js-fade-in rounded-2xl border border-white/10 bg-white/5 p-6">
-						<p class="text-xs font-semibold uppercase tracking-wide text-design">Design</p>
-						<p class="mt-3 text-3xl font-semibold text-white">45%</p>
-						<p class="mt-2 text-sm font-semibold text-white">longer hiring cycles for design roles</p>
-						<p class="mt-2 text-sm leading-relaxed text-text-secondary">
-							Creative capacity bottlenecks stall launches and campaigns. Finding reliable design talent takes months, not days.
-						</p>
-					</div>
-					<div class="js-fade-in rounded-2xl border border-white/10 bg-white/5 p-6">
-						<p class="text-xs font-semibold uppercase tracking-wide text-marketing">Marketing</p>
-						<p class="mt-3 text-3xl font-semibold text-white">3.8%</p>
-						<p class="mt-2 text-sm font-semibold text-white">unemployment in marketing roles</p>
-						<p class="mt-2 text-sm leading-relaxed text-text-secondary">
-							Experienced channel operators are rare and expensive. Teams run understaffed while pipelines stall.
-						</p>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<!-- SECTION 4 — SOLUTION CARDS (alt bg) -->
-		<section class="bg-bg-alt py-16 sm:py-20" aria-labelledby="solutions-heading">
-			<div class="mx-auto max-w-6xl px-6">
-				<div class="js-fade-in max-w-2xl">
-					<p class="text-sm font-semibold uppercase tracking-widest text-accent">Choose your solution</p>
-					<h2 id="solutions-heading" class="mt-3 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
-						Dedicated Specialists in Three Core Verticals
-					</h2>
-					<p class="mt-4 text-base leading-relaxed text-text-secondary">
-						Each engagement is dedicated — not a marketplace listing, not a subscription box. A specialist working exclusively for your team.
-					</p>
-				</div>
-
-				<div class="mt-10 grid gap-5 lg:grid-cols-3">
-
-					<article class="js-fade-in rounded-2xl border border-aec/20 bg-white/5 p-6 transition-all duration-200 hover:-translate-y-1 hover:border-aec/40 hover:bg-white/10">
-						<div class="flex items-center justify-between">
-							<p class="text-xs font-semibold uppercase tracking-wide text-aec">AEC Talent</p>
-							<span class="rounded-full border border-aec/20 bg-aec/10 px-2.5 py-0.5 text-xs font-semibold text-aec">From ~$3,500/mo</span>
-						</div>
-						<h3 class="mt-3 text-lg font-semibold text-white">Architecture, Engineering & Construction</h3>
-						<p class="mt-3 text-sm leading-relaxed text-text-secondary">
-							Revit modelers, BIM coordinators, CAD drafters, and MEP specialists who integrate into your firm's workflow and standards.
-						</p>
-						<ul class="mt-4 grid gap-2 text-sm text-text-secondary">
-							<li class="flex items-center gap-2"><span class="text-aec" aria-hidden="true">→</span> BIM coordination &amp; Revit modeling</li>
-							<li class="flex items-center gap-2"><span class="text-aec" aria-hidden="true">→</span> CAD drafting &amp; construction documents</li>
-							<li class="flex items-center gap-2"><span class="text-aec" aria-hidden="true">→</span> MEP engineering support</li>
-						</ul>
-						<a href="/solutions/aec-talent/" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-aec transition hover:text-aec/80 focus:outline-none focus-visible:underline">
-							Explore AEC talent <span aria-hidden="true">&rarr;</span>
+					<div class="mt-8 flex flex-wrap gap-3">
+						<a
+							class="inline-flex items-center justify-center rounded bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+							href={bookingUrl}
+							{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+							data-book-call
+						>
+							Book a 15-Min Call
 						</a>
-					</article>
-
-					<article class="js-fade-in rounded-2xl border border-design/20 bg-white/5 p-6 transition-all duration-200 hover:-translate-y-1 hover:border-design/40 hover:bg-white/10">
-						<div class="flex items-center justify-between">
-							<p class="text-xs font-semibold uppercase tracking-wide text-design">Creative & Design</p>
-							<span class="rounded-full border border-design/20 bg-design/10 px-2.5 py-0.5 text-xs font-semibold text-design">From ~$2,800/mo</span>
-						</div>
-						<h3 class="mt-3 text-lg font-semibold text-white">Dedicated Designers & Managed Creative Teams</h3>
-						<p class="mt-3 text-sm leading-relaxed text-text-secondary">
-							Brand, product, and performance designers. Or a PM-led managed creative team for predictable output without agency markup.
-						</p>
-						<ul class="mt-4 grid gap-2 text-sm text-text-secondary">
-							<li class="flex items-center gap-2"><span class="text-design" aria-hidden="true">→</span> UI/UX, brand &amp; visual design</li>
-							<li class="flex items-center gap-2"><span class="text-design" aria-hidden="true">→</span> Motion, web &amp; performance creative</li>
-							<li class="flex items-center gap-2"><span class="text-design" aria-hidden="true">→</span> Managed creative teams with PM</li>
-						</ul>
-						<a href="/solutions/creatives-design/" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-design transition hover:text-design/80 focus:outline-none focus-visible:underline">
-							Explore design talent <span aria-hidden="true">&rarr;</span>
+						<a
+							class="inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+							href="/#contact"
+							data-open-tell-us="home-hero"
+						>
+							Tell Us Your Needs
 						</a>
-					</article>
+					</div>
 
-					<article class="js-fade-in rounded-2xl border border-marketing/20 bg-white/5 p-6 transition-all duration-200 hover:-translate-y-1 hover:border-marketing/40 hover:bg-white/10">
-						<div class="flex items-center justify-between">
-							<p class="text-xs font-semibold uppercase tracking-wide text-marketing">Marketing Talent</p>
-							<span class="rounded-full border border-marketing/20 bg-marketing/10 px-2.5 py-0.5 text-xs font-semibold text-marketing">From ~$2,500/mo</span>
-						</div>
-						<h3 class="mt-3 text-lg font-semibold text-white">SEO, Paid Media, Lifecycle & Marketing Ops</h3>
-						<p class="mt-3 text-sm leading-relaxed text-text-secondary">
-							Channel owners who embed into your stack — HubSpot-certified operators, SEO specialists, PPC managers, lifecycle strategists.
-						</p>
-						<ul class="mt-4 grid gap-2 text-sm text-text-secondary">
-							<li class="flex items-center gap-2"><span class="text-marketing" aria-hidden="true">→</span> SEO, content &amp; paid media</li>
-							<li class="flex items-center gap-2"><span class="text-marketing" aria-hidden="true">→</span> Lifecycle &amp; email marketing</li>
-							<li class="flex items-center gap-2"><span class="text-marketing" aria-hidden="true">→</span> MarOps, RevOps &amp; HubSpot</li>
-						</ul>
-						<a href="/solutions/marketing-talent/" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-marketing transition hover:text-marketing/80 focus:outline-none focus-visible:underline">
-							Explore marketing talent <span aria-hidden="true">&rarr;</span>
-						</a>
-					</article>
-
-				</div>
-			</div>
-		</section>
-
-		<!-- SECTION 5 — HOW IT WORKS (light) -->
-		<section class="bg-bg-light py-16 sm:py-20" aria-labelledby="how-it-works-heading">
-			<div class="mx-auto max-w-6xl px-6">
-				<div class="js-fade-in max-w-2xl">
-					<p class="text-sm font-semibold uppercase tracking-widest text-accent">Simple process</p>
-					<h2 id="how-it-works-heading" class="mt-3 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
-						How It Works
-					</h2>
-					<p class="mt-4 text-base leading-relaxed text-text-secondary">
-						Designed for speed, quality, and low risk — from scoping call to productive specialist in days, not months.
+					<p class="mt-4 text-xs leading-relaxed text-slate-400">
+						50%+ cost savings. Timezone-aligned. Free replacement guarantee.
 					</p>
 				</div>
 
-				<ol class="mt-10 grid gap-4 lg:grid-cols-5">
-					{[
-						{ n: '01', title: 'Tell us your needs', body: 'Roles, tools, timeline, and what "good" looks like — so we match accurately.' },
-						{ n: '02', title: 'Get a shortlist in 48 hrs', body: 'We deliver vetted specialists aligned to your workflow and standards.' },
-						{ n: '03', title: 'Interview (optional)', body: 'Meet top matches — or skip it and start faster. Your call.' },
-						{ n: '04', title: 'Start month-to-month', body: 'Fast onboarding. No long-term contracts. Month-to-month flexibility.' },
-						{ n: '05', title: 'Scale or replace freely', body: 'Add capacity for peak loads — and get a free replacement guarantee.' },
-					].map((step) => (
-						<li class="js-fade-in rounded-2xl border border-white/10 bg-white/5 p-6">
-							<div class="flex items-center gap-3">
-								<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5">
-									<span class="text-sm font-bold text-accent">{step.n}</span>
-								</div>
-								<p class="text-sm font-semibold text-white">{step.title}</p>
+				<div class="relative">
+					<div class="rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900/60 to-slate-950 p-6 shadow-sm">
+						<div class="grid gap-3 sm:grid-cols-2">
+							<div class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
+								<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Speed</p>
+								<p class="mt-2 text-sm text-slate-200">Shortlist in 48 hours.</p>
 							</div>
-							<p class="mt-3 text-sm leading-relaxed text-text-secondary">{step.body}</p>
-						</li>
-					))}
-				</ol>
+							<div class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
+								<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Alignment</p>
+								<p class="mt-2 text-sm text-slate-200">US time zones + fluent English.</p>
+							</div>
+							<div class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
+								<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Flexibility</p>
+								<p class="mt-2 text-sm text-slate-200">Month-to-month, scale anytime.</p>
+							</div>
+							<div class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
+								<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Guarantee</p>
+								<p class="mt-2 text-sm text-slate-200">Free replacement guarantee.</p>
+							</div>
+						</div>
+					</div>
 
-				<div class="mt-8 text-center">
-					<a href="/how-it-works/" class="inline-flex items-center gap-1.5 text-sm font-semibold text-accent transition hover:text-accent/80 focus:outline-none focus-visible:underline">
-						See the full process with branching paths <span aria-hidden="true">&rarr;</span>
-					</a>
+					<div class="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-sky-500/10 blur-3xl" />
+					<div class="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-indigo-500/10 blur-3xl" />
 				</div>
 			</div>
 		</section>
 
-		<!-- SECTION 6 — WHY LATAM (dark, with animated counters) -->
-		<section class="bg-primary py-16 sm:py-20" aria-labelledby="why-latam-heading">
-			<div class="mx-auto max-w-6xl px-6">
-				<div class="js-fade-in max-w-2xl">
-					<p class="text-sm font-semibold uppercase tracking-widest text-accent">The LATAM advantage</p>
-					<h2 id="why-latam-heading" class="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-						Why LATAM Specialists Work for US Teams
-					</h2>
-				</div>
-
-				<div class="mt-10 grid gap-5 sm:grid-cols-3">
-					<div class="js-fade-in rounded-2xl border border-white/10 bg-white/5 p-8 text-center backdrop-blur-sm">
-						<p class="js-counter text-5xl font-bold text-white" data-target="70" data-suffix="%" data-final="50–70%">50–70%</p>
-						<p class="mt-2 text-sm font-semibold text-accent">Cost Savings</p>
-						<p class="mt-3 text-sm leading-relaxed text-white/60">
-							50–70% lower than a comparable US hire — without sacrificing quality or commitment.
-						</p>
-					</div>
-					<div class="js-fade-in rounded-2xl border border-white/10 bg-white/5 p-8 text-center backdrop-blur-sm">
-						<p class="js-counter text-5xl font-bold text-white" data-target="3" data-prefix="0–" data-suffix=" hrs" data-final="0–3 hrs">0–3 hrs</p>
-						<p class="mt-2 text-sm font-semibold text-accent">Timezone Overlap</p>
-						<p class="mt-3 text-sm leading-relaxed text-white/60">
-							LATAM time zones align with the US — real-time collaboration, same-day feedback loops.
-						</p>
-					</div>
-					<div class="js-fade-in rounded-2xl border border-white/10 bg-white/5 p-8 text-center backdrop-blur-sm">
-						<p class="js-counter text-5xl font-bold text-white" data-target="7" data-prefix="&lt;" data-suffix=" days" data-final="&lt;7 days">&lt;7 days</p>
-						<p class="mt-2 text-sm font-semibold text-accent">Time to Match</p>
-						<p class="mt-3 text-sm leading-relaxed text-white/60">
-							Shortlist in 48 hours. Onboard in under a week. Start shipping work within days.
-						</p>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<!-- SECTION 7 — FLEXIBLE OPTIONS (alt bg) -->
-		<section class="bg-bg-alt py-16 sm:py-20" aria-labelledby="options-heading">
-			<div class="mx-auto max-w-6xl px-6">
-				<div class="js-fade-in flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-					<div>
-						<p class="text-sm font-semibold uppercase tracking-widest text-accent">Engagement models</p>
-						<h2 id="options-heading" class="mt-3 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
-							Flexible Options for Every Stage
-						</h2>
-					</div>
-					<a href="/how-pricing-works/" class="shrink-0 text-sm font-semibold text-accent transition hover:text-accent/80 focus:outline-none focus-visible:underline">
-						How pricing works &rarr;
-					</a>
-				</div>
-
-				<div class="mt-10 grid gap-5 lg:grid-cols-3">
-					<div class="js-fade-in rounded-2xl border border-white/10 bg-white/5 p-6">
-						<div class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5">
-							<svg class="h-5 w-5 text-accent" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/></svg>
-						</div>
-						<h3 class="mt-4 text-base font-semibold text-white">Individual Specialist</h3>
-						<p class="mt-3 text-sm leading-relaxed text-text-secondary">
-							A dedicated full-time (40h/week) or part-time (20h/week) specialist embedded into your team and tools.
-						</p>
-						<p class="mt-4 text-xs font-semibold text-accent">Best for: Consistent capacity, channel ownership, embedded workflows</p>
-					</div>
-					<div class="js-fade-in rounded-2xl border border-white/10 bg-white/5 p-6">
-						<div class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5">
-							<svg class="h-5 w-5 text-accent" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"/></svg>
-						</div>
-						<h3 class="mt-4 text-base font-semibold text-white">Team Scaling (Pod)</h3>
-						<p class="mt-3 text-sm leading-relaxed text-text-secondary">
-							A pod of complementary specialists — with optional PM coordination — for end-to-end execution and higher throughput.
-						</p>
-						<p class="mt-4 text-xs font-semibold text-accent">Best for: Multi-role projects, peak loads, parallel execution</p>
-					</div>
-					<div class="js-fade-in rounded-2xl border border-white/10 bg-white/5 p-6">
-						<div class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5">
-							<svg class="h-5 w-5 text-accent" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
-						</div>
-						<h3 class="mt-4 text-base font-semibold text-white">Hourly Packages</h3>
-						<p class="mt-3 text-sm leading-relaxed text-text-secondary">
-							Blocks of hours for audits, sprints, overflow support, or urgent deliverables — without a monthly commitment.
-						</p>
-						<p class="mt-4 text-xs font-semibold text-accent">Best for: Defined projects, one-off needs, testing before committing</p>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<!-- SECTION 8 — SOCIAL PROOF / VETTING FUNNEL (dark) -->
-		<section class="bg-bg-dark py-16 sm:py-20" aria-labelledby="proof-heading">
-			<div class="mx-auto max-w-6xl px-6">
-				<div class="js-fade-in max-w-2xl">
-					<p class="text-sm font-semibold uppercase tracking-widest text-accent">How we vet</p>
-					<h2 id="proof-heading" class="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-						Only the Top 1% Make It Through
-					</h2>
-					<p class="mt-4 text-base leading-relaxed text-white/70">
-						Every specialist passes a 5-stage vetting process before joining our network.
-						<a href="/about/how-we-vet/" class="ml-1 font-semibold text-accent transition hover:text-accent/80 focus:outline-none focus-visible:underline">See how we vet &rarr;</a>
-					</p>
-				</div>
-
-				<div class="js-fade-in mt-10">
-					<!-- Desktop: horizontal funnel -->
-					<div class="hidden items-center gap-0 sm:flex">
-						{[
-							{ stage: '1', label: 'Application', stat: '500', desc: 'applicants' },
-							{ stage: '2', label: 'Language & Culture', stat: '200', desc: 'advance' },
-							{ stage: '3', label: 'Technical Test', stat: '80', desc: 'pass' },
-							{ stage: '4', label: 'Portfolio Review', stat: '25', desc: 'selected' },
-							{ stage: '5', label: 'Final Interview', stat: '5', desc: 'placed' },
-						].map((s, i, arr) => (
-							<div class="flex flex-1 items-center">
-								<div class={`flex w-full flex-col items-center rounded-2xl border px-4 py-5 text-center ${i === arr.length - 1 ? 'border-accent/40 bg-accent/10' : 'border-white/10 bg-white/5'}`}>
-									<span class="text-xs font-semibold uppercase tracking-wide text-white/40">Stage {s.stage}</span>
-									<span class={`mt-1.5 text-2xl font-bold ${i === arr.length - 1 ? 'text-accent' : 'text-white'}`}>{s.stat}</span>
-									<span class="text-xs text-white/50">{s.desc}</span>
-									<span class="mt-1 text-xs font-semibold text-white/70">{s.label}</span>
-								</div>
-								{i < arr.length - 1 && (
-									<svg class="mx-1 h-4 w-4 shrink-0 text-white/20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-										<path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 0 1 .02-1.06L11.168 10 7.23 6.29a.75.75 0 1 1 1.04-1.08l4.5 4.25a.75.75 0 0 1 0 1.08l-4.5 4.25a.75.75 0 0 1-1.06-.02Z" clip-rule="evenodd"/>
-									</svg>
-								)}
-							</div>
-						))}
-					</div>
-
-					<!-- Mobile: vertical funnel -->
-					<div class="grid gap-3 sm:hidden">
-						{[
-							{ stage: '1', label: 'Application', stat: '500', desc: 'applicants' },
-							{ stage: '2', label: 'Language & Culture', stat: '200', desc: 'advance' },
-							{ stage: '3', label: 'Technical Test', stat: '80', desc: 'pass' },
-							{ stage: '4', label: 'Portfolio Review', stat: '25', desc: 'selected' },
-							{ stage: '5', label: 'Final Interview', stat: '5', desc: 'placed' },
-						].map((s, i, arr) => (
-							<div class={`flex items-center gap-4 rounded-xl border px-4 py-3 ${i === arr.length - 1 ? 'border-accent/40 bg-accent/10' : 'border-white/10 bg-white/5'}`}>
-								<span class="text-xs font-semibold uppercase tracking-wide text-white/40">Stage {s.stage}</span>
-								<span class={`text-xl font-bold ${i === arr.length - 1 ? 'text-accent' : 'text-white'}`}>{s.stat}</span>
-								<span class="text-xs text-white/50">{s.desc}</span>
-								<span class="ml-auto text-xs font-semibold text-white/70">{s.label}</span>
-							</div>
-						))}
-					</div>
-				</div>
-
-				<p class="mt-6 text-center text-sm text-white/40">
-					Out of every 500 applicants, only ~5 specialists are placed. That's the 1% you get.
+		{/* CHOOSE YOUR SOLUTION */}
+		<section class="py-12 sm:py-14" aria-labelledby="choose-solution">
+			<div class="flex flex-col gap-2">
+				<h2 id="choose-solution" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Choose your solution</h2>
+				<p class="max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
+					Pick a lane — we’ll match specialists who plug into your workflow quickly.
 				</p>
 			</div>
-		</section>
 
-		<!-- SECTION 9 — POPULAR ROLES (light) -->
-		<section class="bg-bg-light py-16 sm:py-20" aria-labelledby="roles-heading">
-			<div class="mx-auto max-w-6xl px-6">
-				<div class="js-fade-in flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-					<div>
-						<p class="text-sm font-semibold uppercase tracking-widest text-accent">Popular roles</p>
-						<h2 id="roles-heading" class="mt-3 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
-							Browse by Role
-						</h2>
-					</div>
-					<a href="/roles/" class="shrink-0 text-sm font-semibold text-accent transition hover:text-accent/80 focus:outline-none focus-visible:underline">
-						View all roles &rarr;
-					</a>
-				</div>
-
-				<div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-					{[
-						{ label: 'Architectural Designer', category: 'AEC', accent: 'text-aec', border: 'border-aec/20', href: '/roles/architectural-designer/' },
-						{ label: 'BIM Coordinator', category: 'AEC', accent: 'text-aec', border: 'border-aec/20', href: '/roles/bim-coordinator/' },
-						{ label: 'Brand / Visual Designer', category: 'Design', accent: 'text-design', border: 'border-design/20', href: '/roles/brand-visual-designer/' },
-						{ label: 'UI/UX Designer', category: 'Design', accent: 'text-design', border: 'border-design/20', href: '/roles/ui-ux-designer/' },
-						{ label: 'SEO Specialist', category: 'Marketing', accent: 'text-marketing', border: 'border-marketing/20', href: '/roles/seo-specialist/' },
-						{ label: 'PPC Manager', category: 'Marketing', accent: 'text-marketing', border: 'border-marketing/20', href: '/roles/ppc-manager/' },
-					].map((role) => (
-						<a
-							href={role.href}
-							class={`js-fade-in group rounded-2xl border ${role.border} bg-white/5 p-6 transition-all duration-200 hover:-translate-y-1 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent`}
-						>
-							<p class={`text-xs font-semibold uppercase tracking-wide ${role.accent}`}>{role.category}</p>
-							<p class="mt-2 text-base font-semibold text-white group-hover:text-accent">{role.label}</p>
-							<p class={`mt-3 text-xs font-semibold ${role.accent}`}>View role page &rarr;</p>
-						</a>
-					))}
-				</div>
-			</div>
-		</section>
-
-		<!-- SECTION 10 — TIER PATHWAYS (alt bg) -->
-		<section class="bg-bg-alt py-16 sm:py-20" aria-labelledby="tiers-heading">
-			<div class="mx-auto max-w-6xl px-6">
-				<div class="js-fade-in max-w-2xl">
-					<p class="text-sm font-semibold uppercase tracking-widest text-accent">Which path fits your team?</p>
-					<h2 id="tiers-heading" class="mt-3 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
-						Built for Teams at Every Stage
-					</h2>
-				</div>
-
-				<div class="mt-10 grid gap-5 lg:grid-cols-3">
-					<div class="js-fade-in rounded-2xl border border-white/10 bg-white/5 p-6">
-						<p class="text-xs font-semibold uppercase tracking-wide text-accent">Start Fast</p>
-						<h3 class="mt-3 text-xl font-semibold text-white">For Founders & Small Teams</h3>
-						<p class="mt-3 text-sm leading-relaxed text-text-secondary">
-							1–25 people. You need execution capacity without the overhead of a US hire. Start with one dedicated specialist and scale from there.
-						</p>
-						<ul class="mt-4 grid gap-2 text-sm text-text-secondary">
-							<li class="flex items-start gap-2"><span class="mt-0.5 text-accent" aria-hidden="true">✓</span> Single specialist, FT or PT</li>
-							<li class="flex items-start gap-2"><span class="mt-0.5 text-accent" aria-hidden="true">✓</span> Month-to-month flexibility</li>
-							<li class="flex items-start gap-2"><span class="mt-0.5 text-accent" aria-hidden="true">✓</span> Matched in under one week</li>
-						</ul>
-						<a
-							href={bookingUrl}
-							{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
-							class="mt-6 inline-flex min-h-[44px] w-full items-center justify-center rounded bg-accent px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-accent/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-							data-book-call
-						>
-							Book a scoping call
-						</a>
-					</div>
-
-					<div class="js-fade-in rounded-2xl border border-accent/30 bg-accent/[0.08] p-6 ring-1 ring-accent/20">
-						<div class="flex items-center justify-between">
-							<p class="text-xs font-semibold uppercase tracking-wide text-accent">Scale Smart</p>
-							<span class="rounded-full bg-accent/10 px-2.5 py-0.5 text-xs font-semibold text-accent">Most popular</span>
-						</div>
-						<h3 class="mt-3 text-xl font-semibold text-white">For Growing Teams</h3>
-						<p class="mt-3 text-sm leading-relaxed text-text-secondary">
-							25–200 people. You need multiple specialists across roles or a production pod to hit deadlines without burning out your core team.
-						</p>
-						<ul class="mt-4 grid gap-2 text-sm text-text-secondary">
-							<li class="flex items-start gap-2"><span class="mt-0.5 text-accent" aria-hidden="true">✓</span> Multiple specialists or pod</li>
-							<li class="flex items-start gap-2"><span class="mt-0.5 text-accent" aria-hidden="true">✓</span> Optional PM coordination</li>
-							<li class="flex items-start gap-2"><span class="mt-0.5 text-accent" aria-hidden="true">✓</span> Cross-vertical combinations</li>
-						</ul>
-						<a
-							href={bookingUrl}
-							{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
-							class="mt-6 inline-flex min-h-[44px] w-full items-center justify-center rounded bg-accent px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-accent/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-							data-book-call
-						>
-							Book a scoping call
-						</a>
-					</div>
-
-					<div class="js-fade-in rounded-2xl border border-white/10 bg-white/5 p-6">
-						<p class="text-xs font-semibold uppercase tracking-wide text-accent">Enterprise Ready</p>
-						<h3 class="mt-3 text-xl font-semibold text-white">For Larger Organizations</h3>
-						<p class="mt-3 text-sm leading-relaxed text-text-secondary">
-							200+ people. You need a reliable, scalable talent pipeline across departments — with account management and structured onboarding.
-						</p>
-						<ul class="mt-4 grid gap-2 text-sm text-text-secondary">
-							<li class="flex items-start gap-2"><span class="mt-0.5 text-accent" aria-hidden="true">✓</span> Multi-team deployment</li>
-							<li class="flex items-start gap-2"><span class="mt-0.5 text-accent" aria-hidden="true">✓</span> Dedicated account manager</li>
-							<li class="flex items-start gap-2"><span class="mt-0.5 text-accent" aria-hidden="true">✓</span> Structured onboarding program</li>
-						</ul>
-						<a
-							href="/#contact"
-							class="mt-6 inline-flex min-h-[44px] w-full items-center justify-center rounded border border-white/20 bg-white/5 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-							data-open-tell-us="tier-enterprise"
-						>
-							Tell us your needs
-						</a>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<!-- SECTION 11 — FINAL CTA (dark) -->
-		<section class="bg-primary py-16 sm:py-20" aria-labelledby="final-cta-heading">
-			<div class="mx-auto max-w-6xl px-6">
-				<div class="js-fade-in rounded-2xl border border-white/10 bg-white/5 p-8 text-center shadow-xl backdrop-blur-sm sm:p-12">
-					<h2 id="final-cta-heading" class="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-						Ready to Add Reliable Capacity?
-					</h2>
-					<p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-white/70">
-						Tell us what you need — we'll present vetted LATAM specialists within 48 hours. No commitment required to start the conversation.
+			<div class="mt-8 grid gap-4 lg:grid-cols-3">
+				<article class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+					<p class="text-xs font-semibold uppercase tracking-wide text-sky-300">AEC</p>
+					<h3 class="mt-2 text-lg font-semibold text-white">AEC Talent</h3>
+					<p class="mt-3 text-sm leading-relaxed text-slate-300">
+						Revit modelers, BIM coordination, drafting support, and production-ready specialists aligned to US firm standards.
 					</p>
-					<div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+					<ul class="mt-4 grid gap-2 text-sm text-slate-300">
+						<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">Concept + schematic support</li>
+						<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">Construction documents</li>
+						<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">Revit/BIM workflows</li>
+					</ul>
+					<a
+						href="/solutions/aec-talent/"
+						class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-sky-300 transition hover:text-sky-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+					>
+						Explore AEC <span aria-hidden="true">→</span>
+					</a>
+				</article>
+
+				<article class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+					<p class="text-xs font-semibold uppercase tracking-wide text-sky-300">Creative</p>
+					<h3 class="mt-2 text-lg font-semibold text-white">Creative &amp; Design Talent</h3>
+					<p class="mt-3 text-sm leading-relaxed text-slate-300">
+						Brand, marketing, and product design capacity — dedicated designers or PM-led delivery for predictable output.
+					</p>
+					<ul class="mt-4 grid gap-2 text-sm text-slate-300">
+						<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">Brand + marketing design</li>
+						<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">Decks + presentations</li>
+						<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">Web + UI support</li>
+					</ul>
+					<a
+						href="/solutions/creatives-design/"
+						class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-sky-300 transition hover:text-sky-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+					>
+						Explore design <span aria-hidden="true">→</span>
+					</a>
+				</article>
+
+				<article class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+					<p class="text-xs font-semibold uppercase tracking-wide text-sky-300">Marketing</p>
+					<h3 class="mt-2 text-lg font-semibold text-white">Marketing Talent</h3>
+					<p class="mt-3 text-sm leading-relaxed text-slate-300">
+						SEO, paid media, lifecycle, content, and analytics specialists who can own channels and ship improvements fast.
+					</p>
+					<ul class="mt-4 grid gap-2 text-sm text-slate-300">
+						<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">SEO + content systems</li>
+						<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">PPC + paid social</li>
+						<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">GA4 + performance reporting</li>
+					</ul>
+					<a
+						href="/solutions/marketing-talent/"
+						class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-sky-300 transition hover:text-sky-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+					>
+						Explore marketing <span aria-hidden="true">→</span>
+					</a>
+				</article>
+			</div>
+		</section>
+
+		{/* HOW IT WORKS (5 steps) */}
+		<section id="how-it-works" class="py-12 sm:py-14" aria-labelledby="how-it-works-title">
+			<div class="flex flex-col gap-2">
+				<h2 id="how-it-works-title" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">How it works</h2>
+				<p class="max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
+					A simple process designed for speed, quality, and low risk.
+				</p>
+			</div>
+
+			<ol class="mt-8 grid gap-4 lg:grid-cols-5">
+				{[
+					{
+						title: 'Tell us your needs',
+						body: 'Roles, tools, availability, and outcomes — so we match accurately.',
+					},
+					{
+						title: 'Get candidates in 48 hours',
+						body: 'We deliver a short list of vetted specialists aligned to your workflow.',
+					},
+					{
+						title: 'Interview (optional)',
+						body: 'Meet top matches, or skip interviews if you want to start faster.',
+					},
+					{
+						title: 'Start month-to-month',
+						body: 'Onboard quickly and keep engagements flexible as priorities change.',
+					},
+					{
+						title: 'Scale + replace as needed',
+						body: 'Add capacity for peak loads — and get a free replacement guarantee.',
+					},
+				].map((step, idx) => (
+					<li class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+						<div class="flex items-center gap-3">
+							<div class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-800 bg-slate-950/40">
+								{/* Icon placeholder */}
+								<span class="text-sm font-semibold text-sky-300">{idx + 1}</span>
+							</div>
+							<p class="text-sm font-semibold text-slate-100">{step.title}</p>
+						</div>
+						<p class="mt-3 text-sm leading-relaxed text-slate-300">{step.body}</p>
+					</li>
+				))}
+			</ol>
+		</section>
+
+		{/* FLEXIBLE OPTIONS */}
+		<section class="py-12 sm:py-14" aria-labelledby="flexible-options-title">
+			<div class="flex flex-col gap-2">
+				<h2 id="flexible-options-title" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Flexible options</h2>
+				<p class="max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
+					Engagements designed to fit your budget, timelines, and workflow.
+				</p>
+			</div>
+
+			<div class="mt-8 grid gap-4 lg:grid-cols-3">
+				<article class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+					<h3 class="text-base font-semibold text-slate-100">Individual Specialists</h3>
+					<p class="mt-3 text-sm leading-relaxed text-slate-300">
+						Dedicated full-time or part-time specialists embedded into your team and tools.
+					</p>
+				</article>
+				<article class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+					<h3 class="text-base font-semibold text-slate-100">Hourly Packages</h3>
+					<p class="mt-3 text-sm leading-relaxed text-slate-300">
+						Blocks of hours for fast execution, overflow support, audits, or urgent deliverables.
+					</p>
+				</article>
+				<article class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+					<h3 class="text-base font-semibold text-slate-100">Team Scaling</h3>
+					<p class="mt-3 text-sm leading-relaxed text-slate-300">
+						Build a pod with complementary roles (and optional PM) to increase throughput end-to-end.
+					</p>
+				</article>
+			</div>
+		</section>
+
+		{/* PROOF */}
+		<section class="py-12 sm:py-14" aria-labelledby="proof-title">
+			<div class="flex flex-col gap-2">
+				<h2 id="proof-title" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Proof</h2>
+				<p class="max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
+					{/* TODO: Replace with real testimonials carousel. */}
+					Testimonials carousel placeholder (to be filled).
+				</p>
+			</div>
+
+			<div class="mt-8 grid gap-4 md:grid-cols-3">
+				{[1, 2, 3].map((i) => (
+					<figure class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+						<blockquote class="text-sm leading-relaxed text-slate-200">“TODO testimonial {i}.”</blockquote>
+						<figcaption class="mt-3 text-xs text-slate-400">— TODO, anonymized</figcaption>
+					</figure>
+				))}
+			</div>
+		</section>
+
+		{/* POPULAR ROLES */}
+		<section class="py-12 sm:py-14" aria-labelledby="popular-roles-title">
+			<div class="flex flex-col gap-2">
+				<h2 id="popular-roles-title" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Popular roles</h2>
+				<p class="max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
+					Browse role templates and common placements.
+				</p>
+			</div>
+
+			<div class="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+				<a href="/roles/architectural-designer/" class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:bg-slate-900">
+					<p class="text-sm font-semibold text-slate-100">Architectural Designer</p>
+					<p class="mt-2 text-sm text-slate-300">AEC</p>
+				</a>
+				<div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+					<p class="text-sm font-semibold text-slate-100">SEO Specialist</p>
+					<p class="mt-2 text-sm text-slate-300">Marketing (placeholder)</p>
+				</div>
+				<div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+					<p class="text-sm font-semibold text-slate-100">Brand / Visual Designer</p>
+					<p class="mt-2 text-sm text-slate-300">Creative (placeholder)</p>
+				</div>
+				<a href="/roles/" class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:bg-slate-900">
+					<p class="text-sm font-semibold text-slate-100">View all roles</p>
+					<p class="mt-2 text-sm text-slate-300">Go to roles directory</p>
+				</a>
+			</div>
+		</section>
+
+		{/* FINAL CTA */}
+		<section class="py-12 sm:py-14">
+			<div class="rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900/60 to-slate-950 p-6 sm:p-8">
+				<div class="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
+					<div>
+						<h2 class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Ready to Add Reliable Capacity?</h2>
+						<p class="mt-2 max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
+							Book a call to discuss your needs — or tell us more to get started.
+						</p>
+					</div>
+					<div class="flex flex-wrap gap-3">
 						<a
 							href={bookingUrl}
 							{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
-							class="inline-flex min-h-[48px] items-center justify-center rounded bg-accent px-8 py-3 text-sm font-semibold text-white transition hover:bg-accent/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+							class="inline-flex items-center justify-center rounded bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
 							data-book-call
 						>
-							Book a 15-Minute Scoping Call
+							Book a 15-Min Call
 						</a>
 						<a
 							href="/#contact"
-							class="inline-flex min-h-[48px] items-center justify-center rounded border border-white/20 bg-white/5 px-8 py-3 text-sm font-semibold text-white transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+							class="inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
 							data-open-tell-us="home-final-cta"
 						>
-							Tell Us What You Need
+							Tell Us Your Needs
 						</a>
 					</div>
-					<p class="mt-5 text-xs text-white/40">No long-term contracts · Month-to-month · Free replacement guarantee</p>
 				</div>
 			</div>
 		</section>
 
-		<!-- SECTION 12 — CONTACT + CALENDLY (light) -->
-		<section id="contact" class="bg-bg-light pb-20 pt-16 sm:pb-24 sm:pt-20" aria-labelledby="contact-heading">
-			<div class="mx-auto max-w-6xl px-6">
-				<div class="js-fade-in max-w-2xl">
-					<p class="text-sm font-semibold uppercase tracking-widest text-accent">Get in touch</p>
-					<h2 id="contact-heading" class="mt-3 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
-						Let's Talk About Your Needs
-					</h2>
-					<p class="mt-4 text-base leading-relaxed text-text-secondary">
-						Tell us your role requirements, timeline, and stack — we'll suggest the best engagement model and match you with vetted specialists.
-					</p>
-				</div>
+		{/* CONTACT */}
+		<section id="contact" class="pb-16 pt-10 sm:pb-20 sm:pt-14">
+			<div class="flex flex-col gap-2">
+				<h2 class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Contact</h2>
+				<p class="max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
+					Tell us what you need and weâ€™ll suggest the best engagement model.
+				</p>
+			</div>
 
-				<div class="mt-10 grid gap-6 lg:grid-cols-2">
-					<ContactForm subject="LatAm Scalers — new inquiry (homepage)" />
-					<CalendlyEmbed url={import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com/your-org/15min'} />
-				</div>
+			<div class="mt-8 grid gap-6 lg:grid-cols-2">
+				<ContactForm subject="LatAm Scalers â€” new inquiry (homepage)" />
+				<CalendlyEmbed url={import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com/your-org/15min'} />
 			</div>
 		</section>
-
 	</main>
-
-	<style>
-		.js-fade-in {
-			opacity: 0;
-			transform: translateY(20px);
-			transition: opacity 0.35s ease-out, transform 0.35s ease-out;
-		}
-		.js-fade-in.is-visible {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	</style>
-
-	<noscript>
-		<style>
-			.js-fade-in { opacity: 1 !important; transform: none !important; }
-		</style>
-	</noscript>
-
-	<script is:inline>
-		(function () {
-			var els = document.querySelectorAll('.js-fade-in');
-			if (!els.length) return;
-			var io = new IntersectionObserver(function (entries) {
-				entries.forEach(function (e) {
-					if (e.isIntersecting) {
-						e.target.classList.add('is-visible');
-						io.unobserve(e.target);
-					}
-				});
-			}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-			els.forEach(function (el) { io.observe(el); });
-		})();
-
-		(function () {
-			var counters = document.querySelectorAll('.js-counter');
-			if (!counters.length) return;
-			counters.forEach(function (el) { el.textContent = '0'; });
-			var io = new IntersectionObserver(function (entries) {
-				entries.forEach(function (e) {
-					if (!e.isIntersecting) return;
-					var el = e.target;
-					var target = parseInt(el.dataset.target, 10);
-					var prefix = el.dataset.prefix || '';
-					var suffix = el.dataset.suffix || '';
-					var finalText = el.dataset.final || (prefix + target + suffix);
-					var duration = 1200;
-					var start = null;
-					function step(ts) {
-						if (!start) start = ts;
-						var progress = Math.min((ts - start) / duration, 1);
-						var eased = 1 - Math.pow(1 - progress, 3);
-						var current = Math.round(eased * target);
-						el.textContent = prefix + current + suffix;
-						if (progress < 1) {
-							requestAnimationFrame(step);
-						} else {
-							el.textContent = finalText;
-						}
-					}
-					requestAnimationFrame(step);
-					io.unobserve(el);
-				});
-			}, { threshold: 0.5 });
-			counters.forEach(function (el) { io.observe(el); });
-		})();
-	</script>
 </Layout>

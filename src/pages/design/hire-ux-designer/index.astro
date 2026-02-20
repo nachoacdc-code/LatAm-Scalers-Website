@@ -105,11 +105,11 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com
 	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
 
 	<main>
-		<!-- Hero (bg-primary, white text) -->
-		<section class="bg-primary py-16 sm:py-24" aria-labelledby="hero-heading">
+		<!-- Hero (bg-slate-950, white text) -->
+		<section class="bg-slate-950 py-16 sm:py-24" aria-labelledby="hero-heading">
 			<div class="mx-auto max-w-6xl px-6">
 				<div class="js-fade-in">
-					<p class="text-sm font-semibold uppercase tracking-widest text-accent">Design — UX</p>
+					<p class="text-sm font-semibold uppercase tracking-widest text-sky-300">Design — UX</p>
 					<h1 id="hero-heading" class="mt-4 text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
 						Hire a Dedicated UX Designer — Pre-Vetted LATAM Talent for US Teams
 					</h1>
@@ -120,14 +120,14 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com
 						<a
 							href={bookingUrl}
 							{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
-							class="inline-flex min-h-[48px] items-center justify-center rounded bg-accent px-6 py-3 text-sm font-semibold text-white transition hover:bg-accent/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+							class="inline-flex min-h-[48px] items-center justify-center rounded bg-sky-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
 							data-book-call
 						>
 							Book a Design Scoping Call
 						</a>
 						<a
 							href="#contact"
-							class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+							class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-white/20 bg-slate-900/40/5 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-900/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
 							data-open-tell-us="ux-hero"
 						>
 							Tell Us What You Need
@@ -137,122 +137,122 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com
 			</div>
 		</section>
 
-		<!-- Service overview (bg-bg-light) -->
-		<section class="bg-bg-light py-16 sm:py-20" aria-labelledby="overview-heading">
+		<!-- Service overview (bg-slate-950) -->
+		<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="overview-heading">
 			<div class="mx-auto max-w-6xl px-6">
 				<div class="js-fade-in">
-					<h2 id="overview-heading" class="text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
+					<h2 id="overview-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
 						UX Scope — What a Dedicated Designer Covers
 					</h2>
-					<p class="mt-4 max-w-2xl text-base leading-relaxed text-text-secondary">
+					<p class="mt-4 max-w-2xl text-base leading-relaxed text-slate-400">
 						End-to-end UX from research through handoff. One designer, your product — research, wireframes, prototypes, and usability testing.
 					</p>
 				</div>
 			</div>
 		</section>
 
-		<!-- UX scope phases (bg-bg-alt) -->
-		<section class="bg-bg-alt py-16 sm:py-20" aria-labelledby="scope-heading">
+		<!-- UX scope phases (bg-slate-900/40) -->
+		<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="scope-heading">
 			<div class="mx-auto max-w-6xl px-6">
 				<div class="js-fade-in">
-					<h2 id="scope-heading" class="text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
+					<h2 id="scope-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
 						Research, Wireframing, Prototyping, Testing
 					</h2>
-					<p class="mt-4 max-w-2xl text-base leading-relaxed text-text-secondary">
+					<p class="mt-4 max-w-2xl text-base leading-relaxed text-slate-400">
 						Full-spectrum UX delivered by one dedicated designer.
 					</p>
 				</div>
 				<div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
 					{uxScope.map((item) => (
-						<div class="rounded-2xl border border-border bg-white p-6 shadow-sm">
+						<div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
 							<h3 class="text-lg font-semibold text-design">{item.phase}</h3>
-							<p class="mt-2 text-sm leading-relaxed text-text-secondary">{item.desc}</p>
+							<p class="mt-2 text-sm leading-relaxed text-slate-400">{item.desc}</p>
 						</div>
 					))}
 				</div>
 			</div>
 		</section>
 
-		<!-- Tools (bg-bg-light) -->
-		<section class="bg-bg-light py-16 sm:py-20" aria-labelledby="tools-heading">
+		<!-- Tools (bg-slate-950) -->
+		<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="tools-heading">
 			<div class="mx-auto max-w-6xl px-6">
 				<div class="js-fade-in">
-					<h2 id="tools-heading" class="text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
+					<h2 id="tools-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
 						Tools — Figma, Maze, Hotjar
 					</h2>
-					<p class="mt-4 max-w-2xl text-base leading-relaxed text-text-secondary">
+					<p class="mt-4 max-w-2xl text-base leading-relaxed text-slate-400">
 						Standard UX tools for design, prototyping, and research.
 					</p>
 				</div>
 				<div class="mt-10 grid gap-6 sm:grid-cols-3">
 					{tools.map((t) => (
-						<div class="rounded-2xl border border-border bg-white p-6 shadow-sm">
+						<div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
 							<h3 class="text-lg font-semibold text-design">{t.name}</h3>
-							<p class="mt-2 text-sm leading-relaxed text-text-secondary">{t.desc}</p>
+							<p class="mt-2 text-sm leading-relaxed text-slate-400">{t.desc}</p>
 						</div>
 					))}
 				</div>
 			</div>
 		</section>
 
-		<!-- Deliverables (bg-bg-alt) -->
-		<section class="bg-bg-alt py-16 sm:py-20" aria-labelledby="deliverables-heading">
+		<!-- Deliverables (bg-slate-900/40) -->
+		<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="deliverables-heading">
 			<div class="mx-auto max-w-6xl px-6">
 				<div class="js-fade-in">
-					<h2 id="deliverables-heading" class="text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
+					<h2 id="deliverables-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
 						Deliverables
 					</h2>
-					<p class="mt-4 max-w-2xl text-base leading-relaxed text-text-secondary">
+					<p class="mt-4 max-w-2xl text-base leading-relaxed text-slate-400">
 						Clear outputs at each phase of the UX process.
 					</p>
 				</div>
 				<ul class="mt-8 grid gap-4 sm:grid-cols-2">
 					{deliverables.map((d) => (
-						<li class="rounded-2xl border border-border bg-white p-6 shadow-sm flex items-start gap-3">
+						<li class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20 flex items-start gap-3">
 							<span class="text-design font-semibold">✓</span>
-							<span class="text-sm font-medium text-text-primary">{d}</span>
+							<span class="text-sm font-medium text-slate-100">{d}</span>
 						</li>
 					))}
 				</ul>
 			</div>
 		</section>
 
-		<!-- Use cases: SaaS, DTC, Agency (bg-bg-light) -->
-		<section class="bg-bg-light py-16 sm:py-20" aria-labelledby="usecases-heading">
+		<!-- Use cases: SaaS, DTC, Agency (bg-slate-950) -->
+		<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="usecases-heading">
 			<div class="mx-auto max-w-6xl px-6">
 				<div class="js-fade-in">
-					<h2 id="usecases-heading" class="text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
+					<h2 id="usecases-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
 						SaaS, DTC & Agency Use Cases
 					</h2>
-					<p class="mt-4 max-w-2xl text-base leading-relaxed text-text-secondary">
+					<p class="mt-4 max-w-2xl text-base leading-relaxed text-slate-400">
 						Different contexts, same solution: dedicated UX capacity without agency markup.
 					</p>
 				</div>
 				<div class="mt-10 grid gap-6 md:grid-cols-3">
 					{useCases.map((uc) => (
-						<div class="rounded-2xl border border-border bg-white p-6 shadow-sm">
+						<div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
 							<p class="text-sm font-semibold uppercase tracking-wide text-design">{uc.subtitle}</p>
-							<h3 class="mt-2 text-lg font-semibold text-text-primary">{uc.title}</h3>
-							<p class="mt-3 text-sm leading-relaxed text-text-secondary">{uc.body}</p>
+							<h3 class="mt-2 text-lg font-semibold text-slate-100">{uc.title}</h3>
+							<p class="mt-3 text-sm leading-relaxed text-slate-400">{uc.body}</p>
 						</div>
 					))}
 				</div>
 			</div>
 		</section>
 
-		<!-- Pricing (bg-bg-alt) -->
-		<section class="bg-bg-alt py-16 sm:py-20" aria-labelledby="pricing-heading">
+		<!-- Pricing (bg-slate-900/40) -->
+		<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="pricing-heading">
 			<div class="mx-auto max-w-6xl px-6">
 				<div class="js-fade-in">
-					<h2 id="pricing-heading" class="text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
+					<h2 id="pricing-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
 						Pricing
 					</h2>
-					<p class="mt-4 max-w-2xl text-base leading-relaxed text-text-secondary">
-						Dedicated UX designers from <strong class="text-text-primary">~$2,800/mo</strong>. Full-time or part-time. Month-to-month, no long-term contracts. Free replacement guarantee.
+					<p class="mt-4 max-w-2xl text-base leading-relaxed text-slate-400">
+						Dedicated UX designers from <strong class="text-slate-100">~$2,800/mo</strong>. Full-time or part-time. Month-to-month, no long-term contracts. Free replacement guarantee.
 					</p>
 					<a
 						href="/how-it-works/"
-						class="mt-6 inline-flex items-center text-sm font-semibold text-accent transition hover:text-accent/80"
+						class="mt-6 inline-flex items-center text-sm font-semibold text-sky-300 transition hover:text-sky-200/80"
 					>
 						How it works →
 					</a>
@@ -260,29 +260,29 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com
 			</div>
 		</section>
 
-		<!-- FAQ (bg-bg-alt) -->
-		<section class="bg-bg-alt py-16 sm:py-20" aria-labelledby="faq-heading">
+		<!-- FAQ (bg-slate-900/40) -->
+		<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="faq-heading">
 			<div class="mx-auto max-w-6xl px-6">
 				<div class="js-fade-in">
-					<h2 id="faq-heading" class="text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
+					<h2 id="faq-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
 						FAQ
 					</h2>
 				</div>
 				<div class="mt-10 grid gap-3">
 					{faqs.map((item) => (
-						<details class="rounded-2xl border border-border bg-white p-5 shadow-sm">
-							<summary class="cursor-pointer list-none text-sm font-semibold text-text-primary">{item.q}</summary>
-							<p class="mt-3 text-sm leading-relaxed text-text-secondary">{item.a}</p>
+						<details class="rounded-2xl border border-slate-800 bg-slate-900/40 p-5 shadow-lg shadow-black/20">
+							<summary class="cursor-pointer list-none text-sm font-semibold text-slate-100">{item.q}</summary>
+							<p class="mt-3 text-sm leading-relaxed text-slate-400">{item.a}</p>
 						</details>
 					))}
 				</div>
 			</div>
 		</section>
 
-		<!-- CTA (bg-primary) -->
-		<section class="bg-primary py-16 sm:py-20" aria-labelledby="cta-heading">
+		<!-- CTA (bg-slate-950) -->
+		<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="cta-heading">
 			<div class="mx-auto max-w-6xl px-6">
-				<div class="js-fade-in rounded-2xl border border-white/10 bg-white/5 p-8 text-center shadow-xl backdrop-blur-sm sm:p-12">
+				<div class="js-fade-in rounded-2xl border border-white/10 bg-slate-900/40/5 p-8 text-center shadow-xl backdrop-blur-sm sm:p-12">
 					<h2 id="cta-heading" class="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
 						Ready to Hire a UX Designer?
 					</h2>
@@ -293,14 +293,14 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com
 						<a
 							href={bookingUrl}
 							{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
-							class="inline-flex min-h-[48px] items-center justify-center rounded bg-accent px-8 py-3 text-sm font-semibold text-white transition hover:bg-accent/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+							class="inline-flex min-h-[48px] items-center justify-center rounded bg-sky-600 px-8 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
 							data-book-call
 						>
 							Book a Design Scoping Call
 						</a>
 						<a
 							href="#contact"
-							class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-white/20 bg-white/5 px-8 py-3 text-sm font-semibold text-white transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+							class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-white/20 bg-slate-900/40/5 px-8 py-3 text-sm font-semibold text-white transition hover:bg-slate-900/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
 							data-open-tell-us="ux-cta"
 						>
 							Tell Us What You Need
@@ -312,14 +312,14 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com
 		</section>
 
 		<!-- Contact section -->
-		<section id="contact" class="bg-bg-light pb-20 pt-16 sm:pb-24 sm:pt-20" aria-labelledby="contact-heading">
+		<section id="contact" class="bg-slate-950 pb-20 pt-16 sm:pb-24 sm:pt-20" aria-labelledby="contact-heading">
 			<div class="mx-auto max-w-6xl px-6">
 				<div class="js-fade-in max-w-2xl">
-					<p class="text-sm font-semibold uppercase tracking-widest text-accent">Get in touch</p>
-					<h2 id="contact-heading" class="mt-3 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
+					<p class="text-sm font-semibold uppercase tracking-widest text-sky-300">Get in touch</p>
+					<h2 id="contact-heading" class="mt-3 text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
 						Let's Talk UX
 					</h2>
-					<p class="mt-4 text-base leading-relaxed text-text-secondary">
+					<p class="mt-4 text-base leading-relaxed text-slate-400">
 						Tell us your product, tools, and UX needs — we'll suggest the right engagement and match you with a vetted UX designer.
 					</p>
 				</div>

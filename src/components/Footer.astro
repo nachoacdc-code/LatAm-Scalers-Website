@@ -1,114 +1,102 @@
 ---
 import { BOOKING_URL, isExternalUrl } from '../lib/cta';
 
+export type Props = {
+	companyName?: string;
+};
+
+const {
+	companyName = 'LatAm Scalers',
+} = Astro.props;
+
 const year = new Date().getFullYear();
+
 const bookingUrl = BOOKING_URL;
 const bookingExternal = isExternalUrl(bookingUrl);
 ---
 
-<footer class="border-t border-border bg-bg-dark">
+<footer class="border-t border-slate-800/80 bg-slate-950">
 	<div class="mx-auto max-w-6xl px-6 py-12">
+		<div class="grid gap-10 md:grid-cols-12">
+			<div class="md:col-span-4">
+				<a
+					href="/"
+					class="inline-flex items-center gap-3 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+				>
+					<img src="/favicon.svg" alt={`${companyName} logo`} class="h-8 w-8" loading="lazy" />
+					<span class="text-sm font-semibold tracking-tight text-white">{companyName}</span>
+				</a>
+				<p class="mt-4 max-w-sm text-sm leading-relaxed text-slate-300">
+					Vetted remote talent for US teams across AEC, creative &amp; design, and marketing.
+				</p>
+			</div>
 
-		<!-- 4-column grid -->
-		<div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-
-			<!-- Col 1: Solutions + Trust -->
-			<div>
-				<p class="text-xs font-semibold uppercase tracking-wide text-white/40">Solutions</p>
+			<div class="md:col-span-2">
+				<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Solutions</p>
 				<nav class="mt-4 grid gap-2 text-sm" aria-label="Footer solutions">
 					<a class="text-slate-300 transition hover:text-white" href="/solutions/aec-talent/">AEC Talent</a>
 					<a class="text-slate-300 transition hover:text-white" href="/solutions/creatives-design/">Creative &amp; Design</a>
 					<a class="text-slate-300 transition hover:text-white" href="/solutions/marketing-talent/">Marketing Talent</a>
 				</nav>
+			</div>
 
-				<p class="mt-6 text-xs font-semibold uppercase tracking-wide text-white/40">Trust</p>
-				<nav class="mt-4 grid gap-2 text-sm" aria-label="Footer trust">
-					<a class="text-slate-300 transition hover:text-white" href="/about/how-we-vet/">How We Vet</a>
-					<a class="text-slate-300 transition hover:text-white" href="/about/our-guarantee/">Our Guarantee</a>
-					<a class="text-slate-300 transition hover:text-white" href="/how-pricing-works/">How Pricing Works</a>
+			<div class="md:col-span-2">
+				<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Roles</p>
+				<nav class="mt-4 grid gap-4 text-sm" aria-label="Footer roles">
+					<div class="grid gap-2">
+						<p class="text-xs font-semibold uppercase tracking-wide text-slate-500">AEC Roles</p>
+						<a class="text-slate-300 transition hover:text-white" href="/roles/architectural-designer/">Architectural Designer</a>
+					</div>
+					<div class="grid gap-2">
+						<p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Marketing Roles</p>
+						<a class="text-slate-300 transition hover:text-white" href="/roles/seo-specialist/">SEO Specialist</a>
+					</div>
+					<div class="grid gap-2">
+						<p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Creative &amp; Design Roles</p>
+						<a class="text-slate-300 transition hover:text-white" href="/roles/brand-visual-designer/">Brand / Visual Designer</a>
+					</div>
+					<a class="text-slate-300 transition hover:text-white" href="/roles/">Explore all roles →</a>
 				</nav>
 			</div>
 
-			<!-- Col 2: Roles + Compare -->
-			<div>
-				<p class="text-xs font-semibold uppercase tracking-wide text-white/40">Roles</p>
-				<nav class="mt-4 grid gap-2 text-sm" aria-label="Footer roles">
-					<a class="text-slate-300 transition hover:text-white" href="/roles/architectural-designer/">Architectural Designer</a>
-					<a class="text-slate-300 transition hover:text-white" href="/roles/bim-coordinator/">BIM Coordinator</a>
-					<a class="text-slate-300 transition hover:text-white" href="/roles/revit-drafter/">Revit Drafter</a>
-					<a class="text-slate-300 transition hover:text-white" href="/roles/seo-specialist/">SEO Specialist</a>
-					<a class="text-slate-300 transition hover:text-white" href="/roles/brand-visual-designer/">Brand / Visual Designer</a>
-					<a class="text-slate-300 transition hover:text-white" href="/roles/ui-ux-designer/">UI/UX Designer</a>
-					<a class="mt-1 text-sm font-semibold text-accent transition hover:text-accent/80" href="/roles/">Explore all roles &rarr;</a>
-				</nav>
-
-				<p class="mt-6 text-xs font-semibold uppercase tracking-wide text-white/40">Compare</p>
-				<nav class="mt-4 grid gap-2 text-sm" aria-label="Footer compare">
-					<a class="text-slate-300 transition hover:text-white" href="/compare/vs-superside/">vs. Superside</a>
-				</nav>
-			</div>
-
-			<!-- Col 3: Company + Resources -->
-			<div>
-				<p class="text-xs font-semibold uppercase tracking-wide text-white/40">Company</p>
+			<div class="md:col-span-2">
+				<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Company</p>
 				<nav class="mt-4 grid gap-2 text-sm" aria-label="Footer company">
 					<a class="text-slate-300 transition hover:text-white" href="/how-it-works/">How It Works</a>
-					<a class="text-slate-300 transition hover:text-white" href="/#contact" data-open-tell-us="footer-contact">Contact</a>
+					<a
+						class="text-slate-300 transition hover:text-white"
+						href="/#contact"
+						data-open-tell-us="footer-contact"
+					>
+						Contact
+					</a>
 				</nav>
 			</div>
 
-			<!-- Col 4: Get Started -->
-			<div>
-				<p class="text-xs font-semibold uppercase tracking-wide text-white/40">Get Started</p>
+			<div class="md:col-span-2">
+				<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Get started</p>
 				<p class="mt-4 text-sm leading-relaxed text-slate-300">
-					Tell us what you need and get matched with vetted LATAM specialists within 48 hours.
+					Book a quick call to confirm your needs and get matched.
 				</p>
 				<a
 					href={bookingUrl}
 					{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
-					class="mt-5 inline-flex w-full items-center justify-center rounded bg-accent px-4 py-3 text-sm font-semibold text-white transition hover:bg-accent/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-dark"
+					class="mt-5 inline-flex w-full items-center justify-center rounded bg-sky-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
 					data-book-call
 				>
-					Book a 15-Min Scoping Call
-				</a>
-				<a
-					href="/#contact"
-					class="mt-3 inline-flex w-full items-center justify-center rounded-xl border border-white/20 px-4 py-2.5 text-sm font-semibold text-slate-200 transition hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-					data-open-tell-us="footer-cta"
-				>
-					Tell Us Your Needs
+					Book a Call
 				</a>
 			</div>
 		</div>
 
-		<!-- Tagline + logo row -->
-		<div class="mt-10 flex flex-col gap-4 border-t border-white/10 pt-8 sm:flex-row sm:items-start sm:justify-between">
-			<div>
-				<a href="/" class="text-sm font-semibold tracking-tight text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-dark">
-					LatAm Scalers
-				</a>
-				<p class="mt-1 max-w-sm text-xs leading-relaxed text-white/50">
-					Dedicated LATAM talent for US teams &mdash; AEC, creative and design, and marketing.
-				</p>
-			</div>
-		</div>
-
-		<!-- Legal disclaimer -->
-		<div class="mt-6 rounded-xl border border-white/10 bg-white/5 p-4">
-			<p class="text-xs leading-relaxed text-white/50">
-				<strong class="text-slate-300">Disclaimer:</strong> LatAm Scalers connects US-based companies with pre-vetted independent professionals and teams based in Latin America. Professionals engaged through LatAm Scalers are independent contractors, not employees of LatAm Scalers or the client company, unless a direct-hire arrangement is explicitly agreed upon. All work is performed under service agreements between the client and LatAm Scalers. LatAm Scalers does not provide legal, tax, or employment-classification advice.
-			</p>
-		</div>
-
-		<!-- Bottom bar -->
-		<div class="mt-6 flex flex-col gap-3 border-t border-white/10 pt-5 sm:flex-row sm:items-center sm:justify-between">
-			<p class="text-xs text-white/40">&copy; {year} LatAm Scalers. All rights reserved.</p>
+		<div class="mt-12 flex flex-col gap-3 border-t border-slate-800/80 pt-6 sm:flex-row sm:items-center sm:justify-between">
+			<p class="text-xs text-slate-400">© {year} {companyName}. All rights reserved.</p>
 			<div class="flex flex-wrap gap-x-6 gap-y-2 text-xs">
-				<a class="text-white/40 transition hover:text-white" href="/terms/">Terms</a>
-				<a class="text-white/40 transition hover:text-white" href="/privacy/">Privacy</a>
-				<a class="text-white/40 transition hover:text-white" href="/cookies/">Cookies</a>
+				<a class="text-slate-400 transition hover:text-white" href="/terms/">Terms</a>
+				<a class="text-slate-400 transition hover:text-white" href="/privacy/">Privacy</a>
+				<a class="text-slate-400 transition hover:text-white" href="/cookies/">Cookies</a>
 			</div>
 		</div>
-
 	</div>
 </footer>
+
