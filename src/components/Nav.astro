@@ -3,8 +3,10 @@ import { BOOKING_URL, isExternalUrl } from '../lib/cta';
 
 const pathname = Astro.url.pathname;
 
-const isHome = pathname === '/';
-const isSolutions = pathname.startsWith('/solutions/');
+const isAec = pathname.startsWith('/aec/') || pathname.startsWith('/solutions/aec-talent/');
+const isDesign = pathname.startsWith('/design/') || pathname.startsWith('/solutions/creatives-design/');
+const isMarketing = pathname.startsWith('/marketing/') || pathname.startsWith('/solutions/marketing-talent/');
+const isSolutions = isAec || isDesign || isMarketing;
 const isRoles = pathname.startsWith('/roles/');
 const isHowItWorks = pathname.startsWith('/how-it-works/');
 
@@ -13,80 +15,37 @@ const bookingExternal = isExternalUrl(bookingUrl);
 
 const linkBase =
 	'transition hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950';
-const linkDesktopBase = `rounded-md px-1 py-2 ${linkBase}`;
-const linkMobileBase = `rounded-xl px-3 py-3 ${linkBase}`;
+const linkDesktopBase = `rounded-md px-1 py-2 text-sm ${linkBase}`;
 const linkActive = 'text-white font-semibold';
-
-const links = {
-	home: { label: 'Home', href: '/' },
-	solutions: {
-		label: 'Solutions',
-		items: [
-			{ label: 'AEC Talent', href: '/solutions/aec-talent/' },
-			{ label: 'Creative & Design Talent', href: '/solutions/creatives-design/' },
-			{ label: 'Marketing Talent', href: '/solutions/marketing-talent/' },
-		],
-	},
-	roles: {
-		label: 'Roles',
-		groups: [
-			{
-				title: 'AEC Roles',
-				items: [{ label: 'Architectural Designer', href: '/roles/architectural-designer/' }],
-			},
-			{
-				title: 'Marketing Roles',
-				items: [{ label: 'SEO Specialist', href: '/roles/seo-specialist/' }],
-			},
-			{
-				title: 'Creative & Design Roles',
-				items: [{ label: 'Brand / Visual Designer', href: '/roles/brand-visual-designer/' }],
-			},
-		],
-		all: { label: 'Explore all roles', href: '/roles/' },
-	},
-	howItWorks: { label: 'How It Works', href: '/how-it-works/' },
-	cta: { label: 'Book a Call', href: bookingUrl },
-};
+const linkInactive = 'text-slate-300';
 ---
 
 <header class="sticky top-0 z-50 border-b border-slate-800 bg-slate-950/80 backdrop-blur">
-	<div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
+	<div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3">
+
+		{/* Logo — clicking always goes home */}
 		<a
 			href="/"
 			class="text-sm font-semibold tracking-tight text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+			aria-label="LatAm Scalers — home"
 		>
 			LatAm Scalers
 		</a>
 
-		<nav class="hidden items-center gap-6 text-sm text-slate-200 md:flex" aria-label="Primary">
-			<a
-				href={links.home.href}
-				class={`${linkDesktopBase} ${isHome ? linkActive : ''}`}
-				aria-current={isHome ? 'page' : undefined}
-			>
-				{links.home.label}
-			</a>
+		{/* Desktop nav */}
+		<nav class="hidden items-center gap-1 md:flex" aria-label="Primary">
 
+			{/* Solutions mega dropdown */}
 			<details class="group relative" data-nav-dropdown="solutions">
 				<summary
-					class={`flex cursor-pointer list-none items-center gap-2 ${linkDesktopBase} ${isSolutions ? linkActive : ''}`}
+					class={`flex cursor-pointer list-none items-center gap-1.5 ${linkDesktopBase} ${isSolutions ? linkActive : linkInactive}`}
 					aria-haspopup="menu"
 					aria-expanded="false"
 					aria-controls="solutions-menu"
 				>
-					<span>{links.solutions.label}</span>
-					<svg
-						class="h-4 w-4 text-slate-300 transition group-open:rotate-180"
-						viewBox="0 0 20 20"
-						fill="currentColor"
-						aria-hidden="true"
-					>
-						<path
-							fill-rule="evenodd"
-							d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08Z"
-							clip-rule="evenodd"
-						/>
+					<span>Solutions</span>
+					<svg class="h-3.5 w-3.5 transition group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+						<path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08Z" clip-rule="evenodd" />
 					</svg>
 				</summary>
 
@@ -94,236 +53,195 @@ const links = {
 					id="solutions-menu"
 					role="menu"
 					aria-label="Solutions"
-					class="absolute left-0 mt-2 w-72 rounded-2xl border border-slate-700/60 bg-slate-900/95 p-2 shadow-2xl shadow-black/40 ring-1 ring-slate-700/40 backdrop-blur-xl"
+					class="absolute left-0 mt-2 w-[28rem] rounded-2xl border border-slate-700/60 bg-slate-900/95 p-3 shadow-2xl shadow-black/50 ring-1 ring-slate-700/40 backdrop-blur-xl"
 				>
-					{links.solutions.items.map((item) => (
-						(() => {
-							const active = pathname.startsWith(item.href);
-							return (
-						<a
-							role="menuitem"
-							href={item.href}
-							class={`block rounded-xl px-3 py-2 text-sm text-slate-200 transition hover:bg-slate-800/70 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${active ? 'bg-slate-800/70 text-white font-semibold' : ''}`}
-							aria-current={active ? 'page' : undefined}
-						>
-							{item.label}
-						</a>
-							);
-						})()
-					))}
-				</div>
-			</details>
-
-			<details class="group relative" data-nav-dropdown="roles">
-				<summary
-					class={`flex cursor-pointer list-none items-center gap-2 ${linkDesktopBase} ${isRoles ? linkActive : ''}`}
-					aria-haspopup="menu"
-					aria-expanded="false"
-					aria-controls="roles-menu"
-				>
-					<span>{links.roles.label}</span>
-					<svg
-						class="h-4 w-4 text-slate-300 transition group-open:rotate-180"
-						viewBox="0 0 20 20"
-						fill="currentColor"
-						aria-hidden="true"
+					{/* AEC */}
+					<a
+						role="menuitem"
+						href="/aec/"
+						class={`group/item flex items-start gap-3 rounded-xl px-3 py-3 transition hover:bg-slate-800/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${isAec ? 'bg-slate-800/70' : ''}`}
+						aria-current={isAec ? 'page' : undefined}
 					>
-						<path
-							fill-rule="evenodd"
-							d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08Z"
-							clip-rule="evenodd"
-						/>
-					</svg>
-				</summary>
+						<span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-aec/10">
+							<svg class="h-4 w-4 text-aec" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z" /></svg>
+						</span>
+						<div>
+							<p class="text-sm font-semibold text-white">AEC Talent</p>
+							<p class="mt-0.5 text-xs leading-relaxed text-slate-400">BIM coordinators, CAD drafters, MEP modelers for US firms</p>
+						</div>
+					</a>
 
-				<div
-					id="roles-menu"
-					role="menu"
-					aria-label="Roles"
-					class="absolute left-1/2 mt-2 w-[44rem] max-w-[calc(100vw-2rem)] -translate-x-1/2 rounded-2xl border border-slate-700/60 bg-slate-900/95 p-4 shadow-2xl shadow-black/40 ring-1 ring-slate-700/40 backdrop-blur-xl"
-				>
-					<div class="grid gap-6 md:grid-cols-3">
-						{links.roles.groups.map((group) => (
-							<div>
-								<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">{group.title}</p>
-								<div class="mt-3 grid gap-1">
-									{group.items.map((item) => {
-										const active = pathname.startsWith(item.href);
-										return (
-											<a
-												role="menuitem"
-												href={item.href}
-												class={`block rounded-xl px-3 py-2 text-sm text-slate-200 transition hover:bg-slate-800/70 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${active ? 'bg-slate-800/70 text-white font-semibold' : ''}`}
-												aria-current={active ? 'page' : undefined}
-											>
-												{item.label}
-											</a>
-										);
-									})}
-									<a
-										role="menuitem"
-										href={links.roles.all.href}
-										class={`mt-2 block rounded-xl px-3 py-2 text-sm font-semibold text-sky-300 transition hover:bg-slate-800/70 hover:text-sky-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${pathname === links.roles.all.href ? 'bg-slate-800/70' : ''}`}
-									>
-										{links.roles.all.label} <span aria-hidden="true">→</span>
-									</a>
-								</div>
-							</div>
-						))}
+					{/* Design */}
+					<a
+						role="menuitem"
+						href="/design/"
+						class={`group/item flex items-start gap-3 rounded-xl px-3 py-3 transition hover:bg-slate-800/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${isDesign ? 'bg-slate-800/70' : ''}`}
+						aria-current={isDesign ? 'page' : undefined}
+					>
+						<span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-design/10">
+							<svg class="h-4 w-4 text-design" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42" /></svg>
+						</span>
+						<div>
+							<p class="text-sm font-semibold text-white">Creative &amp; Design</p>
+							<p class="mt-0.5 text-xs leading-relaxed text-slate-400">Dedicated designers and managed creative teams</p>
+						</div>
+					</a>
+
+					{/* Marketing */}
+					<a
+						role="menuitem"
+						href="/marketing/"
+						class={`group/item flex items-start gap-3 rounded-xl px-3 py-3 transition hover:bg-slate-800/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${isMarketing ? 'bg-slate-800/70' : ''}`}
+						aria-current={isMarketing ? 'page' : undefined}
+					>
+						<span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-marketing/10">
+							<svg class="h-4 w-4 text-marketing" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10.34 15.84c-.688-.06-1.386-.09-2.09-.09H7.5a4.5 4.5 0 1 1 0-9h.75c.704 0 1.402-.03 2.09-.09m0 9.18c.253.962.584 1.892.985 2.783.247.55.06 1.21-.463 1.511l-.657.38c-.551.318-1.26.117-1.527-.461a20.845 20.845 0 0 1-1.44-4.282m3.102.069a18.03 18.03 0 0 1-.59-4.59c0-1.586.205-3.124.59-4.59m0 9.18a23.848 23.848 0 0 1 8.835 2.535M10.34 6.66a23.847 23.847 0 0 1 8.835-2.535m0 0A23.74 23.74 0 0 1 18.795 3m.38 1.125a23.91 23.91 0 0 1 1.014 5.395m-1.014 8.855c-.118.38-.245.754-.38 1.125m.38-1.125a23.91 23.91 0 0 0 1.014-5.395m0-3.46c.495.413.811 1.035.811 1.73 0 .695-.316 1.317-.811 1.73m0-3.46a24.347 24.347 0 0 1 0 3.46" /></svg>
+						</span>
+						<div>
+							<p class="text-sm font-semibold text-white">Marketing Talent</p>
+							<p class="mt-0.5 text-xs leading-relaxed text-slate-400">SEO, paid media, lifecycle, HubSpot &amp; RevOps specialists</p>
+						</div>
+					</a>
+
+					{/* Divider + secondary links */}
+					<div class="mt-2 border-t border-slate-800/80 pt-2">
+						<div class="grid grid-cols-2 gap-1">
+							<a
+								role="menuitem"
+								href="/how-it-works/"
+								class="flex items-center gap-2 rounded-xl px-3 py-2 text-xs text-slate-400 transition hover:bg-slate-800/70 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+							>
+								<svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" /></svg>
+								How It Works
+							</a>
+							<a
+								role="menuitem"
+								href="/how-pricing-works/"
+								class="flex items-center gap-2 rounded-xl px-3 py-2 text-xs text-slate-400 transition hover:bg-slate-800/70 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+							>
+								<svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
+								How Pricing Works
+							</a>
+						</div>
 					</div>
 				</div>
 			</details>
 
+			{/* Roles — direct link */}
 			<a
-				href={links.howItWorks.href}
-				class={`${linkDesktopBase} ${isHowItWorks ? linkActive : ''}`}
-				aria-current={isHowItWorks ? 'page' : undefined}
+				href="/roles/"
+				class={`${linkDesktopBase} ${isRoles ? linkActive : linkInactive}`}
+				aria-current={isRoles ? 'page' : undefined}
 			>
-				{links.howItWorks.label}
+				Roles
 			</a>
 
+			{/* How It Works */}
 			<a
-				href={links.cta.href}
+				href="/how-it-works/"
+				class={`${linkDesktopBase} ${isHowItWorks ? linkActive : linkInactive}`}
+				aria-current={isHowItWorks ? 'page' : undefined}
+			>
+				How It Works
+			</a>
+
+			{/* CTA */}
+			<a
+				href={bookingUrl}
 				{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
-				class="ml-1 inline-flex items-center justify-center rounded bg-sky-600 px-4 py-2 font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+				class="ml-3 inline-flex min-h-[40px] items-center justify-center rounded bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
 				data-book-call
 			>
-				{links.cta.label}
+				Get Started
 			</a>
 		</nav>
 
-		<button
-			type="button"
-			class="inline-flex items-center justify-center rounded-lg border border-slate-800 bg-slate-900/50 px-3 py-2 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 md:hidden"
-			aria-label="Open menu"
-			aria-expanded="false"
-			aria-controls="mobile-menu"
-			data-nav-mobile-toggle
-		>
-			Menu
-		</button>
+		{/* Mobile: Get Started always visible + hamburger */}
+		<div class="flex items-center gap-2 md:hidden">
+			<a
+				href={bookingUrl}
+				{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+				class="inline-flex min-h-[44px] items-center justify-center rounded bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+				data-book-call
+			>
+				Get Started
+			</a>
+			<button
+				type="button"
+				class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg border border-slate-800 bg-slate-900/50 px-3 py-2 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+				aria-label="Open menu"
+				aria-expanded="false"
+				aria-controls="mobile-menu"
+				data-nav-mobile-toggle
+			>
+				<svg class="h-5 w-5 block" data-icon-open fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
+				<svg class="h-5 w-5 hidden" data-icon-close fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
+			</button>
+		</div>
 	</div>
 
-	<div id="mobile-menu" class="hidden border-t border-slate-800 bg-slate-950/95 md:hidden" data-nav-mobile-menu>
-		<nav class="mx-auto max-w-6xl px-6 py-4" aria-label="Mobile primary">
-			<div class="flex flex-col gap-2 text-sm text-slate-200">
-				<a
-					href={links.home.href}
-					class={`${linkMobileBase} transition hover:bg-slate-900 hover:text-white ${isHome ? linkActive : ''}`}
-					aria-current={isHome ? 'page' : undefined}
-				>
-					{links.home.label}
-				</a>
+	{/* Mobile menu */}
+	<div id="mobile-menu" class="hidden border-t border-slate-800 bg-slate-950/98 md:hidden" data-nav-mobile-menu>
+		<nav class="mx-auto max-w-6xl px-6 py-5" aria-label="Mobile primary">
+			<div class="flex flex-col gap-2 text-sm">
 
+				{/* Solutions accordion */}
 				<details class="group rounded-xl border border-slate-700/60 bg-slate-900/40" data-nav-dropdown="solutions-mobile">
 					<summary
-						class="flex cursor-pointer list-none items-center justify-between gap-3 rounded-xl px-3 py-3 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+						class={`flex min-h-[48px] cursor-pointer list-none items-center justify-between gap-3 rounded-xl px-4 py-3 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${isSolutions ? 'text-white font-semibold' : 'text-slate-200'}`}
 						aria-haspopup="menu"
 						aria-expanded="false"
 						aria-controls="solutions-menu-mobile"
 					>
-						<span>{links.solutions.label}</span>
-						<svg
-							class="h-4 w-4 text-slate-300 transition group-open:rotate-180"
-							viewBox="0 0 20 20"
-							fill="currentColor"
-							aria-hidden="true"
-						>
-							<path
-								fill-rule="evenodd"
-								d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08Z"
-								clip-rule="evenodd"
-							/>
+						<span>Solutions</span>
+						<svg class="h-4 w-4 text-slate-400 transition group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+							<path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08Z" clip-rule="evenodd" />
 						</svg>
 					</summary>
-
-					<div id="solutions-menu-mobile" role="menu" aria-label="Solutions" class="px-2 pb-2">
-						{links.solutions.items.map((item) => (
-							(() => {
-								const active = pathname.startsWith(item.href);
-								return (
-							<a
-								role="menuitem"
-								href={item.href}
-								class={`mt-1 block rounded-xl px-3 py-2 text-sm text-slate-200 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${active ? 'bg-slate-900 text-white font-semibold' : ''}`}
-								aria-current={active ? 'page' : undefined}
-							>
-								{item.label}
-							</a>
-								);
-							})()
-						))}
+					<div id="solutions-menu-mobile" role="menu" aria-label="Solutions" class="px-3 pb-3">
+						<a role="menuitem" href="/aec/"
+							class={`mt-2 flex min-h-[48px] items-center gap-3 rounded-xl px-3 py-2.5 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${isAec ? 'bg-slate-900 text-white font-semibold' : 'text-slate-200'}`}
+							aria-current={isAec ? 'page' : undefined}>
+							<span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-aec/10">
+								<svg class="h-3.5 w-3.5 text-aec" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z" /></svg>
+							</span>
+							<span>AEC Talent</span>
+						</a>
+						<a role="menuitem" href="/design/"
+							class={`mt-1 flex min-h-[48px] items-center gap-3 rounded-xl px-3 py-2.5 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${isDesign ? 'bg-slate-900 text-white font-semibold' : 'text-slate-200'}`}
+							aria-current={isDesign ? 'page' : undefined}>
+							<span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-design/10">
+								<svg class="h-3.5 w-3.5 text-design" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42" /></svg>
+							</span>
+							<span>Creative &amp; Design</span>
+						</a>
+						<a role="menuitem" href="/marketing/"
+							class={`mt-1 flex min-h-[48px] items-center gap-3 rounded-xl px-3 py-2.5 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${isMarketing ? 'bg-slate-900 text-white font-semibold' : 'text-slate-200'}`}
+							aria-current={isMarketing ? 'page' : undefined}>
+							<span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-marketing/10">
+								<svg class="h-3.5 w-3.5 text-marketing" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10.34 15.84c-.688-.06-1.386-.09-2.09-.09H7.5a4.5 4.5 0 1 1 0-9h.75c.704 0 1.402-.03 2.09-.09m0 9.18c.253.962.584 1.892.985 2.783.247.55.06 1.21-.463 1.511l-.657.38c-.551.318-1.26.117-1.527-.461a20.845 20.845 0 0 1-1.44-4.282m3.102.069a18.03 18.03 0 0 1-.59-4.59c0-1.586.205-3.124.59-4.59m0 9.18a23.848 23.848 0 0 1 8.835 2.535M10.34 6.66a23.847 23.847 0 0 1 8.835-2.535m0 0A23.74 23.74 0 0 1 18.795 3m.38 1.125a23.91 23.91 0 0 1 1.014 5.395m-1.014 8.855c-.118.38-.245.754-.38 1.125m.38-1.125a23.91 23.91 0 0 0 1.014-5.395m0-3.46c.495.413.811 1.035.811 1.73 0 .695-.316 1.317-.811 1.73m0-3.46a24.347 24.347 0 0 1 0 3.46" /></svg>
+							</span>
+							<span>Marketing Talent</span>
+						</a>
 					</div>
 				</details>
 
-				<details class="group rounded-xl border border-slate-700/60 bg-slate-900/40" data-nav-dropdown="roles-mobile">
-					<summary
-						class={`flex cursor-pointer list-none items-center justify-between gap-3 rounded-xl px-3 py-3 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${isRoles ? linkActive : ''}`}
-						aria-haspopup="menu"
-						aria-expanded="false"
-						aria-controls="roles-menu-mobile"
-					>
-						<span>{links.roles.label}</span>
-						<svg
-							class="h-4 w-4 text-slate-300 transition group-open:rotate-180"
-							viewBox="0 0 20 20"
-							fill="currentColor"
-							aria-hidden="true"
-						>
-							<path
-								fill-rule="evenodd"
-								d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08Z"
-								clip-rule="evenodd"
-							/>
-						</svg>
-					</summary>
-
-					<div id="roles-menu-mobile" role="menu" aria-label="Roles" class="px-2 pb-2">
-						{links.roles.groups.map((group) => (
-							<div class="mt-2 rounded-xl border border-slate-800 bg-slate-950/40 p-3">
-								<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">{group.title}</p>
-								<div class="mt-2 grid gap-1">
-									{group.items.map((item) => {
-										const active = pathname.startsWith(item.href);
-										return (
-											<a
-												role="menuitem"
-												href={item.href}
-												class={`block rounded-xl px-3 py-2 text-sm text-slate-200 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${active ? 'bg-slate-900 text-white font-semibold' : ''}`}
-												aria-current={active ? 'page' : undefined}
-											>
-												{item.label}
-											</a>
-										);
-									})}
-									<a
-										role="menuitem"
-										href={links.roles.all.href}
-										class="mt-1 block rounded-xl px-3 py-2 text-sm font-semibold text-sky-300 transition hover:bg-slate-900 hover:text-sky-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
-									>
-										{links.roles.all.label} <span aria-hidden="true">→</span>
-									</a>
-								</div>
-							</div>
-						))}
-					</div>
-				</details>
-
+				{/* Roles direct link */}
 				<a
-					href={links.howItWorks.href}
-					class={`${linkMobileBase} transition hover:bg-slate-900 hover:text-white ${isHowItWorks ? linkActive : ''}`}
-					aria-current={isHowItWorks ? 'page' : undefined}
+					href="/roles/"
+					class={`flex min-h-[48px] items-center rounded-xl px-4 py-3 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${isRoles ? 'bg-slate-900 text-white font-semibold' : 'text-slate-200'}`}
+					aria-current={isRoles ? 'page' : undefined}
 				>
-					{links.howItWorks.label}
+					Roles
 				</a>
 
+				{/* How It Works */}
 				<a
-					href={links.cta.href}
-					{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
-					class="mt-2 inline-flex w-full items-center justify-center rounded bg-sky-600 px-4 py-3 font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
-					data-book-call
+					href="/how-it-works/"
+					class={`flex min-h-[48px] items-center rounded-xl px-4 py-3 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${isHowItWorks ? 'bg-slate-900 text-white font-semibold' : 'text-slate-200'}`}
+					aria-current={isHowItWorks ? 'page' : undefined}
 				>
-					{links.cta.label}
+					How It Works
 				</a>
 			</div>
 		</nav>
@@ -331,125 +249,102 @@ const links = {
 
 	<script is:inline>
 		(() => {
-  const header = document.currentScript?.closest('header');
-  if (!header) return;
+			const header = document.currentScript?.closest('header');
+			if (!header) return;
 
-  const mobileToggle = header.querySelector('[data-nav-mobile-toggle]');
-  const mobileMenu = header.querySelector('[data-nav-mobile-menu]');
+			const mobileToggle = header.querySelector('[data-nav-mobile-toggle]');
+			const mobileMenu = header.querySelector('[data-nav-mobile-menu]');
+			const iconOpen = mobileToggle?.querySelector('[data-icon-open]');
+			const iconClose = mobileToggle?.querySelector('[data-icon-close]');
 
-  function setMobile(open) {
-    if (!mobileToggle || !mobileMenu) return;
-    mobileMenu.classList.toggle('hidden', !open);
-    mobileToggle.setAttribute('aria-expanded', String(open));
-    mobileToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-  }
+			function setMobile(open) {
+				if (!mobileToggle || !mobileMenu) return;
+				mobileMenu.classList.toggle('hidden', !open);
+				mobileToggle.setAttribute('aria-expanded', String(open));
+				mobileToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+				if (iconOpen) iconOpen.classList.toggle('hidden', open);
+				if (iconClose) iconClose.classList.toggle('hidden', !open);
+			}
 
-  mobileToggle?.addEventListener('click', () => {
-    const open = mobileToggle.getAttribute('aria-expanded') !== 'true';
-    setMobile(open);
-    if (open) {
-      const first = mobileMenu?.querySelector('a, summary, button, [tabindex]:not([tabindex="-1"])');
-      first?.focus?.();
-    }
-  });
+			mobileToggle?.addEventListener('click', () => {
+				const open = mobileToggle.getAttribute('aria-expanded') !== 'true';
+				setMobile(open);
+				if (open) {
+					const first = mobileMenu?.querySelector('a, summary, button, [tabindex]:not([tabindex="-1"])');
+					first?.focus?.();
+				}
+			});
 
-  // Close mobile on Escape or outside click.
-  document.addEventListener('keydown', (e) => {
-    if (e.key !== 'Escape') return;
-    if (mobileToggle?.getAttribute('aria-expanded') === 'true') {
-      setMobile(false);
-      mobileToggle?.focus?.();
-    }
-    // Close any open dropdowns.
-    header.querySelectorAll('details[open]').forEach((d) => d.removeAttribute('open'));
-  });
+			document.addEventListener('keydown', (e) => {
+				if (e.key !== 'Escape') return;
+				if (mobileToggle?.getAttribute('aria-expanded') === 'true') {
+					setMobile(false);
+					mobileToggle?.focus?.();
+				}
+				header.querySelectorAll('details[open]').forEach((d) => d.removeAttribute('open'));
+			});
 
-  document.addEventListener('click', (e) => {
-    if (!header.contains(e.target)) {
-      setMobile(false);
-      header.querySelectorAll('details[open]').forEach((d) => d.removeAttribute('open'));
-    }
-  });
+			document.addEventListener('click', (e) => {
+				if (!header.contains(e.target)) {
+					setMobile(false);
+					header.querySelectorAll('details[open]').forEach((d) => d.removeAttribute('open'));
+				}
+			});
 
-  // Get desktop dropdowns (in the primary nav, not mobile menu)
-  const desktopDropdowns = header.querySelectorAll('nav[aria-label="Primary"] details[data-nav-dropdown]');
-  
-  // Close all other dropdowns when clicking on a summary
-  // Use pointerdown which fires BEFORE the native details toggle
-  desktopDropdowns.forEach((details) => {
-    const summary = details.querySelector('summary');
-    
-    // Initialize aria-expanded
-    summary?.setAttribute('aria-expanded', String(details.hasAttribute('open')));
-    
-    // Close other dropdowns BEFORE native toggle (pointerdown fires first)
-    summary?.addEventListener('pointerdown', () => {
-      desktopDropdowns.forEach((other) => {
-        if (other !== details && other.hasAttribute('open')) {
-          other.removeAttribute('open');
-          const otherSummary = other.querySelector('summary');
-          otherSummary?.setAttribute('aria-expanded', 'false');
-        }
-      });
-    });
-    
-    // Sync aria-expanded on toggle
-    details.addEventListener('toggle', () => {
-      summary?.setAttribute('aria-expanded', String(details.hasAttribute('open')));
-    });
-  });
+			const desktopDropdowns = header.querySelectorAll('nav[aria-label="Primary"] details[data-nav-dropdown]');
 
-  // Hover-to-open on desktop pointer devices
-  const canHover = window.matchMedia?.('(hover: hover) and (pointer: fine)')?.matches;
-  if (canHover) {
-    desktopDropdowns.forEach((details) => {
-      let closeTimer = null;
-      
-      const handleMouseEnter = () => {
-        if (closeTimer) {
-          clearTimeout(closeTimer);
-          closeTimer = null;
-        }
-        // Close all other dropdowns first
-        desktopDropdowns.forEach((other) => {
-          if (other !== details && other.hasAttribute('open')) {
-            other.removeAttribute('open');
-            const otherSummary = other.querySelector('summary');
-            otherSummary?.setAttribute('aria-expanded', 'false');
-          }
-        });
-        // Then open this dropdown
-        if (!details.hasAttribute('open')) {
-          details.setAttribute('open', '');
-          const summary = details.querySelector('summary');
-          summary?.setAttribute('aria-expanded', 'true');
-        }
-      };
-      
-      const handleMouseLeave = () => {
-        if (closeTimer) clearTimeout(closeTimer);
-        closeTimer = setTimeout(() => {
-          details.removeAttribute('open');
-          const summary = details.querySelector('summary');
-          summary?.setAttribute('aria-expanded', 'false');
-        }, 150);
-      };
-      
-      details.addEventListener('mouseenter', handleMouseEnter);
-      details.addEventListener('mouseleave', handleMouseLeave);
-    });
-  }
+			desktopDropdowns.forEach((details) => {
+				const summary = details.querySelector('summary');
+				summary?.setAttribute('aria-expanded', String(details.hasAttribute('open')));
 
-  // Mobile dropdowns - let native details behavior work, just sync aria
-  const mobileDropdowns = header.querySelectorAll('[data-nav-mobile-menu] details[data-nav-dropdown]');
-  
-  mobileDropdowns.forEach((details) => {
-    const summary = details.querySelector('summary');
-    const sync = () => summary?.setAttribute('aria-expanded', String(details.hasAttribute('open')));
-    sync();
-    details.addEventListener('toggle', sync);
-  });
-})();
+				summary?.addEventListener('pointerdown', () => {
+					desktopDropdowns.forEach((other) => {
+						if (other !== details && other.hasAttribute('open')) {
+							other.removeAttribute('open');
+							other.querySelector('summary')?.setAttribute('aria-expanded', 'false');
+						}
+					});
+				});
+
+				details.addEventListener('toggle', () => {
+					summary?.setAttribute('aria-expanded', String(details.hasAttribute('open')));
+				});
+			});
+
+			const canHover = window.matchMedia?.('(hover: hover) and (pointer: fine)')?.matches;
+			if (canHover) {
+				desktopDropdowns.forEach((details) => {
+					let closeTimer = null;
+					details.addEventListener('mouseenter', () => {
+						if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
+						desktopDropdowns.forEach((other) => {
+							if (other !== details && other.hasAttribute('open')) {
+								other.removeAttribute('open');
+								other.querySelector('summary')?.setAttribute('aria-expanded', 'false');
+							}
+						});
+						if (!details.hasAttribute('open')) {
+							details.setAttribute('open', '');
+							details.querySelector('summary')?.setAttribute('aria-expanded', 'true');
+						}
+					});
+					details.addEventListener('mouseleave', () => {
+						if (closeTimer) clearTimeout(closeTimer);
+						closeTimer = setTimeout(() => {
+							details.removeAttribute('open');
+							details.querySelector('summary')?.setAttribute('aria-expanded', 'false');
+						}, 150);
+					});
+				});
+			}
+
+			const mobileDropdowns = header.querySelectorAll('[data-nav-mobile-menu] details[data-nav-dropdown]');
+			mobileDropdowns.forEach((details) => {
+				const summary = details.querySelector('summary');
+				const sync = () => summary?.setAttribute('aria-expanded', String(details.hasAttribute('open')));
+				sync();
+				details.addEventListener('toggle', sync);
+			});
+		})();
 	</script>
 </header>
-

@@ -1,102 +1,98 @@
 ---
 import { BOOKING_URL, isExternalUrl } from '../lib/cta';
 
-export type Props = {
-	companyName?: string;
-};
-
-const {
-	companyName = 'LatAm Scalers',
-} = Astro.props;
-
 const year = new Date().getFullYear();
-
 const bookingUrl = BOOKING_URL;
 const bookingExternal = isExternalUrl(bookingUrl);
 ---
 
 <footer class="border-t border-slate-800/80 bg-slate-950">
-	<div class="mx-auto max-w-6xl px-6 py-12">
-		<div class="grid gap-10 md:grid-cols-12">
-			<div class="md:col-span-4">
+	<div class="mx-auto max-w-6xl px-6 py-14">
+
+		{/* Top grid */}
+		<div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-12">
+
+			{/* Brand column */}
+			<div class="lg:col-span-4">
 				<a
 					href="/"
-					class="inline-flex items-center gap-3 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+					class="inline-flex items-center gap-2 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+					aria-label="LatAm Scalers — home"
 				>
-					<img src="/favicon.svg" alt={`${companyName} logo`} class="h-8 w-8" loading="lazy" />
-					<span class="text-sm font-semibold tracking-tight text-white">{companyName}</span>
+					<img src="/favicon.svg" alt="" class="h-7 w-7" loading="lazy" aria-hidden="true" />
+					<span class="text-sm font-semibold tracking-tight text-white">LatAm Scalers</span>
 				</a>
-				<p class="mt-4 max-w-sm text-sm leading-relaxed text-slate-300">
-					Vetted remote talent for US teams across AEC, creative &amp; design, and marketing.
-				</p>
-			</div>
-
-			<div class="md:col-span-2">
-				<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Solutions</p>
-				<nav class="mt-4 grid gap-2 text-sm" aria-label="Footer solutions">
-					<a class="text-slate-300 transition hover:text-white" href="/solutions/aec-talent/">AEC Talent</a>
-					<a class="text-slate-300 transition hover:text-white" href="/solutions/creatives-design/">Creative &amp; Design</a>
-					<a class="text-slate-300 transition hover:text-white" href="/solutions/marketing-talent/">Marketing Talent</a>
-				</nav>
-			</div>
-
-			<div class="md:col-span-2">
-				<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Roles</p>
-				<nav class="mt-4 grid gap-4 text-sm" aria-label="Footer roles">
-					<div class="grid gap-2">
-						<p class="text-xs font-semibold uppercase tracking-wide text-slate-500">AEC Roles</p>
-						<a class="text-slate-300 transition hover:text-white" href="/roles/architectural-designer/">Architectural Designer</a>
-					</div>
-					<div class="grid gap-2">
-						<p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Marketing Roles</p>
-						<a class="text-slate-300 transition hover:text-white" href="/roles/seo-specialist/">SEO Specialist</a>
-					</div>
-					<div class="grid gap-2">
-						<p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Creative &amp; Design Roles</p>
-						<a class="text-slate-300 transition hover:text-white" href="/roles/brand-visual-designer/">Brand / Visual Designer</a>
-					</div>
-					<a class="text-slate-300 transition hover:text-white" href="/roles/">Explore all roles →</a>
-				</nav>
-			</div>
-
-			<div class="md:col-span-2">
-				<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Company</p>
-				<nav class="mt-4 grid gap-2 text-sm" aria-label="Footer company">
-					<a class="text-slate-300 transition hover:text-white" href="/how-it-works/">How It Works</a>
-					<a
-						class="text-slate-300 transition hover:text-white"
-						href="/#contact"
-						data-open-tell-us="footer-contact"
-					>
-						Contact
-					</a>
-				</nav>
-			</div>
-
-			<div class="md:col-span-2">
-				<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Get started</p>
-				<p class="mt-4 text-sm leading-relaxed text-slate-300">
-					Book a quick call to confirm your needs and get matched.
+				<p class="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">
+					Dedicated LATAM talent for US teams — AEC, creative &amp; design, and marketing specialists.
 				</p>
 				<a
 					href={bookingUrl}
 					{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
-					class="mt-5 inline-flex w-full items-center justify-center rounded bg-sky-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+					class="mt-6 inline-flex min-h-[44px] items-center justify-center rounded bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
 					data-book-call
 				>
-					Book a Call
+					Get Started
 				</a>
+			</div>
+
+			{/* Solutions column */}
+			<div class="lg:col-span-2">
+				<p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Solutions</p>
+				<nav class="mt-4 grid gap-2.5 text-sm" aria-label="Footer solutions">
+					<a class="text-slate-400 transition hover:text-white" href="/aec/">AEC Talent</a>
+					<a class="text-slate-400 transition hover:text-white" href="/design/">Creative &amp; Design</a>
+					<a class="text-slate-400 transition hover:text-white" href="/marketing/">Marketing Talent</a>
+					<a class="mt-1 text-slate-500 transition hover:text-white" href="/how-pricing-works/">How Pricing Works</a>
+				</nav>
+			</div>
+
+			{/* Roles column */}
+			<div class="lg:col-span-3">
+				<p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Roles</p>
+				<nav class="mt-4 grid gap-2.5 text-sm" aria-label="Footer roles">
+					<a class="text-slate-400 transition hover:text-white" href="/roles/bim-coordinator/">BIM Coordinator</a>
+					<a class="text-slate-400 transition hover:text-white" href="/roles/architectural-designer/">Architectural Designer</a>
+					<a class="text-slate-400 transition hover:text-white" href="/roles/ui-ux-designer/">UX Designer</a>
+					<a class="text-slate-400 transition hover:text-white" href="/roles/seo-specialist/">SEO Specialist</a>
+					<a class="text-slate-400 transition hover:text-white" href="/roles/brand-visual-designer/">Brand / Visual Designer</a>
+					<a class="mt-1 text-sky-300 transition hover:text-sky-200" href="/roles/">Explore all roles →</a>
+				</nav>
+			</div>
+
+			{/* Company column */}
+			<div class="lg:col-span-3">
+				<p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Company</p>
+				<nav class="mt-4 grid gap-2.5 text-sm" aria-label="Footer company">
+					<a class="text-slate-400 transition hover:text-white" href="/how-it-works/">How It Works</a>
+					<a class="text-slate-400 transition hover:text-white" href="/about/how-we-vet/">How We Vet</a>
+					<a class="text-slate-400 transition hover:text-white" href="/about/our-guarantee/">Our Guarantee</a>
+					<a class="text-slate-400 transition hover:text-white" href="/compare/vs-superside/">Compare: vs Superside</a>
+					<a
+						class="text-slate-400 transition hover:text-white"
+						href="/#contact"
+						data-open-tell-us="footer-contact"
+					>
+						Contact Us
+					</a>
+				</nav>
 			</div>
 		</div>
 
-		<div class="mt-12 flex flex-col gap-3 border-t border-slate-800/80 pt-6 sm:flex-row sm:items-center sm:justify-between">
-			<p class="text-xs text-slate-400">© {year} {companyName}. All rights reserved.</p>
+		{/* Legal disclaimer */}
+		<div class="mt-12 rounded-xl border border-slate-800/60 bg-slate-900/30 px-5 py-4">
+			<p class="text-xs leading-relaxed text-slate-500">
+				<strong class="font-semibold text-slate-400">Disclaimer:</strong> LatAm Scalers connects US businesses with independent professionals based in Latin America. We are not a staffing agency, employer of record, or payroll provider. All specialists are engaged as independent contractors. Clients remain responsible for defining scope, reviewing deliverables, and maintaining all professional certifications and licensure requirements applicable to their jurisdiction and industry.
+			</p>
+		</div>
+
+		{/* Bottom bar */}
+		<div class="mt-8 flex flex-col gap-3 border-t border-slate-800/60 pt-6 sm:flex-row sm:items-center sm:justify-between">
+			<p class="text-xs text-slate-500">© {year} LatAm Scalers. All rights reserved.</p>
 			<div class="flex flex-wrap gap-x-6 gap-y-2 text-xs">
-				<a class="text-slate-400 transition hover:text-white" href="/terms/">Terms</a>
-				<a class="text-slate-400 transition hover:text-white" href="/privacy/">Privacy</a>
-				<a class="text-slate-400 transition hover:text-white" href="/cookies/">Cookies</a>
+				<a class="text-slate-500 transition hover:text-white" href="/terms/">Terms</a>
+				<a class="text-slate-500 transition hover:text-white" href="/privacy/">Privacy</a>
+				<a class="text-slate-500 transition hover:text-white" href="/cookies/">Cookies</a>
 			</div>
 		</div>
 	</div>
 </footer>
-
