@@ -1,0 +1,102 @@
+---
+import { BOOKING_URL, isExternalUrl } from '../lib/cta';
+
+export type Props = {
+	companyName?: string;
+};
+
+const {
+	companyName = 'TalentCompany',
+} = Astro.props;
+
+const year = new Date().getFullYear();
+
+const bookingUrl = BOOKING_URL;
+const bookingExternal = isExternalUrl(bookingUrl);
+---
+
+<footer class="border-t border-slate-800/80 bg-slate-950">
+	<div class="mx-auto max-w-6xl px-6 py-12">
+		<div class="grid gap-10 md:grid-cols-12">
+			<div class="md:col-span-4">
+				<a
+					href="/"
+					class="inline-flex items-center gap-3 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+				>
+					<img src="/favicon.svg" alt={`${companyName} logo`} class="h-8 w-8" loading="lazy" />
+					<span class="text-sm font-semibold tracking-tight text-white">{companyName}</span>
+				</a>
+				<p class="mt-4 max-w-sm text-sm leading-relaxed text-slate-300">
+					Vetted remote talent for US teams across AEC, creative &amp; design, and marketing.
+				</p>
+			</div>
+
+			<div class="md:col-span-2">
+				<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Solutions</p>
+				<nav class="mt-4 grid gap-2 text-sm" aria-label="Footer solutions">
+					<a class="text-slate-300 transition hover:text-white" href="/solutions/aec-talent/">AEC Talent</a>
+					<a class="text-slate-300 transition hover:text-white" href="/solutions/creatives-design/">Creative &amp; Design</a>
+					<a class="text-slate-300 transition hover:text-white" href="/solutions/marketing-talent/">Marketing Talent</a>
+				</nav>
+			</div>
+
+			<div class="md:col-span-2">
+				<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Roles</p>
+				<nav class="mt-4 grid gap-4 text-sm" aria-label="Footer roles">
+					<div class="grid gap-2">
+						<p class="text-xs font-semibold uppercase tracking-wide text-slate-500">AEC Roles</p>
+						<a class="text-slate-300 transition hover:text-white" href="/roles/architectural-designer/">Architectural Designer</a>
+					</div>
+					<div class="grid gap-2">
+						<p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Marketing Roles</p>
+						<a class="text-slate-300 transition hover:text-white" href="/roles/seo-specialist/">SEO Specialist</a>
+					</div>
+					<div class="grid gap-2">
+						<p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Creative &amp; Design Roles</p>
+						<a class="text-slate-300 transition hover:text-white" href="/roles/brand-visual-designer/">Brand / Visual Designer</a>
+					</div>
+					<a class="text-slate-300 transition hover:text-white" href="/roles/">Explore all roles →</a>
+				</nav>
+			</div>
+
+			<div class="md:col-span-2">
+				<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Company</p>
+				<nav class="mt-4 grid gap-2 text-sm" aria-label="Footer company">
+					<a class="text-slate-300 transition hover:text-white" href="/how-it-works/">How It Works</a>
+					<a
+						class="text-slate-300 transition hover:text-white"
+						href="/#contact"
+						data-open-tell-us="footer-contact"
+					>
+						Contact
+					</a>
+				</nav>
+			</div>
+
+			<div class="md:col-span-2">
+				<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Get started</p>
+				<p class="mt-4 text-sm leading-relaxed text-slate-300">
+					Book a quick call to confirm your needs and get matched.
+				</p>
+				<a
+					href={bookingUrl}
+					{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+					class="mt-5 inline-flex w-full items-center justify-center rounded bg-sky-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+					data-book-call
+				>
+					Book a Call
+				</a>
+			</div>
+		</div>
+
+		<div class="mt-12 flex flex-col gap-3 border-t border-slate-800/80 pt-6 sm:flex-row sm:items-center sm:justify-between">
+			<p class="text-xs text-slate-400">© {year} {companyName}. All rights reserved.</p>
+			<div class="flex flex-wrap gap-x-6 gap-y-2 text-xs">
+				<a class="text-slate-400 transition hover:text-white" href="/terms/">Terms</a>
+				<a class="text-slate-400 transition hover:text-white" href="/privacy/">Privacy</a>
+				<a class="text-slate-400 transition hover:text-white" href="/cookies/">Cookies</a>
+			</div>
+		</div>
+	</div>
+</footer>
+
