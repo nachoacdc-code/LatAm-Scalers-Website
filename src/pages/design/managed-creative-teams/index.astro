@@ -1,0 +1,319 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import MetaHead from '../../../components/MetaHead.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import CalendlyEmbed from '../../../components/CalendlyEmbed.astro';
+import { BOOKING_URL, isExternalUrl } from '../../../lib/cta';
+
+const brand = 'LatAm Scalers';
+
+const meta = {
+	title: 'Managed Creative Teams — PM-Led Design Execution for US Companies | LatAm Scalers',
+	description:
+		'PM-led managed creative teams for US teams. Design execution without agency overhead. Dedicated designers, clear intake, predictable turnaround. Compare Design Pickle vs Superside vs LatAm Scalers. From $2,800/mo.',
+};
+
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/design/managed-creative-teams/', baseUrl).toString();
+
+const comparisonDimensions = [
+	{ dim: 'Model', dp: 'Credit subscription', ss: 'Subscription tiers', ls: 'PM-led dedicated designers' },
+	{ dim: 'Who works on your brand', dp: 'Rotating pool', ss: 'Assigned team', ls: 'Same people, exclusively' },
+	{ dim: 'PM ownership', dp: 'No dedicated PM', ss: 'Account manager', ls: 'Dedicated PM runs intake & delivery' },
+	{ dim: 'Flexibility', dp: 'Monthly credits', ss: 'Monthly plans', ls: 'Month-to-month, scale up/down' },
+	{ dim: 'Quality consistency', dp: 'Variable', ss: 'Good', ls: 'High — dedicated to your brand' },
+	{ dim: 'Best for', dp: 'High-volume, low-touch', ss: 'Mid-volume marketing', ls: 'Ongoing product + brand + stakeholder-heavy work' },
+	{ dim: 'Pricing', dp: 'Per credit', ss: 'Tiered plans', ls: 'Transparent monthly seat' },
+];
+
+const pmRoleItems = [
+	'Intake and triage of design requests',
+	'Scope clarification and timeline confirmation',
+	'Prioritization and capacity planning',
+	'Structured feedback loops and revision rounds',
+	'Delivery packaging and handoff',
+];
+
+const capacityOptions = [
+	{ label: 'Starter', desc: 'PM + 1 designer', capacity: '~40h/week design output', price: 'From ~$2,800/mo' },
+	{ label: 'Growth', desc: 'PM + 2–3 designers', capacity: '~80–120h/week', price: 'Custom' },
+	{ label: 'Scale', desc: 'PM + 4+ designers', capacity: 'Dedicated pod for peak demand', price: 'Custom' },
+];
+
+const faqs = [
+	{
+		q: 'How is this different from Design Pickle or Superside?',
+		a: 'We provide PM-led dedicated designers who work exclusively on your brand — not a rotating pool or credit-based subscription. A dedicated PM owns intake, prioritization, and delivery so you don\'t manage every request. Same people every week, month-to-month flexibility, free replacement guarantee.',
+	},
+	{
+		q: 'What does the PM actually do?',
+		a: 'The PM runs the workflow: receives requests, clarifies scope, confirms timelines, prioritizes against capacity, manages feedback rounds, and packages deliverables. You submit work; we handle execution and handoff.',
+	},
+	{
+		q: 'Can we scale up or down?',
+		a: 'Yes. Engagements are month-to-month. Add designers as volume increases or reduce capacity when priorities shift. No long-term contracts.',
+	},
+	{
+		q: 'What turnaround can we expect?',
+		a: 'Typical ranges: ad creative variations 1–2 business days; landing page sections 2–4 days; deck refresh 2–5 days; brand system updates 3–7 days. The PM confirms timing at intake.',
+	},
+	{
+		q: 'How fast can we get started?',
+		a: 'Once we confirm scope, brand standards, and access, we typically present vetted options within a few days. Onboarding is designed for fast ramp-up.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Managed Creative Teams',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqs.map((f) => ({
+		'@type': 'Question',
+		name: f.q,
+		acceptedAnswer: { '@type': 'Answer', text: f.a },
+	})),
+};
+
+const bookingUrl = BOOKING_URL;
+const bookingExternal = isExternalUrl(bookingUrl);
+const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com/your-org/15min';
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
+
+	<main>
+		<!-- Hero (bg-primary, white text) -->
+		<section class="bg-primary py-16 sm:py-24" aria-labelledby="hero-heading">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="js-fade-in">
+					<p class="text-sm font-semibold uppercase tracking-widest text-accent">Design — Managed Teams</p>
+					<h1 id="hero-heading" class="mt-4 text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
+						Managed Creative Teams — PM-Led Design Execution Without Agency Overhead
+					</h1>
+					<p class="mt-5 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">
+						A dedicated PM runs intake, prioritization, and delivery. Your designers work exclusively on your brand. No rotating pool. No credit packs. Month-to-month flexibility.
+					</p>
+					<div class="mt-8 flex flex-wrap gap-3">
+						<a
+							href={bookingUrl}
+							{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+							class="inline-flex min-h-[48px] items-center justify-center rounded bg-accent px-6 py-3 text-sm font-semibold text-white transition hover:bg-accent/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+							data-book-call
+						>
+							Book a Design Team Scoping Call
+						</a>
+						<a
+							href="#contact"
+							class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+							data-open-tell-us="managed-teams-hero"
+						>
+							Tell Us What You Need
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Service overview (bg-bg-light) -->
+		<section class="bg-bg-light py-16 sm:py-20" aria-labelledby="overview-heading">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="js-fade-in">
+					<h2 id="overview-heading" class="text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
+						PM-Led Creative Teams — What You Get
+					</h2>
+					<p class="mt-4 max-w-2xl text-base leading-relaxed text-text-secondary">
+						Structured intake, predictable delivery, same designers every week. A dedicated project manager owns the workflow so you focus on strategy — not task triage.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Comparison table (bg-bg-alt) -->
+		<section class="bg-bg-alt py-16 sm:py-20" aria-labelledby="comparison-heading">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="js-fade-in">
+					<h2 id="comparison-heading" class="text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
+						Design Pickle vs Superside vs LatAm Scalers
+					</h2>
+					<p class="mt-4 max-w-2xl text-base leading-relaxed text-text-secondary">
+						How we compare across 7 dimensions — model, talent consistency, PM ownership, flexibility, quality, best-fit use case, and pricing.
+					</p>
+				</div>
+				<div class="mt-10 overflow-x-auto">
+					<table class="min-w-full rounded-2xl border border-border bg-white shadow-sm overflow-hidden">
+						<thead>
+							<tr class="border-b border-border bg-bg-alt">
+								<th class="px-6 py-4 text-left text-sm font-semibold text-text-primary">Dimension</th>
+								<th class="px-6 py-4 text-left text-sm font-semibold text-text-primary">Design Pickle</th>
+								<th class="px-6 py-4 text-left text-sm font-semibold text-text-primary">Superside</th>
+								<th class="px-6 py-4 text-left text-sm font-semibold text-design">LatAm Scalers</th>
+							</tr>
+						</thead>
+						<tbody>
+							{comparisonDimensions.map((row, i) => (
+								<tr class={i % 2 === 0 ? 'bg-white' : 'bg-bg-light/50'}>
+									<td class="px-6 py-4 text-sm font-medium text-text-primary">{row.dim}</td>
+									<td class="px-6 py-4 text-sm text-text-secondary">{row.dp}</td>
+									<td class="px-6 py-4 text-sm text-text-secondary">{row.ss}</td>
+									<td class="px-6 py-4 text-sm font-medium text-text-primary">{row.ls}</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</section>
+
+		<!-- PM role definition (bg-bg-light) -->
+		<section class="bg-bg-light py-16 sm:py-20" aria-labelledby="pm-heading">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="js-fade-in">
+					<h2 id="pm-heading" class="text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
+						The PM Role — What They Own
+					</h2>
+					<p class="mt-4 max-w-2xl text-base leading-relaxed text-text-secondary">
+						Your dedicated PM runs the entire design workflow — from intake to handoff.
+					</p>
+				</div>
+				<ul class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+					{pmRoleItems.map((item) => (
+						<li class="rounded-2xl border border-border bg-white p-6 shadow-sm">
+							<p class="text-sm font-semibold text-design">✓</p>
+							<p class="mt-2 text-sm font-medium text-text-primary">{item}</p>
+						</li>
+					))}
+				</ul>
+			</div>
+		</section>
+
+		<!-- Capacity comparison + pricing (bg-bg-alt) -->
+		<section class="bg-bg-alt py-16 sm:py-20" aria-labelledby="capacity-heading">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="js-fade-in">
+					<h2 id="capacity-heading" class="text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
+						Capacity & Pricing
+					</h2>
+					<p class="mt-4 max-w-2xl text-base leading-relaxed text-text-secondary">
+						Transparent monthly seats. No credit packs. Scale up or down as demand changes.
+					</p>
+				</div>
+				<div class="mt-10 grid gap-6 md:grid-cols-3">
+					{capacityOptions.map((opt) => (
+						<div class="rounded-2xl border border-border bg-white p-6 shadow-sm">
+							<p class="text-sm font-semibold uppercase tracking-wide text-design">{opt.label}</p>
+							<h3 class="mt-2 text-lg font-semibold text-text-primary">{opt.desc}</h3>
+							<p class="mt-2 text-sm text-text-secondary">{opt.capacity}</p>
+							<p class="mt-4 text-sm font-semibold text-design">{opt.price}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<!-- FAQ (bg-bg-alt) -->
+		<section class="bg-bg-alt py-16 sm:py-20" aria-labelledby="faq-heading">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="js-fade-in">
+					<h2 id="faq-heading" class="text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
+						FAQ
+					</h2>
+				</div>
+				<div class="mt-10 grid gap-3">
+					{faqs.map((item) => (
+						<details class="rounded-2xl border border-border bg-white p-5 shadow-sm">
+							<summary class="cursor-pointer list-none text-sm font-semibold text-text-primary">{item.q}</summary>
+							<p class="mt-3 text-sm leading-relaxed text-text-secondary">{item.a}</p>
+						</details>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<!-- CTA (bg-primary) -->
+		<section class="bg-primary py-16 sm:py-20" aria-labelledby="cta-heading">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="js-fade-in rounded-2xl border border-white/10 bg-white/5 p-8 text-center shadow-xl backdrop-blur-sm sm:p-12">
+					<h2 id="cta-heading" class="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+						Ready for PM-Led Design Delivery?
+					</h2>
+					<p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-white/70">
+						Book a scoping call to discuss your workflow — we'll recommend a team setup and match you with vetted designers.
+					</p>
+					<div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+						<a
+							href={bookingUrl}
+							{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+							class="inline-flex min-h-[48px] items-center justify-center rounded bg-accent px-8 py-3 text-sm font-semibold text-white transition hover:bg-accent/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+							data-book-call
+						>
+							Book a Design Team Scoping Call
+						</a>
+						<a
+							href="#contact"
+							class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-white/20 bg-white/5 px-8 py-3 text-sm font-semibold text-white transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+							data-open-tell-us="managed-teams-cta"
+						>
+							Tell Us What You Need
+						</a>
+					</div>
+					<p class="mt-5 text-xs text-white/40">Month-to-month · Free replacement guarantee · No long-term contracts</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Contact section -->
+		<section id="contact" class="bg-bg-light pb-20 pt-16 sm:pb-24 sm:pt-20" aria-labelledby="contact-heading">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="js-fade-in max-w-2xl">
+					<p class="text-sm font-semibold uppercase tracking-widest text-accent">Get in touch</p>
+					<h2 id="contact-heading" class="mt-3 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
+						Let's Talk About Your Design Team Needs
+					</h2>
+					<p class="mt-4 text-base leading-relaxed text-text-secondary">
+						Tell us your workflow, volume, and priorities — we'll suggest the right capacity and match you with a vetted PM-led team.
+					</p>
+				</div>
+				<div class="mt-10 grid gap-6 lg:grid-cols-2">
+					<ContactForm subject={`${brand} — new inquiry (managed creative teams)`} defaultInterest="design" />
+					<CalendlyEmbed url={calendlyUrl} title="Book a Design Team Scoping Call" />
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<style>
+		.js-fade-in {
+			opacity: 0;
+			transform: translateY(20px);
+			transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+		}
+		.js-fade-in.is-visible {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	</style>
+
+	<script is:inline>
+		(function () {
+			var els = document.querySelectorAll('.js-fade-in');
+			if (!els.length) return;
+			var io = new IntersectionObserver(function (entries) {
+				entries.forEach(function (e) {
+					if (e.isIntersecting) {
+						e.target.classList.add('is-visible');
+						io.unobserve(e.target);
+					}
+				});
+			}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+			els.forEach(function (el) { io.observe(el); });
+		})();
+	</script>
+</Layout>

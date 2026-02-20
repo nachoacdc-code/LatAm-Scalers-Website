@@ -5,6 +5,8 @@
   "framework": "astro",
   "redirects": [
     { "source": "/solutions/aec-talent/:path*", "destination": "/aec/:path*", "statusCode": 301 },
+    { "source": "/solutions/creatives-design/pm-led", "destination": "/design/managed-creative-teams/", "statusCode": 301 },
+    { "source": "/solutions/creatives-design/pm-led/", "destination": "/design/managed-creative-teams/", "statusCode": 301 },
     { "source": "/solutions/creatives-design/:path*", "destination": "/design/:path*", "statusCode": 301 },
     { "source": "/solutions/marketing-talent/:path*", "destination": "/marketing/:path*", "statusCode": 301 },
     { "source": "/services/aec", "destination": "/aec/", "statusCode": 301 },

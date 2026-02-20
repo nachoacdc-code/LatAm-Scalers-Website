@@ -1,0 +1,294 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import MetaHead from '../../../components/MetaHead.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import CalendlyEmbed from '../../../components/CalendlyEmbed.astro';
+import { BOOKING_URL, isExternalUrl } from '../../../lib/cta';
+
+const brand = 'LatAm Scalers';
+
+const meta = {
+	title: 'MarOps & RevOps Specialists — HubSpot Consultant for US Companies | LatAm Scalers',
+	description:
+		'HubSpot-certified MarOps and RevOps specialists for US companies. Revenue backbone: CRM, lifecycle, reporting. Dedicated full-time from ~$2,500/mo. Month-to-month flexibility.',
+};
+
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/marketing/marops-revops/', baseUrl).toString();
+
+const revenueBackboneItems = [
+	{ title: 'CRM health', desc: 'Data quality, pipeline hygiene, attribution' },
+	{ title: 'Lifecycle automation', desc: 'HubSpot workflows, Klaviyo flows, Salesforce journey' },
+	{ title: 'Reporting & dashboards', desc: 'Revenue metrics, funnel visibility, SLA tracking' },
+];
+
+const platformProof = [
+	{ platform: 'HubSpot', cert: 'HubSpot Certified', scope: 'Marketing & Sales Hubs, Service, Operations' },
+	{ platform: 'Salesforce', cert: 'Salesforce Certified', scope: 'Sales Cloud, Marketing Cloud, RevOps' },
+	{ platform: 'Klaviyo', cert: 'Klaviyo Certified', scope: 'Email/SMS flows, segmentation, analytics' },
+];
+
+const revopsStats = [
+	{ value: '40%', label: 'Companies planning to add RevOps roles in the next 12 months' },
+	{ value: '3–5x', label: 'ROI from proper marketing ops alignment' },
+	{ value: '~$2,500', label: 'Starting monthly cost for dedicated MarOps/RevOps specialist' },
+];
+
+const faqs = [
+	{
+		q: 'What is the difference between MarOps and RevOps?',
+		a: 'MarOps focuses on marketing technology, automation, and pipeline — HubSpot, Klaviyo, lifecycle. RevOps bridges sales and marketing with revenue metrics, attribution, and CRM health. We place specialists in both, often starting with MarOps as the entry point.',
+	},
+	{
+		q: 'Are your specialists HubSpot-certified?',
+		a: 'Yes. We place HubSpot-certified specialists who know Marketing Hub, Sales Hub, Operations, and Service. We also place Salesforce and Klaviyo certified operators depending on your stack.',
+	},
+	{
+		q: 'Can we start with MarOps before adding channel specialists?',
+		a: 'Absolutely. Many teams start with a MarOps or RevOps specialist to clean up infrastructure, reporting, and lifecycle — then add SEO, PPC, or content specialists once the foundation is solid.',
+	},
+	{
+		q: 'How quickly can we get a HubSpot consultant?',
+		a: 'We typically present vetted candidates within 48 hours after the scoping call. Once access and goals are confirmed, onboarding is designed for fast ramp-up.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'MarOps & RevOps Specialists',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqs.map((f) => ({
+		'@type': 'Question',
+		name: f.q,
+		acceptedAnswer: { '@type': 'Answer', text: f.a },
+	})),
+};
+
+const bookingUrl = BOOKING_URL;
+const bookingExternal = isExternalUrl(bookingUrl);
+const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com/your-org/15min';
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
+
+	<main>
+		<!-- Hero (bg-primary, white text) -->
+		<section class="bg-primary py-16 sm:py-24" aria-labelledby="hero-heading">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="js-fade-in">
+					<p class="text-sm font-semibold uppercase tracking-widest text-accent">Marketing — MarOps & RevOps</p>
+					<h1 id="hero-heading" class="mt-4 text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
+						MarOps & RevOps Specialists — HubSpot-Certified, Revenue-Focused
+					</h1>
+					<p class="mt-5 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">
+						Dedicated marketing and revenue operators for US teams. HubSpot, Salesforce, Klaviyo certified. Build your revenue backbone — CRM, lifecycle, reporting — then scale with channel specialists.
+					</p>
+					<div class="mt-8 flex flex-wrap gap-3">
+						<a
+							href={bookingUrl}
+							{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+							class="inline-flex min-h-[48px] items-center justify-center rounded bg-accent px-6 py-3 text-sm font-semibold text-white transition hover:bg-accent/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+							data-book-call
+						>
+							Book a Marketing Scoping Call
+						</a>
+						<a
+							href="#contact"
+							class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+							data-open-tell-us="marops-hero"
+						>
+							Tell Us What You Need
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Service overview (bg-bg-light) -->
+		<section class="bg-bg-light py-16 sm:py-20" aria-labelledby="overview-heading">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="js-fade-in">
+					<h2 id="overview-heading" class="text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
+						Revenue Backbone — What MarOps & RevOps Deliver
+					</h2>
+					<p class="mt-4 max-w-2xl text-base leading-relaxed text-text-secondary">
+						Clean CRM data. Automated lifecycle. Clear dashboards. These specialists own the infrastructure that makes growth predictable — before you scale channel spend.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Revenue backbone positioning (bg-bg-alt) -->
+		<section class="bg-bg-alt py-16 sm:py-20" aria-labelledby="backbone-heading">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="js-fade-in">
+					<h2 id="backbone-heading" class="text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
+						Build Your Revenue Backbone
+					</h2>
+					<p class="mt-4 max-w-2xl text-base leading-relaxed text-text-secondary">
+						MarOps and RevOps specialists focus on three pillars that unlock growth.
+					</p>
+				</div>
+				<div class="mt-10 grid gap-6 md:grid-cols-3">
+					{revenueBackboneItems.map((item) => (
+						<div class="rounded-2xl border border-border bg-white p-6 shadow-sm">
+							<h3 class="text-lg font-semibold text-marketing">{item.title}</h3>
+							<p class="mt-2 text-sm leading-relaxed text-text-secondary">{item.desc}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<!-- Platform-specific proof (bg-bg-light) -->
+		<section class="bg-bg-light py-16 sm:py-20" aria-labelledby="platform-heading">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="js-fade-in">
+					<h2 id="platform-heading" class="text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
+						Platform-Specific Proof
+					</h2>
+					<p class="mt-4 max-w-2xl text-base leading-relaxed text-text-secondary">
+						HubSpot, Salesforce, Klaviyo — certified operators who know your stack.
+					</p>
+				</div>
+				<div class="mt-10 grid gap-6 md:grid-cols-3">
+					{platformProof.map((p) => (
+						<div class="rounded-2xl border border-border bg-white p-6 shadow-sm">
+							<p class="text-sm font-semibold uppercase tracking-wide text-marketing">{p.platform}</p>
+							<p class="mt-2 text-base font-semibold text-text-primary">{p.cert}</p>
+							<p class="mt-2 text-sm text-text-secondary">{p.scope}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<!-- RevOps growth data (bg-bg-alt) -->
+		<section class="bg-bg-alt py-16 sm:py-20" aria-labelledby="growth-heading">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="js-fade-in">
+					<h2 id="growth-heading" class="text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
+						RevOps & MarOps — Growth & ROI
+					</h2>
+					<p class="mt-4 max-w-2xl text-base leading-relaxed text-text-secondary">
+						The market is investing in revenue operations. Dedicated specialists deliver measurable impact.
+					</p>
+				</div>
+				<div class="mt-10 grid gap-6 sm:grid-cols-3">
+					{revopsStats.map((stat) => (
+						<div class="rounded-2xl border border-border bg-white p-6 shadow-sm">
+							<p class="text-2xl font-bold text-marketing">{stat.value}</p>
+							<p class="mt-2 text-sm font-medium text-text-primary">{stat.label}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<!-- FAQ (bg-bg-alt) -->
+		<section class="bg-bg-alt py-16 sm:py-20" aria-labelledby="faq-heading">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="js-fade-in">
+					<h2 id="faq-heading" class="text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
+						FAQ
+					</h2>
+				</div>
+				<div class="mt-10 grid gap-3">
+					{faqs.map((item) => (
+						<details class="rounded-2xl border border-border bg-white p-5 shadow-sm">
+							<summary class="cursor-pointer list-none text-sm font-semibold text-text-primary">{item.q}</summary>
+							<p class="mt-3 text-sm leading-relaxed text-text-secondary">{item.a}</p>
+						</details>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<!-- CTA (bg-primary) -->
+		<section class="bg-primary py-16 sm:py-20" aria-labelledby="cta-heading">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="js-fade-in rounded-2xl border border-white/10 bg-white/5 p-8 text-center shadow-xl backdrop-blur-sm sm:p-12">
+					<h2 id="cta-heading" class="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+						Need a HubSpot Consultant?
+					</h2>
+					<p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-white/70">
+						Tell us your stack and goals — we'll match you with a certified MarOps or RevOps specialist within 48 hours.
+					</p>
+					<div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+						<a
+							href={bookingUrl}
+							{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+							class="inline-flex min-h-[48px] items-center justify-center rounded bg-accent px-8 py-3 text-sm font-semibold text-white transition hover:bg-accent/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+							data-book-call
+						>
+							Book a Marketing Scoping Call
+						</a>
+						<a
+							href="#contact"
+							class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-white/20 bg-white/5 px-8 py-3 text-sm font-semibold text-white transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+							data-open-tell-us="marops-cta"
+						>
+							Tell Us What You Need
+						</a>
+					</div>
+					<p class="mt-5 text-xs text-white/40">Month-to-month · Free replacement guarantee · HubSpot, Salesforce, Klaviyo certified</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Contact section -->
+		<section id="contact" class="bg-bg-light pb-20 pt-16 sm:pb-24 sm:pt-20" aria-labelledby="contact-heading">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="js-fade-in max-w-2xl">
+					<p class="text-sm font-semibold uppercase tracking-widest text-accent">Get in touch</p>
+					<h2 id="contact-heading" class="mt-3 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
+						Let's Talk MarOps & RevOps
+					</h2>
+					<p class="mt-4 text-base leading-relaxed text-text-secondary">
+						Tell us your stack (HubSpot, Salesforce, Klaviyo) and goals — we'll suggest the right specialist and match you with vetted talent.
+					</p>
+				</div>
+				<div class="mt-10 grid gap-6 lg:grid-cols-2">
+					<ContactForm subject={`${brand} — new inquiry (MarOps/RevOps)`} defaultInterest="marketing" />
+					<CalendlyEmbed url={calendlyUrl} title="Book a Marketing Scoping Call" />
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<style>
+		.js-fade-in {
+			opacity: 0;
+			transform: translateY(20px);
+			transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+		}
+		.js-fade-in.is-visible {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	</style>
+
+	<script is:inline>
+		(function () {
+			var els = document.querySelectorAll('.js-fade-in');
+			if (!els.length) return;
+			var io = new IntersectionObserver(function (entries) {
+				entries.forEach(function (e) {
+					if (e.isIntersecting) {
+						e.target.classList.add('is-visible');
+						io.unobserve(e.target);
+					}
+				});
+			}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+			els.forEach(function (el) { io.observe(el); });
+		})();
+	</script>
+</Layout>
