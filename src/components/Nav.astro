@@ -15,7 +15,7 @@ const bookingUrl = BOOKING_URL;
 const bookingExternal = isExternalUrl(bookingUrl);
 
 const linkBase =
-	'transition hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950';
+	'transition hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-primary';
 const linkDesktopBase = `rounded-md px-1 py-2 ${linkBase}`;
 const linkMobileBase = `rounded-xl px-3 py-3 ${linkBase}`;
 const linkActive = 'text-white font-semibold';
@@ -25,36 +25,35 @@ const solutions = [
 		label: 'AEC Talent',
 		description: 'BIM coordination, Revit modeling, CAD drafting & engineering support',
 		href: '/solutions/aec-talent/',
-		accent: 'text-sky-300',
+		accent: 'text-aec',
 	},
 	{
 		label: 'Creative & Design',
 		description: 'Dedicated designers or PM-led managed creative teams',
 		href: '/solutions/creatives-design/',
-		accent: 'text-violet-400',
+		accent: 'text-design',
 	},
 	{
 		label: 'Marketing Talent',
 		description: 'SEO, paid media, lifecycle, content & marketing ops specialists',
 		href: '/solutions/marketing-talent/',
-		accent: 'text-emerald-400',
+		accent: 'text-marketing',
 	},
 ];
 ---
 
-<header class="sticky top-0 z-50 border-b border-slate-800 bg-slate-950/90 backdrop-blur">
+<header class="sticky top-0 z-50 border-b border-primary/10 bg-primary backdrop-blur">
 	<div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
-		<!-- Logo (= home) -->
 		<a
 			href="/"
-			class="text-sm font-semibold tracking-tight text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+			class="text-sm font-semibold tracking-tight text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
 			aria-label="LatAm Scalers — home"
 		>
 			LatAm Scalers
 		</a>
 
 		<!-- Desktop nav -->
-		<nav class="hidden items-center gap-6 text-sm text-slate-200 md:flex" aria-label="Primary">
+		<nav class="hidden items-center gap-6 text-sm text-white/70 md:flex" aria-label="Primary">
 
 			<!-- Solutions mega menu -->
 			<details class="group relative" data-nav-dropdown="solutions">
@@ -65,7 +64,7 @@ const solutions = [
 					aria-controls="solutions-menu"
 				>
 					<span>Solutions</span>
-					<svg class="h-3.5 w-3.5 text-slate-400 transition group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+					<svg class="h-3.5 w-3.5 text-white/40 transition group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
 						<path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08Z" clip-rule="evenodd" />
 					</svg>
 				</summary>
@@ -74,7 +73,7 @@ const solutions = [
 					id="solutions-menu"
 					role="menu"
 					aria-label="Solutions"
-					class="absolute left-0 mt-2 w-80 rounded-2xl border border-slate-700/60 bg-slate-900/95 p-2 shadow-2xl shadow-black/40 ring-1 ring-slate-700/40 backdrop-blur-xl"
+					class="absolute left-0 mt-2 w-80 rounded-2xl border border-border bg-white p-2 shadow-2xl shadow-black/10 ring-1 ring-border backdrop-blur-xl"
 				>
 					{solutions.map((item) => {
 						const active = pathname.startsWith(item.href);
@@ -82,36 +81,34 @@ const solutions = [
 							<a
 								role="menuitem"
 								href={item.href}
-								class={`block rounded-xl px-3 py-3 transition hover:bg-slate-800/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${active ? 'bg-slate-800/70' : ''}`}
+								class={`block rounded-xl px-3 py-3 transition hover:bg-bg-alt focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${active ? 'bg-bg-alt' : ''}`}
 								aria-current={active ? 'page' : undefined}
 							>
-								<p class={`text-sm font-semibold ${active ? 'text-white' : item.accent}`}>{item.label}</p>
-								<p class="mt-0.5 text-xs leading-relaxed text-slate-400">{item.description}</p>
+								<p class={`text-sm font-semibold ${active ? 'text-text-primary' : item.accent}`}>{item.label}</p>
+								<p class="mt-0.5 text-xs leading-relaxed text-text-secondary">{item.description}</p>
 							</a>
 						);
 					})}
 
-					<!-- Divider -->
-					<div class="my-1 border-t border-slate-700/60" />
+					<div class="my-1 border-t border-border" />
 
 					<a
 						role="menuitem"
 						href="/how-it-works/"
-						class={`block rounded-xl px-3 py-2.5 text-sm transition hover:bg-slate-800/70 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${isHowItWorks ? 'bg-slate-800/70 text-white font-semibold' : 'text-slate-300'}`}
+						class={`block rounded-xl px-3 py-2.5 text-sm transition hover:bg-bg-alt focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${isHowItWorks ? 'bg-bg-alt text-text-primary font-semibold' : 'text-text-secondary hover:text-text-primary'}`}
 					>
 						How It Works
 					</a>
 					<a
 						role="menuitem"
 						href="/how-pricing-works/"
-						class="block rounded-xl px-3 py-2.5 text-sm text-slate-300 transition hover:bg-slate-800/70 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+						class="block rounded-xl px-3 py-2.5 text-sm text-text-secondary transition hover:bg-bg-alt hover:text-text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
 					>
 						How Pricing Works
 					</a>
 				</div>
 			</details>
 
-			<!-- Roles — direct link -->
 			<a
 				href="/roles/"
 				class={`${linkDesktopBase} ${isRoles ? linkActive : ''}`}
@@ -120,7 +117,6 @@ const solutions = [
 				Roles
 			</a>
 
-			<!-- How It Works — direct link -->
 			<a
 				href="/how-it-works/"
 				class={`${linkDesktopBase} ${isHowItWorks ? linkActive : ''}`}
@@ -129,11 +125,10 @@ const solutions = [
 				How It Works
 			</a>
 
-			<!-- CTA -->
 			<a
 				href={bookingUrl}
 				{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
-				class="ml-1 inline-flex items-center justify-center rounded bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+				class="ml-1 inline-flex items-center justify-center rounded bg-accent px-4 py-2 text-sm font-semibold text-white transition hover:bg-accent/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
 				data-book-call
 			>
 				Get Started
@@ -145,21 +140,21 @@ const solutions = [
 			<a
 				href={bookingUrl}
 				{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
-				class="inline-flex items-center justify-center rounded bg-sky-600 px-3 py-2 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+				class="inline-flex items-center justify-center rounded bg-accent px-3 py-2 text-sm font-semibold text-white transition hover:bg-accent/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
 				data-book-call
 			>
 				Get Started
 			</a>
 			<button
 				type="button"
-				class="inline-flex items-center justify-center rounded-lg border border-slate-800 bg-slate-900/50 p-2 text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+				class="inline-flex items-center justify-center rounded-lg border border-white/10 bg-white/5 p-2 text-white transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
 				aria-label="Open menu"
 				aria-expanded="false"
 				aria-controls="mobile-menu"
 				data-nav-mobile-toggle
 			>
 				<svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-icon-menu>
-					<path fill-rule="evenodd" d="M2 4.75A.75.75 0 0 1 2.75 4h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 4.75Zm0 5.25a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 10Zm0 5.25a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 15.25Z" clip-rule="evenodd" />
+					<path fill-rule="evenodd" d="M2 4.75A.75.75 0 0 1 2.75 4h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 4.75Zm0 5.25a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 10Zm0 5.25a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
 				</svg>
 				<svg class="hidden h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-icon-close>
 					<path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
@@ -168,55 +163,51 @@ const solutions = [
 		</div>
 	</div>
 
-	<!-- Mobile menu (full-width overlay) -->
-	<div id="mobile-menu" class="hidden border-t border-slate-800 bg-slate-950/98 md:hidden" data-nav-mobile-menu>
+	<!-- Mobile menu (full-screen overlay) -->
+	<div id="mobile-menu" class="hidden border-t border-white/10 bg-primary md:hidden" data-nav-mobile-menu>
 		<nav class="mx-auto max-w-6xl px-6 py-5" aria-label="Mobile primary">
-			<div class="flex flex-col gap-2 text-sm text-slate-200">
+			<div class="flex flex-col gap-2 text-sm text-white/80">
 
-				<!-- Solutions — category cards -->
-				<p class="px-3 pt-1 text-xs font-semibold uppercase tracking-wide text-slate-500">Solutions</p>
+				<p class="px-3 pt-1 text-xs font-semibold uppercase tracking-wide text-white/40">Solutions</p>
 				<div class="grid gap-2">
 					{solutions.map((item) => {
 						const active = pathname.startsWith(item.href);
 						return (
 							<a
 								href={item.href}
-								class={`flex min-h-[48px] items-start gap-3 rounded-xl border border-slate-800 px-4 py-3 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${active ? 'bg-slate-900 text-white' : ''}`}
+								class={`flex min-h-[48px] items-start gap-3 rounded-xl border border-white/10 px-4 py-3 transition hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${active ? 'bg-white/10 text-white' : ''}`}
 								aria-current={active ? 'page' : undefined}
 							>
 								<div>
 									<p class={`text-sm font-semibold ${active ? 'text-white' : item.accent}`}>{item.label}</p>
-									<p class="mt-0.5 text-xs text-slate-400">{item.description}</p>
+									<p class="mt-0.5 text-xs text-white/50">{item.description}</p>
 								</div>
 							</a>
 						);
 					})}
 				</div>
 
-				<div class="my-1 border-t border-slate-800" />
+				<div class="my-1 border-t border-white/10" />
 
-				<!-- Roles -->
 				<a
 					href="/roles/"
-					class={`min-h-[48px] flex items-center ${linkMobileBase} transition hover:bg-slate-900 hover:text-white ${isRoles ? linkActive : ''}`}
+					class={`min-h-[48px] flex items-center ${linkMobileBase} transition hover:bg-white/10 hover:text-white ${isRoles ? linkActive : ''}`}
 					aria-current={isRoles ? 'page' : undefined}
 				>
 					Roles
 				</a>
 
-				<!-- How It Works -->
 				<a
 					href="/how-it-works/"
-					class={`min-h-[48px] flex items-center ${linkMobileBase} transition hover:bg-slate-900 hover:text-white ${isHowItWorks ? linkActive : ''}`}
+					class={`min-h-[48px] flex items-center ${linkMobileBase} transition hover:bg-white/10 hover:text-white ${isHowItWorks ? linkActive : ''}`}
 					aria-current={isHowItWorks ? 'page' : undefined}
 				>
 					How It Works
 				</a>
 
-				<!-- How Pricing Works -->
 				<a
 					href="/how-pricing-works/"
-					class="min-h-[48px] flex items-center rounded-xl px-3 py-3 text-slate-300 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+					class="min-h-[48px] flex items-center rounded-xl px-3 py-3 text-white/60 transition hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
 				>
 					How Pricing Works
 				</a>

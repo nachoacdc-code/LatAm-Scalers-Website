@@ -3,7 +3,6 @@ import Layout from '../layouts/Layout.astro';
 import MetaHead from '../components/MetaHead.astro';
 import ContactForm from '../components/ContactForm.astro';
 import CalendlyEmbed from '../components/CalendlyEmbed.astro';
-import Footer from '../components/Footer.astro';
 import { BOOKING_URL, isExternalUrl } from '../lib/cta';
 
 const meta = {
@@ -681,10 +680,7 @@ const bookingExternal = isExternalUrl(bookingUrl);
 		</section>
 
 	</main>
-
-	<Footer />
-
-	<!-- ═══════════════════════════════════════════════════════
+<!-- ═══════════════════════════════════════════════════════
 	     MICRO-INTERACTIONS
 	     - Scroll-triggered fade-ins via Intersection Observer
 	     - Counter animation for Why LATAM metrics

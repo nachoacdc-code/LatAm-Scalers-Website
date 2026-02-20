@@ -2,7 +2,6 @@
 import Layout from '../../../layouts/Layout.astro';
 import MetaHead from '../../../components/MetaHead.astro';
 import ContactSection from '../../../components/ContactSection.astro';
-import Footer from '../../../components/Footer.astro';
 import { BOOKING_URL, isExternalUrl } from '../../../lib/cta';
 
 const brand = 'LatAm Scalers';
@@ -238,7 +237,5 @@ const bookingExternal = isExternalUrl(bookingUrl);
 	<div class="mx-auto max-w-6xl px-6">
 		<ContactSection subject={`${brand} — new inquiry (marketing individuals)`} />
 	</div>
-
-	<Footer />
 </Layout>
 

@@ -1,545 +1,62 @@
-# LatAm Scalers — Content Audit & Migration Gate
+# Content Audit — LatAm Scalers Website
 
-**Date:** February 20, 2026
-**Audited by:** AI assistant (full file-level review of all 26 pages + 19 components)
-**Current state:** ~20 unique pages at `latam-scalers-website.vercel.app`, dark theme, "LatAm Scalers" branding applied (Phase 1 complete)
+This audit documents the current state of all page files in the LatAm Scalers website as part of the transformation from "TalentCompany" to "LatAm Scalers" — a B2B lead-generation site for pre-vetted LATAM talent (AEC, Design, Marketing) serving US companies.
 
 ---
 
-## Executive Summary
-
-- **26 page files** across 4 route groups: homepage, solutions (9), roles (9), services (3), legal (3), how-it-works (1)
-- **19 component files** including Nav, Footer, ContactForm, CalendlyEmbed, TellUsNeedsModal, UI library
-- **Global issues found across all files:**
-  - All pages reference `talentcompany-site.vercel.app` as fallback base URL (needs update to production URL)
-  - All components and pages still use old dark theme colors (slate-950/sky-600) — Phase 1 color palette defined in CSS but NOT yet applied to page content
-  - TODO/placeholder testimonials on 10+ pages
-  - Legal pages (terms, privacy, cookies) are entirely placeholder stubs
-- **No remaining "TalentCompany" brand references found** — rebrand is complete
-
----
-
-## Page-by-Page Audit
-
-### Legend
-
-| Decision | Meaning |
-|----------|---------|
-| **Full Rewrite** | Content and structure will be replaced entirely per the implementation plan |
-| **Moderate Rewrite** | Good bones — preserve structure but rewrite significant sections |
-| **Light Polish** | Good content — update styling, branding, fix TODOs, update URLs |
-| **Migrate & Redirect** | Move to new URL path, update content |
-| **Remove** | Page is redundant or will be superseded by new page |
-| **Stub → Build** | Currently a placeholder — needs full content creation |
-
----
-
-### 1. Homepage (`/`) — `src/pages/index.astro`
-
-| Field | Value |
-|-------|-------|
-| **Decision** | **Full Rewrite** |
-| **Current sections** | Hero, Choose Your Solution (3 cards), How It Works (5 steps), Flexible Options, Proof (3 TODO testimonials), Popular Roles (3 + "view all"), Final CTA, Contact + Calendly |
-| **Target** | 12-section homepage per Phase 3 (hero, trust bar, problem statement, solution cards, how-it-works, why LATAM, flexible options, social proof, popular roles, tier pathways, final CTA, contact + Calendly) |
-| **TODO count** | 3 placeholder testimonials |
-| **Stale URLs** | `talentcompany-site.vercel.app` fallback, links to `/solutions/aec-talent/`, `/solutions/creatives-design/`, `/solutions/marketing-talent/` |
-
-**Preserve:**
-- The 5-step "How it works" flow wording is solid — adapt for the Phase 3 version
-- Hero value proposition structure (speed, alignment, flexibility, guarantee) — retain as trust bar content
-- "Ready to Add Reliable Capacity?" CTA headline is strong — keep
-
-**Notes:**
-- Currently 6 sections; target is 12 sections with micro-interactions
-- Missing: trust bar, problem statement, why LATAM, tier pathways
-- Popular roles section only shows 3 roles; Phase 3 target is 6
+| File Path | Current Page Title / H1 | Content Summary | Decision | Notes |
+|-----------|-------------------------|-----------------|----------|-------|
+| `src/pages/index.astro` | "Scale Your US Team with Dedicated LATAM Specialists — Matched in Under One Week" | Hero, trust bar (48hr match, 5-stage vetted, 50–70% savings, free replacement), problem statement (94% AEC shortage, 45% design hiring cycles, 3.8% marketing unemployment), solution cards (AEC/Design/Marketing), 5-step How It Works, Why LATAM (counters), flexible options (individual/team/hourly), vetting funnel (500→5), popular roles grid, tier pathways (Start Fast/Scale Smart/Enterprise), final CTA, contact + Calendly | **Full rewrite** | Strategy S7: 12 sections required. Current structure is solid but content/flow may need alignment with new strategy. Preserve: value props, vetting funnel, tier pathways, CTAs. |
+| `src/pages/how-it-works.astro` | "Our Flexible Process — Tailored to Your Needs" | Hero, 5-step process with branching (Individuals/Teams/PM-led), Why choose our approach (6 bullets), Proof (TODO testimonials), FAQ (3 items), final CTA | **Light polish** | Good branching flow. Replace TODO testimonials or remove section. Update internal links to new URL structure (/aec/, /design/, /marketing/) when ready. |
+| `src/pages/solutions/aec-talent/index.astro` | "Dedicated Remote AEC Talent for US Firms of All Sizes" | Hero, engagement options (individuals/teams), key benefits, disciplines grid (8 roles), FAQ (5), Proof (TODO), CTAs | **Full rewrite** | New URL: `/aec/`. Preserve: disciplines list, FAQ content, engagement options. Align to new category hub structure. |
+| `src/pages/solutions/aec-talent/individuals.astro` | "Hire Individual AEC Specialists — Fast and Flexible" | Hero, 20h vs 40h formats, 4-step matching process, Proof (TODO), FAQ (4), CTAs | **Full rewrite** | Move under `/aec/` or equivalent. Preserve: formats, matching steps, FAQ. |
+| `src/pages/solutions/aec-talent/teams.astro` | "Build Dedicated AEC Teams for Scaling" | Hero, ROI teaser (placeholder), example pods (CD/BIM/Visualization), 4-step process, Proof (TODO), FAQ (4), CTAs | **Full rewrite** | Preserve: pod examples, process, FAQ. Replace ROI placeholder. |
+| `src/pages/solutions/creatives-design/index.astro` | "Reliable Remote Creative & Design Talent" | Hero, engagement (Dedicated/PM-led), outcome grid, Proof (TODO), FAQ (3), CTAs | **Full rewrite** | New URL: `/design/`. Preserve: outcomes, FAQ. |
+| `src/pages/solutions/creatives-design/dedicated.astro` | "Dedicated Remote Designer Seat" | Hero, weekly output examples (Marketing/Brand/Product), roles grid, 4-step matching, Design Brief Kit (TODO), CTAs | **Full rewrite** | Preserve: weekly output examples, matching process. Add brief kit or remove placeholder. |
+| `src/pages/solutions/creatives-design/pm-led.astro` | "PM-Led Dedicated Design Team" | Hero, 4-step request flow, turnaround table, staffing/revisions, Proof (TODO), Design Brief Kit (TODO), CTAs | **Full rewrite** | Strong turnaround table — preserve. Add brief kit or remove placeholder. |
+| `src/pages/solutions/marketing-talent/index.astro` | "Dedicated Remote Marketing Talent for US Teams" | Hero, engagement (Individuals/Teams), roles grid (8), Proof (TODO), FAQ (4), CTAs | **Full rewrite** | New URL: `/marketing/`. Preserve: roles list, FAQ. |
+| `src/pages/solutions/marketing-talent/individuals.astro` | "Hire Dedicated Marketing Specialists" | Hero, FT/PT offerings, hourly blocks (audit/setup/optimize), 4-step onboarding, Proof (TODO), FAQ (3), CTAs | **Full rewrite** | Preserve: FT/PT vs hourly structure, FAQ. |
+| `src/pages/solutions/marketing-talent/teams.astro` | "Dedicated Marketing Pods" | Hero, ROI examples (placeholder), pod examples (Demand Gen/SEO+Content/Lifecycle), 4-step process, Proof (TODO), FAQ (4), CTAs | **Full rewrite** | Preserve: pod examples. Replace ROI placeholder. |
+| `src/pages/roles/index.astro` | "Roles directory" | Hero, grid of 8 role cards (no filters), "Not seeing your role?" CTA | **Moderate rewrite** | Add category filters (AEC/Design/Marketing), enrich cards with role metadata. Preserve: role list, CTA. |
+| `src/pages/roles/architectural-designer/index.astro` | "Dedicated Remote Architectural Designer" | Full template: hero + at-a-glance, role overview, why remote works, options (individual/team), sample outputs (TODO placeholders), proof, CTAs | **Light polish** | Good content. Update template if unified. Replace sample output placeholders or remove. |
+| `src/pages/roles/bim-coordinator/index.astro` | "Dedicated Remote BIM Coordinator" | Hero only — subheadline and all sections are TODO | **Full rewrite** | Currently stub. Build out using architectural-designer template: overview, why remote works, tools, options, sample outputs, proof. |
+| `src/pages/roles/brand-visual-designer/index.astro` | "Dedicated Remote Brand / Visual Designer" | Full template: hero, at-a-glance, overview, why remote works, options (Dedicated/PM-led), sample outputs (TODO), proof, CTAs | **Light polish** | Good content. Update template, fix sample output placeholders. |
+| `src/pages/roles/content-marketer/index.astro` | "Dedicated Remote Content Marketer" | Hero only — subheadline and sections are TODO | **Full rewrite** | Stub. Build out per architectural-designer template. Meta description TODO. |
+| `src/pages/roles/ppc-manager/index.astro` | "Dedicated Remote PPC Manager" | Hero only — subheadline and sections are TODO | **Full rewrite** | Stub. Build out per architectural-designer template. Meta description TODO. |
+| `src/pages/roles/revit-drafter/index.astro` | "Dedicated Remote Revit Drafter" | Hero + at-a-glance complete; role overview has TODO for expansion | **Light polish** | Complete role overview, add why remote works, options, sample outputs per template. |
+| `src/pages/roles/seo-specialist/index.astro` | "Dedicated Remote SEO Specialist" | Full template: hero, at-a-glance, overview, why remote works, options, sample outputs (TODO), proof, CTAs | **Light polish** | Good content. Fix sample output placeholders. |
+| `src/pages/roles/ui-ux-designer/index.astro` | "Dedicated Remote UI/UX Designer" | Hero only — subheadline and sections are TODO | **Full rewrite** | Stub. Build out per architectural-designer template. Meta description TODO. |
+| `src/pages/services/aec.astro` | "BIM & Technical Design Capacity that Fits Your Team" | Hero, who it’s for, how engagements work, capabilities, typical roles, tools/workflows, Why LatAm Scalers, related services, FAQ | **Replace** | Will be superseded by new `/aec/` category hub. Redirect or deprecate when new structure launches. |
+| `src/pages/services/design.astro` | "Design Capacity, Without the Overhead" | Hero, who it’s for, staff aug vs managed subscription, example plans, capabilities, typical roles, onboarding steps, Why LatAm Scalers, related services, FAQ | **Replace** | Will be superseded by new `/design/` hub. Note: design service uses "credit packs" language — align with new solution messaging. |
+| `src/pages/services/marketing.astro` | "Top-tier Marketing Talent, on your team." | Hero, who it’s for, FT/PT vs hourly blocks, typical roles, what to expect, Why LatAm Scalers, related services, FAQ | **Replace** | Will be superseded by new `/marketing/` hub. |
+| `src/pages/terms/index.astro` | "Terms & Conditions" | Section structure with TODO placeholders (Overview, Services, Payments, Confidentiality, Acceptable use, Disclaimers, Termination, Governing law) | **Light polish** | Replace TODOs with counsel-approved content. Update branding. |
+| `src/pages/privacy/index.astro` | "Privacy Policy" | Section structure with TODO placeholders (Information, Use, Legal bases, Sharing, Retention, Security, Rights, Contact) | **Light polish** | Replace TODOs with counsel-approved content. Update branding. |
+| `src/pages/cookies/index.astro` | "Cookie Policy" | Section structure with TODO placeholders (What cookies are, How we use, Managing preferences, Cookie list) | **Light polish** | Replace TODOs with counsel-approved content. Update branding. |
 
 ---
 
-### 2. How It Works (`/how-it-works/`) — `src/pages/how-it-works.astro`
+## Key Decisions
 
-| Field | Value |
-|-------|-------|
-| **Decision** | **Light Polish** |
-| **Current sections** | Hero, 5-step Process with branching notes (Individuals/Teams/PM-led), Why Choose Our Approach, Proof (TODO), FAQ (3 questions with schema), Final CTA with quick links |
-| **TODO count** | 3 placeholder testimonials |
-| **Stale URLs** | `talentcompany-site.vercel.app` fallback; links to `/solutions/aec-talent/`, `/solutions/creatives-design/`, `/solutions/marketing-talent/` |
+### Overall approach
 
-**Preserve (high-value content):**
-- Branching notes per engagement type (Individuals/Teams/PM-led) for each step — this is unique, well-structured content
-- FAQ answers are specific and useful
-- "Why Choose Our Approach" bullet list is concise and accurate
-- FAQPage schema is correctly implemented
+1. **Homepage** — Full rewrite per Strategy S7 (12 sections). The current page already has the right section count and structure; the rewrite should align messaging, ordering, and CTAs to the new strategy while preserving strong elements (vetting funnel, tier pathways, problem stats).
 
-**Changes needed:**
-- Update links from `/solutions/*` to `/aec/`, `/design/`, `/marketing/`
-- Replace placeholder testimonials with vetting funnel infographic or real proof
-- Apply new light theme styling
-- Update meta title to match Strategy S15.4 template
+2. **Solution pages** — Full rewrite with new URL structure: `/aec/`, `/design/`, `/marketing/`. All current solution content under `/solutions/aec-talent/`, `/solutions/creatives-design/`, `/solutions/marketing-talent/` will be migrated or replaced. Update all internal links site-wide when the new structure is live.
 
----
+3. **How It Works** — Light polish only. The branching process (Individuals / Teams / PM-led) is strong. Replace TODO testimonials or remove the Proof section; fix links to solution URLs when the new structure is in place.
 
-### 3. Roles Directory (`/roles/`) — `src/pages/roles/index.astro`
+4. **Roles directory** — Moderate rewrite. Add category filters and richer role cards. The current 8-role grid is usable but minimal; enrichment will improve UX and lead capture.
 
-| Field | Value |
-|-------|-------|
-| **Decision** | **Moderate Rewrite** |
-| **Current sections** | Hero, Role cards grid (8 roles), "Not seeing your role?" CTA |
-| **TODO count** | 0 |
-| **Stale URLs** | `talentcompany-site.vercel.app` fallback |
+5. **Role pages** — Template-driven approach: role pages with full content (Architectural Designer, Brand Visual Designer, SEO Specialist, Revit Drafter) get Light polish and template updates. Stub pages (BIM Coordinator, Content Marketer, PPC Manager, UI/UX Designer) need Full rewrites using the same template and role-specific content.
 
-**Preserve:**
-- Role card list structure (label, category, href) is clean and extensible
-- "Not seeing your role?" CTA is a good pattern
+6. **BIM Coordinator** — Explicitly flagged for Full rewrite; it is currently the most minimal role page.
 
-**Changes needed (Phase 6):**
-- Add category filter tabs (AEC / Design / Marketing)
-- Add role count badge and enriched cards (description, pricing, link)
-- Update H1 to "Browse Vetted Remote Roles — AEC, Design, Marketing"
-- Apply new light theme styling
+7. **Legal pages** — Light polish: replace TODO placeholders with final, counsel-approved text and ensure LatAm Scalers branding.
 
----
+8. **Services pages** — Deprecate or replace. `/services/aec`, `/services/design`, `/services/marketing` will be superseded by the new category hubs. Plan redirects from old `/services/*` URLs to the new `/aec/`, `/design/`, `/marketing/` paths.
 
-### 4. AEC Solution Hub (`/solutions/aec-talent/`) — `src/pages/solutions/aec-talent/index.astro`
+### Cross-cutting issues
 
-| Field | Value |
-|-------|-------|
-| **Decision** | **Full Rewrite → `/aec/`** |
-| **Current sections** | Hero, Options (Individuals + Teams), Key Benefits, Disciplines/Roles grid (8 items), Proof (TODO), Mid-CTA, FAQ (5 questions with schema), Final CTA |
-| **TODO count** | 3 placeholder testimonials |
-| **Stale URLs** | `talentcompany-site.vercel.app` fallback; discipline links mostly point to `/roles/` generic |
-
-**Preserve:**
-- FAQ content is AEC-specific and valuable (BEP/templates, 48h matching, tool support, revision process, replacement guarantee)
-- Disciplines list (8 items) is a useful starting point for the role showcase section
-- Hero subheadline is specific and good: "Revit, BIM, drafting, and production support..."
-
-**Changes needed (Phase 4):**
-- Move from `/solutions/aec-talent/` to `/aec/` with 301 redirect
-- Expand from ~8 sections to 12-section template per Strategy S8.1
-- Add: problem section (94% workforce shortage stats), responsibility matrix, why LATAM for AEC, pricing guidance, AEC micro-clarifier disclaimer
-- Vetting badge linking to `/about/how-we-vet/`
-
----
-
-### 5. Creative & Design Hub (`/solutions/creatives-design/`) — `src/pages/solutions/creatives-design/index.astro`
-
-| Field | Value |
-|-------|-------|
-| **Decision** | **Full Rewrite → `/design/`** |
-| **Current sections** | Hero, Options (Dedicated + PM-led), Outcome Grid (4 items), Proof (TODO), FAQ (3 questions), Final CTA |
-| **TODO count** | 3 placeholder testimonials |
-| **Stale URLs** | `talentcompany-site.vercel.app` fallback |
-
-**Preserve:**
-- FAQ content on dedicated vs PM-led decision is useful
-- Outcome snapshots (faster throughput, quality bar, flexible engagement, clear workflow) are concise
-- "Predictable output" messaging aligns well with strategy
-
-**Changes needed (Phase 4):**
-- Move from `/solutions/creatives-design/` to `/design/` with 301 redirect
-- Expand to 12-section template
-- Add: managed creative team comparison table (Design Pickle vs Superside vs LatAm Scalers), ICP sections (SaaS, DTC, Agencies), problem section, pricing guidance
-- Missing role showcase section
-
----
-
-### 6. Marketing Hub (`/solutions/marketing-talent/`) — `src/pages/solutions/marketing-talent/index.astro`
-
-| Field | Value |
-|-------|-------|
-| **Decision** | **Full Rewrite → `/marketing/`** |
-| **Current sections** | Hero, Options (Individuals + Teams), Roles Grid (8 items), Proof (TODO), FAQ (4 questions), Final CTA |
-| **TODO count** | 3 placeholder testimonials |
-| **Stale URLs** | `talentcompany-site.vercel.app` fallback; role cards all link to generic `/roles/` |
-
-**Preserve:**
-- Roles list is comprehensive: SEO, PPC, Paid Social, Lifecycle/Email, Content, Analytics/GA4, CRO, Marketing Ops
-- FAQ content on individuals vs pods, FT/PT/hourly, and replacement guarantee
-- Hero subheadline: "Scale pipeline, performance, and content with vetted specialists"
-
-**Changes needed (Phase 4):**
-- Move from `/solutions/marketing-talent/` to `/marketing/` with 301 redirect
-- Expand to 12-section template
-- Add: ops-first wedge section (MarOps/RevOps), tool-stack proof grid, ICP sections, problem section (3.8% unemployment), pricing guidance
-
----
-
-### 7–12. Solution Sub-Pages
-
-#### 7. AEC Individuals (`/solutions/aec-talent/individuals/`)
-
-| Field | Value |
-|-------|-------|
-| **Decision** | **Migrate & Redirect → `/aec/individuals/`** |
-| **Content quality** | Moderate — has formats (20h/40h), matching process, proof (TODO), FAQ, CTA |
-| **TODO count** | 3 placeholder testimonials |
-| **Stale URLs** | `talentcompany-site.vercel.app` |
-
-#### 8. AEC Teams (`/solutions/aec-talent/teams/`)
-
-| Field | Value |
-|-------|-------|
-| **Decision** | **Migrate & Redirect → `/aec/teams/`** |
-| **Content quality** | Moderate — ROI teaser (placeholder), team examples, process, proof (TODO), FAQ, CTA |
-| **TODO count** | ROI placeholder + 3 testimonials |
-| **Stale URLs** | `talentcompany-site.vercel.app` |
-
-#### 9. Design Dedicated (`/solutions/creatives-design/dedicated/`)
-
-| Field | Value |
-|-------|-------|
-| **Decision** | **Migrate & Redirect → `/design/dedicated-designers/`** |
-| **Content quality** | Moderate — weekly output examples, roles (some placeholder), matching process, brief kit (TODO) |
-| **TODO count** | Brief kit placeholder + role description placeholders |
-| **Stale URLs** | `talentcompany-site.vercel.app` |
-
-#### 10. Design PM-Led (`/solutions/creatives-design/pm-led/`)
-
-| Field | Value |
-|-------|-------|
-| **Decision** | **Migrate & Redirect → `/design/managed-creative-teams/`** (Phase 5.4) |
-| **Content quality** | Moderate — request flow, turnaround table, staffing/revisions, proof (TODO), brief kit (TODO) |
-| **TODO count** | 3 testimonials + brief kit placeholder |
-| **Stale URLs** | `talentcompany-site.vercel.app` |
-
-**Preserve:** Turnaround table and request flow structure — useful for the Phase 5 managed creative teams spoke page
-
-#### 11. Marketing Individuals (`/solutions/marketing-talent/individuals/`)
-
-| Field | Value |
-|-------|-------|
-| **Decision** | **Migrate & Redirect → `/marketing/individuals/`** |
-| **Content quality** | Moderate — FT/PT offerings, hourly blocks, onboarding, proof (TODO), FAQ |
-| **TODO count** | 3 placeholder testimonials |
-| **Stale URLs** | `talentcompany-site.vercel.app` |
-
-#### 12. Marketing Teams (`/solutions/marketing-talent/teams/`)
-
-| Field | Value |
-|-------|-------|
-| **Decision** | **Migrate & Redirect → `/marketing/teams/`** |
-| **Content quality** | Moderate — pod examples, process, proof (TODO), FAQ |
-| **TODO count** | ROI examples placeholder + 3 testimonials |
-| **Stale URLs** | `talentcompany-site.vercel.app` |
-
----
-
-### 13–15. Services Pages (Duplicate/Alternate Route)
-
-These pages exist at `/services/aec/`, `/services/design/`, and `/services/marketing/` and appear to be **full-content alternate versions** of the solution hub pages with different structures.
-
-#### 13. Services AEC (`/services/aec/`)
-
-| Field | Value |
-|-------|-------|
-| **Decision** | **Remove (redirect to `/aec/`)** |
-| **Content quality** | Full — has "who this is for", how it works, capabilities, roles, tools, why us, related services, FAQ |
-| **TODO count** | 0 |
-| **Stale URLs** | `talentcompany-site.vercel.app`; links to `/solutions/creatives-design/` and `/solutions/marketing-talent/` |
-
-**Preserve:** This page has the richest content of any AEC page. Harvest these sections for the new `/aec/` hub:
-- "Who this is for" section
-- Capabilities list
-- Tools list
-- FAQ content
-
-#### 14. Services Design (`/services/design/`)
-
-| Field | Value |
-|-------|-------|
-| **Decision** | **Remove (redirect to `/design/`)** |
-| **Content quality** | Full — has engagement models, subscription plans, capabilities, roles, onboarding, why us, FAQ |
-| **TODO count** | 0 |
-| **Stale URLs** | `talentcompany-site.vercel.app`; links to `/solutions/aec-talent/` and `/solutions/marketing-talent/` |
-
-**Preserve:** Harvest for new `/design/` hub:
-- Engagement models section
-- Subscription plans content (if applicable to new pricing model)
-- Capabilities list
-
-#### 15. Services Marketing (`/services/marketing/`)
-
-| Field | Value |
-|-------|-------|
-| **Decision** | **Remove (redirect to `/marketing/`)** |
-| **Content quality** | Full — has engagement models, roles, expectations, why us, related services, FAQ |
-| **TODO count** | 0 |
-| **Stale URLs** | `talentcompany-site.vercel.app`; links to `/solutions/creatives-design/` and `/solutions/aec-talent/` |
-
-**Preserve:** Harvest for new `/marketing/` hub:
-- Roles list and descriptions
-- Expectations section
-- FAQ content
-
----
-
-### 16–23. Role Pages
-
-#### 16. Architectural Designer (`/roles/architectural-designer/`)
-
-| Field | Value |
-|-------|-------|
-| **Decision** | **Light Polish** |
-| **Content quality** | Moderate-to-full — Hero with "at a glance" card, Role overview, Why remote works, Options (individuals/teams), Sample outputs (TODO placeholders), Proof (anonymized quote), CTA |
-| **TODO count** | 3 sample output placeholders, 1 proof placeholder text |
-| **Stale URLs** | `talentcompany-site.vercel.app`; links to `/solutions/aec-talent/individuals/` and `/solutions/aec-talent/teams/` |
-
-**Preserve (high-value):**
-- "At a glance" card structure (Tools, Standards, Delivery, Flex) — good template for other role pages
-- Role overview content: schematic/design development, 3D modeling, construction docs, code compliance, coordination
-- Why remote excels bullets
-- Anonymized testimonial quote: "Added two architectural designers — cut concept phase time by 40%"
-
-**Changes needed:**
-- Replace sample output TODOs with real anonymized deliverable descriptions (not images)
-- Update links to new URL structure (`/aec/individuals/`, `/aec/teams/`)
-- Apply to RoleTemplate.astro pattern (Phase 6.2)
-- Add FAQ section with schema
-
-#### 17. SEO Specialist (`/roles/seo-specialist/`)
-
-| Field | Value |
-|-------|-------|
-| **Decision** | **Light Polish** |
-| **Content quality** | Moderate — Hero, Overview, Why Remote, Options, Sample Outputs (TODO), Proof (TODO), CTA |
-| **TODO count** | 4 (3 sample outputs + 1 proof) |
-| **Stale URLs** | `talentcompany-site.vercel.app`; links to `/solutions/marketing-talent/individuals/` and `/solutions/marketing-talent/teams/` |
-
-**Preserve:**
-- Role overview content (channel ownership, reporting, tool-specific mentions)
-- Why remote works content
-
-#### 18. Brand/Visual Designer (`/roles/brand-visual-designer/`)
-
-| Field | Value |
-|-------|-------|
-| **Decision** | **Light Polish** |
-| **Content quality** | Moderate — Hero, Overview, Why Remote, Options, Sample Outputs (TODO), Proof (TODO), CTA |
-| **TODO count** | 4 (3 sample outputs + 1 proof) |
-| **Stale URLs** | `talentcompany-site.vercel.app`; links to `/solutions/creatives-design/dedicated/` and `/solutions/creatives-design/pm-led/` |
-
-**Preserve:**
-- Role overview content
-- Why remote works content
-
-#### 19. BIM Coordinator (`/roles/bim-coordinator/`)
-
-| Field | Value |
-|-------|-------|
-| **Decision** | **Stub → Build (Full Rewrite)** |
-| **Content quality** | Stub — Hero only with TODO placeholder for all content |
-| **TODO count** | 2 (meta description + entire body content) |
-| **Stale URLs** | `talentcompany-site.vercel.app` |
-
-**Notes:** Priority #1 role page to complete (Phase 6.3). Needs full content: tools (Navisworks, ACC, BIM 360), deliverables, clash detection workflows, coordination scope.
-
-#### 20. Revit Drafter (`/roles/revit-drafter/`)
-
-| Field | Value |
-|-------|-------|
-| **Decision** | **Stub → Build** |
-| **Content quality** | Stub — Hero only + overview placeholder |
-| **TODO count** | 1 major (overview body) |
-| **Stale URLs** | `talentcompany-site.vercel.app`; link to `/solutions/aec-talent/` |
-
-#### 21. UI/UX Designer (`/roles/ui-ux-designer/`)
-
-| Field | Value |
-|-------|-------|
-| **Decision** | **Stub → Build** |
-| **Content quality** | Stub — Hero only with TODO placeholders |
-| **TODO count** | 2 (meta description + hero subheadline) |
-| **Stale URLs** | `talentcompany-site.vercel.app`; link to `/solutions/creatives-design/` |
-
-#### 22. PPC Manager (`/roles/ppc-manager/`)
-
-| Field | Value |
-|-------|-------|
-| **Decision** | **Stub → Build** |
-| **Content quality** | Stub — Hero only with TODO placeholders |
-| **TODO count** | 2 (meta description + hero subheadline) |
-| **Stale URLs** | `talentcompany-site.vercel.app`; link to `/solutions/marketing-talent/` |
-
-#### 23. Content Marketer (`/roles/content-marketer/`)
-
-| Field | Value |
-|-------|-------|
-| **Decision** | **Stub → Build** |
-| **Content quality** | Stub — Hero only with TODO placeholders |
-| **TODO count** | 2 (meta description + hero subheadline) |
-| **Stale URLs** | `talentcompany-site.vercel.app`; link to `/solutions/marketing-talent/` |
-
----
-
-### 24–26. Legal Pages
-
-#### 24. Terms of Service (`/terms/`)
-
-| Field | Value |
-|-------|-------|
-| **Decision** | **Stub → Build (Light Polish)** |
-| **Content quality** | Stub — Header structure with 8 TODO placeholder sections |
-| **Sections (all TODO):** | Overview, Services, Payments, Confidentiality, Acceptable Use, Disclaimers, Termination, Governing Law |
-| **Stale URLs** | `talentcompany-site.vercel.app` |
-
-#### 25. Privacy Policy (`/privacy/`)
-
-| Field | Value |
-|-------|-------|
-| **Decision** | **Stub → Build (Light Polish)** |
-| **Content quality** | Stub — Header structure with 8 TODO placeholder sections |
-| **Sections (all TODO):** | Information We Collect, How We Use, Legal Bases, Sharing, Retention, Security, Your Rights, Contact |
-| **Stale URLs** | `talentcompany-site.vercel.app` |
-
-#### 26. Cookie Policy (`/cookies/`)
-
-| Field | Value |
-|-------|-------|
-| **Decision** | **Stub → Build (Light Polish)** |
-| **Content quality** | Stub — Header structure with 4 TODO placeholder sections |
-| **Sections (all TODO):** | What Cookies Are, How We Use Cookies, Managing Preferences, Cookie List |
-| **Stale URLs** | `talentcompany-site.vercel.app` |
-
-**Note on legal pages:** These need real legal content before launch. Consider using a legal template generator or legal counsel to draft proper terms. The section structure is already defined — just needs content fill.
-
----
-
-## Component Audit
-
-| Component | State | Key Issues |
-|-----------|-------|------------|
-| `Nav.astro` | Working, brand correct | Old dark theme colors; needs Phase 2 restructure |
-| `Footer.astro` | Working, brand correct | Old dark theme colors; needs Phase 2 overhaul |
-| `ContactForm.astro` | Working | Formspree placeholder URL as fallback; needs qualifying fields (Phase 8) |
-| `CalendlyEmbed.astro` | Working (lazy load) | Placeholder Calendly URL as fallback; needs Intersection Observer upgrade (Phase 8) |
-| `TellUsNeedsModal.astro` | Working | Has budget range + start date; needs work-email validation, attribution field (Phase 8) |
-| `ContactSection.astro` | Working | Wrapper for ContactForm + CalendlyEmbed; placeholder URLs |
-| `Layout.astro` | Working | `bg-slate-950 text-slate-100` (old dark base); needs light theme switch |
-| `globals.css` | Defines color palette | Has new LatAm Scalers colors in CSS vars but page content doesn't use them yet |
-| `Section.astro` | Created (Phase 1) | Light/Alt/Dark variants defined — ready for use |
-| `TrustBadge.astro` | Created (Phase 1) | Ready for use |
-| `CategoryCard.astro` | Created (Phase 1) | Ready for use |
-| UI library (`Button`, `Card`, `Badge`, `Container`) | Created (Phase 1) | Ready for use |
-| `Hero.astro`, `HeroA.astro`, `HeroB.astro` | Legacy | Three hero variants — consolidate during rewrites |
-| `SubscriptionTable.astro` | Legacy | Used by `/services/design/`; may not be needed in new design |
-| `FeatureGrid.astro` | Legacy | May not be needed in new design |
-
----
-
-## Global Issues (Fix Across All Files)
-
-### 1. Stale Base URL Fallback
-**Every page** has: `const baseUrl = Astro.site ?? 'https://talentcompany-site.vercel.app';`
-**Fix:** Update fallback to `'https://latam-scalers-website.vercel.app'` (or final production URL once domain is connected)
-
-### 2. Old Dark Theme Not Yet Replaced
-Phase 1 defined the new color palette in `globals.css` but page content still uses hardcoded `slate-950`, `slate-900`, `bg-slate-900/40`, `text-white`, `text-slate-300` etc. The new CSS custom properties (`--color-primary`, `--color-accent`, etc.) and Phase 1 components (`Section.astro`, `TrustBadge.astro`, etc.) are ready but not yet integrated into the page templates. This is expected — the full theme migration happens as each page is rewritten in subsequent phases.
-
-### 3. TODO Testimonials (10+ pages)
-All solution hubs, sub-pages, and role pages have 3x placeholder testimonials. Plan calls for replacing with vetting funnel infographic (Phase 3.8) and real testimonials when available (Phase 7.9 outreach).
-
-### 4. Old URL Structure in Internal Links
-Many pages link to `/solutions/aec-talent/`, `/solutions/creatives-design/`, `/solutions/marketing-talent/`. These will be replaced by `/aec/`, `/design/`, `/marketing/` in Phase 4 with 301 redirects.
-
----
-
-## Decision Summary Table
-
-| # | Page / Route | Decision | Phase | Priority Notes |
-|---|-------------|----------|-------|---------------|
-| 1 | `/` (Homepage) | Full Rewrite | Phase 3 | 12-section redesign |
-| 2 | `/how-it-works/` | Light Polish | Phase 7.7 | Strong content; update styling + links |
-| 3 | `/roles/` (Directory) | Moderate Rewrite | Phase 6.1 | Add filters, enriched cards |
-| 4 | `/solutions/aec-talent/` | Full Rewrite → `/aec/` | Phase 4.2 | 12-section hub template |
-| 5 | `/solutions/creatives-design/` | Full Rewrite → `/design/` | Phase 4.3 | 12-section hub template |
-| 6 | `/solutions/marketing-talent/` | Full Rewrite → `/marketing/` | Phase 4.4 | 12-section hub template |
-| 7 | `/solutions/aec-talent/individuals/` | Migrate → `/aec/individuals/` | Phase 4.2 | Polish during hub migration |
-| 8 | `/solutions/aec-talent/teams/` | Migrate → `/aec/teams/` | Phase 4.2 | Polish during hub migration |
-| 9 | `/solutions/creatives-design/dedicated/` | Migrate → `/design/dedicated-designers/` | Phase 4.3 | Polish during hub migration |
-| 10 | `/solutions/creatives-design/pm-led/` | Migrate → `/design/managed-creative-teams/` | Phase 5.4 | Becomes flagship spoke page |
-| 11 | `/solutions/marketing-talent/individuals/` | Migrate → `/marketing/individuals/` | Phase 4.4 | Polish during hub migration |
-| 12 | `/solutions/marketing-talent/teams/` | Migrate → `/marketing/teams/` | Phase 4.4 | Polish during hub migration |
-| 13 | `/services/aec/` | Remove → redirect to `/aec/` | Phase 4 | Harvest content first |
-| 14 | `/services/design/` | Remove → redirect to `/design/` | Phase 4 | Harvest content first |
-| 15 | `/services/marketing/` | Remove → redirect to `/marketing/` | Phase 4 | Harvest content first |
-| 16 | `/roles/architectural-designer/` | Light Polish | Phase 6.4 | Best role page template — use as reference |
-| 17 | `/roles/seo-specialist/` | Light Polish | Phase 6.4 | Good content, needs sample outputs |
-| 18 | `/roles/brand-visual-designer/` | Light Polish | Phase 6.4 | Good content, needs sample outputs |
-| 19 | `/roles/bim-coordinator/` | Stub → Build | Phase 6.3 | Priority #1 role page |
-| 20 | `/roles/revit-drafter/` | Stub → Build | Phase 6.4 | Batch 1 |
-| 21 | `/roles/ui-ux-designer/` | Stub → Build | Phase 6.4 | Batch 2 |
-| 22 | `/roles/ppc-manager/` | Stub → Build | Phase 6.4 | Batch 2 |
-| 23 | `/roles/content-marketer/` | Stub → Build | Phase 6.4 | Batch 2 |
-| 24 | `/terms/` | Stub → Build | Pre-launch | Needs real legal content |
-| 25 | `/privacy/` | Stub → Build | Pre-launch | Needs real legal content |
-| 26 | `/cookies/` | Stub → Build | Pre-launch | Needs real legal content |
-
----
-
-## Content to Preserve (Harvest List)
-
-These specific content blocks should be preserved or adapted during rewrites:
-
-### From Homepage (`index.astro`)
-- Hero value prop cards: Speed, Alignment, Flexibility, Guarantee
-- "How it works" 5-step wording
-- CTA headline: "Ready to Add Reliable Capacity?"
-
-### From How It Works (`how-it-works.astro`)
-- Full branching notes structure (Individuals/Teams/PM-led per step)
-- FAQ answers (3 questions)
-- "Why Choose Our Approach" 6-bullet list
-
-### From AEC Solution Hub
-- FAQ content (5 AEC-specific questions about BEP, 48h matching, tools, revisions, replacement)
-- Disciplines list (8 items)
-- Hero subheadline about Revit, BIM, drafting
-
-### From Creative & Design Hub
-- FAQ on dedicated vs PM-led decision
-- Outcome snapshots (4 items)
-
-### From Marketing Hub
-- Roles list (8 marketing specializations)
-- FAQ content (4 questions about individuals vs pods, FT/PT/hourly, speed, fit)
-
-### From Services Pages (richest content — harvest before removal)
-- `/services/aec/`: "Who this is for" section, capabilities list, tools list, full FAQ
-- `/services/design/`: Engagement models, subscription plans, capabilities, onboarding flow
-- `/services/marketing/`: Engagement models, roles with descriptions, expectations section
-
-### From Architectural Designer Role Page
-- "At a glance" card structure (Tools, Standards, Delivery, Flex)
-- Role overview: 5-item capability list
-- Anonymized testimonial: "Added two architectural designers — cut concept phase time by 40%"
-
-### From PM-Led Design Page
-- Turnaround table structure
-- Request flow process
-
----
-
-## Redirect Map (Phase 4)
-
-| Old URL | New URL | Type |
-|---------|---------|------|
-| `/solutions/aec-talent/*` | `/aec/*` | 301 |
-| `/solutions/creatives-design/*` | `/design/*` | 301 |
-| `/solutions/marketing-talent/*` | `/marketing/*` | 301 |
-| `/services/aec/` | `/aec/` | 301 |
-| `/services/design/` | `/design/` | 301 |
-| `/services/marketing/` | `/marketing/` | 301 |
-
----
-
-## Approval Gate
-
-> **STOP — Human approval required.**
->
-> Review the decisions above. Flag any pages where you want to:
-> - Preserve specific wording that should NOT be changed
-> - Change the decision (e.g., keep a page instead of removing it)
-> - Add additional content to harvest before rewrites begin
->
-> Say: **"Approved — proceed to Phase 2."**
+- **TODO placeholders** — Many pages have "TODO testimonial" or "TODO: Add…" blocks. Prioritize: Proof/testimonials, sample outputs on role pages, Design Brief Kit, ROI/savings sections.
+- **Broken discipline links** — AEC index links several disciplines to `/roles/` instead of specific role pages; fix when role pages are complete.
+- **Character encoding** — Services pages contain mojibake (`â€"` instead of `—`); fix during replacement.
