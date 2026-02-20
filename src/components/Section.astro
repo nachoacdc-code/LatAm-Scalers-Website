@@ -1,22 +1,22 @@
 ---
 export type Props = {
-	variant?: 'light' | 'alt' | 'dark';
+	variant?: 'default' | 'alt' | 'dark';
 	id?: string;
 	class?: string;
 	as?: string;
 };
 
 const {
-	variant = 'light',
+	variant = 'default',
 	id,
 	class: className = '',
 	as: Tag = 'section',
 } = Astro.props;
 
 const variants: Record<string, string> = {
-	light: 'bg-bg-light text-text-primary',
-	alt: 'bg-bg-alt text-text-primary',
-	dark: 'bg-bg-dark text-white',
+	default: 'bg-slate-950 text-slate-100',
+	alt: 'bg-slate-900/40 text-slate-100',
+	dark: 'bg-slate-950 text-white',
 };
 
 const classes = `${variants[variant]} ${className}`.trim();

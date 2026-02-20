@@ -23,14 +23,14 @@ const defaultMessage = Astro.props.defaultMessage ?? '';
 <form
 	action={action}
 	method="POST"
-	class="rounded-2xl border border-border bg-white p-6 shadow-sm"
+	class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6"
 	aria-label="Contact form"
 >
 	<div class="grid gap-4 sm:grid-cols-2">
 		<div class="sm:col-span-1">
-			<label class="text-sm font-medium text-text-primary" for="name">Name</label>
+			<label class="text-sm font-medium text-slate-200" for="name">Name</label>
 			<input
-				class="mt-2 w-full rounded-xl border border-border bg-bg-light px-4 py-2.5 text-sm text-text-primary placeholder:text-text-secondary/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+				class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
 				id="name"
 				name="name"
 				autocomplete="name"
@@ -39,9 +39,9 @@ const defaultMessage = Astro.props.defaultMessage ?? '';
 		</div>
 
 		<div class="sm:col-span-1">
-			<label class="text-sm font-medium text-text-primary" for="email">Work email</label>
+			<label class="text-sm font-medium text-slate-200" for="email">Work email</label>
 			<input
-				class="mt-2 w-full rounded-xl border border-border bg-bg-light px-4 py-2.5 text-sm text-text-primary placeholder:text-text-secondary/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+				class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
 				id="email"
 				name="email"
 				type="email"
@@ -51,9 +51,9 @@ const defaultMessage = Astro.props.defaultMessage ?? '';
 		</div>
 
 		<div class="sm:col-span-2">
-			<label class="text-sm font-medium text-text-primary" for="company">Company (optional)</label>
+			<label class="text-sm font-medium text-slate-200" for="company">Company (optional)</label>
 			<input
-				class="mt-2 w-full rounded-xl border border-border bg-bg-light px-4 py-2.5 text-sm text-text-primary placeholder:text-text-secondary/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+				class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
 				id="company"
 				name="company"
 				autocomplete="organization"
@@ -61,9 +61,9 @@ const defaultMessage = Astro.props.defaultMessage ?? '';
 		</div>
 
 		<div class="sm:col-span-2">
-			<label class="text-sm font-medium text-text-primary" for="interest">Interest</label>
+			<label class="text-sm font-medium text-slate-200" for="interest">Interest</label>
 			<select
-				class="mt-2 w-full rounded-xl border border-border bg-bg-light px-4 py-2.5 text-sm text-text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+				class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
 				id="interest"
 				name="interest"
 				required
@@ -77,9 +77,9 @@ const defaultMessage = Astro.props.defaultMessage ?? '';
 		</div>
 
 		<div class="sm:col-span-2">
-			<label class="text-sm font-medium text-text-primary" for="message">What do you need help with?</label>
+			<label class="text-sm font-medium text-slate-200" for="message">What do you need help with?</label>
 			<textarea
-				class="mt-2 min-h-28 w-full rounded-xl border border-border bg-bg-light px-4 py-2.5 text-sm text-text-primary placeholder:text-text-secondary/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+				class="mt-2 min-h-28 w-full rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
 				id="message"
 				name="message"
 				required
@@ -99,7 +99,7 @@ const defaultMessage = Astro.props.defaultMessage ?? '';
 	<div class="mt-6">
 		<button
 			type="submit"
-			class="inline-flex items-center justify-center rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-accent/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+			class="inline-flex items-center justify-center rounded bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
 		>
 			Send message
 		</button>

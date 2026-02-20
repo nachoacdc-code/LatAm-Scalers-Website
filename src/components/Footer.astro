@@ -7,15 +7,16 @@ const bookingUrl = BOOKING_URL;
 const bookingExternal = isExternalUrl(bookingUrl);
 ---
 
-<footer class="border-t border-border bg-bg-dark text-white">
+<footer class="border-t border-slate-800/80 bg-slate-950">
 	<div class="mx-auto max-w-6xl px-6 py-12">
 		<div class="grid gap-10 md:grid-cols-12">
 			<div class="md:col-span-4">
 				<a
 					href="/"
-					class="inline-flex items-center gap-3 rounded-lg text-sm font-bold tracking-tight text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+					class="inline-flex items-center gap-3 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
 				>
-					LatAm Scalers
+					<img src="/favicon.svg" alt="LatAm Scalers logo" class="h-8 w-8" loading="lazy" />
+					<span class="text-sm font-semibold tracking-tight text-white">LatAm Scalers</span>
 				</a>
 				<p class="mt-4 max-w-sm text-sm leading-relaxed text-slate-300">
 					Dedicated LATAM talent for US teams &mdash; AEC, creative and design, and marketing.
@@ -63,7 +64,7 @@ const bookingExternal = isExternalUrl(bookingUrl);
 				<a
 					href={bookingUrl}
 					{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
-					class="mt-5 inline-flex w-full items-center justify-center rounded bg-accent px-4 py-3 text-sm font-semibold text-white transition hover:bg-accent/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+					class="mt-5 inline-flex w-full items-center justify-center rounded bg-sky-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
 					data-book-call
 				>
 					Get Started
