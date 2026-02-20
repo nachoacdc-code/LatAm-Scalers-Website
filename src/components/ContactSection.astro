@@ -11,8 +11,8 @@ export type Props = {
 
 const {
 	title = 'Contact',
-	description = 'Tell us what you need and weâ€™ll suggest the best engagement model.',
-	subject = 'TalentCompany â€” new inquiry',
+	description = "Tell us what you need and we'll suggest the best engagement model.",
+	subject = 'LatAm Scalers — new inquiry',
 	calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com/your-org/15min',
 } = Astro.props;
 ---
@@ -28,4 +28,3 @@ const {
 		<CalendlyEmbed url={calendlyUrl} />
 	</div>
 </section>
-

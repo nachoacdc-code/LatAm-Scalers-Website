@@ -1,7 +1,24 @@
-@import "tailwindcss"; /* Tailwind base/components/utilities */
+@import "tailwindcss";
 
-/* App-wide defaults */
+@theme {
+	--color-primary: #020617;
+	--color-accent: #0284c7;
+	--color-amber: #F59E0B;
+	--color-success: #059669;
+
+	--color-bg-light: #020617;
+	--color-bg-alt: #0f172a;
+	--color-bg-dark: #020617;
+
+	--color-text-primary: #f1f5f9;
+	--color-text-secondary: #cbd5e1;
+	--color-border: #1e293b;
+
+	--color-aec: #3B82F6;
+	--color-design: #8B5CF6;
+	--color-marketing: #10B981;
+}
+
 html {
 	color-scheme: dark;
 }
-

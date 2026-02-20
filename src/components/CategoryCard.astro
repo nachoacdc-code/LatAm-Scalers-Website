@@ -1,0 +1,55 @@
+---
+export type Props = {
+	category: 'aec' | 'design' | 'marketing';
+	title: string;
+	description: string;
+	href: string;
+	pricing?: string;
+	class?: string;
+};
+
+const { category, title, description, href, pricing, class: className = '' } = Astro.props;
+
+const accents: Record<string, string> = {
+	aec: 'border-l-aec',
+	design: 'border-l-design',
+	marketing: 'border-l-marketing',
+};
+
+const badges: Record<string, string> = {
+	aec: 'bg-aec/10 text-aec',
+	design: 'bg-design/10 text-design',
+	marketing: 'bg-marketing/10 text-marketing',
+};
+
+const linkColors: Record<string, string> = {
+	aec: 'text-sky-300 group-hover:text-sky-200',
+	design: 'text-sky-300 group-hover:text-sky-200',
+	marketing: 'text-sky-300 group-hover:text-sky-200',
+};
+
+const labels: Record<string, string> = {
+	aec: 'AEC',
+	design: 'Design',
+	marketing: 'Marketing',
+};
+---
+
+<a
+	href={href}
+	class={`group block rounded-2xl border border-slate-800 border-l-4 ${accents[category]} bg-slate-900/40 p-6 transition hover:bg-slate-900 ${className}`.trim()}
+>
+	<div class="flex items-start justify-between gap-3">
+		<span class={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${badges[category]}`}>
+			{labels[category]}
+		</span>
+		{pricing && (
+			<span class="text-xs font-medium text-slate-400">{pricing}</span>
+		)}
+	</div>
+	<h3 class="mt-3 text-lg font-semibold text-white">{title}</h3>
+	<p class="mt-2 text-sm leading-relaxed text-slate-300">{description}</p>
+	<span class={`mt-4 inline-flex items-center text-sm font-medium ${linkColors[category]}`}>
+		Learn more <span class="ml-1 transition-transform group-hover:translate-x-0.5" aria-hidden="true">&rarr;</span>
+	</span>
+</a>

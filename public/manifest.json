@@ -1,0 +1,16 @@
+{
+  "name": "LatAm Scalers",
+  "short_name": "LatAm Scalers",
+  "description": "Dedicated LATAM talent for US teams — AEC, creative and design, and marketing.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F8FAFC",
+  "theme_color": "#1B2B4B",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    }
+  ]
+}

@@ -4,7 +4,7 @@ import { BOOKING_URL, isExternalUrl } from '../lib/cta';
 const pathname = Astro.url.pathname;
 
 const isHome = pathname === '/';
-const isSolutions = pathname.startsWith('/solutions/');
+const isSolutions = pathname.startsWith('/solutions/') || pathname.startsWith('/aec/') || pathname.startsWith('/design/') || pathname.startsWith('/marketing/');
 const isRoles = pathname.startsWith('/roles/');
 const isHowItWorks = pathname.startsWith('/how-it-works/');
 
@@ -46,7 +46,7 @@ const links = {
 		all: { label: 'Explore all roles', href: '/roles/' },
 	},
 	howItWorks: { label: 'How It Works', href: '/how-it-works/' },
-	cta: { label: 'Book a Call', href: bookingUrl },
+	cta: { label: 'Get Started', href: bookingUrl },
 };
 ---
 
@@ -56,7 +56,7 @@ const links = {
 			href="/"
 			class="text-sm font-semibold tracking-tight text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
 		>
-			TalentCompany
+			LatAm Scalers
 		</a>
 
 		<nav class="hidden items-center gap-6 text-sm text-slate-200 md:flex" aria-label="Primary">
@@ -165,7 +165,7 @@ const links = {
 										href={links.roles.all.href}
 										class={`mt-2 block rounded-xl px-3 py-2 text-sm font-semibold text-sky-300 transition hover:bg-slate-800/70 hover:text-sky-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${pathname === links.roles.all.href ? 'bg-slate-800/70' : ''}`}
 									>
-										{links.roles.all.label} <span aria-hidden="true">→</span>
+										{links.roles.all.label} <span aria-hidden="true">&rarr;</span>
 									</a>
 								</div>
 							</div>
@@ -301,7 +301,7 @@ const links = {
 										href={links.roles.all.href}
 										class="mt-1 block rounded-xl px-3 py-2 text-sm font-semibold text-sky-300 transition hover:bg-slate-900 hover:text-sky-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
 									>
-										{links.roles.all.label} <span aria-hidden="true">→</span>
+										{links.roles.all.label} <span aria-hidden="true">&rarr;</span>
 									</a>
 								</div>
 							</div>
@@ -353,14 +353,12 @@ const links = {
     }
   });
 
-  // Close mobile on Escape or outside click.
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape') return;
     if (mobileToggle?.getAttribute('aria-expanded') === 'true') {
       setMobile(false);
       mobileToggle?.focus?.();
     }
-    // Close any open dropdowns.
     header.querySelectorAll('details[open]').forEach((d) => d.removeAttribute('open'));
   });
 
@@ -371,18 +369,12 @@ const links = {
     }
   });
 
-  // Get desktop dropdowns (in the primary nav, not mobile menu)
   const desktopDropdowns = header.querySelectorAll('nav[aria-label="Primary"] details[data-nav-dropdown]');
-  
-  // Close all other dropdowns when clicking on a summary
-  // Use pointerdown which fires BEFORE the native details toggle
+
   desktopDropdowns.forEach((details) => {
     const summary = details.querySelector('summary');
-    
-    // Initialize aria-expanded
     summary?.setAttribute('aria-expanded', String(details.hasAttribute('open')));
-    
-    // Close other dropdowns BEFORE native toggle (pointerdown fires first)
+
     summary?.addEventListener('pointerdown', () => {
       desktopDropdowns.forEach((other) => {
         if (other !== details && other.hasAttribute('open')) {
@@ -392,25 +384,22 @@ const links = {
         }
       });
     });
-    
-    // Sync aria-expanded on toggle
+
     details.addEventListener('toggle', () => {
       summary?.setAttribute('aria-expanded', String(details.hasAttribute('open')));
     });
   });
 
-  // Hover-to-open on desktop pointer devices
   const canHover = window.matchMedia?.('(hover: hover) and (pointer: fine)')?.matches;
   if (canHover) {
     desktopDropdowns.forEach((details) => {
       let closeTimer = null;
-      
+
       const handleMouseEnter = () => {
         if (closeTimer) {
           clearTimeout(closeTimer);
           closeTimer = null;
         }
-        // Close all other dropdowns first
         desktopDropdowns.forEach((other) => {
           if (other !== details && other.hasAttribute('open')) {
             other.removeAttribute('open');
@@ -418,14 +407,13 @@ const links = {
             otherSummary?.setAttribute('aria-expanded', 'false');
           }
         });
-        // Then open this dropdown
         if (!details.hasAttribute('open')) {
           details.setAttribute('open', '');
           const summary = details.querySelector('summary');
           summary?.setAttribute('aria-expanded', 'true');
         }
       };
-      
+
       const handleMouseLeave = () => {
         if (closeTimer) clearTimeout(closeTimer);
         closeTimer = setTimeout(() => {
@@ -434,15 +422,14 @@ const links = {
           summary?.setAttribute('aria-expanded', 'false');
         }, 150);
       };
-      
+
       details.addEventListener('mouseenter', handleMouseEnter);
       details.addEventListener('mouseleave', handleMouseLeave);
     });
   }
 
-  // Mobile dropdowns - let native details behavior work, just sync aria
   const mobileDropdowns = header.querySelectorAll('[data-nav-mobile-menu] details[data-nav-dropdown]');
-  
+
   mobileDropdowns.forEach((details) => {
     const summary = details.querySelector('summary');
     const sync = () => summary?.setAttribute('aria-expanded', String(details.hasAttribute('open')));
@@ -452,4 +439,3 @@ const links = {
 })();
 	</script>
 </header>
-
