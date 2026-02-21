@@ -8,7 +8,7 @@ const brand = 'LatAm Scalers';
 const meta = {
 	title: 'Vetted Remote Roles — AEC, Design & Marketing | LatAm Scalers',
 	description:
-		'Browse 8 pre-vetted remote roles for US teams: BIM Coordinator, Architectural Designer, Revit Drafter, UI/UX Designer, Brand Designer, SEO Specialist, Content Marketer, PPC Manager. Starting from $2,500/mo.',
+		'Browse 12 pre-vetted remote roles for US teams across AEC, Creative & Design, and Marketing. BIM Coordinator, HVAC Designer, Revit MEP Modeler, UI/UX Designer, Brand Designer, SEO Specialist, and more. Starting from $2,500/mo.',
 };
 
 const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
@@ -18,6 +18,7 @@ const bookingUrl = BOOKING_URL;
 const bookingExternal = isExternalUrl(bookingUrl);
 
 const roles = [
+	// AEC Roles
 	{
 		slug: 'bim-coordinator',
 		label: 'BIM Coordinator',
@@ -46,6 +47,43 @@ const roles = [
 		href: '/roles/revit-drafter/',
 	},
 	{
+		slug: 'electrical-designer',
+		label: 'Electrical Designer',
+		category: 'aec',
+		categoryLabel: 'AEC',
+		description: 'Power distribution, lighting design, panel schedules, one-line diagrams, and NEC-aligned construction documents in Revit MEP and AutoCAD Electrical.',
+		pricing: 'From ~$3,500/mo',
+		href: '/roles/electrical-designer/',
+	},
+	{
+		slug: 'plumbing-designer',
+		label: 'Plumbing Designer',
+		category: 'aec',
+		categoryLabel: 'AEC',
+		description: 'Domestic water, sanitary and storm drainage systems, pipe sizing, fixture schedules, and Revit MEP coordination.',
+		pricing: 'From ~$3,500/mo',
+		href: '/roles/plumbing-designer/',
+	},
+	{
+		slug: 'hvac-designer',
+		label: 'HVAC Designer',
+		category: 'aec',
+		categoryLabel: 'AEC',
+		description: 'Load calculations (Manual J/D, ASHRAE), ductwork design, equipment selection, mechanical schedules, and Revit MEP coordination.',
+		pricing: 'From ~$3,500/mo',
+		href: '/roles/hvac-designer/',
+	},
+	{
+		slug: 'revit-mep-modeler',
+		label: 'Revit MEP Modeler',
+		category: 'aec',
+		categoryLabel: 'AEC',
+		description: 'Ductwork, piping, and electrical raceway modeling in Revit MEP with clash-ready BIM deliverables — highest remote suitability in AEC.',
+		pricing: 'From ~$3,500/mo',
+		href: '/roles/revit-mep-modeler/',
+	},
+	// Design Roles
+	{
 		slug: 'brand-visual-designer',
 		label: 'Brand & Visual Designer',
 		category: 'design',
@@ -63,6 +101,7 @@ const roles = [
 		pricing: 'From ~$2,800/mo',
 		href: '/roles/ui-ux-designer/',
 	},
+	// Marketing Roles
 	{
 		slug: 'seo-specialist',
 		label: 'SEO Specialist',
@@ -112,7 +151,7 @@ const categoryColors: Record<string, string> = {
 						Browse Vetted Remote Roles — AEC, Design, Marketing
 					</h1>
 					<p class="mt-5 text-base leading-relaxed text-slate-300 sm:text-lg">
-						{roles.length} pre-vetted role types. All specialists are LATAM-based, timezone-aligned with US teams, and available month-to-month.
+						{roles.length} pre-vetted role types across AEC, Creative &amp; Design, and Marketing. All specialists are LATAM-based, timezone-aligned with US teams, and available month-to-month.
 					</p>
 				</div>
 
@@ -152,25 +191,90 @@ const categoryColors: Record<string, string> = {
 
 		<!-- Role Cards Grid -->
 		<section class="bg-slate-950 pb-16 pt-6 sm:pb-20" aria-label="Role listings">
-			<div class="mx-auto max-w-6xl px-6">
-				<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" id="roles-grid">
-					{roles.map((r) => (
-						<a
-							href={r.href}
-							data-category={r.category}
-							class="role-card js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:bg-slate-900 hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
-						>
-							<span class={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold ${categoryColors[r.category]}`}>
-								{r.categoryLabel}
-							</span>
-							<p class="mt-3 text-base font-semibold text-slate-100 transition-colors group-hover:text-sky-200">{r.label}</p>
-							<p class="mt-2 text-sm leading-relaxed text-slate-400">{r.description}</p>
-							<div class="mt-4 flex items-center justify-between">
-								<span class="text-sm font-semibold text-sky-300">{r.pricing}</span>
-								<span class="text-sm font-semibold text-slate-400 transition-colors group-hover:text-sky-300">View role &rarr;</span>
-							</div>
-						</a>
-					))}
+			<div class="mx-auto max-w-6xl px-6" id="roles-grid">
+
+				<!-- AEC Category -->
+				<div class="category-section mb-12" data-section="aec">
+					<div class="mb-6 flex items-center gap-3">
+						<span class="text-xs font-semibold uppercase tracking-widest text-aec">AEC</span>
+						<span class="text-xs text-slate-500">({roles.filter(r => r.category === 'aec').length} roles)</span>
+						<div class="h-px flex-1 bg-aec/20"></div>
+					</div>
+					<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+						{roles.filter(r => r.category === 'aec').map((r) => (
+							<a
+								href={r.href}
+								data-category={r.category}
+								class="role-card js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:bg-slate-900 hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+							>
+								<span class={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold ${categoryColors[r.category]}`}>
+									{r.categoryLabel}
+								</span>
+								<p class="mt-3 text-base font-semibold text-slate-100 transition-colors group-hover:text-sky-200">{r.label}</p>
+								<p class="mt-2 text-sm leading-relaxed text-slate-400">{r.description}</p>
+								<div class="mt-4 flex items-center justify-between">
+									<span class="text-sm font-semibold text-sky-300">{r.pricing}</span>
+									<span class="text-sm font-semibold text-slate-400 transition-colors group-hover:text-sky-300">View role &rarr;</span>
+								</div>
+							</a>
+						))}
+					</div>
+				</div>
+
+				<!-- Design Category -->
+				<div class="category-section mb-12" data-section="design">
+					<div class="mb-6 flex items-center gap-3">
+						<span class="text-xs font-semibold uppercase tracking-widest text-design">Creative &amp; Design</span>
+						<span class="text-xs text-slate-500">({roles.filter(r => r.category === 'design').length} roles)</span>
+						<div class="h-px flex-1 bg-design/20"></div>
+					</div>
+					<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+						{roles.filter(r => r.category === 'design').map((r) => (
+							<a
+								href={r.href}
+								data-category={r.category}
+								class="role-card js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:bg-slate-900 hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+							>
+								<span class={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold ${categoryColors[r.category]}`}>
+									{r.categoryLabel}
+								</span>
+								<p class="mt-3 text-base font-semibold text-slate-100 transition-colors group-hover:text-sky-200">{r.label}</p>
+								<p class="mt-2 text-sm leading-relaxed text-slate-400">{r.description}</p>
+								<div class="mt-4 flex items-center justify-between">
+									<span class="text-sm font-semibold text-sky-300">{r.pricing}</span>
+									<span class="text-sm font-semibold text-slate-400 transition-colors group-hover:text-sky-300">View role &rarr;</span>
+								</div>
+							</a>
+						))}
+					</div>
+				</div>
+
+				<!-- Marketing Category -->
+				<div class="category-section" data-section="marketing">
+					<div class="mb-6 flex items-center gap-3">
+						<span class="text-xs font-semibold uppercase tracking-widest text-marketing">Marketing</span>
+						<span class="text-xs text-slate-500">({roles.filter(r => r.category === 'marketing').length} roles)</span>
+						<div class="h-px flex-1 bg-marketing/20"></div>
+					</div>
+					<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+						{roles.filter(r => r.category === 'marketing').map((r) => (
+							<a
+								href={r.href}
+								data-category={r.category}
+								class="role-card js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:bg-slate-900 hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+							>
+								<span class={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold ${categoryColors[r.category]}`}>
+									{r.categoryLabel}
+								</span>
+								<p class="mt-3 text-base font-semibold text-slate-100 transition-colors group-hover:text-sky-200">{r.label}</p>
+								<p class="mt-2 text-sm leading-relaxed text-slate-400">{r.description}</p>
+								<div class="mt-4 flex items-center justify-between">
+									<span class="text-sm font-semibold text-sky-300">{r.pricing}</span>
+									<span class="text-sm font-semibold text-slate-400 transition-colors group-hover:text-sky-300">View role &rarr;</span>
+								</div>
+							</a>
+						))}
+					</div>
 				</div>
 
 				<!-- Empty state (shown when no matching filter) -->
@@ -254,6 +358,7 @@ const categoryColors: Record<string, string> = {
 		// Filter tabs
 		var btns = document.querySelectorAll('.filter-btn');
 		var cards = document.querySelectorAll('.role-card');
+		var sections = document.querySelectorAll('.category-section');
 		var emptyState = document.getElementById('roles-empty');
 
 		btns.forEach(function (btn) {
@@ -273,6 +378,17 @@ const categoryColors: Record<string, string> = {
 						visible++;
 					} else {
 						card.setAttribute('hidden', '');
+					}
+				});
+
+				// Show/hide category sections
+				sections.forEach(function (section) {
+					var sectionCat = section.getAttribute('data-section');
+					var show = filter === 'all' || filter === sectionCat;
+					if (show) {
+						section.removeAttribute('hidden');
+					} else {
+						section.setAttribute('hidden', '');
 					}
 				});
 

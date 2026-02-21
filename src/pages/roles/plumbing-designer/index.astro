@@ -1,0 +1,133 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import MetaHead from '../../../components/MetaHead.astro';
+import RoleTemplate from '../../../components/RoleTemplate.astro';
+
+const brand = 'LatAm Scalers';
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/roles/plumbing-designer/', baseUrl).toString();
+
+const meta = {
+	title: 'Hire a Dedicated Plumbing Designer — Pre-Vetted LATAM MEP Talent for US Firms | LatAm Scalers',
+	description:
+		'Hire a dedicated plumbing designer for US AEC and MEP firms. Domestic water, sanitary and storm drainage, pipe sizing, fixture schedules, and Revit MEP coordination. Pre-vetted LATAM talent. From ~$3,500/mo.',
+};
+
+const faq = [
+	{
+		question: 'What does a Plumbing Designer produce on a MEP project?',
+		answer:
+			'A Plumbing Designer produces domestic water distribution layouts (hot, cold, recirculation), sanitary and storm drainage plans, pipe sizing calculations, fixture unit schedules, plumbing fixture plans, riser diagrams, and equipment connection details. They work in coordination with mechanical and electrical disciplines under your licensed plumbing engineer or EOR.',
+	},
+	{
+		question: 'Who is responsible for code compliance and stamping?',
+		answer:
+			'Your licensed Engineer of Record retains full design authority and stamp responsibility. Our Plumbing Designers produce drawings and sizing documentation under your direction, requiring your PE/EOR review and sign-off before any permit submission.',
+	},
+	{
+		question: 'What software do your Plumbing Designers work in?',
+		answer:
+			'Our specialists work in Revit MEP for coordinated 3D plumbing models, AutoCAD for 2D production drafting, and BIM 360 / Autodesk Construction Cloud for cloud-based project coordination. We align with your preferred platform and match your firm\'s layer standards and sheet templates.',
+	},
+	{
+		question: 'How do Plumbing Designers coordinate with HVAC and electrical teams?',
+		answer:
+			'Plumbing Designers coordinate with other MEP disciplines through federated Revit models or linked AutoCAD files, participating in clash detection reviews via Navisworks or ACC. They flag conflicts proactively and update drawings to reflect coordination resolutions from your team\'s review process.',
+	},
+	{
+		question: 'What is the typical cost savings vs. a US-based Plumbing Designer?',
+		answer:
+			'US-based Plumbing Designers typically cost $65,000–$95,000/year fully loaded. LATAM-based equivalents through LatAm Scalers start at approximately $3,500/month — a savings of 50–65% with no compromise on technical output quality.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Plumbing Designer',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faq.map((f) => ({
+		'@type': 'Question',
+		name: f.question,
+		acceptedAnswer: { '@type': 'Answer', text: f.answer },
+	})),
+};
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
+
+	<RoleTemplate
+		role="Plumbing Designer"
+		category="aec"
+		hubHref="/aec/"
+		hubLabel="AEC Talent Hub"
+		h1="Hire a Dedicated Plumbing Designer — Pre-Vetted LATAM MEP Talent"
+		subheadline="Dedicated plumbing designers integrated into your MEP workflow. Domestic water systems, sanitary and storm drainage, pipe sizing, fixture schedules, and Revit MEP coordination. US timezone. Vetted. Month-to-month."
+		atAGlance={[
+			{ label: 'Category', value: 'AEC — MEP' },
+			{ label: 'Tools', value: 'Revit MEP, AutoCAD, BIM 360, Navisworks' },
+			{ label: 'Pricing', value: 'From ~$3,500/mo' },
+			{ label: 'Availability', value: 'FT (40h) or PT (20h)' },
+		]}
+		overview="Our Plumbing Designers deliver MEP-standard plumbing documentation at 50%+ lower cost than US-based hires. They produce domestic water distribution plans, sanitary and storm drainage systems, pipe sizing calculations, and coordinated Revit MEP models under the direction of your licensed Engineer of Record. Timezone-aligned with US teams and pre-vetted for multi-discipline coordination workflows — they plug directly into your production pipeline using your tools and standards."
+		skills={[
+			'Domestic cold and hot water distribution layouts',
+			'Sanitary drainage and vent system design',
+			'Storm drainage and roof drain piping plans',
+			'Hot water recirculation system layouts',
+			'Pipe sizing calculations and fixture unit scheduling',
+			'Plumbing fixture plans and schedules',
+			'Riser diagrams and plumbing schematic details',
+			'Equipment connection and stub-out details',
+			'Revit MEP plumbing modeling and coordination',
+			'Multi-discipline clash coordination support',
+		]}
+		whyRemote="Plumbing design is a document-production discipline — plan layouts, schedules, sizing calculations, and coordination overlays all translate directly to remote workflows. Your designer works during your US business hours, participates in MEP coordination reviews, and integrates into your Revit or AutoCAD environment with minimal friction. LATAM timezone overlap (0–3 hours behind EST/CST) enables real-time communication when you need it."
+		engagementOptions={[
+			{
+				title: 'Dedicated Individual Plumbing Designer',
+				description:
+					'Full-time (40h/week) or part-time (20h/week) Plumbing Designer embedded in your MEP team. Works in your Revit or AutoCAD environment, follows your firm\'s drawing standards, and delivers to your CD set schedule.',
+				pricing: 'From ~$3,500/mo',
+			},
+			{
+				title: 'MEP Production Pod',
+				description:
+					'Paired or full MEP team (electrical, mechanical, plumbing designers) working in parallel for high-volume multi-discipline projects. PM-level coordination overlay available on request.',
+				pricing: 'Custom — based on team size and scope',
+			},
+		]}
+		tools={[
+			{ name: 'Revit MEP', description: 'Coordinated 3D plumbing modeling, pipe routing, fixture placement, and multi-discipline clash coordination.' },
+			{ name: 'AutoCAD', description: '2D production drafting for plumbing plans, riser diagrams, detail sheets, and as-built documentation.' },
+			{ name: 'Navisworks', description: 'Multi-discipline clash detection between plumbing, mechanical, structural, and architectural models.' },
+			{ name: 'Autodesk Construction Cloud / BIM 360', description: 'Cloud-based coordination, model federation, issue tracking, and submittal review support.' },
+			{ name: 'Bluebeam Revu', description: 'Redline markup, comment response, and permit-set review coordination with your EOR.' },
+			{ name: 'Microsoft Teams / Zoom', description: 'Real-time coordination calls, screen sharing for drawing reviews, and project communication.' },
+		]}
+		deliverables={[
+			'Domestic water distribution plans (cold, hot, and recirculation)',
+			'Sanitary and storm drainage floor plans by level',
+			'Plumbing fixture schedules and room-by-room fixture plans',
+			'Pipe sizing calculations and fixture unit load summaries',
+			'Riser diagrams for domestic water and drainage systems',
+			'Equipment connection and stub-out detail drawings',
+			'Revit MEP plumbing models (coordinated with MEP disciplines)',
+			'As-built plumbing documentation for project handover',
+		]}
+		pricing="Dedicated Plumbing Designers start at approximately $3,500/month for full-time engagement (40h/week). Part-time (20h/week) and MEP pod configurations are also available. Pricing varies based on experience level, Revit vs. AutoCAD primary workflow, and project building type complexity."
+		relatedRoles={[
+			{ title: 'HVAC Designer', href: '/roles/hvac-designer/', category: 'aec' },
+			{ title: 'Electrical Designer', href: '/roles/electrical-designer/', category: 'aec' },
+			{ title: 'Revit MEP Modeler', href: '/roles/revit-mep-modeler/', category: 'aec' },
+		]}
+		faq={faq}
+	/>
+</Layout>

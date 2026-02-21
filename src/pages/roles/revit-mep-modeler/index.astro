@@ -1,0 +1,133 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import MetaHead from '../../../components/MetaHead.astro';
+import RoleTemplate from '../../../components/RoleTemplate.astro';
+
+const brand = 'LatAm Scalers';
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/roles/revit-mep-modeler/', baseUrl).toString();
+
+const meta = {
+	title: 'Hire a Dedicated Revit MEP Modeler — Pre-Vetted LATAM Talent for US Firms | LatAm Scalers',
+	description:
+		'Hire a dedicated Revit MEP Modeler for US AEC and MEP firms. Ductwork, piping, and electrical raceway modeling in Revit MEP, coordination-ready BIM deliverables, clash detection support. Pre-vetted LATAM talent. From ~$3,500/mo.',
+};
+
+const faq = [
+	{
+		question: 'What is a Revit MEP Modeler and how do they differ from a mechanical designer?',
+		answer:
+			'A Revit MEP Modeler focuses on building and coordinating the 3D BIM model for mechanical (HVAC ductwork and piping), electrical (conduit, cable tray, raceway), and plumbing systems within Revit MEP. Unlike a discipline designer who performs load calculations and system engineering, a Revit MEP Modeler specializes in model production, routing coordination, and delivering clash-ready BIM models at the highest documentation quality — often supporting multiple engineering disciplines simultaneously.',
+	},
+	{
+		question: 'Can a Revit MEP Modeler handle clash detection independently?',
+		answer:
+			'Our Revit MEP Modelers produce models that are ready for clash detection runs and can participate in Navisworks coordination workflows — identifying and documenting clashes, tracking issues in ACC or BIM 360, and updating models after resolution. Full clash management and resolution authority remains with your project engineer or BIM coordinator.',
+	},
+	{
+		question: 'What MEP disciplines can your Revit MEP Modelers cover?',
+		answer:
+			'Our specialists typically cover mechanical (HVAC ductwork, piping, equipment placement), plumbing (sanitary, domestic water, storm), and electrical (conduit, cable tray, panel locations, light fixtures) in Revit MEP. Depth of coverage depends on the specialist\'s background — we match you with a modeler whose proficiency aligns to your project requirements.',
+	},
+	{
+		question: 'How do they integrate with our in-house MEP engineers?',
+		answer:
+			'Your Revit MEP Modeler works as a production extension of your in-house team. They receive engineering input (equipment layouts, system selections, routing intent) from your engineers and translate it into coordinated BIM models, following your BEP, Revit template standards, and coordination workflow. Regular check-ins, shared Revit worksharing environments, and ACC/BIM 360 ensure seamless integration.',
+	},
+	{
+		question: 'What does a Revit MEP Modeler cost through LatAm Scalers?',
+		answer:
+			'Dedicated Revit MEP Modelers start at approximately $3,500/month for full-time engagement (40h/week). Part-time and MEP pod configurations are available. This represents 50–65% cost savings vs. a US-based Revit MEP specialist ($70,000–$100,000/year fully loaded) with no compromise on model quality or coordination responsiveness.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Revit MEP Modeler',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faq.map((f) => ({
+		'@type': 'Question',
+		name: f.question,
+		acceptedAnswer: { '@type': 'Answer', text: f.answer },
+	})),
+};
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
+
+	<RoleTemplate
+		role="Revit MEP Modeler"
+		category="aec"
+		hubHref="/aec/"
+		hubLabel="AEC Talent Hub"
+		h1="Hire a Dedicated Revit MEP Modeler — Pre-Vetted LATAM Talent"
+		subheadline="Dedicated Revit MEP Modelers integrated into your coordination workflow. Ductwork, piping, electrical raceway, and multi-discipline coordination-ready BIM deliverables. US timezone. Vetted. Month-to-month."
+		atAGlance={[
+			{ label: 'Category', value: 'AEC — MEP' },
+			{ label: 'Tools', value: 'Revit MEP, Navisworks, BIM 360, AutoCAD MEP' },
+			{ label: 'Pricing', value: 'From ~$3,500/mo' },
+			{ label: 'Availability', value: 'FT (40h) or PT (20h)' },
+		]}
+		overview="Revit MEP Modelers represent the highest remote-suitability role in the AEC sector — the work is entirely digital, tool-dependent, and production-oriented. Our specialists produce coordinated ductwork, piping, and electrical raceway models in Revit MEP, following your BEP standards and worksharing protocols. They integrate as a production arm for your in-house MEP engineers, accelerating model delivery and freeing your senior team for engineering judgment work — at 50%+ lower cost than US-based equivalents."
+		skills={[
+			'Revit MEP ductwork modeling — supply, return, exhaust, and transfer air',
+			'Mechanical piping systems — hydronic, refrigerant, steam, condensate',
+			'Plumbing system modeling — domestic water, sanitary, and storm drainage',
+			'Electrical raceway — conduit, cable tray, and panel placement',
+			'Revit worksharing and workset management for large-team environments',
+			'BEP (BIM Execution Plan) compliance and quality control checks',
+			'Coordination-ready model delivery with clash detection setup',
+			'Navisworks clash detection support and issue documentation',
+			'ACC / BIM 360 model management and issue tracking',
+			'View and sheet production for permit and construction document sets',
+		]}
+		whyRemote="Revit MEP modeling is the most remote-native function in AEC — the work is entirely software-based, deliverables are digital files, and collaboration happens through shared cloud models, issue trackers, and video calls. Your Revit MEP Modeler works in your Revit server or cloud worksharing environment during US business hours. LATAM timezone overlap (0–3 hours behind EST/CST) enables daily coordination check-ins without project delay. This is why Revit MEP modeling consistently ranks as the top remote AEC placement category."
+		engagementOptions={[
+			{
+				title: 'Dedicated Revit MEP Modeler',
+				description:
+					'Full-time (40h/week) or part-time (20h/week) Revit MEP Modeler embedded in your project team. Works in your Revit environment following your BEP, and produces discipline models to your coordination schedule.',
+				pricing: 'From ~$3,500/mo',
+			},
+			{
+				title: 'MEP Modeling Pod',
+				description:
+					'Two or more Revit MEP Modelers covering multiple disciplines (mechanical, plumbing, electrical) simultaneously. Ideal for high-volume project workloads or firms with parallel active jobs requiring coordinated model delivery.',
+				pricing: 'Custom — based on team size and scope',
+			},
+		]}
+		tools={[
+			{ name: 'Revit MEP', description: 'Primary BIM authoring platform for mechanical, electrical, and plumbing 3D modeling and construction documentation.' },
+			{ name: 'Navisworks Manage', description: 'Multi-discipline clash detection, 4D scheduling, and coordination issue identification and tracking.' },
+			{ name: 'Autodesk Construction Cloud (ACC)', description: 'Cloud-based design collaboration, federated model management, and coordination issue resolution.' },
+			{ name: 'BIM 360', description: 'Cloud worksharing, document control, and design review for BIM-required project environments.' },
+			{ name: 'AutoCAD MEP', description: '2D production drafting and annotation for projects using AutoCAD-based deliverable workflows.' },
+			{ name: 'Bluebeam Revu', description: 'Coordination set markup, redline response, and permit review comment tracking.' },
+		]}
+		deliverables={[
+			'Coordinated Revit MEP models — mechanical, plumbing, and electrical disciplines',
+			'Ductwork routing layouts (supply, return, exhaust) with clash-ready coordination',
+			'Mechanical piping models (hydronic, refrigerant, and process piping)',
+			'Plumbing system models (domestic water, sanitary, storm)',
+			'Electrical raceway models (conduit runs, cable tray, panel placement)',
+			'Navisworks coordination sets and clash detection issue logs',
+			'Permit and construction document sheet sets from Revit MEP',
+			'Model QA/QC documentation aligned to BEP requirements',
+		]}
+		pricing="Dedicated Revit MEP Modelers start at approximately $3,500/month for full-time engagement (40h/week). Part-time (20h/week) and MEP modeling pod configurations are also available. Pricing varies based on experience level (multi-discipline vs. single discipline proficiency) and project complexity."
+		relatedRoles={[
+			{ title: 'HVAC Designer', href: '/roles/hvac-designer/', category: 'aec' },
+			{ title: 'Electrical Designer', href: '/roles/electrical-designer/', category: 'aec' },
+			{ title: 'BIM Coordinator', href: '/roles/bim-coordinator/', category: 'aec' },
+		]}
+		faq={faq}
+	/>
+</Layout>

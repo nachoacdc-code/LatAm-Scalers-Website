@@ -1,0 +1,133 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import MetaHead from '../../../components/MetaHead.astro';
+import RoleTemplate from '../../../components/RoleTemplate.astro';
+
+const brand = 'LatAm Scalers';
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/roles/electrical-designer/', baseUrl).toString();
+
+const meta = {
+	title: 'Hire a Dedicated Electrical Designer — Pre-Vetted LATAM MEP Talent for US Firms | LatAm Scalers',
+	description:
+		'Hire a dedicated electrical designer for US AEC and MEP firms. Power distribution, lighting design, panel schedules, one-line diagrams, NEC compliance. Pre-vetted LATAM talent. From ~$3,500/mo.',
+};
+
+const faq = [
+	{
+		question: 'What does an Electrical Designer do on a typical MEP project?',
+		answer:
+			'An Electrical Designer produces power distribution layouts, lighting design with fixture schedules, panel schedules, one-line diagrams, load calculations, branch circuit plans, and equipment coordination. They work under the oversight of your licensed electrical engineer, producing construction documents aligned to NEC and local jurisdictional requirements.',
+	},
+	{
+		question: 'Who stamps and takes design authority for electrical drawings?',
+		answer:
+			'Your licensed Electrical Engineer of Record retains full design authority and stamp responsibility. Our Electrical Designers produce drawings and calculations under your direction, subject to your review and sign-off before any submission or permit issuance.',
+	},
+	{
+		question: 'What software do your Electrical Designers use?',
+		answer:
+			'Our specialists are proficient in Revit MEP for coordinated BIM electrical models, AutoCAD and AutoCAD Electrical for 2D production drafting, AGi32 and DIALux for lighting calculations, and ETAP for power system analysis (where required). We align with your preferred platform and deliverable format.',
+	},
+	{
+		question: 'How quickly can we onboard a vetted Electrical Designer?',
+		answer:
+			'We typically present vetted candidates within 48 hours after a scoping call. Once project standards, templates, and tool access are confirmed, most designers ramp up within one week.',
+	},
+	{
+		question: 'What is the cost difference vs. a US-based Electrical Designer?',
+		answer:
+			'US-based junior-to-mid Electrical Designers typically cost $70,000–$110,000/year fully loaded. LATAM-based equivalents through LatAm Scalers start at approximately $3,500/month ($42,000/year) — a savings of 50–70% with no reduction in technical quality.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Electrical Designer',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faq.map((f) => ({
+		'@type': 'Question',
+		name: f.question,
+		acceptedAnswer: { '@type': 'Answer', text: f.answer },
+	})),
+};
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
+
+	<RoleTemplate
+		role="Electrical Designer"
+		category="aec"
+		hubHref="/aec/"
+		hubLabel="AEC Talent Hub"
+		h1="Hire a Dedicated Electrical Designer — Pre-Vetted LATAM MEP Talent"
+		subheadline="Dedicated electrical designers integrated into your MEP workflow. Power distribution, lighting, panel schedules, one-line diagrams, and NEC-aligned construction documents. US timezone. Vetted. Month-to-month."
+		atAGlance={[
+			{ label: 'Category', value: 'AEC — MEP' },
+			{ label: 'Tools', value: 'Revit MEP, AutoCAD Electrical, AGi32, DIALux, ETAP' },
+			{ label: 'Pricing', value: 'From ~$3,500/mo' },
+			{ label: 'Availability', value: 'FT (40h) or PT (20h)' },
+		]}
+		overview="Our Electrical Designers bring MEP-grade production expertise at 50%+ lower cost than US-based hires. They produce power distribution drawings, lighting designs, panel schedules, and coordinated Revit MEP models under the direction of your licensed Electrical Engineer of Record. Timezone-aligned with US teams, fluent English, and pre-vetted for NEC compliance workflows — they integrate directly into your project delivery pipeline using your tools, templates, and standards."
+		skills={[
+			'Power distribution layout and branch circuit design',
+			'Lighting design with fixture schedules and photometric calculations',
+			'Panel schedules, load calculations, and feeder sizing',
+			'One-line diagram production and riser diagrams',
+			'Revit MEP electrical modeling and coordination',
+			'AutoCAD Electrical 2D drafting and annotation',
+			'NEC code compliance reference and documentation',
+			'Equipment room layouts and electrical room coordination',
+			'Site lighting and emergency/exit lighting plans',
+			'Coordination with mechanical and plumbing disciplines',
+		]}
+		whyRemote="Electrical design is documentation-intensive and tool-driven — an ideal remote function. Your designer participates in coordination reviews, design development, and document production during your US business hours. LATAM timezone overlap (0–3 hours behind EST/CST) enables real-time collaboration. You provide engineering direction and PE stamp; we handle the production workload."
+		engagementOptions={[
+			{
+				title: 'Dedicated Individual Electrical Designer',
+				description:
+					'Full-time (40h/week) or part-time (20h/week) Electrical Designer embedded into your MEP team. Works in your Revit/AutoCAD environment, follows your firm standards, and produces deliverables to your CD set requirements.',
+				pricing: 'From ~$3,500/mo',
+			},
+			{
+				title: 'MEP Production Pod',
+				description:
+					'Two or more MEP designers (electrical, mechanical, plumbing) working in parallel for high-volume projects or multi-phase production workloads. Optional PM-level coordination overlay available.',
+				pricing: 'Custom — based on team size and scope',
+			},
+		]}
+		tools={[
+			{ name: 'Revit MEP', description: 'Coordinated 3D electrical BIM modeling, clash coordination, and construction documentation for MEP projects.' },
+			{ name: 'AutoCAD / AutoCAD Electrical', description: '2D production drafting, schematic diagrams, panel schedules, and one-line diagram production.' },
+			{ name: 'AGi32 / DIALux', description: 'Photometric lighting calculations, maintained footcandle compliance, exterior and interior lighting design.' },
+			{ name: 'ETAP', description: 'Power system analysis, short-circuit calculations, and arc flash studies (where required by project scope).' },
+			{ name: 'Bluebeam Revu', description: 'Markup, redline coordination, and permit set review against EOR comments.' },
+			{ name: 'Autodesk Construction Cloud / BIM 360', description: 'Cloud coordination, discipline model federation, and issue tracking for BIM-required projects.' },
+		]}
+		deliverables={[
+			'Electrical floor plans — power distribution and branch circuits',
+			'Lighting plans with fixture schedules and photometric reports',
+			'Panel schedules with load calculations and demand factors',
+			'One-line diagrams and electrical riser diagrams',
+			'Revit MEP electrical models (coordinated with HVAC and plumbing)',
+			'Equipment room and electrical room layout drawings',
+			'Site and area lighting plans (interior and exterior)',
+			'Specification references and NEC compliance notes',
+		]}
+		pricing="Dedicated Electrical Designers start at approximately $3,500/month for full-time engagement (40h/week). Part-time (20h/week) and MEP pod configurations are also available. Pricing varies based on experience level, Revit vs. AutoCAD primary workflow, and project complexity."
+		relatedRoles={[
+			{ title: 'Plumbing Designer', href: '/roles/plumbing-designer/', category: 'aec' },
+			{ title: 'HVAC Designer', href: '/roles/hvac-designer/', category: 'aec' },
+			{ title: 'Revit MEP Modeler', href: '/roles/revit-mep-modeler/', category: 'aec' },
+		]}
+		faq={faq}
+	/>
+</Layout>

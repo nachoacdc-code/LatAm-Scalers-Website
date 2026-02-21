@@ -1,0 +1,133 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import MetaHead from '../../../components/MetaHead.astro';
+import RoleTemplate from '../../../components/RoleTemplate.astro';
+
+const brand = 'LatAm Scalers';
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/roles/hvac-designer/', baseUrl).toString();
+
+const meta = {
+	title: 'Hire a Dedicated HVAC Designer — Pre-Vetted LATAM MEP Talent for US Firms | LatAm Scalers',
+	description:
+		'Hire a dedicated HVAC designer for US AEC and MEP firms. Load calculations (Manual J/D), ductwork design, equipment selection, energy modeling, and Revit MEP coordination. Pre-vetted LATAM talent. From ~$3,500/mo.',
+};
+
+const faq = [
+	{
+		question: 'What does an HVAC Designer do on a commercial MEP project?',
+		answer:
+			'An HVAC Designer performs heating and cooling load calculations (Manual J/D and ASHRAE methods), selects HVAC equipment (AHUs, VAV boxes, fan coils, rooftop units), designs ductwork distribution layouts, produces mechanical schedules and equipment specifications, and coordinates with structural and architectural disciplines for equipment clearances and penetrations. They work under your licensed Mechanical Engineer of Record.',
+	},
+	{
+		question: 'Can your HVAC Designers do energy modeling and Title 24 / ASHRAE 90.1 compliance?',
+		answer:
+			'Yes. Our experienced HVAC Designers are familiar with ASHRAE 90.1 compliance requirements and can support Title 24 documentation workflows. For full energy modeling outputs (e.g., EnergyPlus, eQUEST simulations), we can match you with specialists with energy modeling backgrounds. Scope is confirmed at the staffing call.',
+	},
+	{
+		question: 'What software proficiencies do your HVAC Designers have?',
+		answer:
+			'Our HVAC Designers work in Revit MEP for coordinated mechanical BIM models, AutoCAD for 2D plan and detail production, Carrier HAP and Trane TRACE 700 for load calculations and equipment selection, and Navisworks for multi-discipline clash detection. Tool proficiency is vetted during our screening process.',
+	},
+	{
+		question: 'How do they handle ductwork coordination with structural and architectural teams?',
+		answer:
+			'HVAC Designers coordinate ductwork routing through federated Revit models or linked AutoCAD files, running clash detection against structural framing, beams, and architectural ceiling plenum constraints. They flag conflicts, propose routing solutions, and update models based on coordination resolutions — all under your project engineer\'s direction.',
+	},
+	{
+		question: 'What does it cost to hire an HVAC Designer through LatAm Scalers?',
+		answer:
+			'Dedicated HVAC Designers start at approximately $3,500/month for full-time engagement (40h/week). Part-time and MEP pod configurations are also available. US-based equivalents typically cost $75,000–$115,000/year fully loaded — LATAM saves 50–65% with no reduction in technical output quality.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'HVAC Designer',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faq.map((f) => ({
+		'@type': 'Question',
+		name: f.question,
+		acceptedAnswer: { '@type': 'Answer', text: f.answer },
+	})),
+};
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
+
+	<RoleTemplate
+		role="HVAC Designer"
+		category="aec"
+		hubHref="/aec/"
+		hubLabel="AEC Talent Hub"
+		h1="Hire a Dedicated HVAC Designer — Pre-Vetted LATAM MEP Talent"
+		subheadline="Dedicated HVAC designers embedded in your MEP team. Load calculations, ductwork design, equipment selection, mechanical schedules, and Revit MEP coordination. US timezone. Vetted. Month-to-month."
+		atAGlance={[
+			{ label: 'Category', value: 'AEC — MEP' },
+			{ label: 'Tools', value: 'Revit MEP, AutoCAD, Carrier HAP, Trane TRACE 700, Navisworks' },
+			{ label: 'Pricing', value: 'From ~$3,500/mo' },
+			{ label: 'Availability', value: 'FT (40h) or PT (20h)' },
+		]}
+		overview="Our HVAC Designers bring mechanical engineering design support at 50%+ lower cost than US-based hires. They perform load calculations, design ductwork distribution systems, select equipment, and produce fully coordinated Revit MEP models under the direction of your licensed Mechanical Engineer of Record. With 4,400+ monthly searches for 'hvac load calculation,' HVAC design represents one of the highest-demand remote AEC functions — and LATAM designers are pre-vetted to meet those standards."
+		skills={[
+			'Heating and cooling load calculations (Manual J, Manual D, ASHRAE)',
+			'Ductwork design — supply, return, exhaust, and outside air',
+			'HVAC equipment selection and mechanical schedules',
+			'VAV system design and pressure drop calculations',
+			'Air handling unit (AHU) and rooftop unit (RTU) coordination',
+			'Mechanical room layouts and equipment clearance details',
+			'Revit MEP mechanical modeling and BIM coordination',
+			'ASHRAE 90.1 / Title 24 compliance documentation support',
+			'Multi-discipline clash coordination (structural, plumbing, electrical)',
+			'Control diagrams and sequence of operations documentation',
+		]}
+		whyRemote="HVAC design is a calculation-driven, documentation-intensive discipline — making it well-suited to remote delivery. Load calculations, equipment schedules, ductwork layouts, and Revit modeling all translate seamlessly to distributed workflows. Your HVAC Designer works during your US business hours, joins coordination review meetings, and produces deliverables to your firm's standards. LATAM timezone overlap (0–3 hours behind EST/CST) ensures real-time availability."
+		engagementOptions={[
+			{
+				title: 'Dedicated Individual HVAC Designer',
+				description:
+					'Full-time (40h/week) or part-time (20h/week) HVAC Designer embedded in your MEP team. Works in your Revit or AutoCAD environment, follows your firm standards, and produces deliverables aligned to your project delivery schedule.',
+				pricing: 'From ~$3,500/mo',
+			},
+			{
+				title: 'MEP Production Pod',
+				description:
+					'Full MEP team (electrical, mechanical/HVAC, plumbing designers) working in parallel for multi-discipline projects. Ideal for firms running multiple active jobs requiring parallel production workloads.',
+				pricing: 'Custom — based on team size and scope',
+			},
+		]}
+		tools={[
+			{ name: 'Revit MEP', description: 'Coordinated 3D mechanical BIM modeling, ductwork routing, equipment placement, and clash-ready model delivery.' },
+			{ name: 'AutoCAD', description: '2D mechanical floor plans, detail drawings, section cuts, and equipment schedules for non-BIM projects.' },
+			{ name: 'Carrier HAP', description: 'Hourly HVAC load analysis, psychrometric analysis, system energy performance, and equipment selection.' },
+			{ name: 'Trane TRACE 700', description: 'Load calculations, system energy analysis, and ASHRAE compliance documentation support.' },
+			{ name: 'Navisworks', description: 'Multi-discipline clash detection for ductwork coordination against structural, plumbing, and electrical systems.' },
+			{ name: 'Autodesk Construction Cloud / BIM 360', description: 'Cloud model coordination, issue tracking, and design review for BIM-required project workflows.' },
+		]}
+		deliverables={[
+			'HVAC load calculation reports (Manual J / ASHRAE block and room loads)',
+			'Ductwork distribution plans (supply, return, exhaust, OA) by floor level',
+			'Mechanical equipment schedules (AHUs, VAV boxes, fan coils, RTUs)',
+			'Mechanical room and equipment area layout drawings',
+			'Revit MEP mechanical models coordinated with all disciplines',
+			'Duct sizing calculations and pressure drop worksheets',
+			'Control diagrams and sequence of operations documentation',
+			'ASHRAE 90.1 / energy compliance supporting documentation',
+		]}
+		pricing="Dedicated HVAC Designers start at approximately $3,500/month for full-time engagement (40h/week). Part-time (20h/week) and MEP pod configurations are also available. Pricing varies based on experience level (load calculation proficiency, Revit vs. AutoCAD workflow, energy compliance experience) and project building type."
+		relatedRoles={[
+			{ title: 'Electrical Designer', href: '/roles/electrical-designer/', category: 'aec' },
+			{ title: 'Plumbing Designer', href: '/roles/plumbing-designer/', category: 'aec' },
+			{ title: 'Revit MEP Modeler', href: '/roles/revit-mep-modeler/', category: 'aec' },
+		]}
+		faq={faq}
+	/>
+</Layout>
