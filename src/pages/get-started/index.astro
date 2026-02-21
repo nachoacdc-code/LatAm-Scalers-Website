@@ -1,0 +1,227 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import MetaHead from '../../components/MetaHead.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import CalendlyEmbed from '../../components/CalendlyEmbed.astro';
+import { BOOKING_URL, isExternalUrl } from '../../lib/cta';
+
+const brand = 'LatAm Scalers';
+
+const meta = {
+	title: 'Get Started — Book a Scoping Call or Tell Us Your Needs | LatAm Scalers',
+	description:
+		'Get started with LatAm Scalers. Book a 15-minute scoping call or share your requirements. Pre-vetted LATAM talent for US teams — AEC, design, and marketing specialists matched in under one week.',
+};
+
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/get-started/', baseUrl).toString();
+
+const bookingUrl = BOOKING_URL;
+const bookingExternal = isExternalUrl(bookingUrl);
+const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? import.meta.env.PUBLIC_BOOKING_URL ?? 'https://calendly.com/your-org/15min';
+
+const steps = [
+	{ num: '1', title: 'Share your needs', desc: 'Tell us the role, tools, timeline, and what "good" looks like. 15 minutes is all we need.' },
+	{ num: '2', title: 'Get vetted options', desc: 'Within 48 hours, we present pre-vetted specialists matched to your requirements.' },
+	{ num: '3', title: 'Start working', desc: 'Onboard fast with month-to-month flexibility. Scale up, scale down, or replace — anytime.' },
+];
+
+const trustPoints = [
+	{ stat: '<3%', label: 'Placement rate — rigorous 5-stage vetting', link: '/about/how-we-vet/' },
+	{ stat: '48h', label: 'Typical time to present vetted options', link: null },
+	{ stat: '$0', label: 'Placement fee on monthly engagements', link: '/how-pricing-works/' },
+	{ stat: '∞', label: 'Free replacement guarantee — no limits', link: '/about/our-guarantee/' },
+];
+
+const webPageJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'WebPage',
+	name: meta.title,
+	description: meta.description,
+	url: canonical,
+	isPartOf: { '@type': 'WebSite', name: brand, url: baseUrl },
+};
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[webPageJsonLd]} />
+
+	<main>
+
+		<!-- Hero -->
+		<section class="relative overflow-hidden bg-slate-950 py-16 sm:py-24" aria-labelledby="hero-heading">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="js-fade-in text-center">
+					<p class="text-sm font-semibold uppercase tracking-widest text-sky-300">Get started</p>
+					<h1 id="hero-heading" class="mt-4 text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
+						Let's Find the Right Talent for Your Team
+					</h1>
+					<p class="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
+						Book a 15-minute scoping call to discuss your needs, or share your requirements below and we'll reach out with vetted options within 48 hours.
+					</p>
+				</div>
+
+				<!-- Quick steps -->
+				<div class="mt-12 grid gap-4 sm:grid-cols-3">
+					{steps.map((s) => (
+						<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-5 text-center shadow-lg shadow-black/20">
+							<div class="mx-auto flex h-10 w-10 items-center justify-center rounded-xl border border-slate-800 bg-slate-950/40">
+								<span class="text-sm font-semibold text-sky-300">{s.num}</span>
+							</div>
+							<h3 class="mt-3 text-sm font-semibold text-slate-100">{s.title}</h3>
+							<p class="mt-2 text-xs leading-relaxed text-slate-400">{s.desc}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<!-- Trust strip -->
+		<section class="bg-slate-900/40 py-10" aria-label="Trust indicators">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+					{trustPoints.map((t) => (
+						<div class="js-fade-in flex items-center gap-3 rounded-xl border border-slate-800 bg-slate-950/40 p-4">
+							<p class="text-2xl font-semibold text-sky-300">{t.stat}</p>
+							<div>
+								{t.link ? (
+									<a href={t.link} class="text-xs leading-tight text-slate-400 underline decoration-slate-600 transition hover:text-slate-300 hover:decoration-sky-300">
+										{t.label}
+									</a>
+								) : (
+									<p class="text-xs leading-tight text-slate-400">{t.label}</p>
+								)}
+							</div>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<!-- Main content: Form + Calendly side by side -->
+		<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="contact-heading">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="js-fade-in mb-10 max-w-2xl">
+					<h2 id="contact-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+						Two Ways to Get Started
+					</h2>
+					<p class="mt-4 text-base leading-relaxed text-slate-400">
+						Prefer a conversation? Book a scoping call. Want to share details first? Fill out the form and we'll follow up with vetted options.
+					</p>
+				</div>
+
+				<div class="grid gap-8 lg:grid-cols-2">
+					<!-- Enhanced contact form -->
+					<div class="js-fade-in">
+						<h3 class="mb-4 text-base font-semibold text-slate-100">Tell us your requirements</h3>
+						<ContactForm subject={`${brand} — get started inquiry`} />
+					</div>
+
+					<!-- Calendly embed -->
+					<div class="js-fade-in">
+						<h3 class="mb-4 text-base font-semibold text-slate-100">Or book a call directly</h3>
+						<CalendlyEmbed url={calendlyUrl} title="Book a 15-Minute Scoping Call" />
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- What to expect -->
+		<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="expect-heading">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="js-fade-in max-w-2xl">
+					<h2 id="expect-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+						What to Expect After You Reach Out
+					</h2>
+				</div>
+
+				<div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+					<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+						<p class="text-xs font-semibold uppercase tracking-wide text-sky-300">Within 24h</p>
+						<h3 class="mt-3 text-sm font-semibold text-slate-100">Confirmation & scoping</h3>
+						<p class="mt-2 text-xs leading-relaxed text-slate-400">We confirm receipt and schedule a brief scoping call (if not already booked) to clarify your requirements.</p>
+					</div>
+					<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+						<p class="text-xs font-semibold uppercase tracking-wide text-sky-300">Within 48h</p>
+						<h3 class="mt-3 text-sm font-semibold text-slate-100">Vetted shortlist</h3>
+						<p class="mt-2 text-xs leading-relaxed text-slate-400">We present 1–3 pre-vetted specialists matched to your tools, standards, and timeline.</p>
+					</div>
+					<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+						<p class="text-xs font-semibold uppercase tracking-wide text-sky-300">Within 1 week</p>
+						<h3 class="mt-3 text-sm font-semibold text-slate-100">Interview (optional) & start</h3>
+						<p class="mt-2 text-xs leading-relaxed text-slate-400">Meet top matches for a fit check — or skip interviews and start immediately.</p>
+					</div>
+					<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+						<p class="text-xs font-semibold uppercase tracking-wide text-sky-300">Ongoing</p>
+						<h3 class="mt-3 text-sm font-semibold text-slate-100">Dedicated support</h3>
+						<p class="mt-2 text-xs leading-relaxed text-slate-400">Your account manager handles check-ins, scaling, and replacements. Month-to-month flexibility, always.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Category quick links -->
+		<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="explore-heading">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="js-fade-in max-w-2xl">
+					<h2 id="explore-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+						Not Sure Where to Start?
+					</h2>
+					<p class="mt-4 text-base leading-relaxed text-slate-400">
+						Explore our solutions by category to find the right fit for your team.
+					</p>
+				</div>
+
+				<div class="mt-10 grid gap-5 md:grid-cols-3">
+					<a href="/aec/" class="js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20 transition hover:-translate-y-1 hover:shadow-xl">
+						<p class="text-xs font-semibold uppercase tracking-wide text-aec">AEC</p>
+						<h3 class="mt-3 text-lg font-semibold text-slate-100 group-hover:text-white">Architecture, Engineering & Construction</h3>
+						<p class="mt-3 text-sm leading-relaxed text-slate-400">BIM coordinators, Revit drafters, CAD technicians, MEP modelers — dedicated specialists for US firms.</p>
+						<p class="mt-4 text-sm font-semibold text-aec">From ~$3,500/mo →</p>
+					</a>
+					<a href="/design/" class="js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20 transition hover:-translate-y-1 hover:shadow-xl">
+						<p class="text-xs font-semibold uppercase tracking-wide text-design">Design</p>
+						<h3 class="mt-3 text-lg font-semibold text-slate-100 group-hover:text-white">Creative & Design</h3>
+						<p class="mt-3 text-sm leading-relaxed text-slate-400">UI/UX designers, brand designers, motion designers — dedicated individuals or PM-led managed teams.</p>
+						<p class="mt-4 text-sm font-semibold text-design">Managed teams from $2,800/mo →</p>
+					</a>
+					<a href="/marketing/" class="js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20 transition hover:-translate-y-1 hover:shadow-xl">
+						<p class="text-xs font-semibold uppercase tracking-wide text-marketing">Marketing</p>
+						<h3 class="mt-3 text-lg font-semibold text-slate-100 group-hover:text-white">Marketing & Operations</h3>
+						<p class="mt-3 text-sm leading-relaxed text-slate-400">SEO specialists, PPC managers, HubSpot operators, content marketers — revenue-focused operators.</p>
+						<p class="mt-4 text-sm font-semibold text-marketing">From ~$2,500/mo →</p>
+					</a>
+				</div>
+			</div>
+		</section>
+
+	</main>
+
+	<style>
+		.js-fade-in {
+			opacity: 0;
+			transform: translateY(20px);
+			transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+		}
+		.js-fade-in.is-visible {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	</style>
+
+	<script is:inline>
+		(function () {
+			var els = document.querySelectorAll('.js-fade-in');
+			if (!els.length) return;
+			var io = new IntersectionObserver(function (entries) {
+				entries.forEach(function (e) {
+					if (e.isIntersecting) {
+						e.target.classList.add('is-visible');
+						io.unobserve(e.target);
+					}
+				});
+			}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+			els.forEach(function (el) { io.observe(el); });
+		})();
+	</script>
+</Layout>

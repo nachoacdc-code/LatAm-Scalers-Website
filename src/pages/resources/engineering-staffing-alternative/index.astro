@@ -1,0 +1,317 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import MetaHead from '../../../components/MetaHead.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import CalendlyEmbed from '../../../components/CalendlyEmbed.astro';
+import { BOOKING_URL, isExternalUrl } from '../../../lib/cta';
+
+const brand = 'LatAm Scalers';
+
+const meta = {
+	title: 'Engineering Staffing Alternative — Dedicated LATAM AEC Specialists | LatAm Scalers',
+	description:
+		'Looking for an engineering staffing agency? LatAm Scalers provides a better alternative for US firms: dedicated, pre-vetted LATAM BIM coordinators, CAD drafters, and MEP modelers. 50-70% savings, US timezone overlap.',
+};
+
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/resources/engineering-staffing-alternative/', baseUrl).toString();
+
+const bookingUrl = BOOKING_URL;
+const bookingExternal = isExternalUrl(bookingUrl);
+const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? import.meta.env.PUBLIC_BOOKING_URL ?? 'https://calendly.com/your-org/15min';
+
+const staffingLimitations = [
+	{ title: 'Rotating assignments', desc: 'Traditional staffing agencies send different people for different projects. You re-train every time.' },
+	{ title: 'Variable quality', desc: 'Staffing pools are broad, not deep. The BIM coordinator you get may not specialize in your discipline.' },
+	{ title: 'Markup-heavy pricing', desc: 'Agencies layer 30–50% markup on top of the specialist\'s rate. You\'re paying for their overhead, not your talent.' },
+	{ title: 'Limited vetting', desc: 'Most agencies verify resumes and check references. Few run technical assessments or evaluate deliverable quality.' },
+	{ title: 'No ongoing support', desc: 'Once placed, you\'re on your own. Performance issues? That\'s your problem to solve.' },
+	{ title: 'Geographic constraints', desc: 'Traditional agencies source locally, limiting the talent pool and keeping costs high.' },
+];
+
+const latamAdvantages = [
+	{ title: 'Dedicated specialists', desc: 'The same person works exclusively on your projects. They learn your standards, tools, and preferences.' },
+	{ title: 'Pre-vetted for your discipline', desc: 'Our 5-stage vetting includes role-specific technical assessments. A BIM coordinator we present has passed a Navisworks clash detection exercise.' },
+	{ title: '50–70% cost savings', desc: 'LATAM-based specialists provide US-quality output at significantly lower rates. No staffing agency markup.' },
+	{ title: 'Free replacement guarantee', desc: 'If someone isn\'t the right fit, we replace them at no cost. Anytime for monthly engagements.' },
+	{ title: 'US timezone overlap', desc: '0–3 hour timezone difference means real-time collaboration during your business hours.' },
+	{ title: 'Month-to-month flexibility', desc: 'No long-term contracts. Scale up for project surges, scale down in quieter periods.' },
+];
+
+const faqs = [
+	{
+		q: 'Is LatAm Scalers an engineering staffing agency?',
+		a: 'No — and that\'s intentional. We don\'t operate a staffing pool or send rotating contractors. We provide dedicated, pre-vetted LATAM specialists who embed into your team on a month-to-month basis. You get the predictability of a full-time hire with the flexibility of a contractor.',
+	},
+	{
+		q: 'Can LATAM specialists work with our US project standards?',
+		a: 'Yes. Our AEC specialists are trained in US construction documentation standards, use the same tools (Revit, Navisworks, AutoCAD, ACC, BIM 360), and are evaluated against US deliverable quality benchmarks during vetting.',
+	},
+	{
+		q: 'What if we need someone with specific BEP or coordination matrix experience?',
+		a: 'Tell us your BEP requirements during scoping. We match specialists who have worked with similar execution plans and coordination matrices. If your standards are unique, we ensure candidates can demonstrate adaptability.',
+	},
+	{
+		q: 'How does this compare in cost to a traditional staffing agency?',
+		a: 'Traditional US engineering staffing agencies typically charge $50–$80+/hour. Our dedicated AEC specialists start at approximately $3,500/month for full-time (40h/week), which translates to roughly $20–22/hour — a 50–70% reduction.',
+	},
+	{
+		q: 'Do your specialists handle design decisions or stamping?',
+		a: 'No. Our specialists produce work under the direction of your licensed professionals. You retain full design authority, decision-making, and stamping responsibility. We handle execution — coordination, modeling, drafting — within the scope you define.',
+	},
+];
+
+const webPageJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'WebPage',
+	name: meta.title,
+	description: meta.description,
+	url: canonical,
+	isPartOf: { '@type': 'WebSite', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqs.map((f) => ({
+		'@type': 'Question',
+		name: f.q,
+		acceptedAnswer: { '@type': 'Answer', text: f.a },
+	})),
+};
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[webPageJsonLd, faqJsonLd]} />
+
+	<main>
+
+		<!-- Hero -->
+		<section class="relative overflow-hidden bg-slate-950 py-16 sm:py-24" aria-labelledby="hero-heading">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="js-fade-in">
+					<p class="text-sm font-semibold uppercase tracking-widest text-aec">Engineering staffing alternative</p>
+					<h1 id="hero-heading" class="mt-4 text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
+						A Better Alternative to Engineering Staffing Agencies
+					</h1>
+					<p class="mt-5 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
+						Traditional staffing agencies send rotating contractors with variable quality. We provide dedicated, pre-vetted LATAM specialists who embed into your AEC team — with 50–70% cost savings and month-to-month flexibility.
+					</p>
+
+					<div class="mt-8 flex flex-wrap gap-3">
+						<a
+							href={bookingUrl}
+							{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+							class="inline-flex min-h-[48px] items-center justify-center rounded bg-sky-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+							data-book-call
+						>
+							Book an AEC Scoping Call
+						</a>
+						<a
+							href="/aec/"
+							class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-slate-700 bg-slate-900/40 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+						>
+							Explore AEC Solutions →
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- The problem with traditional staffing -->
+		<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="problem-heading">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="js-fade-in max-w-2xl">
+					<h2 id="problem-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+						The Limitations of Traditional Staffing
+					</h2>
+					<p class="mt-4 text-base leading-relaxed text-slate-400">
+						Engineering staffing agencies serve an important function — but for many US firms, the traditional model creates more friction than it solves.
+					</p>
+				</div>
+
+				<div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+					{staffingLimitations.map((item) => (
+						<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+							<h3 class="text-sm font-semibold text-slate-100">{item.title}</h3>
+							<p class="mt-2 text-sm leading-relaxed text-slate-400">{item.desc}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<!-- The alternative: dedicated LATAM specialists -->
+		<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="alternative-heading">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="js-fade-in max-w-2xl">
+					<h2 id="alternative-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+						The Alternative: Dedicated LATAM AEC Specialists
+					</h2>
+					<p class="mt-4 text-base leading-relaxed text-slate-400">
+						Instead of rotating contractors from a staffing pool, work with a dedicated specialist who knows your tools, standards, and team — exclusively.
+					</p>
+				</div>
+
+				<div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+					{latamAdvantages.map((item) => (
+						<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+							<span class="text-aec" aria-hidden="true">✓</span>
+							<h3 class="mt-2 text-sm font-semibold text-slate-100">{item.title}</h3>
+							<p class="mt-2 text-sm leading-relaxed text-slate-400">{item.desc}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<!-- AEC roles we provide -->
+		<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="roles-heading">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="js-fade-in max-w-2xl">
+					<h2 id="roles-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+						AEC Roles We Provide
+					</h2>
+					<p class="mt-4 text-base leading-relaxed text-slate-400">
+						Specialists vetted for specific AEC disciplines — not generalists from a broad staffing pool.
+					</p>
+				</div>
+
+				<div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+					<a href="/aec/bim-coordination-services/" class="js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20 transition hover:-translate-y-1 hover:shadow-xl">
+						<p class="text-sm font-semibold text-slate-100 group-hover:text-white">BIM Coordinators</p>
+						<p class="mt-2 text-xs text-slate-400">Navisworks, ACC, BIM 360 · Clash detection · Model coordination</p>
+						<p class="mt-3 text-xs font-semibold text-aec">From ~$3,500/mo →</p>
+					</a>
+					<a href="/aec/cad-drafting-services/" class="js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20 transition hover:-translate-y-1 hover:shadow-xl">
+						<p class="text-sm font-semibold text-slate-100 group-hover:text-white">CAD Drafters</p>
+						<p class="mt-2 text-xs text-slate-400">AutoCAD, Revit, Civil 3D · Construction documentation · Detailing</p>
+						<p class="mt-3 text-xs font-semibold text-aec">From ~$3,500/mo →</p>
+					</a>
+					<a href="/aec/mep-engineering-services/" class="js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20 transition hover:-translate-y-1 hover:shadow-xl">
+						<p class="text-sm font-semibold text-slate-100 group-hover:text-white">MEP Modelers</p>
+						<p class="mt-2 text-xs text-slate-400">Revit MEP · HVAC, electrical, plumbing · Fabrication models</p>
+						<p class="mt-3 text-xs font-semibold text-aec">From ~$3,500/mo →</p>
+					</a>
+					<a href="/roles/revit-drafter/" class="js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20 transition hover:-translate-y-1 hover:shadow-xl">
+						<p class="text-sm font-semibold text-slate-100 group-hover:text-white">Revit Drafters</p>
+						<p class="mt-2 text-xs text-slate-400">Revit families, sheets, views · Construction sets · As-builts</p>
+						<p class="mt-3 text-xs font-semibold text-aec">View role →</p>
+					</a>
+					<a href="/roles/architectural-designer/" class="js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20 transition hover:-translate-y-1 hover:shadow-xl">
+						<p class="text-sm font-semibold text-slate-100 group-hover:text-white">Architectural Designers</p>
+						<p class="mt-2 text-xs text-slate-400">Revit · Design development · CD sets · 3D visualization</p>
+						<p class="mt-3 text-xs font-semibold text-aec">View role →</p>
+					</a>
+					<a href="/aec/" class="js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20 transition hover:-translate-y-1 hover:shadow-xl">
+						<p class="text-sm font-semibold text-slate-100 group-hover:text-white">All AEC Roles</p>
+						<p class="mt-2 text-xs text-slate-400">Browse the full range of AEC specialists we provide</p>
+						<p class="mt-3 text-xs font-semibold text-aec">Explore AEC solutions →</p>
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- FAQ -->
+		<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="faq-heading">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="js-fade-in max-w-2xl">
+					<h2 id="faq-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+						Frequently Asked Questions
+					</h2>
+				</div>
+
+				<div class="mt-10 grid gap-3">
+					{faqs.map((item) => (
+						<details class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+							<summary class="cursor-pointer list-none text-sm font-semibold text-slate-100 [&::-webkit-details-marker]:hidden">
+								{item.q}
+							</summary>
+							<p class="mt-4 pt-4 text-sm leading-relaxed text-slate-400 border-t border-slate-800">{item.a}</p>
+						</details>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<!-- CTA -->
+		<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="cta-heading">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-8 text-center shadow-xl sm:p-12">
+					<h2 id="cta-heading" class="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+						Ready for a Better Approach?
+					</h2>
+					<p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slate-300">
+						Book a call to discuss your AEC needs. We'll explain how dedicated LATAM specialists can replace or complement your current staffing approach.
+					</p>
+					<div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+						<a
+							href={bookingUrl}
+							{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+							class="inline-flex min-h-[48px] items-center justify-center rounded bg-sky-600 px-8 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+							data-book-call
+						>
+							Book an AEC Scoping Call
+						</a>
+						<a
+							href="/get-started/"
+							class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-slate-700 bg-slate-900/40 px-8 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+						>
+							Get Started
+						</a>
+					</div>
+					<p class="mt-5 text-xs text-slate-400">50–70% savings · Month-to-month · Free replacement guarantee</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Contact -->
+		<section id="contact" class="bg-slate-950 pb-20 pt-16 sm:pb-24 sm:pt-20" aria-labelledby="contact-heading">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="js-fade-in max-w-2xl">
+					<p class="text-sm font-semibold uppercase tracking-widest text-sky-300">Get in touch</p>
+					<h2 id="contact-heading" class="mt-3 text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+						Tell Us About Your AEC Needs
+					</h2>
+					<p class="mt-4 text-base leading-relaxed text-slate-400">
+						Share your project scope, tools, and timeline — we'll match you with pre-vetted AEC specialists.
+					</p>
+				</div>
+
+				<div class="mt-10 grid gap-6 lg:grid-cols-2">
+					<ContactForm subject={`${brand} — engineering staffing alternative inquiry`} defaultInterest="aec" />
+					<CalendlyEmbed url={calendlyUrl} title="Book an AEC Scoping Call" />
+				</div>
+			</div>
+		</section>
+
+	</main>
+
+	<style>
+		.js-fade-in {
+			opacity: 0;
+			transform: translateY(20px);
+			transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+		}
+		.js-fade-in.is-visible {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	</style>
+
+	<script is:inline>
+		(function () {
+			var els = document.querySelectorAll('.js-fade-in');
+			if (!els.length) return;
+			var io = new IntersectionObserver(function (entries) {
+				entries.forEach(function (e) {
+					if (e.isIntersecting) {
+						e.target.classList.add('is-visible');
+						io.unobserve(e.target);
+					}
+				});
+			}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+			els.forEach(function (el) { io.observe(el); });
+		})();
+	</script>
+</Layout>

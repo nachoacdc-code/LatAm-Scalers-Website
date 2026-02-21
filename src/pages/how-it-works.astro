@@ -7,12 +7,12 @@ import { BOOKING_URL, isExternalUrl } from '../lib/cta';
 const brand = 'LatAm Scalers';
 
 const meta = {
-	title: 'Our Flexible Process — Tailored to Your Needs',
+	title: 'How It Works — From Scoping Call to Embedded Specialist in Days | LatAm Scalers',
 	description:
-		'A fast, flexible process to match vetted remote talent to your workflow. Choose individuals, scaling pods, or PM-led delivery — start in days and scale month-to-month.',
+		'A fast, flexible process to match pre-vetted LATAM talent to US teams. Choose individuals, scaling pods, or PM-led delivery — matched in 48 hours, month-to-month flexibility.',
 };
 
-const baseUrl = Astro.site ?? 'https://talentcompany-site.vercel.app';
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
 const canonical = new URL('/how-it-works/', baseUrl).toString();
 
 const faqs = [
@@ -25,8 +25,16 @@ const faqs = [
 		a: 'No — interviews are optional. You can start faster or meet top matches for added confidence.',
 	},
 	{
-		q: 'What’s the difference between Individuals, Teams, and PM-led?',
+		q: "What's the difference between Individuals, Teams, and PM-led?",
 		a: 'Individuals are embedded specialists. Teams are pods for scaled throughput. PM-led includes a managed workflow with predictable turnaround and structured revisions.',
+	},
+	{
+		q: 'What guarantee do you offer?',
+		a: 'Free replacement guarantee — anytime for month-to-month engagements, 90 days for direct hire. If a specialist isn\'t the right fit, we replace them at no cost.',
+	},
+	{
+		q: 'How is your vetting process different from other providers?',
+		a: 'We use a 5-stage vetting process: application screening, language and culture assessment, technical evaluation, portfolio review, and final interview. Less than 3% of applicants are placed.',
 	},
 ];
 
@@ -56,7 +64,7 @@ const faqJsonLd = {
 const steps = [
 	{
 		title: 'Tell us your needs',
-		body: 'Roles, tools, deliverables, timeline, overlap hours, and what “good” looks like.',
+		body: 'Roles, tools, deliverables, timeline, overlap hours, and what "good" looks like.',
 		branches: [
 			{ label: 'Individuals', body: 'Define the role scope + 20h/week or 40h/week coverage.' },
 			{ label: 'Teams', body: 'Define the pod roles + handoffs across projects or phases.' },
@@ -146,32 +154,32 @@ const bookingExternal = isExternalUrl(bookingUrl);
 						<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Quick links</p>
 						<div class="mt-4 grid gap-3 sm:grid-cols-2">
 							<a
-								href="/solutions/aec-talent/"
+								href="/aec/"
 								class="rounded-xl border border-slate-800 bg-slate-900/40 p-4 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
 							>
 								<p class="text-sm font-semibold text-slate-100">AEC</p>
-								<p class="mt-1 text-xs text-slate-400">Solutions →</p>
+								<p class="mt-1 text-xs text-slate-400">Solutions &rarr;</p>
 							</a>
 							<a
-								href="/solutions/creatives-design/"
+								href="/design/"
 								class="rounded-xl border border-slate-800 bg-slate-900/40 p-4 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
 							>
 								<p class="text-sm font-semibold text-slate-100">Creative &amp; Design</p>
-								<p class="mt-1 text-xs text-slate-400">Solutions →</p>
+								<p class="mt-1 text-xs text-slate-400">Solutions &rarr;</p>
 							</a>
 							<a
-								href="/solutions/marketing-talent/"
+								href="/marketing/"
 								class="rounded-xl border border-slate-800 bg-slate-900/40 p-4 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
 							>
 								<p class="text-sm font-semibold text-slate-100">Marketing</p>
-								<p class="mt-1 text-xs text-slate-400">Solutions →</p>
+								<p class="mt-1 text-xs text-slate-400">Solutions &rarr;</p>
 							</a>
 							<a
 								href="/roles/"
 								class="rounded-xl border border-slate-800 bg-slate-900/40 p-4 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
 							>
 								<p class="text-sm font-semibold text-slate-100">Roles</p>
-								<p class="mt-1 text-xs text-slate-400">Directory →</p>
+								<p class="mt-1 text-xs text-slate-400">Directory &rarr;</p>
 							</a>
 						</div>
 					</div>
@@ -200,7 +208,6 @@ const bookingExternal = isExternalUrl(bookingUrl);
 							<div class="max-w-2xl">
 								<div class="flex items-center gap-3">
 									<div class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-800 bg-slate-950/40">
-										{/* Icon placeholder */}
 										<span class="text-sm font-semibold text-sky-300">{idx + 1}</span>
 									</div>
 									<h3 class="text-base font-semibold text-slate-100">{step.title}</h3>
@@ -238,20 +245,28 @@ const bookingExternal = isExternalUrl(bookingUrl);
 			</ul>
 		</section>
 
-		{/* PROOF */}
-		<section class="mt-12" aria-labelledby="proof-how">
-			<h2 id="proof-how" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Proof</h2>
+		{/* TRUST INFRASTRUCTURE */}
+		<section class="mt-12" aria-labelledby="trust-how">
+			<h2 id="trust-how" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Built on trust</h2>
 			<p class="mt-3 max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
-				{/* TODO: Replace with real testimonials carousel. */}
-				Testimonials placeholder (to be filled).
+				Every aspect of our process is designed to reduce risk and increase confidence for US teams working with remote LATAM specialists.
 			</p>
 			<div class="mt-6 grid gap-4 md:grid-cols-3">
-				{[1, 2, 3].map((i) => (
-					<figure class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-						<blockquote class="text-sm leading-relaxed text-slate-200">“TODO testimonial {i}.”</blockquote>
-						<figcaption class="mt-3 text-xs text-slate-400">— TODO, anonymized</figcaption>
-					</figure>
-				))}
+				<a href="/about/how-we-vet/" class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:bg-slate-900">
+					<p class="text-2xl font-semibold text-sky-300">&lt;3%</p>
+					<p class="mt-2 text-sm font-semibold text-slate-100">5-Stage Vetting</p>
+					<p class="mt-1 text-xs text-slate-400">Less than 3% of applicants are placed. See how we vet &rarr;</p>
+				</a>
+				<a href="/about/our-guarantee/" class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:bg-slate-900">
+					<p class="text-2xl font-semibold text-sky-300">$0</p>
+					<p class="mt-2 text-sm font-semibold text-slate-100">Free Replacement</p>
+					<p class="mt-1 text-xs text-slate-400">Anytime for monthly engagements. See our guarantee &rarr;</p>
+				</a>
+				<a href="/how-pricing-works/" class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:bg-slate-900">
+					<p class="text-2xl font-semibold text-sky-300">50&ndash;70%</p>
+					<p class="mt-2 text-sm font-semibold text-slate-100">Cost Savings</p>
+					<p class="mt-1 text-xs text-slate-400">No hidden fees. See how pricing works &rarr;</p>
+				</a>
 			</div>
 		</section>
 
@@ -274,7 +289,7 @@ const bookingExternal = isExternalUrl(bookingUrl);
 				<div>
 					<h2 class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Ready to get matched?</h2>
 					<p class="mt-2 max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
-						Book a call to discuss your needs — or tell us your requirements and we’ll point you to the right solution.
+						Book a call to discuss your needs — or tell us your requirements and we'll point you to the right solution.
 					</p>
 				</div>
 				<div class="flex flex-wrap gap-3">
@@ -287,31 +302,30 @@ const bookingExternal = isExternalUrl(bookingUrl);
 						Book a 15-Min Call
 					</a>
 					<a
-						href="/#contact"
+						href="/get-started/"
 						class="inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-						data-open-tell-us="how-it-works-final-cta"
 					>
-						Tell Us Your Needs
+						Get Started
 					</a>
 				</div>
 			</div>
 
 			<div class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-				<a href="/solutions/aec-talent/" class="rounded-xl border border-slate-800 bg-slate-900/40 p-4 transition hover:bg-slate-900">
+				<a href="/aec/" class="rounded-xl border border-slate-800 bg-slate-900/40 p-4 transition hover:bg-slate-900">
 					<p class="text-sm font-semibold text-slate-100">AEC</p>
-					<p class="mt-1 text-xs text-slate-400">Explore solution →</p>
+					<p class="mt-1 text-xs text-slate-400">Explore solution &rarr;</p>
 				</a>
-				<a href="/solutions/creatives-design/" class="rounded-xl border border-slate-800 bg-slate-900/40 p-4 transition hover:bg-slate-900">
+				<a href="/design/" class="rounded-xl border border-slate-800 bg-slate-900/40 p-4 transition hover:bg-slate-900">
 					<p class="text-sm font-semibold text-slate-100">Creative &amp; Design</p>
-					<p class="mt-1 text-xs text-slate-400">Explore solution →</p>
+					<p class="mt-1 text-xs text-slate-400">Explore solution &rarr;</p>
 				</a>
-				<a href="/solutions/marketing-talent/" class="rounded-xl border border-slate-800 bg-slate-900/40 p-4 transition hover:bg-slate-900">
+				<a href="/marketing/" class="rounded-xl border border-slate-800 bg-slate-900/40 p-4 transition hover:bg-slate-900">
 					<p class="text-sm font-semibold text-slate-100">Marketing</p>
-					<p class="mt-1 text-xs text-slate-400">Explore solution →</p>
+					<p class="mt-1 text-xs text-slate-400">Explore solution &rarr;</p>
 				</a>
 				<a href="/roles/" class="rounded-xl border border-slate-800 bg-slate-900/40 p-4 transition hover:bg-slate-900">
 					<p class="text-sm font-semibold text-slate-100">Roles</p>
-					<p class="mt-1 text-xs text-slate-400">Browse directory →</p>
+					<p class="mt-1 text-xs text-slate-400">Browse directory &rarr;</p>
 				</a>
 			</div>
 		</section>
@@ -321,4 +335,3 @@ const bookingExternal = isExternalUrl(bookingUrl);
 		<ContactSection subject={`${brand} — new inquiry (how it works)`} />
 	</div>
 </Layout>
-
