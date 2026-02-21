@@ -1,9 +1,9 @@
 ---
 /**
  * ContactHub — toggle-tab component: "Send a Message" / "Book a Call"
- * Inspired by Uptalent.io's contact section UX.
- * Left panel: two toggle tabs + trust copy.
+ * Left panel: prominent benefits + toggle tabs.
  * Right panel: swaps between ContactForm and CalendlyInline.
+ * Exposes window.latamHub API for external scroll-to-contact CTAs.
  */
 import ContactForm from './ContactForm.astro';
 import CalendlyInline from './CalendlyInline.astro';
@@ -32,7 +32,7 @@ const hubId = `hub-${Math.random().toString(36).slice(2, 8)}`;
 ---
 
 <div id={hubId} class="contact-hub" data-contact-hub>
-	{/* Outer wrapper with a subtle glow to differentiate from page */}
+	{/* Outer wrapper */}
 	<div class="relative rounded-3xl border border-sky-500/20 bg-gradient-to-br from-slate-900 via-slate-900/95 to-slate-950 shadow-2xl shadow-sky-900/10">
 
 		{/* Top accent bar */}
@@ -40,14 +40,59 @@ const hubId = `hub-${Math.random().toString(36).slice(2, 8)}`;
 
 		<div class="grid gap-0 lg:grid-cols-[380px_1fr]">
 
-			{/* Left panel: toggle tabs + trust copy */}
-			<div class="flex flex-col gap-4 p-7 lg:border-r lg:border-slate-800/60 lg:p-8">
+			{/* Left panel: prominent benefits + toggle tabs */}
+			<div class="flex flex-col gap-5 p-7 lg:border-r lg:border-slate-800/60 lg:p-8">
 
-				<h2 class="text-2xl font-bold tracking-tight text-white lg:text-[1.65rem]">{heading}</h2>
-				<p class="text-[0.9rem] leading-relaxed text-slate-300">{subheading}</p>
+				<div>
+					<h2 class="text-2xl font-bold tracking-tight text-white lg:text-[1.65rem]">{heading}</h2>
+					<p class="mt-2 text-[0.9rem] leading-relaxed text-slate-300">{subheading}</p>
+				</div>
+
+				{/* ── PROMINENT BENEFITS (point e) ── */}
+				<div class="rounded-2xl border border-slate-700/50 bg-slate-900/60 p-5">
+					<p class="mb-4 text-[0.7rem] font-bold uppercase tracking-widest text-slate-400">Why LatAm Scalers</p>
+					<ul class="space-y-3.5">
+						<li class="flex items-start gap-3">
+							<span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-400">
+								<svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>
+							</span>
+							<div>
+								<p class="text-sm font-semibold text-slate-100">Matched in under one week</p>
+								<p class="text-xs text-slate-400">Vetted shortlist in 48 hours</p>
+							</div>
+						</li>
+						<li class="flex items-start gap-3">
+							<span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-sky-500/15 text-sky-400">
+								<svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>
+							</span>
+							<div>
+								<p class="text-sm font-semibold text-slate-100">Month-to-month, no lock-in</p>
+								<p class="text-xs text-slate-400">Scale up or pause anytime</p>
+							</div>
+						</li>
+						<li class="flex items-start gap-3">
+							<span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-400">
+								<svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>
+							</span>
+							<div>
+								<p class="text-sm font-semibold text-slate-100">Free replacement guarantee</p>
+								<p class="text-xs text-slate-400">We fix the fit — at no cost</p>
+							</div>
+						</li>
+						<li class="flex items-start gap-3">
+							<span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-sky-500/15 text-sky-400">
+								<svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>
+							</span>
+							<div>
+								<p class="text-sm font-semibold text-slate-100">50–70% cost savings vs. US hires</p>
+								<p class="text-xs text-slate-400">&lt;3% of applicants pass our vetting</p>
+							</div>
+						</li>
+					</ul>
+				</div>
 
 				{/* Tab buttons */}
-				<div class="mt-2 flex flex-col gap-3">
+				<div class="flex flex-col gap-3">
 					<button
 						type="button"
 						class="group flex w-full items-center justify-between rounded-xl px-5 py-5 text-left transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
@@ -71,19 +116,12 @@ const hubId = `hub-${Math.random().toString(36).slice(2, 8)}`;
 					>
 						<div>
 							<p class="text-base font-semibold leading-snug" data-tab-title>Book a 30-min scoping call</p>
-							<p class="mt-1 text-sm" data-tab-sub>Speak with Alejandra directly</p>
+							<p class="mt-1 text-sm leading-snug" data-tab-sub>Learn exactly how LatAm Scalers works and how we can add reliable capacity to your team in under one week.</p>
 						</div>
 						<svg class="h-5 w-5 shrink-0 opacity-0 transition-opacity" data-tab-arrow viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg>
 					</button>
 				</div>
 
-				{/* Trust points */}
-				<div class="mt-auto space-y-2.5 border-t border-slate-700/50 pt-6 text-[0.8rem] leading-relaxed text-slate-400">
-					<p class="flex items-start gap-2"><span class="mt-0.5 text-sky-400">&#10003;</span> Pre-vetted talent — less than 3% of applicants pass</p>
-					<p class="flex items-start gap-2"><span class="mt-0.5 text-sky-400">&#10003;</span> Month-to-month flexibility</p>
-					<p class="flex items-start gap-2"><span class="mt-0.5 text-sky-400">&#10003;</span> Free replacement guarantee</p>
-					<p class="flex items-start gap-2"><span class="mt-0.5 text-sky-400">&#10003;</span> 50–70% cost savings vs. US hires</p>
-				</div>
 			</div>
 
 			{/* Right: content panel */}
@@ -139,6 +177,12 @@ const hubId = `hub-${Math.random().toString(36).slice(2, 8)}`;
       panels.forEach(function (panel) {
         panel.classList.toggle('hidden', panel.dataset.hubPanel !== name);
       });
+
+      // When activating Calendly tab, trigger preload immediately
+      if (name === 'calendly') {
+        var preloaders = window._latamCalendlyPreloaders || [];
+        preloaders.forEach(function (fn) { try { fn(); } catch (e) {} });
+      }
     }
 
     activate('form');
@@ -148,6 +192,44 @@ const hubId = `hub-${Math.random().toString(36).slice(2, 8)}`;
         activate(tab.dataset.hubTab);
       });
     });
+
+    // Expose a stable JS API so external CTAs can switch tabs
+    // Accumulate into array to support multiple hubs on one page
+    if (!window.latamHub) window.latamHub = {};
+    var existingActivateCalendly = window.latamHub.activateCalendly;
+    var existingActivateForm     = window.latamHub.activateForm;
+
+    window.latamHub.activateCalendly = function () {
+      if (existingActivateCalendly) existingActivateCalendly();
+      activate('calendly');
+    };
+    window.latamHub.activateForm = function () {
+      if (existingActivateForm) existingActivateForm();
+      activate('form');
+      // Focus first visible form field for UX
+      setTimeout(function () {
+        var panel = hub.querySelector('[data-hub-panel="form"]');
+        if (panel) {
+          var first = panel.querySelector('input:not([type="hidden"]):not([aria-hidden]),textarea,select');
+          if (first) first.focus({ preventScroll: true });
+        }
+      }, 100);
+    };
+
+    // Pre-warm Calendly when contact hub enters the viewport (400px ahead)
+    if ('IntersectionObserver' in window) {
+      var preloadObs = new IntersectionObserver(
+        function (entries) {
+          if (entries[0].isIntersecting) {
+            preloadObs.disconnect();
+            var preloaders = window._latamCalendlyPreloaders || [];
+            preloaders.forEach(function (fn) { try { fn(); } catch (e) {} });
+          }
+        },
+        { rootMargin: '400px' }
+      );
+      preloadObs.observe(hub);
+    }
   });
 })();
 </script>

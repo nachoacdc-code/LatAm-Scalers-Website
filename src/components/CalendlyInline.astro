@@ -1,8 +1,9 @@
 ---
 /**
  * CalendlyInline — lazy-loaded Calendly inline widget via Intersection Observer.
- * Renders cleanly embedded with dark-theme URL params matching the site.
- * Zero bytes of Calendly JS load until the element enters the viewport.
+ * Zero bytes of Calendly JS load until the contact section enters the viewport.
+ * Dark-theme enforced via URL params + CSS overrides (no white bleed).
+ * Exposes window._latamCalendlyPreloaders[] so ContactHub can trigger early load.
  */
 export type Props = {
 	url: string;
@@ -15,10 +16,10 @@ const { url: rawUrl, title = 'Schedule a call', height = 700 } = Astro.props;
 const isCalendly = /calendly\.com/i.test(rawUrl);
 const isPlaceholder = /your-org|yourFormId|example/i.test(rawUrl);
 
-// Append Calendly theme params to match our dark slate palette
+// Dark theme params — background matches #0F172A (slate-950), primary = brand blue
 function themedUrl(base: string) {
 	const sep = base.includes('?') ? '&' : '?';
-	return `${base}${sep}background_color=020617&text_color=e2e8f0&primary_color=0284c7&hide_gdpr_banner=1`;
+	return `${base}${sep}embed_type=inline&hide_event_type_details=1&hide_gdpr_banner=1&background_color=0F172A&text_color=ffffff&primary_color=2563EB`;
 }
 
 const url = isCalendly && !isPlaceholder ? themedUrl(rawUrl) : rawUrl;
@@ -30,17 +31,18 @@ const widgetId = `cal-inline-${Math.random().toString(36).slice(2, 9)}`;
 		id={widgetId}
 		data-calendly-url={url}
 		data-calendly-height={height}
-		class="overflow-hidden rounded-2xl border border-slate-700/60 bg-slate-950"
-		style={`min-height:${height}px`}
+		class="calendly-host overflow-hidden rounded-2xl border border-slate-700/60"
+		style={`min-height:${height}px;background:#0F172A`}
 		aria-label={title}
 		role="region"
 	>
-		{/* Skeleton shimmer — matches Calendly's layout */}
+		{/* Skeleton shimmer — matches Calendly's dark layout */}
 		<div
-			class="flex h-full min-h-[inherit] flex-col items-center justify-start gap-0 bg-slate-950"
+			class="flex h-full min-h-[inherit] flex-col items-center justify-start gap-0"
 			data-calendly-skeleton
+			style="background:#0F172A"
 		>
-			<div class="w-full border-b border-slate-800 px-8 py-6">
+			<div class="w-full border-b border-slate-800 px-8 py-6" style="background:#0F172A">
 				<div class="mx-auto flex max-w-sm flex-col items-center gap-3 text-center">
 					<div class="h-16 w-16 animate-pulse rounded-full bg-slate-800"></div>
 					<div class="h-3 w-32 animate-pulse rounded bg-slate-800"></div>
@@ -51,7 +53,7 @@ const widgetId = `cal-inline-${Math.random().toString(36).slice(2, 9)}`;
 					</div>
 				</div>
 			</div>
-			<div class="w-full px-8 py-6">
+			<div class="w-full px-8 py-6" style="background:#0F172A">
 				<div class="mx-auto max-w-sm">
 					<div class="mb-4 h-4 w-36 animate-pulse rounded bg-slate-800"></div>
 					<div class="mb-3 flex items-center justify-between">
@@ -61,7 +63,7 @@ const widgetId = `cal-inline-${Math.random().toString(36).slice(2, 9)}`;
 					</div>
 					<div class="grid grid-cols-7 gap-1">
 						{Array.from({ length: 35 }).map(() => (
-							<div class="h-8 w-full animate-pulse rounded bg-slate-900/60"></div>
+							<div class="h-8 w-full animate-pulse rounded bg-slate-800/60"></div>
 						))}
 					</div>
 				</div>
@@ -89,6 +91,26 @@ const widgetId = `cal-inline-${Math.random().toString(36).slice(2, 9)}`;
 	</p>
 </noscript>
 
+{/* Global CSS — eliminates white bleed from Calendly's injected wrapper */}
+<style is:global>
+	.calendly-host,
+	.calendly-host .calendly-inline-widget,
+	.calendly-host .calendly-inline-widget > div,
+	.calendly-host iframe {
+		background: #0F172A !important;
+		background-color: #0F172A !important;
+	}
+	.calendly-inline-widget {
+		background: #0F172A !important;
+		background-color: #0F172A !important;
+	}
+	.calendly-inline-widget iframe {
+		background: #0F172A !important;
+		border: none !important;
+		box-shadow: none !important;
+	}
+</style>
+
 {isCalendly && !isPlaceholder && (
 	<script define:vars={{ widgetId, height }}>
 	(function () {
@@ -108,6 +130,25 @@ const widgetId = `cal-inline-${Math.random().toString(36).slice(2, 9)}`;
 	    }
 	  }
 
+	  function fixColors() {
+	    container.style.background = '#0F172A';
+	    var iframe = container.querySelector('iframe');
+	    if (iframe) {
+	      iframe.style.width = '100%';
+	      iframe.style.minHeight = height + 'px';
+	      iframe.style.border = 'none';
+	      iframe.style.boxShadow = 'none';
+	      iframe.style.background = '#0F172A';
+	      iframe.style.backgroundColor = '#0F172A';
+	    }
+	    var widget = container.querySelector('.calendly-inline-widget');
+	    if (widget) {
+	      widget.style.background = '#0F172A';
+	      widget.style.backgroundColor = '#0F172A';
+	      widget.style.minHeight = height + 'px';
+	    }
+	  }
+
 	  function initWidget() {
 	    var skeleton = container.querySelector('[data-calendly-skeleton]');
 	    if (skeleton) skeleton.style.display = 'none';
@@ -116,29 +157,25 @@ const widgetId = `cal-inline-${Math.random().toString(36).slice(2, 9)}`;
 	      parentElement: container,
 	    });
 	    container.style.minHeight = height + 'px';
-	    // Style the iframe once loaded
+	    fixColors();
+	    // Poll until iframe appears, then lock down colors
+	    var attempts = 0;
 	    var check = setInterval(function () {
+	      fixColors();
 	      var iframe = container.querySelector('iframe');
-	      if (iframe) {
-	        iframe.style.width = '100%';
-	        iframe.style.minHeight = height + 'px';
-	        iframe.style.border = 'none';
-	        clearInterval(check);
-	      }
-	    }, 100);
-	    setTimeout(function () { clearInterval(check); }, 8000);
+	      if (iframe && ++attempts > 5) clearInterval(check);
+	      if (attempts > 80) clearInterval(check);
+	    }, 200);
 	  }
 
 	  function load() {
 	    if (didLoad) return;
 	    didLoad = true;
 	    injectCSS();
-
 	    if (window.Calendly) {
 	      initWidget();
 	      return;
 	    }
-
 	    if (!document.querySelector('script[src="' + SCRIPT_SRC + '"]')) {
 	      var s   = document.createElement('script');
 	      s.src   = SCRIPT_SRC;
@@ -153,17 +190,45 @@ const widgetId = `cal-inline-${Math.random().toString(36).slice(2, 9)}`;
 	    }
 	  }
 
+	  // --- Intelligent Lazy Loading ---
+
+	  // 1. Register in global preloader registry (ContactHub triggers this)
+	  if (!window._latamCalendlyPreloaders) window._latamCalendlyPreloaders = [];
+	  window._latamCalendlyPreloaders.push(load);
+
+	  // 2. Observe the nearest contact section (not the hidden panel itself)
+	  var observeTarget = (
+	    container.closest('[data-contact-hub]') ||
+	    container.closest('#contact') ||
+	    document.getElementById('contact') ||
+	    container
+	  );
+
 	  if ('IntersectionObserver' in window) {
 	    var obs = new IntersectionObserver(
 	      function (entries) {
 	        if (entries[0].isIntersecting) { obs.disconnect(); load(); }
 	      },
-	      { rootMargin: '300px' }
+	      { rootMargin: '500px' }
 	    );
-	    obs.observe(container);
+	    obs.observe(observeTarget);
 	  } else {
 	    load();
 	  }
+
+	  // 3. Pre-warm on hover of any primary CTA
+	  function onCTAHover(e) {
+	    var t = e.target && e.target.closest ? e.target.closest(
+	      '[data-book-call],[data-scroll-to-contact],[data-open-tell-us]'
+	    ) : null;
+	    if (t) {
+	      document.removeEventListener('mouseover', onCTAHover);
+	      document.removeEventListener('touchstart', onCTAHover);
+	      load();
+	    }
+	  }
+	  document.addEventListener('mouseover', onCTAHover, { passive: true });
+	  document.addEventListener('touchstart', onCTAHover, { passive: true });
 	})();
 	</script>
 )}

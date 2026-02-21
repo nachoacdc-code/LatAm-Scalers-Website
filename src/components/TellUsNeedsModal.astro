@@ -375,30 +375,95 @@ const bookingExternal = isExternalUrl(bookingUrl);
     });
   }
 
-  // Global click delegation: open modal for any [data-open-tell-us] or legacy attribute
+  // ── Same-page scroll utility ────────────────────────────────────────────────
+  // Scrolls to #contact on the current page.
+  // activateTab: 'form' | 'calendly' | null
+  function scrollToContact(activateTab) {
+    var contactEl = document.getElementById('contact');
+    if (!contactEl) {
+      // No contact section on this page — navigate to homepage contact
+      window.location.href = '/#contact' + (activateTab === 'calendly' ? '?tab=calendly' : '');
+      return;
+    }
+    contactEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    // Activate the appropriate ContactHub tab after scroll settles
+    if (activateTab) {
+      setTimeout(function () {
+        if (activateTab === 'calendly' && window.latamHub && window.latamHub.activateCalendly) {
+          window.latamHub.activateCalendly();
+        } else if (activateTab === 'form' && window.latamHub && window.latamHub.activateForm) {
+          window.latamHub.activateForm();
+        }
+      }, 400);
+    }
+  }
+
+  // ── Global click delegation ──────────────────────────────────────────────────
+  // All CTAs across the site use data attributes — handled here centrally.
   document.addEventListener('click', function (e) {
     var target = e.target;
     if (!(target instanceof Element)) return;
 
+    // "Tell Us What You Need" / "Get Started" / form CTAs → scroll to form tab
     var opener = target.closest('[data-open-tell-us],[data-open-contact-modal]');
     if (opener) {
       e.preventDefault();
-      var sourceLabel = opener.getAttribute('data-open-tell-us') || opener.getAttribute('data-open-contact-modal') || '';
-      var roleLabel   = opener.getAttribute('data-role') || opener.getAttribute('data-cta-role') || '';
-      var category    = opener.getAttribute('data-category') || '';
-      openDialog(sourceLabel, roleLabel, category);
+      scrollToContact('form');
       return;
     }
 
+    // "Book a Call" / "Prefer to book a call" → scroll to Calendly tab
     var book = target.closest('[data-book-call]');
     if (book) {
-      var url = book.getAttribute('href') || '';
-      if (/calendly\.com/i.test(url) && typeof window.Calendly !== 'undefined' && window.Calendly.initPopupWidget) {
+      e.preventDefault();
+      scrollToContact('calendly');
+      return;
+    }
+
+    // "Get Started" in Nav + any other scroll-to-contact CTAs
+    var scrollCta = target.closest('[data-scroll-to-contact]');
+    if (scrollCta) {
+      e.preventDefault();
+      var tabHint = scrollCta.getAttribute('data-scroll-to-contact') || 'form';
+      scrollToContact(tabHint === 'calendly' ? 'calendly' : 'form');
+      return;
+    }
+
+    // Catch remaining bookingUrl/Calendly/contact links without explicit data attrs
+    var link = target.closest('a');
+    if (link) {
+      var href = link.getAttribute('href') || '';
+      // External Calendly URLs → scroll to Calendly tab
+      if (/calendly\.com/i.test(href) && !link.getAttribute('target')) {
         e.preventDefault();
-        window.Calendly.initPopupWidget({ url: url });
+        scrollToContact('calendly');
+        return;
+      }
+      // Anchor #contact links → scroll to contact (handles same-page and /#contact)
+      if (href === '#contact' || href.endsWith('#contact')) {
+        e.preventDefault();
+        scrollToContact('form');
+        return;
       }
     }
   });
+
+  // Handle ?tab=calendly URL param for cross-page deep-links
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    if (params.get('tab') === 'calendly') {
+      setTimeout(function () {
+        var contactEl = document.getElementById('contact');
+        if (contactEl) {
+          contactEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (window.latamHub && window.latamHub.activateCalendly) {
+            window.latamHub.activateCalendly();
+          }
+        }
+      }, 300);
+    }
+  })();
 
   form && form.addEventListener('submit', async function (e) {
     e.preventDefault();
