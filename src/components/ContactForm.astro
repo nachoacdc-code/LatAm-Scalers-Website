@@ -214,6 +214,56 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
 				placeholder="Describe the role, tools, and what success looks like for you."
 			>{defaultMessage}</textarea>
 		</div>
+
+		{/* Expandable optional fields — progressive disclosure */}
+		<div class="sm:col-span-2">
+			<button
+				type="button"
+				class="flex items-center gap-2 text-sm font-medium text-sky-400 transition hover:text-sky-300"
+				data-toggle-optional
+				aria-expanded="false"
+			>
+				<svg class="h-4 w-4 transition-transform" data-chevron viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+				Help us match better (optional)
+			</button>
+
+			<div class="mt-3 hidden grid gap-4 sm:grid-cols-2" data-optional-fields>
+				<div class="sm:col-span-1">
+					<label class="text-sm font-medium text-slate-200" for={`${formId}-website`}>Company website</label>
+					<input
+						class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+						id={`${formId}-website-url`}
+						name="company_website"
+						type="url"
+						inputmode="url"
+						autocomplete="url"
+						placeholder="https://yourcompany.com"
+					/>
+				</div>
+				<div class="sm:col-span-1">
+					<label class="text-sm font-medium text-slate-200" for={`${formId}-phone`}>Phone number</label>
+					<input
+						class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+						id={`${formId}-phone`}
+						name="phone"
+						type="tel"
+						inputmode="tel"
+						autocomplete="tel"
+						placeholder="+1 (555) 000-0000"
+					/>
+				</div>
+				<div class="sm:col-span-2">
+					<label class="text-sm font-medium text-slate-200" for={`${formId}-position`}>Your role / position</label>
+					<input
+						class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+						id={`${formId}-position`}
+						name="position"
+						autocomplete="organization-title"
+						placeholder="e.g. VP of Engineering, Design Director"
+					/>
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<div aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;pointer-events:none;">
@@ -240,6 +290,20 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
 
 <script is:inline>
 (function () {
+  // Progressive disclosure: toggle optional fields
+  document.querySelectorAll('[data-toggle-optional]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var panel = btn.closest('.sm\\:col-span-2, [class*="col-span"]')?.querySelector('[data-optional-fields]');
+      if (!panel) panel = btn.parentElement?.querySelector('[data-optional-fields]');
+      if (!panel) return;
+      var isHidden = panel.classList.contains('hidden');
+      panel.classList.toggle('hidden', !isHidden);
+      btn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+      var chevron = btn.querySelector('[data-chevron]');
+      if (chevron) chevron.style.transform = isHidden ? 'rotate(180deg)' : '';
+    });
+  });
+
   const FREE_DOMAINS = new Set([
     'gmail.com','yahoo.com','hotmail.com','outlook.com','live.com',
     'icloud.com','me.com','aol.com','msn.com','protonmail.com',

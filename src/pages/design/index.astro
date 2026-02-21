@@ -1,8 +1,7 @@
-﻿---
+---
 import Layout from '../../layouts/Layout.astro';
 import MetaHead from '../../components/MetaHead.astro';
-import ContactForm from '../../components/ContactForm.astro';
-import CalendlyInline from '../../components/CalendlyInline.astro';
+import ContactHub from '../../components/ContactHub.astro';
 import { BOOKING_URL, isExternalUrl } from '../../lib/cta';
 
 const brand = 'LatAm Scalers';
@@ -438,10 +437,7 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com
 						Tell us your design requirements, tools, and timeline â€” we'll suggest the best engagement model and match you with vetted designers.
 					</p>
 				</div>
-				<div class="mt-10 grid gap-6 lg:grid-cols-2">
-					<ContactForm subject={`${brand} â€” new inquiry (design hub)`} defaultInterest="design" />
-					<CalendlyInline url={calendlyUrl} title="Book a Design Team Scoping Call" />
-				</div>
+				<ContactHub subject="${brand} â€” new inquiry (design hub)" defaultCategory="design" />
 			</div>
 		</section>
 

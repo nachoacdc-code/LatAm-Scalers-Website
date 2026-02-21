@@ -1,8 +1,7 @@
-﻿---
+---
 import Layout from '../../layouts/Layout.astro';
 import MetaHead from '../../components/MetaHead.astro';
-import ContactForm from '../../components/ContactForm.astro';
-import CalendlyInline from '../../components/CalendlyInline.astro';
+import ContactHub from '../../components/ContactHub.astro';
 import { BOOKING_URL, isExternalUrl } from '../../lib/cta';
 
 const meta = {
@@ -413,7 +412,7 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com
 			</div>
 		</section>
 
-		<!-- Contact section (uses ContactForm + CalendlyInline) -->
+		<!-- Contact section (uses ContactForm + ContactHub) -->
 		<section id="contact" class="bg-slate-950 pb-20 pt-16 sm:pb-24 sm:pt-20" aria-labelledby="contact-heading">
 			<div class="mx-auto max-w-6xl px-6">
 				<div class="js-fade-in max-w-2xl">
@@ -425,10 +424,7 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com
 						Tell us your role requirements, stack, and goals â€” we'll suggest the right engagement and match you with vetted specialists.
 					</p>
 				</div>
-				<div class="mt-10 grid gap-6 lg:grid-cols-2">
-					<ContactForm subject="LatAm Scalers â€” new inquiry (marketing hub)" defaultInterest="marketing" />
-					<CalendlyInline url={calendlyUrl} title="Book a Marketing Scoping Call" />
-				</div>
+				<ContactHub subject="LatAm Scalers â€” new inquiry (marketing hub)" defaultCategory="marketing" />
 			</div>
 		</section>
 	</main>

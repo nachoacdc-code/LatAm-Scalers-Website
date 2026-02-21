@@ -1,8 +1,7 @@
 ﻿---
 import Layout from '../../layouts/Layout.astro';
 import MetaHead from '../../components/MetaHead.astro';
-import ContactForm from '../../components/ContactForm.astro';
-import CalendlyInline from '../../components/CalendlyInline.astro';
+import ContactHub from '../../components/ContactHub.astro';
 import { BOOKING_URL, isExternalUrl } from '../../lib/cta';
 
 const brand = 'LatAm Scalers';
@@ -99,29 +98,23 @@ const webPageJsonLd = {
 		</section>
 
 		<!-- Main content: Form + Calendly side by side -->
-		<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="contact-heading">
+				<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="contact-heading">
 			<div class="mx-auto max-w-6xl px-6">
 				<div class="js-fade-in mb-10 max-w-2xl">
 					<h2 id="contact-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
 						Two Ways to Get Started
 					</h2>
 					<p class="mt-4 text-base leading-relaxed text-slate-400">
-						Prefer a conversation? Book a scoping call. Want to share details first? Fill out the form and we'll follow up with vetted options.
+						Prefer a conversation? Book a scoping call. Want to share details first? Fill out the form and we’ll follow up with vetted options.
 					</p>
 				</div>
 
-				<div class="grid gap-8 lg:grid-cols-2">
-					<!-- Enhanced contact form -->
-					<div class="js-fade-in">
-						<h3 class="mb-4 text-base font-semibold text-slate-100">Tell us your requirements</h3>
-						<ContactForm subject={`${brand} â€” get started inquiry`} />
-					</div>
-
-					<!-- Calendly embed -->
-					<div class="js-fade-in">
-						<h3 class="mb-4 text-base font-semibold text-slate-100">Or book a call directly</h3>
-						<CalendlyInline url={calendlyUrl} title="Book a 15-Minute Scoping Call" />
-					</div>
+				<div class="js-fade-in">
+					<ContactHub
+						subject="LatAm Scalers — get started inquiry"
+						heading="Choose your path"
+						subheading="Send us your requirements or schedule a quick call — whatever works best for you."
+					/>
 				</div>
 			</div>
 		</section>

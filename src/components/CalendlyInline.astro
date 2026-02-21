@@ -1,59 +1,67 @@
 ---
 /**
  * CalendlyInline — lazy-loaded Calendly inline widget via Intersection Observer.
- * Renders the widget directly with no external-link header.
+ * Renders cleanly embedded with dark-theme URL params matching the site.
  * Zero bytes of Calendly JS load until the element enters the viewport.
  */
 export type Props = {
 	url: string;
 	title?: string;
-	/** Height in px — Calendly recommends 700+ for the full booking flow */
 	height?: number;
 };
 
-const { url, title = 'Schedule a call', height = 700 } = Astro.props;
+const { url: rawUrl, title = 'Schedule a call', height = 700 } = Astro.props;
+
+const isCalendly = /calendly\.com/i.test(rawUrl);
+const isPlaceholder = /your-org|yourFormId|example/i.test(rawUrl);
+
+// Append Calendly theme params to match our dark slate palette
+function themedUrl(base: string) {
+	const sep = base.includes('?') ? '&' : '?';
+	return `${base}${sep}background_color=020617&text_color=e2e8f0&primary_color=0284c7&hide_gdpr_banner=1`;
+}
+
+const url = isCalendly && !isPlaceholder ? themedUrl(rawUrl) : rawUrl;
 const widgetId = `cal-inline-${Math.random().toString(36).slice(2, 9)}`;
-const isCalendly = /calendly\.com/i.test(url);
 ---
 
-{isCalendly ? (
+{isCalendly && !isPlaceholder ? (
 	<div
 		id={widgetId}
 		data-calendly-url={url}
 		data-calendly-height={height}
-		class="overflow-hidden rounded-2xl border border-slate-700/60 bg-white shadow-xl shadow-black/20"
+		class="overflow-hidden rounded-2xl border border-slate-700/60 bg-slate-950"
 		style={`min-height:${height}px`}
 		aria-label={title}
 		role="region"
 	>
-		{/* Skeleton — visible until Calendly widget mounts */}
+		{/* Skeleton shimmer — matches Calendly's layout */}
 		<div
-			class="flex h-full min-h-[inherit] flex-col items-center justify-start gap-0 bg-white"
+			class="flex h-full min-h-[inherit] flex-col items-center justify-start gap-0 bg-slate-950"
 			data-calendly-skeleton
 		>
-			{/* Mimics Calendly's own header layout */}
-			<div class="w-full border-b border-gray-100 px-8 py-6">
+			<div class="w-full border-b border-slate-800 px-8 py-6">
 				<div class="mx-auto flex max-w-sm flex-col items-center gap-3 text-center">
-					<div class="h-16 w-16 animate-pulse rounded-full bg-gray-200"></div>
-					<div class="h-3 w-32 animate-pulse rounded bg-gray-200"></div>
-					<div class="h-5 w-48 animate-pulse rounded bg-gray-300"></div>
+					<div class="h-16 w-16 animate-pulse rounded-full bg-slate-800"></div>
+					<div class="h-3 w-32 animate-pulse rounded bg-slate-800"></div>
+					<div class="h-5 w-48 animate-pulse rounded bg-slate-800"></div>
 					<div class="flex items-center gap-4">
-						<div class="h-3 w-16 animate-pulse rounded bg-gray-200"></div>
-						<div class="h-3 w-28 animate-pulse rounded bg-gray-200"></div>
+						<div class="h-3 w-16 animate-pulse rounded bg-slate-800"></div>
+						<div class="h-3 w-28 animate-pulse rounded bg-slate-800"></div>
 					</div>
 				</div>
 			</div>
 			<div class="w-full px-8 py-6">
 				<div class="mx-auto max-w-sm">
-					<div class="mb-4 h-4 w-36 animate-pulse rounded bg-gray-200"></div>
+					<div class="mb-4 h-4 w-36 animate-pulse rounded bg-slate-800"></div>
 					<div class="mb-3 flex items-center justify-between">
-						<div class="h-7 w-7 animate-pulse rounded-full bg-gray-200"></div>
-						<div class="h-4 w-32 animate-pulse rounded bg-gray-200"></div>
-						<div class="h-7 w-7 animate-pulse rounded-full bg-gray-200"></div>
+						<div class="h-7 w-7 animate-pulse rounded-full bg-slate-800"></div>
+						<div class="h-4 w-32 animate-pulse rounded bg-slate-800"></div>
+						<div class="h-7 w-7 animate-pulse rounded-full bg-slate-800"></div>
 					</div>
 					<div class="grid grid-cols-7 gap-1">
 						{Array.from({ length: 35 }).map(() => (
-							<div class="h-8 w-full animate-pulse rounded bg-gray-100"></div>
+							<div class="h-8 w-full animate-pulse rounded bg-slate-900/60"></div>
 						))}
 					</div>
 				</div>
@@ -61,48 +69,70 @@ const isCalendly = /calendly\.com/i.test(url);
 		</div>
 	</div>
 ) : (
-	<div class="overflow-hidden rounded-2xl border border-slate-700/60 shadow-xl shadow-black/20">
-		<iframe
-			title={title}
-			src={url}
-			loading="lazy"
-			referrerpolicy="no-referrer-when-downgrade"
-			class="w-full"
-			style={`height:${height}px`}
-		/>
+	<div class="flex flex-col items-center justify-center rounded-2xl border border-slate-700/60 bg-slate-900/40 p-10 text-center" style={`min-height:320px`}>
+		<div class="flex h-14 w-14 items-center justify-center rounded-full border border-slate-700 bg-slate-800">
+			<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+				<path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+			</svg>
+		</div>
+		<h3 class="mt-4 text-lg font-semibold text-slate-100">Book a Scoping Call</h3>
+		<p class="mt-2 max-w-xs text-sm leading-relaxed text-slate-400">
+			Calendar booking will be available once our scheduling link is configured. In the meantime, send us a message and we'll reach out within 24 hours.
+		</p>
 	</div>
 )}
 
 <noscript>
 	<p class="mt-3 text-sm text-slate-400">
 		JavaScript is disabled.
-		<a class="underline hover:text-white" href={url} target="_blank" rel="noreferrer">Open Calendly directly →</a>
+		<a class="underline hover:text-white" href={rawUrl} target="_blank" rel="noreferrer">Open Calendly directly →</a>
 	</p>
 </noscript>
 
-{isCalendly && (
+{isCalendly && !isPlaceholder && (
 	<script define:vars={{ widgetId, height }}>
 	(function () {
 	  var SCRIPT_SRC = 'https://assets.calendly.com/assets/external/widget.js';
+	  var CSS_SRC    = 'https://assets.calendly.com/assets/external/widget.css';
 	  var container  = document.getElementById(widgetId);
 	  if (!container) return;
 
 	  var didLoad = false;
 
+	  function injectCSS() {
+	    if (!document.querySelector('link[href="' + CSS_SRC + '"]')) {
+	      var link  = document.createElement('link');
+	      link.rel  = 'stylesheet';
+	      link.href = CSS_SRC;
+	      document.head.appendChild(link);
+	    }
+	  }
+
 	  function initWidget() {
 	    var skeleton = container.querySelector('[data-calendly-skeleton]');
-	    // Calendly initInlineWidget clears parentElement, so just let it run
+	    if (skeleton) skeleton.style.display = 'none';
 	    window.Calendly.initInlineWidget({
 	      url: container.dataset.calendlyUrl,
 	      parentElement: container,
 	    });
-	    // Ensure container is tall enough while Calendly bootstraps
 	    container.style.minHeight = height + 'px';
+	    // Style the iframe once loaded
+	    var check = setInterval(function () {
+	      var iframe = container.querySelector('iframe');
+	      if (iframe) {
+	        iframe.style.width = '100%';
+	        iframe.style.minHeight = height + 'px';
+	        iframe.style.border = 'none';
+	        clearInterval(check);
+	      }
+	    }, 100);
+	    setTimeout(function () { clearInterval(check); }, 8000);
 	  }
 
 	  function load() {
 	    if (didLoad) return;
 	    didLoad = true;
+	    injectCSS();
 
 	    if (window.Calendly) {
 	      initWidget();

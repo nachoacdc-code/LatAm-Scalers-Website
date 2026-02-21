@@ -1,0 +1,153 @@
+---
+/**
+ * ContactHub — toggle-tab component: "Send a Message" / "Book a Call"
+ * Inspired by Uptalent.io's contact section UX.
+ * Left panel: two toggle tabs + trust copy.
+ * Right panel: swaps between ContactForm and CalendlyInline.
+ */
+import ContactForm from './ContactForm.astro';
+import CalendlyInline from './CalendlyInline.astro';
+
+export type Props = {
+	/** Subject line for Formspree submissions */
+	subject?: string;
+	/** Calendly scheduling URL */
+	calendlyUrl?: string;
+	/** Default category pre-selection for the form */
+	defaultCategory?: 'aec' | 'design' | 'marketing' | '';
+	/** @deprecated — use defaultCategory */
+	defaultInterest?: string;
+	/** Optional pre-filled message */
+	defaultMessage?: string;
+	/** Heading text */
+	heading?: string;
+	/** Subheading text */
+	subheading?: string;
+};
+
+const {
+	subject = 'LatAm Scalers — new inquiry',
+	calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? import.meta.env.PUBLIC_BOOKING_URL ?? 'https://calendly.com/your-org/15min',
+	defaultCategory = (Astro.props.defaultCategory ?? Astro.props.defaultInterest ?? '') as 'aec' | 'design' | 'marketing' | '',
+	defaultMessage = '',
+	heading = 'Get in Touch',
+	subheading = 'Send us a message with your requirements, or book a quick scoping call — whatever works best for you.',
+} = Astro.props;
+
+const hubId = `hub-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<div id={hubId} class="contact-hub" data-contact-hub>
+	<div class="grid gap-0 lg:grid-cols-[340px_1fr]">
+
+		{/* Left: toggle tabs + trust copy */}
+		<div class="flex flex-col gap-3 rounded-t-2xl border border-b-0 border-slate-800 bg-slate-900/60 p-6 lg:rounded-l-2xl lg:rounded-tr-none lg:border-b lg:border-r-0">
+
+			<p class="mb-2 text-xs font-semibold uppercase tracking-widest text-sky-300">{heading}</p>
+			<p class="mb-4 text-sm leading-relaxed text-slate-400">{subheading}</p>
+
+			{/* Tab buttons */}
+			<button
+				type="button"
+				class="group flex w-full items-center justify-between rounded-xl px-5 py-4 text-left transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+				data-hub-tab="form"
+				aria-selected="true"
+				role="tab"
+			>
+				<div>
+					<p class="text-sm font-semibold" data-tab-title>Send us a message</p>
+					<p class="mt-0.5 text-xs" data-tab-sub>We reply within a few hours</p>
+				</div>
+				<svg class="h-5 w-5 shrink-0 opacity-0 transition-opacity" data-tab-arrow viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg>
+			</button>
+
+			<button
+				type="button"
+				class="group flex w-full items-center justify-between rounded-xl px-5 py-4 text-left transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+				data-hub-tab="calendly"
+				aria-selected="false"
+				role="tab"
+			>
+				<div>
+					<p class="text-sm font-semibold" data-tab-title>Book a scoping call</p>
+					<p class="mt-0.5 text-xs" data-tab-sub>15 minutes — we'll scope your needs</p>
+				</div>
+				<svg class="h-5 w-5 shrink-0 opacity-0 transition-opacity" data-tab-arrow viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/></svg>
+			</button>
+
+			{/* Trust points */}
+			<div class="mt-auto space-y-2 border-t border-slate-800 pt-5 text-xs text-slate-500">
+				<p>✓ Pre-vetted talent — top 1% of applicants</p>
+				<p>✓ Month-to-month flexibility</p>
+				<p>✓ Free replacement guarantee</p>
+				<p>✓ 50–70% cost savings vs. US hires</p>
+			</div>
+		</div>
+
+		{/* Right: content panel */}
+		<div class="rounded-b-2xl border border-t-0 border-slate-800 bg-slate-900/20 lg:rounded-r-2xl lg:rounded-bl-none lg:border-l-0 lg:border-t">
+
+			{/* Form panel */}
+			<div class="p-5 sm:p-6" data-hub-panel="form">
+				<ContactForm
+					subject={subject}
+					defaultCategory={defaultCategory}
+					defaultMessage={defaultMessage}
+				/>
+			</div>
+
+			{/* Calendly panel */}
+			<div class="hidden p-5 sm:p-6" data-hub-panel="calendly">
+				<CalendlyInline url={calendlyUrl} title="Book a 15-Minute Scoping Call" height={660} />
+			</div>
+		</div>
+	</div>
+</div>
+
+<script is:inline>
+(function () {
+  document.querySelectorAll('[data-contact-hub]').forEach(function (hub) {
+    var tabs   = hub.querySelectorAll('[data-hub-tab]');
+    var panels = hub.querySelectorAll('[data-hub-panel]');
+
+    function activate(name) {
+      tabs.forEach(function (tab) {
+        var isActive = tab.dataset.hubTab === name;
+        tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+
+        // Active: sky accent background; Inactive: transparent
+        if (isActive) {
+          tab.style.backgroundColor = 'rgba(2,132,199,0.15)';
+          tab.style.borderColor = 'rgb(14,165,233)';
+          tab.style.border = '1px solid rgba(14,165,233,0.3)';
+        } else {
+          tab.style.backgroundColor = '';
+          tab.style.border = '1px solid transparent';
+        }
+
+        var titleEl = tab.querySelector('[data-tab-title]');
+        var subEl   = tab.querySelector('[data-tab-sub]');
+        var arrow   = tab.querySelector('[data-tab-arrow]');
+
+        if (titleEl) titleEl.style.color = isActive ? 'rgb(224,242,254)' : 'rgb(148,163,184)';
+        if (subEl)   subEl.style.color   = isActive ? 'rgb(125,211,252)' : 'rgb(100,116,139)';
+        if (arrow)   arrow.style.opacity = isActive ? '1' : '0';
+        if (arrow)   arrow.style.color   = isActive ? 'rgb(56,189,248)' : '';
+      });
+
+      panels.forEach(function (panel) {
+        panel.classList.toggle('hidden', panel.dataset.hubPanel !== name);
+      });
+    }
+
+    // Initial state
+    activate('form');
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        activate(tab.dataset.hubTab);
+      });
+    });
+  });
+})();
+</script>

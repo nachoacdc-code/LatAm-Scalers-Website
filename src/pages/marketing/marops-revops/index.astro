@@ -1,8 +1,7 @@
-﻿---
+---
 import Layout from '../../../layouts/Layout.astro';
 import MetaHead from '../../../components/MetaHead.astro';
-import ContactForm from '../../../components/ContactForm.astro';
-import CalendlyInline from '../../../components/CalendlyInline.astro';
+import ContactHub from '../../../components/ContactHub.astro';
 import { BOOKING_URL, isExternalUrl } from '../../../lib/cta';
 
 const brand = 'LatAm Scalers';
@@ -256,9 +255,8 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com
 						Tell us your stack (HubSpot, Salesforce, Klaviyo) and goals â€” we'll suggest the right specialist and match you with vetted talent.
 					</p>
 				</div>
-				<div class="mt-10 grid gap-6 lg:grid-cols-2">
-					<ContactForm subject={`${brand} â€” new inquiry (MarOps/RevOps)`} defaultInterest="marketing" />
-					<CalendlyInline url={calendlyUrl} title="Book a Marketing Scoping Call" />
+				<div class="mt-10">
+					<ContactHub subject={`${brand} — MarOps/RevOps inquiry`} defaultCategory="marketing" />
 				</div>
 			</div>
 		</section>

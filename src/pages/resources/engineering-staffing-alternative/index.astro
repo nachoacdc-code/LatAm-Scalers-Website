@@ -1,8 +1,7 @@
-﻿---
+---
 import Layout from '../../../layouts/Layout.astro';
 import MetaHead from '../../../components/MetaHead.astro';
-import ContactForm from '../../../components/ContactForm.astro';
-import CalendlyInline from '../../../components/CalendlyInline.astro';
+import ContactHub from '../../../components/ContactHub.astro';
 import { BOOKING_URL, isExternalUrl } from '../../../lib/cta';
 
 const brand = 'LatAm Scalers';
@@ -278,10 +277,7 @@ const faqJsonLd = {
 					</p>
 				</div>
 
-				<div class="mt-10 grid gap-6 lg:grid-cols-2">
-					<ContactForm subject={`${brand} â€” engineering staffing alternative inquiry`} defaultInterest="aec" />
-					<CalendlyInline url={calendlyUrl} title="Book an AEC Scoping Call" />
-				</div>
+				<ContactHub subject="${brand} â€” engineering staffing alternative inquiry" defaultCategory="aec" />
 			</div>
 		</section>
 

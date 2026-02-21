@@ -1,6 +1,5 @@
-﻿---
-import ContactForm from './ContactForm.astro';
-import CalendlyInline from './CalendlyInline.astro';
+---
+import ContactHub from './ContactHub.astro';
 import { BOOKING_URL, isExternalUrl } from '../lib/cta';
 
 export type Props = {
@@ -355,10 +354,7 @@ const defaultInterest = category === 'aec' ? 'aec' : category === 'design' ? 'de
 				Share your scope and requirements â€” we'll match you with vetted {role} candidates fast.
 			</p>
 		</div>
-		<div class="mt-10 grid gap-6 lg:grid-cols-2">
-			<ContactForm subject={`LatAm Scalers â€” inquiry (role: ${role})`} defaultInterest={defaultInterest} defaultMessage={`I'm interested in hiring a ${role}.`} />
-			<CalendlyInline url={calendlyUrl} title={`Book a call about ${role}`} />
-		</div>
+		<ContactHub subject="LatAm Scalers â€” inquiry (role: ${role})" />
 	</div>
 </section>
 

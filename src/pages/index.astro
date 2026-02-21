@@ -1,8 +1,7 @@
-﻿---
+---
 import Layout from '../layouts/Layout.astro';
 import MetaHead from '../components/MetaHead.astro';
-import ContactForm from '../components/ContactForm.astro';
-import CalendlyInline from '../components/CalendlyInline.astro';
+import ContactHub from '../components/ContactHub.astro';
 import { BOOKING_URL, isExternalUrl } from '../lib/cta';
 
 const meta = {
@@ -536,20 +535,10 @@ const roles = [
 			</div>
 		</section>
 
-		{/* â•â•â• SECTION 12 â€” CONTACT + CALENDLY â•â•â• */}
+				{/* ═══ SECTION 12 — CONTACT HUB (Toggle: Message / Book a Call) ═══ */}
 		<section id="contact" class="border-t border-slate-800 bg-slate-900/20">
 			<div class="mx-auto max-w-6xl px-6 py-16 sm:py-20">
-				<div class="mx-auto max-w-2xl text-center">
-					<h2 class="text-2xl font-bold tracking-tight text-white sm:text-3xl">Get in Touch</h2>
-					<p class="mt-3 text-sm leading-relaxed text-slate-300 sm:text-base">
-						Tell us what you need and we'll suggest the best engagement model â€” or book a call directly.
-					</p>
-				</div>
-
-				<div class="mt-10 grid gap-8 lg:grid-cols-2">
-					<ContactForm subject="LatAm Scalers â€” new inquiry (homepage)" />
-					<CalendlyInline url={import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com/your-org/15min'} />
-				</div>
+				<ContactHub subject="LatAm Scalers — new inquiry (homepage)" />
 			</div>
 		</section>
 	</main>

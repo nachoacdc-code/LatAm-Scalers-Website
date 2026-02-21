@@ -1,8 +1,7 @@
-﻿---
+---
 import Layout from '../../../layouts/Layout.astro';
 import MetaHead from '../../../components/MetaHead.astro';
-import ContactForm from '../../../components/ContactForm.astro';
-import CalendlyInline from '../../../components/CalendlyInline.astro';
+import ContactHub from '../../../components/ContactHub.astro';
 import { BOOKING_URL, isExternalUrl } from '../../../lib/cta';
 
 const brand = 'LatAm Scalers';
@@ -345,10 +344,7 @@ const faqJsonLd = {
 					</p>
 				</div>
 
-				<div class="mt-10 grid gap-6 lg:grid-cols-2">
-					<ContactForm subject={`${brand} â€” BIM coordination inquiry`} defaultInterest="aec" defaultMessage="I'm interested in BIM coordination services." />
-					<CalendlyInline url={calendlyUrl} title="Book a BIM Coordination Call" />
-				</div>
+				<ContactHub subject="${brand} â€” BIM coordination inquiry" defaultCategory="aec" defaultMessage="I'm interested in BIM coordination services." />
 			</div>
 		</section>
 

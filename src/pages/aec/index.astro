@@ -1,8 +1,7 @@
-﻿---
+---
 import Layout from '../../layouts/Layout.astro';
 import MetaHead from '../../components/MetaHead.astro';
-import ContactForm from '../../components/ContactForm.astro';
-import CalendlyInline from '../../components/CalendlyInline.astro';
+import ContactHub from '../../components/ContactHub.astro';
 import { BOOKING_URL, isExternalUrl } from '../../lib/cta';
 
 const brand = 'LatAm Scalers';
@@ -437,7 +436,7 @@ const faqJsonLd = {
 			</div>
 		</section>
 
-		<!-- CONTACT (ContactForm + CalendlyInline) -->
+		<!-- CONTACT (ContactForm + ContactHub) -->
 		<section id="contact" class="bg-slate-950 pb-20 pt-16 sm:pb-24 sm:pt-20" aria-labelledby="aec-contact-heading">
 			<div class="mx-auto max-w-6xl px-6">
 				<div class="js-fade-in max-w-2xl">
@@ -450,10 +449,7 @@ const faqJsonLd = {
 					</p>
 				</div>
 
-				<div class="mt-10 grid gap-6 lg:grid-cols-2">
-					<ContactForm subject={`${brand} â€” AEC inquiry`} defaultInterest="aec" />
-					<CalendlyInline url={calendlyUrl} title="Book an AEC Scoping Call" />
-				</div>
+				<ContactHub subject="${brand} â€” AEC inquiry" defaultCategory="aec" />
 			</div>
 		</section>
 
