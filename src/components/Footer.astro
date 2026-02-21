@@ -2,8 +2,6 @@
 import { BOOKING_URL, isExternalUrl } from '../lib/cta';
 
 const year = new Date().getFullYear();
-const bookingUrl = BOOKING_URL;
-const bookingExternal = isExternalUrl(bookingUrl);
 ---
 
 <footer class="border-t border-slate-800/80 bg-slate-950">
@@ -34,13 +32,27 @@ const bookingExternal = isExternalUrl(bookingUrl);
 			</div>
 
 			{/* Solutions column */}
-			<div class="lg:col-span-2">
+			<div class="lg:col-span-3">
 				<p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Solutions</p>
 				<nav class="mt-4 grid gap-2.5 text-sm" aria-label="Footer solutions">
-					<a class="text-slate-400 transition hover:text-white" href="/aec/">AEC Talent</a>
-					<a class="text-slate-400 transition hover:text-white" href="/design/">Creative &amp; Design</a>
-					<a class="text-slate-400 transition hover:text-white" href="/marketing/">Marketing Talent</a>
-					<a class="mt-1 text-slate-500 transition hover:text-white" href="/how-pricing-works/">How Pricing Works</a>
+					<a class="font-medium text-slate-300 transition hover:text-white" href="/aec/">AEC Talent</a>
+					<div class="ml-3 grid gap-1.5">
+						<a class="text-[12px] text-slate-500 transition hover:text-slate-300" href="/aec/bim-coordination-services/">BIM Coordination</a>
+						<a class="text-[12px] text-slate-500 transition hover:text-slate-300" href="/aec/cad-drafting-services/">CAD Drafting</a>
+						<a class="text-[12px] text-slate-500 transition hover:text-slate-300" href="/aec/mep-engineering-services/">MEP Engineering</a>
+					</div>
+					<a class="mt-1 font-medium text-slate-300 transition hover:text-white" href="/design/">Creative &amp; Design</a>
+					<div class="ml-3 grid gap-1.5">
+						<a class="text-[12px] text-slate-500 transition hover:text-slate-300" href="/design/managed-creative-teams/">Managed Teams</a>
+						<a class="text-[12px] text-slate-500 transition hover:text-slate-300" href="/design/hire-ux-designer/">UX Design</a>
+						<a class="text-[12px] text-slate-500 transition hover:text-slate-300" href="/design/hire-brand-designer/">Brand Design</a>
+					</div>
+					<a class="mt-1 font-medium text-slate-300 transition hover:text-white" href="/marketing/">Marketing Talent</a>
+					<div class="ml-3 grid gap-1.5">
+						<a class="text-[12px] text-slate-500 transition hover:text-slate-300" href="/marketing/marops-revops/">MarOps/RevOps</a>
+						<a class="text-[12px] text-slate-500 transition hover:text-slate-300" href="/marketing/hubspot-specialist/">HubSpot Specialist</a>
+						<a class="text-[12px] text-slate-500 transition hover:text-slate-300" href="/marketing/hire-seo-specialist/">SEO Specialist</a>
+					</div>
 				</nav>
 			</div>
 
@@ -51,6 +63,8 @@ const bookingExternal = isExternalUrl(bookingUrl);
 					<a class="text-slate-400 transition hover:text-white" href="/roles/bim-coordinator/">BIM Coordinator</a>
 					<a class="text-slate-400 transition hover:text-white" href="/roles/ui-ux-designer/">UX Designer</a>
 					<a class="text-slate-400 transition hover:text-white" href="/roles/seo-specialist/">SEO Specialist</a>
+					<a class="text-slate-400 transition hover:text-white" href="/roles/ppc-manager/">PPC Manager</a>
+					<a class="text-slate-400 transition hover:text-white" href="/roles/brand-visual-designer/">Brand Designer</a>
 					<a class="mt-1 text-sky-300 transition hover:text-sky-200" href="/roles/">Explore all roles →</a>
 				</nav>
 			</div>
@@ -66,18 +80,14 @@ const bookingExternal = isExternalUrl(bookingUrl);
 			</div>
 
 			{/* Company column */}
-			<div class="lg:col-span-3">
+			<div class="lg:col-span-2">
 				<p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Company</p>
 				<nav class="mt-4 grid gap-2.5 text-sm" aria-label="Footer company">
 					<a class="text-slate-400 transition hover:text-white" href="/how-it-works/">How It Works</a>
+					<a class="text-slate-400 transition hover:text-white" href="/how-pricing-works/">How Pricing Works</a>
 					<a class="text-slate-400 transition hover:text-white" href="/about/how-we-vet/">How We Vet</a>
 					<a class="text-slate-400 transition hover:text-white" href="/about/our-guarantee/">Our Guarantee</a>
-					<a
-						class="text-slate-400 transition hover:text-white"
-						href="/get-started/"
-					>
-						Contact Us
-					</a>
+					<a class="text-slate-400 transition hover:text-white" href="/get-started/">Contact Us</a>
 				</nav>
 			</div>
 		</div>

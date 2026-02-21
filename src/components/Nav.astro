@@ -8,10 +8,11 @@ const isDesign = pathname.startsWith('/design/');
 const isMarketing = pathname.startsWith('/marketing/');
 const isSolutions = isAec || isDesign || isMarketing;
 const isRoles = pathname.startsWith('/roles/');
-const isHowItWorks = pathname.startsWith('/how-it-works/');
-
-const bookingUrl = BOOKING_URL;
-const bookingExternal = isExternalUrl(bookingUrl);
+const isAbout =
+	pathname.startsWith('/about/') ||
+	pathname.startsWith('/how-it-works/') ||
+	pathname.startsWith('/how-pricing-works/') ||
+	pathname.startsWith('/compare/');
 
 const linkBase =
 	'transition hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950';
@@ -53,74 +54,114 @@ const linkInactive = 'text-slate-300';
 					id="solutions-menu"
 					role="menu"
 					aria-label="Solutions"
-					class="absolute left-0 mt-2 w-[28rem] rounded-2xl border border-slate-700/60 bg-slate-900/95 p-3 shadow-2xl shadow-black/50 ring-1 ring-slate-700/40 backdrop-blur-xl"
+					class="absolute left-0 mt-2 w-[34rem] rounded-2xl border border-slate-700/60 bg-slate-900/95 p-3 shadow-2xl shadow-black/50 ring-1 ring-slate-700/40 backdrop-blur-xl"
 				>
 					{/* AEC */}
-					<a
-						role="menuitem"
-						href="/aec/"
-						class={`group/item flex items-start gap-3 rounded-xl px-3 py-3 transition hover:bg-slate-800/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${isAec ? 'bg-slate-800/70' : ''}`}
-						aria-current={isAec ? 'page' : undefined}
-					>
-						<span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-aec/10">
-							<svg class="h-4 w-4 text-aec" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z" /></svg>
-						</span>
-						<div>
-							<p class="text-sm font-semibold text-white">AEC Talent</p>
-							<p class="mt-0.5 text-xs leading-relaxed text-slate-400">BIM coordinators, CAD drafters, MEP modelers for US firms</p>
+					<div class={`rounded-xl px-3 py-3 transition ${isAec ? 'bg-slate-800/70' : 'hover:bg-slate-800/50'}`}>
+						<a
+							role="menuitem"
+							href="/aec/"
+							class="flex items-start gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+							aria-current={isAec ? 'page' : undefined}
+						>
+							<span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-aec/10">
+								<svg class="h-4 w-4 text-aec" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z" /></svg>
+							</span>
+							<div class="min-w-0 flex-1">
+								<p class="text-sm font-semibold text-white">AEC Talent</p>
+								<p class="mt-0.5 text-xs leading-relaxed text-slate-400">BIM, CAD, MEP engineers for US firms</p>
+							</div>
+						</a>
+						<div class="mt-2 ml-11 flex flex-wrap gap-x-3 gap-y-1">
+							<span class="text-[10px] font-semibold uppercase tracking-widest text-slate-500">Popular:</span>
+							<a role="menuitem" href="/aec/bim-coordination-services/" class="text-[11px] text-sky-400 transition hover:text-sky-300 focus:outline-none focus-visible:ring-1 focus-visible:ring-sky-300">BIM Coordination</a>
+							<a role="menuitem" href="/aec/cad-drafting-services/" class="text-[11px] text-sky-400 transition hover:text-sky-300 focus:outline-none focus-visible:ring-1 focus-visible:ring-sky-300">CAD Drafting</a>
+							<a role="menuitem" href="/aec/mep-engineering-services/" class="text-[11px] text-sky-400 transition hover:text-sky-300 focus:outline-none focus-visible:ring-1 focus-visible:ring-sky-300">MEP Engineering</a>
 						</div>
-					</a>
+					</div>
 
 					{/* Design */}
-					<a
-						role="menuitem"
-						href="/design/"
-						class={`group/item flex items-start gap-3 rounded-xl px-3 py-3 transition hover:bg-slate-800/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${isDesign ? 'bg-slate-800/70' : ''}`}
-						aria-current={isDesign ? 'page' : undefined}
-					>
-						<span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-design/10">
-							<svg class="h-4 w-4 text-design" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42" /></svg>
-						</span>
-						<div>
-							<p class="text-sm font-semibold text-white">Creative &amp; Design</p>
-							<p class="mt-0.5 text-xs leading-relaxed text-slate-400">Dedicated designers and managed creative teams</p>
+					<div class={`mt-1 rounded-xl px-3 py-3 transition ${isDesign ? 'bg-slate-800/70' : 'hover:bg-slate-800/50'}`}>
+						<a
+							role="menuitem"
+							href="/design/"
+							class="flex items-start gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+							aria-current={isDesign ? 'page' : undefined}
+						>
+							<span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-design/10">
+								<svg class="h-4 w-4 text-design" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42" /></svg>
+							</span>
+							<div class="min-w-0 flex-1">
+								<p class="text-sm font-semibold text-white">Creative &amp; Design</p>
+								<p class="mt-0.5 text-xs leading-relaxed text-slate-400">Dedicated designers &amp; managed creative teams</p>
+							</div>
+						</a>
+						<div class="mt-2 ml-11 flex flex-wrap gap-x-3 gap-y-1">
+							<span class="text-[10px] font-semibold uppercase tracking-widest text-slate-500">Popular:</span>
+							<a role="menuitem" href="/design/managed-creative-teams/" class="text-[11px] text-sky-400 transition hover:text-sky-300 focus:outline-none focus-visible:ring-1 focus-visible:ring-sky-300">Managed Teams</a>
+							<a role="menuitem" href="/design/hire-ux-designer/" class="text-[11px] text-sky-400 transition hover:text-sky-300 focus:outline-none focus-visible:ring-1 focus-visible:ring-sky-300">UX Design</a>
+							<a role="menuitem" href="/design/hire-brand-designer/" class="text-[11px] text-sky-400 transition hover:text-sky-300 focus:outline-none focus-visible:ring-1 focus-visible:ring-sky-300">Brand Design</a>
 						</div>
-					</a>
+					</div>
 
 					{/* Marketing */}
-					<a
-						role="menuitem"
-						href="/marketing/"
-						class={`group/item flex items-start gap-3 rounded-xl px-3 py-3 transition hover:bg-slate-800/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${isMarketing ? 'bg-slate-800/70' : ''}`}
-						aria-current={isMarketing ? 'page' : undefined}
-					>
-						<span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-marketing/10">
-							<svg class="h-4 w-4 text-marketing" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10.34 15.84c-.688-.06-1.386-.09-2.09-.09H7.5a4.5 4.5 0 1 1 0-9h.75c.704 0 1.402-.03 2.09-.09m0 9.18c.253.962.584 1.892.985 2.783.247.55.06 1.21-.463 1.511l-.657.38c-.551.318-1.26.117-1.527-.461a20.845 20.845 0 0 1-1.44-4.282m3.102.069a18.03 18.03 0 0 1-.59-4.59c0-1.586.205-3.124.59-4.59m0 9.18a23.848 23.848 0 0 1 8.835 2.535M10.34 6.66a23.847 23.847 0 0 1 8.835-2.535m0 0A23.74 23.74 0 0 1 18.795 3m.38 1.125a23.91 23.91 0 0 1 1.014 5.395m-1.014 8.855c-.118.38-.245.754-.38 1.125m.38-1.125a23.91 23.91 0 0 0 1.014-5.395m0-3.46c.495.413.811 1.035.811 1.73 0 .695-.316 1.317-.811 1.73m0-3.46a24.347 24.347 0 0 1 0 3.46" /></svg>
-						</span>
-						<div>
-							<p class="text-sm font-semibold text-white">Marketing Talent</p>
-							<p class="mt-0.5 text-xs leading-relaxed text-slate-400">SEO, paid media, lifecycle, HubSpot &amp; RevOps specialists</p>
+					<div class={`mt-1 rounded-xl px-3 py-3 transition ${isMarketing ? 'bg-slate-800/70' : 'hover:bg-slate-800/50'}`}>
+						<a
+							role="menuitem"
+							href="/marketing/"
+							class="flex items-start gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+							aria-current={isMarketing ? 'page' : undefined}
+						>
+							<span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-marketing/10">
+								<svg class="h-4 w-4 text-marketing" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10.34 15.84c-.688-.06-1.386-.09-2.09-.09H7.5a4.5 4.5 0 1 1 0-9h.75c.704 0 1.402-.03 2.09-.09m0 9.18c.253.962.584 1.892.985 2.783.247.55.06 1.21-.463 1.511l-.657.38c-.551.318-1.26.117-1.527-.461a20.845 20.845 0 0 1-1.44-4.282m3.102.069a18.03 18.03 0 0 1-.59-4.59c0-1.586.205-3.124.59-4.59m0 9.18a23.848 23.848 0 0 1 8.835 2.535M10.34 6.66a23.847 23.847 0 0 1 8.835-2.535m0 0A23.74 23.74 0 0 1 18.795 3m.38 1.125a23.91 23.91 0 0 1 1.014 5.395m-1.014 8.855c-.118.38-.245.754-.38 1.125m.38-1.125a23.91 23.91 0 0 0 1.014-5.395m0-3.46c.495.413.811 1.035.811 1.73 0 .695-.316 1.317-.811 1.73m0-3.46a24.347 24.347 0 0 1 0 3.46" /></svg>
+							</span>
+							<div class="min-w-0 flex-1">
+								<p class="text-sm font-semibold text-white">Marketing Talent</p>
+								<p class="mt-0.5 text-xs leading-relaxed text-slate-400">SEO, paid media, lifecycle, MarOps specialists</p>
+							</div>
+						</a>
+						<div class="mt-2 ml-11 flex flex-wrap gap-x-3 gap-y-1">
+							<span class="text-[10px] font-semibold uppercase tracking-widest text-slate-500">Popular:</span>
+							<a role="menuitem" href="/marketing/marops-revops/" class="text-[11px] text-sky-400 transition hover:text-sky-300 focus:outline-none focus-visible:ring-1 focus-visible:ring-sky-300">MarOps/RevOps</a>
+							<a role="menuitem" href="/marketing/hubspot-specialist/" class="text-[11px] text-sky-400 transition hover:text-sky-300 focus:outline-none focus-visible:ring-1 focus-visible:ring-sky-300">HubSpot</a>
+							<a role="menuitem" href="/marketing/hire-seo-specialist/" class="text-[11px] text-sky-400 transition hover:text-sky-300 focus:outline-none focus-visible:ring-1 focus-visible:ring-sky-300">SEO</a>
 						</div>
-					</a>
+					</div>
 
 					{/* Divider + secondary links */}
 					<div class="mt-2 border-t border-slate-800/80 pt-2">
-						<div class="grid grid-cols-2 gap-1">
+						<div class="grid grid-cols-4 gap-1">
 							<a
 								role="menuitem"
 								href="/how-it-works/"
-								class="flex items-center gap-2 rounded-xl px-3 py-2 text-xs text-slate-400 transition hover:bg-slate-800/70 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+								class="flex items-center gap-1.5 rounded-xl px-2 py-2 text-xs text-slate-400 transition hover:bg-slate-800/70 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
 							>
-								<svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" /></svg>
+								<svg class="h-3.5 w-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" /></svg>
 								How It Works
 							</a>
 							<a
 								role="menuitem"
 								href="/how-pricing-works/"
-								class="flex items-center gap-2 rounded-xl px-3 py-2 text-xs text-slate-400 transition hover:bg-slate-800/70 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+								class="flex items-center gap-1.5 rounded-xl px-2 py-2 text-xs text-slate-400 transition hover:bg-slate-800/70 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
 							>
-								<svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
+								<svg class="h-3.5 w-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
 								How Pricing Works
+							</a>
+							<a
+								role="menuitem"
+								href="/about/how-we-vet/"
+								class="flex items-center gap-1.5 rounded-xl px-2 py-2 text-xs text-slate-400 transition hover:bg-slate-800/70 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+							>
+								<svg class="h-3.5 w-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" /></svg>
+								How We Vet
+							</a>
+							<a
+								role="menuitem"
+								href="/about/our-guarantee/"
+								class="flex items-center gap-1.5 rounded-xl px-2 py-2 text-xs text-slate-400 transition hover:bg-slate-800/70 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+							>
+								<svg class="h-3.5 w-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" /></svg>
+								Our Guarantee
 							</a>
 						</div>
 					</div>
@@ -183,19 +224,74 @@ const linkInactive = 'text-slate-300';
 				</div>
 			</details>
 
-			{/* How It Works */}
-			<a
-				href="/how-it-works/"
-				class={`${linkDesktopBase} ${isHowItWorks ? linkActive : linkInactive}`}
-				aria-current={isHowItWorks ? 'page' : undefined}
-			>
-				How It Works
-			</a>
+			{/* About dropdown */}
+			<details class="group relative" data-nav-dropdown="about">
+				<summary
+					class={`flex cursor-pointer list-none items-center gap-1.5 ${linkDesktopBase} ${isAbout ? linkActive : linkInactive}`}
+					aria-haspopup="menu"
+					aria-expanded="false"
+					aria-controls="about-menu"
+				>
+					<span>About</span>
+					<svg class="h-3.5 w-3.5 transition group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+						<path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08Z" clip-rule="evenodd" />
+					</svg>
+				</summary>
+
+				<div
+					id="about-menu"
+					role="menu"
+					aria-label="About"
+					class="absolute right-0 mt-2 w-52 rounded-2xl border border-slate-700/60 bg-slate-900/95 p-2 shadow-2xl shadow-black/50 ring-1 ring-slate-700/40 backdrop-blur-xl"
+				>
+					<a
+						role="menuitem"
+						href="/about/how-we-vet/"
+						class={`flex items-center gap-2.5 rounded-xl px-3 py-2.5 text-sm transition hover:bg-slate-800/70 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${pathname.startsWith('/about/how-we-vet') ? 'bg-slate-800/70 text-white font-medium' : 'text-slate-300'}`}
+					>
+						<svg class="h-4 w-4 shrink-0 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" /></svg>
+						How We Vet
+					</a>
+					<a
+						role="menuitem"
+						href="/about/our-guarantee/"
+						class={`flex items-center gap-2.5 rounded-xl px-3 py-2.5 text-sm transition hover:bg-slate-800/70 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${pathname.startsWith('/about/our-guarantee') ? 'bg-slate-800/70 text-white font-medium' : 'text-slate-300'}`}
+					>
+						<svg class="h-4 w-4 shrink-0 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" /></svg>
+						Our Guarantee
+					</a>
+					<a
+						role="menuitem"
+						href="/how-pricing-works/"
+						class={`flex items-center gap-2.5 rounded-xl px-3 py-2.5 text-sm transition hover:bg-slate-800/70 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${pathname.startsWith('/how-pricing-works') ? 'bg-slate-800/70 text-white font-medium' : 'text-slate-300'}`}
+					>
+						<svg class="h-4 w-4 shrink-0 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
+						How Pricing Works
+					</a>
+					<a
+						role="menuitem"
+						href="/how-it-works/"
+						class={`flex items-center gap-2.5 rounded-xl px-3 py-2.5 text-sm transition hover:bg-slate-800/70 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${pathname.startsWith('/how-it-works') ? 'bg-slate-800/70 text-white font-medium' : 'text-slate-300'}`}
+					>
+						<svg class="h-4 w-4 shrink-0 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" /></svg>
+						How It Works
+					</a>
+					<div class="mt-1 border-t border-slate-800/60 pt-1">
+						<a
+							role="menuitem"
+							href="/compare/vs-superside/"
+							class="flex items-center gap-2.5 rounded-xl px-3 py-2.5 text-sm text-slate-300 transition hover:bg-slate-800/70 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+						>
+							<svg class="h-4 w-4 shrink-0 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" /></svg>
+							vs Superside
+						</a>
+					</div>
+				</div>
+			</details>
 
 			{/* CTA */}
 			<a
-				href="/#contact"
-				data-scroll-to-contact="form"
+				href="/get-started/"
 				class="ml-4 inline-flex min-h-[40px] items-center justify-center rounded bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
 			>
 				Get Started
@@ -205,8 +301,7 @@ const linkInactive = 'text-slate-300';
 		{/* Mobile: Get Started always visible + hamburger */}
 		<div class="flex items-center gap-2 md:hidden">
 			<a
-				href="/#contact"
-				data-scroll-to-contact="form"
+				href="/get-started/"
 				class="inline-flex min-h-[44px] items-center justify-center rounded bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
 			>
 				Get Started
@@ -244,6 +339,7 @@ const linkInactive = 'text-slate-300';
 						</svg>
 					</summary>
 					<div id="solutions-menu-mobile" role="menu" aria-label="Solutions" class="px-3 pb-3">
+						{/* AEC */}
 						<a role="menuitem" href="/aec/"
 							class={`mt-2 flex min-h-[48px] items-center gap-3 rounded-xl px-3 py-2.5 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${isAec ? 'bg-slate-900 text-white font-semibold' : 'text-slate-200'}`}
 							aria-current={isAec ? 'page' : undefined}>
@@ -252,22 +348,41 @@ const linkInactive = 'text-slate-300';
 							</span>
 							<span>AEC Talent</span>
 						</a>
+						<div class="ml-10 flex flex-wrap gap-x-3 gap-y-1 px-3 pb-1">
+							<a role="menuitem" href="/aec/bim-coordination-services/" class="text-[11px] text-sky-400 transition hover:text-sky-300">BIM Coordination</a>
+							<a role="menuitem" href="/aec/cad-drafting-services/" class="text-[11px] text-sky-400 transition hover:text-sky-300">CAD Drafting</a>
+							<a role="menuitem" href="/aec/mep-engineering-services/" class="text-[11px] text-sky-400 transition hover:text-sky-300">MEP Engineering</a>
+						</div>
+
+						{/* Design */}
 						<a role="menuitem" href="/design/"
-							class={`mt-1 flex min-h-[48px] items-center gap-3 rounded-xl px-3 py-2.5 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${isDesign ? 'bg-slate-900 text-white font-semibold' : 'text-slate-200'}`}
+							class={`mt-2 flex min-h-[48px] items-center gap-3 rounded-xl px-3 py-2.5 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${isDesign ? 'bg-slate-900 text-white font-semibold' : 'text-slate-200'}`}
 							aria-current={isDesign ? 'page' : undefined}>
 							<span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-design/10">
 								<svg class="h-3.5 w-3.5 text-design" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42" /></svg>
 							</span>
 							<span>Creative &amp; Design</span>
 						</a>
+						<div class="ml-10 flex flex-wrap gap-x-3 gap-y-1 px-3 pb-1">
+							<a role="menuitem" href="/design/managed-creative-teams/" class="text-[11px] text-sky-400 transition hover:text-sky-300">Managed Teams</a>
+							<a role="menuitem" href="/design/hire-ux-designer/" class="text-[11px] text-sky-400 transition hover:text-sky-300">UX Design</a>
+							<a role="menuitem" href="/design/hire-brand-designer/" class="text-[11px] text-sky-400 transition hover:text-sky-300">Brand Design</a>
+						</div>
+
+						{/* Marketing */}
 						<a role="menuitem" href="/marketing/"
-							class={`mt-1 flex min-h-[48px] items-center gap-3 rounded-xl px-3 py-2.5 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${isMarketing ? 'bg-slate-900 text-white font-semibold' : 'text-slate-200'}`}
+							class={`mt-2 flex min-h-[48px] items-center gap-3 rounded-xl px-3 py-2.5 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${isMarketing ? 'bg-slate-900 text-white font-semibold' : 'text-slate-200'}`}
 							aria-current={isMarketing ? 'page' : undefined}>
 							<span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-marketing/10">
 								<svg class="h-3.5 w-3.5 text-marketing" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10.34 15.84c-.688-.06-1.386-.09-2.09-.09H7.5a4.5 4.5 0 1 1 0-9h.75c.704 0 1.402-.03 2.09-.09m0 9.18c.253.962.584 1.892.985 2.783.247.55.06 1.21-.463 1.511l-.657.38c-.551.318-1.26.117-1.527-.461a20.845 20.845 0 0 1-1.44-4.282m3.102.069a18.03 18.03 0 0 1-.59-4.59c0-1.586.205-3.124.59-4.59m0 9.18a23.848 23.848 0 0 1 8.835 2.535M10.34 6.66a23.847 23.847 0 0 1 8.835-2.535m0 0A23.74 23.74 0 0 1 18.795 3m.38 1.125a23.91 23.91 0 0 1 1.014 5.395m-1.014 8.855c-.118.38-.245.754-.38 1.125m.38-1.125a23.91 23.91 0 0 0 1.014-5.395m0-3.46c.495.413.811 1.035.811 1.73 0 .695-.316 1.317-.811 1.73m0-3.46a24.347 24.347 0 0 1 0 3.46" /></svg>
 							</span>
 							<span>Marketing Talent</span>
 						</a>
+						<div class="ml-10 flex flex-wrap gap-x-3 gap-y-1 px-3 pb-1">
+							<a role="menuitem" href="/marketing/marops-revops/" class="text-[11px] text-sky-400 transition hover:text-sky-300">MarOps/RevOps</a>
+							<a role="menuitem" href="/marketing/hubspot-specialist/" class="text-[11px] text-sky-400 transition hover:text-sky-300">HubSpot</a>
+							<a role="menuitem" href="/marketing/hire-seo-specialist/" class="text-[11px] text-sky-400 transition hover:text-sky-300">SEO</a>
+						</div>
 					</div>
 				</details>
 
@@ -305,14 +420,28 @@ const linkInactive = 'text-slate-300';
 					</div>
 				</details>
 
-				{/* How It Works */}
-				<a
-					href="/how-it-works/"
-					class={`flex min-h-[48px] items-center rounded-xl px-4 py-3 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${isHowItWorks ? 'bg-slate-900 text-white font-semibold' : 'text-slate-200'}`}
-					aria-current={isHowItWorks ? 'page' : undefined}
-				>
-					How It Works
-				</a>
+				{/* About accordion */}
+				<details class="group rounded-xl border border-slate-700/60 bg-slate-900/40" data-nav-dropdown="about-mobile">
+					<summary
+						class={`flex min-h-[48px] cursor-pointer list-none items-center justify-between gap-3 rounded-xl px-4 py-3 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${isAbout ? 'text-white font-semibold' : 'text-slate-200'}`}
+						aria-haspopup="menu"
+						aria-expanded="false"
+						aria-controls="about-menu-mobile"
+					>
+						<span>About</span>
+						<svg class="h-4 w-4 text-slate-400 transition group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+							<path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08Z" clip-rule="evenodd" />
+						</svg>
+					</summary>
+					<div id="about-menu-mobile" role="menu" aria-label="About" class="px-3 pb-3">
+						<a role="menuitem" href="/about/how-we-vet/" class="mt-2 flex min-h-[44px] items-center rounded-xl px-3 py-2 text-slate-300 transition hover:bg-slate-900 hover:text-white">How We Vet</a>
+						<a role="menuitem" href="/about/our-guarantee/" class="mt-1 flex min-h-[44px] items-center rounded-xl px-3 py-2 text-slate-300 transition hover:bg-slate-900 hover:text-white">Our Guarantee</a>
+						<a role="menuitem" href="/how-pricing-works/" class="mt-1 flex min-h-[44px] items-center rounded-xl px-3 py-2 text-slate-300 transition hover:bg-slate-900 hover:text-white">How Pricing Works</a>
+						<a role="menuitem" href="/how-it-works/" class="mt-1 flex min-h-[44px] items-center rounded-xl px-3 py-2 text-slate-300 transition hover:bg-slate-900 hover:text-white">How It Works</a>
+						<a role="menuitem" href="/compare/vs-superside/" class="mt-1 flex min-h-[44px] items-center rounded-xl px-3 py-2 text-slate-300 transition hover:bg-slate-900 hover:text-white">vs Superside</a>
+					</div>
+				</details>
+
 			</div>
 		</nav>
 	</div>
