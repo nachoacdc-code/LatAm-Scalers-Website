@@ -7,22 +7,26 @@ import { BOOKING_URL, isExternalUrl } from '../../../lib/cta';
 const brand = 'LatAm Scalers';
 
 const meta = {
-	title: `Hire Marketing Specialists (FT/PT + Hourly) | ${brand}`,
+	title: `Hire Individual AEC Specialists — Fast and Flexible | ${brand}`,
 	description:
-		'Dedicated remote marketing specialists for US teams — full-time, part-time, or hourly blocks for audits, setups, and optimization. Vetted and ready fast.',
+		'Dedicated remote AEC specialists for US firms. Start in days with vetted Revit/BIM/drafting talent on flexible 20h or 40h weekly engagements.',
 };
 
-const baseUrl = Astro.site ?? 'https://talentcompany-site.vercel.app';
-const canonical = new URL('/solutions/marketing-talent/individuals/', baseUrl).toString();
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/aec/individuals/', baseUrl).toString();
 
 const faqs = [
 	{
-		q: 'Should we choose FT/PT or hourly blocks?',
-		a: 'FT/PT is best for channel ownership and ongoing execution. Hourly blocks are best for targeted work like audits, setups, migrations, or short sprints.',
+		q: "What's the difference between 20h and 40h per week?",
+		a: '20h/week is ideal for steady overflow support or a focused scope. 40h/week is best for owning deliverables and moving faster with fewer handoffs.',
 	},
 	{
-		q: 'How fast can someone onboard?',
-		a: 'We can typically present vetted options quickly. Once access and goals are confirmed, onboarding is designed to be fast so work can start immediately.',
+		q: 'How do you match for our standards and workflows?',
+		a: 'We align on your BEP/templates, deliverable standards, and revision cadence. Specialists work inside your process (redlines, markups, checklists).',
+	},
+	{
+		q: 'How fast can we receive candidates?',
+		a: 'We can typically present vetted options in 48 hours. Onboarding timing depends on access and scope, but is designed to be fast.',
 	},
 	{
 		q: 'What if the fit is not right?',
@@ -42,13 +46,13 @@ const bookingExternal = isExternalUrl(bookingUrl);
 		<section class="relative overflow-hidden">
 			<div class="grid items-center gap-10 lg:grid-cols-2">
 				<div>
-					<p class="text-sm font-semibold tracking-wide text-sky-300">Marketing Talent</p>
+					<p class="text-sm font-semibold tracking-wide text-sky-300">AEC Talent</p>
 					<h1 class="mt-4 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
-						Hire Dedicated Marketing Specialists
+						Hire Individual AEC Specialists — Fast and Flexible
 					</h1>
 					<p class="mt-4 max-w-prose text-base leading-relaxed text-slate-300 sm:text-lg">
-						Channel owners who plug into your tools and reporting — full-time, part-time, or hourly blocks for focused
-						work. Ideal for teams that need consistent execution without adding headcount risk.
+						Dedicated Revit/BIM/drafting specialists embedded into your team. Choose 20h/week or 40h/week and stay
+						month-to-month — vetted, timezone-aligned, and ready fast.
 					</p>
 
 					<div class="mt-8 flex flex-wrap gap-3">
@@ -61,33 +65,37 @@ const bookingExternal = isExternalUrl(bookingUrl);
 							Book a 30-Min Call
 						</a>
 						<a
-							href="/solutions/marketing-talent/"
+							href="/aec/"
 							class="inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
 						>
-							Back to overview
+							Back to AEC overview
 						</a>
 					</div>
+
+					<p class="mt-4 text-xs leading-relaxed text-slate-400">
+						Timezone-aligned. Pre-vetted specialists. Month-to-month flexibility. Free replacement guarantee.
+					</p>
 				</div>
 
 				<div class="relative">
 					<div class="rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900/60 to-slate-950 p-6 shadow-sm">
-						<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Common outcomes</p>
+						<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Typical outcomes</p>
 						<ul class="mt-4 grid gap-3 sm:grid-cols-2">
 							<li class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
-								<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Execution</p>
-								<p class="mt-2 text-sm text-slate-200">More campaigns shipped weekly.</p>
+								<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Delivery</p>
+								<p class="mt-2 text-sm text-slate-200">More CDs shipped on schedule.</p>
 							</li>
 							<li class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
-								<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Measurement</p>
-								<p class="mt-2 text-sm text-slate-200">Cleaner tracking and reporting.</p>
+								<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Consistency</p>
+								<p class="mt-2 text-sm text-slate-200">Redlines turned faster with fewer bottlenecks.</p>
 							</li>
 							<li class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
-								<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Optimization</p>
-								<p class="mt-2 text-sm text-slate-200">Better performance through iteration.</p>
+								<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Quality</p>
+								<p class="mt-2 text-sm text-slate-200">Work aligned to your BEP + templates.</p>
 							</li>
 							<li class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
-								<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Pipeline</p>
-								<p class="mt-2 text-sm text-slate-200">More qualified demand with focus.</p>
+								<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Capacity</p>
+								<p class="mt-2 text-sm text-slate-200">Peak workloads handled without burnout.</p>
 							</li>
 						</ul>
 					</div>
@@ -97,70 +105,46 @@ const bookingExternal = isExternalUrl(bookingUrl);
 			</div>
 		</section>
 
-		{/* FT / PT OFFERINGS */}
-		<section class="mt-12" aria-labelledby="ftpt-offerings">
-			<h2 id="ftpt-offerings" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-				FT / PT offerings
+		{/* FORMATS */}
+		<section class="mt-12" aria-labelledby="formats-aec">
+			<h2 id="formats-aec" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+				Formats
 			</h2>
 			<div class="mt-6 grid gap-4 md:grid-cols-2">
 				<article class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-					<h3 class="text-base font-semibold text-slate-100">Full-time (40h/week)</h3>
+					<h3 class="text-base font-semibold text-slate-100">20 hours/week</h3>
 					<p class="mt-3 text-sm leading-relaxed text-slate-300">
-						Best for channel ownership and consistent execution tied to weekly targets.
+						Best for steady overflow, targeted scope, and teams that need consistent support without adding headcount.
 					</p>
 					<ul class="mt-4 grid gap-2 text-sm text-slate-300">
-						<li>Own a channel end-to-end (SEO, PPC, lifecycle)</li>
-						<li>Weekly reporting and iteration</li>
+						<li>Ideal for: ongoing drafting support, redlines, model cleanup</li>
+						<li>Cadence: daily overlap for fast iteration</li>
 					</ul>
 				</article>
 				<article class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-					<h3 class="text-base font-semibold text-slate-100">Part-time (20h/week)</h3>
+					<h3 class="text-base font-semibold text-slate-100">40 hours/week</h3>
 					<p class="mt-3 text-sm leading-relaxed text-slate-300">
-						Ideal for steady support, specialized execution, or a focused scope.
+						Best for owning deliverables end-to-end with fewer handoffs and faster throughput.
 					</p>
 					<ul class="mt-4 grid gap-2 text-sm text-slate-300">
-						<li>Support a channel or backlog consistently</li>
-						<li>Great for overflow + maintenance</li>
+						<li>Ideal for: CD production, BIM coordination support, model builds</li>
+						<li>Cadence: embedded like an in-house team member</li>
 					</ul>
 				</article>
 			</div>
 		</section>
 
-		{/* HOURLY BLOCKS */}
-		<section class="mt-12" aria-labelledby="hourly-blocks">
-			<h2 id="hourly-blocks" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-				Hourly blocks
-			</h2>
-			<p class="mt-3 max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
-				For tactical needs and fast sprints — audits, setups, migrations, and optimizations.
-			</p>
-			<div class="mt-6 grid gap-4 md:grid-cols-3">
-				<div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-					<p class="text-sm font-semibold text-slate-100">Audit + plan</p>
-					<p class="mt-2 text-sm text-slate-300">SEO/ads/account review + prioritized roadmap.</p>
-				</div>
-				<div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-					<p class="text-sm font-semibold text-slate-100">Setup + launch</p>
-					<p class="mt-2 text-sm text-slate-300">Tracking, dashboards, campaigns, and creative ops.</p>
-				</div>
-				<div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-					<p class="text-sm font-semibold text-slate-100">Optimize + iterate</p>
-					<p class="mt-2 text-sm text-slate-300">Testing, bid/keyword changes, CRO support.</p>
-				</div>
-			</div>
-		</section>
-
-		{/* ONBOARDING */}
-		<section class="mt-12" aria-labelledby="onboarding">
-			<h2 id="onboarding" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-				Onboarding
+		{/* MATCHING PROCESS */}
+		<section class="mt-12" aria-labelledby="process-aec-individuals">
+			<h2 id="process-aec-individuals" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+				Matching process
 			</h2>
 			<ol class="mt-6 grid gap-4 lg:grid-cols-4">
 				{[
-					{ title: 'Goals + stack', body: 'Channels, KPIs, tools, access, and reporting cadence.' },
-					{ title: 'Vetted matches', body: 'We propose specialists aligned to your needs.' },
-					{ title: 'Interview (optional)', body: 'Meet candidates or start immediately.' },
-					{ title: 'Execute', body: 'Weekly delivery, iterations, and clear updates.' },
+					{ title: 'Scope + standards', body: 'Roles, tools, file formats, BEP/templates, and QA expectations.' },
+					{ title: 'Candidates in 48 hours', body: 'We deliver vetted specialists aligned to your workflow.' },
+					{ title: 'Interview (optional)', body: 'Meet top matches or start immediately if you prefer.' },
+					{ title: 'Onboard + deliver', body: 'Fast kickoff, iterative redlines, and clear handoffs.' },
 				].map((step, idx) => (
 					<li class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
 						<p class="text-xs font-semibold uppercase tracking-wide text-sky-300">Step {idx + 1}</p>
@@ -172,18 +156,19 @@ const bookingExternal = isExternalUrl(bookingUrl);
 		</section>
 
 		{/* PROOF */}
-		<section class="mt-12" aria-labelledby="proof-marketing-individuals">
-			<h2 id="proof-marketing-individuals" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+		<section class="mt-12" aria-labelledby="proof-aec-individuals">
+			<h2 id="proof-aec-individuals" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
 				Proof
 			</h2>
 			<p class="mt-3 max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
 				{/* TODO: Replace with testimonials carousel. */}
 				Testimonials placeholder (to be filled).
 			</p>
+
 			<div class="mt-6 grid gap-4 md:grid-cols-3">
 				{[1, 2, 3].map((i) => (
 					<figure class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-						<blockquote class="text-sm leading-relaxed text-slate-200">“TODO testimonial {i}.”</blockquote>
+						<blockquote class="text-sm leading-relaxed text-slate-200">"TODO testimonial {i}."</blockquote>
 						<figcaption class="mt-3 text-xs text-slate-400">— TODO, anonymized</figcaption>
 					</figure>
 				))}
@@ -191,8 +176,8 @@ const bookingExternal = isExternalUrl(bookingUrl);
 		</section>
 
 		{/* FAQ */}
-		<section class="mt-12" aria-labelledby="faq-marketing-individuals">
-			<h2 id="faq-marketing-individuals" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+		<section class="mt-12" aria-labelledby="faq-aec-individuals">
+			<h2 id="faq-aec-individuals" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
 				FAQ
 			</h2>
 			<div class="mt-6 grid gap-3">
@@ -209,9 +194,9 @@ const bookingExternal = isExternalUrl(bookingUrl);
 		<section class="mt-14 rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900/60 to-slate-950 p-6 sm:p-8">
 			<div class="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
 				<div>
-					<h2 class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Need a marketing specialist?</h2>
+					<h2 class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Ready to add AEC capacity?</h2>
 					<p class="mt-2 max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
-						Book a call and we’ll match a specialist aligned to your goals and channels.
+						Book a call to discuss your standards and timeline — we'll send vetted specialist options fast.
 					</p>
 				</div>
 				<div class="flex flex-wrap gap-3">
@@ -224,10 +209,10 @@ const bookingExternal = isExternalUrl(bookingUrl);
 						Book a 30-Min Call
 					</a>
 					<a
-						href="/solutions/marketing-talent/teams/"
+						href="/aec/teams/"
 						class="inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
 					>
-						Need a pod instead?
+						Need a team instead?
 					</a>
 				</div>
 			</div>
@@ -235,7 +220,6 @@ const bookingExternal = isExternalUrl(bookingUrl);
 	</main>
 
 	<div class="mx-auto max-w-6xl px-6">
-		<ContactSection subject={`${brand} — new inquiry (marketing individuals)`} />
+		<ContactSection subject={`${brand} — new inquiry (AEC individuals)`} />
 	</div>
 </Layout>
-

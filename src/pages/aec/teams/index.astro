@@ -7,35 +7,35 @@ import { BOOKING_URL, isExternalUrl } from '../../../lib/cta';
 const brand = 'LatAm Scalers';
 
 const meta = {
-	title: `Hire Individual AEC Specialists — Fast and Flexible | ${brand}`,
+	title: `Build Dedicated AEC Teams for Scaling | ${brand}`,
 	description:
-		'Dedicated remote AEC specialists for US firms. Start in days with vetted Revit/BIM/drafting talent on flexible 20h or 40h weekly engagements.',
+		'Scale AEC delivery with a dedicated pod: architectural designers, Revit modelers, drafting support, and optional coordination — flexible, fast onboarding, month-to-month.',
 };
 
-const baseUrl = Astro.site ?? 'https://talentcompany-site.vercel.app';
-const canonical = new URL('/solutions/aec-talent/individuals/', baseUrl).toString();
-
-const faqs = [
-	{
-		q: 'What’s the difference between 20h and 40h per week?',
-		a: '20h/week is ideal for steady overflow support or a focused scope. 40h/week is best for owning deliverables and moving faster with fewer handoffs.',
-	},
-	{
-		q: 'How do you match for our standards and workflows?',
-		a: 'We align on your BEP/templates, deliverable standards, and revision cadence. Specialists work inside your process (redlines, markups, checklists).',
-	},
-	{
-		q: 'How fast can we receive candidates?',
-		a: 'We can typically present vetted options in 48 hours. Onboarding timing depends on access and scope, but is designed to be fast.',
-	},
-	{
-		q: 'What if the fit is not right?',
-		a: 'Engagements are month-to-month, and we offer a free replacement guarantee.',
-	},
-];
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/aec/teams/', baseUrl).toString();
 
 const bookingUrl = BOOKING_URL;
 const bookingExternal = isExternalUrl(bookingUrl);
+
+const faqs = [
+	{
+		q: 'What does a "pod" look like?',
+		a: 'A pod is a small team with complementary skills (e.g., architectural designer + Revit modeler + drafting support) aligned to your standards and deliverables.',
+	},
+	{
+		q: 'Can we start small and scale?',
+		a: 'Yes — many teams start with one or two contributors, then add roles as workload increases or timelines tighten.',
+	},
+	{
+		q: 'How do you keep quality consistent across a team?',
+		a: 'We align on your templates/BEP, QA checkpoints, and revision process. The team works inside your workflow with clear handoffs and versioning.',
+	},
+	{
+		q: 'Do you support month-to-month engagements?',
+		a: 'Yes — pods are flexible and can scale up/down as priorities change. We also offer a free replacement guarantee.',
+	},
+];
 ---
 
 <Layout>
@@ -48,11 +48,11 @@ const bookingExternal = isExternalUrl(bookingUrl);
 				<div>
 					<p class="text-sm font-semibold tracking-wide text-sky-300">AEC Talent</p>
 					<h1 class="mt-4 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
-						Hire Individual AEC Specialists — Fast and Flexible
+						Build Dedicated AEC Teams for Scaling
 					</h1>
 					<p class="mt-4 max-w-prose text-base leading-relaxed text-slate-300 sm:text-lg">
-						Dedicated Revit/BIM/drafting specialists embedded into your team. Choose 20h/week or 40h/week and stay
-						month-to-month — vetted, timezone-aligned, and ready fast.
+						Increase throughput with a dedicated production pod — aligned to your standards and deadlines. Add
+						architectural designers, Revit modelers, drafting support, and optional coordination.
 					</p>
 
 					<div class="mt-8 flex flex-wrap gap-3">
@@ -65,7 +65,7 @@ const bookingExternal = isExternalUrl(bookingUrl);
 							Book a 30-Min Call
 						</a>
 						<a
-							href="/solutions/aec-talent/"
+							href="/aec/"
 							class="inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
 						>
 							Back to AEC overview
@@ -73,29 +73,29 @@ const bookingExternal = isExternalUrl(bookingUrl);
 					</div>
 
 					<p class="mt-4 text-xs leading-relaxed text-slate-400">
-						Timezone-aligned. Pre-vetted specialists. Month-to-month flexibility. Free replacement guarantee.
+						Month-to-month flexibility. Scalable pods. QA checkpoints. Free replacement guarantee.
 					</p>
 				</div>
 
 				<div class="relative">
 					<div class="rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900/60 to-slate-950 p-6 shadow-sm">
-						<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Typical outcomes</p>
+						<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Best for</p>
 						<ul class="mt-4 grid gap-3 sm:grid-cols-2">
 							<li class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
-								<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Delivery</p>
-								<p class="mt-2 text-sm text-slate-200">More CDs shipped on schedule.</p>
+								<p class="text-sm font-semibold text-slate-100">Peak workloads</p>
+								<p class="mt-2 text-sm text-slate-300">Add capacity without delaying schedules.</p>
 							</li>
 							<li class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
-								<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Consistency</p>
-								<p class="mt-2 text-sm text-slate-200">Redlines turned faster with fewer bottlenecks.</p>
+								<p class="text-sm font-semibold text-slate-100">Multi-project support</p>
+								<p class="mt-2 text-sm text-slate-300">Parallelize deliverables across projects.</p>
 							</li>
 							<li class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
-								<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Quality</p>
-								<p class="mt-2 text-sm text-slate-200">Work aligned to your BEP + templates.</p>
+								<p class="text-sm font-semibold text-slate-100">Documentation sprints</p>
+								<p class="mt-2 text-sm text-slate-300">CD production and redline turnarounds.</p>
 							</li>
 							<li class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
-								<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Capacity</p>
-								<p class="mt-2 text-sm text-slate-200">Peak workloads handled without burnout.</p>
+								<p class="text-sm font-semibold text-slate-100">Standardized QA</p>
+								<p class="mt-2 text-sm text-slate-300">Consistent outputs aligned to your templates.</p>
 							</li>
 						</ul>
 					</div>
@@ -105,46 +105,62 @@ const bookingExternal = isExternalUrl(bookingUrl);
 			</div>
 		</section>
 
-		{/* FORMATS */}
-		<section class="mt-12" aria-labelledby="formats-aec">
-			<h2 id="formats-aec" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-				Formats
+		{/* ROI TEASER */}
+		<section class="mt-12 rounded-2xl border border-slate-800 bg-slate-900/40 p-6" aria-labelledby="roi-aec">
+			<h2 id="roi-aec" class="text-xl font-semibold text-white">ROI teaser</h2>
+			<p class="mt-3 text-sm leading-relaxed text-slate-300 sm:text-base">
+				{/* TODO: Add savings calculator module. */}
+				Placeholder: savings calculator teaser (to be filled).
+			</p>
+		</section>
+
+		{/* TEAM EXAMPLES */}
+		<section class="mt-12" aria-labelledby="team-examples-aec">
+			<h2 id="team-examples-aec" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+				Example team pods
 			</h2>
-			<div class="mt-6 grid gap-4 md:grid-cols-2">
+			<div class="mt-6 grid gap-4 md:grid-cols-3">
 				<article class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-					<h3 class="text-base font-semibold text-slate-100">20 hours/week</h3>
-					<p class="mt-3 text-sm leading-relaxed text-slate-300">
-						Best for steady overflow, targeted scope, and teams that need consistent support without adding headcount.
-					</p>
-					<ul class="mt-4 grid gap-2 text-sm text-slate-300">
-						<li>Ideal for: ongoing drafting support, redlines, model cleanup</li>
-						<li>Cadence: daily overlap for fast iteration</li>
+					<h3 class="text-base font-semibold text-slate-100">CD Production Pod</h3>
+					<ul class="mt-3 grid gap-2 text-sm text-slate-300">
+						<li>Architectural Designer</li>
+						<li>Revit Modeler</li>
+						<li>Drafting Support</li>
 					</ul>
+					<p class="mt-4 text-sm text-slate-300">Best for: documentation deadlines and redlines.</p>
 				</article>
 				<article class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-					<h3 class="text-base font-semibold text-slate-100">40 hours/week</h3>
-					<p class="mt-3 text-sm leading-relaxed text-slate-300">
-						Best for owning deliverables end-to-end with fewer handoffs and faster throughput.
-					</p>
-					<ul class="mt-4 grid gap-2 text-sm text-slate-300">
-						<li>Ideal for: CD production, BIM coordination support, model builds</li>
-						<li>Cadence: embedded like an in-house team member</li>
+					<h3 class="text-base font-semibold text-slate-100">BIM Support Pod</h3>
+					<ul class="mt-3 grid gap-2 text-sm text-slate-300">
+						<li>BIM Coordinator</li>
+						<li>Revit Modeler</li>
+						<li>QA / Standards Support</li>
 					</ul>
+					<p class="mt-4 text-sm text-slate-300">Best for: model management and coordination workflows.</p>
+				</article>
+				<article class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+					<h3 class="text-base font-semibold text-slate-100">Visualization Pod</h3>
+					<ul class="mt-3 grid gap-2 text-sm text-slate-300">
+						<li>3D Modeler</li>
+						<li>Renderer</li>
+						<li>Design Support</li>
+					</ul>
+					<p class="mt-4 text-sm text-slate-300">Best for: concept visuals and client presentations.</p>
 				</article>
 			</div>
 		</section>
 
-		{/* MATCHING PROCESS */}
-		<section class="mt-12" aria-labelledby="process-aec-individuals">
-			<h2 id="process-aec-individuals" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-				Matching process
+		{/* PROCESS */}
+		<section class="mt-12" aria-labelledby="process-aec-teams">
+			<h2 id="process-aec-teams" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+				Process
 			</h2>
 			<ol class="mt-6 grid gap-4 lg:grid-cols-4">
 				{[
-					{ title: 'Scope + standards', body: 'Roles, tools, file formats, BEP/templates, and QA expectations.' },
-					{ title: 'Candidates in 48 hours', body: 'We deliver vetted specialists aligned to your workflow.' },
-					{ title: 'Interview (optional)', body: 'Meet top matches or start immediately if you prefer.' },
-					{ title: 'Onboard + deliver', body: 'Fast kickoff, iterative redlines, and clear handoffs.' },
+					{ title: 'Define scope', body: 'Deliverables, standards, roles, and overlap hours.' },
+					{ title: 'Pod design', body: 'We propose the right mix of roles for your workflow.' },
+					{ title: 'Start fast', body: 'Onboard with your templates/BEP and revision cadence.' },
+					{ title: 'Scale', body: 'Add capacity or adjust roles month-to-month as needs change.' },
 				].map((step, idx) => (
 					<li class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
 						<p class="text-xs font-semibold uppercase tracking-wide text-sky-300">Step {idx + 1}</p>
@@ -156,19 +172,16 @@ const bookingExternal = isExternalUrl(bookingUrl);
 		</section>
 
 		{/* PROOF */}
-		<section class="mt-12" aria-labelledby="proof-aec-individuals">
-			<h2 id="proof-aec-individuals" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-				Proof
-			</h2>
+		<section class="mt-12" aria-labelledby="proof-aec-teams">
+			<h2 id="proof-aec-teams" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Proof</h2>
 			<p class="mt-3 max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
 				{/* TODO: Replace with testimonials carousel. */}
 				Testimonials placeholder (to be filled).
 			</p>
-
 			<div class="mt-6 grid gap-4 md:grid-cols-3">
 				{[1, 2, 3].map((i) => (
 					<figure class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-						<blockquote class="text-sm leading-relaxed text-slate-200">“TODO testimonial {i}.”</blockquote>
+						<blockquote class="text-sm leading-relaxed text-slate-200">"TODO testimonial {i}."</blockquote>
 						<figcaption class="mt-3 text-xs text-slate-400">— TODO, anonymized</figcaption>
 					</figure>
 				))}
@@ -176,10 +189,8 @@ const bookingExternal = isExternalUrl(bookingUrl);
 		</section>
 
 		{/* FAQ */}
-		<section class="mt-12" aria-labelledby="faq-aec-individuals">
-			<h2 id="faq-aec-individuals" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-				FAQ
-			</h2>
+		<section class="mt-12" aria-labelledby="faq-aec-teams">
+			<h2 id="faq-aec-teams" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">FAQ</h2>
 			<div class="mt-6 grid gap-3">
 				{faqs.map((item) => (
 					<details class="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
@@ -194,9 +205,9 @@ const bookingExternal = isExternalUrl(bookingUrl);
 		<section class="mt-14 rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900/60 to-slate-950 p-6 sm:p-8">
 			<div class="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
 				<div>
-					<h2 class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Ready to add AEC capacity?</h2>
+					<h2 class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Ready to scale AEC delivery?</h2>
 					<p class="mt-2 max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
-						Book a call to discuss your standards and timeline — we’ll send vetted specialist options fast.
+						Book a call to map a pod to your deliverables, standards, and timeline.
 					</p>
 				</div>
 				<div class="flex flex-wrap gap-3">
@@ -209,10 +220,10 @@ const bookingExternal = isExternalUrl(bookingUrl);
 						Book a 30-Min Call
 					</a>
 					<a
-						href="/solutions/aec-talent/teams/"
+						href="/aec/individuals/"
 						class="inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
 					>
-						Need a team instead?
+						Prefer individuals?
 					</a>
 				</div>
 			</div>
@@ -220,7 +231,6 @@ const bookingExternal = isExternalUrl(bookingUrl);
 	</main>
 
 	<div class="mx-auto max-w-6xl px-6">
-		<ContactSection subject={`${brand} — new inquiry (AEC individuals)`} />
+		<ContactSection subject={`${brand} — new inquiry (AEC teams)`} />
 	</div>
 </Layout>
-

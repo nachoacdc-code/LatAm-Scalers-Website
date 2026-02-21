@@ -3,9 +3,9 @@ import { BOOKING_URL, isExternalUrl } from '../lib/cta';
 
 const pathname = Astro.url.pathname;
 
-const isAec = pathname.startsWith('/aec/') || pathname.startsWith('/solutions/aec-talent/');
-const isDesign = pathname.startsWith('/design/') || pathname.startsWith('/solutions/creatives-design/');
-const isMarketing = pathname.startsWith('/marketing/') || pathname.startsWith('/solutions/marketing-talent/');
+const isAec = pathname.startsWith('/aec/');
+const isDesign = pathname.startsWith('/design/');
+const isMarketing = pathname.startsWith('/marketing/');
 const isSolutions = isAec || isDesign || isMarketing;
 const isRoles = pathname.startsWith('/roles/');
 const isHowItWorks = pathname.startsWith('/how-it-works/');

@@ -12,8 +12,8 @@ const meta = {
 		'Hire a dedicated remote designer seat for consistent weekly output. Brand-aligned execution, fast iteration, and month-to-month flexibility.',
 };
 
-const baseUrl = Astro.site ?? 'https://talentcompany-site.vercel.app';
-const canonical = new URL('/solutions/creatives-design/dedicated/', baseUrl).toString();
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/design/dedicated/', baseUrl).toString();
 
 const bookingUrl = BOOKING_URL;
 const bookingExternal = isExternalUrl(bookingUrl);
@@ -46,7 +46,7 @@ const bookingExternal = isExternalUrl(bookingUrl);
 							Book a 30-Min Call
 						</a>
 						<a
-							href="/solutions/creatives-design/"
+							href="/design/"
 							class="inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
 						>
 							Back to overview
@@ -177,7 +177,7 @@ const bookingExternal = isExternalUrl(bookingUrl);
 				<div>
 					<h2 class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Ready to add a designer seat?</h2>
 					<p class="mt-2 max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
-						Book a call and we’ll match a dedicated designer aligned to your brand and workflow.
+						Book a call and we'll match a dedicated designer aligned to your brand and workflow.
 					</p>
 				</div>
 				<div class="flex flex-wrap gap-3">
@@ -190,7 +190,7 @@ const bookingExternal = isExternalUrl(bookingUrl);
 						Book a 30-Min Call
 					</a>
 					<a
-						href="/solutions/creatives-design/pm-led/"
+						href="/design/pm-led/"
 						class="inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
 					>
 						Need a team instead?
@@ -204,4 +204,3 @@ const bookingExternal = isExternalUrl(bookingUrl);
 		<ContactSection subject={`${brand} — new inquiry (design dedicated)`} />
 	</div>
 </Layout>
-

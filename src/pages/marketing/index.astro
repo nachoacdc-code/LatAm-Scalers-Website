@@ -233,7 +233,10 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com
 					</h2>
 				</div>
 				<div class="mt-10 grid gap-5 sm:grid-cols-2">
-					<div class="js-fade-in rounded-2xl border border-marketing/20 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+					<a
+						href="/marketing/individuals/"
+						class="js-fade-in group rounded-2xl border border-marketing/20 bg-slate-900/40 p-6 shadow-lg shadow-black/20 transition hover:border-marketing/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-marketing"
+					>
 						<div class="flex items-center justify-between">
 							<h3 class="text-lg font-semibold text-slate-100">Individual Specialists</h3>
 							<span class="rounded-full border border-marketing/20 bg-marketing/10 px-2.5 py-0.5 text-xs font-semibold text-marketing">From ~$2,500/mo</span>
@@ -242,8 +245,12 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com
 							One dedicated specialist per channel – SEO, PPC, lifecycle, content. FT or PT. Embedded in your tools and reporting.
 						</p>
 						<p class="mt-4 text-xs font-semibold text-marketing">Best for: Channel ownership, consistent execution, single-role capacity</p>
-					</div>
-					<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+						<p class="mt-2 text-xs font-semibold text-sky-300 group-hover:text-sky-200">Learn more →</p>
+					</a>
+					<a
+						href="/marketing/teams/"
+						class="js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20 transition hover:border-marketing/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-marketing"
+					>
 						<div class="flex items-center justify-between">
 							<h3 class="text-lg font-semibold text-slate-100">Marketing Pods</h3>
 							<span class="rounded-full border border-slate-800 bg-slate-900/40 px-2.5 py-0.5 text-xs font-semibold text-slate-400">Custom</span>
@@ -252,7 +259,8 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com
 							Custom teams of complementary specialists – e.g. SEO + Content + Lifecycle – with optional PM coordination for end-to-end execution.
 						</p>
 						<p class="mt-4 text-xs font-semibold text-sky-300">Best for: Multi-channel execution, peak loads, parallel workstreams</p>
-					</div>
+						<p class="mt-2 text-xs font-semibold text-sky-300 group-hover:text-sky-200">Learn more →</p>
+					</a>
 					<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
 						<div class="flex items-center justify-between">
 							<h3 class="text-lg font-semibold text-slate-100">Pre-Paid Hourly Blocks</h3>
