@@ -1,0 +1,449 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import MetaHead from '../../../components/MetaHead.astro';
+import ContactHub from '../../../components/ContactHub.astro';
+import { BOOKING_URL, isExternalUrl } from '../../../lib/cta';
+
+const brand = 'LatAm Scalers';
+
+const meta = {
+	title: 'Hire a Brand Designer – Dedicated LATAM Brand Identity Talent for US Teams | LatAm Scalers',
+	description:
+		'Hire a dedicated brand designer for US companies. Logo, visual identity, brand systems, and guidelines. Pre-vetted LATAM talent. From ~$2,800/mo. Month-to-month flexibility.',
+};
+
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/design/hire-brand-designer/', baseUrl).toString();
+
+const bookingUrl = BOOKING_URL;
+const bookingExternal = isExternalUrl(bookingUrl);
+
+const brandScope = [
+	{
+		area: 'Brand Identity',
+		desc: 'Logo design, wordmarks, icon systems, color palettes, typography, and brand personality definition.',
+		scope: 'Full visual identity from strategy through delivery',
+	},
+	{
+		area: 'Visual Systems',
+		desc: 'Design tokens, component libraries, brand guidelines documentation, and style guides for cross-team consistency.',
+		scope: 'Brand governance and scalable asset production',
+	},
+	{
+		area: 'Marketing Creative',
+		desc: 'Campaign assets, social templates, presentation decks, print materials, and digital ads aligned to brand standards.',
+		scope: 'Ongoing brand-aligned creative execution',
+	},
+	{
+		area: 'Brand Refresh',
+		desc: 'Modernization of existing brand assets, brand audits, competitive positioning, and evolution (not full rebrand).',
+		scope: 'Brand evolution while preserving equity',
+	},
+];
+
+const deliverables = [
+	'Logo suite and wordmark variations',
+	'Color palette and typography system',
+	'Brand guidelines documentation',
+	'Social media and marketing templates',
+	'Presentation deck templates',
+	'Icon and illustration systems',
+	'Brand audit and competitive analysis',
+	'Asset library and handoff files',
+];
+
+const tools = [
+	{ name: 'Figma', desc: 'UI-adjacent brand systems, design tokens, component documentation, and collaborative handoffs.' },
+	{ name: 'Adobe Illustrator', desc: 'Vector logo creation, icon systems, and print-ready brand assets.' },
+	{ name: 'Adobe InDesign', desc: 'Brand guidelines, investor decks, multi-page brand documents, and print collateral.' },
+	{ name: 'Adobe Photoshop', desc: 'Photo retouching, compositing, and campaign visual production.' },
+	{ name: 'Canva Pro', desc: 'Self-service template systems for non-designer teams to stay on-brand.' },
+];
+
+const demandStats = [
+	{ value: '2,400/mo', label: 'Monthly searches for "hire brand designer" — top-tier design role search volume' },
+	{ value: '$200–400/hr', label: 'What US brand strategy consultancies charge for the same work' },
+	{ value: '~$2,800/mo', label: 'Cost of a dedicated LATAM brand designer through LatAm Scalers' },
+];
+
+const useCases = [
+	{
+		title: 'SaaS Companies',
+		subtitle: 'Product Brand + Marketing',
+		body: 'Brand systems that span product UI, marketing site, and sales collateral — consistent across every touchpoint as you scale.',
+	},
+	{
+		title: 'DTC / E-commerce',
+		subtitle: 'Consumer Brand Identity',
+		body: 'Packaging, lifestyle creative, social identity, and campaign templates. A brand designer who understands conversion and aesthetic.',
+	},
+	{
+		title: 'Startups',
+		subtitle: 'First Brand Build',
+		body: 'Everything from the logo system to brand guidelines and launch assets. Your brand foundation — built right the first time.',
+	},
+	{
+		title: 'Agencies',
+		subtitle: 'White-Label Brand Work',
+		body: 'Brand projects delivered under your agency banner. Same quality standards, no capacity constraints, no agency overhead.',
+	},
+];
+
+const faqs = [
+	{
+		q: 'What does a dedicated brand designer actually deliver?',
+		a: 'A dedicated brand designer covers logo design and wordmark systems, color and typography guidelines, brand voice documentation, marketing templates (social, decks, ads), and an ongoing asset library. We align on the exact scope during our scoping call.',
+	},
+	{
+		q: 'We already have a brand — can they maintain and extend it?',
+		a: 'Absolutely. Many engagements start with an existing brand that needs ongoing execution — new campaign assets, social templates, presentation decks, or a brand refresh. Your designer learns your standards and maintains consistency.',
+	},
+	{
+		q: 'How is this different from hiring a freelancer on Fiverr or Upwork?',
+		a: 'Our brand designers are full-time, dedicated to your team only — not splitting time across dozens of clients. They\'re pre-vetted through our process and have demonstrated brand experience. You get consistency, speed, and accountability that freelance platforms can\'t match.',
+	},
+	{
+		q: 'Can a brand designer also do marketing creative (social, ads)?',
+		a: 'Yes. Most of our brand designers are full-spectrum visual designers — they build the brand system and execute campaign assets within it. If you need a specialist split (brand strategy vs. performance creative execution), we can scope a two-person model.',
+	},
+	{
+		q: 'How quickly can we get started?',
+		a: 'We typically present vetted brand designer options within 48 hours after the scoping call. Once brand standards, tools, and priorities are confirmed, onboarding is fast.',
+	},
+	{
+		q: 'What does it cost to hire a brand designer?',
+		a: 'Dedicated brand designers start at approximately $2,800/month for full-time engagement (40h/week). Senior brand strategists or designers with motion skills may be higher. Part-time engagements are available. Month-to-month, free replacement guarantee.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Hire a Brand Designer',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqs.map((f) => ({
+		'@type': 'Question',
+		name: f.q,
+		acceptedAnswer: { '@type': 'Answer', text: f.a },
+	})),
+};
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
+
+	<main>
+
+	<!-- Hero -->
+	<section class="relative overflow-hidden bg-slate-950 py-16 sm:py-24" aria-labelledby="hero-heading">
+		<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in">
+		<p class="text-sm font-semibold uppercase tracking-widest text-design">Brand Design</p>
+		<h1 id="hero-heading" class="mt-4 text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
+			Hire a Dedicated Brand Designer for Your US Team
+		</h1>
+		<p class="mt-5 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
+			Pre-vetted LATAM brand designers who build visual identities, design systems, and campaign creative — full-time, embedded in your team, at a fraction of US agency rates.
+		</p>
+
+		<div class="mt-8 flex flex-wrap gap-3">
+		<a
+			href={bookingUrl}
+			{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+			class="inline-flex min-h-[48px] items-center justify-center rounded bg-sky-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+			data-book-call
+		>
+			Book a Brand Design Scoping Call
+		</a>
+		<a
+			href="#contact"
+			class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-slate-700 bg-slate-900/40 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+			data-open-tell-us="brand-hero"
+		>
+			Tell Us What You Need
+		</a>
+		</div>
+		</div>
+		</div>
+	</section>
+
+	<!-- Service overview -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="overview-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="overview-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Brand Design That Scales With Your Business
+	</h2>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		Most companies underinvest in brand. You hire a freelancer for the logo, patch together templates, and spend years fixing inconsistency. A dedicated brand designer builds the system — identity, guidelines, templates — so your team stays on-brand at every touchpoint without needing to re-brief every week.
+	</p>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		Our brand designers are full-time, embedded in your team, and learn your brand inside out. Not a rotating pool. Not a subscription queue. A single expert who becomes your visual identity guardian.
+	</p>
+	<ul class="mt-6 grid gap-3 sm:grid-cols-2">
+	<li class="flex items-start gap-2 rounded-xl border border-slate-800 bg-slate-900/40 p-4 shadow-lg shadow-black/20">
+		<span class="text-design" aria-hidden="true">✓</span>
+		<span class="text-sm text-slate-400"><strong class="text-slate-100">Pre-vetted</strong> — portfolio and process reviewed</span>
+	</li>
+	<li class="flex items-start gap-2 rounded-xl border border-slate-800 bg-slate-900/40 p-4 shadow-lg shadow-black/20">
+		<span class="text-design" aria-hidden="true">✓</span>
+		<span class="text-sm text-slate-400"><strong class="text-slate-100">Full-time dedicated</strong> — not shared across clients</span>
+	</li>
+	<li class="flex items-start gap-2 rounded-xl border border-slate-800 bg-slate-900/40 p-4 shadow-lg shadow-black/20">
+		<span class="text-design" aria-hidden="true">✓</span>
+		<span class="text-sm text-slate-400"><strong class="text-slate-100">US timezone overlap</strong> — real-time collaboration</span>
+	</li>
+	<li class="flex items-start gap-2 rounded-xl border border-slate-800 bg-slate-900/40 p-4 shadow-lg shadow-black/20">
+		<span class="text-design" aria-hidden="true">✓</span>
+		<span class="text-sm text-slate-400"><strong class="text-slate-100">Month-to-month</strong> — free replacement guarantee</span>
+	</li>
+	</ul>
+	</div>
+	</div>
+	</section>
+
+	<!-- Brand design scope -->
+	<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="scope-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="scope-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		What a Dedicated Brand Designer Covers
+	</h2>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		From brand strategy and identity creation through ongoing campaign execution — tell us where you are in your brand journey and we'll scope the right engagement.
+	</p>
+	</div>
+
+	<div class="mt-10 grid gap-5 lg:grid-cols-2">
+	{brandScope.map((item) => (
+	<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+		<p class="text-xs font-semibold uppercase tracking-wide text-design">{item.area}</p>
+		<p class="mt-3 text-sm leading-relaxed text-slate-400">{item.desc}</p>
+		<p class="mt-4 text-xs text-slate-500"><strong class="text-slate-400">Scope:</strong> {item.scope}</p>
+	</div>
+	))}
+	</div>
+	</div>
+	</section>
+
+	<!-- Deliverables -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="deliverables-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="deliverables-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Deliverables
+	</h2>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		What your dedicated brand designer builds and maintains for your team.
+	</p>
+	</div>
+
+	<div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+	{deliverables.map((item) => (
+	<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+		<p class="text-sm font-semibold text-slate-100">{item}</p>
+	</div>
+	))}
+	</div>
+	</div>
+	</section>
+
+	<!-- Tools -->
+	<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="tools-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="tools-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Tools &amp; Software
+	</h2>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		Our brand designers are proficient across the standard creative suite — we match to your stack during scoping.
+	</p>
+	</div>
+
+	<div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+	{tools.map((tool) => (
+	<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+		<p class="text-sm font-semibold text-slate-100">{tool.name}</p>
+		<p class="mt-2 text-sm leading-relaxed text-slate-400">{tool.desc}</p>
+	</div>
+	))}
+	</div>
+	</div>
+	</section>
+
+	<!-- Demand stats -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="demand-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in">
+	<h2 id="demand-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Brand Design Talent Demand
+	</h2>
+	<p class="mt-4 max-w-2xl text-base leading-relaxed text-slate-400">
+		"Hire brand designer" sees 2,400 monthly searches in the US — one of the highest-volume design hiring keywords. US brand studios charge $200–400/hr for the same work our dedicated designers deliver at a monthly flat rate.
+	</p>
+	</div>
+	<div class="mt-10 grid gap-6 sm:grid-cols-3">
+	{demandStats.map((stat) => (
+		<div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+			<p class="text-2xl font-bold text-design">{stat.value}</p>
+			<p class="mt-2 text-sm font-medium text-slate-100">{stat.label}</p>
+		</div>
+	))}
+	</div>
+	</div>
+	</section>
+
+	<!-- Use cases -->
+	<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="usecases-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="usecases-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Who Hires Our Brand Designers
+	</h2>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		SaaS, DTC, startups, and agencies — different brand needs, one solution: a dedicated expert who owns your visual identity.
+	</p>
+	</div>
+
+	<div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+	{useCases.map((uc) => (
+	<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+		<p class="text-xs font-semibold uppercase tracking-wide text-design">{uc.subtitle}</p>
+		<h3 class="mt-3 text-lg font-semibold text-slate-100">{uc.title}</h3>
+		<p class="mt-3 text-sm leading-relaxed text-slate-400">{uc.body}</p>
+	</div>
+	))}
+	</div>
+	</div>
+	</section>
+
+	<!-- Pricing guidance -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="pricing-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="pricing-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Pricing Guidance
+	</h2>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		Dedicated brand designers start at approximately <strong class="text-slate-100">$2,800/month</strong> for full-time engagement. Senior designers with motion or brand strategy experience may be higher. Part-time and project-scoped options are available.
+	</p>
+	<a
+		href="/how-pricing-works/"
+		class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-sky-300 transition hover:text-sky-200/80 focus:outline-none focus-visible:underline"
+	>
+		See how pricing works <span aria-hidden="true">&rarr;</span>
+	</a>
+	</div>
+	</div>
+	</section>
+
+	<!-- FAQ -->
+	<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="faq-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="faq-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Frequently Asked Questions
+	</h2>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		Common questions about hiring a dedicated brand designer through LatAm Scalers.
+	</p>
+	</div>
+
+	<div class="mt-10 grid gap-3">
+	{faqs.map((item) => (
+	<details class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+		<summary class="cursor-pointer list-none text-sm font-semibold text-slate-100 [&::-webkit-details-marker]:hidden">
+		{item.q}
+		</summary>
+		<p class="mt-4 pt-4 text-sm leading-relaxed text-slate-400 border-t border-slate-800">{item.a}</p>
+	</details>
+	))}
+	</div>
+	</div>
+	</section>
+
+	<!-- CTA -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="cta-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-8 text-center shadow-xl sm:p-12">
+	<h2 id="cta-heading" class="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+		Ready for a Dedicated Brand Designer?
+	</h2>
+	<p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slate-300">
+		Tell us your brand stage, tools, and goals — we'll match you with a vetted brand designer within 48 hours.
+	</p>
+	<div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+	<a
+		href={bookingUrl}
+		{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+		class="inline-flex min-h-[48px] items-center justify-center rounded bg-sky-600 px-8 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+		data-book-call
+	>
+		Book a Brand Design Scoping Call
+	</a>
+	<a
+		href="#contact"
+		class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-slate-700 bg-slate-900/40 px-8 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+		data-open-tell-us="brand-cta"
+	>
+		Tell Us What You Need
+	</a>
+	</div>
+	<p class="mt-5 text-xs text-slate-400">Month-to-month · Free replacement guarantee · Pre-vetted LATAM talent</p>
+	</div>
+	</div>
+	</section>
+
+	<!-- Contact -->
+	<section id="contact" class="bg-slate-950 pb-20 pt-16 sm:pb-24 sm:pt-20" aria-labelledby="contact-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+		<p class="text-sm font-semibold uppercase tracking-widest text-sky-300">Get in touch</p>
+		<h2 id="contact-heading" class="mt-3 text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Let's Talk Brand Design
+		</h2>
+		<p class="mt-4 text-base leading-relaxed text-slate-400">
+		Share your brand stage, current assets, and goals — we'll match you with a vetted brand designer.
+		</p>
+	</div>
+
+	<ContactHub subject={`${brand} – brand designer inquiry`} defaultCategory="design" defaultMessage="I'm interested in a dedicated brand designer." />
+	</div>
+	</section>
+
+	</main>
+
+	<style>
+	.js-fade-in {
+		opacity: 0;
+		transform: translateY(20px);
+		transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+	}
+	.js-fade-in.is-visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	</style>
+
+	<script is:inline>
+	(function () {
+		var els = document.querySelectorAll('.js-fade-in');
+		if (!els.length) return;
+		var io = new IntersectionObserver(function (entries) {
+		entries.forEach(function (e) {
+			if (e.isIntersecting) {
+			e.target.classList.add('is-visible');
+			io.unobserve(e.target);
+			}
+		});
+		}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+		els.forEach(function (el) { io.observe(el); });
+	})();
+	</script>
+</Layout>

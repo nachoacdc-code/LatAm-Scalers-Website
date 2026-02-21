@@ -1,0 +1,430 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import MetaHead from '../../../components/MetaHead.astro';
+import ContactHub from '../../../components/ContactHub.astro';
+import { BOOKING_URL, isExternalUrl } from '../../../lib/cta';
+
+const brand = 'LatAm Scalers';
+
+const meta = {
+	title: 'White-Label Design Production – Dedicated LATAM Designers for Agencies | LatAm Scalers',
+	description:
+		'White-label design production for US agencies. Dedicated LATAM designers embedded in your workflow — your standards, your turnaround, your clients. Scale without scaling US headcount. From ~$2,800/mo.',
+};
+
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/design/white-label-production/', baseUrl).toString();
+
+const bookingUrl = BOOKING_URL;
+const bookingExternal = isExternalUrl(bookingUrl);
+
+const productionTypes = [
+	{
+		type: 'Digital & Social Creative',
+		desc: 'Social media graphics, ad creative, email templates, banner ads, and digital campaign assets — produced under your brand standards.',
+		scope: 'Ongoing campaign production, weekly asset delivery',
+	},
+	{
+		type: 'Marketing Collateral',
+		desc: 'Pitch decks, one-pagers, case studies, brochures, sell sheets, and print-ready files — white-labeled to your agency\'s standards.',
+		scope: 'Client-facing deliverable production',
+	},
+	{
+		type: 'Web & Landing Pages',
+		desc: 'Landing page design (Figma), Webflow builds, WordPress templates, and conversion-focused page production for your clients.',
+		scope: 'Web design execution and CMS implementation',
+	},
+	{
+		type: 'Brand Asset Expansion',
+		desc: 'Extension of existing brand systems — new templates, asset libraries, iconography, and illustration for growing client brands.',
+		scope: 'Brand consistency and asset scaling',
+	},
+];
+
+const agencyBenefits = [
+	'Your standards, your client relationships — we stay invisible',
+	'Predictable monthly output without hiring overhead',
+	'Scale capacity up or down as client work fluctuates',
+	'Dedicated designers who learn each client\'s brand',
+	'US timezone overlap — no next-day file lag',
+	'Free replacement guarantee if fit isn\'t right',
+];
+
+const tools = [
+	{ name: 'Figma', desc: 'UI and web design, design systems, component production, and collaborative client handoffs.' },
+	{ name: 'Adobe CC Suite', desc: 'Photoshop, Illustrator, InDesign — production-ready files for print and digital.' },
+	{ name: 'Webflow', desc: 'No-code web development for marketing sites, landing pages, and CMS-driven client sites.' },
+	{ name: 'After Effects', desc: 'Motion graphics, animated banners, and video production for campaign assets.' },
+	{ name: 'Canva Pro', desc: 'High-volume social and email template production for clients with Canva-based workflows.' },
+];
+
+const agencyStats = [
+	{ value: '73%', label: 'Of US agencies permanently embed white-label design partners — not just for overflow' },
+	{ value: '$2K–10K/mo', label: 'Per-account revenue agencies generate from white-label design partnerships' },
+	{ value: '3–5x', label: 'Margin improvement vs. hiring in-house US designers for overflow work' },
+];
+
+const useCases = [
+	{
+		title: 'Creative Agencies',
+		subtitle: 'Production Overflow',
+		body: 'Handle client overflow without turning away work. Dedicated designers who operate at your agency\'s standards — invisible to the client.',
+	},
+	{
+		title: 'Marketing Agencies',
+		subtitle: 'Execution Capacity',
+		body: 'Strategy and campaigns managed in-house, design executed offshore. Predictable turnaround for campaign assets, social, and email.',
+	},
+	{
+		title: 'Web / Digital Agencies',
+		subtitle: 'Development + Design',
+		body: 'Figma and Webflow designers embedded in your delivery team. Client handoffs that match your workflow, not a freelance intermediary.',
+	},
+	{
+		title: 'Consulting Firms',
+		subtitle: 'Presentation Production',
+		body: 'Dedicated presentation designers for pitch decks, investor materials, client reports, and board presentations — consistently on-brand.',
+	},
+];
+
+const faqs = [
+	{
+		q: 'How does white-label work — will our clients know?',
+		a: 'No. Your designers work under your agency\'s direction, communicate through your channels, and deliver files in your preferred formats. We don\'t brand deliverables, attend client calls (unless you invite us), or appear in any client-facing capacity. The relationship is between you and your clients.',
+	},
+	{
+		q: 'What types of design work can you handle?',
+		a: 'Social creative, ad production, pitch decks, brand asset expansion, web design (Figma + Webflow), email templates, marketing collateral, and motion graphics. We scope to your specific production needs — tell us your client mix and we\'ll match the right designer profile.',
+	},
+	{
+		q: 'How do we manage the designer day-to-day?',
+		a: 'You manage them directly — through Slack, Asana, Notion, Linear, or whatever tools you use internally. Your dedicated designer integrates into your existing workflow, attends your standups if you want, and operates like an in-house team member.',
+	},
+	{
+		q: 'Can one designer handle multiple clients simultaneously?',
+		a: 'Yes, with proper scope management. Most agencies use a dedicated designer across 2–4 accounts — particularly for accounts that don\'t require full-time hours. For high-volume accounts, a dedicated per-client model works better. We help scope this during onboarding.',
+	},
+	{
+		q: 'What if a client requires NDA or confidentiality agreements?',
+		a: 'Standard. Our designers are accustomed to working under client NDAs, confidentiality agreements, and agency-specific policies. We include standard confidentiality terms in our agreements.',
+	},
+	{
+		q: 'What does white-label production cost?',
+		a: 'Dedicated white-label designers start at approximately $2,800/month for full-time (40h/week). Production-focused designers handling high-volume social and ad work typically fall in this range. Senior designers or those with motion/Webflow expertise may be higher. Part-time options from ~$1,400/month.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'White-Label Design Production',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqs.map((f) => ({
+		'@type': 'Question',
+		name: f.q,
+		acceptedAnswer: { '@type': 'Answer', text: f.a },
+	})),
+};
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
+
+	<main>
+
+	<!-- Hero -->
+	<section class="relative overflow-hidden bg-slate-950 py-16 sm:py-24" aria-labelledby="hero-heading">
+		<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in">
+		<p class="text-sm font-semibold uppercase tracking-widest text-design">White-Label Production</p>
+		<h1 id="hero-heading" class="mt-4 text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
+			White-Label Design Production for US Agencies
+		</h1>
+		<p class="mt-5 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
+			Dedicated LATAM designers embedded in your agency workflow — invisible to your clients, indistinguishable from in-house. Scale production without adding US headcount.
+		</p>
+
+		<div class="mt-8 flex flex-wrap gap-3">
+		<a
+			href={bookingUrl}
+			{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+			class="inline-flex min-h-[48px] items-center justify-center rounded bg-sky-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+			data-book-call
+		>
+			Book an Agency Scoping Call
+		</a>
+		<a
+			href="#contact"
+			class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-slate-700 bg-slate-900/40 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+			data-open-tell-us="wl-hero"
+		>
+			Tell Us About Your Agency
+		</a>
+		</div>
+		</div>
+		</div>
+	</section>
+
+	<!-- The problem -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="problem-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="problem-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Agency Production Demand Outpaces Capacity
+	</h2>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		You win the account. Now you need to deliver. Hiring in-house takes 60–90 days and adds fixed costs. Freelancers require briefing overhead and don't learn your clients' brands. Subcontracting agencies add margin layers.
+	</p>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		Dedicated white-label designers solve this permanently. They become part of your team — embedded in your tools, your workflow, your Slack. Your clients never know they're not in-house. You capture the margin.
+	</p>
+	</div>
+	</div>
+	</section>
+
+	<!-- Production types -->
+	<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="production-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="production-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		What We Produce
+	</h2>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		Full-spectrum production across digital, print, and web — scoped to your agency's client mix.
+	</p>
+	</div>
+
+	<div class="mt-10 grid gap-5 lg:grid-cols-2">
+	{productionTypes.map((item) => (
+	<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+		<p class="text-xs font-semibold uppercase tracking-wide text-design">{item.type}</p>
+		<p class="mt-3 text-sm leading-relaxed text-slate-400">{item.desc}</p>
+		<p class="mt-4 text-xs text-slate-500"><strong class="text-slate-400">Scope:</strong> {item.scope}</p>
+	</div>
+	))}
+	</div>
+	</div>
+	</section>
+
+	<!-- Agency benefits -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="benefits-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="benefits-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Built for Agency Operations
+	</h2>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		White-label production that fits your agency model — not a freelance marketplace that needs constant oversight.
+	</p>
+	</div>
+
+	<div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+	{agencyBenefits.map((benefit) => (
+	<div class="js-fade-in flex items-start gap-3 rounded-2xl border border-slate-800 bg-slate-900/40 p-5 shadow-lg shadow-black/20">
+		<span class="mt-0.5 shrink-0 text-design" aria-hidden="true">✓</span>
+		<p class="text-sm leading-relaxed text-slate-300">{benefit}</p>
+	</div>
+	))}
+	</div>
+	</div>
+	</section>
+
+	<!-- Use cases -->
+	<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="usecases-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="usecases-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Agency Types We Serve
+	</h2>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		Creative agencies, marketing agencies, web shops, and consulting firms — different production needs, same white-label model.
+	</p>
+	</div>
+
+	<div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+	{useCases.map((uc) => (
+	<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+		<p class="text-xs font-semibold uppercase tracking-wide text-design">{uc.subtitle}</p>
+		<h3 class="mt-3 text-lg font-semibold text-slate-100">{uc.title}</h3>
+		<p class="mt-3 text-sm leading-relaxed text-slate-400">{uc.body}</p>
+	</div>
+	))}
+	</div>
+	</div>
+	</section>
+
+	<!-- Tools -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="tools-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="tools-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Tools &amp; Software
+	</h2>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		Our designers work in the tools your agency uses — we match to your workflow, not the other way around.
+	</p>
+	</div>
+
+	<div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+	{tools.map((tool) => (
+	<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+		<p class="text-sm font-semibold text-slate-100">{tool.name}</p>
+		<p class="mt-2 text-sm leading-relaxed text-slate-400">{tool.desc}</p>
+	</div>
+	))}
+	</div>
+	</div>
+	</section>
+
+	<!-- Agency stats -->
+	<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="stats-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in">
+	<h2 id="stats-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		The White-Label Production Model
+	</h2>
+	<p class="mt-4 max-w-2xl text-base leading-relaxed text-slate-400">
+		White-label design partnerships have become standard operating procedure at high-growth agencies — not a workaround, a business model.
+	</p>
+	</div>
+	<div class="mt-10 grid gap-6 sm:grid-cols-3">
+	{agencyStats.map((stat) => (
+		<div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+			<p class="text-2xl font-bold text-design">{stat.value}</p>
+			<p class="mt-2 text-sm font-medium text-slate-100">{stat.label}</p>
+		</div>
+	))}
+	</div>
+	</div>
+	</section>
+
+	<!-- Pricing guidance -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="pricing-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="pricing-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Pricing Guidance
+	</h2>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		Dedicated white-label designers start at approximately <strong class="text-slate-100">$2,800/month</strong> for full-time engagement. Part-time options from ~$1,400/month. Senior designers with motion, Webflow, or advanced production skills may be higher. Month-to-month, free replacement guarantee.
+	</p>
+	<a
+		href="/how-pricing-works/"
+		class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-sky-300 transition hover:text-sky-200/80 focus:outline-none focus-visible:underline"
+	>
+		See how pricing works <span aria-hidden="true">&rarr;</span>
+	</a>
+	</div>
+	</div>
+	</section>
+
+	<!-- FAQ -->
+	<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="faq-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="faq-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Frequently Asked Questions
+	</h2>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		Common questions about white-label design production for agencies.
+	</p>
+	</div>
+
+	<div class="mt-10 grid gap-3">
+	{faqs.map((item) => (
+	<details class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+		<summary class="cursor-pointer list-none text-sm font-semibold text-slate-100 [&::-webkit-details-marker]:hidden">
+		{item.q}
+		</summary>
+		<p class="mt-4 pt-4 text-sm leading-relaxed text-slate-400 border-t border-slate-800">{item.a}</p>
+	</details>
+	))}
+	</div>
+	</div>
+	</section>
+
+	<!-- CTA -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="cta-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-8 text-center shadow-xl sm:p-12">
+	<h2 id="cta-heading" class="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+		Ready to Scale Your Agency Production?
+	</h2>
+	<p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slate-300">
+		Tell us your agency type, client mix, and production volume — we'll match you with the right designer profile within 48 hours.
+	</p>
+	<div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+	<a
+		href={bookingUrl}
+		{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+		class="inline-flex min-h-[48px] items-center justify-center rounded bg-sky-600 px-8 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+		data-book-call
+	>
+		Book an Agency Scoping Call
+	</a>
+	<a
+		href="#contact"
+		class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-slate-700 bg-slate-900/40 px-8 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+		data-open-tell-us="wl-cta"
+	>
+		Tell Us About Your Agency
+	</a>
+	</div>
+	<p class="mt-5 text-xs text-slate-400">Month-to-month · Free replacement guarantee · Invisible to clients</p>
+	</div>
+	</div>
+	</section>
+
+	<!-- Contact -->
+	<section id="contact" class="bg-slate-950 pb-20 pt-16 sm:pb-24 sm:pt-20" aria-labelledby="contact-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+		<p class="text-sm font-semibold uppercase tracking-widest text-sky-300">Get in touch</p>
+		<h2 id="contact-heading" class="mt-3 text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Let's Talk White-Label Production
+		</h2>
+		<p class="mt-4 text-base leading-relaxed text-slate-400">
+		Share your agency type, client mix, and production volume — we'll scope the right dedicated designer profile.
+		</p>
+	</div>
+
+	<ContactHub subject={`${brand} – white-label production inquiry`} defaultCategory="design" defaultMessage="I'm interested in white-label design production for my agency." />
+	</div>
+	</section>
+
+	</main>
+
+	<style>
+	.js-fade-in {
+		opacity: 0;
+		transform: translateY(20px);
+		transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+	}
+	.js-fade-in.is-visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	</style>
+
+	<script is:inline>
+	(function () {
+		var els = document.querySelectorAll('.js-fade-in');
+		if (!els.length) return;
+		var io = new IntersectionObserver(function (entries) {
+		entries.forEach(function (e) {
+			if (e.isIntersecting) {
+			e.target.classList.add('is-visible');
+			io.unobserve(e.target);
+			}
+		});
+		}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+		els.forEach(function (el) { io.observe(el); });
+	})();
+	</script>
+</Layout>

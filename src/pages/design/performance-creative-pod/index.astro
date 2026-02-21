@@ -1,0 +1,378 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import MetaHead from '../../../components/MetaHead.astro';
+import ContactHub from '../../../components/ContactHub.astro';
+import { BOOKING_URL, isExternalUrl } from '../../../lib/cta';
+
+const brand = 'LatAm Scalers';
+
+const meta = {
+	title: 'Performance Creative Pod – DTC & E-commerce Creative Teams | LatAm Scalers',
+	description:
+		'Dedicated performance creative pods for DTC and e-commerce brands. Weekly ad refresh cycles, UGC-style creatives, static and video ads. LATAM talent embedded in your paid media workflow. From ~$5,000/mo.',
+};
+
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/design/performance-creative-pod/', baseUrl).toString();
+
+const bookingUrl = BOOKING_URL;
+const bookingExternal = isExternalUrl(bookingUrl);
+
+const podRoles = [
+	{
+		role: 'Performance Creative Strategist',
+		desc: 'Analyzes ad performance data, identifies winning hooks and formats, writes briefs for weekly ad iterations, and owns the creative testing roadmap.',
+		scope: 'Creative strategy, brief writing, performance analysis',
+	},
+	{
+		role: 'Motion / Video Designer',
+		desc: 'Produces UGC-style videos, product demos, short-form social ads (TikTok, Reels, YouTube Shorts), and animated static variants.',
+		scope: 'Video production, motion ads, format adaptation',
+	},
+	{
+		role: 'Static Ad Designer',
+		desc: 'High-volume static and carousel ad production — consistent testing library across Meta, Google Display, Pinterest, and programmatic channels.',
+		scope: 'Static creative production, variant generation',
+	},
+];
+
+const weeklyOutput = [
+	'5–15 new ad variants per week (static + video)',
+	'Creative performance analysis and iteration briefs',
+	'Hook testing across headlines, visuals, and CTAs',
+	'Format adaptations (1:1, 4:5, 9:16, 16:9)',
+	'Landing page creative alignment (above-the-fold)',
+	'Monthly creative audit and winner/loser documentation',
+];
+
+const tools = [
+	{ name: 'Meta Ads Manager', desc: 'Creative testing, A/B frameworks, and performance data analysis for ad iteration decisions.' },
+	{ name: 'CapCut / Premiere Pro', desc: 'Short-form video production optimized for TikTok, Reels, and YouTube Shorts formats.' },
+	{ name: 'Adobe After Effects', desc: 'Animated ads, motion graphics, and branded video overlays.' },
+	{ name: 'Figma', desc: 'Static ad production, design system integration, and batch variant generation.' },
+	{ name: 'Canva Pro', desc: 'High-volume static ad production and template-based variant scaling.' },
+	{ name: 'Triple Whale / Northbeam', desc: 'Attribution data review to inform creative testing decisions.' },
+];
+
+const demandStats = [
+	{ value: '60–80%', label: 'YoY growth in video and UGC creative demand for paid social' },
+	{ value: '3–5x', label: 'More ad variants needed weekly vs. two years ago to beat creative fatigue' },
+	{ value: '~$5K/mo', label: 'Starting price for a dedicated LATAM performance creative pod' },
+];
+
+const faqs = [
+	{
+		q: 'What exactly is a Performance Creative Pod?',
+		a: 'A performance creative pod is a small dedicated team (typically 2–3 people) focused on producing high-volume, iteration-ready ad creative for paid channels. The pod includes a creative strategist who owns testing briefs, plus designers who execute static and video variants. Unlike a generalist creative team, the pod is structured around weekly ad refresh cadences.',
+	},
+	{
+		q: 'Who is this for?',
+		a: 'Performance creative pods are built for DTC and e-commerce brands spending $30K+/month on paid social (Meta, TikTok, Pinterest), and for growth teams that have exhausted their current creative library. If your ROAS is declining and your media buyer is waiting on new creatives, a dedicated pod fixes the bottleneck.',
+	},
+	{
+		q: 'How is this different from hiring a freelance video editor?',
+		a: 'A freelance editor executes tasks — a pod owns strategy and output. Your performance creative strategist analyzes what\'s working, writes the testing briefs, and coordinates execution across static and video. You get a systematic creative testing function, not just file delivery.',
+	},
+	{
+		q: 'Can the pod work directly with our media buyer or paid media manager?',
+		a: 'Yes. Our pods are designed to plug directly into your paid media workflow. The creative strategist attends performance reviews, pulls data from your ad accounts, and syncs with your media buyer on testing priorities. They operate as an extension of your team.',
+	},
+	{
+		q: 'Do you handle UGC-style content?',
+		a: 'Yes — UGC-style motion and video is a core pod output format. Your designers produce UGC-format ads (selfie-style, talking-head hooks, product demo walkthroughs) without requiring external talent. For ads requiring real UGC footage from creators, we can scope that separately.',
+	},
+	{
+		q: 'What does a performance creative pod cost?',
+		a: 'Performance creative pods start at approximately $5,000/month for a 2-person configuration (strategist + designer). A full 3-person pod (strategist + static designer + motion designer) runs approximately $7,000–8,500/month. Month-to-month, no long-term contracts.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Performance Creative Pod',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqs.map((f) => ({
+		'@type': 'Question',
+		name: f.q,
+		acceptedAnswer: { '@type': 'Answer', text: f.a },
+	})),
+};
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
+
+	<main>
+
+	<!-- Hero -->
+	<section class="relative overflow-hidden bg-slate-950 py-16 sm:py-24" aria-labelledby="hero-heading">
+		<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in">
+		<p class="text-sm font-semibold uppercase tracking-widest text-design">Performance Creative</p>
+		<h1 id="hero-heading" class="mt-4 text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
+			Performance Creative Pod for DTC &amp; E-commerce Brands
+		</h1>
+		<p class="mt-5 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
+			A dedicated pod — creative strategist + motion designer + static designer — producing weekly ad creative that feeds your paid media machine. Built for brands fighting creative fatigue.
+		</p>
+
+		<div class="mt-8 flex flex-wrap gap-3">
+		<a
+			href={bookingUrl}
+			{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+			class="inline-flex min-h-[48px] items-center justify-center rounded bg-sky-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+			data-book-call
+		>
+			Book a Creative Pod Scoping Call
+		</a>
+		<a
+			href="#contact"
+			class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-slate-700 bg-slate-900/40 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+			data-open-tell-us="perf-hero"
+		>
+			Tell Us What You Need
+		</a>
+		</div>
+		</div>
+		</div>
+	</section>
+
+	<!-- The problem -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="problem-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="problem-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Your Paid Media Is Bottlenecked by Creative Capacity
+	</h2>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		Media buying has gotten more efficient. Creative has gotten harder. Ad fatigue sets in faster. TikTok, Reels, and Meta demand weekly content refreshes to keep ROAS stable. Your media buyer knows what to test — but they're waiting on creatives.
+	</p>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		A performance creative pod isn't a creative agency. It's a systematic testing machine embedded in your paid media workflow — producing 5–15 new ad variants per week, analyzing performance, and iterating on winners.
+	</p>
+	</div>
+	</div>
+	</section>
+
+	<!-- Pod structure -->
+	<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="pod-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="pod-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Pod Structure — Who's in the Team
+	</h2>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		A dedicated performance creative pod consists of 2–3 specialists working in concert. Each role is focused on one part of the production and testing cycle.
+	</p>
+	</div>
+
+	<div class="mt-10 grid gap-5 lg:grid-cols-3">
+	{podRoles.map((member) => (
+	<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+		<p class="text-xs font-semibold uppercase tracking-wide text-design">{member.role}</p>
+		<p class="mt-3 text-sm leading-relaxed text-slate-400">{member.desc}</p>
+		<p class="mt-4 text-xs text-slate-500"><strong class="text-slate-400">Scope:</strong> {member.scope}</p>
+	</div>
+	))}
+	</div>
+	</div>
+	</section>
+
+	<!-- Weekly output -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="output-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="output-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Weekly Output
+	</h2>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		What your dedicated performance creative pod delivers on a recurring weekly and monthly basis.
+	</p>
+	</div>
+
+	<div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+	{weeklyOutput.map((item) => (
+	<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+		<p class="text-sm font-semibold text-slate-100">{item}</p>
+	</div>
+	))}
+	</div>
+	</div>
+	</section>
+
+	<!-- Tools -->
+	<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="tools-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="tools-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Tools &amp; Platforms
+	</h2>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		Your pod plugs into your existing paid media stack — from ad creation through performance analysis.
+	</p>
+	</div>
+
+	<div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+	{tools.map((tool) => (
+	<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+		<p class="text-sm font-semibold text-slate-100">{tool.name}</p>
+		<p class="mt-2 text-sm leading-relaxed text-slate-400">{tool.desc}</p>
+	</div>
+	))}
+	</div>
+	</div>
+	</section>
+
+	<!-- Demand stats -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="demand-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in">
+	<h2 id="demand-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Performance Creative Demand
+	</h2>
+	<p class="mt-4 max-w-2xl text-base leading-relaxed text-slate-400">
+		The demand for performance-focused creative has grown faster than any other design category. DTC brands running paid social are the primary driver.
+	</p>
+	</div>
+	<div class="mt-10 grid gap-6 sm:grid-cols-3">
+	{demandStats.map((stat) => (
+		<div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+			<p class="text-2xl font-bold text-design">{stat.value}</p>
+			<p class="mt-2 text-sm font-medium text-slate-100">{stat.label}</p>
+		</div>
+	))}
+	</div>
+	</div>
+	</section>
+
+	<!-- Pricing guidance -->
+	<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="pricing-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="pricing-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Pricing Guidance
+	</h2>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		Performance creative pods start at approximately <strong class="text-slate-100">$5,000/month</strong> for a 2-person configuration. Full 3-person pods (strategist + static + motion) run approximately $7,000–8,500/month. All engagements are month-to-month with no long-term contracts.
+	</p>
+	<a
+		href="/how-pricing-works/"
+		class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-sky-300 transition hover:text-sky-200/80 focus:outline-none focus-visible:underline"
+	>
+		See how pricing works <span aria-hidden="true">&rarr;</span>
+	</a>
+	</div>
+	</div>
+	</section>
+
+	<!-- FAQ -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="faq-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="faq-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Frequently Asked Questions
+	</h2>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		Common questions about dedicated performance creative pods for DTC and e-commerce brands.
+	</p>
+	</div>
+
+	<div class="mt-10 grid gap-3">
+	{faqs.map((item) => (
+	<details class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+		<summary class="cursor-pointer list-none text-sm font-semibold text-slate-100 [&::-webkit-details-marker]:hidden">
+		{item.q}
+		</summary>
+		<p class="mt-4 pt-4 text-sm leading-relaxed text-slate-400 border-t border-slate-800">{item.a}</p>
+	</details>
+	))}
+	</div>
+	</div>
+	</section>
+
+	<!-- CTA -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="cta-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-8 text-center shadow-xl sm:p-12">
+	<h2 id="cta-heading" class="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+		Ready to Build Your Performance Creative Pod?
+	</h2>
+	<p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slate-300">
+		Tell us your channels, ad spend, and current creative output — we'll scope the right pod configuration within 48 hours.
+	</p>
+	<div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+	<a
+		href={bookingUrl}
+		{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+		class="inline-flex min-h-[48px] items-center justify-center rounded bg-sky-600 px-8 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+		data-book-call
+	>
+		Book a Creative Pod Scoping Call
+	</a>
+	<a
+		href="#contact"
+		class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-slate-700 bg-slate-900/40 px-8 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+		data-open-tell-us="perf-cta"
+	>
+		Tell Us What You Need
+	</a>
+	</div>
+	<p class="mt-5 text-xs text-slate-400">Month-to-month · No long-term contracts · Pre-vetted LATAM talent</p>
+	</div>
+	</div>
+	</section>
+
+	<!-- Contact -->
+	<section id="contact" class="bg-slate-950 pb-20 pt-16 sm:pb-24 sm:pt-20" aria-labelledby="contact-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+		<p class="text-sm font-semibold uppercase tracking-widest text-sky-300">Get in touch</p>
+		<h2 id="contact-heading" class="mt-3 text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Let's Talk Performance Creative
+		</h2>
+		<p class="mt-4 text-base leading-relaxed text-slate-400">
+		Share your channels, ad spend, and current creative bottleneck — we'll scope the right pod configuration.
+		</p>
+	</div>
+
+	<ContactHub subject={`${brand} – performance creative pod inquiry`} defaultCategory="design" defaultMessage="I'm interested in a dedicated performance creative pod." />
+	</div>
+	</section>
+
+	</main>
+
+	<style>
+	.js-fade-in {
+		opacity: 0;
+		transform: translateY(20px);
+		transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+	}
+	.js-fade-in.is-visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	</style>
+
+	<script is:inline>
+	(function () {
+		var els = document.querySelectorAll('.js-fade-in');
+		if (!els.length) return;
+		var io = new IntersectionObserver(function (entries) {
+		entries.forEach(function (e) {
+			if (e.isIntersecting) {
+			e.target.classList.add('is-visible');
+			io.unobserve(e.target);
+			}
+		});
+		}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+		els.forEach(function (el) { io.observe(el); });
+	})();
+	</script>
+</Layout>
