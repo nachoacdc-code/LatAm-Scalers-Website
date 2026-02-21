@@ -9,7 +9,7 @@ const brand = 'LatAm Scalers';
 const meta = {
 	title: 'Get Started â€” Book a Scoping Call or Tell Us Your Needs | LatAm Scalers',
 	description:
-		'Get started with LatAm Scalers. Book a 15-minute scoping call or share your requirements. Pre-vetted LATAM talent for US teams â€” AEC, design, and marketing specialists matched in under one week.',
+		'Get started with LatAm Scalers. Book a 30-minute scoping call or share your requirements. Pre-vetted LATAM talent for US teams â€” AEC, design, and marketing specialists matched in under one week.',
 };
 
 const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
@@ -20,7 +20,7 @@ const bookingExternal = isExternalUrl(bookingUrl);
 const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? import.meta.env.PUBLIC_BOOKING_URL ?? 'https://calendly.com/your-org/15min';
 
 const steps = [
-	{ num: '1', title: 'Share your needs', desc: 'Tell us the role, tools, timeline, and what "good" looks like. 15 minutes is all we need.' },
+	{ num: '1', title: 'Share your needs', desc: 'Tell us the role, tools, timeline, and what "good" looks like. 30 minutes is all we need.' },
 	{ num: '2', title: 'Get vetted options', desc: 'Within 48 hours, we present pre-vetted specialists matched to your requirements.' },
 	{ num: '3', title: 'Start working', desc: 'Onboard fast with month-to-month flexibility. Scale up, scale down, or replace â€” anytime.' },
 ];
@@ -56,7 +56,7 @@ const webPageJsonLd = {
 						Let's Find the Right Talent for Your Team
 					</h1>
 					<p class="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
-						Book a 15-minute scoping call to discuss your needs, or share your requirements below and we'll reach out with vetted options within 48 hours.
+						Book a 30-minute scoping call to discuss your needs, or share your requirements below and we'll reach out with vetted options within 48 hours.
 					</p>
 				</div>
 
@@ -130,7 +130,7 @@ const webPageJsonLd = {
 
 				<div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
 					<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
-						<p class="text-xs font-semibold uppercase tracking-wide text-sky-300">Within 24h</p>
+						<p class="text-xs font-semibold uppercase tracking-wide text-sky-300">Within a few hours</p>
 						<h3 class="mt-3 text-sm font-semibold text-slate-100">Confirmation & scoping</h3>
 						<p class="mt-2 text-xs leading-relaxed text-slate-400">We confirm receipt and schedule a brief scoping call (if not already booked) to clarify your requirements.</p>
 					</div>
@@ -218,4 +218,7 @@ const webPageJsonLd = {
 		})();
 	</script>
 </Layout>
+
+
+
 
