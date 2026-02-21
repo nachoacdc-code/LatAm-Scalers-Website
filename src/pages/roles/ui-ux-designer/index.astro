@@ -1,56 +1,128 @@
 ---
-// ROLE TEMPLATE — copy `src/pages/roles/architectural-designer/index.astro` and adapt sections for this role.
 import Layout from '../../../layouts/Layout.astro';
 import MetaHead from '../../../components/MetaHead.astro';
-import ContactSection from '../../../components/ContactSection.astro';
-import { BOOKING_URL, isExternalUrl } from '../../../lib/cta';
+import RoleTemplate from '../../../components/RoleTemplate.astro';
 
 const brand = 'LatAm Scalers';
-const roleName = 'UI/UX Designer';
-
-const meta = {
-	title: `Dedicated Remote ${roleName} | ${brand}`,
-	description: 'TODO: Add role-specific description (tools, outputs, workflows).',
-};
-
-const baseUrl = Astro.site ?? 'https://talentcompany-site.vercel.app';
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
 const canonical = new URL('/roles/ui-ux-designer/', baseUrl).toString();
 
-const bookingUrl = BOOKING_URL;
-const bookingExternal = isExternalUrl(bookingUrl);
+const meta = {
+	title: 'Hire a Dedicated UI/UX Designer — Pre-Vetted LATAM Talent for US Teams | LatAm Scalers',
+	description:
+		'Hire a dedicated UI/UX designer for US companies. User research, wireframes, interactive prototypes, and usability testing. Figma, Maze, Hotjar. Pre-vetted, from ~$2,800/mo.',
+};
+
+const faq = [
+	{
+		question: 'What does a dedicated UI/UX designer deliver?',
+		answer:
+			'Our UI/UX designers deliver user research (interviews, surveys, persona development), information architecture, wireframes, interactive prototypes, usability testing support, and annotated design handoffs to engineering. They cover the full spectrum from discovery to production-ready specs.',
+	},
+	{
+		question: 'Do your UI/UX designers work in Figma?',
+		answer:
+			'Yes. Figma is the primary tool for UI design, prototyping, and handoff. For research and testing, designers use Maze for remote usability testing and Hotjar for session recording and heatmap analysis. We match candidates to your specific toolchain during placement.',
+	},
+	{
+		question: 'Can they focus on research-only or UX-only work?',
+		answer:
+			'We typically place full-spectrum UI/UX designers who can move from research through prototyping and handoff. For narrowly scoped research or testing sprints, we can configure a part-time or project-based engagement focused on specific deliverables.',
+	},
+	{
+		question: 'How do they work with our product and engineering teams?',
+		answer:
+			'Your UI/UX designer joins your product/design rituals — standups, design reviews, sprint planning. They collaborate directly with PMs and engineers, deliver annotated specs in Figma, and are available during your business hours for sync calls and async feedback.',
+	},
+	{
+		question: 'What does pricing look like?',
+		answer:
+			'Dedicated UI/UX designers start at approximately $2,800/month for full-time (40h/week). Part-time (20h/week) and hybrid UX/UI roles are available. Pricing depends on experience level, seniority, and engagement type.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'UI/UX Designer',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faq.map((f) => ({
+		'@type': 'Question',
+		name: f.question,
+		acceptedAnswer: { '@type': 'Answer', text: f.answer },
+	})),
+};
 ---
 
 <Layout>
-	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} />
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
 
-	<main class="mx-auto max-w-6xl px-6 py-12 sm:py-14">
-		<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-			<p class="text-sm font-semibold tracking-wide text-sky-300">Roles</p>
-			<h1 class="mt-4 text-4xl font-semibold tracking-tight text-white sm:text-5xl">Dedicated Remote UI/UX Designer</h1>
-			<p class="mt-4 max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
-				TODO: Add subheadline + scannable sections (overview, why remote works, options, sample outputs, proof, CTAs).
-			</p>
-			<div class="mt-6 flex flex-wrap gap-3">
-				<a
-					href={bookingUrl}
-					{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
-					class="inline-flex items-center justify-center rounded bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-					data-book-call
-				>
-					Book a 15-Min Call
-				</a>
-				<a
-					href="/solutions/creatives-design/"
-					class="inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-				>
-					View Design solution
-				</a>
-			</div>
-		</section>
-	</main>
-
-	<div class="mx-auto max-w-6xl px-6">
-		<ContactSection subject={`${brand} — new inquiry (role: ${roleName})`} />
-	</div>
+	<RoleTemplate
+		role="UI/UX Designer"
+		category="design"
+		hubHref="/design/"
+		hubLabel="Design Talent Hub"
+		h1="Hire a Dedicated UI/UX Designer — Pre-Vetted LATAM Talent for US Teams"
+		subheadline="Dedicated UI/UX designers covering the full spectrum: user research, wireframes, interactive prototypes, and usability testing. Figma-native, embedded in your product team. Month-to-month."
+		atAGlance={[
+			{ label: 'Category', value: 'Design' },
+			{ label: 'Tools', value: 'Figma, Maze, Hotjar' },
+			{ label: 'Pricing', value: 'From ~$2,800/mo' },
+			{ label: 'Availability', value: 'FT (40h) or PT (20h)' },
+		]}
+		overview="Our UI/UX designers embed directly in your product team — joining your design rituals, working in your Figma organization, and covering the full user-centered design cycle. From user research and persona development through wireframing, prototyping, usability testing, and annotated engineering handoffs. They're timezone-aligned with your team (0–3 hours behind EST/CST) for real-time collaboration, feedback rounds, and sprint-paced delivery."
+		skills={[
+			'User research — interviews, surveys, competitive analysis',
+			'Information architecture and task flow design',
+			'Wireframing and low-fidelity concept development',
+			'Interactive prototyping in Figma',
+			'Usability testing setup and facilitation',
+			'Heuristic evaluation and UX audits',
+			'Design system contributions and component work',
+			'Annotated engineering handoffs and developer specs',
+		]}
+		whyRemote="UI/UX design thrives in async-friendly environments. Designers research, prototype, and iterate using shared tools (Figma, Notion, Loom) that make remote collaboration seamless. LATAM timezone overlap means your designer can join daily standups, design reviews, and stakeholder calls during your core hours — while also delivering asynchronously between meetings."
+		engagementOptions={[
+			{
+				title: 'Dedicated Individual Designer',
+				description:
+					'Full-time (40h/week) or part-time (20h/week) UI/UX designer embedded in your product team. Covers research, wireframes, prototypes, and handoffs for your product roadmap.',
+				pricing: 'From ~$2,800/mo',
+			},
+			{
+				title: 'Design + Research Pod',
+				description:
+					'For SaaS products needing dedicated research capacity alongside UI work: a UI designer paired with a UX researcher for continuous discovery and delivery.',
+				pricing: 'Custom — based on scope and headcount',
+			},
+		]}
+		tools={[
+			{ name: 'Figma', description: 'UI design, interactive prototyping, design system components, and annotated dev handoffs.' },
+			{ name: 'Maze', description: 'Remote usability testing, concept validation, and research synthesis.' },
+			{ name: 'Hotjar', description: 'Session recordings, heatmaps, and qualitative user feedback collection.' },
+			{ name: 'Notion / Confluence', description: 'Research documentation, design decision logs, and team collaboration.' },
+			{ name: 'Loom', description: 'Async design walkthroughs, prototype demos, and stakeholder review videos.' },
+		]}
+		deliverables={[
+			'User research reports and persona documentation',
+			'Wireframes and information architecture maps',
+			'Interactive Figma prototypes with annotations',
+			'Usability test plans and insight reports',
+			'Design system contributions (components, tokens)',
+			'Annotated engineer handoffs with specs and assets',
+		]}
+		pricing="Dedicated UI/UX designers start at approximately $2,800/month for full-time (40h/week). Part-time (20h/week) and hybrid UX/UI roles are available. Pricing varies based on seniority, specialization (research-heavy vs. UI-heavy), and hours per week."
+		relatedRoles={[
+			{ title: 'Brand & Visual Designer', href: '/roles/brand-visual-designer/', category: 'design' },
+			{ title: 'Hire a UX Designer', href: '/design/hire-ux-designer/', category: 'design' },
+			{ title: 'Design Talent Hub', href: '/design/', category: 'design' },
+		]}
+		faq={faq}
+	/>
 </Layout>
-

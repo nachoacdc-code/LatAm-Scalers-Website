@@ -1,56 +1,128 @@
 ---
-// ROLE TEMPLATE — copy `src/pages/roles/architectural-designer/index.astro` and adapt sections for this role.
 import Layout from '../../../layouts/Layout.astro';
 import MetaHead from '../../../components/MetaHead.astro';
-import ContactSection from '../../../components/ContactSection.astro';
-import { BOOKING_URL, isExternalUrl } from '../../../lib/cta';
+import RoleTemplate from '../../../components/RoleTemplate.astro';
 
 const brand = 'LatAm Scalers';
-const roleName = 'PPC Manager';
-
-const meta = {
-	title: `Dedicated Remote ${roleName} | ${brand}`,
-	description: 'TODO: Add role-specific description (paid search/social, tracking, reporting, optimization).',
-};
-
-const baseUrl = Astro.site ?? 'https://talentcompany-site.vercel.app';
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
 const canonical = new URL('/roles/ppc-manager/', baseUrl).toString();
 
-const bookingUrl = BOOKING_URL;
-const bookingExternal = isExternalUrl(bookingUrl);
+const meta = {
+	title: 'Hire a Dedicated PPC Manager — Pre-Vetted LATAM Talent for US Teams | LatAm Scalers',
+	description:
+		'Hire a dedicated PPC manager for US companies. Paid search and social campaigns on Google Ads and Meta Ads, full reporting, and optimization cycles. Pre-vetted, from ~$2,500/mo.',
+};
+
+const faq = [
+	{
+		question: 'What platforms does a dedicated PPC Manager manage?',
+		answer:
+			'Our PPC Managers manage paid search campaigns on Google Ads and Microsoft Advertising, and paid social campaigns on Meta Ads (Facebook and Instagram). Many also manage LinkedIn Ads, Pinterest Ads, or TikTok Ads depending on your channel mix. We match based on your specific platform requirements.',
+	},
+	{
+		question: 'Do they handle ad creative or just campaign management?',
+		answer:
+			'PPC Managers handle campaign strategy, audience targeting, bidding, budget pacing, A/B testing, and performance optimization — not ad creative production. For creative assets (images, video, copy), you\'ll want a dedicated designer or content marketer. PPC Managers write ad copy variations as part of testing.',
+	},
+	{
+		question: 'How do they report on campaign performance?',
+		answer:
+			'Your PPC Manager delivers weekly performance summaries and monthly in-depth reports covering spend, impressions, CTR, CPC, conversions, ROAS, and CPA. They build dashboards in Looker Studio (formerly Google Data Studio) connected to your ad accounts and GA4.',
+	},
+	{
+		question: 'Can they manage large budgets responsibly?',
+		answer:
+			'Yes. Our PPC Managers are vetted for both technical platform expertise and budget management judgment. During the scoping call we discuss your monthly budget, target CPA/ROAS, account structure, and conversion tracking setup to ensure a clean handoff.',
+	},
+	{
+		question: 'What does pricing look like?',
+		answer:
+			'Dedicated PPC Managers start at approximately $2,500/month for full-time (40h/week). Part-time (20h/week) arrangements are available for teams with lower ad spend or fewer active channels. Pricing depends on experience level, platform scope, and account complexity.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'PPC Manager',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faq.map((f) => ({
+		'@type': 'Question',
+		name: f.question,
+		acceptedAnswer: { '@type': 'Answer', text: f.answer },
+	})),
+};
 ---
 
 <Layout>
-	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} />
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
 
-	<main class="mx-auto max-w-6xl px-6 py-12 sm:py-14">
-		<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-			<p class="text-sm font-semibold tracking-wide text-sky-300">Roles</p>
-			<h1 class="mt-4 text-4xl font-semibold tracking-tight text-white sm:text-5xl">Dedicated Remote PPC Manager</h1>
-			<p class="mt-4 max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
-				TODO: Add subheadline + scannable sections (overview, why remote works, options, sample outputs, proof, CTAs).
-			</p>
-			<div class="mt-6 flex flex-wrap gap-3">
-				<a
-					href={bookingUrl}
-					{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
-					class="inline-flex items-center justify-center rounded bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-					data-book-call
-				>
-					Book a 15-Min Call
-				</a>
-				<a
-					href="/solutions/marketing-talent/"
-					class="inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-				>
-					View Marketing solution
-				</a>
-			</div>
-		</section>
-	</main>
-
-	<div class="mx-auto max-w-6xl px-6">
-		<ContactSection subject={`${brand} — new inquiry (role: ${roleName})`} />
-	</div>
+	<RoleTemplate
+		role="PPC Manager"
+		category="marketing"
+		hubHref="/marketing/"
+		hubLabel="Marketing Talent Hub"
+		h1="Hire a Dedicated PPC Manager — Pre-Vetted LATAM Talent for US Teams"
+		subheadline="Dedicated PPC managers for paid search and social campaigns. Google Ads, Meta Ads, full reporting, and continuous optimization. US timezone. No agency markup. Month-to-month."
+		atAGlance={[
+			{ label: 'Category', value: 'Marketing' },
+			{ label: 'Tools', value: 'Google Ads, Meta Ads, GA4' },
+			{ label: 'Pricing', value: 'From ~$2,500/mo' },
+			{ label: 'Availability', value: 'FT (40h) or PT (20h)' },
+		]}
+		overview="Our PPC Managers own your paid acquisition channels — Google Ads, Meta Ads, and beyond. They handle campaign setup, audience targeting, budget pacing, A/B testing, bid optimization, conversion tracking, and monthly reporting. Timezone-aligned with your US team, they're available for daily monitoring, real-time optimization decisions, and weekly performance sync calls — without the agency overhead or account-switching delays."
+		skills={[
+			'Google Ads — Search, Display, Shopping, Performance Max',
+			'Meta Ads — Facebook and Instagram campaign management',
+			'Audience targeting and lookalike strategy',
+			'Bid management and budget pacing',
+			'A/B testing (ad copy, audiences, landing pages)',
+			'Conversion tracking setup (GA4, GTM, pixel)',
+			'Looker Studio dashboard creation and reporting',
+			'ROAS and CPA optimization cycles',
+		]}
+		whyRemote="Paid media management is data-driven and tool-centric — ideal for dedicated remote delivery. Your PPC Manager monitors campaigns in real time, makes bid adjustments, pauses underperformers, and escalates issues as they arise. LATAM timezone overlap ensures your campaigns are actively managed during US business hours — not just reviewed the next morning."
+		engagementOptions={[
+			{
+				title: 'Dedicated Individual PPC Manager',
+				description:
+					'Full-time (40h/week) or part-time (20h/week) PPC Manager dedicated to your paid accounts. Covers campaign management, optimization, and reporting across your active channels.',
+				pricing: 'From ~$2,500/mo',
+			},
+			{
+				title: 'Paid Media Pod',
+				description:
+					'A PPC Manager paired with a paid social specialist or a content marketer for ad creative — covering the full paid acquisition workflow from targeting to creative to reporting.',
+				pricing: 'Custom — based on channel scope and headcount',
+			},
+		]}
+		tools={[
+			{ name: 'Google Ads', description: 'Search, Display, Shopping, Performance Max, and YouTube campaign management.' },
+			{ name: 'Meta Ads Manager', description: 'Facebook and Instagram campaign setup, audience targeting, and creative testing.' },
+			{ name: 'GA4', description: 'Conversion tracking, attribution analysis, and paid traffic performance measurement.' },
+			{ name: 'Google Tag Manager', description: 'Conversion pixel setup, event tracking, and tag management.' },
+			{ name: 'Looker Studio', description: 'Custom PPC performance dashboards connected to ad accounts and GA4.' },
+		]}
+		deliverables={[
+			'Campaign setup (structure, audiences, ad copy, bids)',
+			'Weekly performance summaries with key metrics',
+			'Monthly in-depth reports (spend, CPC, CTR, ROAS, CPA)',
+			'A/B test plans and results documentation',
+			'Looker Studio dashboard (live, shareable)',
+			'Conversion tracking audit and implementation recommendations',
+		]}
+		pricing="Dedicated PPC Managers start at approximately $2,500/month for full-time (40h/week). Part-time (20h/week) arrangements are available for teams with fewer active channels or lower ad spend. Pricing depends on experience level, platform scope, and account complexity."
+		relatedRoles={[
+			{ title: 'SEO Specialist', href: '/roles/seo-specialist/', category: 'marketing' },
+			{ title: 'Content Marketer', href: '/roles/content-marketer/', category: 'marketing' },
+			{ title: 'MarOps & RevOps', href: '/marketing/marops-revops/', category: 'marketing' },
+		]}
+		faq={faq}
+	/>
 </Layout>
-

@@ -1,56 +1,128 @@
 ---
-// ROLE TEMPLATE — copy `src/pages/roles/architectural-designer/index.astro` and adapt sections for this role.
 import Layout from '../../../layouts/Layout.astro';
 import MetaHead from '../../../components/MetaHead.astro';
-import ContactSection from '../../../components/ContactSection.astro';
-import { BOOKING_URL, isExternalUrl } from '../../../lib/cta';
+import RoleTemplate from '../../../components/RoleTemplate.astro';
 
 const brand = 'LatAm Scalers';
-const roleName = 'Content Marketer';
-
-const meta = {
-	title: `Dedicated Remote ${roleName} | ${brand}`,
-	description: 'TODO: Add role-specific description (SEO content, strategy, distribution, reporting).',
-};
-
-const baseUrl = Astro.site ?? 'https://talentcompany-site.vercel.app';
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
 const canonical = new URL('/roles/content-marketer/', baseUrl).toString();
 
-const bookingUrl = BOOKING_URL;
-const bookingExternal = isExternalUrl(bookingUrl);
+const meta = {
+	title: 'Hire a Dedicated Content Marketer — Pre-Vetted LATAM Talent for US Teams | LatAm Scalers',
+	description:
+		'Hire a dedicated content marketer for US companies. SEO blog posts, email copy, content calendars, and distribution strategy. HubSpot, WordPress, Semrush. Pre-vetted, from ~$2,500/mo.',
+};
+
+const faq = [
+	{
+		question: 'What does a dedicated content marketer produce?',
+		answer:
+			'Our content marketers produce SEO-optimized blog posts (1,000–2,500+ words), email nurture sequences, landing page copy, social content, content calendars, and distribution plans. They work from SEO briefs or develop their own keyword research using Semrush or Ahrefs.',
+	},
+	{
+		question: 'Can they write technical content for SaaS or B2B?',
+		answer:
+			'Yes. Our content marketers cover B2B, SaaS, and technical content categories. They research topics deeply, use your SME interviews or internal knowledge base, and produce content aligned to your brand voice. We match based on your industry and content requirements.',
+	},
+	{
+		question: 'Do they work in HubSpot or WordPress?',
+		answer:
+			'Most of our content marketers are proficient in HubSpot (content, blog, email tools) and WordPress. They can format, schedule, and publish content directly in your CMS — not just write and hand off in Google Docs.',
+	},
+	{
+		question: 'How do they get up to speed on our brand voice?',
+		answer:
+			'During onboarding we share your style guide, brand voice document, existing content examples, and target audience personas. Most content marketers produce on-brand content by their second or third piece after initial feedback rounds.',
+	},
+	{
+		question: 'What does pricing look like?',
+		answer:
+			'Dedicated content marketers start at approximately $2,500/month for full-time (40h/week). Part-time (20h/week) arrangements are available for teams with lighter content volume. Pricing depends on experience level and content complexity.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Content Marketer',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faq.map((f) => ({
+		'@type': 'Question',
+		name: f.question,
+		acceptedAnswer: { '@type': 'Answer', text: f.answer },
+	})),
+};
 ---
 
 <Layout>
-	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} />
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
 
-	<main class="mx-auto max-w-6xl px-6 py-12 sm:py-14">
-		<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-			<p class="text-sm font-semibold tracking-wide text-sky-300">Roles</p>
-			<h1 class="mt-4 text-4xl font-semibold tracking-tight text-white sm:text-5xl">Dedicated Remote Content Marketer</h1>
-			<p class="mt-4 max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
-				TODO: Add subheadline + scannable sections (overview, why remote works, options, sample outputs, proof, CTAs).
-			</p>
-			<div class="mt-6 flex flex-wrap gap-3">
-				<a
-					href={bookingUrl}
-					{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
-					class="inline-flex items-center justify-center rounded bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-					data-book-call
-				>
-					Book a 15-Min Call
-				</a>
-				<a
-					href="/solutions/marketing-talent/"
-					class="inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-				>
-					View Marketing solution
-				</a>
-			</div>
-		</section>
-	</main>
-
-	<div class="mx-auto max-w-6xl px-6">
-		<ContactSection subject={`${brand} — new inquiry (role: ${roleName})`} />
-	</div>
+	<RoleTemplate
+		role="Content Marketer"
+		category="marketing"
+		hubHref="/marketing/"
+		hubLabel="Marketing Talent Hub"
+		h1="Hire a Dedicated Content Marketer — Pre-Vetted LATAM Talent for US Teams"
+		subheadline="Dedicated content marketers for SEO-driven blog posts, email copy, and content calendars. HubSpot and WordPress-native, brand voice-aligned, consistent weekly output. Month-to-month."
+		atAGlance={[
+			{ label: 'Category', value: 'Marketing' },
+			{ label: 'Tools', value: 'HubSpot, WordPress, Semrush' },
+			{ label: 'Pricing', value: 'From ~$2,500/mo' },
+			{ label: 'Availability', value: 'FT (40h) or PT (20h)' },
+		]}
+		overview="Our content marketers produce consistent, high-quality content that drives organic traffic and nurtures your pipeline. They work in your CMS (HubSpot or WordPress), follow your editorial calendar, and produce SEO-optimized blog posts, email sequences, landing page copy, and social content. Timezone-aligned with US business hours, they can join editorial standups, respond to feedback same-day, and publish on your schedule."
+		skills={[
+			'SEO-optimized long-form blog writing (1,000–2,500+ words)',
+			'Email nurture sequence writing and formatting',
+			'Landing page and conversion copy',
+			'Content calendar planning and management',
+			'Social media content creation',
+			'Keyword research and content gap analysis',
+			'Brand voice alignment and style guide compliance',
+			'CMS publishing in HubSpot or WordPress',
+		]}
+		whyRemote="Content marketing is highly deliverable-driven and async-friendly. Writers research, draft, revise, and publish through shared tools (Google Docs, HubSpot, Notion) with minimal synchronous time required. LATAM timezone overlap enables editorial feedback and revision cycles within the same business day — critical for maintaining a consistent publishing cadence."
+		engagementOptions={[
+			{
+				title: 'Dedicated Individual Content Marketer',
+				description:
+					'Full-time (40h/week) or part-time (20h/week) content marketer embedded in your marketing team. Covers blog, email, and social content at a consistent weekly cadence.',
+				pricing: 'From ~$2,500/mo',
+			},
+			{
+				title: 'Content + SEO Pod',
+				description:
+					'A content marketer paired with an SEO Specialist for a complete organic program: briefs and keyword strategy from SEO, writing and publishing from content.',
+				pricing: 'Custom — based on scope and headcount',
+			},
+		]}
+		tools={[
+			{ name: 'HubSpot', description: 'Blog management, email tool, social publishing, and content analytics.' },
+			{ name: 'WordPress', description: 'CMS publishing, editorial workflows, and SEO plugin management.' },
+			{ name: 'Semrush / Ahrefs', description: 'Keyword research, content gap analysis, and SEO content planning.' },
+			{ name: 'Google Docs / Notion', description: 'Content drafting, editorial review, and content planning workflows.' },
+			{ name: 'Grammarly', description: 'Grammar, clarity, and tone-of-voice quality control for all content.' },
+		]}
+		deliverables={[
+			'SEO-optimized blog posts (1,000–2,500+ words)',
+			'Email nurture sequences and newsletters',
+			'Landing page copy and conversion-focused content',
+			'Monthly content calendar and editorial plan',
+			'Social content batches (LinkedIn, Instagram, X)',
+			'Content briefs for SME-driven long-form pieces',
+		]}
+		pricing="Dedicated content marketers start at approximately $2,500/month for full-time (40h/week). Part-time (20h/week) arrangements are available for lighter content programs. Pricing depends on content volume, complexity, and required research depth."
+		relatedRoles={[
+			{ title: 'SEO Specialist', href: '/roles/seo-specialist/', category: 'marketing' },
+			{ title: 'PPC Manager', href: '/roles/ppc-manager/', category: 'marketing' },
+			{ title: 'Marketing Talent Hub', href: '/marketing/', category: 'marketing' },
+		]}
+		faq={faq}
+	/>
 </Layout>
-

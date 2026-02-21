@@ -1,56 +1,128 @@
 ---
-// ROLE TEMPLATE — copy `src/pages/roles/architectural-designer/index.astro` and adapt sections for this role.
 import Layout from '../../../layouts/Layout.astro';
 import MetaHead from '../../../components/MetaHead.astro';
-import ContactSection from '../../../components/ContactSection.astro';
-import { BOOKING_URL, isExternalUrl } from '../../../lib/cta';
+import RoleTemplate from '../../../components/RoleTemplate.astro';
 
 const brand = 'LatAm Scalers';
-const roleName = 'BIM Coordinator';
-
-const meta = {
-	title: `Dedicated Remote ${roleName} | ${brand}`,
-	description: 'TODO: Add role-specific description (tools, workflows, deliverables).',
-};
-
-const baseUrl = Astro.site ?? 'https://talentcompany-site.vercel.app';
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
 const canonical = new URL('/roles/bim-coordinator/', baseUrl).toString();
 
-const bookingUrl = BOOKING_URL;
-const bookingExternal = isExternalUrl(bookingUrl);
+const meta = {
+	title: 'Hire a Dedicated BIM Coordinator — Pre-Vetted LATAM Talent for US Firms | LatAm Scalers',
+	description:
+		'Hire a dedicated BIM coordinator for US architecture and engineering firms. Clash detection, federated models, Navisworks, ACC, BIM 360. Pre-vetted LATAM talent. From ~$3,500/mo.',
+};
+
+const faq = [
+	{
+		question: 'What does a BIM Coordinator do?',
+		answer:
+			'A BIM Coordinator manages clash detection across architectural, structural, and MEP models; federates multi-discipline models; produces clash reports and issue logs; tracks resolution; and delivers updated models for coordination meetings and handover. They work in Navisworks, Autodesk Construction Cloud (ACC), and BIM 360 depending on your project setup.',
+	},
+	{
+		question: 'Who owns design authority and stamping?',
+		answer:
+			'You retain full design authority and stamping responsibility. Our BIM Coordinators produce coordination support and deliverables under the direction of your licensed professionals. All work requires your review and sign-off.',
+	},
+	{
+		question: 'How quickly can we get a vetted BIM Coordinator?',
+		answer:
+			'We typically present vetted BIM Coordinator candidates within 48 hours after a scoping call. Once access and project standards are confirmed, onboarding is designed for fast ramp-up — usually within one week.',
+	},
+	{
+		question: 'Do your BIM Coordinators work in Navisworks, ACC, and BIM 360?',
+		answer:
+			'Yes. Our specialists are proficient in Navisworks Manage for clash detection and 4D scheduling, Autodesk Construction Cloud for document and model coordination, and BIM 360 for cloud-based collaboration. We align with your preferred platform.',
+	},
+	{
+		question: 'What does pricing look like?',
+		answer:
+			'Dedicated BIM Coordinators start at approximately $3,500/month for full-time (40h/week). Part-time (20h/week) and coordination pod options are available. We provide a custom quote after the scoping call based on your project scope and hours.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'BIM Coordinator',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faq.map((f) => ({
+		'@type': 'Question',
+		name: f.question,
+		acceptedAnswer: { '@type': 'Answer', text: f.answer },
+	})),
+};
 ---
 
 <Layout>
-	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} />
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
 
-	<main class="mx-auto max-w-6xl px-6 py-12 sm:py-14">
-		<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-			<p class="text-sm font-semibold tracking-wide text-sky-300">Roles</p>
-			<h1 class="mt-4 text-4xl font-semibold tracking-tight text-white sm:text-5xl">Dedicated Remote BIM Coordinator</h1>
-			<p class="mt-4 max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
-				TODO: Add subheadline + scannable sections (overview, why remote works, options, sample outputs, proof, CTAs).
-			</p>
-			<div class="mt-6 flex flex-wrap gap-3">
-				<a
-					href={bookingUrl}
-					{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
-					class="inline-flex items-center justify-center rounded bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-					data-book-call
-				>
-					Book a 15-Min Call
-				</a>
-				<a
-					href="/solutions/aec-talent/"
-					class="inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-				>
-					View AEC solution
-				</a>
-			</div>
-		</section>
-	</main>
-
-	<div class="mx-auto max-w-6xl px-6">
-		<ContactSection subject={`${brand} — new inquiry (role: ${roleName})`} />
-	</div>
+	<RoleTemplate
+		role="BIM Coordinator"
+		category="aec"
+		hubHref="/aec/"
+		hubLabel="AEC Talent Hub"
+		h1="Hire a Dedicated BIM Coordinator — Pre-Vetted LATAM Talent for US Firms"
+		subheadline="Dedicated BIM coordinators who integrate into your workflow. Clash detection, federated model coordination, and issue resolution. US timezone. Vetted. Month-to-month."
+		atAGlance={[
+			{ label: 'Category', value: 'AEC' },
+			{ label: 'Tools', value: 'Navisworks, ACC, BIM 360, Revit' },
+			{ label: 'Pricing', value: 'From ~$3,500/mo' },
+			{ label: 'Availability', value: 'FT (40h) or PT (20h)' },
+		]}
+		overview="Our BIM Coordinators bring firm-level coordination expertise at 50%+ lower cost than US-based hires. Timezone-aligned with your team, fluent English, and pre-vetted for clash detection workflows, federated model management, and BIM execution plans. They integrate directly into your project delivery pipeline — using your tools, your standards, and your templates."
+		skills={[
+			'Clash detection and resolution tracking',
+			'Federated model management (multi-discipline)',
+			'Navisworks Manage — 4D scheduling and clash',
+			'Autodesk Construction Cloud (ACC) coordination',
+			'BIM 360 collaboration and issue tracking',
+			'Revit model coordination and documentation',
+			'Coordination meeting facilitation support',
+			'BEP alignment and QA to your checklist',
+		]}
+		whyRemote="BIM coordination is workflow-intensive and tool-driven — making it an ideal remote function. Your coordinator participates in clash detection runs, coordination meetings, and issue resolution cycles during your business hours. LATAM timezone overlap (0–3 hours behind EST/CST) enables real-time collaboration without delay. You provide direction and sign-off; we handle the coordination execution."
+		engagementOptions={[
+			{
+				title: 'Dedicated Individual Coordinator',
+				description:
+					'Full-time (40h/week) or part-time (20h/week) BIM Coordinator embedded into your team. Works in your tools, follows your BEP, and joins your coordination workflows.',
+				pricing: 'From ~$3,500/mo',
+			},
+			{
+				title: 'Coordination Pod',
+				description:
+					'Multiple coordinators for high-volume projects or parallel coordination workflows across several active jobs. Includes optional PM-level oversight.',
+				pricing: 'Custom — based on team size and scope',
+			},
+		]}
+		tools={[
+			{ name: 'Navisworks Manage', description: 'Clash detection, 4D scheduling, model aggregation, and coordination issue tracking.' },
+			{ name: 'Autodesk Construction Cloud (ACC)', description: 'Document control, design collaboration, and multi-discipline model coordination.' },
+			{ name: 'BIM 360', description: 'Cloud-based collaboration, issue management, and federated model access.' },
+			{ name: 'Revit', description: '3D BIM modeling, coordination sets, and construction documentation.' },
+			{ name: 'Microsoft Teams / Zoom', description: 'Real-time coordination meetings, screen sharing, and project communication.' },
+		]}
+		deliverables={[
+			'Clash detection reports with prioritized resolution tracking',
+			'Federated models organized by discipline and phase',
+			'Coordination meeting minutes and issue logs',
+			'Updated models reflecting resolved clashes',
+			'As-built documentation for project handover',
+			'BEP compliance check and QA documentation',
+		]}
+		pricing="Dedicated BIM Coordinators start at approximately $3,500/month for full-time engagement (40h/week). Part-time coordinators (20h/week) and multi-coordinator pods are also available. Pricing depends on experience level, project complexity, and hours per week."
+		relatedRoles={[
+			{ title: 'Architectural Designer', href: '/roles/architectural-designer/', category: 'aec' },
+			{ title: 'Revit Drafter', href: '/roles/revit-drafter/', category: 'aec' },
+			{ title: 'MEP Engineering Support', href: '/aec/mep-engineering-services/', category: 'aec' },
+		]}
+		faq={faq}
+	/>
 </Layout>
-

@@ -25,7 +25,7 @@ todos:
     status: completed
   - id: mvp-phase-6
     content: "MVP Phase 6 — Roles Directory & Role Pages: Enhanced directory (filter tabs, enriched cards), create RoleTemplate.astro component (11-section reusable), complete BIM Coordinator stub, complete remaining 7 role pages in 2 batches"
-    status: pending
+    status: completed
   - id: mvp-phase-7
     content: "MVP Phase 7 — Trust & Conversion Pages: /about/our-guarantee/, /about/how-we-vet/, /how-pricing-works/, /get-started/, /compare/vs-superside/, /resources/engineering-staffing-alternative/, /resources/remote-staffing-agency/ (routing hub), How It Works update, proof asset outreach (business process)"
     status: pending
