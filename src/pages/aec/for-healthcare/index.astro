@@ -1,0 +1,435 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import MetaHead from '../../../components/MetaHead.astro';
+import ContactHub from '../../../components/ContactHub.astro';
+import { BOOKING_URL, isExternalUrl } from '../../../lib/cta';
+
+const brand = 'LatAm Scalers';
+
+const meta = {
+	title: 'AEC Talent for Healthcare Facility Design – Dedicated LATAM MEP & BIM Specialists | LatAm Scalers',
+	description:
+		'Dedicated LATAM AEC specialists for US healthcare facility design. MEP engineers, BIM coordinators, and plumbing designers experienced with FGI Guidelines, medical gas, and infection control requirements.',
+};
+
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/aec/for-healthcare/', baseUrl).toString();
+
+const bookingUrl = BOOKING_URL;
+const bookingExternal = isExternalUrl(bookingUrl);
+
+const roles = [
+	{ title: 'MEP Engineer (Healthcare)', desc: 'Medical gas, power redundancy, HVAC pressure relationships, and infection control system design support for healthcare facilities.', href: '/roles/revit-mep-modeler/' },
+	{ title: 'Plumbing Designer', desc: 'Medical gas systems, domestic water, waste/vent, and specialized piping for healthcare environments.', href: '/roles/plumbing-designer/' },
+	{ title: 'HVAC Designer', desc: 'Pressure relationships, air change rates, filtration requirements, and ASHRAE 170 compliance support for healthcare HVAC.', href: '/roles/hvac-designer/' },
+	{ title: 'BIM Coordinator', desc: 'Multi-trade coordination across 5+ disciplines typical in healthcare — MEP, structural, architectural, medical equipment, and specialty systems.', href: '/roles/bim-coordinator/' },
+	{ title: 'Electrical Designer', desc: 'Emergency power systems, essential electrical distribution, nurse call integration, and NEC Article 517 compliance support.', href: '/roles/electrical-designer/' },
+];
+
+const useCases = [
+	{ label: 'Multi-trade complexity', desc: 'Healthcare MEP coordination involves 5+ trades simultaneously — mechanical, electrical, plumbing, medical gas, fire protection. Our BIM coordinators manage this complexity under your PE direction.' },
+	{ label: 'FGI & code compliance', desc: 'Specialists experienced with FGI Guidelines for Design and Construction, ASHRAE 170, NFPA 99, and NEC Article 517. All work produced under your licensed professionals\' direction.' },
+	{ label: 'Hospital expansion & renovation', desc: 'Active healthcare facilities require phased coordination. Our specialists understand occupied building constraints and infection control implications for design.' },
+	{ label: 'Sustained capacity', desc: 'Healthcare projects are long-duration and code-intensive. Add dedicated specialists who build institutional knowledge through the project lifecycle.' },
+];
+
+const tools = [
+	{ name: 'Revit MEP', desc: 'Healthcare-specific MEP modeling — medical gas, surgical suites, patient room pressure zones, and multi-trade coordination.' },
+	{ name: 'Navisworks', desc: 'Multi-discipline clash detection across 5+ trades with healthcare-specific tolerance requirements.' },
+	{ name: 'AutoCAD', desc: '2D MEP layouts, equipment plans, and permit documentation for healthcare facilities.' },
+	{ name: 'ACC / BIM 360', desc: 'Cloud-based coordination and document management for complex healthcare project teams.' },
+	{ name: 'Trane Trace / Carrier HAP', desc: 'Healthcare-specific HVAC load calculations, air change modeling, and energy analysis.' },
+	{ name: 'Bluebeam', desc: 'Markups, redlines, and document review for code-intensive healthcare document sets.' },
+];
+
+const faqs = [
+	{
+		q: 'What healthcare-specific experience do your specialists have?',
+		a: 'We screen for healthcare project experience — hospitals, ambulatory surgery centers, medical office buildings, and specialty care facilities. Our specialists understand FGI Guidelines, ASHRAE 170 ventilation requirements, NFPA 99 medical gas standards, and the multi-trade coordination complexity unique to healthcare.',
+	},
+	{
+		q: 'How do you handle FGI and healthcare code requirements?',
+		a: 'Our specialists produce work informed by FGI Guidelines, ASHRAE 170, NFPA 99, and NEC Article 517. All code compliance decisions, interpretations, and sign-offs remain with your licensed Professional Engineers and Architects. Our specialists produce code-aware documentation under your PE direction.',
+	},
+	{
+		q: 'Can your specialists handle medical gas system design support?',
+		a: 'Yes. Our plumbing and MEP specialists have experience with medical gas systems — oxygen, medical air, nitrogen, vacuum, and WAGD systems — following NFPA 99 requirements under PE direction.',
+	},
+	{
+		q: 'What about infection control and pressure relationships?',
+		a: 'Our HVAC designers understand healthcare-specific pressure relationships (positive/negative/neutral zones), air change rate requirements per ASHRAE 170, and filtration standards. All design decisions are reviewed and approved by your PE.',
+	},
+	{
+		q: 'What does pricing look like for healthcare AEC specialists?',
+		a: 'Healthcare AEC specialists typically range from $4,000–$6,000/month for full-time engagement, depending on specialization. That\'s 50–60% less than comparable US healthcare AEC talent at $85K–$140K+/year.',
+	},
+	{
+		q: 'How fast can we get started?',
+		a: 'Healthcare-experienced specialists may take 48–72 hours for initial vetting presentation due to the specialized screening. Once tool access and scope are confirmed, onboarding is designed to get production moving within the first week.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'AEC Talent for Healthcare Facility Design',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqs.map((f) => ({
+		'@type': 'Question',
+		name: f.q,
+		acceptedAnswer: { '@type': 'Answer', text: f.a },
+	})),
+};
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
+
+	<main>
+
+	<!-- Hero -->
+	<section class="relative overflow-hidden bg-slate-950 py-16 sm:py-24" aria-labelledby="hero-heading">
+		<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in">
+		<p class="text-sm font-semibold uppercase tracking-widest text-aec">For Healthcare Facilities</p>
+	<h1 id="hero-heading" class="mt-4 text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
+		AEC Specialists for Healthcare Facility Design &amp; Construction
+	</h1>
+	<p class="mt-5 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
+		Healthcare is the most complex building type in AEC — medical gas, infection control, 5+ trade coordination, and FGI compliance. Your A/E firm needs dedicated MEP specialists who understand these requirements. We match them in under a week.
+	</p>
+
+	<div class="mt-8 flex flex-wrap gap-3">
+	<a
+		href={bookingUrl}
+		{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+		class="inline-flex min-h-[48px] items-center justify-center rounded bg-sky-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+		data-book-call
+	>
+		Book a Healthcare Project Scoping Call
+	</a>
+	<a
+		href="/#contact"
+		class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-slate-700 bg-slate-900/40 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+		data-open-tell-us="healthcare-hero"
+	>
+		Tell Us What You Need
+	</a>
+	</div>
+	</div>
+	</div>
+	</section>
+
+	<!-- AEC micro-clarifier -->
+	<div class="bg-slate-950 border-b border-slate-800">
+	<div class="mx-auto max-w-6xl px-6 py-4">
+	<p class="text-xs leading-relaxed text-slate-400 text-center sm:text-sm">
+		Our specialists produce work under the direction of your licensed Professional Engineers and Architects. All documents require PE/RA review and stamping.
+	</p>
+	</div>
+	</div>
+
+	<!-- Market Context -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="market-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="market-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Healthcare Construction Demands the Highest AEC Complexity
+	</h2>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		The $25–30B US healthcare construction market combines the most stringent code requirements, the most complex MEP coordination, and the highest compensation premiums in AEC. Finding specialists who understand this intersection is the bottleneck.
+	</p>
+	</div>
+
+	<div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+	<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+		<p class="text-3xl font-semibold text-slate-100">$25–30B</p>
+		<p class="mt-2 text-sm font-semibold text-slate-100">market size</p>
+		<p class="mt-2 text-sm leading-relaxed text-slate-400">US healthcare construction spending annually.</p>
+	</div>
+	<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+		<p class="text-3xl font-semibold text-slate-100">5+</p>
+		<p class="mt-2 text-sm font-semibold text-slate-100">trade coordination</p>
+		<p class="mt-2 text-sm leading-relaxed text-slate-400">Healthcare MEP involves simultaneous coordination of 5+ trades.</p>
+	</div>
+	<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+		<p class="text-3xl font-semibold text-slate-100">Highest</p>
+		<p class="mt-2 text-sm font-semibold text-slate-100">complexity premium</p>
+		<p class="mt-2 text-sm leading-relaxed text-slate-400">Healthcare commands the highest complexity premium in AEC.</p>
+	</div>
+	<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+		<p class="text-3xl font-semibold text-slate-100">4–6%</p>
+		<p class="mt-2 text-sm font-semibold text-slate-100">annual growth</p>
+		<p class="mt-2 text-sm leading-relaxed text-slate-400">Steady healthcare construction growth driving sustained demand.</p>
+	</div>
+	</div>
+	</div>
+	</section>
+
+	<!-- Use Cases -->
+	<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="use-cases-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="use-cases-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		How A/E Firms Use LatAm Scalers for Healthcare Projects
+	</h2>
+	</div>
+
+	<div class="mt-10 grid gap-5 sm:grid-cols-2">
+	{useCases.map((uc) => (
+	<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+		<p class="text-xs font-semibold uppercase tracking-wide text-aec">{uc.label}</p>
+		<p class="mt-3 text-sm leading-relaxed text-slate-400">{uc.desc}</p>
+	</div>
+	))}
+	</div>
+	</div>
+	</section>
+
+	<!-- Roles -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="roles-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="roles-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Healthcare AEC Roles We Place
+	</h2>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		Specialists vetted for healthcare facility experience, code awareness, and multi-trade coordination.
+	</p>
+	</div>
+
+	<div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+	{roles.map((role) => (
+	<a
+		href={role.href}
+		class="js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20 transition hover:border-aec/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+	>
+		<h3 class="text-sm font-semibold text-slate-100 group-hover:text-aec">{role.title}</h3>
+		<p class="mt-2 text-sm leading-relaxed text-slate-400">{role.desc}</p>
+		<p class="mt-3 text-xs font-semibold text-sky-300 group-hover:text-sky-200">View role &#8594;</p>
+	</a>
+	))}
+	</div>
+	</div>
+	</section>
+
+	<!-- Tools -->
+	<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="tools-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="tools-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Tools for Healthcare Facility Design
+	</h2>
+	</div>
+
+	<div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+	{tools.map((tool) => (
+	<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+		<p class="text-sm font-semibold text-slate-100">{tool.name}</p>
+		<p class="mt-2 text-sm leading-relaxed text-slate-400">{tool.desc}</p>
+	</div>
+	))}
+	</div>
+	</div>
+	</section>
+
+	<!-- Healthcare Code Standards -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="codes-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="codes-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Healthcare Code Awareness
+	</h2>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		Our specialists produce documentation informed by healthcare-specific standards — all code compliance decisions and sign-offs remain with your licensed professionals.
+	</p>
+	</div>
+
+	<div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+	<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+		<p class="text-sm font-semibold text-slate-100">FGI Guidelines</p>
+		<p class="mt-2 text-sm leading-relaxed text-slate-400">Facility Guidelines Institute standards for healthcare design and construction.</p>
+	</div>
+	<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+		<p class="text-sm font-semibold text-slate-100">ASHRAE 170</p>
+		<p class="mt-2 text-sm leading-relaxed text-slate-400">Ventilation requirements for healthcare facilities — air changes, pressure relationships, filtration.</p>
+	</div>
+	<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+		<p class="text-sm font-semibold text-slate-100">NFPA 99</p>
+		<p class="mt-2 text-sm leading-relaxed text-slate-400">Health Care Facilities Code — medical gas, electrical, and fire protection requirements.</p>
+	</div>
+	<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+		<p class="text-sm font-semibold text-slate-100">NEC Article 517</p>
+		<p class="mt-2 text-sm leading-relaxed text-slate-400">Essential electrical systems, emergency power, and healthcare facility wiring requirements.</p>
+	</div>
+	<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+		<p class="text-sm font-semibold text-slate-100">IBC / ADA</p>
+		<p class="mt-2 text-sm leading-relaxed text-slate-400">International Building Code and accessibility requirements for healthcare occupancies.</p>
+	</div>
+	<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+		<p class="text-sm font-semibold text-slate-100">UPC / IPC</p>
+		<p class="mt-2 text-sm leading-relaxed text-slate-400">Plumbing codes governing medical gas, domestic water, and healthcare specialty piping.</p>
+	</div>
+	</div>
+	</div>
+	</section>
+
+	<!-- Engagement Options -->
+	<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="engagement-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="engagement-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Engagement Options for Healthcare A/E Firms
+	</h2>
+	</div>
+
+	<div class="mt-10 grid gap-5 md:grid-cols-2">
+	<a href="/aec/individuals/" class="js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20 transition hover:border-aec/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300">
+		<p class="text-xs font-semibold uppercase tracking-wide text-aec">Individual Specialist</p>
+		<h3 class="mt-3 text-lg font-semibold text-slate-100">Dedicated Healthcare AEC Specialist</h3>
+		<p class="mt-3 text-sm leading-relaxed text-slate-400">
+		A dedicated MEP engineer, plumbing designer, or BIM coordinator with healthcare project experience — embedded in your team.
+		</p>
+		<p class="mt-4 text-sm font-semibold text-aec">From ~$4,000/mo</p>
+		<p class="mt-3 text-xs font-semibold text-sky-300 group-hover:text-sky-200">Learn more &#8594;</p>
+	</a>
+	<a href="/aec/teams/" class="js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20 transition hover:border-aec/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300">
+		<p class="text-xs font-semibold uppercase tracking-wide text-aec">Production Pod</p>
+		<h3 class="mt-3 text-lg font-semibold text-slate-100">Healthcare MEP Team</h3>
+		<p class="mt-3 text-sm leading-relaxed text-slate-400">
+		BIM coordinator + MEP modeler + plumbing designer — a coordinated team for complex healthcare facility projects.
+		</p>
+		<p class="mt-4 text-sm font-semibold text-aec">Custom pricing</p>
+		<p class="mt-3 text-xs font-semibold text-sky-300 group-hover:text-sky-200">Learn more &#8594;</p>
+	</a>
+	</div>
+	</div>
+	</section>
+
+	<!-- Pricing -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="pricing-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="pricing-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Pricing Guidance
+	</h2>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		Healthcare AEC specialists typically range from <strong class="text-slate-100">$4,000–$6,000/month</strong> for full-time engagement — compared to US healthcare AEC talent at $85K–$140K+/year. Multi-seat pods are custom-quoted.
+	</p>
+	<a
+		href="/how-pricing-works/"
+		class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-sky-300 transition hover:text-sky-200/80 focus:outline-none focus-visible:underline"
+	>
+		See how pricing works <span aria-hidden="true">&rarr;</span>
+	</a>
+	</div>
+	</div>
+	</section>
+
+	<!-- FAQ -->
+	<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="faq-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="faq-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Frequently Asked Questions
+	</h2>
+	</div>
+
+	<div class="mt-10 grid gap-3">
+	{faqs.map((item) => (
+	<details class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+		<summary class="cursor-pointer list-none text-sm font-semibold text-slate-100 [&::-webkit-details-marker]:hidden">
+		{item.q}
+		</summary>
+		<p class="mt-4 pt-4 text-sm leading-relaxed text-slate-400 border-t border-slate-800">{item.a}</p>
+	</details>
+	))}
+	</div>
+	</div>
+	</section>
+
+	<!-- CTA -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="cta-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-8 text-center shadow-xl sm:p-12">
+	<h2 id="cta-heading" class="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+		Ready to Scale Your Healthcare Design Capacity?
+	</h2>
+	<p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slate-300">
+		Book a call to discuss your healthcare projects, MEP requirements, and code compliance needs — or share your scope and we'll match you with vetted specialists.
+	</p>
+	<div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+	<a
+		href={bookingUrl}
+		{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+		class="inline-flex min-h-[48px] items-center justify-center rounded bg-sky-600 px-8 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+		data-book-call
+	>
+		Book a Healthcare Scoping Call
+	</a>
+	<a
+		href="/#contact"
+		class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-slate-700 bg-slate-900/40 px-8 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+		data-open-tell-us="healthcare-cta"
+	>
+		Tell Us What You Need
+	</a>
+	</div>
+	<p class="mt-5 text-xs text-slate-400">Month-to-month · Free replacement guarantee · No long-term contracts</p>
+	</div>
+	</div>
+	</section>
+
+	<!-- Contact -->
+	<section id="contact" class="bg-slate-950 pb-20 pt-16 sm:pb-24 sm:pt-20" aria-labelledby="contact-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+		<p class="text-sm font-semibold uppercase tracking-widest text-sky-300">Get in touch</p>
+		<h2 id="contact-heading" class="mt-3 text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Let's Talk Healthcare AEC Talent
+		</h2>
+		<p class="mt-4 text-base leading-relaxed text-slate-400">
+		Tell us about your healthcare projects, MEP disciplines, and compliance requirements — we'll match you with experienced specialists.
+		</p>
+	</div>
+
+	<ContactHub subject="${brand} – Healthcare facility inquiry" defaultCategory="aec" defaultMessage="We're an A/E firm working on healthcare facility projects and need dedicated specialists." />
+	</div>
+	</section>
+
+	</main>
+
+	<style>
+	.js-fade-in {
+		opacity: 0;
+		transform: translateY(20px);
+		transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+	}
+	.js-fade-in.is-visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	</style>
+
+	<script is:inline>
+	(function () {
+		var els = document.querySelectorAll('.js-fade-in');
+		if (!els.length) return;
+		var io = new IntersectionObserver(function (entries) {
+		entries.forEach(function (e) {
+			if (e.isIntersecting) {
+			e.target.classList.add('is-visible');
+			io.unobserve(e.target);
+			}
+		});
+		}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+		els.forEach(function (el) { io.observe(el); });
+	})();
+	</script>
+</Layout>
