@@ -23,7 +23,7 @@ const bookingExternal = isExternalUrl(bookingUrl);
 				<p class="text-xs font-semibold uppercase tracking-wide text-sky-300">Tell us your needs</p>
 				<h2 class="mt-2 text-xl font-semibold tracking-tight text-white sm:text-2xl">Get matched fast</h2>
 				<p class="mt-1.5 text-sm leading-relaxed text-slate-400">
-					We work exclusively with US-based companies. Share a few details and we'll reply with vetted options within 48 hours.
+					Share a few details and we'll reply with vetted options within 48 hours.
 				</p>
 			</div>
 			<button
@@ -111,7 +111,9 @@ const bookingExternal = isExternalUrl(bookingUrl);
 						>
 							<option value="" selected disabled>Select…</option>
 							<option value="1-25">1–25 employees</option>
-							<option value="25-200">25–200 employees</option>
+							<option value="25-50">25–50 employees</option>
+							<option value="50-100">50–100 employees</option>
+							<option value="100-200">100–200 employees</option>
 							<option value="200+">200+ employees</option>
 						</select>
 					</div>
@@ -181,21 +183,24 @@ const bookingExternal = isExternalUrl(bookingUrl);
 
 					{/* Attribution source */}
 					<div class="sm:col-span-1">
-						<label class="text-sm font-medium text-slate-200" for="t-source">
-							How did you hear about us?
-						</label>
-						<select
-							id="t-source"
-							name="attribution_source"
-							class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-						>
-							<option value="">Select (optional)</option>
-							<option value="google">Google Search</option>
-							<option value="linkedin">LinkedIn</option>
-							<option value="referral">Referral</option>
-							<option value="industry-event">Industry Event</option>
-							<option value="other">Other</option>
-						</select>
+					<label class="text-sm font-medium text-slate-200" for="t-source">
+						How did you hear about us? <span class="text-rose-400">*</span>
+					</label>
+					<select
+						id="t-source"
+						name="attribution_source"
+						required
+						aria-required="true"
+						class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+					>
+						<option value="" selected disabled>Select…</option>
+						<option value="google">Google Search</option>
+						<option value="linkedin">LinkedIn</option>
+						<option value="ai-llm">AI Assistant (ChatGPT, Claude, Gemini…)</option>
+						<option value="referral">Referral</option>
+						<option value="industry-event">Industry Event</option>
+						<option value="other">Other</option>
+					</select>
 					</div>
 
 					{/* Role / need */}
@@ -223,7 +228,7 @@ const bookingExternal = isExternalUrl(bookingUrl);
 								class="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-700 bg-slate-950/60 text-sky-600 focus:ring-sky-300 focus:ring-offset-slate-950"
 							/>
 							<span class="text-sm text-slate-300">
-								I'm a US-based company looking to hire dedicated LATAM talent. <span class="text-rose-400">*</span>
+								I'm a company looking to hire dedicated LATAM talent. <span class="text-rose-400">*</span>
 							</span>
 						</label>
 					</div>

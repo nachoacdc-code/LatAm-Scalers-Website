@@ -1,18 +1,12 @@
 ---
 export type Props = {
-	/** Formspree endpoint, e.g. https://formspree.io/f/xxxxxx */
 	action?: string;
-	/** Optional redirect URL after submission (Formspree supports `_redirect`) */
 	redirectTo?: string;
-	/** Optional subject for notifications */
 	subject?: string;
-	/** Optional role context to include with the submission */
 	role?: string;
-	/** Optional default selection for category dropdown */
 	defaultCategory?: 'aec' | 'design' | 'marketing' | '';
 	/** @deprecated use defaultCategory instead */
 	defaultInterest?: string;
-	/** Optional pre-filled message text */
 	defaultMessage?: string;
 };
 
@@ -25,7 +19,6 @@ const redirectTo = Astro.props.redirectTo ?? '';
 const subject = Astro.props.subject ?? 'LatAm Scalers — new inquiry';
 const role = Astro.props.role ?? '';
 const defaultMessage = Astro.props.defaultMessage ?? '';
-// Support both prop names for backwards compatibility
 const defaultCategory = (Astro.props.defaultCategory ?? Astro.props.defaultInterest ?? '') as 'aec' | 'design' | 'marketing' | '';
 
 const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
@@ -40,14 +33,12 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
 	novalidate
 	data-contact-form
 >
-	{/* Qualifier note */}
-	<p class="mb-5 text-sm text-slate-400">
-		We work exclusively with US-based companies. All fields marked <span class="text-rose-400">*</span> are required.
+	<p class="mb-5 text-xs text-slate-500">
+		All fields marked <span class="text-rose-400">*</span> are required.
 	</p>
 
 	<div class="grid gap-4 sm:grid-cols-2">
 
-		{/* Name */}
 		<div class="sm:col-span-1">
 			<label class="text-sm font-medium text-slate-200" for={`${formId}-name`}>
 				Full name <span class="text-rose-400">*</span>
@@ -62,7 +53,6 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
 			/>
 		</div>
 
-		{/* Work Email */}
 		<div class="sm:col-span-1">
 			<label class="text-sm font-medium text-slate-200" for={`${formId}-email`}>
 				Work email <span class="text-rose-400">*</span>
@@ -83,7 +73,6 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
 			</p>
 		</div>
 
-		{/* Company */}
 		<div class="sm:col-span-1">
 			<label class="text-sm font-medium text-slate-200" for={`${formId}-company`}>
 				Company <span class="text-rose-400">*</span>
@@ -98,7 +87,6 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
 			/>
 		</div>
 
-		{/* Company Size */}
 		<div class="sm:col-span-1">
 			<label class="text-sm font-medium text-slate-200" for={`${formId}-company-size`}>
 				Company size <span class="text-rose-400">*</span>
@@ -112,12 +100,13 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
 			>
 				<option value="" selected disabled>Select…</option>
 				<option value="1-25">1–25 employees</option>
-				<option value="25-200">25–200 employees</option>
+				<option value="25-50">25–50 employees</option>
+				<option value="50-100">50–100 employees</option>
+				<option value="100-200">100–200 employees</option>
 				<option value="200+">200+ employees</option>
 			</select>
 		</div>
 
-		{/* What do you need */}
 		<div class="sm:col-span-1">
 			<label class="text-sm font-medium text-slate-200" for={`${formId}-category`}>
 				What do you need? <span class="text-rose-400">*</span>
@@ -138,7 +127,6 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
 			</select>
 		</div>
 
-		{/* Timeline */}
 		<div class="sm:col-span-1">
 			<label class="text-sm font-medium text-slate-200" for={`${formId}-timeline`}>
 				Timeline <span class="text-rose-400">*</span>
@@ -158,7 +146,6 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
 			</select>
 		</div>
 
-		{/* Budget Range */}
 		<div class="sm:col-span-1">
 			<label class="text-sm font-medium text-slate-200" for={`${formId}-budget`}>
 				Monthly budget <span class="text-rose-400">*</span>
@@ -179,43 +166,43 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
 			</select>
 		</div>
 
-		{/* How did you hear */}
 		<div class="sm:col-span-1">
 			<label class="text-sm font-medium text-slate-200" for={`${formId}-source`}>
-				How did you hear about us?
+				How did you hear about us? <span class="text-rose-400">*</span>
 			</label>
 			<select
 				class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
 				id={`${formId}-source`}
 				name="attribution_source"
+				required
+				aria-required="true"
 			>
-				<option value="">Select (optional)</option>
+				<option value="" selected disabled>Select…</option>
 				<option value="google">Google Search</option>
 				<option value="linkedin">LinkedIn</option>
+				<option value="ai-llm">AI Assistant (ChatGPT, Claude, Gemini…)</option>
 				<option value="referral">Referral</option>
 				<option value="industry-event">Industry Event</option>
 				<option value="other">Other</option>
 			</select>
 		</div>
 
-		{/* US Company checkbox */}
 		<div class="sm:col-span-2">
 			<label class="flex cursor-pointer items-start gap-3">
 				<input
 					type="checkbox"
-					name="is_us_company"
+					name="is_hiring_company"
 					value="yes"
 					class="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-700 bg-slate-950/60 text-sky-600 focus:ring-sky-300 focus:ring-offset-slate-950"
 					required
 					aria-required="true"
 				/>
 				<span class="text-sm text-slate-300">
-					I'm a US-based company looking to hire dedicated LATAM talent. <span class="text-rose-400">*</span>
+					I'm a company looking to hire dedicated LATAM talent. <span class="text-rose-400">*</span>
 				</span>
 			</label>
 		</div>
 
-		{/* Message */}
 		<div class="sm:col-span-2">
 			<label class="text-sm font-medium text-slate-200" for={`${formId}-message`}>
 				What do you need help with?
@@ -229,8 +216,7 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
 		</div>
 	</div>
 
-	{/* Honeypot — invisible to humans, filled by bots */}
-	<div class="hidden" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;pointer-events:none;">
+	<div aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;pointer-events:none;">
 		<label for={`${formId}-website`}>Website</label>
 		<input id={`${formId}-website`} name="website" tabindex="-1" autocomplete="off" />
 	</div>
@@ -287,14 +273,12 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
     form.addEventListener('submit', async function (e) {
       e.preventDefault();
 
-      // Work-email check
       if (emailInput && isFreeDomain(emailInput.value)) {
         emailError && emailError.classList.remove('hidden');
         emailInput.focus();
         return;
       }
 
-      // Honeypot check — silently abort if filled
       var hp = form.querySelector('[name="website"]');
       if (hp && hp.value) return;
 
@@ -307,7 +291,6 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
       if (submitBtn) submitBtn.setAttribute('disabled', 'disabled');
       if (formNote) formNote.textContent = 'Sending…';
 
-      // reCAPTCHA v3 token
       try {
         var siteKey = document.documentElement.dataset.recaptchaSiteKey || '';
         if (siteKey && window.grecaptcha && recaptchaToken) {
@@ -327,13 +310,13 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
         if (res.ok) {
           if (formNote) {
             formNote.textContent = 'Thanks — we received your message and will reply shortly.';
-            formNote.style.color = 'rgb(110 231 183)'; // emerald-300
+            formNote.style.color = 'rgb(110 231 183)';
           }
           form.reset();
         } else {
           if (formNote) {
             formNote.textContent = 'Something went wrong. Please try again or book a call.';
-            formNote.style.color = 'rgb(252 165 165)'; // rose-300
+            formNote.style.color = 'rgb(252 165 165)';
           }
         }
       } catch (_) {
