@@ -1,0 +1,133 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import MetaHead from '../../../components/MetaHead.astro';
+import RoleTemplate from '../../../components/RoleTemplate.astro';
+
+const brand = 'LatAm Scalers';
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/roles/structural-drafter/', baseUrl).toString();
+
+const meta = {
+	title: 'Hire a Dedicated Structural Drafter — Pre-Vetted LATAM Talent for US Firms | LatAm Scalers',
+	description:
+		'Hire a dedicated structural drafter for US engineering firms. Structural drawings, connection details, foundation plans, rebar schedules, and Revit structural modeling. Pre-vetted LATAM talent. From ~$3,500/mo.',
+};
+
+const faq = [
+	{
+		question: 'What does a Structural Drafter do?',
+		answer:
+			'A Structural Drafter produces construction documents for structural systems: framing plans, elevation views, connection details, foundation plans, rebar schedules, and structural notes. They work in Revit Structure or AutoCAD under the direction of your licensed Structural Engineer of Record, translating engineering calculations and design intent into construction-ready drawings.',
+	},
+	{
+		question: 'Can they model in Revit Structure or do they work in AutoCAD?',
+		answer:
+			'Our Structural Drafters are proficient in both Revit Structure for coordinated BIM environments and AutoCAD for traditional 2D production workflows. We match you with a specialist whose primary tools align to your project delivery method.',
+	},
+	{
+		question: 'Who is responsible for design authority and stamping?',
+		answer:
+			'Your licensed Structural Engineer of Record retains full design authority and stamp responsibility. Our Structural Drafters produce drawings and details under your engineer\'s direction, subject to your review and approval before any permit submission.',
+	},
+	{
+		question: 'How do Structural Drafters coordinate with architectural and MEP teams?',
+		answer:
+			'Structural Drafters coordinate through federated Revit models or linked AutoCAD files, running clash detection against architectural and MEP systems. They flag conflicts, flag proposed resolutions, and update drawings based on coordination outcomes — all under your structural engineer\'s direction.',
+	},
+	{
+		question: 'What is the cost savings vs. a US-based Structural Drafter?',
+		answer:
+			'US-based Structural Drafters typically cost $60,000–$90,000/year fully loaded. LATAM-based equivalents through LatAm Scalers start at approximately $3,500/month ($42,000/year) — a savings of 50–70% with no compromise on drafting quality or technical accuracy.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Structural Drafter',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faq.map((f) => ({
+		'@type': 'Question',
+		name: f.question,
+		acceptedAnswer: { '@type': 'Answer', text: f.answer },
+	})),
+};
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
+
+	<RoleTemplate
+		role="Structural Drafter"
+		category="aec"
+		hubHref="/aec/"
+		hubLabel="AEC Talent Hub"
+		h1="Hire a Dedicated Structural Drafter — Pre-Vetted LATAM Talent"
+		subheadline="Dedicated structural drafters for US engineering firms. Framing plans, connection details, foundation layouts, rebar schedules, and Revit structural coordination. US timezone. Vetted. Month-to-month."
+		atAGlance={[
+			{ label: 'Category', value: 'AEC — Structural' },
+			{ label: 'Tools', value: 'Revit Structure, AutoCAD, ETABS, SAP2000, Tekla' },
+			{ label: 'Pricing', value: 'From ~$3,500/mo' },
+			{ label: 'Availability', value: 'FT (40h) or PT (20h)' },
+		]}
+		overview="Our Structural Drafters bring production expertise at 50%+ lower cost than US-based hires. They transform structural calculations into construction-ready drawing sets — framing plans, connections, foundation details, and rebar schedules — in your Revit or AutoCAD environment. Working under your licensed SE, they integrate directly into your project delivery pipeline, freeing your senior engineers for analysis and design judgment work."
+		skills={[
+			'Structural framing plans and elevation drawings',
+			'Connection and joint details (steel, concrete, composite)',
+			'Foundation and basement plans with detail callouts',
+			'Rebar schedules and concrete reinforcement drawings',
+			'Steel member schedules and connection schedules',
+			'Section and elevation details with construction notes',
+			'Revit Structure modeling and coordination',
+			'Multi-discipline clash detection and coordination',
+			'Drawing automation and sheet set management',
+			'Building code reference notes and standard details',
+		]}
+		whyRemote="Structural drafting is entirely digital and production-focused — making it ideal for remote delivery. Your Structural Drafter works in your Revit or AutoCAD environment during your US business hours, participates in coordination meetings, and produces sheets to your firm's standard templates. LATAM timezone overlap (0–3 hours behind EST/CST) ensures real-time communication."
+		engagementOptions={[
+			{
+				title: 'Dedicated Individual Structural Drafter',
+				description:
+					'Full-time (40h/week) or part-time (20h/week) Structural Drafter embedded in your team. Works in your Revit Structure or AutoCAD environment, follows your drawing standards, and delivers sheets to your CD schedule.',
+				pricing: 'From ~$3,500/mo',
+			},
+			{
+				title: 'Structural Production Pod',
+				description:
+					'Two or more Structural Drafters working in parallel for multi-building or high-volume projects requiring coordinated sheet production.',
+				pricing: 'Custom — based on team size and scope',
+			},
+		]}
+		tools={[
+			{ name: 'Revit Structure', description: 'BIM-based structural modeling, 3D framing coordination, and construction document generation.' },
+			{ name: 'AutoCAD', description: '2D structural drafting for traditional drawing workflows and detail sheet production.' },
+			{ name: 'ETABS / SAP2000', description: 'Structural analysis software for reviewing and converting design calculations into drawing layouts.' },
+			{ name: 'Tekla Structures', description: 'Detailed structural modeling and 3D coordination for complex steel and concrete structures.' },
+			{ name: 'Navisworks', description: 'Multi-discipline clash detection for structural coordination against architectural and MEP systems.' },
+			{ name: 'Bluebeam Revu', description: 'Redline markup, structural drawing review, and coordination comment tracking.' },
+		]}
+		deliverables={[
+			'Structural framing plans (floor-by-floor layouts and orientations)',
+			'Structural elevation and section drawings',
+			'Connection details (welded, bolted, composite, concrete)',
+			'Foundation and basement plans with detail callouts',
+			'Rebar and reinforcement schedules with placement drawings',
+			'Steel member schedules with connection types',
+			'Detail sheets with standard connections and typical conditions',
+			'Revit Structure models coordinated with architectural and MEP',
+		]}
+		pricing="Dedicated Structural Drafters start at approximately $3,500/month for full-time engagement (40h/week). Part-time (20h/week) and structural pod configurations are also available. Pricing varies based on experience level (Revit vs. AutoCAD primary workflow) and project building type complexity (low-rise, high-rise, industrial)."
+		relatedRoles={[
+			{ title: 'Civil 3D Specialist', href: '/roles/civil-3d-specialist/', category: 'aec' },
+			{ title: 'Revit Drafter', href: '/roles/revit-drafter/', category: 'aec' },
+			{ title: 'Architectural Designer', href: '/roles/architectural-designer/', category: 'aec' },
+		]}
+		faq={faq}
+	/>
+</Layout>

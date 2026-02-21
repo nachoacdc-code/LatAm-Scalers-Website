@@ -1,0 +1,133 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import MetaHead from '../../../components/MetaHead.astro';
+import RoleTemplate from '../../../components/RoleTemplate.astro';
+
+const brand = 'LatAm Scalers';
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/roles/growth-product-designer/', baseUrl).toString();
+
+const meta = {
+	title: 'Hire a Dedicated Growth Product Designer — Pre-Vetted LATAM Talent for SaaS | LatAm Scalers',
+	description:
+		'Hire a dedicated growth product designer for SaaS and B2B platforms. User research, onboarding flows, conversion optimization, activation metrics, and data-driven design. Pre-vetted LATAM talent. From ~$3,000/mo.',
+};
+
+const faq = [
+	{
+		question: 'What is a Growth Product Designer?',
+		answer:
+			'A Growth Product Designer owns the intersection of product design and conversion metrics — focusing on activation, onboarding, feature adoption, and revenue-driving flows. They work from user research and analytics, designing and iterating on experiences that move users from signup → onboarding → aha moment → retention. Unlike feature designers, growth designers are metrics-obsessed and ship fast.',
+	},
+	{
+		question: 'How do they work with product managers and data analysts?',
+		answer:
+			'Growth Product Designers collaborate with product teams to identify high-impact conversion bottlenecks, design solutions, run A/B tests, and measure impact. They receive business metrics and user insights, then prototype and iterate rapidly. Most work in 1–2 week sprints with weekly stakeholder sync-ups.',
+	},
+	{
+		question: 'What metrics do they focus on?',
+		answer:
+			'Growth designers typically own metrics like signup-to-aha time, feature adoption rates, user retention, churn reduction, and revenue-per-user flows. They work backward from business goals (lower churn, higher activation) and design the user experience to unlock those metrics.',
+	},
+	{
+		question: 'Can they run A/B tests and analyze results?',
+		answer:
+			'Yes. Growth Product Designers work in collaboration with analytics teams to set up experiments, but they specialize in the design and iteration side. They partner with data teams to measure impact and learn from user behavior data.',
+	},
+	{
+		question: 'What does a Growth Product Designer cost?',
+		answer:
+			'Dedicated Growth Product Designers start at approximately $3,000–$3,500/month for full-time engagement (40h/week). US-based equivalents typically cost $80,000–$130,000/year fully loaded — LATAM-based specialists save 55–70% with comparable design velocity and metrics focus.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Growth Product Designer',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faq.map((f) => ({
+		'@type': 'Question',
+		name: f.question,
+		acceptedAnswer: { '@type': 'Answer', text: f.answer },
+	})),
+};
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
+
+	<RoleTemplate
+		role="Growth Product Designer"
+		category="design"
+		hubHref="/design/"
+		hubLabel="Design Talent Hub"
+		h1="Hire a Dedicated Growth Product Designer — Pre-Vetted LATAM Talent"
+		subheadline="Dedicated growth product designers for SaaS and B2B platforms. Onboarding flows, activation metrics, conversion optimization, and data-driven design. US timezone. Vetted. Month-to-month."
+		atAGlance={[
+			{ label: 'Category', value: 'Design — SaaS Growth' },
+			{ label: 'Tools', value: 'Figma, Amplitude, Mixpanel, Hotjar, Maze' },
+			{ label: 'Pricing', value: 'From ~$3,000/mo' },
+			{ label: 'Availability', value: 'FT (40h) or PT (20h)' },
+		]}
+		overview="Our Growth Product Designers focus on SaaS Tier 1 and 2 demand — designing for activation, onboarding, feature discovery, and retention metrics. They work backwards from business goals (reduce churn, increase aha adoption, unlock revenue flows) and prototype rapid iterations. Working alongside your product and analytics teams, they ship fast-moving experiments and measure design impact on key metrics."
+		skills={[
+			'Onboarding flow design and activation optimization',
+			'User research (interviews, usability testing, surveys)',
+			'Feature discovery and adoption-driving UX',
+			'Conversion funnel optimization and analysis',
+			'A/B test design and iteration methodology',
+			'Product analytics and metrics interpretation',
+			'Fast prototyping and iteration workflows',
+			'User retention design and churn reduction',
+			'Data-driven decision making and design validation',
+			'Wireframing, prototyping, and interaction design',
+		]}
+		whyRemote="Growth design thrives in fast-moving, metrics-driven teams — and remote delivery fits perfectly. Your Growth Product Designer works in your Figma workspace, participates in daily standups (timezone-aligned), and iterates on high-impact flows. LATAM timezone overlap (0–3 hours behind EST/CST) enables real-time collaboration on sprints."
+		engagementOptions={[
+			{
+				title: 'Dedicated Growth Product Designer',
+				description:
+					'Full-time (40h/week) or part-time (20h/week) Growth designer embedded in your product team. Owns specific growth verticals (onboarding, activation, retention) and ships experiments in sprint cycles.',
+				pricing: 'From ~$3,000/mo',
+			},
+			{
+				title: 'Growth Design Team',
+				description:
+					'Multiple growth designers working on parallel growth initiatives (acquisition, onboarding, retention, monetization). Includes senior design leadership for strategy oversight.',
+				pricing: 'Custom — based on team size and scope',
+			},
+		]}
+		tools={[
+			{ name: 'Figma', description: 'Primary design and prototyping tool for growth experiments, user flows, and rapid iteration.' },
+			{ name: 'Amplitude / Mixpanel', description: 'User behavior analytics and cohort analysis to identify growth opportunities and measure design impact.' },
+			{ name: 'Hotjar', description: 'Heatmaps, session recordings, and user feedback to understand onboarding friction.' },
+			{ name: 'Maze', description: 'Rapid user testing and validation of design directions on target users.' },
+			{ name: 'Slack / Asana', description: 'Team communication and sprint management for fast-moving growth work.' },
+			{ name: 'SQL / Analytics Dashboards', description: 'Data fluency and direct querying of product databases to identify patterns and opportunities.' },
+		]}
+		deliverables={[
+			'Onboarding and activation flow designs with user research',
+			'High-fidelity prototypes ready for development handoff',
+			'A/B test designs with success metrics and analysis',
+			'User research insights and persona documentation',
+			'Feature adoption funnels and retention design flows',
+			'Wireframes and interaction specifications',
+			'Design system contributions for growth components',
+			'Metrics recommendations and KPI documentation',
+		]}
+		pricing="Dedicated Growth Product Designers start at approximately $3,000–$3,500/month for full-time engagement (40h/week). Part-time (20h/week) and growth team configurations are also available. Pricing varies based on experience level (growth marketing vs. product design background) and SaaS segment specialization."
+		relatedRoles={[
+			{ title: 'UI/UX Designer', href: '/roles/ui-ux-designer/', category: 'design' },
+			{ title: 'Performance Creative Strategist', href: '/roles/performance-creative-strategist/', category: 'design' },
+			{ title: 'Analytics Specialist', href: '/roles/analytics-specialist/', category: 'marketing' },
+		]}
+		faq={faq}
+	/>
+</Layout>

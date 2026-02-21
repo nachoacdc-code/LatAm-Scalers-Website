@@ -1,0 +1,133 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import MetaHead from '../../../components/MetaHead.astro';
+import RoleTemplate from '../../../components/RoleTemplate.astro';
+
+const brand = 'LatAm Scalers';
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/roles/marketing-ops-specialist/', baseUrl).toString();
+
+const meta = {
+	title: 'Hire a Dedicated Marketing Ops Specialist — Pre-Vetted LATAM Talent for SaaS | LatAm Scalers',
+	description:
+		'Hire a dedicated marketing ops specialist for SaaS and B2B companies. Marketing automation, lead routing, CRM administration, reporting, and stack optimization. Pre-vetted LATAM talent. From ~$2,800/mo.',
+};
+
+const faq = [
+	{
+		question: 'What is a Marketing Ops Specialist?',
+		answer:
+			'A Marketing Ops Specialist (MarOps) is part systems engineer, part analyst — they manage marketing technology stack, administer CRM platforms, build automation workflows, track lead routing and SLA compliance, and produce reporting and analytics. They ensure marketing and sales alignment through data pipelines.',
+	},
+	{
+		question: 'What is the demand indicator for Marketing Ops?',
+		answer:
+			'VP RevOps titles grew +300% over the past 5 years; 50–75% of high-growth B2B companies now have dedicated RevOps/MarOps resources. This represents formalization of the MarOps role at scale.',
+	},
+	{
+		question: 'What does a Marketing Ops Specialist manage?',
+		answer:
+			'They typically manage HubSpot/Salesforce administration, marketing automation platforms, data warehouse connections, lead scoring and routing, sales & marketing SLA tracking, reporting dashboards, and tech stack integration.',
+	},
+	{
+		question: 'How do they support lead quality and sales alignment?',
+		answer:
+			'Marketing Ops Specialists implement lead scoring models, set up lead routing workflows, track sales SLA compliance (lead response time, follow-up rates), and provide dashboards that show marketing contribution to pipeline. They\'re often the bridge between marketing and sales teams.',
+	},
+	{
+		question: 'What does a Marketing Ops Specialist cost?',
+		answer:
+			'Dedicated Marketing Ops Specialists start at approximately $2,800–$3,200/month for full-time engagement (40h/week). US-based equivalents typically cost $75,000–$115,000/year fully loaded — LATAM-based specialists save 50–65%.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Marketing Ops Specialist',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faq.map((f) => ({
+		'@type': 'Question',
+		name: f.question,
+		acceptedAnswer: { '@type': 'Answer', text: f.answer },
+	})),
+};
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
+
+	<RoleTemplate
+		role="Marketing Ops Specialist"
+		category="marketing"
+		hubHref="/marketing/"
+		hubLabel="Marketing Talent Hub"
+		h1="Hire a Dedicated Marketing Ops Specialist — Pre-Vetted LATAM Talent"
+		subheadline="Dedicated marketing ops specialists for SaaS and B2B companies. Marketing automation, CRM administration, lead routing, revenue operations support. US timezone. Vetted. Month-to-month."
+		atAGlance={[
+			{ label: 'Category', value: 'Marketing — Operations & RevOps' },
+			{ label: 'Tools', value: 'HubSpot, Salesforce, data warehouses, SQL, Zapier' },
+			{ label: 'Pricing', value: 'From ~$2,800/mo' },
+			{ label: 'Availability', value: 'FT (40h) or PT (20h)' },
+		]}
+		overview="Marketing Ops Specialists are foundational for SaaS growth — managing automation, lead quality, sales/marketing alignment, and reporting. With +300% growth in VP RevOps titles and 50–75% of high-growth B2B companies now staffed for MarOps, the role has become table stakes. Our specialists manage your tech stack, implement workflows, and ensure marketing drives predictable pipeline."
+		skills={[
+			'CRM administration (HubSpot, Salesforce)',
+			'Marketing automation workflow design and implementation',
+			'Lead scoring and lead routing automation',
+			'Database management and data quality',
+			'API integrations and data pipeline setup',
+			'Sales & marketing SLA tracking and reporting',
+			'Attribution modeling and revenue reporting',
+			'Analytics dashboard creation and maintenance',
+			'Salesforce and HubSpot custom field/object design',
+			'Lead lifecycle management and lifecycle tracking',
+		]}
+		whyRemote="Marketing Ops is platform-driven and process-oriented — ideal for remote delivery. Your Marketing Ops Specialist manages your HubSpot/Salesforce account, builds workflows, creates dashboards, and participates in weekly team syncs. LATAM timezone (0–3 hours behind EST/CST) enables real-time support."
+		engagementOptions={[
+			{
+				title: 'Dedicated Marketing Ops Specialist',
+				description:
+					'Full-time (40h/week) or part-time (20h/week) specialist managing your marketing tech stack, CRM administration, automation, and reporting. Serves as the primary MarOps resource for your team.',
+				pricing: 'From ~$2,800/mo',
+			},
+			{
+				title: 'Revenue Operations Team',
+				description:
+					'Multiple ops specialists for large-scale SaaS operations spanning marketing, sales, and customer success. Includes RevOps director role for strategy and cross-functional alignment.',
+				pricing: 'Custom — based on team size and scope',
+			},
+		]}
+		tools={[
+			{ name: 'HubSpot / Salesforce', description: 'CRM platform administration, custom fields, objects, and workflow automation.' },
+			{ name: 'Data warehouses', description: 'Snowflake, BigQuery, or data lakes for centralized customer data and advanced analytics.' },
+			{ name: 'SQL / BI tools', description: 'Direct database querying for reporting, Tableau/Looker for dashboard creation.' },
+			{ name: 'Zapier / Make', description: 'Low-code integration platform for connecting CRM to marketing and data tools.' },
+			{ name: 'APIs & webhooks', description: 'Direct API connections for custom data syncing and workflow automation.' },
+			{ name: 'Slack / Asana', description: 'Team communication and project tracking for MarOps initiatives.' },
+		]}
+		deliverables={[
+			'CRM architecture design and custom configuration',
+			'Lead scoring and lead routing workflows',
+			'Marketing automation sequences and triggers',
+			'Sales & marketing SLA tracking dashboards',
+			'Revenue attribution reports and pipeline analysis',
+			'Data integration documentation and specifications',
+			'Lead lifecycle reporting and campaign attribution',
+			'Monthly MarOps health metrics and optimization recommendations',
+		]}
+		pricing="Dedicated Marketing Ops Specialists start at approximately $2,800–$3,200/month for full-time engagement (40h/week). Part-time (20h/week) and revenue operations team configurations are also available. Pricing varies based on certification level (HubSpot Academy, Salesforce Admin), platform specialization, and operational complexity."
+		relatedRoles={[
+			{ title: 'HubSpot Specialist', href: '/roles/hubspot-specialist/', category: 'marketing' },
+			{ title: 'Analytics Specialist', href: '/roles/analytics-specialist/', category: 'marketing' },
+			{ title: 'Lifecycle Email Specialist', href: '/roles/lifecycle-email-specialist/', category: 'marketing' },
+		]}
+		faq={faq}
+	/>
+</Layout>

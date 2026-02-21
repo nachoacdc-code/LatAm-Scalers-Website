@@ -1,0 +1,133 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import MetaHead from '../../../components/MetaHead.astro';
+import RoleTemplate from '../../../components/RoleTemplate.astro';
+
+const brand = 'LatAm Scalers';
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/roles/motion-graphics-specialist/', baseUrl).toString();
+
+const meta = {
+	title: 'Hire a Dedicated Motion Graphics Specialist — Pre-Vetted LATAM Talent | LatAm Scalers',
+	description:
+		'Hire a dedicated motion graphics specialist for video production, animated ads, explainers, and visual storytelling. After Effects, Premiere Pro, Cinema 4D expertise. Pre-vetted LATAM talent. From ~$3,200/mo.',
+};
+
+const faq = [
+	{
+		question: 'What does a Motion Graphics Specialist do?',
+		answer:
+			'A Motion Graphics Specialist creates animated visual content — animated ads, explainer videos, kinetic typography, visual effects, lower thirds, and motion design elements. They combine design, animation, and video production to create engaging, information-forward video content for marketing, product, and sales use.',
+	},
+	{
+		question: 'What software do they work in?',
+		answer:
+			'Motion Graphics Specialists typically work in Adobe After Effects (primary animation tool), Adobe Premiere Pro (video editing), and often Cinema 4D or Blender for 3D motion design. They also use Figma for design direction and Final Cut Pro for alternative workflows.',
+	},
+	{
+		question: 'Can they create explainer videos?',
+		answer:
+			'Yes. Explainer videos — animated breakdowns of complex ideas, processes, or product features — are one of the most common motion graphics deliverables. Most specialists work with script, voiceover, and design direction to produce polished explainers.',
+	},
+	{
+		question: 'How do they work with brand guidelines?',
+		answer:
+			'Motion Graphics Specialists receive your brand guidelines, color palettes, and design systems, then produce all animations within those constraints. They create custom templates and animation libraries specific to your brand voice.',
+	},
+	{
+		question: 'What is the cost?',
+		answer:
+			'Dedicated Motion Graphics Specialists start at approximately $3,200–$3,500/month for full-time engagement (40h/week). US-based equivalents typically cost $70,000–$110,000/year fully loaded — LATAM-based specialists save 50–65% with comparable output quality and animation skill.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Motion Graphics Specialist',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faq.map((f) => ({
+		'@type': 'Question',
+		name: f.question,
+		acceptedAnswer: { '@type': 'Answer', text: f.answer },
+	})),
+};
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
+
+	<RoleTemplate
+		role="Motion Graphics Specialist"
+		category="design"
+		hubHref="/design/"
+		hubLabel="Design Talent Hub"
+		h1="Hire a Dedicated Motion Graphics Specialist — Pre-Vetted LATAM Talent"
+		subheadline="Dedicated motion graphics specialists for video production, animated ads, explainers, and visual storytelling. After Effects, Premiere Pro, Cinema 4D expertise. US timezone. Vetted. Month-to-month."
+		atAGlance={[
+			{ label: 'Category', value: 'Design — Motion & Video' },
+			{ label: 'Tools', value: 'After Effects, Premiere Pro, Cinema 4D, Figma' },
+			{ label: 'Pricing', value: 'From ~$3,200/mo' },
+			{ label: 'Availability', value: 'FT (40h) or PT (20h)' },
+		]}
+		overview="Our Motion Graphics Specialists deliver polished animated content for marketing, product, and sales — from short-form social ads to full explainer videos. With 60–80% YoY growth in video content demand across DTC and SaaS, motion graphics is one of the highest-velocity design specializations. They work in your brand guidelines and produce animation at scale."
+		skills={[
+			'Animation and keyframe mastery in After Effects',
+			'Explainer video production and visual storytelling',
+			'Animated advertising and social media content',
+			'Motion typography and kinetic text design',
+			'Visual effects and motion compositing',
+			'Video editing and timeline management',
+			'3D motion graphics (Cinema 4D, Blender)',
+			'Storyboarding and animation planning',
+			'Brand guideline translation to motion',
+			'Audio syncing and music integration',
+		]}
+		whyRemote="Motion graphics is entirely digital and production-focused — making it perfectly suited to remote delivery. Your Motion Graphics Specialist works in Creative Cloud, submits exports to your specs, and iterates on feedback asynchronously or in sync calls. LATAM timezone (0–3 hours behind EST/CST) allows for same-day turnarounds on edits."
+		engagementOptions={[
+			{
+				title: 'Dedicated Motion Graphics Specialist',
+				description:
+					'Full-time (40h/week) or part-time (20h/week) specialist handling all video animation, explainers, and motion design for your brand. Works in your asset repository and delivers to your specs.',
+				pricing: 'From ~$3,200/mo',
+			},
+			{
+				title: 'Motion Graphics Production Team',
+				description:
+					'Multiple motion specialists working in parallel for high-volume video production (product launches, multi-channel campaigns, content libraries). Includes creative director oversight.',
+				pricing: 'Custom — based on team size and scope',
+			},
+		]}
+		tools={[
+			{ name: 'Adobe After Effects', description: 'Primary motion graphics and animation tool for producing broadcast-quality animated content.' },
+			{ name: 'Adobe Premiere Pro', description: 'Video editing, timeline management, and final output rendering.' },
+			{ name: 'Cinema 4D / Blender', description: '3D modeling and animation for complex motion graphics and visual effects.' },
+			{ name: 'Adobe Figma', description: 'Design collaboration and motion design direction planning.' },
+			{ name: 'Stock footage & music libraries', description: 'Asset sourcing for production efficiency (Storyblocks, Epidemic Sound, Adobe Stock).' },
+			{ name: 'Frame.io', description: 'Video review and collaborative feedback on motion graphics deliverables.' },
+		]}
+		deliverables={[
+			'Animated explainer videos (30s–2min) with voiceover',
+			'Social media animated ads (15s–30s) for TikTok, Reels, YouTube',
+			'Animated product demos and feature videos',
+			'Motion typography and kinetic text sequences',
+			'Visual effects and motion compositing',
+			'Animated infographics and data visualization',
+			'Brand-compliant motion templates and animation libraries',
+			'Full video editing from raw footage to final output',
+		]}
+		pricing="Dedicated Motion Graphics Specialists start at approximately $3,200–$3,500/month for full-time engagement (40h/week). Part-time (20h/week) and motion graphics team configurations are also available. Pricing varies based on experience level (After Effects vs. 3D specialization) and output volume."
+		relatedRoles={[
+			{ title: 'Performance Creative Strategist', href: '/roles/performance-creative-strategist/', category: 'design' },
+			{ title: 'Brand Designer', href: '/roles/brand-visual-designer/', category: 'design' },
+			{ title: 'UI/UX Designer', href: '/roles/ui-ux-designer/', category: 'design' },
+		]}
+		faq={faq}
+	/>
+</Layout>

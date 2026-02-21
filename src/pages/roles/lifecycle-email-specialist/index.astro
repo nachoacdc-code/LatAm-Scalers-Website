@@ -1,0 +1,133 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import MetaHead from '../../../components/MetaHead.astro';
+import RoleTemplate from '../../../components/RoleTemplate.astro';
+
+const brand = 'LatAm Scalers';
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/roles/lifecycle-email-specialist/', baseUrl).toString();
+
+const meta = {
+	title: 'Hire a Dedicated Lifecycle Email Specialist — Pre-Vetted LATAM Talent for DTC | LatAm Scalers',
+	description:
+		'Hire a dedicated lifecycle email specialist for DTC and SaaS. Retention marketing, email sequences, SMS campaigns, and lifecycle automation. +20% YoY demand. Pre-vetted LATAM talent. From ~$2,500/mo.',
+};
+
+const faq = [
+	{
+		question: 'What does a Lifecycle Email Specialist do?',
+		answer:
+			'A Lifecycle Email Specialist designs and executes retention marketing through email and SMS. They create customer journey sequences — welcome series, product education, re-engagement, win-back, VIP tiers — and optimize for open rates, click rates, and conversion. For DTC, lifecycle email represents 20–30% of revenue; for SaaS, it\'s critical for retention metrics.',
+	},
+	{
+		question: 'What channels do they work across?',
+		answer:
+			'Lifecycle specialists typically manage email as primary channel and increasingly SMS for retention. They may also oversee push notifications and in-app messaging depending on your platform stack.',
+	},
+	{
+		question: 'How do they optimize for retention?',
+		answer:
+			'They segment customers by lifecycle stage, purchase history, and behavior; design targeted sequences to move them through journeys (onboarding → product discovery → purchase → VIP); and optimize based on churn risk data and engagement metrics.',
+	},
+	{
+		question: 'What is the demand for Lifecycle Email roles?',
+		answer:
+			'Lifecycle email demand is growing +20% YoY, particularly in DTC. Email remains a 4–5x ROI channel for retention, making lifecycle specialists increasingly valuable for customer retention and revenue optimization.',
+	},
+	{
+		question: 'What does a Lifecycle Email Specialist cost?',
+		answer:
+			'Dedicated Lifecycle Email Specialists start at approximately $2,500–$3,000/month for full-time engagement (40h/week). US-based equivalents typically cost $60,000–$85,000/year fully loaded — LATAM-based specialists save 50–60%.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Lifecycle Email Specialist',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faq.map((f) => ({
+		'@type': 'Question',
+		name: f.question,
+		acceptedAnswer: { '@type': 'Answer', text: f.answer },
+	})),
+};
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
+
+	<RoleTemplate
+		role="Lifecycle Email Specialist"
+		category="marketing"
+		hubHref="/marketing/"
+		hubLabel="Marketing Talent Hub"
+		h1="Hire a Dedicated Lifecycle Email Specialist — Pre-Vetted LATAM Talent"
+		subheadline="Dedicated lifecycle email specialists for DTC and SaaS. Retention marketing, automated sequences, SMS campaigns, and customer journey optimization. US timezone. Vetted. Month-to-month."
+		atAGlance={[
+			{ label: 'Category', value: 'Marketing — Retention' },
+			{ label: 'Tools', value: 'Klaviyo, Drip, HubSpot, SMS platforms' },
+			{ label: 'Pricing', value: 'From ~$2,500/mo' },
+			{ label: 'Availability', value: 'FT (40h) or PT (20h)' },
+		]}
+		overview="Lifecycle email specialists own retention economics — a function that's critical but often under-resourced. With +20% YoY demand and email representing 20–30% of DTC revenue, our specialists build automated sequences, segment audiences, and optimize journeys to maximize lifetime value. Working with your data team, they move customers through engagement, purchase, and VIP tiers."
+		skills={[
+			'Automated email sequence design and build',
+			'Customer lifecycle segmentation and journey mapping',
+			'Welcome series and onboarding sequences',
+			'Product education and feature adoption emails',
+			'Retention and re-engagement campaigns',
+			'Win-back and at-risk customer recovery',
+			'SMS campaign design and multi-channel orchestration',
+			'A/B testing and conversion rate optimization',
+			'Email template design and responsive layout',
+			'Analytics and revenue impact reporting',
+		]}
+		whyRemote="Email and SMS campaigns are data-driven and asynchronous-friendly — ideal for remote work. Your Lifecycle Email Specialist works in your email platform (Klaviyo, HubSpot), builds sequences, runs analytics, and iterates on performance. LATAM timezone (0–3 hours behind EST/CST) enables real-time support."
+		engagementOptions={[
+			{
+				title: 'Dedicated Lifecycle Email Specialist',
+				description:
+					'Full-time (40h/week) or part-time (20h/week) specialist managing all lifecycle email sequences, SMS campaigns, and retention optimization. Owns customer journey design and performance metrics.',
+				pricing: 'From ~$2,500/mo',
+			},
+			{
+				title: 'Retention Marketing Team',
+				description:
+					'Multiple lifecycle specialists for large-scale DTC operations or multi-brand portfolios. Includes retention marketing leader for strategy oversight.',
+				pricing: 'Custom — based on team size and scope',
+			},
+		]}
+		tools={[
+			{ name: 'Klaviyo', description: 'Leading DTC email and SMS platform for segmentation, automation, and retention marketing.' },
+			{ name: 'HubSpot / Drip', description: 'Alternative email automation platforms for SaaS and B2B lifecycle campaigns.' },
+			{ name: 'SMS providers', description: 'Twilio, Attentive, or native SMS via email platform for multi-channel retention.' },
+			{ name: 'Analytics platforms', description: 'Amplitude, Mixpanel, or native analytics for customer behavior segmentation.' },
+			{ name: 'Data warehouse / SQL', description: 'Access to customer data for advanced segmentation and cohort analysis.' },
+			{ name: 'Slack / reporting dashboards', description: 'Team communication and real-time performance tracking.' },
+		]}
+		deliverables={[
+			'Welcome and onboarding email sequences',
+			'Automated lifecycle flows (post-purchase, re-engagement, VIP)',
+			'SMS retention campaigns and alerts',
+			'Segmented customer journey maps',
+			'Email template library and designs',
+			'A/B test results and optimization recommendations',
+			'Monthly retention analytics and revenue reports',
+			'Win-back and at-risk customer recovery programs',
+		]}
+		pricing="Dedicated Lifecycle Email Specialists start at approximately $2,500–$3,000/month for full-time engagement (40h/week). Part-time (20h/week) and retention team configurations are also available. Pricing varies based on experience level (email marketer vs. retention strategist background), platform specialization, and campaign volume."
+		relatedRoles={[
+			{ title: 'Marketing Ops Specialist', href: '/roles/marketing-ops-specialist/', category: 'marketing' },
+			{ title: 'Analytics Specialist', href: '/roles/analytics-specialist/', category: 'marketing' },
+			{ title: 'Growth Marketing Manager', href: '/roles/growth-marketing-manager/', category: 'marketing' },
+		]}
+		faq={faq}
+	/>
+</Layout>

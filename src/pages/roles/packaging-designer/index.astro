@@ -1,0 +1,133 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import MetaHead from '../../../components/MetaHead.astro';
+import RoleTemplate from '../../../components/RoleTemplate.astro';
+
+const brand = 'LatAm Scalers';
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/roles/packaging-designer/', baseUrl).toString();
+
+const meta = {
+	title: 'Hire a Dedicated Packaging Designer — Pre-Vetted LATAM DTC Talent | LatAm Scalers',
+	description:
+		'Hire a dedicated packaging designer for DTC and e-commerce brands. Product packaging, unboxing experience design, label design, and structural packaging. Pre-vetted LATAM talent. From ~$3,000/mo.',
+};
+
+const faq = [
+	{
+		question: 'What does a Packaging Designer do?',
+		answer:
+			'A Packaging Designer creates end-to-end packaging experiences — from structural design (box dimensions, materials) to graphic design (labels, unboxing experience). They balance aesthetic brand expression, functional specifications, manufacturing constraints, and cost optimization. For DTC brands, packaging is a key brand touchpoint and marketing asset.',
+	},
+	{
+		question: 'Do they handle both graphic design and structural design?',
+		answer:
+			'Yes. Most Packaging Designers have dual expertise — they design the visual branding/graphics and work with manufacturers to understand structural requirements (folds, die lines, material specs). Some specialize more in graphics; others in structural — we match to your needs.',
+	},
+	{
+		question: 'What is the typical project timeline?',
+		answer:
+			'Packaging projects typically run 4–8 weeks from concept through production-ready files. This includes: design concept, iterations, structural engineering, die-line development, and pre-production proofs with your manufacturer.',
+	},
+	{
+		question: 'Can they manage the vendor and manufacturing relationship?',
+		answer:
+			'Packaging Designers typically collaborate with your packaging vendor/manufacturer but don\'t manage the relationship themselves. They produce print-ready and structural files your vendor can use; ongoing vendor communication is your responsibility.',
+	},
+	{
+		question: 'What is the cost?',
+		answer:
+			'Dedicated Packaging Designers start at approximately $3,000–$3,500/month for full-time engagement (40h/week). US-based equivalents typically cost $65,000–$95,000/year fully loaded — LATAM-based specialists save 50–65% with comparable design quality and packaging expertise.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Packaging Designer',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faq.map((f) => ({
+		'@type': 'Question',
+		name: f.question,
+		acceptedAnswer: { '@type': 'Answer', text: f.answer },
+	})),
+};
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
+
+	<RoleTemplate
+		role="Packaging Designer"
+		category="design"
+		hubHref="/design/"
+		hubLabel="Design Talent Hub"
+		h1="Hire a Dedicated Packaging Designer — Pre-Vetted LATAM Talent"
+		subheadline="Dedicated packaging designers for DTC and e-commerce brands. Product packaging, unboxing experience, label design, and structural specification. US timezone. Vetted. Month-to-month."
+		atAGlance={[
+			{ label: 'Category', value: 'Design — DTC Product Packaging' },
+			{ label: 'Tools', value: 'Adobe CC (Illustrator, InDesign), Figma, Affinity, SketchUp' },
+			{ label: 'Pricing', value: 'From ~$3,000/mo' },
+			{ label: 'Availability', value: 'FT (40h) or PT (20h)' },
+		]}
+		overview="Our Packaging Designers deliver DTC-focused unboxing experiences — combining brand storytelling, aesthetic impact, functional specification, and manufacturing realism. With 1,000+ monthly searches for 'packaging design,' DTC packaging is a high-demand specialization. They design print-ready graphics and structural specifications that your manufacturer can produce."
+		skills={[
+			'Graphic design for packaging (labels, box graphics, inserts)',
+			'Structural packaging design (box dimensions, folds, die-lines)',
+			'Unboxing experience design and product presentation',
+			'Material selection and sustainability considerations',
+			'Production file preparation (bleeds, color profiles, die-lines)',
+			'Brand guideline translation to packaging',
+			'Product photography and packaging mockups',
+			'Packaging innovation and differentiation',
+			'Cost optimization and manufacturing constraints',
+			'Label design for regulatory compliance and brand storytelling',
+		]}
+		whyRemote="Packaging design is highly visual and file-driven — ideal for remote delivery. Your Packaging Designer works in Adobe CC, participates in design review calls, and produces print-ready files and structural specs. LATAM timezone (0–3 hours behind EST/CST) enables real-time iteration and feedback."
+		engagementOptions={[
+			{
+				title: 'Dedicated Packaging Designer',
+				description:
+					'Full-time (40h/week) or part-time (20h/week) designer handling all packaging projects — from concept through production-ready files. Manages iterative design and structural specification.',
+				pricing: 'From ~$3,000/mo',
+			},
+			{
+				title: 'Packaging Design Team',
+				description:
+					'Multiple packaging designers for DTC brands with diverse product lines or high-volume packaging launches. Includes creative director and manufacturing liaison roles.',
+				pricing: 'Custom — based on team size and scope',
+			},
+		]}
+		tools={[
+			{ name: 'Adobe Illustrator', description: 'Primary tool for graphic design, vector artwork, and print file preparation for packaging labels and box graphics.' },
+			{ name: 'Adobe InDesign', description: 'Layout and multi-page document design for complex packaging templates and production specs.' },
+			{ name: 'Adobe Photoshop', description: 'Photo editing and mockup creation for packaging visuals and presentation materials.' },
+			{ name: 'Figma', description: 'Collaborative design platform for real-time feedback on packaging concepts.' },
+			{ name: 'SketchUp', description: '3D structural packaging visualization and die-line design.' },
+			{ name: 'Dieline software', description: 'Box Designer or similar tools for structural die-line and template generation.' },
+		]}
+		deliverables={[
+			'Packaging graphic design (labels, box sleeves, tissue inserts)',
+			'Structural die-lines and box template specifications',
+			'Print-ready production files (bleeds, color modes, specifications)',
+			'Packaging mockups and 3D renderings',
+			'Material and sustainability recommendations',
+			'Label artwork for regulatory compliance (nutrition, warnings, etc.)',
+			'Unboxing experience design and insert materials',
+			'Manufacturing specification sheet and vendor communication files',
+		]}
+		pricing="Dedicated Packaging Designers start at approximately $3,000–$3,500/month for full-time engagement (40h/week). Part-time (20h/week) and packaging design team configurations are also available. Pricing varies based on experience level, product category specialization (food, beauty, consumer goods), and project volume."
+		relatedRoles={[
+			{ title: 'Brand Designer', href: '/roles/brand-visual-designer/', category: 'design' },
+			{ title: 'Production Designer', href: '/roles/production-designer/', category: 'design' },
+			{ title: 'Presentation Designer', href: '/roles/presentation-designer/', category: 'design' },
+		]}
+		faq={faq}
+	/>
+</Layout>

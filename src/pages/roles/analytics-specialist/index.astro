@@ -1,0 +1,133 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import MetaHead from '../../../components/MetaHead.astro';
+import RoleTemplate from '../../../components/RoleTemplate.astro';
+
+const brand = 'LatAm Scalers';
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/roles/analytics-specialist/', baseUrl).toString();
+
+const meta = {
+	title: 'Hire a Dedicated Analytics Specialist — Pre-Vetted LATAM Data Talent | LatAm Scalers',
+	description:
+		'Hire a dedicated analytics specialist for SaaS and DTC brands. GA4, attribution, data warehouses, dashboarding, and performance insights. +27% pay premium. Pre-vetted LATAM talent. From ~$3,000/mo.',
+};
+
+const faq = [
+	{
+		question: 'What does an Analytics Specialist do?',
+		answer:
+			'An Analytics Specialist owns data infrastructure, reporting, and insights for your business. They set up GA4 tracking, manage data warehouse pipelines, create dashboards, develop attribution models, and deliver actionable insights to inform marketing, product, and business decisions.',
+	},
+	{
+		question: 'What is the pay premium for analytics roles?',
+		answer:
+			'Analytics specialists command +27% pay premium vs. general marketing roles. This reflects both technical specialization and business impact — analytics drives retention, growth, and efficiency across the org.',
+	},
+	{
+		question: 'What tools do they specialize in?',
+		answer:
+			'Analytics Specialists typically work in GA4, Google Data Studio, SQL data warehouses (Snowflake, BigQuery), and business intelligence tools (Tableau, Looker). Some specialize in web analytics; others in product analytics (Amplitude, Mixpanel).',
+	},
+	{
+		question: 'Can they build attribution models?',
+		answer:
+			'Yes. Advanced Analytics Specialists can build multi-touch attribution models, customer journey analysis, and cohort-based reporting. This requires SQL and BI tool proficiency — depth is confirmed during staffing.',
+	},
+	{
+		question: 'What does an Analytics Specialist cost?',
+		answer:
+			'Dedicated Analytics Specialists start at approximately $3,000–$3,500/month for full-time engagement (40h/week). US-based equivalents typically cost $80,000–$120,000/year fully loaded — LATAM-based specialists save 50–65%.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Analytics Specialist',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faq.map((f) => ({
+		'@type': 'Question',
+		name: f.question,
+		acceptedAnswer: { '@type': 'Answer', text: f.answer },
+	})),
+};
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
+
+	<RoleTemplate
+		role="Analytics Specialist"
+		category="marketing"
+		hubHref="/marketing/"
+		hubLabel="Marketing Talent Hub"
+		h1="Hire a Dedicated Analytics Specialist — Pre-Vetted LATAM Talent"
+		subheadline="Dedicated analytics specialists for SaaS and DTC brands. GA4, data warehouses, attribution modeling, dashboarding, and performance insights. US timezone. Vetted. Month-to-month."
+		atAGlance={[
+			{ label: 'Category', value: 'Marketing — Data & Analytics' },
+			{ label: 'Tools', value: 'GA4, Snowflake, BigQuery, Tableau, Looker, SQL' },
+			{ label: 'Pricing', value: 'From ~$3,000/mo' },
+			{ label: 'Availability', value: 'FT (40h) or PT (20h)' },
+		]}
+		overview="Analytics Specialists command +27% pay premium vs. general marketing roles — reflecting both technical depth and strategic impact. They own data infrastructure, reporting systems, and insights that drive decisions across marketing, product, and finance. Working alongside your team, they build dashboards, develop attribution models, and transform raw data into actionable business insights."
+		skills={[
+			'Google Analytics 4 (GA4) implementation and configuration',
+			'Event tracking and data collection strategy',
+			'SQL querying and database management',
+			'Data warehouse setup (Snowflake, BigQuery, Redshift)',
+			'Attribution modeling and multi-touch attribution',
+			'Cohort analysis and customer segmentation',
+			'Dashboard and BI tool design (Tableau, Looker, Data Studio)',
+			'Product analytics (Amplitude, Mixpanel, Heap)',
+			'Statistical analysis and A/B testing',
+			'Data governance and privacy compliance (GDPR, CCPA)',
+		]}
+		whyRemote="Analytics work is data-driven and asynchronous — ideal for remote delivery. Your Analytics Specialist works in your GA4 account, data warehouse, and BI tools, presenting insights in weekly dashboards and strategy reviews. LATAM timezone (0–3 hours behind EST/CST) enables consistent support."
+		engagementOptions={[
+			{
+				title: 'Dedicated Analytics Specialist',
+				description:
+					'Full-time (40h/week) or part-time (20h/week) specialist managing your analytics infrastructure, GA4 implementation, dashboarding, and insights reporting.',
+				pricing: 'From ~$3,000/mo',
+			},
+			{
+				title: 'Analytics Team',
+				description:
+					'Multiple analytics specialists for complex, multi-function data environments — marketing analytics, product analytics, data engineering. Includes analytics leader role.',
+				pricing: 'Custom — based on team size and scope',
+			},
+		]}
+		tools={[
+			{ name: 'Google Analytics 4', description: 'Event-based web analytics for tracking user behavior, conversion funnels, and attribution.' },
+			{ name: 'Data warehouses', description: 'Snowflake, BigQuery, Redshift for centralized customer data and advanced analytics.' },
+			{ name: 'SQL databases', description: 'Direct querying for custom reporting and data analysis.' },
+			{ name: 'BI & visualization tools', description: 'Tableau, Looker, Data Studio for dashboard creation and business intelligence.' },
+			{ name: 'Product analytics', description: 'Amplitude, Mixpanel, Heap for user behavior, funnel, and retention analysis.' },
+			{ name: 'Python / R', description: 'Advanced statistical analysis, modeling, and data science workflows (optional).' },
+		]}
+		deliverables={[
+			'GA4 implementation and event tracking strategy',
+			'Data warehouse architecture and SQL queries',
+			'Monthly analytics dashboards and business metrics',
+			'Attribution modeling and channel ROI reporting',
+			'Cohort analysis and customer segmentation insights',
+			'A/B test design, analysis, and recommendations',
+			'Retention and churn analysis',
+			'Data-driven marketing strategy recommendations and insights',
+		]}
+		pricing="Dedicated Analytics Specialists start at approximately $3,000–$3,500/month for full-time engagement (40h/week). Part-time (20h/week) and analytics team configurations are also available. Pricing varies based on experience level (GA4 implementation, SQL proficiency, advanced modeling capability) and platform specialization."
+		relatedRoles={[
+			{ title: 'Marketing Ops Specialist', href: '/roles/marketing-ops-specialist/', category: 'marketing' },
+			{ title: 'HubSpot Specialist', href: '/roles/hubspot-specialist/', category: 'marketing' },
+			{ title: 'Growth Marketing Manager', href: '/roles/growth-marketing-manager/', category: 'marketing' },
+		]}
+		faq={faq}
+	/>
+</Layout>

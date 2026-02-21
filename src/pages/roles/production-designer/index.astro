@@ -1,0 +1,133 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import MetaHead from '../../../components/MetaHead.astro';
+import RoleTemplate from '../../../components/RoleTemplate.astro';
+
+const brand = 'LatAm Scalers';
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/roles/production-designer/', baseUrl).toString();
+
+const meta = {
+	title: 'Hire a Dedicated Production Designer — Pre-Vetted LATAM Agency Talent | LatAm Scalers',
+	description:
+		'Hire a dedicated production designer for creative agencies and white-label overflow. Campaign execution, asset production, design implementation, and brand consistency. Pre-vetted LATAM talent. From ~$2,800/mo.',
+};
+
+const faq = [
+	{
+		question: 'What is a Production Designer?',
+		answer:
+			'A Production Designer is a design executor — they take strategic direction and creative briefs from senior designers/art directors and translate them into production-ready assets. They handle design implementation, asset production, file management, and quality control. While strategists create concepts, production designers scale and execute at high volume.',
+	},
+	{
+		question: 'What types of assets do they produce?',
+		answer:
+			'Production Designers create social media graphics, email templates, web assets, banner ads, marketing collateral, print files, and brand-compliant design deliverables. They work from templates, design systems, and direction from senior creatives.',
+	},
+	{
+		question: 'How do they differ from a Brand Designer?',
+		answer:
+			'Brand Designers are generalists creating brand systems and comprehensive design work. Production Designers are specialists in high-volume asset execution and consistency enforcement. For agencies, having dedicated production designers frees senior designers for strategy and creative innovation.',
+	},
+	{
+		question: 'Can they work with multiple clients/projects?',
+		answer:
+			'Yes. Production Designers often juggle multiple client projects, working from shared design systems and templates. Agency workflow typically involves weekly/bi-weekly campaign cycles with production designers handling asset creation and QA.',
+	},
+	{
+		question: 'What does a Production Designer cost?',
+		answer:
+			'Dedicated Production Designers start at approximately $2,800–$3,200/month for full-time engagement (40h/week). US-based equivalents typically cost $55,000–$80,000/year fully loaded — LATAM-based specialists save 50–60% with comparable production quality and efficiency.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Production Designer',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faq.map((f) => ({
+		'@type': 'Question',
+		name: f.question,
+		acceptedAnswer: { '@type': 'Answer', text: f.answer },
+	})),
+};
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
+
+	<RoleTemplate
+		role="Production Designer"
+		category="design"
+		hubHref="/design/"
+		hubLabel="Design Talent Hub"
+		h1="Hire a Dedicated Production Designer — Pre-Vetted LATAM Agency Talent"
+		subheadline="Dedicated production designers for creative agencies and white-label overflow. Campaign execution, asset production, brand consistency, and design implementation. US timezone. Vetted. Month-to-month."
+		atAGlance={[
+			{ label: 'Category', value: 'Design — Agency Production' },
+			{ label: 'Tools', value: 'Adobe CC (all), Figma, Canva, email platforms' },
+			{ label: 'Pricing', value: 'From ~$2,800/mo' },
+			{ label: 'Availability', value: 'FT (40h) or PT (20h)' },
+		]}
+		overview="Our Production Designers handle the design execution workload — freeing your senior creatives for strategy and innovation. 73% of agencies permanently embed white-label partners, and Production Designers are ideal for asset-heavy campaigns, multi-project workflows, and high-volume production cycles. They work from your design systems, templates, and creative direction."
+		skills={[
+			'Social media graphic design and templates',
+			'Email template design and responsive layout',
+			'Web asset production and optimization',
+			'Banner and display ad creation',
+			'Brand guideline enforcement and QA',
+			'Design system implementation and consistency',
+			'Multi-page document layout and production',
+			'File management and asset organization',
+			'A/B test design variations',
+			'Design revision cycles and version control',
+		]}
+		whyRemote="Production design is workflow-driven and scalable — perfect for remote teams. Your Production Designer works in your design system, follows your templates, and produces assets to your specs. Agency workflows benefit from distributed production capacity — LATAM timezone (0–3 hours behind EST/CST) enables next-day turnarounds and surge capacity."
+		engagementOptions={[
+			{
+				title: 'Dedicated Production Designer',
+				description:
+					'Full-time (40h/week) or part-time (20h/week) designer handling all campaign asset production for your agency. Works in your design system and templates, manages revisions, and maintains quality standards.',
+				pricing: 'From ~$2,800/mo',
+			},
+			{
+				title: 'Production Design Pod',
+				description:
+					'Multiple production designers for high-volume agencies, seasonal campaigns, or multi-client workloads. Managed as a shared production resource with flexible capacity.',
+				pricing: 'Custom — based on team size and scope',
+			},
+		]}
+		tools={[
+			{ name: 'Adobe Creative Suite', description: 'Illustrator, InDesign, Photoshop, and XD for all graphic design and asset production.' },
+			{ name: 'Figma', description: 'Collaborative design platform for templates, components, and real-time feedback.' },
+			{ name: 'Canva', description: 'Quick template-based design for rapid social media and marketing asset production.' },
+			{ name: 'Email platforms', description: 'Mailchimp, Klaviyo, or HubSpot for email template design and testing.' },
+			{ name: 'Project management tools', description: 'Asana, Monday.com, or Notion for campaign tracking and asset deliverables.' },
+			{ name: 'Google Drive / Dropbox', description: 'Asset organization, version control, and file management.' },
+		]}
+		deliverables={[
+			'Social media graphics (Instagram, TikTok, LinkedIn, Twitter posts)',
+			'Email marketing templates and campaign assets',
+			'Web assets and banner ads',
+			'Display advertising creative variations',
+			'Print-ready marketing collateral',
+			'Campaign asset libraries and template systems',
+			'Design variations for A/B testing',
+			'Asset management and version control documentation',
+		]}
+		pricing="Dedicated Production Designers start at approximately $2,800–$3,200/month for full-time engagement (40h/week). Part-time (20h/week) and production design pod configurations are also available. Pricing varies based on experience level, software proficiency breadth (print vs. digital specialization), and campaign volume."
+		relatedRoles={[
+			{ title: 'Brand Designer', href: '/roles/brand-visual-designer/', category: 'design' },
+			{ title: 'UI/UX Designer', href: '/roles/ui-ux-designer/', category: 'design' },
+			{ title: 'Performance Creative Strategist', href: '/roles/performance-creative-strategist/', category: 'design' },
+		]}
+		faq={faq}
+	/>
+</Layout>

@@ -1,0 +1,133 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import MetaHead from '../../../components/MetaHead.astro';
+import RoleTemplate from '../../../components/RoleTemplate.astro';
+
+const brand = 'LatAm Scalers';
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/roles/social-media-manager/', baseUrl).toString();
+
+const meta = {
+	title: 'Hire a Dedicated Social Media Manager — Pre-Vetted LATAM Talent | LatAm Scalers',
+	description:
+		'Hire a dedicated social media manager for B2B and B2C brands. Content strategy, posting, community engagement, analytics, and multi-channel management. Pre-vetted LATAM talent. From ~$2,500/mo.',
+};
+
+const faq = [
+	{
+		question: 'What does a Social Media Manager do?',
+		answer:
+			'A Social Media Manager owns your brand presence across platforms — content planning, daily posting, community engagement, analytics, trend monitoring, and strategy execution. They manage the content calendar, respond to comments and DMs, and report on reach, engagement, and audience growth.',
+	},
+	{
+		question: 'What platforms do they manage?',
+		answer:
+			'Most Social Media Managers cover Instagram, Twitter/X, LinkedIn, TikTok, and Facebook — with platform focus determined by your business model (B2B typically LinkedIn/Twitter; B2C typically Instagram/TikTok). Tool proficiency is confirmed during staffing.',
+	},
+	{
+		question: 'How do they handle content creation vs. curation?',
+		answer:
+			'Social Media Managers typically curate industry content, repurpose marketing assets, write original captions, and collaborate with creative teams for branded content production. Some specialize more in curation/community; others in content creation — we match to your need.',
+	},
+	{
+		question: 'Can they create content or just manage posting?',
+		answer:
+			'Most Social Media Managers can create simple graphics, design posts in Canva, and write copy. For video or complex design, they coordinate with your design team. Depth is discussed during staffing.',
+	},
+	{
+		question: 'What does a Social Media Manager cost?',
+		answer:
+			'Dedicated Social Media Managers start at approximately $2,500–$3,000/month for full-time engagement (40h/week). US-based equivalents typically cost $50,000–$75,000/year fully loaded — LATAM-based managers save 50–60%.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Social Media Manager',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faq.map((f) => ({
+		'@type': 'Question',
+		name: f.question,
+		acceptedAnswer: { '@type': 'Answer', text: f.answer },
+	})),
+};
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
+
+	<RoleTemplate
+		role="Social Media Manager"
+		category="marketing"
+		hubHref="/marketing/"
+		hubLabel="Marketing Talent Hub"
+		h1="Hire a Dedicated Social Media Manager — Pre-Vetted LATAM Talent"
+		subheadline="Dedicated social media managers for B2B and B2C brands. Content strategy, daily posting, community engagement, analytics, and platform management. US timezone. Vetted. Month-to-month."
+		atAGlance={[
+			{ label: 'Category', value: 'Marketing — Social & Community' },
+			{ label: 'Tools', value: 'Instagram, LinkedIn, TikTok, Twitter, Meta Suite, Hootsuite' },
+			{ label: 'Pricing', value: 'From ~$2,500/mo' },
+			{ label: 'Availability', value: 'FT (40h) or PT (20h)' },
+		]}
+		overview="Social Media Managers own your brand's social presence — 1,600/mo searches for 'hire social media manager' at $40.91 CPC reflects consistent B2B and B2C demand. Our managers handle content strategy, daily posting, community engagement, analytics, and platform optimization across your channels. They keep your brand visible, responsive, and growing."
+		skills={[
+			'Content strategy and editorial calendar planning',
+			'Daily social media posting and scheduling',
+			'Community management and engagement (comments, DMs, mentions)',
+			'Trend monitoring and real-time response',
+			'Social analytics and performance reporting',
+			'Platform-specific best practices (LinkedIn, TikTok, Instagram, Twitter)',
+			'Basic graphic design and Canva asset creation',
+			'Influencer and partnership outreach',
+			'Hashtag strategy and audience growth',
+			'Crisis communication and reputation management',
+		]}
+		whyRemote="Social media management is global-friendly and timezone-agnostic — some tasks benefit from LATAM hours for content freshness. Your Social Media Manager works in your brand guidelines, attends weekly strategy calls, and posts across your channels. LATAM timezone (0–3 hours behind EST/CST) enables coverage and audience engagement across time zones."
+		engagementOptions={[
+			{
+				title: 'Dedicated Social Media Manager',
+				description:
+					'Full-time (40h/week) or part-time (20h/week) manager handling all social channels, content calendar, posting, and engagement. Works in your brand voice and guidelines.',
+				pricing: 'From ~$2,500/mo',
+			},
+			{
+				title: 'Social Media Team',
+				description:
+					'Multiple social managers for multi-channel operations, B2B and B2C splits, or high-volume content requirements. Includes social strategy lead for campaign direction.',
+				pricing: 'Custom — based on team size and scope',
+			},
+		]}
+		tools={[
+			{ name: 'Meta Business Suite', description: 'Central management for Facebook, Instagram, and WhatsApp posting and analytics.' },
+			{ name: 'LinkedIn Campaign Manager', description: 'B2B social posting, employee advocacy programs, and LinkedIn campaign management.' },
+			{ name: 'TweetDeck / Twitter Analytics', description: 'Twitter/X posting, monitoring, and real-time trend tracking.' },
+			{ name: 'Hootsuite / Buffer', description: 'Multi-platform content scheduling and analytics dashboard.' },
+			{ name: 'Canva', description: 'Quick graphic design and asset creation for social posts.' },
+			{ name: 'Google Analytics / UTM tracking', description: 'Social traffic attribution and audience behavior analysis.' },
+		]}
+		deliverables={[
+			'Monthly social media content calendar and strategy',
+			'Daily posts across assigned platforms (Instagram, LinkedIn, TikTok, Twitter)',
+			'Community engagement and response to comments/DMs',
+			'Monthly analytics reports (reach, engagement, growth)',
+			'Trending topic monitoring and real-time content',
+			'Social listening and competitive analysis',
+			'Graphics and Canva assets for posts',
+			'Audience growth and engagement recommendations',
+		]}
+		pricing="Dedicated Social Media Managers start at approximately $2,500–$3,000/month for full-time engagement (40h/week). Part-time (20h/week) and social media team configurations are also available. Pricing varies based on experience level, platform expertise specialization (B2B LinkedIn vs. B2C TikTok/Instagram), and content creation capability."
+		relatedRoles={[
+			{ title: 'Analytics Specialist', href: '/roles/analytics-specialist/', category: 'marketing' },
+			{ title: 'Performance Creative Strategist', href: '/roles/performance-creative-strategist/', category: 'design' },
+			{ title: 'Content Marketer', href: '/roles/content-marketer/', category: 'marketing' },
+		]}
+		faq={faq}
+	/>
+</Layout>

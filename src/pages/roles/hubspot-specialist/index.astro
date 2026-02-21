@@ -1,0 +1,133 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import MetaHead from '../../../components/MetaHead.astro';
+import RoleTemplate from '../../../components/RoleTemplate.astro';
+
+const brand = 'LatAm Scalers';
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/roles/hubspot-specialist/', baseUrl).toString();
+
+const meta = {
+	title: 'Hire a Dedicated HubSpot Specialist — Pre-Vetted LATAM Talent for SaaS | LatAm Scalers',
+	description:
+		'Hire a dedicated HubSpot specialist for SaaS and B2B companies. HubSpot implementation, workflows, reporting, and MarOps support. Highest commercial intent keyword ($89.21 CPC). Pre-vetted LATAM talent. From ~$2,800/mo.',
+};
+
+const faq = [
+	{
+		question: 'What does a HubSpot Specialist do?',
+		answer:
+			'A HubSpot Specialist configures, implements, and optimizes HubSpot across your marketing, sales, and customer success operations. They build automated workflows, manage databases, create custom reports, integrate third-party tools, and provide training and support to your team. They\'re part MarOps engineer, part consultant.',
+	},
+	{
+		question: 'What HubSpot modules do they cover?',
+		answer:
+			'Our HubSpot Specialists typically have depth across Marketing Hub (automation, lead scoring, email), Sales Hub (pipeline, sales sequences), Service Hub (ticketing, customer communication), and data management. Depth in specific modules is confirmed during staffing.',
+	},
+	{
+		question: 'Can they handle integrations?',
+		answer:
+			'Yes. HubSpot Specialists integrate HubSpot with your CRM, data warehouses, analytics tools, and marketing stack. They work with API documentation and integration platforms to connect your systems and ensure data flows correctly.',
+	},
+	{
+		question: 'What is the highest demand indicator for HubSpot Specialists?',
+		answer:
+			'HubSpot Specialist searches have the highest commercial intent keyword cost ($89.21 CPC) after MarOps/RevOps. This reflects both B2B/SaaS demand and the technical specialization required.',
+	},
+	{
+		question: 'What does a HubSpot Specialist cost?',
+		answer:
+			'Dedicated HubSpot Specialists start at approximately $2,800–$3,200/month for full-time engagement (40h/week). US-based HubSpot certified specialists typically cost $80,000–$120,000/year fully loaded — LATAM-based specialists save 50–65%.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'HubSpot Specialist',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faq.map((f) => ({
+		'@type': 'Question',
+		name: f.question,
+		acceptedAnswer: { '@type': 'Answer', text: f.answer },
+	})),
+};
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
+
+	<RoleTemplate
+		role="HubSpot Specialist"
+		category="marketing"
+		hubHref="/marketing/"
+		hubLabel="Marketing Talent Hub"
+		h1="Hire a Dedicated HubSpot Specialist — Pre-Vetted LATAM Talent"
+		subheadline="Dedicated HubSpot specialists for SaaS and B2B companies. Platform implementation, workflow automation, reporting, and MarOps support. US timezone. Vetted. Month-to-month."
+		atAGlance={[
+			{ label: 'Category', value: 'Marketing — MarTech' },
+			{ label: 'Tools', value: 'HubSpot (all hubs), Zapier, APIs, data warehouses' },
+			{ label: 'Pricing', value: 'From ~$2,800/mo' },
+			{ label: 'Availability', value: 'FT (40h) or PT (20h)' },
+		]}
+		overview="HubSpot Specialists command the highest commercial intent keyword cost ($89.21 CPC) in SaaS marketing — reflecting both demand and specialization. Our specialists implement HubSpot implementations, optimize workflows, build reporting dashboards, and manage your marketing automation stack. Working alongside your marketing and revenue teams, they free your team to focus on strategy while they handle platform optimization."
+		skills={[
+			'HubSpot Marketing Hub — lead scoring, email automation, landing pages',
+			'HubSpot Sales Hub — pipeline management, sales sequences, forecasting',
+			'HubSpot Service Hub — ticketing, knowledge base, customer communication',
+			'Workflow automation and trigger-based processes',
+			'Database management and data hygiene',
+			'Custom reporting and analytics dashboards',
+			'API integrations and third-party tool connections',
+			'Lead scoring model development and optimization',
+			'Training and documentation for internal teams',
+			'Migration planning and implementation',
+		]}
+		whyRemote="HubSpot management is platform-driven and collaborative — ideal for remote delivery. Your HubSpot Specialist works in your HubSpot account, attends weekly sync-ups with your team, and manages ongoing optimization. LATAM timezone (0–3 hours behind EST/CST) enables real-time support during your business hours."
+		engagementOptions={[
+			{
+				title: 'Dedicated HubSpot Specialist',
+				description:
+					'Full-time (40h/week) or part-time (20h/week) specialist managing your HubSpot platform, automation workflows, and reporting. Provides ongoing support and optimization.',
+				pricing: 'From ~$2,800/mo',
+			},
+			{
+				title: 'HubSpot Implementation Team',
+				description:
+					'Multiple HubSpot specialists for large implementations, multi-hub deployments, or complex migration projects. Includes project manager and implementation lead roles.',
+				pricing: 'Custom — based on project scope and team size',
+			},
+		]}
+		tools={[
+			{ name: 'HubSpot (all modules)', description: 'Core platform for marketing automation, sales pipeline, and customer service management.' },
+			{ name: 'Zapier / Make', description: 'Low-code integration platform for connecting HubSpot to external tools and data sources.' },
+			{ name: 'APIs & webhooks', description: 'Direct API connections to external systems for custom data syncing and automation.' },
+			{ name: 'Data warehouses', description: 'Snowflake, BigQuery, or data lakes for advanced analytics and HubSpot data integration.' },
+			{ name: 'SQL / BI tools', description: 'Direct database querying and Looker/Tableau for custom reporting.' },
+			{ name: 'Slack / Asana', description: 'Team communication and project tracking for ongoing HubSpot management.' },
+		]}
+		deliverables={[
+			'HubSpot platform configuration and setup',
+			'Marketing automation workflows and lead scoring',
+			'Custom reporting dashboards and analytics',
+			'Lead database cleanup and segmentation',
+			'Email template design and automation setup',
+			'Integration documentation and specifications',
+			'Third-party tool connections (Zapier, APIs)',
+			'Training materials and internal documentation',
+		]}
+		pricing="Dedicated HubSpot Specialists start at approximately $2,800–$3,200/month for full-time engagement (40h/week). Part-time (20h/week) and implementation team configurations are also available. Pricing varies based on certification level (HubSpot Academy), specific hub specialization, and implementation complexity."
+		relatedRoles={[
+			{ title: 'Marketing Ops Specialist', href: '/roles/marketing-ops-specialist/', category: 'marketing' },
+			{ title: 'Lifecycle Email Specialist', href: '/roles/lifecycle-email-specialist/', category: 'marketing' },
+			{ title: 'Analytics Specialist', href: '/roles/analytics-specialist/', category: 'marketing' },
+		]}
+		faq={faq}
+	/>
+</Layout>

@@ -1,0 +1,133 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import MetaHead from '../../../components/MetaHead.astro';
+import RoleTemplate from '../../../components/RoleTemplate.astro';
+
+const brand = 'LatAm Scalers';
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/roles/visualization-specialist/', baseUrl).toString();
+
+const meta = {
+	title: 'Hire a Dedicated Visualization Specialist — Pre-Vetted LATAM AEC Talent | LatAm Scalers',
+	description:
+		'Hire a dedicated visualization specialist for AEC firms. 3D renderings, animations, photorealistic presentations, client pitches, and design communication. Enscape, Lumion, V-Ray expertise. Pre-vetted LATAM talent. From ~$3,500/mo.',
+};
+
+const faq = [
+	{
+		question: 'What does a Visualization Specialist produce?',
+		answer:
+			'A Visualization Specialist creates photorealistic 3D renderings, animations, and presentation materials from architectural and design models. They work in tools like Enscape, Lumion, V-Ray, and 3ds Max to produce client presentations, design marketing materials, design communication visuals, and stakeholder presentations — transforming CAD/BIM models into compelling visual media.',
+	},
+	{
+		question: 'Can they work from our Revit models?',
+		answer:
+			'Yes. Our Visualization Specialists work directly from Revit, SketchUp, and other BIM formats. They import your models, add materials, lighting, entourage, and render photorealistic images and animations. They can work in your Revit models or receive exports — workflow is discussed during the staffing call.',
+	},
+	{
+		question: 'What software proficiencies do you match for?',
+		answer:
+			'Our specialists are proficient in Enscape (real-time rendering from Revit), Lumion (high-speed, cinematic rendering), V-Ray (premium photorealism for Revit and 3ds Max), and SketchUp visualization. We match based on your preferred tool and project aesthetic requirements.',
+	},
+	{
+		question: 'Can they handle design iterations and revisions quickly?',
+		answer:
+			'Yes. One of the key benefits of remote visualization is speed — your Visualization Specialist can produce quick iteration cycles and design option renderings. Revisions are typically turnaround in 24–48 hours depending on scope.',
+	},
+	{
+		question: 'What does a Visualization Specialist cost?',
+		answer:
+			'Dedicated Visualization Specialists start at approximately $3,500/month for full-time engagement (40h/week). US-based equivalents typically cost $65,000–$95,000/year fully loaded — LATAM-based specialists save 50–65% with no compromise on rendering quality or speed.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Visualization Specialist',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faq.map((f) => ({
+		'@type': 'Question',
+		name: f.question,
+		acceptedAnswer: { '@type': 'Answer', text: f.answer },
+	})),
+};
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
+
+	<RoleTemplate
+		role="Visualization Specialist"
+		category="aec"
+		hubHref="/aec/"
+		hubLabel="AEC Talent Hub"
+		h1="Hire a Dedicated Visualization Specialist — Pre-Vetted LATAM Talent"
+		subheadline="Dedicated visualization specialists for AEC firms. Photorealistic 3D renderings, animations, client presentations, and design communication. Enscape, Lumion, V-Ray expertise. US timezone. Vetted. Month-to-month."
+		atAGlance={[
+			{ label: 'Category', value: 'AEC — Design Communication' },
+			{ label: 'Tools', value: 'Enscape, Lumion, V-Ray, 3ds Max, Revit' },
+			{ label: 'Pricing', value: 'From ~$3,500/mo' },
+			{ label: 'Availability', value: 'FT (40h) or PT (20h)' },
+		]}
+		overview="Our Visualization Specialists bring photorealistic rendering and animation expertise at 50%+ lower cost than US-based hires. They transform your Revit models into compelling visual media — client presentations, design iterations, marketing materials, and stakeholder communication. Working in real-time rendering tools (Enscape, Lumion) and premium platforms (V-Ray), they produce fast iteration cycles and design-stage visualizations that accelerate client decision-making."
+		skills={[
+			'Photorealistic 3D rendering from architectural models',
+			'Real-time rendering workflows (Enscape, Lumion)',
+			'Animation production and video rendering',
+			'Material and lighting design for presentation quality',
+			'Entourage, landscaping, and human figures for context',
+			'Design option visualization and iteration',
+			'Client presentation material preparation',
+			'Exterior and interior rendering workflows',
+			'Virtual reality (VR) model preparation',
+			'Video editing and motion graphics support',
+		]}
+		whyRemote="Visualization is a production discipline with minimal real-time interaction required — making it ideal for remote delivery. Your Visualization Specialist works on your models during your US business hours, produces renderings to deadline, and iterates rapidly on feedback. LATAM timezone overlap (0–3 hours behind EST/CST) allows for same-day turnarounds on revisions."
+		engagementOptions={[
+			{
+				title: 'Dedicated Individual Visualization Specialist',
+				description:
+					'Full-time (40h/week) or part-time (20h/week) Visualization Specialist handling all rendering and animation work for your projects. Fast iteration cycles and design communication support.',
+				pricing: 'From ~$3,500/mo',
+			},
+			{
+				title: 'Visualization Production Team',
+				description:
+					'Multiple visualization specialists for high-volume design communication, client presentations, and marketing material production. Includes director-level oversight on brand consistency.',
+				pricing: 'Custom — based on team size and scope',
+			},
+		]}
+		tools={[
+			{ name: 'Enscape', description: 'Real-time rendering directly from Revit for instant visualization feedback, iterations, and fast client presentations.' },
+			{ name: 'Lumion', description: 'High-speed rendering with cinematic output, extensive asset library, and animation capability for design communication.' },
+			{ name: 'V-Ray', description: 'Premium photorealistic rendering engine for Revit and 3ds Max, producing gallery-quality visualization outputs.' },
+			{ name: '3ds Max', description: 'Advanced 3D modeling and animation platform for complex visualizations and VR experiences.' },
+			{ name: 'Adobe Creative Suite', description: 'Post-processing, composition, and design layout for presentation materials.' },
+			{ name: 'SketchUp', description: 'Quick conceptual modeling and rendering for design iteration and fast turnaround visualizations.' },
+		]}
+		deliverables={[
+			'Photorealistic exterior renderings from architectural design',
+			'Interior space renderings with lighting and materials',
+			'Design option visualizations (multiple schemes side-by-side)',
+			'Client presentation materials (image boards, rendering sets)',
+			'Animation sequences and walkthrough videos',
+			'Design communication graphics and diagrams',
+			'Virtual reality models for immersive client presentations',
+			'Marketing and promotional visualization materials',
+		]}
+		pricing="Dedicated Visualization Specialists start at approximately $3,500/month for full-time engagement (40h/week). Part-time (20h/week) and visualization team configurations are also available. Pricing varies based on experience level, software expertise (Enscape vs. Lumion vs. V-Ray primary workflow), and project output volume."
+		relatedRoles={[
+			{ title: 'Architectural Designer', href: '/roles/architectural-designer/', category: 'aec' },
+			{ title: 'BIM Coordinator', href: '/roles/bim-coordinator/', category: 'aec' },
+			{ title: 'UI/UX Designer', href: '/roles/ui-ux-designer/', category: 'design' },
+		]}
+		faq={faq}
+	/>
+</Layout>

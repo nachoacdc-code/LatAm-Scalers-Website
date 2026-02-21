@@ -1,0 +1,133 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import MetaHead from '../../../components/MetaHead.astro';
+import RoleTemplate from '../../../components/RoleTemplate.astro';
+
+const brand = 'LatAm Scalers';
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/roles/growth-marketing-manager/', baseUrl).toString();
+
+const meta = {
+	title: 'Hire a Dedicated Growth Marketing Manager — Pre-Vetted LATAM SaaS Talent | LatAm Scalers',
+	description:
+		'Hire a dedicated growth marketing manager for SaaS companies. Cross-channel growth, demand generation, pipeline velocity, marketing experimentation, and revenue impact. Pre-vetted LATAM talent. From ~$3,200/mo.',
+};
+
+const faq = [
+	{
+		question: 'What is a Growth Marketing Manager?',
+		answer:
+			'A Growth Marketing Manager owns cross-channel growth strategy and execution for SaaS — demand gen, paid advertising, organic channels, and partnerships. They think beyond siloed channels and focus on full-funnel growth from awareness through expansion revenue. They\'re data-driven, experiment-obsessed, and focused on measurable growth metrics.',
+	},
+	{
+		question: 'How do they differ from a traditional demand gen manager?',
+		answer:
+			'Demand gen focuses primarily on lead generation and paid advertising; growth marketing managers think more broadly about growth loops, retention, expansion, and multi-channel optimization. Growth managers are strategic; demand gen managers are execution-focused.',
+	},
+	{
+		question: 'What is SaaS Tier 1+2 demand?',
+		answer:
+			'SaaS Tier 1 companies ($10M–$50M ARR) and Tier 2 ($1M–$10M ARR) are the primary demand segments for growth managers. These companies are scaling rapidly and need growth leadership.',
+	},
+	{
+		question: 'Can they manage campaigns across channels?',
+		answer:
+			'Yes. Growth Marketing Managers typically oversee paid search, paid social, content marketing, partnerships, and experimentation across channels. They may not execute all tactics directly but orchestrate and optimize across them.',
+	},
+	{
+		question: 'What does a Growth Marketing Manager cost?',
+		answer:
+			'Dedicated Growth Marketing Managers start at approximately $3,200–$3,500/month for full-time engagement (40h/week). US-based equivalents typically cost $85,000–$130,000/year fully loaded — LATAM-based managers save 55–70%.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Growth Marketing Manager',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faq.map((f) => ({
+		'@type': 'Question',
+		name: f.question,
+		acceptedAnswer: { '@type': 'Answer', text: f.answer },
+	})),
+};
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
+
+	<RoleTemplate
+		role="Growth Marketing Manager"
+		category="marketing"
+		hubHref="/marketing/"
+		hubLabel="Marketing Talent Hub"
+		h1="Hire a Dedicated Growth Marketing Manager — Pre-Vetted LATAM SaaS Talent"
+		subheadline="Dedicated growth marketing managers for SaaS companies. Cross-channel strategy, demand generation, pipeline velocity, and revenue impact. US timezone. Vetted. Month-to-month."
+		atAGlance={[
+			{ label: 'Category', value: 'Marketing — Growth & Demand Gen' },
+			{ label: 'Tools', value: 'HubSpot, Salesforce, analytics, paid advertising platforms' },
+			{ label: 'Pricing', value: 'From ~$3,200/mo' },
+			{ label: 'Availability', value: 'FT (40h) or PT (20h)' },
+		]}
+		overview="Growth Marketing Managers drive cross-channel growth for SaaS — particularly Tier 1+2 companies scaling rapidly. They own demand generation, pipeline velocity, and marketing's revenue impact. Working with your sales and product teams, they optimize full-funnel growth through paid, organic, and experimental channels."
+		skills={[
+			'Growth strategy and full-funnel marketing',
+			'Demand generation and lead generation campaigns',
+			'Paid advertising (Google Ads, LinkedIn, Facebook)',
+			'Content marketing and organic growth',
+			'Marketing experimentation and A/B testing',
+			'Pipeline velocity and sales enablement',
+			'Analytics and growth metrics',
+			'Marketing automation and CRM management',
+			'Partner marketing and referral programs',
+			'Budget allocation and ROI optimization',
+		]}
+		whyRemote="Growth marketing is metrics-driven and strategy-focused — ideal for remote delivery. Your Growth Marketing Manager attends weekly strategy calls with sales and product, manages campaigns, and reports on growth metrics. LATAM timezone (0–3 hours behind EST/CST) enables real-time collaboration."
+		engagementOptions={[
+			{
+				title: 'Dedicated Growth Marketing Manager',
+				description:
+					'Full-time (40h/week) or part-time (20h/week) manager owning cross-channel growth strategy, demand gen, and revenue impact. Works with your sales, product, and analytics teams.',
+				pricing: 'From ~$3,200/mo',
+			},
+			{
+				title: 'Growth Marketing Team',
+				description:
+					'Multiple growth specialists focused on different channels (demand gen, paid social, content, partnerships). Includes growth leader for strategy and cross-functional alignment.',
+				pricing: 'Custom — based on team size and scope',
+			},
+		]}
+		tools={[
+			{ name: 'HubSpot / Salesforce', description: 'CRM and marketing automation for campaign management and pipeline tracking.' },
+			{ name: 'Google Ads / LinkedIn Ads', description: 'Paid advertising platform management and campaign optimization.' },
+			{ name: 'Analytics platforms', description: 'GA4, Amplitude, Mixpanel for growth metrics and cohort analysis.' },
+			{ name: 'Data warehouses', description: 'Snowflake or BigQuery for custom growth analysis and attribution.' },
+			{ name: 'Slack / Asana', description: 'Team communication and project management for growth initiatives.' },
+			{ name: 'Experimentation platforms', description: 'VWO, Optimizely, or built-in A/B testing for conversion optimization.' },
+		]}
+		deliverables={[
+			'Quarterly growth strategy and pipeline goals',
+			'Demand generation campaigns and lead flow',
+			'Multi-channel marketing campaigns and optimization',
+			'Growth metrics dashboards (CAC, LTV, pipeline velocity)',
+			'A/B test results and growth recommendations',
+			'Monthly growth performance reports and analysis',
+			'Sales enablement materials and playbooks',
+			'Marketing budget allocation and ROI reporting',
+		]}
+		pricing="Dedicated Growth Marketing Managers start at approximately $3,200–$3,500/month for full-time engagement (40h/week). Part-time (20h/week) and growth team configurations are also available. Pricing varies based on experience level (mid-market vs. enterprise SaaS), channel specialization, and growth stage (early vs. scaling)."
+		relatedRoles={[
+			{ title: 'Marketing Ops Specialist', href: '/roles/marketing-ops-specialist/', category: 'marketing' },
+			{ title: 'Analytics Specialist', href: '/roles/analytics-specialist/', category: 'marketing' },
+			{ title: 'Demand Gen Specialist', href: '/roles/demand-gen-specialist/', category: 'marketing' },
+		]}
+		faq={faq}
+	/>
+</Layout>

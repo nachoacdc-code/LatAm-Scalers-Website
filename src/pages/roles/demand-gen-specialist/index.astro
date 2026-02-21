@@ -1,0 +1,133 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import MetaHead from '../../../components/MetaHead.astro';
+import RoleTemplate from '../../../components/RoleTemplate.astro';
+
+const brand = 'LatAm Scalers';
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/roles/demand-gen-specialist/', baseUrl).toString();
+
+const meta = {
+	title: 'Hire a Dedicated Demand Gen Specialist — Pre-Vetted LATAM SaaS Talent | LatAm Scalers',
+	description:
+		'Hire a dedicated demand gen specialist for SaaS companies. Lead generation campaigns, ABM support, pipeline development, and conversion optimization. Pre-vetted LATAM talent. From ~$2,800/mo.',
+};
+
+const faq = [
+	{
+		question: 'What does a Demand Gen Specialist do?',
+		answer:
+			'A Demand Gen Specialist focuses on lead generation and pipeline development through paid advertising, content marketing, and conversion optimization. They manage campaigns across search, display, social, and channels to generate qualified leads and support sales pipeline goals.',
+	},
+	{
+		question: 'How do they support ABM (account-based marketing)?',
+		answer:
+			'Demand Gen Specialists create targeted campaigns for specific high-value accounts — customized messaging, account-specific landing pages, and coordinated advertising to engage key decision-makers at target companies.',
+	},
+	{
+		question: 'What metrics do they track?',
+		answer:
+			'Demand Gen Specialists typically track CPL (cost per lead), CPC (cost per click), conversion rates, lead quality score, and pipeline influenced by their campaigns. They work backward from revenue goals to set lead targets.',
+	},
+	{
+		question: 'Can they manage both paid and organic channels?',
+		answer:
+			'Yes. Most Demand Gen Specialists have breadth across paid advertising (Google Ads, LinkedIn, Facebook) and organic/content tactics. Depth in specific channels is confirmed during staffing.',
+	},
+	{
+		question: 'What does a Demand Gen Specialist cost?',
+		answer:
+			'Dedicated Demand Gen Specialists start at approximately $2,800–$3,200/month for full-time engagement (40h/week). US-based equivalents typically cost $70,000–$105,000/year fully loaded — LATAM-based specialists save 50–65%.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Demand Gen Specialist',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faq.map((f) => ({
+		'@type': 'Question',
+		name: f.question,
+		acceptedAnswer: { '@type': 'Answer', text: f.answer },
+	})),
+};
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
+
+	<RoleTemplate
+		role="Demand Gen Specialist"
+		category="marketing"
+		hubHref="/marketing/"
+		hubLabel="Marketing Talent Hub"
+		h1="Hire a Dedicated Demand Gen Specialist — Pre-Vetted LATAM SaaS Talent"
+		subheadline="Dedicated demand gen specialists for SaaS companies. Lead generation campaigns, ABM support, pipeline development, and conversion optimization. US timezone. Vetted. Month-to-month."
+		atAGlance={[
+			{ label: 'Category', value: 'Marketing — Demand Generation' },
+			{ label: 'Tools', value: 'Google Ads, LinkedIn, HubSpot, analytics, landing pages' },
+			{ label: 'Pricing', value: 'From ~$2,800/mo' },
+			{ label: 'Availability', value: 'FT (40h) or PT (20h)' },
+		]}
+		overview="Demand Gen Specialists drive lead and pipeline generation for SaaS — managing paid advertising campaigns, ABM initiatives, and conversion optimization. They work backward from SaaS sales cycles and revenue targets, executing multi-channel campaigns to generate qualified leads and support sales pipeline goals."
+		skills={[
+			'Paid search advertising (Google Ads, Bing)',
+			'LinkedIn advertising and B2B campaign management',
+			'Social media advertising (Facebook, Instagram)',
+			'Landing page design and conversion optimization',
+			'Lead scoring and qualification',
+			'Account-based marketing (ABM) campaigns',
+			'Email nurture sequences and workflows',
+			'Analytics and campaign performance tracking',
+			'A/B testing and conversion rate optimization',
+			'Sales and marketing alignment',
+		]}
+		whyRemote="Demand gen is campaign-driven and analytics-focused — ideal for remote delivery. Your Demand Gen Specialist manages paid accounts, creates campaigns, optimizes for performance, and reports on lead flow. LATAM timezone (0–3 hours behind EST/CST) enables real-time campaign monitoring."
+		engagementOptions={[
+			{
+				title: 'Dedicated Demand Gen Specialist',
+				description:
+					'Full-time (40h/week) or part-time (20h/week) specialist managing lead generation campaigns across channels. Owns lead targets, CPL optimization, and campaign performance.',
+				pricing: 'From ~$2,800/mo',
+			},
+			{
+				title: 'Demand Gen Team',
+				description:
+					'Multiple demand gen specialists focused on different channels, geographies, or product lines. Includes demand gen manager for strategy and team oversight.',
+				pricing: 'Custom — based on team size and scope',
+			},
+		]}
+		tools={[
+			{ name: 'Google Ads', description: 'Paid search campaign management for lead generation and demand campaigns.' },
+			{ name: 'LinkedIn Campaign Manager', description: 'B2B advertising platform for account-based and targeting campaigns.' },
+			{ name: 'Meta Ads Manager', description: 'Facebook and Instagram advertising for multi-audience demand gen campaigns.' },
+			{ name: 'Landing page builders', description: 'Unbounce, Leadpages, HubSpot landing pages for campaign conversion.' },
+			{ name: 'HubSpot / Salesforce', description: 'CRM and marketing automation for lead management and nurturing.' },
+			{ name: 'Analytics platforms', description: 'GA4, UTM tracking, and HubSpot analytics for campaign performance.' },
+		]}
+		deliverables={[
+			'Multi-channel demand gen campaigns (paid search, LinkedIn, display)',
+			'Landing pages and conversion optimization',
+			'Lead generation targets and CPL optimization',
+			'Account-based marketing campaigns and personalization',
+			'Campaign performance dashboards and reporting',
+			'Lead scoring and qualification documentation',
+			'A/B test results and optimization recommendations',
+			'Monthly demand gen metrics and pipeline impact reporting',
+		]}
+		pricing="Dedicated Demand Gen Specialists start at approximately $2,800–$3,200/month for full-time engagement (40h/week). Part-time (20h/week) and demand gen team configurations are also available. Pricing varies based on experience level, channel specialization (search vs. social vs. ABM), and campaign complexity."
+		relatedRoles={[
+			{ title: 'Growth Marketing Manager', href: '/roles/growth-marketing-manager/', category: 'marketing' },
+			{ title: 'Marketing Ops Specialist', href: '/roles/marketing-ops-specialist/', category: 'marketing' },
+			{ title: 'Analytics Specialist', href: '/roles/analytics-specialist/', category: 'marketing' },
+		]}
+		faq={faq}
+	/>
+</Layout>

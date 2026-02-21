@@ -1,0 +1,133 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import MetaHead from '../../../components/MetaHead.astro';
+import RoleTemplate from '../../../components/RoleTemplate.astro';
+
+const brand = 'LatAm Scalers';
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/roles/civil-3d-specialist/', baseUrl).toString();
+
+const meta = {
+	title: 'Hire a Dedicated Civil 3D Specialist — Pre-Vetted LATAM Talent for US Engineering Firms | LatAm Scalers',
+	description:
+		'Hire a dedicated Civil 3D specialist for US civil and structural engineering firms. Infrastructure design, roadway alignments, grading and drainage, corridor modeling, and construction documents. Pre-vetted LATAM talent. From ~$3,500/mo.',
+};
+
+const faq = [
+	{
+		question: 'What does a Civil 3D Specialist do?',
+		answer:
+			'A Civil 3D Specialist produces infrastructure design deliverables using Autodesk Civil 3D: roadway alignments and profiles, grading and drainage layouts, corridor models, utility design, and construction sheets. They work in full 3D environments and produce TIN models, surface analysis, and cross-sections aligned to your project standards and local design codes.',
+	},
+	{
+		question: 'Can they handle multiple project types (roads, sites, drainage)?',
+		answer:
+			'Yes. Our Civil 3D Specialists typically have breadth across site development, roadway design, and grading/drainage work. Depth in specific project types (highway design, water/wastewater, rail) is noted during the staffing call so we match the right specialist to your project scope.',
+	},
+	{
+		question: 'How do they coordinate with structural and architectural disciplines?',
+		answer:
+			'Civil 3D Specialists export design data (grading plans, site layouts, utility coordination) to formats compatible with Revit and AutoCAD architectural/structural workflows. They participate in coordination meetings and adjust designs based on feedback from other disciplines.',
+	},
+	{
+		question: 'What is the cost difference vs. a US-based Civil 3D Specialist?',
+		answer:
+			'US-based Civil 3D Specialists typically cost $70,000–$110,000/year fully loaded. LATAM-based equivalents through LatAm Scalers start at approximately $3,500/month ($42,000/year) — a savings of 50–70% with no reduction in technical quality.',
+	},
+	{
+		question: 'How quickly can we onboard a Civil 3D Specialist?',
+		answer:
+			'We typically present vetted candidates within 48 hours of a scoping call. Once project standards, drawing templates, and tool access are confirmed, most specialists ramp up within one week.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Civil 3D Specialist',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faq.map((f) => ({
+		'@type': 'Question',
+		name: f.question,
+		acceptedAnswer: { '@type': 'Answer', text: f.answer },
+	})),
+};
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
+
+	<RoleTemplate
+		role="Civil 3D Specialist"
+		category="aec"
+		hubHref="/aec/"
+		hubLabel="AEC Talent Hub"
+		h1="Hire a Dedicated Civil 3D Specialist — Pre-Vetted LATAM Talent"
+		subheadline="Dedicated Civil 3D specialists for US infrastructure and site development projects. Roadway alignments, grading, drainage, corridor models, and construction documents. US timezone. Vetted. Month-to-month."
+		atAGlance={[
+			{ label: 'Category', value: 'AEC — Civil/Infrastructure' },
+			{ label: 'Tools', value: 'Civil 3D, AutoCAD, InfraWorks, HEC-RAS (as needed)' },
+			{ label: 'Pricing', value: 'From ~$3,500/mo' },
+			{ label: 'Availability', value: 'FT (40h) or PT (20h)' },
+		]}
+		overview="Our Civil 3D Specialists bring infrastructure design expertise at 50%+ lower cost than US-based hires. With 92% of civil and structural firms reporting open positions, Civil 3D modeling is one of the highest-demand remote functions in AEC. They produce roadway alignments, grading and drainage layouts, corridor models, and construction-ready sheets in your Civil 3D environment — working under your project engineer's direction."
+		skills={[
+			'Roadway alignment and profile design',
+			'Grading and drainage design (stormwater, site drainage)',
+			'Corridor modeling and dynamic design',
+			'Utility design and coordination (water, wastewater, gas, electric)',
+			'TIN surface modeling and analysis',
+			'Cross-section generation and sheet layout',
+			'Civil 3D template and style management',
+			'Drawing automation and data connectivity',
+			'Stormwater calculations and detention design support',
+			'Multi-discipline coordination and data export',
+		]}
+		whyRemote="Civil infrastructure design is document-production focused and entirely digital — aligning perfectly with remote delivery. Your Civil 3D Specialist works in your Civil 3D environment during US business hours, participates in project coordination calls, and produces sheets to your standards. LATAM timezone overlap (0–3 hours behind EST/CST) enables real-time collaboration."
+		engagementOptions={[
+			{
+				title: 'Dedicated Individual Civil 3D Specialist',
+				description:
+					'Full-time (40h/week) or part-time (20h/week) Civil 3D Specialist embedded in your team. Works in your Civil 3D environment, follows your drawing standards and templates, and produces deliverables to your project schedule.',
+				pricing: 'From ~$3,500/mo',
+			},
+			{
+				title: 'Infrastructure Design Pod',
+				description:
+					'Two or more Civil 3D Specialists working in parallel for multi-phase or high-volume infrastructure projects. Optional PM-level coordination available.',
+				pricing: 'Custom — based on team size and scope',
+			},
+		]}
+		tools={[
+			{ name: 'Civil 3D', description: 'Primary 3D infrastructure design platform for roadway, site, and utility design with construction document generation.' },
+			{ name: 'AutoCAD', description: '2D production drafting, detail sheets, and cross-section generation for non-3D workflows.' },
+			{ name: 'Autodesk InfraWorks', description: 'Corridor visualization, design options analysis, and infrastructure conceptual design.' },
+			{ name: 'Autodesk Construction Cloud / BIM 360', description: 'Cloud-based project coordination and design review for team-based workflows.' },
+			{ name: 'HEC-RAS / HEC-HMS', description: 'Hydraulic and hydrologic modeling support for drainage and stormwater design (where required by project scope).' },
+			{ name: 'Bluebeam Revu', description: 'Redline markup, design review comment tracking, and coordination with other disciplines.' },
+		]}
+		deliverables={[
+			'Roadway and alignment design sheets with profiles and cross-sections',
+			'Grading and drainage plans with stormwater layout',
+			'Corridor models and dynamic design alignments',
+			'Utility coordination plans (water, gas, electric, telecom)',
+			'Civil 3D site models and terrain analysis',
+			'Construction documents and detail sheets',
+			'Design calculations and reference sheets',
+			'Survey data integration and data management documentation',
+		]}
+		pricing="Dedicated Civil 3D Specialists start at approximately $3,500/month for full-time engagement (40h/week). Part-time (20h/week) and infrastructure pod configurations are also available. Pricing varies based on experience level, project type specialization (highway, municipal, site), and deliverable complexity."
+		relatedRoles={[
+			{ title: 'Structural Drafter', href: '/roles/structural-drafter/', category: 'aec' },
+			{ title: 'Architectural Designer', href: '/roles/architectural-designer/', category: 'aec' },
+			{ title: 'Revit Drafter', href: '/roles/revit-drafter/', category: 'aec' },
+		]}
+		faq={faq}
+	/>
+</Layout>

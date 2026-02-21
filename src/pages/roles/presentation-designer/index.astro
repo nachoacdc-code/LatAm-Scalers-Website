@@ -1,0 +1,133 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import MetaHead from '../../../components/MetaHead.astro';
+import RoleTemplate from '../../../components/RoleTemplate.astro';
+
+const brand = 'LatAm Scalers';
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/roles/presentation-designer/', baseUrl).toString();
+
+const meta = {
+	title: 'Hire a Dedicated Presentation Designer — Pre-Vetted LATAM Talent for Consultancies | LatAm Scalers',
+	description:
+		'Hire a dedicated presentation designer for management consultancies and professional services. Pitch decks, investor materials, research decks, and stakeholder presentations. Pre-vetted LATAM talent. From ~$3,200/mo.',
+};
+
+const faq = [
+	{
+		question: 'What does a Presentation Designer do?',
+		answer:
+			'A Presentation Designer creates high-polish, persuasive deck design for investor pitches, client presentations, research decks, and executive communication. They combine data visualization, typography, layout design, and narrative structure to transform complex information into clear, compelling visual stories. Typical rate is $200–$400/hour; LATAM remote talent offers equivalent quality at 50% cost.',
+	},
+	{
+		question: 'What types of presentations do they create?',
+		answer:
+			'Presentation Designers work across pitch decks (fundraising), client proposals, research decks, board presentations, annual reports, and stakeholder materials. Each has distinct design requirements and information hierarchy.',
+	},
+	{
+		question: 'Can they handle data visualization and charts?',
+		answer:
+			'Yes. Data visualization is core to presentation design — designing charts, graphs, and infographics that make complex data accessible and persuasive. They work with your data and transform it into visual narratives.',
+	},
+	{
+		question: 'Do they work from existing slides or create from scratch?',
+		answer:
+			'Both. Some projects involve refining existing content; others are greenfield deck builds. They typically work from your content/copy and transform it into polished visual decks over 1–2 week timelines.',
+	},
+	{
+		question: 'What is the cost vs. hiring a designer on retainer?',
+		answer:
+			'Boutique presentation designers (McKinsey design alumni, etc.) charge $200–$400/hour. A dedicated full-time presenter designer through LatAm Scalers costs approximately $3,200–$3,500/month ($40/hour equivalent) — saving 80–90% of hourly rates while maintaining quality.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Presentation Designer',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faq.map((f) => ({
+		'@type': 'Question',
+		name: f.question,
+		acceptedAnswer: { '@type': 'Answer', text: f.answer },
+	})),
+};
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
+
+	<RoleTemplate
+		role="Presentation Designer"
+		category="design"
+		hubHref="/design/"
+		hubLabel="Design Talent Hub"
+		h1="Hire a Dedicated Presentation Designer — Pre-Vetted LATAM Talent"
+		subheadline="Dedicated presentation designers for pitch decks, investor materials, research decks, and executive communication. Keynote, PowerPoint, Figma expertise. US timezone. Vetted. Month-to-month."
+		atAGlance={[
+			{ label: 'Category', value: 'Design — Consulting & Professional Services' },
+			{ label: 'Tools', value: 'Keynote, PowerPoint, Figma, Adobe CC' },
+			{ label: 'Pricing', value: 'From ~$3,200/mo' },
+			{ label: 'Availability', value: 'FT (40h) or PT (20h)' },
+		]}
+		overview="Our Presentation Designers specialize in high-stakes visual communication — pitch decks for investors, client proposals for consultancies, research decks for stakeholder reviews. They combine data visualization, narrative design, and strategic layout to transform complex information into persuasive visual stories. Working for boutiques, consultancies, and startups at $200–$400/hour equivalent cost."
+		skills={[
+			'Pitch deck design and investor communication',
+			'Data visualization and information hierarchy',
+			'Client proposal and RFP response design',
+			'Research deck and findings presentation',
+			'Brand system design and guideline creation',
+			'Typography and layout hierarchy mastery',
+			'Charts, graphs, and infographic design',
+			'Keynote and PowerPoint template creation',
+			'Presentation strategy and narrative structure',
+			'Design for persuasion and stakeholder buy-in',
+		]}
+		whyRemote="Presentation design is asynchronous-friendly and timeline-driven — perfect for remote delivery. Your Presentation Designer works in your preferred tool (Keynote, PowerPoint, Figma), receives your content and data, and produces polished decks over 1–2 week cycles. LATAM timezone (0–3 hours behind EST/CST) enables same-day feedback loops."
+		engagementOptions={[
+			{
+				title: 'Dedicated Presentation Designer',
+				description:
+					'Full-time (40h/week) or part-time (20h/week) designer handling all presentation needs — pitch decks, proposals, research decks, and executive materials. Works in your preferred tools and brand guidelines.',
+				pricing: 'From ~$3,200/mo',
+			},
+			{
+				title: 'Presentation Design Team',
+				description:
+					'Multiple presentation designers for high-volume consulting firms, agencies, or startups running frequent pitches and proposals. Includes creative director oversight for consistency.',
+				pricing: 'Custom — based on team size and scope',
+			},
+		]}
+		tools={[
+			{ name: 'Keynote', description: 'Primary presentation tool for Mac-based workflows and sophisticated design-forward decks.' },
+			{ name: 'PowerPoint', description: 'Universal presentation format for cross-platform compatibility and enterprise deployment.' },
+			{ name: 'Figma', description: 'Collaborative design platform for deck development and real-time feedback.' },
+			{ name: 'Adobe Creative Suite', description: 'Illustrator for custom graphics and Photoshop for data visualization design.' },
+			{ name: 'Data visualization tools', description: 'Tableau, Flourish, or custom chart design for complex data representation.' },
+			{ name: 'Slack / Frame.io', description: 'Collaboration and feedback on deck iterations.' },
+		]}
+		deliverables={[
+			'Pitch decks for fundraising (seed, Series A/B) and investor communication',
+			'Client proposals and RFP response decks',
+			'Research decks and findings presentations',
+			'Executive summaries and board presentations',
+			'Annual reports and stakeholder communications',
+			'Data visualization and infographics',
+			'Presentation templates and design systems',
+			'Brand guidelines for presentation consistency',
+		]}
+		pricing="Dedicated Presentation Designers start at approximately $3,200–$3,500/month for full-time engagement (40h/week). Part-time (20h/week) and presentation design team configurations are also available. Pricing varies based on design seniority (junior vs. boutique-level experience) and industry specialization."
+		relatedRoles={[
+			{ title: 'Brand Designer', href: '/roles/brand-visual-designer/', category: 'design' },
+			{ title: 'UI/UX Designer', href: '/roles/ui-ux-designer/', category: 'design' },
+			{ title: 'Production Designer', href: '/roles/production-designer/', category: 'design' },
+		]}
+		faq={faq}
+	/>
+</Layout>
