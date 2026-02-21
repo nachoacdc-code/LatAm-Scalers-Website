@@ -22,7 +22,7 @@ todos:
     status: pending
   - id: mvp-phase-5
     content: "MVP Phase 5 — Priority Service Spokes: /aec/bim-coordination-services/, /aec/cad-drafting-services/, /aec/mep-engineering-services/, /design/managed-creative-teams/, /marketing/marops-revops/, /design/hire-ux-designer/"
-    status: pending
+    status: completed
   - id: mvp-phase-6
     content: "MVP Phase 6 — Roles Directory & Role Pages: Enhanced directory (filter tabs, enriched cards), create RoleTemplate.astro component (11-section reusable), complete BIM Coordinator stub, complete remaining 7 role pages in 2 batches"
     status: pending
