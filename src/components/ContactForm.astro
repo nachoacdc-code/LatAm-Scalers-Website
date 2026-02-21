@@ -88,6 +88,23 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
 		</div>
 
 		<div class="sm:col-span-1">
+			<label class="text-sm font-medium text-slate-200" for={`${formId}-website-url`}>
+				Company website <span class="text-rose-400">*</span>
+			</label>
+			<input
+				class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+				id={`${formId}-website-url`}
+				name="company_website"
+				type="url"
+				inputmode="url"
+				autocomplete="url"
+				placeholder="https://yourcompany.com"
+				required
+				aria-required="true"
+			/>
+		</div>
+
+		<div class="sm:col-span-1">
 			<label class="text-sm font-medium text-slate-200" for={`${formId}-company-size`}>
 				Company size <span class="text-rose-400">*</span>
 			</label>
@@ -108,62 +125,35 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
 		</div>
 
 		<div class="sm:col-span-1">
-			<label class="text-sm font-medium text-slate-200" for={`${formId}-category`}>
-				What do you need? <span class="text-rose-400">*</span>
+			<label class="text-sm font-medium text-slate-200" for={`${formId}-phone`}>
+				Phone number <span class="text-rose-400">*</span>
 			</label>
-			<select
-				class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-				id={`${formId}-category`}
-				name="category"
+			<input
+				class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+				id={`${formId}-phone`}
+				name="phone"
+				type="tel"
+				inputmode="tel"
+				autocomplete="tel"
+				placeholder="+1 (555) 000-0000"
 				required
 				aria-required="true"
-			>
-				<option value="" selected disabled>Select…</option>
-				<option value="aec" selected={defaultCategory === 'aec'}>AEC (BIM, CAD, Engineering)</option>
-				<option value="design" selected={defaultCategory === 'design'}>Creative & Design</option>
-				<option value="marketing" selected={defaultCategory === 'marketing'}>Marketing</option>
-				<option value="multiple">Multiple categories</option>
-				<option value="not-sure">Not sure yet</option>
-			</select>
+			/>
 		</div>
 
 		<div class="sm:col-span-1">
-			<label class="text-sm font-medium text-slate-200" for={`${formId}-timeline`}>
-				Timeline <span class="text-rose-400">*</span>
+			<label class="text-sm font-medium text-slate-200" for={`${formId}-position`}>
+				Your role / position <span class="text-rose-400">*</span>
 			</label>
-			<select
-				class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-				id={`${formId}-timeline`}
-				name="timeline"
+			<input
+				class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+				id={`${formId}-position`}
+				name="position"
+				autocomplete="organization-title"
+				placeholder="e.g. VP of Engineering, Design Director"
 				required
 				aria-required="true"
-			>
-				<option value="" selected disabled>Select…</option>
-				<option value="asap">ASAP</option>
-				<option value="1-2-weeks">1–2 weeks</option>
-				<option value="2-4-weeks">2–4 weeks</option>
-				<option value="flexible">Flexible</option>
-			</select>
-		</div>
-
-		<div class="sm:col-span-1">
-			<label class="text-sm font-medium text-slate-200" for={`${formId}-budget`}>
-				Monthly budget <span class="text-rose-400">*</span>
-			</label>
-			<select
-				class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-				id={`${formId}-budget`}
-				name="budget_range"
-				required
-				aria-required="true"
-			>
-				<option value="" selected disabled>Select…</option>
-				<option value="under-2500">Under $2,500/mo</option>
-				<option value="2500-5000">$2,500–$5,000/mo</option>
-				<option value="5000-10000">$5,000–$10,000/mo</option>
-				<option value="10000+">$10,000+/mo</option>
-				<option value="not-sure">Not sure yet</option>
-			</select>
+			/>
 		</div>
 
 		<div class="sm:col-span-1">
@@ -205,13 +195,15 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
 
 		<div class="sm:col-span-2">
 			<label class="text-sm font-medium text-slate-200" for={`${formId}-message`}>
-				What do you need help with?
+				What do you need help with? <span class="text-rose-400">*</span>
 			</label>
 			<textarea
 				class="mt-2 min-h-24 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
 				id={`${formId}-message`}
 				name="message"
 				placeholder="Describe the role, tools, and what success looks like for you."
+				required
+				aria-required="true"
 			>{defaultMessage}</textarea>
 		</div>
 
@@ -224,43 +216,51 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
 				aria-expanded="false"
 			>
 				<svg class="h-4 w-4 transition-transform" data-chevron viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
-				Help us match better (optional)
+				Help us qualify your needs (optional)
 			</button>
 
 			<div class="mt-3 hidden grid gap-4 sm:grid-cols-2" data-optional-fields>
 				<div class="sm:col-span-1">
-					<label class="text-sm font-medium text-slate-200" for={`${formId}-website`}>Company website</label>
-					<input
-						class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-						id={`${formId}-website-url`}
-						name="company_website"
-						type="url"
-						inputmode="url"
-						autocomplete="url"
-						placeholder="https://yourcompany.com"
-					/>
+					<label class="text-sm font-medium text-slate-200" for={`${formId}-category`}>What do you need?</label>
+					<select
+						class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+						id={`${formId}-category`}
+						name="category"
+					>
+						<option value="" selected>Skip / Not sure</option>
+						<option value="aec" selected={defaultCategory === 'aec'}>AEC (BIM, CAD, Engineering)</option>
+						<option value="design" selected={defaultCategory === 'design'}>Creative & Design</option>
+						<option value="marketing" selected={defaultCategory === 'marketing'}>Marketing</option>
+						<option value="multiple">Multiple categories</option>
+					</select>
 				</div>
 				<div class="sm:col-span-1">
-					<label class="text-sm font-medium text-slate-200" for={`${formId}-phone`}>Phone number</label>
-					<input
-						class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-						id={`${formId}-phone`}
-						name="phone"
-						type="tel"
-						inputmode="tel"
-						autocomplete="tel"
-						placeholder="+1 (555) 000-0000"
-					/>
+					<label class="text-sm font-medium text-slate-200" for={`${formId}-timeline`}>Timeline</label>
+					<select
+						class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+						id={`${formId}-timeline`}
+						name="timeline"
+					>
+						<option value="" selected>Skip / Flexible</option>
+						<option value="asap">ASAP</option>
+						<option value="1-2-weeks">1–2 weeks</option>
+						<option value="2-4-weeks">2–4 weeks</option>
+						<option value="flexible">Flexible</option>
+					</select>
 				</div>
 				<div class="sm:col-span-2">
-					<label class="text-sm font-medium text-slate-200" for={`${formId}-position`}>Your role / position</label>
-					<input
-						class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-						id={`${formId}-position`}
-						name="position"
-						autocomplete="organization-title"
-						placeholder="e.g. VP of Engineering, Design Director"
-					/>
+					<label class="text-sm font-medium text-slate-200" for={`${formId}-budget`}>Monthly budget</label>
+					<select
+						class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+						id={`${formId}-budget`}
+						name="budget_range"
+					>
+						<option value="" selected>Skip / Not sure yet</option>
+						<option value="under-2500">Under $2,500/mo</option>
+						<option value="2500-5000">$2,500–$5,000/mo</option>
+						<option value="5000-10000">$5,000–$10,000/mo</option>
+						<option value="10000+">$10,000+/mo</option>
+					</select>
 				</div>
 			</div>
 		</div>
