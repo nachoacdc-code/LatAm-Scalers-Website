@@ -6,14 +6,17 @@ import { BOOKING_URL, isExternalUrl } from '../lib/cta';
 export type Props = {
 	role: string;
 	category: 'aec' | 'design' | 'marketing';
-	title: string;
-	description: string;
+	hubHref: string;
+	hubLabel: string;
 	h1: string;
+	subheadline: string;
+	atAGlance: { label: string; value: string }[];
 	overview: string;
+	skills: string[];
 	whyRemote: string;
+	engagementOptions: { title: string; description: string; pricing?: string }[];
 	tools: { name: string; description: string }[];
 	deliverables: string[];
-	engagementOptions: { title: string; description: string }[];
 	pricing: string;
 	relatedRoles: { title: string; href: string; category: string }[];
 	faq: { question: string; answer: string }[];
@@ -22,14 +25,17 @@ export type Props = {
 const {
 	role,
 	category,
-	title,
-	description,
+	hubHref,
+	hubLabel,
 	h1,
+	subheadline,
+	atAGlance,
 	overview,
+	skills,
 	whyRemote,
+	engagementOptions,
 	tools,
 	deliverables,
-	engagementOptions,
 	pricing,
 	relatedRoles,
 	faq,
@@ -50,34 +56,36 @@ const categoryColors: Record<string, string> = {
 	design: 'text-design',
 	marketing: 'text-marketing',
 };
+
+const defaultInterest = category === 'aec' ? 'aec' : category === 'design' ? 'design' : 'marketing';
 ---
 
 {/* 1. HERO */}
-<section class="relative overflow-hidden bg-slate-950">
-	<div class="mx-auto max-w-6xl px-6 py-16 sm:py-20">
+<section class="relative overflow-hidden bg-slate-950 py-16 sm:py-24" aria-labelledby="role-heading">
+	<div class="mx-auto max-w-6xl px-6">
 		<div class="grid items-center gap-10 lg:grid-cols-2">
-			<div>
-				<p class={`text-sm font-semibold tracking-wide ${categoryColors[category]}`}>
+			<div class="js-fade-in">
+				<p class={`text-sm font-semibold uppercase tracking-widest ${categoryColors[category]}`}>
 					{categoryLabels[category]} Role
 				</p>
-				<h1 class="mt-4 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+				<h1 id="role-heading" class="mt-4 text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
 					{h1}
 				</h1>
-				<p class="mt-4 max-w-prose text-base leading-relaxed text-slate-400 sm:text-lg">
-					{description}
+				<p class="mt-5 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
+					{subheadline}
 				</p>
 				<div class="mt-8 flex flex-wrap gap-3">
 					<a
 						href={bookingUrl}
 						{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
-						class="inline-flex items-center justify-center rounded bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2"
+						class="inline-flex min-h-[48px] items-center justify-center rounded bg-sky-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
 						data-book-call
 					>
-						Book a 15-Min Call
+						Hire a {role}
 					</a>
 					<a
 						href="/#contact"
-						class="inline-flex items-center justify-center rounded-xl border border-white/20 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2"
+						class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-slate-700 bg-slate-900/40 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
 						data-open-tell-us="role-hero"
 						data-role={role}
 					>
@@ -86,27 +94,17 @@ const categoryColors: Record<string, string> = {
 				</div>
 			</div>
 
-			{/* 2. AT A GLANCE sidebar */}
-			<div class="relative">
-				<div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 shadow-sm">
+			{/* 2. AT A GLANCE */}
+			<div class="js-fade-in relative">
+				<div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
 					<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">At a glance</p>
 					<ul class="mt-4 grid gap-3 sm:grid-cols-2">
-						<li class="rounded-xl border border-white/10 bg-white/5 p-4">
-							<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Category</p>
-							<p class="mt-2 text-sm text-slate-400">{categoryLabels[category]}</p>
-						</li>
-						<li class="rounded-xl border border-white/10 bg-white/5 p-4">
-							<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Tools</p>
-							<p class="mt-2 text-sm text-slate-400">{tools.slice(0, 3).map((t) => t.name).join(', ')}</p>
-						</li>
-						<li class="rounded-xl border border-white/10 bg-white/5 p-4">
-							<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Pricing</p>
-							<p class="mt-2 text-sm text-slate-400">{pricing}</p>
-						</li>
-						<li class="rounded-xl border border-white/10 bg-white/5 p-4">
-							<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Flexibility</p>
-							<p class="mt-2 text-sm text-slate-400">20h / 40h or team scaling</p>
-						</li>
+						{atAGlance.map((item) => (
+							<li class="rounded-xl border border-slate-800 bg-slate-950/40 p-4">
+								<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">{item.label}</p>
+								<p class="mt-2 text-sm text-slate-200">{item.value}</p>
+							</li>
+						))}
 					</ul>
 				</div>
 			</div>
@@ -115,61 +113,98 @@ const categoryColors: Record<string, string> = {
 </section>
 
 {/* 3. OVERVIEW */}
-<section class="bg-slate-900/40 js-fade-in">
-	<div class="mx-auto max-w-6xl px-6 py-14">
-		<h2 class="text-2xl font-semibold text-slate-100">Role Overview</h2>
-		<p class="mt-4 max-w-prose text-sm leading-relaxed text-slate-400 sm:text-base">
-			{overview}
-		</p>
+<section class="bg-slate-900/40 py-14 sm:py-16" aria-labelledby="overview-heading">
+	<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in max-w-2xl">
+			<h2 id="overview-heading" class="text-2xl font-semibold tracking-tight text-slate-100 sm:text-3xl">Role Overview</h2>
+			<p class="mt-4 text-base leading-relaxed text-slate-400">
+				{overview}
+			</p>
+		</div>
+		{skills.length > 0 && (
+			<ul class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+				{skills.map((skill) => (
+					<li class="js-fade-in flex items-start gap-2 rounded-xl border border-slate-800 bg-slate-900/40 p-4">
+						<span class={`shrink-0 font-bold ${categoryColors[category]}`} aria-hidden="true">✓</span>
+						<span class="text-sm text-slate-300">{skill}</span>
+					</li>
+				))}
+			</ul>
+		)}
 	</div>
 </section>
 
 {/* 4. WHY REMOTE LATAM */}
-<section class="bg-slate-950 js-fade-in">
-	<div class="mx-auto max-w-6xl px-6 py-14">
-		<h2 class="text-2xl font-semibold text-slate-100">Why Hire a Remote {role} from LATAM?</h2>
-		<p class="mt-4 max-w-prose text-sm leading-relaxed text-slate-400 sm:text-base">
-			{whyRemote}
-		</p>
-		<ul class="mt-6 grid gap-3 sm:grid-cols-2">
-			<li class="rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3 text-sm text-slate-300">
-				50–70% cost savings vs. US-based hires
+<section class="bg-slate-950 py-14 sm:py-16" aria-labelledby="why-remote-heading">
+	<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in max-w-2xl">
+			<h2 id="why-remote-heading" class="text-2xl font-semibold tracking-tight text-slate-100 sm:text-3xl">Why Hire a Remote {role} from LATAM?</h2>
+			<p class="mt-4 text-base leading-relaxed text-slate-400">
+				{whyRemote}
+			</p>
+		</div>
+		<ul class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+			<li class="js-fade-in rounded-xl border border-slate-800 bg-slate-900/40 px-5 py-4 text-sm text-slate-300">
+				<strong class="block text-slate-100">50–70% cost savings</strong>
+				vs. equivalent US-based hires
 			</li>
-			<li class="rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3 text-sm text-slate-300">
-				Timezone-aligned (EST/CST/PST overlap)
+			<li class="js-fade-in rounded-xl border border-slate-800 bg-slate-900/40 px-5 py-4 text-sm text-slate-300">
+				<strong class="block text-slate-100">Timezone-aligned</strong>
+				EST / CST / PST overlap for real-time collaboration
 			</li>
-			<li class="rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3 text-sm text-slate-300">
-				Fluent English, pre-vetted for tools & culture
+			<li class="js-fade-in rounded-xl border border-slate-800 bg-slate-900/40 px-5 py-4 text-sm text-slate-300">
+				<strong class="block text-slate-100">Fluent English</strong>
+				pre-vetted for communication, tools, and culture
 			</li>
-			<li class="rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3 text-sm text-slate-300">
-				Scale up or down with no long-term contracts
+			<li class="js-fade-in rounded-xl border border-slate-800 bg-slate-900/40 px-5 py-4 text-sm text-slate-300">
+				<strong class="block text-slate-100">Month-to-month</strong>
+				scale up or down anytime, no long-term contracts
 			</li>
 		</ul>
 	</div>
 </section>
 
 {/* 5. ENGAGEMENT OPTIONS */}
-<section class="bg-slate-900/40 js-fade-in">
-	<div class="mx-auto max-w-6xl px-6 py-14">
-		<h2 class="text-2xl font-semibold text-slate-100">Engagement Options</h2>
-		<div class="mt-6 grid gap-4 md:grid-cols-2">
+<section class="bg-slate-900/40 py-14 sm:py-16" aria-labelledby="engagement-heading">
+	<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in max-w-2xl">
+			<h2 id="engagement-heading" class="text-2xl font-semibold tracking-tight text-slate-100 sm:text-3xl">Engagement Options</h2>
+			<p class="mt-4 text-base leading-relaxed text-slate-400">
+				Flexible arrangements to fit your capacity needs — dedicated individuals or scalable team setups.
+			</p>
+		</div>
+		<div class="mt-8 grid gap-5 md:grid-cols-2">
 			{engagementOptions.map((opt) => (
-				<article class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+				<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
 					<h3 class="text-base font-semibold text-slate-100">{opt.title}</h3>
 					<p class="mt-3 text-sm leading-relaxed text-slate-400">{opt.description}</p>
-				</article>
+					{opt.pricing && <p class={`mt-4 text-sm font-semibold ${categoryColors[category]}`}>{opt.pricing}</p>}
+				</div>
 			))}
+		</div>
+		<div class="js-fade-in mt-6">
+			<a
+				href={hubHref}
+				class={`inline-flex items-center gap-1.5 text-sm font-semibold ${categoryColors[category]} transition hover:opacity-80 focus:outline-none focus-visible:underline`}
+			>
+				View {hubLabel} engagement details <span aria-hidden="true">&rarr;</span>
+			</a>
 		</div>
 	</div>
 </section>
 
 {/* 6. TOOLS */}
-<section class="bg-slate-950 js-fade-in">
-	<div class="mx-auto max-w-6xl px-6 py-14">
-		<h2 class="text-2xl font-semibold text-slate-100">Tools & Technologies</h2>
-		<div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+<section class="bg-slate-950 py-14 sm:py-16" aria-labelledby="tools-heading">
+	<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in max-w-2xl">
+			<h2 id="tools-heading" class="text-2xl font-semibold tracking-tight text-slate-100 sm:text-3xl">Tools & Technologies</h2>
+			<p class="mt-4 text-base leading-relaxed text-slate-400">
+				Specialists are vetted on the tools your team already uses.
+			</p>
+		</div>
+		<div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 			{tools.map((tool) => (
-				<div class="rounded-xl border border-slate-800 bg-slate-900/40 p-5">
+				<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-5 shadow-lg shadow-black/20">
 					<p class="text-sm font-semibold text-slate-100">{tool.name}</p>
 					<p class="mt-2 text-sm leading-relaxed text-slate-400">{tool.description}</p>
 				</div>
@@ -179,14 +214,19 @@ const categoryColors: Record<string, string> = {
 </section>
 
 {/* 7. SAMPLE DELIVERABLES */}
-<section class="bg-slate-900/40 js-fade-in">
-	<div class="mx-auto max-w-6xl px-6 py-14">
-		<h2 class="text-2xl font-semibold text-slate-100">Sample Deliverables</h2>
-		<ul class="mt-6 grid gap-3 sm:grid-cols-2">
+<section class="bg-slate-900/40 py-14 sm:py-16" aria-labelledby="deliverables-heading">
+	<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in max-w-2xl">
+			<h2 id="deliverables-heading" class="text-2xl font-semibold tracking-tight text-slate-100 sm:text-3xl">Sample Deliverables</h2>
+			<p class="mt-4 text-base leading-relaxed text-slate-400">
+				Typical outputs produced by a dedicated {role} for US teams.
+			</p>
+		</div>
+		<ul class="mt-8 grid gap-3 sm:grid-cols-2">
 			{deliverables.map((d) => (
-				<li class="flex items-start gap-3 rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3">
-					<span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-sky-500/10 text-sky-300 text-xs font-bold" aria-hidden="true">✓</span>
-					<span class="text-sm text-slate-400">{d}</span>
+				<li class="js-fade-in flex items-start gap-3 rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3">
+					<span class={`mt-0.5 shrink-0 text-sm font-bold ${categoryColors[category]}`} aria-hidden="true">✓</span>
+					<span class="text-sm text-slate-300">{d}</span>
 				</li>
 			))}
 		</ul>
@@ -194,41 +234,56 @@ const categoryColors: Record<string, string> = {
 </section>
 
 {/* 8. PRICING GUIDANCE */}
-<section class="bg-slate-950 js-fade-in">
-	<div class="mx-auto max-w-6xl px-6 py-14">
-		<h2 class="text-2xl font-semibold text-slate-100">Pricing Guidance</h2>
-		<div class="mt-6 rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-			<p class="text-sm leading-relaxed text-slate-400 sm:text-base">{pricing}</p>
-			<p class="mt-4 text-sm text-slate-400">
-				Final pricing depends on experience level, hours per week, and engagement model. Book a call for a personalized quote.
+<section class="bg-slate-950 py-14 sm:py-16" aria-labelledby="pricing-heading">
+	<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in max-w-2xl">
+			<h2 id="pricing-heading" class="text-2xl font-semibold tracking-tight text-slate-100 sm:text-3xl">Pricing Guidance</h2>
+			<p class="mt-4 text-base leading-relaxed text-slate-400">
+				{pricing}
 			</p>
-			<a
-				href={bookingUrl}
-				{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
-				class="mt-5 inline-flex items-center justify-center rounded bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2"
-				data-book-call
-			>
-				Get a Custom Quote
-			</a>
+			<p class="mt-3 text-sm text-slate-400">
+				Final pricing depends on experience level, hours per week, and engagement model.
+			</p>
+			<div class="mt-6 flex flex-wrap gap-3">
+				<a
+					href={bookingUrl}
+					{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+					class="inline-flex min-h-[48px] items-center justify-center rounded bg-sky-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+					data-book-call
+				>
+					Get a Custom Quote
+				</a>
+				<a
+					href="/how-pricing-works/"
+					class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-slate-700 bg-slate-900/40 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+				>
+					How Pricing Works
+				</a>
+			</div>
 		</div>
 	</div>
 </section>
 
 {/* 9. RELATED ROLES */}
-<section class="bg-slate-900/40 js-fade-in">
-	<div class="mx-auto max-w-6xl px-6 py-14">
-		<h2 class="text-2xl font-semibold text-slate-100">Related Roles</h2>
-		<div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+<section class="bg-slate-900/40 py-14 sm:py-16" aria-labelledby="related-heading">
+	<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in max-w-2xl">
+			<h2 id="related-heading" class="text-2xl font-semibold tracking-tight text-slate-100 sm:text-3xl">Related Roles</h2>
+			<p class="mt-4 text-base leading-relaxed text-slate-400">
+				Often paired with or complementary to the {role} role.
+			</p>
+		</div>
+		<div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 			{relatedRoles.map((r) => (
 				<a
 					href={r.href}
-					class="group rounded-xl border border-slate-800 bg-slate-900/40 p-5 transition hover:bg-slate-900 hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+					class="js-fade-in group rounded-xl border border-slate-800 bg-slate-900/40 p-5 transition hover:bg-slate-900 hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
 				>
-					<span class={`text-xs font-semibold uppercase tracking-wide ${categoryColors[r.category] ?? 'text-slate-400'}`}>
-						{categoryLabels[r.category] ?? r.category}
+					<span class={`text-xs font-semibold uppercase tracking-wide ${categoryColors[r.category as keyof typeof categoryColors] ?? 'text-slate-400'}`}>
+						{categoryLabels[r.category as keyof typeof categoryLabels] ?? r.category}
 					</span>
-					<p class="mt-2 text-sm font-semibold text-slate-100 group-hover:text-sky-200 transition-colors">{r.title}</p>
-					<p class="mt-2 text-sm font-semibold text-sky-300">View role →</p>
+					<p class="mt-2 text-sm font-semibold text-slate-100 transition-colors group-hover:text-sky-200">{r.title}</p>
+					<p class="mt-2 text-sm font-semibold text-sky-300">View role &rarr;</p>
 				</a>
 			))}
 		</div>
@@ -236,19 +291,21 @@ const categoryColors: Record<string, string> = {
 </section>
 
 {/* 10. FAQ */}
-<section class="bg-slate-950 js-fade-in">
-	<div class="mx-auto max-w-6xl px-6 py-14">
-		<h2 class="text-2xl font-semibold text-slate-100">Frequently Asked Questions</h2>
-		<div class="mt-6 space-y-3">
+<section class="bg-slate-950 py-14 sm:py-16" aria-labelledby="faq-heading">
+	<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in max-w-2xl">
+			<h2 id="faq-heading" class="text-2xl font-semibold tracking-tight text-slate-100 sm:text-3xl">Frequently Asked Questions</h2>
+			<p class="mt-4 text-base leading-relaxed text-slate-400">
+				Common questions about hiring a {role} through LatAm Scalers.
+			</p>
+		</div>
+		<div class="mt-8 grid gap-3">
 			{faq.map((item) => (
-				<details class="group rounded-xl border border-slate-800 bg-slate-900/40">
-					<summary class="flex cursor-pointer items-center justify-between px-5 py-4 text-sm font-semibold text-slate-100 transition hover:text-sky-200">
+				<details class="js-fade-in rounded-xl border border-slate-800 bg-slate-900/40 p-5">
+					<summary class="cursor-pointer list-none text-sm font-semibold text-slate-100 [&::-webkit-details-marker]:hidden">
 						{item.question}
-						<span class="ml-3 shrink-0 text-slate-400 transition-transform group-open:rotate-45" aria-hidden="true">+</span>
 					</summary>
-					<div class="px-5 pb-4 text-sm leading-relaxed text-slate-400">
-						{item.answer}
-					</div>
+					<p class="mt-4 border-t border-slate-800 pt-4 text-sm leading-relaxed text-slate-400">{item.answer}</p>
 				</details>
 			))}
 		</div>
@@ -256,76 +313,79 @@ const categoryColors: Record<string, string> = {
 </section>
 
 {/* 11. CTA */}
-<section class="bg-slate-950 js-fade-in">
-	<div class="mx-auto max-w-6xl px-6 py-14">
-		<div class="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
-			<div>
-				<h2 class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-					Hire a {role} — Book a Call
-				</h2>
-				<p class="mt-2 max-w-prose text-sm leading-relaxed text-slate-400 sm:text-base">
-					Tell us your requirements and we'll recommend the best engagement model and match you with pre-vetted talent fast.
-				</p>
-			</div>
-			<div class="flex flex-wrap gap-3">
+<section class="bg-slate-900/40 py-14 sm:py-16" aria-labelledby="cta-heading">
+	<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-8 text-center shadow-xl sm:p-12">
+			<h2 id="cta-heading" class="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+				Ready to Hire a {role}?
+			</h2>
+			<p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slate-300">
+				Tell us your requirements and we'll present vetted {role} candidates — matched in under one week. Month-to-month, free replacement guarantee.
+			</p>
+			<div class="mt-8 flex flex-wrap items-center justify-center gap-4">
 				<a
 					href={bookingUrl}
 					{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
-					class="inline-flex items-center justify-center rounded bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2"
+					class="inline-flex min-h-[48px] items-center justify-center rounded bg-sky-600 px-8 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
 					data-book-call
 				>
 					Book a 15-Min Call
 				</a>
 				<a
 					href="/roles/"
-					class="inline-flex items-center justify-center rounded-xl border border-white/20 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2"
+					class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-slate-700 bg-slate-900/40 px-8 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
 				>
 					Browse All Roles
 				</a>
 			</div>
+			<p class="mt-5 text-xs text-slate-400">Month-to-month · Free replacement guarantee · No long-term contracts</p>
 		</div>
 	</div>
 </section>
 
-{/* CONTACT FORM + CALENDLY */}
-<section class="bg-slate-950" id="contact">
-	<div class="mx-auto max-w-6xl px-6 py-14">
-		<h2 class="text-2xl font-semibold tracking-tight text-slate-100 sm:text-3xl">Contact Us</h2>
-		<p class="mt-2 max-w-prose text-sm leading-relaxed text-slate-400 sm:text-base">
-			Send us your requirements or book a call directly.
-		</p>
-		<div class="mt-8 grid gap-6 lg:grid-cols-2">
-			<ContactForm subject={`LatAm Scalers — inquiry (role: ${role})`} role={role} defaultInterest={category === 'aec' ? 'aec' : category === 'design' ? 'design' : 'marketing'} />
+{/* CONTACT + CALENDLY */}
+<section class="bg-slate-950 pb-20 pt-14 sm:pb-24 sm:pt-16" id="contact" aria-labelledby="contact-heading">
+	<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in max-w-2xl">
+			<p class="text-sm font-semibold uppercase tracking-widest text-sky-300">Get in touch</p>
+			<h2 id="contact-heading" class="mt-3 text-2xl font-semibold tracking-tight text-slate-100 sm:text-3xl">
+				Tell Us About Your {role} Needs
+			</h2>
+			<p class="mt-4 text-base leading-relaxed text-slate-400">
+				Share your scope and requirements — we'll match you with vetted {role} candidates fast.
+			</p>
+		</div>
+		<div class="mt-10 grid gap-6 lg:grid-cols-2">
+			<ContactForm subject={`LatAm Scalers — inquiry (role: ${role})`} defaultInterest={defaultInterest} defaultMessage={`I'm interested in hiring a ${role}.`} />
 			<CalendlyEmbed url={calendlyUrl} title={`Book a call about ${role}`} />
 		</div>
 	</div>
 </section>
 
-<script is:inline>
-(() => {
-	const observer = new IntersectionObserver(
-		(entries) => {
-			entries.forEach((e) => {
-				if (e.isIntersecting) {
-					e.target.classList.add('fade-in-visible');
-					observer.unobserve(e.target);
-				}
-			});
-		},
-		{ threshold: 0.1 }
-	);
-	document.querySelectorAll('.js-fade-in').forEach((el) => observer.observe(el));
-})();
-</script>
-
 <style>
 	.js-fade-in {
 		opacity: 0;
-		transform: translateY(16px);
-		transition: opacity 0.5s ease, transform 0.5s ease;
+		transform: translateY(20px);
+		transition: opacity 0.35s ease-out, transform 0.35s ease-out;
 	}
-	.fade-in-visible {
+	.js-fade-in.is-visible {
 		opacity: 1;
 		transform: translateY(0);
 	}
 </style>
+
+<script is:inline>
+	(function () {
+		var els = document.querySelectorAll('.js-fade-in');
+		if (!els.length) return;
+		var io = new IntersectionObserver(function (entries) {
+			entries.forEach(function (e) {
+				if (e.isIntersecting) {
+					e.target.classList.add('is-visible');
+					io.unobserve(e.target);
+				}
+			});
+		}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+		els.forEach(function (el) { io.observe(el); });
+	})();
+</script>

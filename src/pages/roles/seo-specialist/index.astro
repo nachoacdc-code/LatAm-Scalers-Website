@@ -1,213 +1,128 @@
 ---
-// ROLE TEMPLATE — copied from `src/pages/roles/architectural-designer/index.astro` and adapted.
 import Layout from '../../../layouts/Layout.astro';
 import MetaHead from '../../../components/MetaHead.astro';
-import ContactSection from '../../../components/ContactSection.astro';
-import { BOOKING_URL, isExternalUrl } from '../../../lib/cta';
+import RoleTemplate from '../../../components/RoleTemplate.astro';
 
 const brand = 'LatAm Scalers';
-
-const meta = {
-	title: `Dedicated Remote SEO Specialist | ${brand}`,
-	description:
-		'Dedicated remote SEO specialists for US teams — technical + on-page SEO, content briefs, and performance reporting. Flexible individuals or pod scaling.',
-};
-
-const baseUrl = Astro.site ?? 'https://talentcompany-site.vercel.app';
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
 const canonical = new URL('/roles/seo-specialist/', baseUrl).toString();
 
-const roleName = 'SEO Specialist';
+const meta = {
+	title: 'Hire a Dedicated SEO Specialist — Pre-Vetted LATAM Talent for US Teams | LatAm Scalers',
+	description:
+		'Hire a dedicated SEO specialist for US companies. Technical SEO, on-page optimization, content briefs, and monthly reporting. Ahrefs, Semrush, GSC. Pre-vetted, from ~$2,500/mo.',
+};
 
-const bookingUrl = BOOKING_URL;
-const bookingExternal = isExternalUrl(bookingUrl);
+const faq = [
+	{
+		question: 'What does a dedicated SEO Specialist do?',
+		answer:
+			'Our SEO Specialists handle technical SEO audits, on-page optimization, keyword research, content brief creation, internal linking strategy, Core Web Vitals monitoring, and monthly performance reporting. They work in Ahrefs, Semrush, Google Search Console, Screaming Frog, and GA4.',
+	},
+	{
+		question: 'Can they work across technical and content SEO?',
+		answer:
+			'Yes. Our specialists cover both technical SEO (site audits, crawl optimization, schema implementation, speed improvements) and content SEO (keyword research, content briefs, on-page optimization, content gap analysis). For larger programs, we can configure a specialist who focuses on one area.',
+	},
+	{
+		question: 'How do they integrate with our content or engineering teams?',
+		answer:
+			'Your SEO Specialist joins your content or marketing rituals, collaborates with writers to brief content, and works with engineers on technical implementation tasks. They deliver clear recommendations with priority levels — you decide which items to action and when.',
+	},
+	{
+		question: 'Do they produce content or only strategy?',
+		answer:
+			'SEO Specialists produce strategy, audits, briefs, and recommendations — they are not content writers. For content production, combine an SEO Specialist with a Content Marketer. The SEO Specialist briefs topics and keywords; the Content Marketer writes the posts.',
+	},
+	{
+		question: 'What does pricing look like?',
+		answer:
+			'Dedicated SEO Specialists start at approximately $2,500/month for full-time (40h/week). Part-time (20h/week) options are available for teams that need strategy and audit work without full-time volume. Custom quotes provided after scoping call.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'SEO Specialist',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faq.map((f) => ({
+		'@type': 'Question',
+		name: f.question,
+		acceptedAnswer: { '@type': 'Answer', text: f.answer },
+	})),
+};
 ---
 
 <Layout>
-	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} />
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
 
-	<main class="mx-auto max-w-6xl px-6 py-12 sm:py-14">
-		{/* HERO */}
-		<section class="relative overflow-hidden">
-			<div class="grid items-center gap-10 lg:grid-cols-2">
-				<div>
-					<p class="text-sm font-semibold tracking-wide text-sky-300">Roles</p>
-					<h1 class="mt-4 text-4xl font-semibold tracking-tight text-white sm:text-5xl">Dedicated Remote SEO Specialist</h1>
-					<p class="mt-4 max-w-prose text-base leading-relaxed text-slate-300 sm:text-lg">
-						Vetted SEO specialists for technical + on-page improvements, content briefs, and performance reporting — ready
-						to plug into your tools and ship optimizations weekly.
-					</p>
-
-					<div class="mt-8 flex flex-wrap gap-3">
-						<a
-							class="inline-flex items-center justify-center rounded bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-							href={bookingUrl}
-							{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
-							data-book-call
-						>
-							Book a 15-Min Call
-						</a>
-						<a
-							class="inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-							href="/#contact"
-							data-open-tell-us="role-hero"
-							data-role={roleName}
-						>
-							Tell Us Your Needs
-						</a>
-					</div>
-				</div>
-
-				<div class="relative">
-					<div class="rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900/60 to-slate-950 p-6 shadow-sm">
-						<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">At a glance</p>
-						<ul class="mt-4 grid gap-3 sm:grid-cols-2">
-							<li class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
-								<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Tools</p>
-								<p class="mt-2 text-sm text-slate-200">GSC, GA4, Ahrefs/Semrush, Screaming Frog</p>
-							</li>
-							<li class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
-								<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Outputs</p>
-								<p class="mt-2 text-sm text-slate-200">Content briefs, audits, fixes, weekly reporting</p>
-							</li>
-							<li class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
-								<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Cadence</p>
-								<p class="mt-2 text-sm text-slate-200">Backlog → ship → measure → iterate</p>
-							</li>
-							<li class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
-								<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Flex</p>
-								<p class="mt-2 text-sm text-slate-200">FT/PT or pod scaling</p>
-							</li>
-						</ul>
-					</div>
-					<div class="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-sky-500/10 blur-3xl" />
-					<div class="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-indigo-500/10 blur-3xl" />
-				</div>
-			</div>
-		</section>
-
-		{/* ROLE OVERVIEW */}
-		<section class="mt-12 rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-			<h2 class="text-xl font-semibold text-white">Role overview</h2>
-			<p class="mt-3 text-sm leading-relaxed text-slate-300 sm:text-base">
-				Our SEO specialists help you grow qualified traffic by improving technical foundations, tightening on-page
-				execution, and creating content briefs that convert. Timezone-aligned, fluent English, and ready to work inside
-				your tools and reporting.
-			</p>
-			<ul class="mt-5 grid gap-2 text-sm text-slate-300 sm:grid-cols-2">
-				<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">Technical audits + priority backlog</li>
-				<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">On-page optimization (titles, internal links, schema)</li>
-				<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">Content briefs + topical clusters</li>
-				<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">Search Console + GA4 reporting</li>
-				<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">Competitor + keyword research</li>
-			</ul>
-		</section>
-
-		{/* WHY REMOTE WORKS */}
-		<section class="mt-12">
-			<h2 class="text-xl font-semibold text-white">Why remote SEO specialists excel</h2>
-			<ul class="mt-4 grid gap-2 text-sm text-slate-300 sm:grid-cols-2">
-				<li class="rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3">Ship improvements weekly without hiring delays</li>
-				<li class="rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3">Continuous iteration based on data (GSC/GA4)</li>
-				<li class="rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3">Clear deliverables and reporting cadence</li>
-				<li class="rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3">Scale into a pod when you need content + PPC + analytics</li>
-			</ul>
-		</section>
-
-		{/* OPTIONS */}
-		<section class="mt-12" aria-labelledby="flexible-options">
-			<h2 id="flexible-options" class="text-xl font-semibold text-white">Options for this role</h2>
-			<div class="mt-6 grid gap-4 md:grid-cols-2">
-				<article class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-					<h3 class="text-base font-semibold text-slate-100">Individual Specialist</h3>
-					<p class="mt-3 text-sm leading-relaxed text-slate-300">
-						Dedicated full-time (40h/week) or part-time (20h/week) SEO specialist embedded into your tools and cadence.
-					</p>
-					<a
-						href="/solutions/marketing-talent/individuals/"
-						class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-sky-300 transition hover:text-sky-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-					>
-						View individuals <span aria-hidden="true">→</span>
-					</a>
-				</article>
-
-				<article class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-					<h3 class="text-base font-semibold text-slate-100">Pod / Team Scaling</h3>
-					<p class="mt-3 text-sm leading-relaxed text-slate-300">
-						Add SEO into a growth pod with content, paid media, and analytics to increase throughput across channels.
-					</p>
-					<a
-						href="/solutions/marketing-talent/teams/"
-						class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-sky-300 transition hover:text-sky-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-					>
-						View pods <span aria-hidden="true">→</span>
-					</a>
-				</article>
-			</div>
-		</section>
-
-		{/* SAMPLE OUTPUTS (anonymized) */}
-		<section class="mt-12" aria-labelledby="sample-outputs">
-			<h2 id="sample-outputs" class="text-xl font-semibold text-white">Sample outputs (anonymized)</h2>
-			<div class="mt-6 grid gap-4 md:grid-cols-3">
-				<div class="aspect-[4/3] rounded-2xl border border-slate-800 bg-slate-900/40 p-4">
-					<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Deliverable</p>
-					<p class="mt-2 text-sm text-slate-300">TODO: Technical audit summary + backlog</p>
-				</div>
-				<div class="aspect-[4/3] rounded-2xl border border-slate-800 bg-slate-900/40 p-4">
-					<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Deliverable</p>
-					<p class="mt-2 text-sm text-slate-300">TODO: Content brief + outline template</p>
-				</div>
-				<div class="aspect-[4/3] rounded-2xl border border-slate-800 bg-slate-900/40 p-4">
-					<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Deliverable</p>
-					<p class="mt-2 text-sm text-slate-300">TODO: Weekly reporting snapshot</p>
-				</div>
-			</div>
-		</section>
-
-		{/* PROOF */}
-		<section class="mt-12" aria-labelledby="proof-role">
-			<h2 id="proof-role" class="text-xl font-semibold text-white">Proof</h2>
-			<p class="mt-3 max-w-prose text-sm leading-relaxed text-slate-300">
-				{/* TODO: Replace with testimonials carousel. */}
-				Testimonials placeholder (to be filled).
-			</p>
-			<figure class="mt-6 rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-				<blockquote class="text-sm leading-relaxed text-slate-200">“Built a backlog and shipped fixes — organic leads grew steadily month over month.”</blockquote>
-				<figcaption class="mt-3 text-xs text-slate-400">— Anonymized client</figcaption>
-			</figure>
-		</section>
-
-		{/* CTAs */}
-		<section class="mt-14 rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900/60 to-slate-950 p-6 sm:p-8">
-			<div class="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
-				<div>
-					<h2 class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Ready to improve SEO output?</h2>
-					<p class="mt-2 max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
-						Book a call to discuss your goals — we’ll recommend the best engagement model and matching options fast.
-					</p>
-				</div>
-				<div class="flex flex-wrap gap-3">
-					<a
-						href={bookingUrl}
-						{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
-						class="inline-flex items-center justify-center rounded bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-						data-book-call
-					>
-						Book a 15-Min Call
-					</a>
-					<a
-						href="/solutions/marketing-talent/"
-						class="inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-					>
-						View Marketing solution
-					</a>
-				</div>
-			</div>
-		</section>
-	</main>
-
-	<div class="mx-auto max-w-6xl px-6">
-		<ContactSection subject={`${brand} — new inquiry (role: ${roleName})`} />
-	</div>
+	<RoleTemplate
+		role="SEO Specialist"
+		category="marketing"
+		hubHref="/marketing/"
+		hubLabel="Marketing Talent Hub"
+		h1="Hire a Dedicated SEO Specialist — Pre-Vetted LATAM Talent for US Teams"
+		subheadline="Dedicated SEO specialists for technical audits, on-page optimization, content briefs, and monthly performance reporting. Ahrefs, Semrush, GSC. US timezone. Month-to-month."
+		atAGlance={[
+			{ label: 'Category', value: 'Marketing' },
+			{ label: 'Tools', value: 'Ahrefs, Semrush, GSC, GA4' },
+			{ label: 'Pricing', value: 'From ~$2,500/mo' },
+			{ label: 'Availability', value: 'FT (40h) or PT (20h)' },
+		]}
+		overview="Our SEO Specialists drive organic growth through systematic technical audits, on-page optimization, and content strategy. They're proficient in Ahrefs, Semrush, Google Search Console, Screaming Frog, and GA4 — and they work in your tools, following your reporting cadence and communication standards. Timezone-aligned with US business hours, they ship optimizations weekly and report monthly on measurable progress."
+		skills={[
+			'Technical SEO audits and crawl optimization',
+			'Keyword research and competitive gap analysis',
+			'On-page optimization (title tags, meta, headings, schema)',
+			'Content brief creation for writers and editors',
+			'Internal linking strategy and architecture',
+			'Core Web Vitals and page speed monitoring',
+			'Google Search Console management',
+			'Monthly SEO performance reporting',
+		]}
+		whyRemote="SEO is data-driven and tool-intensive — making it highly suitable for dedicated remote delivery. Specialists run audits, produce briefs, implement on-page recommendations, and report on results through shared dashboards. LATAM timezone overlap enables collaboration with your content and engineering teams during US business hours for prioritization, implementation handoffs, and weekly sync calls."
+		engagementOptions={[
+			{
+				title: 'Dedicated Individual Specialist',
+				description:
+					'Full-time (40h/week) or part-time (20h/week) SEO Specialist embedded in your marketing team. Covers technical, on-page, and content SEO depending on your priorities.',
+				pricing: 'From ~$2,500/mo',
+			},
+			{
+				title: 'SEO + Content Pod',
+				description:
+					'An SEO Specialist paired with a Content Marketer for a complete organic content engine: research and briefs from the SEO side, writing and publishing from the content side.',
+				pricing: 'Custom — based on scope and headcount',
+			},
+		]}
+		tools={[
+			{ name: 'Ahrefs', description: 'Backlink analysis, keyword research, content gap analysis, and rank tracking.' },
+			{ name: 'Semrush', description: 'Site audits, keyword research, competitive intelligence, and on-page SEO tools.' },
+			{ name: 'Google Search Console', description: 'Indexing status, search performance, and crawl issue monitoring.' },
+			{ name: 'Screaming Frog', description: 'Technical SEO crawls, redirect audits, and on-page element analysis.' },
+			{ name: 'GA4', description: 'Organic traffic analysis, conversion tracking, and SEO performance measurement.' },
+		]}
+		deliverables={[
+			'Technical SEO audit with prioritized recommendations',
+			'Keyword research and content gap analysis',
+			'On-page optimization for existing content',
+			'SEO content briefs for writers (topic, keywords, outline)',
+			'Internal linking recommendations',
+			'Monthly SEO performance reports (rankings, traffic, coverage)',
+		]}
+		pricing="Dedicated SEO Specialists start at approximately $2,500/month for full-time (40h/week). Part-time (20h/week) options are available for teams needing strategic SEO support without full-time volume. Pricing depends on experience level and specialization focus."
+		relatedRoles={[
+			{ title: 'Content Marketer', href: '/roles/content-marketer/', category: 'marketing' },
+			{ title: 'PPC Manager', href: '/roles/ppc-manager/', category: 'marketing' },
+			{ title: 'Marketing Talent Hub', href: '/marketing/', category: 'marketing' },
+		]}
+		faq={faq}
+	/>
 </Layout>
-

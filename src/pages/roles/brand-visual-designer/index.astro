@@ -1,212 +1,128 @@
 ---
-// ROLE TEMPLATE — copied from `src/pages/roles/architectural-designer/index.astro` and adapted.
 import Layout from '../../../layouts/Layout.astro';
 import MetaHead from '../../../components/MetaHead.astro';
-import ContactSection from '../../../components/ContactSection.astro';
-import { BOOKING_URL, isExternalUrl } from '../../../lib/cta';
+import RoleTemplate from '../../../components/RoleTemplate.astro';
 
 const brand = 'LatAm Scalers';
-
-const meta = {
-	title: `Dedicated Remote Brand / Visual Designer | ${brand}`,
-	description:
-		'Dedicated remote brand and visual designers for US teams — brand systems, marketing assets, and fast iterations. Dedicated seat or PM-led delivery.',
-};
-
-const baseUrl = Astro.site ?? 'https://talentcompany-site.vercel.app';
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
 const canonical = new URL('/roles/brand-visual-designer/', baseUrl).toString();
 
-const roleName = 'Brand / Visual Designer';
+const meta = {
+	title: 'Hire a Dedicated Brand & Visual Designer — Pre-Vetted LATAM Talent for US Teams | LatAm Scalers',
+	description:
+		'Hire a dedicated brand and visual designer for US companies. Brand systems, marketing assets, and visual identity using Adobe CC and Figma. Pre-vetted, dedicated seat, from ~$2,800/mo.',
+};
 
-const bookingUrl = BOOKING_URL;
-const bookingExternal = isExternalUrl(bookingUrl);
+const faq = [
+	{
+		question: 'What does a dedicated brand & visual designer produce?',
+		answer:
+			'Our brand and visual designers handle brand system updates, marketing asset production (social, digital ads, email templates, presentations), visual identity consistency work, and packaging design. They work from your existing brand guidelines and produce assets aligned to your standards — consistently, week after week.',
+	},
+	{
+		question: 'How is this different from a design subscription service?',
+		answer:
+			'With a dedicated designer, the same person works exclusively on your brand every week. They learn your style guide, stakeholder preferences, and asset library deeply — producing better-quality work faster as time goes on. Design subscription services rotate through different designers and don\'t accumulate institutional brand knowledge.',
+	},
+	{
+		question: 'What tools do your designers use?',
+		answer:
+			'Our brand and visual designers primarily work in Adobe Creative Cloud (Illustrator, InDesign, Photoshop) and Figma. Many are also proficient in Canva Enterprise, After Effects (basic motion), and presentation tools like Google Slides and PowerPoint.',
+	},
+	{
+		question: 'Can they handle high-volume asset production?',
+		answer:
+			'Yes. A dedicated full-time designer produces approximately 40 hours of design output per week. For higher volume needs, we can configure a small team (2–3 designers with optional PM) through our Managed Creative Teams offering.',
+	},
+	{
+		question: 'What does pricing look like?',
+		answer:
+			'Dedicated brand and visual designers start at approximately $2,800/month for full-time (40h/week). Part-time options are available. Pricing depends on experience level, seniority, and engagement configuration.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Brand & Visual Designer',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faq.map((f) => ({
+		'@type': 'Question',
+		name: f.question,
+		acceptedAnswer: { '@type': 'Answer', text: f.answer },
+	})),
+};
 ---
 
 <Layout>
-	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} />
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
 
-	<main class="mx-auto max-w-6xl px-6 py-12 sm:py-14">
-		{/* HERO */}
-		<section class="relative overflow-hidden">
-			<div class="grid items-center gap-10 lg:grid-cols-2">
-				<div>
-					<p class="text-sm font-semibold tracking-wide text-sky-300">Roles</p>
-					<h1 class="mt-4 text-4xl font-semibold tracking-tight text-white sm:text-5xl">Dedicated Remote Brand / Visual Designer</h1>
-					<p class="mt-4 max-w-prose text-base leading-relaxed text-slate-300 sm:text-lg">
-						Vetted designers for brand systems and high-quality marketing assets — aligned to your guidelines, fast to
-						iterate, and ready to deliver consistent weekly output.
-					</p>
-
-					<div class="mt-8 flex flex-wrap gap-3">
-						<a
-							class="inline-flex items-center justify-center rounded bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-							href={bookingUrl}
-							{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
-							data-book-call
-						>
-							Book a 15-Min Call
-						</a>
-						<a
-							class="inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-							href="/#contact"
-							data-open-tell-us="role-hero"
-							data-role={roleName}
-						>
-							Tell Us Your Needs
-						</a>
-					</div>
-				</div>
-
-				<div class="relative">
-					<div class="rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900/60 to-slate-950 p-6 shadow-sm">
-						<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">At a glance</p>
-						<ul class="mt-4 grid gap-3 sm:grid-cols-2">
-							<li class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
-								<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Tools</p>
-								<p class="mt-2 text-sm text-slate-200">Figma, Adobe CC, Canva (as needed)</p>
-							</li>
-							<li class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
-								<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Outputs</p>
-								<p class="mt-2 text-sm text-slate-200">Brand kits, campaigns, decks, social, web graphics</p>
-							</li>
-							<li class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
-								<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Workflow</p>
-								<p class="mt-2 text-sm text-slate-200">Brief → concepts → iterations → handoff</p>
-							</li>
-							<li class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
-								<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Flex</p>
-								<p class="mt-2 text-sm text-slate-200">Dedicated seat or PM-led delivery</p>
-							</li>
-						</ul>
-					</div>
-					<div class="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-sky-500/10 blur-3xl" />
-					<div class="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-indigo-500/10 blur-3xl" />
-				</div>
-			</div>
-		</section>
-
-		{/* ROLE OVERVIEW */}
-		<section class="mt-12 rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-			<h2 class="text-xl font-semibold text-white">Role overview</h2>
-			<p class="mt-3 text-sm leading-relaxed text-slate-300 sm:text-base">
-				Brand and visual designers help your team ship polished, on-brand design across touchpoints. We align on your
-				guidelines, review cadence, and file standards — then deliver consistently with clean handoffs.
-			</p>
-			<ul class="mt-5 grid gap-2 text-sm text-slate-300 sm:grid-cols-2">
-				<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">Brand systems + kits (type, color, components)</li>
-				<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">Campaign + marketing asset production</li>
-				<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">Decks + sales collateral</li>
-				<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">Web + landing graphics (handoff-ready)</li>
-				<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">Fast iteration loops + versioning</li>
-			</ul>
-		</section>
-
-		{/* WHY REMOTE WORKS */}
-		<section class="mt-12">
-			<h2 class="text-xl font-semibold text-white">Why remote brand designers excel</h2>
-			<ul class="mt-4 grid gap-2 text-sm text-slate-300 sm:grid-cols-2">
-				<li class="rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3">Consistent weekly output without agency overhead</li>
-				<li class="rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3">Timezone overlap for faster feedback loops</li>
-				<li class="rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3">Clear briefs + structured iterations reduce rework</li>
-				<li class="rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3">Scale into PM-led delivery when volume increases</li>
-			</ul>
-		</section>
-
-		{/* OPTIONS */}
-		<section class="mt-12" aria-labelledby="flexible-options">
-			<h2 id="flexible-options" class="text-xl font-semibold text-white">Options for this role</h2>
-			<div class="mt-6 grid gap-4 md:grid-cols-2">
-				<article class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-					<h3 class="text-base font-semibold text-slate-100">Dedicated Designer Seat</h3>
-					<p class="mt-3 text-sm leading-relaxed text-slate-300">
-						A dedicated designer embedded into your tools and brand guidelines for consistent weekly delivery.
-					</p>
-					<a
-						href="/solutions/creatives-design/dedicated/"
-						class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-sky-300 transition hover:text-sky-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-					>
-						View dedicated seat <span aria-hidden="true">→</span>
-					</a>
-				</article>
-
-				<article class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-					<h3 class="text-base font-semibold text-slate-100">PM-led Delivery</h3>
-					<p class="mt-3 text-sm leading-relaxed text-slate-300">
-						A managed workflow with predictable turnaround and structured revisions for higher-volume design needs.
-					</p>
-					<a
-						href="/solutions/creatives-design/pm-led/"
-						class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-sky-300 transition hover:text-sky-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-					>
-						View PM-led <span aria-hidden="true">→</span>
-					</a>
-				</article>
-			</div>
-		</section>
-
-		{/* SAMPLE OUTPUTS (anonymized) */}
-		<section class="mt-12" aria-labelledby="sample-outputs">
-			<h2 id="sample-outputs" class="text-xl font-semibold text-white">Sample outputs (anonymized)</h2>
-			<div class="mt-6 grid gap-4 md:grid-cols-3">
-				<div class="aspect-[4/3] rounded-2xl border border-slate-800 bg-slate-900/40 p-4">
-					<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Gallery</p>
-					<p class="mt-2 text-sm text-slate-300">TODO: Brand kit + components placeholder</p>
-				</div>
-				<div class="aspect-[4/3] rounded-2xl border border-slate-800 bg-slate-900/40 p-4">
-					<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Gallery</p>
-					<p class="mt-2 text-sm text-slate-300">TODO: Campaign creative placeholder</p>
-				</div>
-				<div class="aspect-[4/3] rounded-2xl border border-slate-800 bg-slate-900/40 p-4">
-					<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Gallery</p>
-					<p class="mt-2 text-sm text-slate-300">TODO: Deck / sales collateral placeholder</p>
-				</div>
-			</div>
-		</section>
-
-		{/* PROOF */}
-		<section class="mt-12" aria-labelledby="proof-role">
-			<h2 id="proof-role" class="text-xl font-semibold text-white">Proof</h2>
-			<p class="mt-3 max-w-prose text-sm leading-relaxed text-slate-300">
-				{/* TODO: Replace with testimonials carousel. */}
-				Testimonials placeholder (to be filled).
-			</p>
-			<figure class="mt-6 rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-				<blockquote class="text-sm leading-relaxed text-slate-200">“Shipped a full campaign pack and refreshed our brand system — faster, cleaner, on-brand.”</blockquote>
-				<figcaption class="mt-3 text-xs text-slate-400">— Anonymized client</figcaption>
-			</figure>
-		</section>
-
-		{/* CTAs */}
-		<section class="mt-14 rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900/60 to-slate-950 p-6 sm:p-8">
-			<div class="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
-				<div>
-					<h2 class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Ready to add brand design capacity?</h2>
-					<p class="mt-2 max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
-						Book a call to discuss your needs — we’ll recommend the best engagement model and match options fast.
-					</p>
-				</div>
-				<div class="flex flex-wrap gap-3">
-					<a
-						href={bookingUrl}
-						{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
-						class="inline-flex items-center justify-center rounded bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-						data-book-call
-					>
-						Book a 15-Min Call
-					</a>
-					<a
-						href="/solutions/creatives-design/"
-						class="inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-					>
-						View Creative &amp; Design solution
-					</a>
-				</div>
-			</div>
-		</section>
-	</main>
-
-	<div class="mx-auto max-w-6xl px-6">
-		<ContactSection subject={`${brand} — new inquiry (role: ${roleName})`} />
-	</div>
+	<RoleTemplate
+		role="Brand & Visual Designer"
+		category="design"
+		hubHref="/design/"
+		hubLabel="Design Talent Hub"
+		h1="Hire a Dedicated Brand & Visual Designer — Pre-Vetted LATAM Talent for US Teams"
+		subheadline="Dedicated designers for brand systems, marketing assets, and visual identity work. Same person on your brand every week — no rotating pool, no credit subscriptions. Month-to-month."
+		atAGlance={[
+			{ label: 'Category', value: 'Design' },
+			{ label: 'Tools', value: 'Adobe CC, Figma, Canva Enterprise' },
+			{ label: 'Pricing', value: 'From ~$2,800/mo' },
+			{ label: 'Availability', value: 'FT (40h) or PT (20h)' },
+		]}
+		overview="Our brand and visual designers embed in your team as your primary design resource — learning your style guide, asset library, and stakeholder preferences deeply. They handle the full spectrum of visual brand work: from brand system consistency reviews to high-volume marketing asset production. Unlike subscription services, they accumulate institutional brand knowledge that makes every iteration faster and more on-brand."
+		skills={[
+			'Brand system maintenance and consistency',
+			'Marketing asset production (social, digital, email)',
+			'Visual identity and brand guideline application',
+			'Print and digital layout design',
+			'Presentation design (decks, pitch materials)',
+			'Adobe Illustrator — vector and icon design',
+			'Adobe InDesign — publications and layouts',
+			'Figma — digital assets and component systems',
+		]}
+		whyRemote="Brand and visual design is output-driven and async-friendly. Designers receive briefs, produce assets, and share for review during your business hours. LATAM timezone overlap (0–3 hours behind EST/CST) means you can do review-revision cycles within the same working day. For a high-output dedicated designer, this is operationally equivalent to a local hire — at a dramatically lower cost."
+		engagementOptions={[
+			{
+				title: 'Dedicated Individual Designer',
+				description:
+					'Full-time (40h/week) or part-time (20h/week) brand and visual designer dedicated exclusively to your team. Learns your brand and produces consistent output every week.',
+				pricing: 'From ~$2,800/mo',
+			},
+			{
+				title: 'PM-Led Managed Creative Team',
+				description:
+					'For higher output needs: a dedicated PM runs intake, prioritization, and delivery for a team of 2–3 designers. All working exclusively on your brand.',
+				pricing: 'From ~$2,800/mo (Starter tier)',
+			},
+		]}
+		tools={[
+			{ name: 'Adobe Illustrator', description: 'Vector graphics, logo work, icon systems, and print-ready brand assets.' },
+			{ name: 'Adobe InDesign', description: 'Multi-page layouts, publications, presentations, and print collateral.' },
+			{ name: 'Adobe Photoshop', description: 'Photo retouching, compositing, and digital image production.' },
+			{ name: 'Figma', description: 'Digital assets, component libraries, social templates, and design system work.' },
+			{ name: 'Canva Enterprise', description: 'Template creation, brand kit management, and high-volume social asset production.' },
+		]}
+		deliverables={[
+			'Brand asset production (social, digital ads, email templates)',
+			'Brand guideline updates and consistency reviews',
+			'Presentation decks and pitch materials',
+			'Print-ready marketing collateral',
+			'Figma component library contributions',
+			'Weekly asset batches aligned to your content calendar',
+		]}
+		pricing="Dedicated brand and visual designers start at approximately $2,800/month for full-time (40h/week). Part-time (20h/week) arrangements are available. For higher-volume needs, our PM-Led Managed Creative Teams start from the same price point with additional capacity."
+		relatedRoles={[
+			{ title: 'UI/UX Designer', href: '/roles/ui-ux-designer/', category: 'design' },
+			{ title: 'Managed Creative Teams', href: '/design/managed-creative-teams/', category: 'design' },
+			{ title: 'Design Talent Hub', href: '/design/', category: 'design' },
+		]}
+		faq={faq}
+	/>
 </Layout>
-
