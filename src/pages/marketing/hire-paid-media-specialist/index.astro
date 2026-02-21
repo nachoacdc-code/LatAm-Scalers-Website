@@ -1,0 +1,414 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import MetaHead from '../../../components/MetaHead.astro';
+import ContactHub from '../../../components/ContactHub.astro';
+import { BOOKING_URL, isExternalUrl } from '../../../lib/cta';
+
+const brand = 'LatAm Scalers';
+
+const meta = {
+	title: 'Hire a Paid Media Specialist – Dedicated LATAM Paid Ads Experts for US Teams | LatAm Scalers',
+	description:
+		'Dedicated paid media specialists for US companies. Meta, Google, programmatic, and performance creative. Full-time from ~$2,500/mo. Own your paid channels — no agency markup.',
+};
+
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/marketing/hire-paid-media-specialist/', baseUrl).toString();
+
+const bookingUrl = BOOKING_URL;
+const bookingExternal = isExternalUrl(bookingUrl);
+
+const channels = [
+	{
+		name: 'Meta Ads',
+		desc: 'Facebook and Instagram campaign strategy, audience development, creative testing, bid optimization, and ROAS management across prospecting and retargeting.',
+		scope: 'Upper and lower funnel performance on Meta',
+	},
+	{
+		name: 'Google Ads',
+		desc: 'Search, Shopping, Display, Performance Max, and YouTube campaigns — keyword strategy, Quality Score optimization, and conversion tracking.',
+		scope: 'Intent-driven search and shopping performance',
+	},
+	{
+		name: 'Programmatic & Display',
+		desc: 'DSP campaign management (DV360, The Trade Desk), audience targeting, brand safety, viewability, and cross-channel attribution.',
+		scope: 'Awareness and retargeting at scale',
+	},
+	{
+		name: 'TikTok & Pinterest Ads',
+		desc: 'TikTok creative-first ad strategy, Spark Ads, shopping campaigns, and Pinterest promoted pins for DTC and e-commerce brands.',
+		scope: 'Emerging channels with high DTC demand',
+	},
+	{
+		name: 'Analytics & Attribution',
+		desc: 'GA4, pixel setup, conversion API, UTM framework, cross-channel attribution modeling, and executive-level paid media dashboards.',
+		scope: 'Accurate measurement and channel-level ROI',
+	},
+	{
+		name: 'Performance Creative',
+		desc: 'Creative brief development, ad copy testing, UGC direction, creative rotation strategy, and fatigue detection for continuous improvement.',
+		scope: 'Creative as a systematic performance lever',
+	},
+];
+
+const deliverables = [
+	'Full paid media audit and account restructure',
+	'Audience strategy and lookalike development',
+	'Campaign architecture and bid strategy setup',
+	'Weekly creative testing and rotation',
+	'Cross-channel attribution and reporting dashboards',
+	'Shopping feed optimization (Google, Meta)',
+	'Retargeting sequence and suppression management',
+	'Monthly performance reviews and budget recommendations',
+];
+
+const demandStats = [
+	{ value: '$64', label: 'CPC for "hire paid media specialist" — strong commercial intent' },
+	{ value: '880/mo', label: 'Monthly searches for paid media specialist roles' },
+	{ value: '60–80%', label: 'Of DTC ad budget typically managed by one specialist at growing brands' },
+];
+
+const faqs = [
+	{
+		q: 'Which ad platforms do your specialists cover?',
+		a: 'Our paid media specialists most commonly cover Meta (Facebook/Instagram), Google (Search, Shopping, Performance Max), and TikTok. Many also manage LinkedIn for B2B, Pinterest for DTC, and programmatic (DV360, The Trade Desk). We match by platform mix based on your channels and budget.',
+	},
+	{
+		q: 'Do they manage creative as well as media buying?',
+		a: 'Many of our paid media specialists handle both media buying and creative strategy — developing briefs, directing UGC, writing ad copy, and running creative tests. If you have an in-house creative team, your specialist provides the creative direction and testing framework. If you need a dedicated performance creative, we can pair specialists.',
+	},
+	{
+		q: 'How do they handle attribution with iOS privacy changes?',
+		a: 'Our specialists are experienced with post-iOS 14/17 attribution challenges — Conversion API (CAPI) setup, server-side tracking, modeled conversions, and multi-touch attribution modeling. They use GA4, triple-touch attribution tools (Triple Whale, Northbeam), and platform-native attribution to triangulate true performance.',
+	},
+	{
+		q: 'Can they manage Google Shopping and Meta Shopping campaigns?',
+		a: 'Yes. Shopping feed optimization, Merchant Center management, Smart Shopping/Performance Max structuring, and Meta Catalog campaigns are core deliverables for DTC and e-commerce specialists. They also work with feed management tools like DataFeedWatch or GoDataFeed.',
+	},
+	{
+		q: 'How quickly can we get a paid media specialist?',
+		a: 'We typically present vetted paid media specialists within 48 hours after the scoping call. Once platform access and goals are confirmed, most specialists are running campaigns within the first week and delivering initial performance data within two weeks.',
+	},
+	{
+		q: 'What does pricing look like?',
+		a: 'Dedicated paid media specialists start at approximately $2,500/month for full-time (40h/week). Specialists managing large budgets ($500K+/mo), multiple platforms, or with programmatic/DSP expertise may be higher. Part-time and pod options are available.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Dedicated Paid Media Specialist',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqs.map((f) => ({
+		'@type': 'Question',
+		name: f.q,
+		acceptedAnswer: { '@type': 'Answer', text: f.a },
+	})),
+};
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
+
+	<main>
+
+	<!-- Hero -->
+	<section class="relative overflow-hidden bg-slate-950 py-16 sm:py-24" aria-labelledby="hero-heading">
+		<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in">
+		<p class="text-sm font-semibold uppercase tracking-widest text-marketing">Paid Media Specialist</p>
+	<h1 id="hero-heading" class="mt-4 text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
+		Hire a Dedicated Paid Media Specialist for Your US Team
+	</h1>
+	<p class="mt-5 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
+		Meta, Google, TikTok, programmatic — one specialist who owns your entire paid channel. No agency managing 20 accounts at once. Dedicated performance, embedded in your team, accountable for your ROAS.
+	</p>
+
+	<div class="mt-8 flex flex-wrap gap-3">
+	<a
+		href={bookingUrl}
+		{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+		class="inline-flex min-h-[48px] items-center justify-center rounded bg-sky-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+		data-book-call
+	>
+		Book a Paid Media Specialist Call
+	</a>
+	<a
+		href="#contact"
+		class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-slate-700 bg-slate-900/40 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+		data-open-tell-us="paid-media-hero"
+	>
+		Tell Us What You Need
+	</a>
+	</div>
+	</div>
+	</div>
+	</section>
+
+	<!-- Service overview -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="overview-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="overview-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Paid Channels Need Full-Time Ownership
+	</h2>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		Agencies charge 10–15% of ad spend and spread their team across dozens of accounts. Your campaigns get templated strategies and delayed responses. When performance drops, you find out on a monthly call.
+	</p>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		A dedicated paid media specialist works exclusively in your accounts — monitoring performance daily, running creative tests, adjusting bids, and optimizing toward your actual business goals. At a fraction of agency cost, with full-time focus.
+	</p>
+	<ul class="mt-6 grid gap-3 sm:grid-cols-2">
+	<li class="flex items-start gap-2 rounded-xl border border-slate-800 bg-slate-900/40 p-4 shadow-lg shadow-black/20">
+		<span class="text-marketing" aria-hidden="true">✓</span>
+		<span class="text-sm text-slate-400"><strong class="text-slate-100">Multi-platform</strong> — Meta, Google, TikTok, programmatic</span>
+	</li>
+	<li class="flex items-start gap-2 rounded-xl border border-slate-800 bg-slate-900/40 p-4 shadow-lg shadow-black/20">
+		<span class="text-marketing" aria-hidden="true">✓</span>
+		<span class="text-sm text-slate-400"><strong class="text-slate-100">Full-time dedicated</strong> — not shared across client accounts</span>
+	</li>
+	<li class="flex items-start gap-2 rounded-xl border border-slate-800 bg-slate-900/40 p-4 shadow-lg shadow-black/20">
+		<span class="text-marketing" aria-hidden="true">✓</span>
+		<span class="text-sm text-slate-400"><strong class="text-slate-100">US timezone</strong> — real-time optimization</span>
+	</li>
+	<li class="flex items-start gap-2 rounded-xl border border-slate-800 bg-slate-900/40 p-4 shadow-lg shadow-black/20">
+		<span class="text-marketing" aria-hidden="true">✓</span>
+		<span class="text-sm text-slate-400"><strong class="text-slate-100">No agency markup</strong> — your ad spend stays in media</span>
+	</li>
+	</ul>
+	</div>
+	</div>
+	</section>
+
+	<!-- Channels -->
+	<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="channels-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="channels-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Channels &amp; Capabilities
+	</h2>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		We match paid media specialists to your specific platform mix — not generalist media buyers who check in weekly.
+	</p>
+	</div>
+
+	<div class="mt-10 grid gap-5 lg:grid-cols-3">
+	{channels.map((ch) => (
+	<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+		<p class="text-xs font-semibold uppercase tracking-wide text-marketing">{ch.name}</p>
+		<p class="mt-3 text-sm leading-relaxed text-slate-400">{ch.desc}</p>
+		<p class="mt-4 text-xs text-slate-500"><strong class="text-slate-400">Scope:</strong> {ch.scope}</p>
+	</div>
+	))}
+	</div>
+	</div>
+	</section>
+
+	<!-- Deliverables -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="deliverables-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="deliverables-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Deliverables
+	</h2>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		Ongoing paid channel ownership — not quarterly strategy decks that never get executed.
+	</p>
+	</div>
+
+	<div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+	{deliverables.map((item) => (
+	<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+		<p class="text-sm font-semibold text-slate-100">{item}</p>
+	</div>
+	))}
+	</div>
+	</div>
+	</section>
+
+	<!-- Demand stats -->
+	<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="demand-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in">
+	<h2 id="demand-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Paid Media Talent Demand
+	</h2>
+	<p class="mt-4 max-w-2xl text-base leading-relaxed text-slate-400">
+		Experienced paid media specialists who own multi-platform performance are scarce in the US market — especially those with both media buying and creative strategy skills.
+	</p>
+	</div>
+	<div class="mt-10 grid gap-6 sm:grid-cols-3">
+	{demandStats.map((stat) => (
+		<div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+			<p class="text-2xl font-bold text-marketing">{stat.value}</p>
+			<p class="mt-2 text-sm font-medium text-slate-100">{stat.label}</p>
+		</div>
+	))}
+	</div>
+	</div>
+	</section>
+
+	<!-- Engagement options -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="engagement-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="engagement-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Engagement Options
+	</h2>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		Dedicated paid media specialists on a full-time or part-time basis — or paired with a performance creative for a complete acquisition team.
+	</p>
+	</div>
+
+	<div class="mt-10 grid gap-5 md:grid-cols-2">
+	<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+		<p class="text-xs font-semibold uppercase tracking-wide text-marketing">Individual Specialist</p>
+		<h3 class="mt-3 text-lg font-semibold text-slate-100">Dedicated Paid Media Specialist</h3>
+		<p class="mt-3 text-sm leading-relaxed text-slate-400">
+		Full-time (40h/week) or part-time (20h/week) paid media specialist — matched to your platform mix, owning your accounts and optimizing toward your business goals.
+		</p>
+		<p class="mt-4 text-sm font-semibold text-marketing">From ~$2,500/mo</p>
+	</div>
+	<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+		<p class="text-xs font-semibold uppercase tracking-wide text-marketing">Acquisition Pod</p>
+		<h3 class="mt-3 text-lg font-semibold text-slate-100">Paid Media + Performance Creative</h3>
+		<p class="mt-3 text-sm leading-relaxed text-slate-400">
+		Paid media specialist paired with a performance creative strategist — the combination that breaks creative fatigue and scales profitable spend simultaneously.
+		</p>
+		<p class="mt-4 text-sm font-semibold text-marketing">Custom pricing</p>
+	</div>
+	</div>
+	</div>
+	</section>
+
+	<!-- Pricing guidance -->
+	<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="pricing-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="pricing-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Pricing Guidance
+	</h2>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		Dedicated paid media specialists start at approximately <strong class="text-slate-100">$2,500/month</strong> for full-time engagement. Specialists managing large budgets ($500K+/mo), multiple platforms, or with programmatic/DSP expertise may be higher. Part-time and pod options are available.
+	</p>
+	<a
+		href="/how-pricing-works/"
+		class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-sky-300 transition hover:text-sky-200/80 focus:outline-none focus-visible:underline"
+	>
+		See how pricing works <span aria-hidden="true">&rarr;</span>
+	</a>
+	</div>
+	</div>
+	</section>
+
+	<!-- FAQ -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="faq-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="faq-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Frequently Asked Questions
+	</h2>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		Common questions about dedicated paid media specialists for US teams.
+	</p>
+	</div>
+
+	<div class="mt-10 grid gap-3">
+	{faqs.map((item) => (
+	<details class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+		<summary class="cursor-pointer list-none text-sm font-semibold text-slate-100 [&::-webkit-details-marker]:hidden">
+		{item.q}
+		</summary>
+		<p class="mt-4 pt-4 text-sm leading-relaxed text-slate-400 border-t border-slate-800">{item.a}</p>
+	</details>
+	))}
+	</div>
+	</div>
+	</section>
+
+	<!-- CTA -->
+	<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="cta-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-8 text-center shadow-xl sm:p-12">
+	<h2 id="cta-heading" class="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+		Ready for a Dedicated Paid Media Specialist?
+	</h2>
+	<p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slate-300">
+		Tell us your platforms, monthly ad spend, and performance goals — we'll match you with a specialist within 48 hours.
+	</p>
+	<div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+	<a
+		href={bookingUrl}
+		{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+		class="inline-flex min-h-[48px] items-center justify-center rounded bg-sky-600 px-8 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+		data-book-call
+	>
+		Book a Paid Media Specialist Call
+	</a>
+	<a
+		href="#contact"
+		class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-slate-700 bg-slate-900/40 px-8 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+		data-open-tell-us="paid-media-cta"
+	>
+		Tell Us What You Need
+	</a>
+	</div>
+	<p class="mt-5 text-xs text-slate-400">Month-to-month · Free replacement guarantee · No agency markup on ad spend</p>
+	</div>
+	</div>
+	</section>
+
+	<!-- Contact -->
+	<section id="contact" class="bg-slate-950 pb-20 pt-16 sm:pb-24 sm:pt-20" aria-labelledby="contact-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+		<p class="text-sm font-semibold uppercase tracking-widest text-sky-300">Get in touch</p>
+		<h2 id="contact-heading" class="mt-3 text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Let's Talk Paid Media
+		</h2>
+		<p class="mt-4 text-base leading-relaxed text-slate-400">
+		Share your platforms, ad spend, and goals — we'll match you with a vetted paid media specialist.
+		</p>
+	</div>
+
+	<ContactHub subject={`${brand} – paid media specialist inquiry`} defaultCategory="marketing" defaultMessage="I'm interested in a dedicated paid media specialist." />
+	</div>
+	</section>
+
+	</main>
+
+	<style>
+	.js-fade-in {
+		opacity: 0;
+		transform: translateY(20px);
+		transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+	}
+	.js-fade-in.is-visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	</style>
+
+	<script is:inline>
+	(function () {
+		var els = document.querySelectorAll('.js-fade-in');
+		if (!els.length) return;
+		var io = new IntersectionObserver(function (entries) {
+		entries.forEach(function (e) {
+			if (e.isIntersecting) {
+			e.target.classList.add('is-visible');
+			io.unobserve(e.target);
+			}
+		});
+		}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+		els.forEach(function (el) { io.observe(el); });
+	})();
+	</script>
+</Layout>

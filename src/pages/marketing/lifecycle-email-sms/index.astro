@@ -1,0 +1,446 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import MetaHead from '../../../components/MetaHead.astro';
+import ContactHub from '../../../components/ContactHub.astro';
+import { BOOKING_URL, isExternalUrl } from '../../../lib/cta';
+
+const brand = 'LatAm Scalers';
+
+const meta = {
+	title: 'Lifecycle & Email/SMS Specialist – Dedicated LATAM Retention Experts for US Teams | LatAm Scalers',
+	description:
+		'Dedicated lifecycle, email, and SMS specialists for DTC and SaaS teams. Klaviyo, Iterable, Braze, HubSpot. Retention automation, lifecycle nurturing, and owned channel revenue. From ~$2,500/mo.',
+};
+
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/marketing/lifecycle-email-sms/', baseUrl).toString();
+
+const bookingUrl = BOOKING_URL;
+const bookingExternal = isExternalUrl(bookingUrl);
+
+const lifecycleAreas = [
+	{
+		name: 'Onboarding & Activation',
+		desc: 'Welcome flows, activation sequences, product education emails, and behavior-triggered onboarding that reduces time-to-value.',
+		focus: 'Get users/customers to their first win faster',
+	},
+	{
+		name: 'Nurture & Engagement',
+		desc: 'Lead nurture sequences, educational drip campaigns, re-engagement workflows, and content-driven lifecycle marketing for trial and free users.',
+		focus: 'Keep subscribers engaged until they convert',
+	},
+	{
+		name: 'Retention & LTV',
+		desc: 'Win-back campaigns, churn risk scoring, VIP loyalty flows, subscription renewal sequences, and long-term customer value optimization.',
+		focus: 'Reduce churn, increase repeat purchase, grow LTV',
+	},
+	{
+		name: 'Upsell & Cross-sell',
+		desc: 'Post-purchase flows, product recommendation sequences, upgrade triggers, and expansion revenue automation for SaaS and DTC.',
+		focus: 'Revenue from customers you already have',
+	},
+	{
+		name: 'SMS Lifecycle',
+		desc: 'Conversational SMS sequences, transactional messaging, re-engagement SMS, and integrated email+SMS flows for maximum reach.',
+		focus: 'High-open-rate owned channel for time-sensitive messages',
+	},
+	{
+		name: 'Analytics & Reporting',
+		desc: 'Cohort analysis, lifecycle stage reporting, deliverability monitoring, revenue attribution, and A/B test result tracking.',
+		focus: 'Data-driven continuous improvement',
+	},
+];
+
+const platforms = [
+	{ name: 'Klaviyo', desc: 'DTC and e-commerce lifecycle — flows, segmentation, campaigns, and Shopify integration.' },
+	{ name: 'HubSpot', desc: 'B2B and SaaS lifecycle — workflows, sequences, lead nurture, and CRM-triggered automation.' },
+	{ name: 'Iterable', desc: 'Multi-channel lifecycle for growth-stage and enterprise companies — email, SMS, push, in-app.' },
+	{ name: 'Braze', desc: 'Mobile-first lifecycle for apps and consumer tech — real-time triggers, Canvas, and journey builder.' },
+	{ name: 'Attentive / Postscript', desc: 'SMS-first platforms for DTC brands — list growth, compliance, and high-volume campaigns.' },
+	{ name: 'Customer.io', desc: 'Developer-friendly lifecycle tool for SaaS and B2C — event-triggered workflows and API-driven automation.' },
+];
+
+const deliverables = [
+	'Full lifecycle audit and gap analysis',
+	'Onboarding and activation flow development',
+	'Win-back and churn prevention campaigns',
+	'Upsell and expansion revenue sequences',
+	'SMS list growth and compliance setup',
+	'Cohort and LTV analysis dashboards',
+	'A/B testing framework and cadence',
+	'Deliverability monitoring and list hygiene',
+];
+
+const retentionStats = [
+	{ value: '+20%', label: 'YoY demand growth for lifecycle and email/SMS retention specialists' },
+	{ value: '5× cheaper', label: 'To retain an existing customer vs. acquiring a new one' },
+	{ value: '20–30%', label: 'Of DTC and SaaS revenue typically comes from email and SMS channels' },
+];
+
+const faqs = [
+	{
+		q: 'What is the difference between a lifecycle specialist and an email marketing specialist?',
+		a: 'Email marketing specialists focus primarily on campaigns and broadcast sends. Lifecycle specialists own the full customer journey — onboarding, activation, retention, win-back, and expansion — across email and SMS. The focus is on moving customers through lifecycle stages, not just sending newsletters. Most of our specialists cover both.',
+	},
+	{
+		q: 'Which platforms do your lifecycle specialists work with?',
+		a: 'Our specialists most commonly work with Klaviyo (DTC), HubSpot (B2B/SaaS), Iterable (enterprise), Braze (mobile-first), Attentive/Postscript (SMS), and Customer.io (developer-friendly SaaS). We match by your platform and customer lifecycle type — DTC, SaaS, or B2B.',
+	},
+	{
+		q: 'Can they handle both email and SMS?',
+		a: 'Yes. Many of our lifecycle specialists manage both channels within a single platform (Klaviyo, Attentive, Iterable) or across an integrated email+SMS stack. SMS-specific expertise includes TCPA/CTIA compliance, list growth tactics, and SMS-exclusive flow design.',
+	},
+	{
+		q: 'Do they work with our CRM and product analytics?',
+		a: 'Yes. Lifecycle specialists connect lifecycle platforms to your CRM (HubSpot, Salesforce) and product analytics (Mixpanel, Amplitude, Segment). Behavior-triggered workflows — based on product events, feature usage, or purchase history — are a core differentiator from campaign-only email.',
+	},
+	{
+		q: 'How do they measure success?',
+		a: 'Primary KPIs include lifecycle-attributed revenue, flow revenue per recipient, open/click/conversion rates by lifecycle stage, churn rate change, and LTV by acquisition cohort. Secondary metrics include deliverability (inbox placement, bounce rate, spam complaints) and list health.',
+	},
+	{
+		q: 'What does pricing look like?',
+		a: 'Dedicated lifecycle and email/SMS specialists start at approximately $2,500/month for full-time (40h/week). Specialists with advanced platform expertise (Braze, Iterable), multi-channel experience, or SaaS-specific lifecycle knowledge may be higher. Part-time and pod options are available.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Lifecycle, Email & SMS Specialist',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqs.map((f) => ({
+		'@type': 'Question',
+		name: f.q,
+		acceptedAnswer: { '@type': 'Answer', text: f.a },
+	})),
+};
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
+
+	<main>
+
+	<!-- Hero -->
+	<section class="relative overflow-hidden bg-slate-950 py-16 sm:py-24" aria-labelledby="hero-heading">
+		<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in">
+		<p class="text-sm font-semibold uppercase tracking-widest text-marketing">Lifecycle / Email / SMS</p>
+	<h1 id="hero-heading" class="mt-4 text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
+		Dedicated Lifecycle &amp; Email/SMS Specialists for US Teams
+	</h1>
+	<p class="mt-5 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
+		Onboarding, retention, win-back, upsell — owned channel specialists who build the automated revenue infrastructure that compounds over time. Klaviyo, HubSpot, Iterable, Braze. Full-time, dedicated, embedded in your stack.
+	</p>
+
+	<div class="mt-8 flex flex-wrap gap-3">
+	<a
+		href={bookingUrl}
+		{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+		class="inline-flex min-h-[48px] items-center justify-center rounded bg-sky-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+		data-book-call
+	>
+		Book a Lifecycle Specialist Call
+	</a>
+	<a
+		href="#contact"
+		class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-slate-700 bg-slate-900/40 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+		data-open-tell-us="lifecycle-hero"
+	>
+		Tell Us What You Need
+	</a>
+	</div>
+	</div>
+	</div>
+	</section>
+
+	<!-- Service overview -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="overview-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="overview-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Revenue From Customers You Already Have
+	</h2>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		Acquiring a new customer costs 5× more than retaining an existing one. Yet most teams invest heavily in acquisition and underinvest in the lifecycle that compounds it. Email and SMS aren't newsletters — they're an automated revenue machine when built and owned by someone who specializes in it.
+	</p>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		A dedicated lifecycle specialist builds and continuously optimizes every stage of your customer journey — from first email to win-back. They own the flows, the segmentation, the testing cadence, and the reporting. 40 hours a week, fully embedded in your platform.
+	</p>
+	<ul class="mt-6 grid gap-3 sm:grid-cols-2">
+	<li class="flex items-start gap-2 rounded-xl border border-slate-800 bg-slate-900/40 p-4 shadow-lg shadow-black/20">
+		<span class="text-marketing" aria-hidden="true">✓</span>
+		<span class="text-sm text-slate-400"><strong class="text-slate-100">Full customer journey</strong> — onboarding through win-back</span>
+	</li>
+	<li class="flex items-start gap-2 rounded-xl border border-slate-800 bg-slate-900/40 p-4 shadow-lg shadow-black/20">
+		<span class="text-marketing" aria-hidden="true">✓</span>
+		<span class="text-sm text-slate-400"><strong class="text-slate-100">Email + SMS</strong> — both channels, integrated strategy</span>
+	</li>
+	<li class="flex items-start gap-2 rounded-xl border border-slate-800 bg-slate-900/40 p-4 shadow-lg shadow-black/20">
+		<span class="text-marketing" aria-hidden="true">✓</span>
+		<span class="text-sm text-slate-400"><strong class="text-slate-100">Platform-matched</strong> — Klaviyo, HubSpot, Braze, Iterable</span>
+	</li>
+	<li class="flex items-start gap-2 rounded-xl border border-slate-800 bg-slate-900/40 p-4 shadow-lg shadow-black/20">
+		<span class="text-marketing" aria-hidden="true">✓</span>
+		<span class="text-sm text-slate-400"><strong class="text-slate-100">Month-to-month</strong> — no long-term contracts</span>
+	</li>
+	</ul>
+	</div>
+	</div>
+	</section>
+
+	<!-- Lifecycle areas -->
+	<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="areas-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="areas-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Lifecycle Stages We Cover
+	</h2>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		We match lifecycle specialists by vertical and platform — DTC brands have different lifecycle needs than SaaS companies. Tell us your model and tools and we'll find the right fit.
+	</p>
+	</div>
+
+	<div class="mt-10 grid gap-5 lg:grid-cols-3">
+	{lifecycleAreas.map((area) => (
+	<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+		<p class="text-xs font-semibold uppercase tracking-wide text-marketing">{area.name}</p>
+		<p class="mt-3 text-sm leading-relaxed text-slate-400">{area.desc}</p>
+		<p class="mt-4 text-xs text-slate-500"><strong class="text-slate-400">Focus:</strong> {area.focus}</p>
+	</div>
+	))}
+	</div>
+	</div>
+	</section>
+
+	<!-- Platform ecosystem -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="platforms-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="platforms-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Platform Ecosystem
+	</h2>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		Your specialist is matched to the platforms you already use — not forced to learn your stack from scratch.
+	</p>
+	</div>
+
+	<div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+	{platforms.map((platform) => (
+	<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+		<p class="text-sm font-semibold text-slate-100">{platform.name}</p>
+		<p class="mt-2 text-sm leading-relaxed text-slate-400">{platform.desc}</p>
+	</div>
+	))}
+	</div>
+	</div>
+	</section>
+
+	<!-- Deliverables -->
+	<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="deliverables-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="deliverables-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Deliverables
+	</h2>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		Ongoing lifecycle ownership — building the automated retention infrastructure that earns revenue while you focus on growth.
+	</p>
+	</div>
+
+	<div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+	{deliverables.map((item) => (
+	<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+		<p class="text-sm font-semibold text-slate-100">{item}</p>
+	</div>
+	))}
+	</div>
+	</div>
+	</section>
+
+	<!-- Retention stats -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="demand-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in">
+	<h2 id="demand-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		The Retention Revenue Case
+	</h2>
+	<p class="mt-4 max-w-2xl text-base leading-relaxed text-slate-400">
+		Lifecycle marketing is the highest-ROI owned channel. Demand for dedicated lifecycle and email/SMS specialists has grown +20% YoY as DTC and SaaS teams shift from acquisition-only to retention-first strategies.
+	</p>
+	</div>
+	<div class="mt-10 grid gap-6 sm:grid-cols-3">
+	{retentionStats.map((stat) => (
+		<div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+			<p class="text-2xl font-bold text-marketing">{stat.value}</p>
+			<p class="mt-2 text-sm font-medium text-slate-100">{stat.label}</p>
+		</div>
+	))}
+	</div>
+	</div>
+	</section>
+
+	<!-- Engagement options -->
+	<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="engagement-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="engagement-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Engagement Options
+	</h2>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		Dedicated lifecycle specialists on a full-time or part-time basis — or paired with paid media for a complete acquisition-to-retention team.
+	</p>
+	</div>
+
+	<div class="mt-10 grid gap-5 md:grid-cols-2">
+	<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+		<p class="text-xs font-semibold uppercase tracking-wide text-marketing">Individual Specialist</p>
+		<h3 class="mt-3 text-lg font-semibold text-slate-100">Dedicated Lifecycle Specialist</h3>
+		<p class="mt-3 text-sm leading-relaxed text-slate-400">
+		Full-time (40h/week) or part-time (20h/week) lifecycle specialist — platform-matched, owning your entire owned channel from onboarding through win-back.
+		</p>
+		<p class="mt-4 text-sm font-semibold text-marketing">From ~$2,500/mo</p>
+	</div>
+	<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+		<p class="text-xs font-semibold uppercase tracking-wide text-marketing">Retention Pod</p>
+		<h3 class="mt-3 text-lg font-semibold text-slate-100">Lifecycle + Paid Media</h3>
+		<p class="mt-3 text-sm leading-relaxed text-slate-400">
+		Lifecycle specialist paired with a paid media specialist — acquisition and retention working in coordination around shared LTV, CAC payback, and ROAS targets.
+		</p>
+		<p class="mt-4 text-sm font-semibold text-marketing">Custom pricing</p>
+	</div>
+	</div>
+	</div>
+	</section>
+
+	<!-- Pricing guidance -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="pricing-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="pricing-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Pricing Guidance
+	</h2>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		Dedicated lifecycle and email/SMS specialists start at approximately <strong class="text-slate-100">$2,500/month</strong> for full-time engagement. Specialists with advanced platform expertise (Braze, Iterable), multi-channel experience, or SaaS-specific lifecycle knowledge may be higher. Part-time and pod options are available.
+	</p>
+	<a
+		href="/how-pricing-works/"
+		class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-sky-300 transition hover:text-sky-200/80 focus:outline-none focus-visible:underline"
+	>
+		See how pricing works <span aria-hidden="true">&rarr;</span>
+	</a>
+	</div>
+	</div>
+	</section>
+
+	<!-- FAQ -->
+	<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="faq-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+	<h2 id="faq-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Frequently Asked Questions
+	</h2>
+	<p class="mt-4 text-base leading-relaxed text-slate-400">
+		Common questions about dedicated lifecycle and email/SMS specialists for US teams.
+	</p>
+	</div>
+
+	<div class="mt-10 grid gap-3">
+	{faqs.map((item) => (
+	<details class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+		<summary class="cursor-pointer list-none text-sm font-semibold text-slate-100 [&::-webkit-details-marker]:hidden">
+		{item.q}
+		</summary>
+		<p class="mt-4 pt-4 text-sm leading-relaxed text-slate-400 border-t border-slate-800">{item.a}</p>
+	</details>
+	))}
+	</div>
+	</div>
+	</section>
+
+	<!-- CTA -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="cta-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-8 text-center shadow-xl sm:p-12">
+	<h2 id="cta-heading" class="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+		Ready for a Dedicated Lifecycle Specialist?
+	</h2>
+	<p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slate-300">
+		Tell us your platform, customer lifecycle type, and retention goals — we'll match you with a specialist within 48 hours.
+	</p>
+	<div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+	<a
+		href={bookingUrl}
+		{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+		class="inline-flex min-h-[48px] items-center justify-center rounded bg-sky-600 px-8 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+		data-book-call
+	>
+		Book a Lifecycle Specialist Call
+	</a>
+	<a
+		href="#contact"
+		class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-slate-700 bg-slate-900/40 px-8 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+		data-open-tell-us="lifecycle-cta"
+	>
+		Tell Us What You Need
+	</a>
+	</div>
+	<p class="mt-5 text-xs text-slate-400">Month-to-month · Free replacement guarantee · Platform-matched specialists</p>
+	</div>
+	</div>
+	</section>
+
+	<!-- Contact -->
+	<section id="contact" class="bg-slate-950 pb-20 pt-16 sm:pb-24 sm:pt-20" aria-labelledby="contact-heading">
+	<div class="mx-auto max-w-6xl px-6">
+	<div class="js-fade-in max-w-2xl">
+		<p class="text-sm font-semibold uppercase tracking-widest text-sky-300">Get in touch</p>
+		<h2 id="contact-heading" class="mt-3 text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+		Let's Talk Lifecycle &amp; Retention
+		</h2>
+		<p class="mt-4 text-base leading-relaxed text-slate-400">
+		Share your platform, customer model, and retention goals — we'll match you with a vetted lifecycle specialist.
+		</p>
+	</div>
+
+	<ContactHub subject={`${brand} – lifecycle/email/SMS specialist inquiry`} defaultCategory="marketing" defaultMessage="I'm interested in a dedicated lifecycle and email/SMS specialist." />
+	</div>
+	</section>
+
+	</main>
+
+	<style>
+	.js-fade-in {
+		opacity: 0;
+		transform: translateY(20px);
+		transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+	}
+	.js-fade-in.is-visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	</style>
+
+	<script is:inline>
+	(function () {
+		var els = document.querySelectorAll('.js-fade-in');
+		if (!els.length) return;
+		var io = new IntersectionObserver(function (entries) {
+		entries.forEach(function (e) {
+			if (e.isIntersecting) {
+			e.target.classList.add('is-visible');
+			io.unobserve(e.target);
+			}
+		});
+		}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+		els.forEach(function (el) { io.observe(el); });
+	})();
+	</script>
+</Layout>
