@@ -1,14 +1,14 @@
----
+﻿---
 import Layout from '../../../layouts/Layout.astro';
 import MetaHead from '../../../components/MetaHead.astro';
 import ContactForm from '../../../components/ContactForm.astro';
-import CalendlyEmbed from '../../../components/CalendlyEmbed.astro';
+import CalendlyInline from '../../../components/CalendlyInline.astro';
 import { BOOKING_URL, isExternalUrl } from '../../../lib/cta';
 
 const brand = 'LatAm Scalers';
 
 const meta = {
-	title: 'Our Guarantee — Risk-Free Engagement for US Teams | LatAm Scalers',
+	title: 'Our Guarantee â€” Risk-Free Engagement for US Teams | LatAm Scalers',
 	description:
 		'LatAm Scalers offers a dual-model guarantee for US companies: 90-day replacement for direct hire and anytime replacement for month-to-month engagements. No long-term contracts required.',
 };
@@ -21,27 +21,27 @@ const bookingExternal = isExternalUrl(bookingUrl);
 const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? import.meta.env.PUBLIC_BOOKING_URL ?? 'https://calendly.com/your-org/15min';
 
 const competitors = [
-	{ name: 'HireLATAM', guarantee: '90-day replacement', contracts: 'Placement fee upfront', flexibility: 'Limited — find-and-leave model', ongoing: 'None' },
+	{ name: 'HireLATAM', guarantee: '90-day replacement', contracts: 'Placement fee upfront', flexibility: 'Limited â€” find-and-leave model', ongoing: 'None' },
 	{ name: 'South', guarantee: '14-day replacement', contracts: 'Monthly subscription', flexibility: 'Cancel anytime', ongoing: 'Basic account management' },
 	{ name: 'Near', guarantee: 'Varies by plan', contracts: 'Monthly + placement fee', flexibility: 'Varies', ongoing: 'Limited' },
 	{ name: 'Somewhere', guarantee: '90-day guarantee', contracts: 'Monthly fee', flexibility: 'Cancel anytime', ongoing: 'HR support' },
-	{ name: 'LatAm Scalers', guarantee: '90-day (direct) / Anytime (monthly)', contracts: 'No placement fee, no lock-in', flexibility: 'Full — scale up or down monthly', ongoing: 'Dedicated account management + free replacement' },
+	{ name: 'LatAm Scalers', guarantee: '90-day (direct) / Anytime (monthly)', contracts: 'No placement fee, no lock-in', flexibility: 'Full â€” scale up or down monthly', ongoing: 'Dedicated account management + free replacement' },
 ];
 
 const replacementSteps = [
-	{ step: '1', title: 'Flag the issue', desc: "Tell us what's not working — performance, fit, availability, anything. No justification hoops." },
-	{ step: '2', title: 'We source a replacement', desc: 'We immediately begin sourcing from our pre-vetted bench. Typical turnaround: 48–72 hours for a vetted shortlist.' },
+	{ step: '1', title: 'Flag the issue', desc: "Tell us what's not working â€” performance, fit, availability, anything. No justification hoops." },
+	{ step: '2', title: 'We source a replacement', desc: 'We immediately begin sourcing from our pre-vetted bench. Typical turnaround: 48â€“72 hours for a vetted shortlist.' },
 	{ step: '3', title: 'Seamless transition', desc: 'We handle onboarding the replacement and coordinate knowledge transfer so your workflow stays uninterrupted.' },
 ];
 
 const faqs = [
 	{
 		q: 'What exactly does "free replacement guarantee" mean?',
-		a: 'If a specialist isn\'t meeting expectations — for any reason — we replace them at no additional cost. For month-to-month engagements, this applies at any time during the engagement. For direct-hire placements, the guarantee covers the first 90 days.',
+		a: 'If a specialist isn\'t meeting expectations â€” for any reason â€” we replace them at no additional cost. For month-to-month engagements, this applies at any time during the engagement. For direct-hire placements, the guarantee covers the first 90 days.',
 	},
 	{
 		q: 'Is there a limit on how many replacements I can request?',
-		a: 'No hard limit. Our goal is your satisfaction. If the first replacement doesn\'t work either, we\'ll keep matching until you\'re happy. In practice, our vetting process means replacements are rare — less than 5% of placements need a swap.',
+		a: 'No hard limit. Our goal is your satisfaction. If the first replacement doesn\'t work either, we\'ll keep matching until you\'re happy. In practice, our vetting process means replacements are rare â€” less than 5% of placements need a swap.',
 	},
 	{
 		q: 'Do I need to sign a long-term contract?',
@@ -49,7 +49,7 @@ const faqs = [
 	},
 	{
 		q: 'What if I need to pause an engagement temporarily?',
-		a: 'We offer flexibility for pauses. Talk to your account manager and we\'ll work out an arrangement — whether that\'s a temporary pause, reduced hours, or reassigning the specialist to a different scope.',
+		a: 'We offer flexibility for pauses. Talk to your account manager and we\'ll work out an arrangement â€” whether that\'s a temporary pause, reduced hours, or reassigning the specialist to a different scope.',
 	},
 	{
 		q: 'How does the direct-hire guarantee differ from month-to-month?',
@@ -88,10 +88,10 @@ const faqJsonLd = {
 				<div class="js-fade-in">
 					<p class="text-sm font-semibold uppercase tracking-widest text-sky-300">Our guarantee</p>
 					<h1 id="hero-heading" class="mt-4 text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
-						Zero Risk, Full Flexibility — Our Guarantee to US Teams
+						Zero Risk, Full Flexibility â€” Our Guarantee to US Teams
 					</h1>
 					<p class="mt-5 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
-						We stand behind every specialist we place. If someone isn't the right fit, we replace them — free, fast, and without friction. No long-term contracts. No placement fees on month-to-month engagements.
+						We stand behind every specialist we place. If someone isn't the right fit, we replace them â€” free, fast, and without friction. No long-term contracts. No placement fees on month-to-month engagements.
 					</p>
 
 					<div class="mt-8 flex flex-wrap gap-3">
@@ -107,7 +107,7 @@ const faqJsonLd = {
 							href="/about/how-we-vet/"
 							class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-slate-700 bg-slate-900/40 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
 						>
-							See How We Vet →
+							See How We Vet â†’
 						</a>
 					</div>
 				</div>
@@ -134,13 +134,13 @@ const faqJsonLd = {
 						<p class="mt-4 text-xs font-semibold uppercase tracking-wide text-sky-300">Month-to-Month</p>
 						<h3 class="mt-2 text-lg font-semibold text-slate-100">Anytime Replacement Guarantee</h3>
 						<p class="mt-3 text-sm leading-relaxed text-slate-400">
-							No placement fees. No lock-in. If a specialist isn't meeting expectations at any point during the engagement, we replace them — free. Scale up, scale down, or end the engagement at the end of any month.
+							No placement fees. No lock-in. If a specialist isn't meeting expectations at any point during the engagement, we replace them â€” free. Scale up, scale down, or end the engagement at the end of any month.
 						</p>
 						<ul class="mt-5 space-y-2">
-							<li class="flex items-start gap-2 text-sm text-slate-400"><span class="text-sky-300" aria-hidden="true">✓</span> Free replacement at any time</li>
-							<li class="flex items-start gap-2 text-sm text-slate-400"><span class="text-sky-300" aria-hidden="true">✓</span> No placement fees</li>
-							<li class="flex items-start gap-2 text-sm text-slate-400"><span class="text-sky-300" aria-hidden="true">✓</span> 30-day notice to scale or end</li>
-							<li class="flex items-start gap-2 text-sm text-slate-400"><span class="text-sky-300" aria-hidden="true">✓</span> Dedicated account management</li>
+							<li class="flex items-start gap-2 text-sm text-slate-400"><span class="text-sky-300" aria-hidden="true">âœ“</span> Free replacement at any time</li>
+							<li class="flex items-start gap-2 text-sm text-slate-400"><span class="text-sky-300" aria-hidden="true">âœ“</span> No placement fees</li>
+							<li class="flex items-start gap-2 text-sm text-slate-400"><span class="text-sky-300" aria-hidden="true">âœ“</span> 30-day notice to scale or end</li>
+							<li class="flex items-start gap-2 text-sm text-slate-400"><span class="text-sky-300" aria-hidden="true">âœ“</span> Dedicated account management</li>
 						</ul>
 					</div>
 
@@ -154,10 +154,10 @@ const faqJsonLd = {
 							One-time placement fee. The specialist joins your payroll directly. If they don't work out within 90 days, we find a replacement at no extra cost. You get full control over the employment relationship.
 						</p>
 						<ul class="mt-5 space-y-2">
-							<li class="flex items-start gap-2 text-sm text-slate-400"><span class="text-sky-300" aria-hidden="true">✓</span> 90-day replacement guarantee</li>
-							<li class="flex items-start gap-2 text-sm text-slate-400"><span class="text-sky-300" aria-hidden="true">✓</span> Specialist joins your payroll</li>
-							<li class="flex items-start gap-2 text-sm text-slate-400"><span class="text-sky-300" aria-hidden="true">✓</span> One-time placement fee</li>
-							<li class="flex items-start gap-2 text-sm text-slate-400"><span class="text-sky-300" aria-hidden="true">✓</span> Full employment control</li>
+							<li class="flex items-start gap-2 text-sm text-slate-400"><span class="text-sky-300" aria-hidden="true">âœ“</span> 90-day replacement guarantee</li>
+							<li class="flex items-start gap-2 text-sm text-slate-400"><span class="text-sky-300" aria-hidden="true">âœ“</span> Specialist joins your payroll</li>
+							<li class="flex items-start gap-2 text-sm text-slate-400"><span class="text-sky-300" aria-hidden="true">âœ“</span> One-time placement fee</li>
+							<li class="flex items-start gap-2 text-sm text-slate-400"><span class="text-sky-300" aria-hidden="true">âœ“</span> Full employment control</li>
 						</ul>
 					</div>
 				</div>
@@ -237,22 +237,22 @@ const faqJsonLd = {
 						Why This Matters
 					</h2>
 					<p class="mt-4 text-base leading-relaxed text-slate-400">
-						Hiring remote talent from Latin America shouldn't require a leap of faith. Our guarantee exists because we've invested heavily in vetting — and we're confident enough in the quality to back it financially.
+						Hiring remote talent from Latin America shouldn't require a leap of faith. Our guarantee exists because we've invested heavily in vetting â€” and we're confident enough in the quality to back it financially.
 					</p>
 				</div>
 
 				<div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 					<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
 						<p class="text-2xl font-semibold text-sky-300">&lt;5%</p>
-						<p class="mt-2 text-sm text-slate-400">Replacement rate — over 95% of placements are long-term fits</p>
+						<p class="mt-2 text-sm text-slate-400">Replacement rate â€” over 95% of placements are long-term fits</p>
 					</div>
 					<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
-						<p class="text-2xl font-semibold text-sky-300">48–72h</p>
+						<p class="text-2xl font-semibold text-sky-300">48â€“72h</p>
 						<p class="mt-2 text-sm text-slate-400">Average time to present a vetted replacement shortlist</p>
 					</div>
 					<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
 						<p class="text-2xl font-semibold text-sky-300">$0</p>
-						<p class="mt-2 text-sm text-slate-400">Additional cost for replacement — it's included in every engagement</p>
+						<p class="mt-2 text-sm text-slate-400">Additional cost for replacement â€” it's included in every engagement</p>
 					</div>
 				</div>
 			</div>
@@ -288,7 +288,7 @@ const faqJsonLd = {
 						Ready to Start Risk-Free?
 					</h2>
 					<p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slate-300">
-						Book a call to discuss your needs. Every engagement comes with our replacement guarantee — no exceptions.
+						Book a call to discuss your needs. Every engagement comes with our replacement guarantee â€” no exceptions.
 					</p>
 					<div class="mt-8 flex flex-wrap items-center justify-center gap-4">
 						<a
@@ -306,7 +306,7 @@ const faqJsonLd = {
 							See How Pricing Works
 						</a>
 					</div>
-					<p class="mt-5 text-xs text-slate-400">Month-to-month · Free replacement guarantee · No long-term contracts</p>
+					<p class="mt-5 text-xs text-slate-400">Month-to-month Â· Free replacement guarantee Â· No long-term contracts</p>
 				</div>
 			</div>
 		</section>
@@ -320,13 +320,13 @@ const faqJsonLd = {
 						Let's Discuss Your Needs
 					</h2>
 					<p class="mt-4 text-base leading-relaxed text-slate-400">
-						Tell us about your team, timeline, and goals — we'll explain exactly how the guarantee applies to your situation.
+						Tell us about your team, timeline, and goals â€” we'll explain exactly how the guarantee applies to your situation.
 					</p>
 				</div>
 
 				<div class="mt-10 grid gap-6 lg:grid-cols-2">
-					<ContactForm subject={`${brand} — guarantee inquiry`} />
-					<CalendlyEmbed url={calendlyUrl} title="Book a Scoping Call" />
+					<ContactForm subject={`${brand} â€” guarantee inquiry`} />
+					<CalendlyInline url={calendlyUrl} title="Book a Scoping Call" />
 				</div>
 			</div>
 		</section>
@@ -361,3 +361,4 @@ const faqJsonLd = {
 		})();
 	</script>
 </Layout>
+

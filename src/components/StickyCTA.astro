@@ -1,0 +1,93 @@
+---
+/**
+ * StickyCTA — sticky mobile-only bottom CTA bar.
+ * Visible only on mobile (md:hidden), appears after 25% scroll.
+ * Opens the TellUsNeedsModal on click.
+ */
+import { BOOKING_URL, isExternalUrl } from '../lib/cta';
+
+export type Props = {
+	/** Override the default CTA label */
+	label?: string;
+	/** 'modal' opens the Tell Us modal; 'link' navigates to href */
+	mode?: 'modal' | 'link';
+	href?: string;
+};
+
+const {
+	label = 'Book a 15-Minute Scoping Call',
+	mode = 'modal',
+	href = BOOKING_URL,
+} = Astro.props;
+
+const isExternal = isExternalUrl(href);
+---
+
+{/* Mobile-only sticky bottom bar */}
+<div
+	id="sticky-cta-bar"
+	class="fixed bottom-0 left-0 right-0 z-40 hidden md:hidden"
+	aria-hidden="true"
+	data-sticky-cta
+>
+	{/* Safe area padding for notched phones */}
+	<div class="border-t border-slate-800 bg-slate-950/95 px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur-lg">
+		{mode === 'modal' ? (
+			<button
+				type="button"
+				class="flex w-full min-h-[48px] items-center justify-center rounded-xl bg-sky-600 px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+				data-open-tell-us="sticky-cta"
+				aria-label={label}
+			>
+				{label}
+			</button>
+		) : (
+			<a
+				href={href}
+				{...(isExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+				class="flex w-full min-h-[48px] items-center justify-center rounded-xl bg-sky-600 px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+				aria-label={label}
+				data-book-call
+			>
+				{label}
+			</a>
+		)}
+	</div>
+</div>
+
+<script is:inline>
+(function () {
+  var bar = document.getElementById('sticky-cta-bar');
+  if (!bar) return;
+
+  // Only show on mobile — re-check on resize
+  function isMobile() { return window.innerWidth < 768; }
+  if (!isMobile()) return;
+
+  var shown = false;
+  var threshold = 0.25; // 25% scroll
+
+  function onScroll() {
+    if (!isMobile()) {
+      bar.style.display = 'none';
+      bar.setAttribute('aria-hidden', 'true');
+      return;
+    }
+    var scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    if (!shown && scrolled >= threshold) {
+      shown = true;
+      bar.style.display = 'block';
+      bar.removeAttribute('aria-hidden');
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  window.addEventListener('resize', function () {
+    if (!isMobile()) {
+      bar.style.display = 'none';
+      bar.setAttribute('aria-hidden', 'true');
+    }
+  });
+})();
+</script>

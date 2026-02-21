@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from '../../layouts/Layout.astro';
 import MetaHead from '../../components/MetaHead.astro';
 import Hero from '../../components/Hero.astro';
@@ -6,9 +6,9 @@ import ContactSection from '../../components/ContactSection.astro';
 const companyName = 'LatAm Scalers';
 
 const meta = {
-	title: `Hire Remote Marketing Talent â€” SEO, PPC, Growth & Content Specialists | ${companyName}`,
+	title: `Hire Remote Marketing Talent Ã¢â‚¬â€ SEO, PPC, Growth & Content Specialists | ${companyName}`,
 	description:
-		'Scale your marketing team with vetted remote specialists: SEO, paid media, growth, content, performance & demand-gen experts. Flexible full-time, part-time or hourly blocks â€” fast onboarding and proven results.',
+		'Scale your marketing team with vetted remote specialists: SEO, paid media, growth, content, performance & demand-gen experts. Flexible full-time, part-time or hourly blocks Ã¢â‚¬â€ fast onboarding and proven results.',
 };
 
 const baseUrl = Astro.site ?? 'https://talentcompany-site.vercel.app';
@@ -17,8 +17,8 @@ const canonical = new URL('/services/marketing/', baseUrl).toString();
 const serviceJsonLd = {
 	'@context': 'https://schema.org',
 	'@type': 'Service',
-	name: 'Marketing Staff Augmentation',
-	serviceType: 'Marketing staff augmentation (SEO, PPC, growth, content)',
+	name: 'Dedicated Marketing Talent',
+	serviceType: 'Dedicated Marketing Talent (SEO, PPC, growth, content)',
 	description: meta.description,
 	audience: { '@type': 'Audience', audienceType: 'Business' },
 	provider: {
@@ -31,7 +31,7 @@ const serviceJsonLd = {
 const faqs = [
 	{
 		q: 'Can we hire marketing specialists full-time or part-time?',
-		a: 'Yesâ€”engagements can be full-time, part-time, or hourly blocks depending on your goals and timelines.',
+		a: 'YesÃ¢â‚¬â€engagements can be full-time, part-time, or hourly blocks depending on your goals and timelines.',
 	},
 	{
 		q: 'Which roles can you support?',
@@ -66,7 +66,7 @@ const faqJsonLd = {
 	<Hero
 		kicker="Services"
 		title="Top-tier Marketing Talent, on your team."
-		subtitle="Vetted SEO, PPC, growth, content and performance specialists as full-time, part-time or hourly blocks â€” plug them into your stack fast."
+		subtitle="Vetted SEO, PPC, growth, content and performance specialists as full-time, part-time or hourly blocks Ã¢â‚¬â€ plug them into your stack fast."
 		primaryCta={{ label: 'Book a Marketing Call', href: '#contact' }}
 		secondaryCta={{ label: 'Back home', href: '/' }}
 	/>
@@ -88,7 +88,7 @@ const faqJsonLd = {
 				<div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
 					<h3 class="font-semibold text-slate-100">FT / PT Placements</h3>
 					<p class="mt-3 text-sm leading-relaxed text-slate-300">
-						Embedded marketers: SEO, PPC, Growth, Content Lead, Email/CRM, Analytics â€” join your team and deliver
+						Embedded marketers: SEO, PPC, Growth, Content Lead, Email/CRM, Analytics Ã¢â‚¬â€ join your team and deliver
 						ongoing results.
 					</p>
 					<ul class="mt-4 grid gap-2 text-sm text-slate-300">
@@ -99,7 +99,7 @@ const faqJsonLd = {
 				<div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
 					<h3 class="font-semibold text-slate-100">Hourly Blocks</h3>
 					<p class="mt-3 text-sm leading-relaxed text-slate-300">
-						10 / 25 / 50 hour packs for audits, campaign setups, GA4 migrations, CRO experiments â€” for short
+						10 / 25 / 50 hour packs for audits, campaign setups, GA4 migrations, CRO experiments Ã¢â‚¬â€ for short
 						tactical needs.
 					</p>
 					<ul class="mt-4 grid gap-2 text-sm text-slate-300">
@@ -154,13 +154,13 @@ const faqJsonLd = {
 					class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:bg-slate-900"
 				>
 					<p class="text-sm font-semibold text-slate-100">Design teams</p>
-					<p class="mt-2 text-sm text-slate-300">Staff augmentation or managed design delivery.</p>
+					<p class="mt-2 text-sm text-slate-300">Dedicated specialists or managed design delivery.</p>
 				</a>
 				<a
 					href="/solutions/aec-talent/"
 					class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:bg-slate-900"
 				>
-					<p class="text-sm font-semibold text-slate-100">AEC staff augmentation</p>
+					<p class="text-sm font-semibold text-slate-100">Dedicated AEC talent</p>
 					<p class="mt-2 text-sm text-slate-300">Revit production, BIM coordination, and drafting support.</p>
 				</a>
 			</div>
@@ -193,7 +193,8 @@ const faqJsonLd = {
 	</main>
 
 	<div class="mx-auto max-w-6xl px-6">
-		<ContactSection subject="LatAm Scalers â€” new inquiry (marketing service)" />
+		<ContactSection subject="LatAm Scalers Ã¢â‚¬â€ new inquiry (marketing service)" />
 	</div>
 </Layout>
+
 

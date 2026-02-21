@@ -1,0 +1,142 @@
+---
+/**
+ * CalendlyInline — lazy-loaded Calendly inline widget via Intersection Observer.
+ * Zero bytes of Calendly JS are loaded until the component enters the viewport.
+ */
+export type Props = {
+	/** Full Calendly scheduling URL, e.g. https://calendly.com/your-org/15min */
+	url: string;
+	title?: string;
+	/** Height of the widget in pixels (default 700) */
+	height?: number;
+};
+
+const { url, title = 'Book a 15-minute intro call', height = 700 } = Astro.props;
+const widgetId = `cal-inline-${Math.random().toString(36).slice(2, 9)}`;
+const isCalendly = /calendly\.com/i.test(url);
+---
+
+<div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+	<div class="flex flex-wrap items-start justify-between gap-4">
+		<div>
+			<h3 class="text-base font-semibold text-slate-100">{title}</h3>
+			<p class="mt-1.5 text-sm leading-relaxed text-slate-300">
+				Pick a time that works — a quick 15-minute intro call.
+			</p>
+		</div>
+		<a
+			class="shrink-0 rounded-xl border border-slate-800 bg-slate-900/60 px-4 py-2 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+			href={url}
+			target="_blank"
+			rel="noreferrer"
+		>
+			Open in new tab ↗
+		</a>
+	</div>
+
+	{isCalendly ? (
+		<div class="mt-5">
+			<div
+				id={widgetId}
+				data-calendly-inline
+				data-calendly-url={url}
+				style={`min-height:${height}px`}
+				class="overflow-hidden rounded-xl border border-slate-800 bg-slate-950/40"
+				aria-label="Calendly scheduling widget"
+			>
+				{/* Skeleton shimmer shown until widget loads */}
+				<div class="flex h-full flex-col items-center justify-center gap-3 p-8 text-center" data-calendly-skeleton>
+					<div class="h-3 w-48 animate-pulse rounded bg-slate-800"></div>
+					<div class="h-2 w-64 animate-pulse rounded bg-slate-800"></div>
+					<div class="mt-3 grid w-full max-w-sm grid-cols-3 gap-2">
+						<div class="h-10 animate-pulse rounded-lg bg-slate-800"></div>
+						<div class="h-10 animate-pulse rounded-lg bg-slate-800"></div>
+						<div class="h-10 animate-pulse rounded-lg bg-slate-800"></div>
+						<div class="h-10 animate-pulse rounded-lg bg-slate-800"></div>
+						<div class="h-10 animate-pulse rounded-lg bg-slate-800"></div>
+						<div class="h-10 animate-pulse rounded-lg bg-slate-800"></div>
+					</div>
+					<p class="mt-2 text-xs text-slate-600">Loading scheduler…</p>
+				</div>
+			</div>
+		</div>
+	) : (
+		<div class="mt-5 overflow-hidden rounded-xl border border-slate-800 bg-slate-950/40">
+			<iframe
+				title={title}
+				src={url}
+				loading="lazy"
+				referrerpolicy="no-referrer-when-downgrade"
+				class="w-full"
+				style={`height:${height}px`}
+			/>
+		</div>
+	)}
+
+	<noscript>
+		<p class="mt-4 text-sm text-slate-300">
+			JavaScript is disabled. Please
+			<a class="underline hover:text-white" href={url} target="_blank" rel="noreferrer">open Calendly directly</a>
+			to schedule.
+		</p>
+	</noscript>
+</div>
+
+{isCalendly && (
+	<script define:vars={{ widgetId, height }}>
+	(function () {
+	  var SCRIPT_SRC = 'https://assets.calendly.com/assets/external/widget.js';
+	  var container  = document.getElementById(widgetId);
+	  if (!container) return;
+
+	  var didLoad = false;
+
+	  function initWidget() {
+	    var skeleton = container.querySelector('[data-calendly-skeleton]');
+	    if (skeleton) skeleton.remove();
+	    window.Calendly.initInlineWidget({
+	      url: container.dataset.calendlyUrl,
+	      parentElement: container,
+	    });
+	    container.style.minHeight = height + 'px';
+	  }
+
+	  function load() {
+	    if (didLoad) return;
+	    didLoad = true;
+
+	    if (window.Calendly) {
+	      initWidget();
+	      return;
+	    }
+
+	    // Script not yet on page — inject it
+	    if (!document.querySelector('script[src="' + SCRIPT_SRC + '"]')) {
+	      var s    = document.createElement('script');
+	      s.src    = SCRIPT_SRC;
+	      s.async  = true;
+	      s.onload = initWidget;
+	      document.head.appendChild(s);
+	    } else {
+	      // Script tag is present but Calendly object not ready — poll
+	      var t = setInterval(function () {
+	        if (window.Calendly) { clearInterval(t); initWidget(); }
+	      }, 150);
+	      setTimeout(function () { clearInterval(t); }, 5000);
+	    }
+	  }
+
+	  if ('IntersectionObserver' in window) {
+	    var obs = new IntersectionObserver(
+	      function (entries) {
+	        if (entries[0].isIntersecting) { obs.disconnect(); load(); }
+	      },
+	      { rootMargin: '200px' }
+	    );
+	    obs.observe(container);
+	  } else {
+	    load();
+	  }
+	})();
+	</script>
+)}

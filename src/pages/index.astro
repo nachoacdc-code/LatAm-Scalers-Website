@@ -1,12 +1,12 @@
----
+﻿---
 import Layout from '../layouts/Layout.astro';
 import MetaHead from '../components/MetaHead.astro';
 import ContactForm from '../components/ContactForm.astro';
-import CalendlyEmbed from '../components/CalendlyEmbed.astro';
+import CalendlyInline from '../components/CalendlyInline.astro';
 import { BOOKING_URL, isExternalUrl } from '../lib/cta';
 
 const meta = {
-	title: 'LatAm Scalers | Dedicated LATAM Talent for US Teams — AEC, Design, Marketing',
+	title: 'LatAm Scalers | Dedicated LATAM Talent for US Teams â€” AEC, Design, Marketing',
 	description:
 		'Scale your US team with pre-vetted LATAM specialists in AEC, design, and marketing. 50-70% cost savings, matched in under one week, month-to-month flexibility. Free replacement guarantee.',
 };
@@ -19,7 +19,7 @@ const orgJsonLd = {
 	'@type': 'Organization',
 	name: 'LatAm Scalers',
 	url: baseUrl.toString(),
-	description: 'Dedicated LATAM talent for US teams — AEC, Design, and Marketing specialists.',
+	description: 'Dedicated LATAM talent for US teams â€” AEC, Design, and Marketing specialists.',
 	contactPoint: {
 		'@type': 'ContactPoint',
 		contactType: 'sales',
@@ -40,21 +40,21 @@ const bookingExternal = isExternalUrl(bookingUrl);
 const trustBadges = [
 	{ icon: 'clock', label: 'Matched in < 1 Week', sub: 'Shortlist in 48 hours' },
 	{ icon: 'shield', label: '5-Stage Vetted', sub: 'Top 1% of applicants', link: '/about/how-we-vet/' },
-	{ icon: 'savings', label: '50–70% Cost Savings', sub: 'vs. US-based hires' },
+	{ icon: 'savings', label: '50â€“70% Cost Savings', sub: 'vs. US-based hires' },
 	{ icon: 'guarantee', label: 'Free Replacement', sub: 'Guaranteed satisfaction' },
 ];
 
 const problems = [
 	{ stat: '94%', label: 'of contractors report workforce shortages', category: 'AEC', color: 'text-aec' },
 	{ stat: '45%', label: 'longer hiring cycles for design roles', category: 'Design', color: 'text-design' },
-	{ stat: '3.8%', label: 'unemployment in marketing — talent is scarce', category: 'Marketing', color: 'text-marketing' },
+	{ stat: '3.8%', label: 'unemployment in marketing â€” talent is scarce', category: 'Marketing', color: 'text-marketing' },
 ];
 
 const steps = [
-	{ title: 'Tell us what you need', body: 'Roles, tools, availability, and outcomes — so we match accurately.' },
+	{ title: 'Tell us what you need', body: 'Roles, tools, availability, and outcomes â€” so we match accurately.' },
 	{ title: 'Get candidates in 48 hours', body: 'A short list of pre-vetted specialists aligned to your workflow.' },
 	{ title: 'Interview (optional)', body: 'Meet top matches live, or skip interviews to start faster.' },
-	{ title: 'Start month-to-month', body: 'Onboard quickly with flexible engagements — scale up or down anytime.' },
+	{ title: 'Start month-to-month', body: 'Onboard quickly with flexible engagements â€” scale up or down anytime.' },
 	{ title: 'Scale + replace free', body: 'Add capacity for peak loads with a free replacement guarantee.' },
 ];
 
@@ -78,16 +78,16 @@ const roles = [
 	/>
 
 	<main>
-		{/* ═══ SECTION 1 — HERO ═══ */}
+		{/* â•â•â• SECTION 1 â€” HERO â•â•â• */}
 		<section class="relative overflow-hidden">
 			<div class="mx-auto max-w-6xl px-6 py-16 sm:py-24">
 				<div class="grid items-center gap-12 lg:grid-cols-2">
 					<div class="fade-in">
 						<h1 class="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-[3.25rem] lg:leading-[1.15]">
-							Scale Your US Team with Dedicated LATAM Specialists — Matched in Under One Week
+							Scale Your US Team with Dedicated LATAM Specialists â€” Matched in Under One Week
 						</h1>
 						<p class="mt-5 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
-							Pre-vetted AEC, Design, and Marketing professionals. 50–70% cost savings. Month-to-month flexibility. Free replacement guarantee.
+							Pre-vetted AEC, Design, and Marketing professionals. 50â€“70% cost savings. Month-to-month flexibility. Free replacement guarantee.
 						</p>
 
 						<div class="mt-8 flex flex-wrap gap-3">
@@ -119,12 +119,12 @@ const roles = [
 								</div>
 								<div class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
 									<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Savings</p>
-									<p class="mt-2 text-2xl font-bold text-white">50–70%</p>
+									<p class="mt-2 text-2xl font-bold text-white">50â€“70%</p>
 									<p class="mt-1 text-sm text-slate-300">vs. US-based hires</p>
 								</div>
 								<div class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
 									<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Timezone</p>
-									<p class="mt-2 text-2xl font-bold text-white">0–3 hrs</p>
+									<p class="mt-2 text-2xl font-bold text-white">0â€“3 hrs</p>
 									<p class="mt-1 text-sm text-slate-300">Overlap with US</p>
 								</div>
 								<div class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
@@ -141,7 +141,7 @@ const roles = [
 			</div>
 		</section>
 
-		{/* ═══ SECTION 2 — TRUST BAR ═══ */}
+		{/* â•â•â• SECTION 2 â€” TRUST BAR â•â•â• */}
 		<section class="border-y border-slate-800 bg-slate-900/30">
 			<div class="mx-auto max-w-6xl px-6 py-8">
 				<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -181,7 +181,7 @@ const roles = [
 			</div>
 		</section>
 
-		{/* ═══ SECTION 3 — PROBLEM STATEMENT ═══ */}
+		{/* â•â•â• SECTION 3 â€” PROBLEM STATEMENT â•â•â• */}
 		<section class="fade-in">
 			<div class="mx-auto max-w-6xl px-6 py-16 sm:py-20">
 				<div class="mx-auto max-w-2xl text-center">
@@ -205,13 +205,13 @@ const roles = [
 			</div>
 		</section>
 
-		{/* ═══ SECTION 4 — SOLUTION CARDS ═══ */}
+		{/* â•â•â• SECTION 4 â€” SOLUTION CARDS â•â•â• */}
 		<section class="border-y border-slate-800 bg-slate-900/20">
 			<div class="mx-auto max-w-6xl px-6 py-16 sm:py-20">
 				<div class="flex flex-col gap-2">
 					<h2 class="text-2xl font-bold tracking-tight text-white sm:text-3xl">Choose Your Solution</h2>
 					<p class="max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
-						Pick a lane — we'll match specialists who plug into your workflow on day one.
+						Pick a lane â€” we'll match specialists who plug into your workflow on day one.
 					</p>
 				</div>
 
@@ -220,7 +220,7 @@ const roles = [
 						<span class="inline-flex items-center rounded-full bg-aec/10 px-2.5 py-0.5 text-xs font-medium text-aec">AEC</span>
 						<h3 class="mt-3 text-lg font-semibold text-white">AEC Talent</h3>
 						<p class="mt-2 text-sm leading-relaxed text-slate-300">
-							Revit modelers, BIM coordination, CAD drafting, and MEP engineering — aligned to US firm standards.
+							Revit modelers, BIM coordination, CAD drafting, and MEP engineering â€” aligned to US firm standards.
 						</p>
 						<p class="mt-3 text-xs font-medium text-slate-400">Starting at ~$3,500/mo</p>
 						<span class="mt-4 inline-flex items-center text-sm font-medium text-sky-300 group-hover:text-sky-200">
@@ -255,7 +255,7 @@ const roles = [
 			</div>
 		</section>
 
-		{/* ═══ SECTION 5 — HOW IT WORKS ═══ */}
+		{/* â•â•â• SECTION 5 â€” HOW IT WORKS â•â•â• */}
 		<section id="how-it-works">
 			<div class="mx-auto max-w-6xl px-6 py-16 sm:py-20">
 				<div class="mx-auto max-w-2xl text-center">
@@ -285,7 +285,7 @@ const roles = [
 			</div>
 		</section>
 
-		{/* ═══ SECTION 6 — WHY LATAM ═══ */}
+		{/* â•â•â• SECTION 6 â€” WHY LATAM â•â•â• */}
 		<section class="border-y border-slate-800 bg-slate-900/30">
 			<div class="mx-auto max-w-6xl px-6 py-16 sm:py-20">
 				<div class="mx-auto max-w-2xl text-center">
@@ -297,14 +297,14 @@ const roles = [
 
 				<div class="mt-10 grid gap-6 sm:grid-cols-3">
 					<div class="fade-in rounded-2xl border border-slate-800 bg-slate-950/60 p-8 text-center">
-						<p class="text-5xl font-bold text-sky-300" data-counter="50">50–70%</p>
+						<p class="text-5xl font-bold text-sky-300" data-counter="50">50â€“70%</p>
 						<p class="mt-3 text-base font-semibold text-white">Cost Savings</p>
 						<p class="mt-2 text-sm leading-relaxed text-slate-400">
-							Same quality output at a fraction of US market rates — without compromising expertise.
+							Same quality output at a fraction of US market rates â€” without compromising expertise.
 						</p>
 					</div>
 					<div class="fade-in rounded-2xl border border-slate-800 bg-slate-950/60 p-8 text-center" style="--delay:0.1s">
-						<p class="text-5xl font-bold text-sky-300" data-counter="0">0–3 hrs</p>
+						<p class="text-5xl font-bold text-sky-300" data-counter="0">0â€“3 hrs</p>
 						<p class="mt-3 text-base font-semibold text-white">Timezone Overlap</p>
 						<p class="mt-2 text-sm leading-relaxed text-slate-400">
 							Real-time collaboration during your business hours. No overnight handoffs.
@@ -321,7 +321,7 @@ const roles = [
 			</div>
 		</section>
 
-		{/* ═══ SECTION 7 — FLEXIBLE OPTIONS ═══ */}
+		{/* â•â•â• SECTION 7 â€” FLEXIBLE OPTIONS â•â•â• */}
 		<section>
 			<div class="mx-auto max-w-6xl px-6 py-16 sm:py-20">
 				<div class="flex flex-col gap-2">
@@ -374,7 +374,7 @@ const roles = [
 			</div>
 		</section>
 
-		{/* ═══ SECTION 8 — SOCIAL PROOF (Vetting Funnel) ═══ */}
+		{/* â•â•â• SECTION 8 â€” SOCIAL PROOF (Vetting Funnel) â•â•â• */}
 		<section class="border-y border-slate-800 bg-slate-900/30">
 			<div class="mx-auto max-w-6xl px-6 py-16 sm:py-20">
 				<div class="mx-auto max-w-2xl text-center">
@@ -416,13 +416,13 @@ const roles = [
 			</div>
 		</section>
 
-		{/* ═══ SECTION 9 — POPULAR ROLES ═══ */}
+		{/* â•â•â• SECTION 9 â€” POPULAR ROLES â•â•â• */}
 		<section>
 			<div class="mx-auto max-w-6xl px-6 py-16 sm:py-20">
 				<div class="flex flex-col gap-2">
 					<h2 class="text-2xl font-bold tracking-tight text-white sm:text-3xl">Popular Roles</h2>
 					<p class="max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
-						Browse common placements across our three verticals — two per category.
+						Browse common placements across our three verticals â€” two per category.
 					</p>
 				</div>
 
@@ -446,7 +446,7 @@ const roles = [
 			</div>
 		</section>
 
-		{/* ═══ SECTION 10 — TIER PATHWAYS ═══ */}
+		{/* â•â•â• SECTION 10 â€” TIER PATHWAYS â•â•â• */}
 		<section class="border-y border-slate-800 bg-slate-900/20">
 			<div class="mx-auto max-w-6xl px-6 py-16 sm:py-20">
 				<div class="mx-auto max-w-2xl text-center">
@@ -479,9 +479,9 @@ const roles = [
 							<span class="rounded-full bg-sky-600/20 px-2.5 py-0.5 text-xs font-medium text-sky-300">Most popular</span>
 						</div>
 						<h3 class="mt-4 text-lg font-semibold text-white">Scale Smart</h3>
-						<p class="mt-1 text-xs font-medium text-slate-400">For growing teams (25–200)</p>
+						<p class="mt-1 text-xs font-medium text-slate-400">For growing teams (25â€“200)</p>
 						<p class="mt-3 text-sm leading-relaxed text-slate-300">
-							Build a small pod — 2–4 specialists across disciplines with optional PM oversight for managed throughput.
+							Build a small pod â€” 2â€“4 specialists across disciplines with optional PM oversight for managed throughput.
 						</p>
 						<a href={bookingUrl} class="mt-4 inline-flex min-h-[44px] items-center text-sm font-medium text-sky-300 transition hover:text-sky-200">
 							Scale your team <span class="ml-1" aria-hidden="true">&rarr;</span>
@@ -505,7 +505,7 @@ const roles = [
 			</div>
 		</section>
 
-		{/* ═══ SECTION 11 — FINAL CTA ═══ */}
+		{/* â•â•â• SECTION 11 â€” FINAL CTA â•â•â• */}
 		<section>
 			<div class="mx-auto max-w-6xl px-6 py-16 sm:py-20">
 				<div class="rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900/60 to-slate-950 p-8 sm:p-12">
@@ -536,25 +536,25 @@ const roles = [
 			</div>
 		</section>
 
-		{/* ═══ SECTION 12 — CONTACT + CALENDLY ═══ */}
+		{/* â•â•â• SECTION 12 â€” CONTACT + CALENDLY â•â•â• */}
 		<section id="contact" class="border-t border-slate-800 bg-slate-900/20">
 			<div class="mx-auto max-w-6xl px-6 py-16 sm:py-20">
 				<div class="mx-auto max-w-2xl text-center">
 					<h2 class="text-2xl font-bold tracking-tight text-white sm:text-3xl">Get in Touch</h2>
 					<p class="mt-3 text-sm leading-relaxed text-slate-300 sm:text-base">
-						Tell us what you need and we'll suggest the best engagement model — or book a call directly.
+						Tell us what you need and we'll suggest the best engagement model â€” or book a call directly.
 					</p>
 				</div>
 
 				<div class="mt-10 grid gap-8 lg:grid-cols-2">
-					<ContactForm subject="LatAm Scalers — new inquiry (homepage)" />
-					<CalendlyEmbed url={import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com/your-org/15min'} />
+					<ContactForm subject="LatAm Scalers â€” new inquiry (homepage)" />
+					<CalendlyInline url={import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com/your-org/15min'} />
 				</div>
 			</div>
 		</section>
 	</main>
 
-	{/* ═══ MICRO-INTERACTIONS — Scroll-triggered fade-ins ═══ */}
+	{/* â•â•â• MICRO-INTERACTIONS â€” Scroll-triggered fade-ins â•â•â• */}
 	<script is:inline>
 	(() => {
 		const observer = new IntersectionObserver((entries) => {
@@ -590,3 +590,4 @@ const roles = [
 		}
 	</style>
 </Layout>
+

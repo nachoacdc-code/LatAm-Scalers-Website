@@ -1,14 +1,14 @@
----
+﻿---
 import Layout from '../../../layouts/Layout.astro';
 import MetaHead from '../../../components/MetaHead.astro';
 import ContactForm from '../../../components/ContactForm.astro';
-import CalendlyEmbed from '../../../components/CalendlyEmbed.astro';
+import CalendlyInline from '../../../components/CalendlyInline.astro';
 import { BOOKING_URL, isExternalUrl } from '../../../lib/cta';
 
 const brand = 'LatAm Scalers';
 
 const meta = {
-	title: 'BIM Coordination Services — Dedicated LATAM Specialists for US Firms | LatAm Scalers',
+	title: 'BIM Coordination Services â€” Dedicated LATAM Specialists for US Firms | LatAm Scalers',
 	description:
 		'Professional BIM coordination services for US firms. Dedicated LATAM specialists using Navisworks, ACC, and BIM 360. Clash detection, model coordination, and federated deliverables. From ~$3,500/mo.',
 };
@@ -57,7 +57,7 @@ const faqs = [
 	},
 	{
 		q: 'Who owns design authority and stamping?',
-		a: 'You retain full design authority and stamping responsibility. Our specialists produce coordination support and deliverables under your direction — all work requires review and approval by your licensed professionals.',
+		a: 'You retain full design authority and stamping responsibility. Our specialists produce coordination support and deliverables under your direction â€” all work requires review and approval by your licensed professionals.',
 	},
 	{
 		q: 'What does pricing typically look like?',
@@ -95,7 +95,7 @@ const faqJsonLd = {
 				<div class="js-fade-in">
 					<p class="text-sm font-semibold uppercase tracking-widest text-aec">BIM Coordination</p>
 					<h1 id="hero-heading" class="mt-4 text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
-						BIM Coordination Services — Dedicated LATAM Specialists for US Firms
+						BIM Coordination Services â€” Dedicated LATAM Specialists for US Firms
 					</h1>
 					<p class="mt-5 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
 						Dedicated BIM coordinators who integrate into your workflow. Clash detection, federated model coordination, and issue resolution using Navisworks, ACC, and BIM 360. US timezone overlap. Vetted. Month-to-month flexibility.
@@ -137,20 +137,20 @@ const faqJsonLd = {
 					</p>
 					<ul class="mt-6 grid gap-3 sm:grid-cols-2">
 						<li class="flex items-start gap-2 rounded-xl border border-slate-800 bg-slate-900/40 p-4 shadow-lg shadow-black/20">
-							<span class="text-aec" aria-hidden="true">✓</span>
-							<span class="text-sm text-slate-400"><strong class="text-slate-100">Clash detection</strong> — Navisworks, ACC, BIM 360</span>
+							<span class="text-aec" aria-hidden="true">âœ“</span>
+							<span class="text-sm text-slate-400"><strong class="text-slate-100">Clash detection</strong> â€” Navisworks, ACC, BIM 360</span>
 						</li>
 						<li class="flex items-start gap-2 rounded-xl border border-slate-800 bg-slate-900/40 p-4 shadow-lg shadow-black/20">
-							<span class="text-aec" aria-hidden="true">✓</span>
-							<span class="text-sm text-slate-400"><strong class="text-slate-100">Federated models</strong> — organized by discipline</span>
+							<span class="text-aec" aria-hidden="true">âœ“</span>
+							<span class="text-sm text-slate-400"><strong class="text-slate-100">Federated models</strong> â€” organized by discipline</span>
 						</li>
 						<li class="flex items-start gap-2 rounded-xl border border-slate-800 bg-slate-900/40 p-4 shadow-lg shadow-black/20">
-							<span class="text-aec" aria-hidden="true">✓</span>
-							<span class="text-sm text-slate-400"><strong class="text-slate-100">US timezone</strong> — real-time collaboration</span>
+							<span class="text-aec" aria-hidden="true">âœ“</span>
+							<span class="text-sm text-slate-400"><strong class="text-slate-100">US timezone</strong> â€” real-time collaboration</span>
 						</li>
 						<li class="flex items-start gap-2 rounded-xl border border-slate-800 bg-slate-900/40 p-4 shadow-lg shadow-black/20">
-							<span class="text-aec" aria-hidden="true">✓</span>
-							<span class="text-sm text-slate-400"><strong class="text-slate-100">Month-to-month</strong> — scale up or down anytime</span>
+							<span class="text-aec" aria-hidden="true">âœ“</span>
+							<span class="text-sm text-slate-400"><strong class="text-slate-100">Month-to-month</strong> â€” scale up or down anytime</span>
 						</li>
 					</ul>
 				</div>
@@ -207,7 +207,7 @@ const faqJsonLd = {
 						Tools We Use
 					</h2>
 					<p class="mt-4 text-base leading-relaxed text-slate-400">
-						Our coordinators work in Navisworks, Autodesk Construction Cloud, and BIM 360 — whatever your project and firm standards require.
+						Our coordinators work in Navisworks, Autodesk Construction Cloud, and BIM 360 â€” whatever your project and firm standards require.
 					</p>
 				</div>
 
@@ -230,7 +230,7 @@ const faqJsonLd = {
 						Engagement Options
 					</h2>
 					<p class="mt-4 text-base leading-relaxed text-slate-400">
-						Dedicated BIM coordinators on a full-time or part-time basis — or scalable coordination pods for larger project loads.
+						Dedicated BIM coordinators on a full-time or part-time basis â€” or scalable coordination pods for larger project loads.
 					</p>
 				</div>
 
@@ -239,7 +239,7 @@ const faqJsonLd = {
 						<p class="text-xs font-semibold uppercase tracking-wide text-aec">Individual Specialist</p>
 						<h3 class="mt-3 text-lg font-semibold text-slate-100">Dedicated BIM Coordinator</h3>
 						<p class="mt-3 text-sm leading-relaxed text-slate-400">
-							Full-time (40h/week) or part-time (20h/week) BIM coordinators — embedded into your team, using your tools and standards.
+							Full-time (40h/week) or part-time (20h/week) BIM coordinators â€” embedded into your team, using your tools and standards.
 						</p>
 						<p class="mt-4 text-sm font-semibold text-aec">From ~$3,500/mo</p>
 					</div>
@@ -308,7 +308,7 @@ const faqJsonLd = {
 						Ready for BIM Coordination Support?
 					</h2>
 					<p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slate-300">
-						Book a call to discuss your coordination needs, tools, and timeline — or share your project details and we'll propose the best-fit engagement.
+						Book a call to discuss your coordination needs, tools, and timeline â€” or share your project details and we'll propose the best-fit engagement.
 					</p>
 					<div class="mt-8 flex flex-wrap items-center justify-center gap-4">
 						<a
@@ -327,7 +327,7 @@ const faqJsonLd = {
 							Tell Us What You Need
 						</a>
 					</div>
-					<p class="mt-5 text-xs text-slate-400">Month-to-month · Free replacement guarantee · No long-term contracts</p>
+					<p class="mt-5 text-xs text-slate-400">Month-to-month Â· Free replacement guarantee Â· No long-term contracts</p>
 				</div>
 			</div>
 		</section>
@@ -341,13 +341,13 @@ const faqJsonLd = {
 						Let's Talk BIM Coordination
 					</h2>
 					<p class="mt-4 text-base leading-relaxed text-slate-400">
-						Share your coordination scope, tools, and timeline — we'll match you with a vetted BIM coordinator.
+						Share your coordination scope, tools, and timeline â€” we'll match you with a vetted BIM coordinator.
 					</p>
 				</div>
 
 				<div class="mt-10 grid gap-6 lg:grid-cols-2">
-					<ContactForm subject={`${brand} — BIM coordination inquiry`} defaultInterest="aec" defaultMessage="I'm interested in BIM coordination services." />
-					<CalendlyEmbed url={calendlyUrl} title="Book a BIM Coordination Call" />
+					<ContactForm subject={`${brand} â€” BIM coordination inquiry`} defaultInterest="aec" defaultMessage="I'm interested in BIM coordination services." />
+					<CalendlyInline url={calendlyUrl} title="Book a BIM Coordination Call" />
 				</div>
 			</div>
 		</section>
@@ -382,3 +382,4 @@ const faqJsonLd = {
 		})();
 	</script>
 </Layout>
+

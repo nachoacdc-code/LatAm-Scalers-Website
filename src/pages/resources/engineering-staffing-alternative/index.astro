@@ -1,14 +1,14 @@
----
+﻿---
 import Layout from '../../../layouts/Layout.astro';
 import MetaHead from '../../../components/MetaHead.astro';
 import ContactForm from '../../../components/ContactForm.astro';
-import CalendlyEmbed from '../../../components/CalendlyEmbed.astro';
+import CalendlyInline from '../../../components/CalendlyInline.astro';
 import { BOOKING_URL, isExternalUrl } from '../../../lib/cta';
 
 const brand = 'LatAm Scalers';
 
 const meta = {
-	title: 'Engineering Staffing Alternative — Dedicated LATAM AEC Specialists | LatAm Scalers',
+	title: 'Engineering Staffing Alternative â€” Dedicated LATAM AEC Specialists | LatAm Scalers',
 	description:
 		'Looking for an engineering staffing agency? LatAm Scalers provides a better alternative for US firms: dedicated, pre-vetted LATAM BIM coordinators, CAD drafters, and MEP modelers. 50-70% savings, US timezone overlap.',
 };
@@ -23,7 +23,7 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? import.meta.env.PUBLI
 const staffingLimitations = [
 	{ title: 'Rotating assignments', desc: 'Traditional staffing agencies send different people for different projects. You re-train every time.' },
 	{ title: 'Variable quality', desc: 'Staffing pools are broad, not deep. The BIM coordinator you get may not specialize in your discipline.' },
-	{ title: 'Markup-heavy pricing', desc: 'Agencies layer 30–50% markup on top of the specialist\'s rate. You\'re paying for their overhead, not your talent.' },
+	{ title: 'Markup-heavy pricing', desc: 'Agencies layer 30â€“50% markup on top of the specialist\'s rate. You\'re paying for their overhead, not your talent.' },
 	{ title: 'Limited vetting', desc: 'Most agencies verify resumes and check references. Few run technical assessments or evaluate deliverable quality.' },
 	{ title: 'No ongoing support', desc: 'Once placed, you\'re on your own. Performance issues? That\'s your problem to solve.' },
 	{ title: 'Geographic constraints', desc: 'Traditional agencies source locally, limiting the talent pool and keeping costs high.' },
@@ -32,16 +32,16 @@ const staffingLimitations = [
 const latamAdvantages = [
 	{ title: 'Dedicated specialists', desc: 'The same person works exclusively on your projects. They learn your standards, tools, and preferences.' },
 	{ title: 'Pre-vetted for your discipline', desc: 'Our 5-stage vetting includes role-specific technical assessments. A BIM coordinator we present has passed a Navisworks clash detection exercise.' },
-	{ title: '50–70% cost savings', desc: 'LATAM-based specialists provide US-quality output at significantly lower rates. No staffing agency markup.' },
+	{ title: '50â€“70% cost savings', desc: 'LATAM-based specialists provide US-quality output at significantly lower rates. No staffing agency markup.' },
 	{ title: 'Free replacement guarantee', desc: 'If someone isn\'t the right fit, we replace them at no cost. Anytime for monthly engagements.' },
-	{ title: 'US timezone overlap', desc: '0–3 hour timezone difference means real-time collaboration during your business hours.' },
+	{ title: 'US timezone overlap', desc: '0â€“3 hour timezone difference means real-time collaboration during your business hours.' },
 	{ title: 'Month-to-month flexibility', desc: 'No long-term contracts. Scale up for project surges, scale down in quieter periods.' },
 ];
 
 const faqs = [
 	{
 		q: 'Is LatAm Scalers an engineering staffing agency?',
-		a: 'No — and that\'s intentional. We don\'t operate a staffing pool or send rotating contractors. We provide dedicated, pre-vetted LATAM specialists who embed into your team on a month-to-month basis. You get the predictability of a full-time hire with the flexibility of a contractor.',
+		a: 'No â€” and that\'s intentional. We don\'t operate a staffing pool or send rotating contractors. We provide dedicated, pre-vetted LATAM specialists who embed into your team on a month-to-month basis. You get the predictability of a full-time hire with the flexibility of a contractor.',
 	},
 	{
 		q: 'Can LATAM specialists work with our US project standards?',
@@ -53,11 +53,11 @@ const faqs = [
 	},
 	{
 		q: 'How does this compare in cost to a traditional staffing agency?',
-		a: 'Traditional US engineering staffing agencies typically charge $50–$80+/hour. Our dedicated AEC specialists start at approximately $3,500/month for full-time (40h/week), which translates to roughly $20–22/hour — a 50–70% reduction.',
+		a: 'Traditional US engineering staffing agencies typically charge $50â€“$80+/hour. Our dedicated AEC specialists start at approximately $3,500/month for full-time (40h/week), which translates to roughly $20â€“22/hour â€” a 50â€“70% reduction.',
 	},
 	{
 		q: 'Do your specialists handle design decisions or stamping?',
-		a: 'No. Our specialists produce work under the direction of your licensed professionals. You retain full design authority, decision-making, and stamping responsibility. We handle execution — coordination, modeling, drafting — within the scope you define.',
+		a: 'No. Our specialists produce work under the direction of your licensed professionals. You retain full design authority, decision-making, and stamping responsibility. We handle execution â€” coordination, modeling, drafting â€” within the scope you define.',
 	},
 ];
 
@@ -95,7 +95,7 @@ const faqJsonLd = {
 						A Better Alternative to Engineering Staffing Agencies
 					</h1>
 					<p class="mt-5 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
-						Traditional staffing agencies send rotating contractors with variable quality. We provide dedicated, pre-vetted LATAM specialists who embed into your AEC team — with 50–70% cost savings and month-to-month flexibility.
+						Traditional staffing agencies send rotating contractors with variable quality. We provide dedicated, pre-vetted LATAM specialists who embed into your AEC team â€” with 50â€“70% cost savings and month-to-month flexibility.
 					</p>
 
 					<div class="mt-8 flex flex-wrap gap-3">
@@ -111,7 +111,7 @@ const faqJsonLd = {
 							href="/aec/"
 							class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-slate-700 bg-slate-900/40 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
 						>
-							Explore AEC Solutions →
+							Explore AEC Solutions â†’
 						</a>
 					</div>
 				</div>
@@ -126,7 +126,7 @@ const faqJsonLd = {
 						The Limitations of Traditional Staffing
 					</h2>
 					<p class="mt-4 text-base leading-relaxed text-slate-400">
-						Engineering staffing agencies serve an important function — but for many US firms, the traditional model creates more friction than it solves.
+						Engineering staffing agencies serve an important function â€” but for many US firms, the traditional model creates more friction than it solves.
 					</p>
 				</div>
 
@@ -149,14 +149,14 @@ const faqJsonLd = {
 						The Alternative: Dedicated LATAM AEC Specialists
 					</h2>
 					<p class="mt-4 text-base leading-relaxed text-slate-400">
-						Instead of rotating contractors from a staffing pool, work with a dedicated specialist who knows your tools, standards, and team — exclusively.
+						Instead of rotating contractors from a staffing pool, work with a dedicated specialist who knows your tools, standards, and team â€” exclusively.
 					</p>
 				</div>
 
 				<div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 					{latamAdvantages.map((item) => (
 						<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
-							<span class="text-aec" aria-hidden="true">✓</span>
+							<span class="text-aec" aria-hidden="true">âœ“</span>
 							<h3 class="mt-2 text-sm font-semibold text-slate-100">{item.title}</h3>
 							<p class="mt-2 text-sm leading-relaxed text-slate-400">{item.desc}</p>
 						</div>
@@ -173,40 +173,40 @@ const faqJsonLd = {
 						AEC Roles We Provide
 					</h2>
 					<p class="mt-4 text-base leading-relaxed text-slate-400">
-						Specialists vetted for specific AEC disciplines — not generalists from a broad staffing pool.
+						Specialists vetted for specific AEC disciplines â€” not generalists from a broad staffing pool.
 					</p>
 				</div>
 
 				<div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 					<a href="/aec/bim-coordination-services/" class="js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20 transition hover:-translate-y-1 hover:shadow-xl">
 						<p class="text-sm font-semibold text-slate-100 group-hover:text-white">BIM Coordinators</p>
-						<p class="mt-2 text-xs text-slate-400">Navisworks, ACC, BIM 360 · Clash detection · Model coordination</p>
-						<p class="mt-3 text-xs font-semibold text-aec">From ~$3,500/mo →</p>
+						<p class="mt-2 text-xs text-slate-400">Navisworks, ACC, BIM 360 Â· Clash detection Â· Model coordination</p>
+						<p class="mt-3 text-xs font-semibold text-aec">From ~$3,500/mo â†’</p>
 					</a>
 					<a href="/aec/cad-drafting-services/" class="js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20 transition hover:-translate-y-1 hover:shadow-xl">
 						<p class="text-sm font-semibold text-slate-100 group-hover:text-white">CAD Drafters</p>
-						<p class="mt-2 text-xs text-slate-400">AutoCAD, Revit, Civil 3D · Construction documentation · Detailing</p>
-						<p class="mt-3 text-xs font-semibold text-aec">From ~$3,500/mo →</p>
+						<p class="mt-2 text-xs text-slate-400">AutoCAD, Revit, Civil 3D Â· Construction documentation Â· Detailing</p>
+						<p class="mt-3 text-xs font-semibold text-aec">From ~$3,500/mo â†’</p>
 					</a>
 					<a href="/aec/mep-engineering-services/" class="js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20 transition hover:-translate-y-1 hover:shadow-xl">
 						<p class="text-sm font-semibold text-slate-100 group-hover:text-white">MEP Modelers</p>
-						<p class="mt-2 text-xs text-slate-400">Revit MEP · HVAC, electrical, plumbing · Fabrication models</p>
-						<p class="mt-3 text-xs font-semibold text-aec">From ~$3,500/mo →</p>
+						<p class="mt-2 text-xs text-slate-400">Revit MEP Â· HVAC, electrical, plumbing Â· Fabrication models</p>
+						<p class="mt-3 text-xs font-semibold text-aec">From ~$3,500/mo â†’</p>
 					</a>
 					<a href="/roles/revit-drafter/" class="js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20 transition hover:-translate-y-1 hover:shadow-xl">
 						<p class="text-sm font-semibold text-slate-100 group-hover:text-white">Revit Drafters</p>
-						<p class="mt-2 text-xs text-slate-400">Revit families, sheets, views · Construction sets · As-builts</p>
-						<p class="mt-3 text-xs font-semibold text-aec">View role →</p>
+						<p class="mt-2 text-xs text-slate-400">Revit families, sheets, views Â· Construction sets Â· As-builts</p>
+						<p class="mt-3 text-xs font-semibold text-aec">View role â†’</p>
 					</a>
 					<a href="/roles/architectural-designer/" class="js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20 transition hover:-translate-y-1 hover:shadow-xl">
 						<p class="text-sm font-semibold text-slate-100 group-hover:text-white">Architectural Designers</p>
-						<p class="mt-2 text-xs text-slate-400">Revit · Design development · CD sets · 3D visualization</p>
-						<p class="mt-3 text-xs font-semibold text-aec">View role →</p>
+						<p class="mt-2 text-xs text-slate-400">Revit Â· Design development Â· CD sets Â· 3D visualization</p>
+						<p class="mt-3 text-xs font-semibold text-aec">View role â†’</p>
 					</a>
 					<a href="/aec/" class="js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20 transition hover:-translate-y-1 hover:shadow-xl">
 						<p class="text-sm font-semibold text-slate-100 group-hover:text-white">All AEC Roles</p>
 						<p class="mt-2 text-xs text-slate-400">Browse the full range of AEC specialists we provide</p>
-						<p class="mt-3 text-xs font-semibold text-aec">Explore AEC solutions →</p>
+						<p class="mt-3 text-xs font-semibold text-aec">Explore AEC solutions â†’</p>
 					</a>
 				</div>
 			</div>
@@ -260,7 +260,7 @@ const faqJsonLd = {
 							Get Started
 						</a>
 					</div>
-					<p class="mt-5 text-xs text-slate-400">50–70% savings · Month-to-month · Free replacement guarantee</p>
+					<p class="mt-5 text-xs text-slate-400">50â€“70% savings Â· Month-to-month Â· Free replacement guarantee</p>
 				</div>
 			</div>
 		</section>
@@ -274,13 +274,13 @@ const faqJsonLd = {
 						Tell Us About Your AEC Needs
 					</h2>
 					<p class="mt-4 text-base leading-relaxed text-slate-400">
-						Share your project scope, tools, and timeline — we'll match you with pre-vetted AEC specialists.
+						Share your project scope, tools, and timeline â€” we'll match you with pre-vetted AEC specialists.
 					</p>
 				</div>
 
 				<div class="mt-10 grid gap-6 lg:grid-cols-2">
-					<ContactForm subject={`${brand} — engineering staffing alternative inquiry`} defaultInterest="aec" />
-					<CalendlyEmbed url={calendlyUrl} title="Book an AEC Scoping Call" />
+					<ContactForm subject={`${brand} â€” engineering staffing alternative inquiry`} defaultInterest="aec" />
+					<CalendlyInline url={calendlyUrl} title="Book an AEC Scoping Call" />
 				</div>
 			</div>
 		</section>
@@ -315,3 +315,4 @@ const faqJsonLd = {
 		})();
 	</script>
 </Layout>
+

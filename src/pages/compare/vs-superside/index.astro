@@ -1,14 +1,14 @@
----
+﻿---
 import Layout from '../../../layouts/Layout.astro';
 import MetaHead from '../../../components/MetaHead.astro';
 import ContactForm from '../../../components/ContactForm.astro';
-import CalendlyEmbed from '../../../components/CalendlyEmbed.astro';
+import CalendlyInline from '../../../components/CalendlyInline.astro';
 import { BOOKING_URL, isExternalUrl } from '../../../lib/cta';
 
 const brand = 'LatAm Scalers';
 
 const meta = {
-	title: 'LatAm Scalers vs Superside — Honest Comparison for US Teams | LatAm Scalers',
+	title: 'LatAm Scalers vs Superside â€” Honest Comparison for US Teams | LatAm Scalers',
 	description:
 		'How does LatAm Scalers compare to Superside? An honest breakdown across 7 dimensions: model, pricing, quality, speed, flexibility, scope, and guarantees. Find the right fit for your US team.',
 };
@@ -24,21 +24,21 @@ const comparisonRows = [
 	{
 		dimension: 'Engagement Model',
 		superside: 'Subscription-based creative service. You submit briefs, their team delivers assets. Rotating designers assigned per project.',
-		latam: 'Dedicated specialists embedded in your team. Same person, same tools, same workflow — exclusively on your projects.',
+		latam: 'Dedicated specialists embedded in your team. Same person, same tools, same workflow â€” exclusively on your projects.',
 	},
 	{
 		dimension: 'Pricing',
-		superside: 'Monthly subscription plans starting ~$5,000–$6,000/mo for basic tiers. Enterprise plans significantly higher.',
-		latam: 'Dedicated designers from ~$2,800/mo (managed teams). Individual specialists from ~$2,500–$3,500/mo depending on role.',
+		superside: 'Monthly subscription plans starting ~$5,000â€“$6,000/mo for basic tiers. Enterprise plans significantly higher.',
+		latam: 'Dedicated designers from ~$2,800/mo (managed teams). Individual specialists from ~$2,500â€“$3,500/mo depending on role.',
 	},
 	{
 		dimension: 'Quality Control',
-		superside: 'Platform QA with project managers. Quality depends on which designer is assigned — can vary between projects.',
+		superside: 'Platform QA with project managers. Quality depends on which designer is assigned â€” can vary between projects.',
 		latam: 'You work with the same vetted specialist consistently. Quality is predictable because the person knows your brand, standards, and preferences.',
 	},
 	{
 		dimension: 'Speed & Turnaround',
-		superside: 'Structured turnaround times (24–72h for most deliverables). Queue-based — your project is in a pipeline.',
+		superside: 'Structured turnaround times (24â€“72h for most deliverables). Queue-based â€” your project is in a pipeline.',
 		latam: 'Real-time collaboration. Specialists are embedded in your team during US business hours. No queue, no ticket system.',
 	},
 	{
@@ -54,7 +54,7 @@ const comparisonRows = [
 	{
 		dimension: 'Guarantee',
 		superside: 'Unlimited revisions within project scope. Satisfaction guarantee varies by plan.',
-		latam: 'Free replacement guarantee — anytime for monthly engagements, 90 days for direct hire. No revision limits because you manage the specialist directly.',
+		latam: 'Free replacement guarantee â€” anytime for monthly engagements, 90 days for direct hire. No revision limits because you manage the specialist directly.',
 	},
 ];
 
@@ -67,10 +67,10 @@ const supersideExcels = [
 
 const latamDiffers = [
 	'You want a dedicated specialist who learns your brand, tools, and standards over time',
-	'You need AEC talent (BIM, CAD, engineering) or marketing operations — not just design',
+	'You need AEC talent (BIM, CAD, engineering) or marketing operations â€” not just design',
 	'You want real-time collaboration during US business hours, not queue-based turnaround',
 	'You prefer managing the specialist directly as part of your team, not through a platform',
-	'Cost is a factor — dedicated specialists provide more hours at a lower monthly rate',
+	'Cost is a factor â€” dedicated specialists provide more hours at a lower monthly rate',
 	'You need consistent quality from the same person, not rotating assignments',
 ];
 
@@ -81,7 +81,7 @@ const faqs = [
 	},
 	{
 		q: 'Is LatAm Scalers cheaper than Superside?',
-		a: 'For dedicated specialist coverage, typically yes. Superside\'s basic subscription starts around $5,000–$6,000/month. A dedicated designer through LatAm Scalers starts from ~$2,800/month (managed) or ~$2,500/month (individual). However, the models serve different needs — Superside provides breadth of design skills, while we provide depth through dedicated individuals.',
+		a: 'For dedicated specialist coverage, typically yes. Superside\'s basic subscription starts around $5,000â€“$6,000/month. A dedicated designer through LatAm Scalers starts from ~$2,800/month (managed) or ~$2,500/month (individual). However, the models serve different needs â€” Superside provides breadth of design skills, while we provide depth through dedicated individuals.',
 	},
 	{
 		q: 'Does LatAm Scalers offer design subscription services like Superside?',
@@ -89,7 +89,7 @@ const faqs = [
 	},
 	{
 		q: 'What about Superside\'s unlimited revisions?',
-		a: 'Since our specialists are embedded in your team and work under your direction, revisions are part of the natural workflow — there\'s no concept of "revision limits" because you manage the specialist directly. You get unlimited iterations within their working hours.',
+		a: 'Since our specialists are embedded in your team and work under your direction, revisions are part of the natural workflow â€” there\'s no concept of "revision limits" because you manage the specialist directly. You get unlimited iterations within their working hours.',
 	},
 	{
 		q: 'Can LatAm Scalers handle non-design work that Superside can\'t?',
@@ -128,10 +128,10 @@ const faqJsonLd = {
 				<div class="js-fade-in">
 					<p class="text-sm font-semibold uppercase tracking-widest text-sky-300">Comparison</p>
 					<h1 id="hero-heading" class="mt-4 text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
-						LatAm Scalers vs Superside — Which Model Fits Your Team?
+						LatAm Scalers vs Superside â€” Which Model Fits Your Team?
 					</h1>
 					<p class="mt-5 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
-						An honest comparison across 7 dimensions. Both are legitimate options — the right choice depends on your team's workflow, needs, and preferences.
+						An honest comparison across 7 dimensions. Both are legitimate options â€” the right choice depends on your team's workflow, needs, and preferences.
 					</p>
 
 					<div class="mt-8 flex flex-wrap gap-3">
@@ -147,7 +147,7 @@ const faqJsonLd = {
 							href="/how-pricing-works/"
 							class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-slate-700 bg-slate-900/40 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
 						>
-							See How Pricing Works →
+							See How Pricing Works â†’
 						</a>
 					</div>
 				</div>
@@ -204,7 +204,7 @@ const faqJsonLd = {
 				<ul class="mt-8 grid gap-3 sm:grid-cols-2">
 					{supersideExcels.map((item) => (
 						<li class="js-fade-in flex items-start gap-3 rounded-2xl border border-slate-800 bg-slate-900/40 p-5 shadow-lg shadow-black/20">
-							<span class="text-slate-500" aria-hidden="true">→</span>
+							<span class="text-slate-500" aria-hidden="true">â†’</span>
 							<span class="text-sm leading-relaxed text-slate-400">{item}</span>
 						</li>
 					))}
@@ -220,14 +220,14 @@ const faqJsonLd = {
 						Where LatAm Scalers Is the Better Fit
 					</h2>
 					<p class="mt-4 text-base leading-relaxed text-slate-400">
-						Our model is built for teams that want dedicated, embedded specialists — not a subscription service.
+						Our model is built for teams that want dedicated, embedded specialists â€” not a subscription service.
 					</p>
 				</div>
 
 				<ul class="mt-8 grid gap-3 sm:grid-cols-2">
 					{latamDiffers.map((item) => (
 						<li class="js-fade-in flex items-start gap-3 rounded-2xl border border-slate-800 bg-slate-900/40 p-5 shadow-lg shadow-black/20">
-							<span class="text-sky-300" aria-hidden="true">✓</span>
+							<span class="text-sky-300" aria-hidden="true">âœ“</span>
 							<span class="text-sm leading-relaxed text-slate-400">{item}</span>
 						</li>
 					))}
@@ -250,7 +250,7 @@ const faqJsonLd = {
 				<div class="mt-10 grid gap-5 md:grid-cols-2">
 					<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
 						<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Superside</p>
-						<p class="mt-3 text-2xl font-semibold text-slate-100">~$5,000–$6,000+/mo</p>
+						<p class="mt-3 text-2xl font-semibold text-slate-100">~$5,000â€“$6,000+/mo</p>
 						<p class="mt-1 text-xs text-slate-400">Basic subscription tier</p>
 						<ul class="mt-4 space-y-2 text-sm text-slate-400">
 							<li>Rotating designers per project</li>
@@ -261,7 +261,7 @@ const faqJsonLd = {
 					</div>
 					<div class="js-fade-in rounded-2xl border border-sky-600/30 bg-sky-600/5 p-6 shadow-lg shadow-black/20">
 						<p class="text-xs font-semibold uppercase tracking-wide text-sky-300">LatAm Scalers</p>
-						<p class="mt-3 text-2xl font-semibold text-slate-100">From ~$2,500–$3,500/mo</p>
+						<p class="mt-3 text-2xl font-semibold text-slate-100">From ~$2,500â€“$3,500/mo</p>
 						<p class="mt-1 text-xs text-slate-400">Dedicated specialist (individual or managed team)</p>
 						<ul class="mt-4 space-y-2 text-sm text-slate-400">
 							<li>Same specialist, exclusively yours</li>
@@ -328,7 +328,7 @@ const faqJsonLd = {
 							Get Started
 						</a>
 					</div>
-					<p class="mt-5 text-xs text-slate-400">No obligation · Honest assessment · We'll tell you if Superside is the better fit</p>
+					<p class="mt-5 text-xs text-slate-400">No obligation Â· Honest assessment Â· We'll tell you if Superside is the better fit</p>
 				</div>
 			</div>
 		</section>
@@ -342,13 +342,13 @@ const faqJsonLd = {
 						Let's Find the Right Model for You
 					</h2>
 					<p class="mt-4 text-base leading-relaxed text-slate-400">
-						Share your requirements and we'll provide a personalized recommendation — including when another provider might be the better fit.
+						Share your requirements and we'll provide a personalized recommendation â€” including when another provider might be the better fit.
 					</p>
 				</div>
 
 				<div class="mt-10 grid gap-6 lg:grid-cols-2">
-					<ContactForm subject={`${brand} — comparison inquiry (vs Superside)`} defaultInterest="design" />
-					<CalendlyEmbed url={calendlyUrl} title="Book a Comparison Call" />
+					<ContactForm subject={`${brand} â€” comparison inquiry (vs Superside)`} defaultInterest="design" />
+					<CalendlyInline url={calendlyUrl} title="Book a Comparison Call" />
 				</div>
 			</div>
 		</section>
@@ -383,3 +383,4 @@ const faqJsonLd = {
 		})();
 	</script>
 </Layout>
+

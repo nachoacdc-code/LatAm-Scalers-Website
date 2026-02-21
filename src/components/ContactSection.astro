@@ -1,6 +1,6 @@
----
+﻿---
 import ContactForm from './ContactForm.astro';
-import CalendlyEmbed from './CalendlyEmbed.astro';
+import CalendlyInline from './CalendlyInline.astro';
 
 export type Props = {
 	title?: string;
@@ -11,8 +11,8 @@ export type Props = {
 
 const {
 	title = 'Contact',
-	description = 'Tell us what you need and weâ€™ll suggest the best engagement model.',
-	subject = 'LatAm Scalers â€” new inquiry',
+	description = 'Tell us what you need and weÃ¢â‚¬â„¢ll suggest the best engagement model.',
+	subject = 'LatAm Scalers Ã¢â‚¬â€ new inquiry',
 	calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com/your-org/15min',
 } = Astro.props;
 ---
@@ -25,7 +25,8 @@ const {
 
 	<div class="mt-8 grid gap-6 lg:grid-cols-2">
 		<ContactForm subject={subject} />
-		<CalendlyEmbed url={calendlyUrl} />
+		<CalendlyInline url={calendlyUrl} />
 	</div>
 </section>
+
 

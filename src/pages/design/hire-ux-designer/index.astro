@@ -1,14 +1,14 @@
----
+﻿---
 import Layout from '../../../layouts/Layout.astro';
 import MetaHead from '../../../components/MetaHead.astro';
 import ContactForm from '../../../components/ContactForm.astro';
-import CalendlyEmbed from '../../../components/CalendlyEmbed.astro';
+import CalendlyInline from '../../../components/CalendlyInline.astro';
 import { BOOKING_URL, isExternalUrl } from '../../../lib/cta';
 
 const brand = 'LatAm Scalers';
 
 const meta = {
-	title: 'Hire a Dedicated UX Designer — Pre-Vetted LATAM Talent for US Teams | LatAm Scalers',
+	title: 'Hire a Dedicated UX Designer â€” Pre-Vetted LATAM Talent for US Teams | LatAm Scalers',
 	description:
 		'Hire a dedicated UX designer for US teams. Pre-vetted LATAM talent: research, wireframing, prototyping, testing. Figma, Maze, Hotjar. SaaS, DTC, agency use cases. From ~$2,800/mo.',
 };
@@ -24,7 +24,7 @@ const uxScope = [
 ];
 
 const tools = [
-	{ name: 'Figma', desc: 'UI design, prototyping, design systems — industry standard' },
+	{ name: 'Figma', desc: 'UI design, prototyping, design systems â€” industry standard' },
 	{ name: 'Maze', desc: 'Remote usability testing and research synthesis' },
 	{ name: 'Hotjar', desc: 'Session recording, heatmaps, feedback collection' },
 ];
@@ -109,12 +109,12 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com
 		<section class="bg-slate-950 py-16 sm:py-24" aria-labelledby="hero-heading">
 			<div class="mx-auto max-w-6xl px-6">
 				<div class="js-fade-in">
-					<p class="text-sm font-semibold uppercase tracking-widest text-sky-300">Design — UX</p>
+					<p class="text-sm font-semibold uppercase tracking-widest text-sky-300">Design â€” UX</p>
 					<h1 id="hero-heading" class="mt-4 text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
-						Hire a Dedicated UX Designer — Pre-Vetted LATAM Talent for US Teams
+						Hire a Dedicated UX Designer â€” Pre-Vetted LATAM Talent for US Teams
 					</h1>
 					<p class="mt-5 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
-						Full-spectrum UX: research, wireframing, prototyping, testing. Figma, Maze, Hotjar. Pre-vetted designers embedded in your team — month-to-month, free replacement guarantee.
+						Full-spectrum UX: research, wireframing, prototyping, testing. Figma, Maze, Hotjar. Pre-vetted designers embedded in your team â€” month-to-month, free replacement guarantee.
 					</p>
 					<div class="mt-8 flex flex-wrap gap-3">
 						<a
@@ -142,10 +142,10 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com
 			<div class="mx-auto max-w-6xl px-6">
 				<div class="js-fade-in">
 					<h2 id="overview-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
-						UX Scope — What a Dedicated Designer Covers
+						UX Scope â€” What a Dedicated Designer Covers
 					</h2>
 					<p class="mt-4 max-w-2xl text-base leading-relaxed text-slate-400">
-						End-to-end UX from research through handoff. One designer, your product — research, wireframes, prototypes, and usability testing.
+						End-to-end UX from research through handoff. One designer, your product â€” research, wireframes, prototypes, and usability testing.
 					</p>
 				</div>
 			</div>
@@ -178,7 +178,7 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com
 			<div class="mx-auto max-w-6xl px-6">
 				<div class="js-fade-in">
 					<h2 id="tools-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
-						Tools — Figma, Maze, Hotjar
+						Tools â€” Figma, Maze, Hotjar
 					</h2>
 					<p class="mt-4 max-w-2xl text-base leading-relaxed text-slate-400">
 						Standard UX tools for design, prototyping, and research.
@@ -209,7 +209,7 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com
 				<ul class="mt-8 grid gap-4 sm:grid-cols-2">
 					{deliverables.map((d) => (
 						<li class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20 flex items-start gap-3">
-							<span class="text-design font-semibold">✓</span>
+							<span class="text-design font-semibold">âœ“</span>
 							<span class="text-sm font-medium text-slate-100">{d}</span>
 						</li>
 					))}
@@ -254,7 +254,7 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com
 						href="/how-it-works/"
 						class="mt-6 inline-flex items-center text-sm font-semibold text-sky-300 transition hover:text-sky-200/80"
 					>
-						How it works →
+						How it works â†’
 					</a>
 				</div>
 			</div>
@@ -287,7 +287,7 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com
 						Ready to Hire a UX Designer?
 					</h2>
 					<p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slate-300">
-						Book a scoping call — we'll match you with a pre-vetted UX designer within 48 hours.
+						Book a scoping call â€” we'll match you with a pre-vetted UX designer within 48 hours.
 					</p>
 					<div class="mt-8 flex flex-wrap items-center justify-center gap-4">
 						<a
@@ -306,7 +306,7 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com
 							Tell Us What You Need
 						</a>
 					</div>
-					<p class="mt-5 text-xs text-slate-500">Month-to-month · Free replacement guarantee · Pre-vetted LATAM talent</p>
+					<p class="mt-5 text-xs text-slate-500">Month-to-month Â· Free replacement guarantee Â· Pre-vetted LATAM talent</p>
 				</div>
 			</div>
 		</section>
@@ -320,12 +320,12 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com
 						Let's Talk UX
 					</h2>
 					<p class="mt-4 text-base leading-relaxed text-slate-400">
-						Tell us your product, tools, and UX needs — we'll suggest the right engagement and match you with a vetted UX designer.
+						Tell us your product, tools, and UX needs â€” we'll suggest the right engagement and match you with a vetted UX designer.
 					</p>
 				</div>
 				<div class="mt-10 grid gap-6 lg:grid-cols-2">
-					<ContactForm subject={`${brand} — new inquiry (hire UX designer)`} defaultInterest="design" />
-					<CalendlyEmbed url={calendlyUrl} title="Book a Design Scoping Call" />
+					<ContactForm subject={`${brand} â€” new inquiry (hire UX designer)`} defaultInterest="design" />
+					<CalendlyInline url={calendlyUrl} title="Book a Design Scoping Call" />
 				</div>
 			</div>
 		</section>
@@ -359,3 +359,4 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com
 		})();
 	</script>
 </Layout>
+
