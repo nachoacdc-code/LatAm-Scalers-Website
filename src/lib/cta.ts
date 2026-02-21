@@ -32,7 +32,7 @@ export function getCTAText(context: CTAContext, role?: string): string {
 		case 'role':
 			return role ? `Hire a ${role} — Book a Call` : 'Book a Scoping Call';
 		default:
-			return 'Book a 15-Minute Scoping Call';
+			return 'Book a 30-Minute Scoping Call';
 	}
 }
 

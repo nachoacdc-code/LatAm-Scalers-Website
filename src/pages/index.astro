@@ -38,20 +38,20 @@ const bookingExternal = isExternalUrl(bookingUrl);
 
 const trustBadges = [
 	{ icon: 'clock', label: 'Matched in < 1 Week', sub: 'Shortlist in 48 hours' },
-	{ icon: 'shield', label: '5-Stage Vetted', sub: 'Top 1% of applicants', link: '/about/how-we-vet/' },
+	{ icon: 'shield', label: '5-Stage Vetted', sub: 'Less than 3% pass', link: '/about/how-we-vet/' },
 	{ icon: 'savings', label: '50â€“70% Cost Savings', sub: 'vs. US-based hires' },
 	{ icon: 'guarantee', label: 'Free Replacement', sub: 'Guaranteed satisfaction' },
 ];
 
 const problems = [
-	{ stat: '94%', label: 'of contractors report workforce shortages', category: 'AEC', color: 'text-aec' },
-	{ stat: '45%', label: 'longer hiring cycles for design roles', category: 'Design', color: 'text-design' },
-	{ stat: '3.8%', label: 'unemployment in marketing â€” talent is scarce', category: 'Marketing', color: 'text-marketing' },
+	{ stat: '94%', label: 'of AEC firms have unfilled positions. 51% are turning down profitable work.', category: 'AEC', color: 'text-aec' },
+	{ stat: '45%', label: 'longer hiring cycles for design roles. Subscription queues can\'t deliver brand consistency.', category: 'Design', color: 'text-design' },
+	{ stat: '3.8%', label: 'unemployment in marketing. Your HubSpot, Klaviyo, and GA4 need full-time operators.', category: 'Marketing', color: 'text-marketing' },
 ];
 
 const steps = [
 	{ title: 'Tell us what you need', body: 'Roles, tools, availability, and outcomes â€” so we match accurately.' },
-	{ title: 'Get candidates in 48 hours', body: 'A short list of pre-vetted specialists aligned to your workflow.' },
+	{ title: 'Get vetted candidates in 48 hours', body: 'A short list of pre-vetted specialists aligned to your workflow and tools.' },
 	{ title: 'Interview (optional)', body: 'Meet top matches live, or skip interviews to start faster.' },
 	{ title: 'Start month-to-month', body: 'Onboard quickly with flexible engagements â€” scale up or down anytime.' },
 	{ title: 'Scale + replace free', body: 'Add capacity for peak loads with a free replacement guarantee.' },
@@ -96,7 +96,7 @@ const roles = [
 								{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
 								data-book-call
 							>
-								Book a 15-Minute Scoping Call
+								Book a 30-Minute Scoping Call
 							</a>
 							<a
 								class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
@@ -379,7 +379,7 @@ const roles = [
 				<div class="mx-auto max-w-2xl text-center">
 					<h2 class="text-2xl font-bold tracking-tight text-white sm:text-3xl">Our 5-Stage Vetting Process</h2>
 					<p class="mt-3 text-sm leading-relaxed text-slate-300 sm:text-base">
-						Only the top 1% of applicants make it through. Every specialist is rigorously evaluated.
+						Less than 3% of applicants make it through our 5-stage vetting process.
 					</p>
 				</div>
 
@@ -390,7 +390,7 @@ const roles = [
 							{ stage: 'Language & Culture Screen', metric: 'Fluent English + cultural fit', pct: '40%' },
 							{ stage: 'Technical Assessment', metric: 'Tool-specific, timed tests', pct: '15%' },
 							{ stage: 'Portfolio & Work Review', metric: 'Real output quality check', pct: '5%' },
-							{ stage: 'Final Interview', metric: 'Communication & reliability', pct: '~1%' },
+							{ stage: 'Final Interview', metric: 'Communication & reliability', pct: '<3%' },
 						].map((s, i) => (
 							<div class="fade-in flex items-stretch gap-4" style={`--delay:${i * 0.08}s`}>
 								<div class="flex flex-col items-center">
@@ -520,7 +520,7 @@ const roles = [
 								class="inline-flex min-h-[48px] items-center justify-center rounded bg-sky-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
 								data-book-call
 							>
-								Book a 15-Minute Scoping Call
+								Book a 30-Minute Scoping Call
 							</a>
 							<a
 								href="#contact"

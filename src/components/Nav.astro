@@ -33,7 +33,7 @@ const linkInactive = 'text-slate-300';
 		</a>
 
 		{/* Desktop nav */}
-		<nav class="hidden items-center gap-1 md:flex" aria-label="Primary">
+		<nav class="hidden items-center gap-4 md:flex" aria-label="Primary">
 
 			{/* Solutions mega dropdown */}
 			<details class="group relative" data-nav-dropdown="solutions">
@@ -127,14 +127,61 @@ const linkInactive = 'text-slate-300';
 				</div>
 			</details>
 
-			{/* Roles — direct link */}
-			<a
-				href="/roles/"
-				class={`${linkDesktopBase} ${isRoles ? linkActive : linkInactive}`}
-				aria-current={isRoles ? 'page' : undefined}
-			>
-				Roles
-			</a>
+			{/* Roles mega dropdown — grouped by category */}
+			<details class="group relative" data-nav-dropdown="roles">
+				<summary
+					class={`flex cursor-pointer list-none items-center gap-1.5 ${linkDesktopBase} ${isRoles ? linkActive : linkInactive}`}
+					aria-haspopup="menu"
+					aria-expanded="false"
+					aria-controls="roles-menu"
+				>
+					<span>Roles</span>
+					<svg class="h-3.5 w-3.5 transition group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+						<path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08Z" clip-rule="evenodd" />
+					</svg>
+				</summary>
+
+				<div
+					id="roles-menu"
+					role="menu"
+					aria-label="Roles"
+					class="absolute left-0 mt-2 w-[32rem] rounded-2xl border border-slate-700/60 bg-slate-900/95 p-4 shadow-2xl shadow-black/50 ring-1 ring-slate-700/40 backdrop-blur-xl"
+				>
+					<div class="grid grid-cols-3 gap-4">
+						{/* AEC Roles */}
+						<div>
+							<p class="mb-2 text-[10px] font-semibold uppercase tracking-widest text-aec">AEC</p>
+							<div class="grid gap-1">
+								<a role="menuitem" href="/roles/bim-coordinator/" class="rounded-lg px-2 py-1.5 text-xs text-slate-300 transition hover:bg-slate-800/70 hover:text-white">BIM Coordinator</a>
+								<a role="menuitem" href="/roles/revit-drafter/" class="rounded-lg px-2 py-1.5 text-xs text-slate-300 transition hover:bg-slate-800/70 hover:text-white">Revit Drafter</a>
+								<a role="menuitem" href="/roles/architectural-designer/" class="rounded-lg px-2 py-1.5 text-xs text-slate-300 transition hover:bg-slate-800/70 hover:text-white">Architectural Designer</a>
+							</div>
+						</div>
+						{/* Design Roles */}
+						<div>
+							<p class="mb-2 text-[10px] font-semibold uppercase tracking-widest text-design">Design</p>
+							<div class="grid gap-1">
+								<a role="menuitem" href="/roles/ui-ux-designer/" class="rounded-lg px-2 py-1.5 text-xs text-slate-300 transition hover:bg-slate-800/70 hover:text-white">UI/UX Designer</a>
+								<a role="menuitem" href="/roles/brand-visual-designer/" class="rounded-lg px-2 py-1.5 text-xs text-slate-300 transition hover:bg-slate-800/70 hover:text-white">Brand Designer</a>
+							</div>
+						</div>
+						{/* Marketing Roles */}
+						<div>
+							<p class="mb-2 text-[10px] font-semibold uppercase tracking-widest text-marketing">Marketing</p>
+							<div class="grid gap-1">
+								<a role="menuitem" href="/roles/seo-specialist/" class="rounded-lg px-2 py-1.5 text-xs text-slate-300 transition hover:bg-slate-800/70 hover:text-white">SEO Specialist</a>
+								<a role="menuitem" href="/roles/ppc-manager/" class="rounded-lg px-2 py-1.5 text-xs text-slate-300 transition hover:bg-slate-800/70 hover:text-white">PPC Manager</a>
+								<a role="menuitem" href="/roles/content-marketer/" class="rounded-lg px-2 py-1.5 text-xs text-slate-300 transition hover:bg-slate-800/70 hover:text-white">Content Marketer</a>
+							</div>
+						</div>
+					</div>
+					<div class="mt-3 border-t border-slate-800/80 pt-2">
+						<a role="menuitem" href="/roles/" class="flex items-center gap-2 rounded-xl px-3 py-2 text-xs font-medium text-sky-300 transition hover:bg-slate-800/70 hover:text-sky-200">
+							Explore all roles <span aria-hidden="true">&rarr;</span>
+						</a>
+					</div>
+				</div>
+			</details>
 
 			{/* How It Works */}
 			<a
@@ -147,10 +194,8 @@ const linkInactive = 'text-slate-300';
 
 			{/* CTA */}
 			<a
-				href={bookingUrl}
-				{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
-				class="ml-3 inline-flex min-h-[40px] items-center justify-center rounded bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-				data-book-call
+				href="/get-started/"
+				class="ml-4 inline-flex min-h-[40px] items-center justify-center rounded bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
 			>
 				Get Started
 			</a>
@@ -159,10 +204,8 @@ const linkInactive = 'text-slate-300';
 		{/* Mobile: Get Started always visible + hamburger */}
 		<div class="flex items-center gap-2 md:hidden">
 			<a
-				href={bookingUrl}
-				{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+				href="/get-started/"
 				class="inline-flex min-h-[44px] items-center justify-center rounded bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
-				data-book-call
 			>
 				Get Started
 			</a>
@@ -226,14 +269,39 @@ const linkInactive = 'text-slate-300';
 					</div>
 				</details>
 
-				{/* Roles direct link */}
-				<a
-					href="/roles/"
-					class={`flex min-h-[48px] items-center rounded-xl px-4 py-3 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${isRoles ? 'bg-slate-900 text-white font-semibold' : 'text-slate-200'}`}
-					aria-current={isRoles ? 'page' : undefined}
-				>
-					Roles
-				</a>
+				{/* Roles accordion — grouped by category */}
+				<details class="group rounded-xl border border-slate-700/60 bg-slate-900/40" data-nav-dropdown="roles-mobile">
+					<summary
+						class={`flex min-h-[48px] cursor-pointer list-none items-center justify-between gap-3 rounded-xl px-4 py-3 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${isRoles ? 'text-white font-semibold' : 'text-slate-200'}`}
+						aria-haspopup="menu"
+						aria-expanded="false"
+						aria-controls="roles-menu-mobile"
+					>
+						<span>Roles</span>
+						<svg class="h-4 w-4 text-slate-400 transition group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+							<path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08Z" clip-rule="evenodd" />
+						</svg>
+					</summary>
+					<div id="roles-menu-mobile" role="menu" aria-label="Roles" class="px-3 pb-3">
+						<p class="mt-2 px-3 text-[10px] font-semibold uppercase tracking-widest text-aec">AEC</p>
+						<a role="menuitem" href="/roles/bim-coordinator/" class="mt-1 flex min-h-[44px] items-center rounded-xl px-3 py-2 text-slate-300 transition hover:bg-slate-900 hover:text-white">BIM Coordinator</a>
+						<a role="menuitem" href="/roles/revit-drafter/" class="mt-1 flex min-h-[44px] items-center rounded-xl px-3 py-2 text-slate-300 transition hover:bg-slate-900 hover:text-white">Revit Drafter</a>
+						<a role="menuitem" href="/roles/architectural-designer/" class="mt-1 flex min-h-[44px] items-center rounded-xl px-3 py-2 text-slate-300 transition hover:bg-slate-900 hover:text-white">Architectural Designer</a>
+
+						<p class="mt-3 px-3 text-[10px] font-semibold uppercase tracking-widest text-design">Design</p>
+						<a role="menuitem" href="/roles/ui-ux-designer/" class="mt-1 flex min-h-[44px] items-center rounded-xl px-3 py-2 text-slate-300 transition hover:bg-slate-900 hover:text-white">UI/UX Designer</a>
+						<a role="menuitem" href="/roles/brand-visual-designer/" class="mt-1 flex min-h-[44px] items-center rounded-xl px-3 py-2 text-slate-300 transition hover:bg-slate-900 hover:text-white">Brand Designer</a>
+
+						<p class="mt-3 px-3 text-[10px] font-semibold uppercase tracking-widest text-marketing">Marketing</p>
+						<a role="menuitem" href="/roles/seo-specialist/" class="mt-1 flex min-h-[44px] items-center rounded-xl px-3 py-2 text-slate-300 transition hover:bg-slate-900 hover:text-white">SEO Specialist</a>
+						<a role="menuitem" href="/roles/ppc-manager/" class="mt-1 flex min-h-[44px] items-center rounded-xl px-3 py-2 text-slate-300 transition hover:bg-slate-900 hover:text-white">PPC Manager</a>
+						<a role="menuitem" href="/roles/content-marketer/" class="mt-1 flex min-h-[44px] items-center rounded-xl px-3 py-2 text-slate-300 transition hover:bg-slate-900 hover:text-white">Content Marketer</a>
+
+						<a role="menuitem" href="/roles/" class="mt-2 flex min-h-[44px] items-center rounded-xl px-3 py-2 text-sm font-medium text-sky-300 transition hover:bg-slate-900 hover:text-sky-200">
+							Explore all roles &rarr;
+						</a>
+					</div>
+				</details>
 
 				{/* How It Works */}
 				<a

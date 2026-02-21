@@ -16,13 +16,13 @@ const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
 const canonical = new URL('/design/managed-creative-teams/', baseUrl).toString();
 
 const comparisonDimensions = [
-	{ dim: 'Model', dp: 'Credit subscription', ss: 'Subscription tiers', ls: 'PM-led dedicated designers' },
+	{ dim: 'Pricing', dp: '$1,918/mo', ss: '$10,000+/mo', ls: '$2,800–$8,000/mo' },
+	{ dim: 'Commitment', dp: 'Monthly', ss: '1-year annual', ls: 'Month-to-month' },
+	{ dim: 'Dedicated hours', dp: '~40 hrs/mo (2 hrs/day)', ss: 'Pooled queue', ls: '160+ hrs/mo dedicated' },
+	{ dim: 'Project manager', dp: 'No PM', ss: 'Enterprise only', ls: 'PM included' },
 	{ dim: 'Who works on your brand', dp: 'Rotating pool', ss: 'Assigned team', ls: 'Same people, exclusively' },
-	{ dim: 'PM ownership', dp: 'No dedicated PM', ss: 'Account manager', ls: 'Dedicated PM runs intake & delivery' },
-	{ dim: 'Flexibility', dp: 'Monthly credits', ss: 'Monthly plans', ls: 'Month-to-month, scale up/down' },
-	{ dim: 'Quality consistency', dp: 'Variable', ss: 'Good', ls: 'High â€” dedicated to your brand' },
-	{ dim: 'Best for', dp: 'High-volume, low-touch', ss: 'Mid-volume marketing', ls: 'Ongoing product + brand + stakeholder-heavy work' },
-	{ dim: 'Pricing', dp: 'Per credit', ss: 'Tiered plans', ls: 'Transparent monthly seat' },
+	{ dim: 'Your time required', dp: '10–15 hrs/week', ss: 'Varies', ls: '3–5 hrs/week' },
+	{ dim: 'Replacement', dp: 'Request new designer', ss: 'Varies', ls: 'Free replacement guarantee' },
 ];
 
 const pmRoleItems = [

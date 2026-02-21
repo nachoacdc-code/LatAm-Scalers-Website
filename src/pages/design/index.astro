@@ -22,12 +22,12 @@ const problemStats = [
 ];
 
 const comparisonDimensions = [
-	{ dim: 'Model', dp: 'Credit subscription', ss: 'Subscription tiers', ls: 'Dedicated designers' },
+	{ dim: 'Pricing', dp: '$1,918/mo', ss: '$10,000+/mo', ls: '$2,800–$8,000/mo' },
+	{ dim: 'Commitment', dp: 'Monthly', ss: '1-year annual', ls: 'Month-to-month' },
+	{ dim: 'Dedicated hours', dp: '~40 hrs/mo (2 hrs/day)', ss: 'Pooled queue', ls: '160+ hrs/mo dedicated' },
+	{ dim: 'Project manager', dp: 'No PM', ss: 'Enterprise only', ls: 'PM included' },
 	{ dim: 'Who works on your brand', dp: 'Rotating pool', ss: 'Assigned team', ls: 'Same people, exclusively' },
-	{ dim: 'Flexibility', dp: 'Monthly credits', ss: 'Monthly plans', ls: 'Month-to-month, scale up/down' },
-	{ dim: 'Quality consistency', dp: 'Variable', ss: 'Good', ls: 'High â€” dedicated to your brand' },
-	{ dim: 'Best for', dp: 'High-volume, low-touch', ss: 'Mid-volume marketing', ls: 'Ongoing product + brand work' },
-	{ dim: 'Pricing style', dp: 'Per credit', ss: 'Tiered plans', ls: 'Transparent monthly seat' },
+	{ dim: 'Your time required', dp: '10–15 hrs/week', ss: 'Varies', ls: '3–5 hrs/week' },
 	{ dim: 'Replacement', dp: 'Request new designer', ss: 'Varies', ls: 'Free replacement guarantee' },
 ];
 
@@ -127,10 +127,10 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com
 					<div>
 						<p class="text-sm font-semibold uppercase tracking-widest text-sky-300">Creative & Design Solutions</p>
 						<h1 id="hero-heading" class="mt-4 text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
-							Predictable Design Output Without the Agency Markup
+							Predictable Design Output Without the Agency Price Tag
 						</h1>
 						<p class="mt-5 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
-							Dedicated designers and managed creative teams â€” no rotating pools, no credit boxes. Same people on your brand, week after week.
+							Dedicated designers or Managed Creative Teams at <strong class="text-white">$2,800–$8,000/mo</strong> — not $10,000+ for a subscription queue. Matched in under one week.
 						</p>
 						<div class="mt-8 flex flex-wrap gap-3">
 							<a
@@ -225,9 +225,9 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com
 					Engagement Options
 				</h2>
 				<p class="mt-4 max-w-2xl text-base leading-relaxed text-slate-400">
-					Choose a dedicated designer or a PM-led creative team â€” both with month-to-month flexibility.
+					Four ways to work with us â€” all with month-to-month flexibility.
 				</p>
-				<div class="mt-10 grid gap-6 md:grid-cols-2">
+				<div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
 					<div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
 						<h3 class="text-lg font-semibold text-slate-100">Dedicated Individual Designers</h3>
 						<p class="mt-3 text-sm leading-relaxed text-slate-400">
@@ -235,7 +235,7 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com
 						</p>
 						<p class="mt-4 text-sm font-semibold text-design">From ~$2,800/mo</p>
 						<a
-							href="/solutions/creatives-design/dedicated/"
+							href="/design/hire-ux-designer/"
 							class="mt-4 inline-flex items-center text-sm font-semibold text-sky-300 transition hover:text-sky-200/80"
 						>
 							Explore dedicated designers â†’
@@ -252,6 +252,32 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com
 							class="mt-4 inline-flex items-center text-sm font-semibold text-sky-300 transition hover:text-sky-200/80"
 						>
 							Explore managed teams â†’
+						</a>
+					</div>
+					<div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+						<h3 class="text-lg font-semibold text-slate-100">Pre-Paid Hourly Blocks</h3>
+						<p class="mt-3 text-sm leading-relaxed text-slate-400">
+							40, 80, 120, or 160+ hour blocks for overflow projects, design audits, or one-off creative work.
+						</p>
+						<p class="mt-4 text-sm font-semibold text-design">Flexible blocks</p>
+						<a
+							href="/get-started/"
+							class="mt-4 inline-flex items-center text-sm font-semibold text-sky-300 transition hover:text-sky-200/80"
+						>
+							Get started →
+						</a>
+					</div>
+					<div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+						<h3 class="text-lg font-semibold text-slate-100">Direct Hire Placement</h3>
+						<p class="mt-3 text-sm leading-relaxed text-slate-400">
+							We source and vet top design talent — you hire them directly onto your team.
+						</p>
+						<p class="mt-4 text-sm font-semibold text-design">One-time placement fee</p>
+						<a
+							href="/get-started/"
+							class="mt-4 inline-flex items-center text-sm font-semibold text-sky-300 transition hover:text-sky-200/80"
+						>
+							Get started →
 						</a>
 					</div>
 				</div>

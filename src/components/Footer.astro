@@ -13,7 +13,7 @@ const bookingExternal = isExternalUrl(bookingUrl);
 		<div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-12">
 
 			{/* Brand column */}
-			<div class="lg:col-span-4">
+			<div class="lg:col-span-3">
 				<a
 					href="/"
 					class="inline-flex items-center gap-2 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
@@ -23,13 +23,11 @@ const bookingExternal = isExternalUrl(bookingUrl);
 					<span class="text-sm font-semibold tracking-tight text-white">LatAm Scalers</span>
 				</a>
 				<p class="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">
-					Dedicated LATAM talent for US teams — AEC, creative &amp; design, and marketing specialists.
+					Dedicated LATAM talent for US teams — AEC, creative &amp; design, and marketing.
 				</p>
 				<a
-					href={bookingUrl}
-					{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+					href="/get-started/"
 					class="mt-6 inline-flex min-h-[44px] items-center justify-center rounded bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-					data-book-call
 				>
 					Get Started
 				</a>
@@ -47,15 +45,23 @@ const bookingExternal = isExternalUrl(bookingUrl);
 			</div>
 
 			{/* Roles column */}
-			<div class="lg:col-span-3">
+			<div class="lg:col-span-2">
 				<p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Roles</p>
 				<nav class="mt-4 grid gap-2.5 text-sm" aria-label="Footer roles">
 					<a class="text-slate-400 transition hover:text-white" href="/roles/bim-coordinator/">BIM Coordinator</a>
-					<a class="text-slate-400 transition hover:text-white" href="/roles/architectural-designer/">Architectural Designer</a>
 					<a class="text-slate-400 transition hover:text-white" href="/roles/ui-ux-designer/">UX Designer</a>
 					<a class="text-slate-400 transition hover:text-white" href="/roles/seo-specialist/">SEO Specialist</a>
-					<a class="text-slate-400 transition hover:text-white" href="/roles/brand-visual-designer/">Brand / Visual Designer</a>
 					<a class="mt-1 text-sky-300 transition hover:text-sky-200" href="/roles/">Explore all roles →</a>
+				</nav>
+			</div>
+
+			{/* Compare column */}
+			<div class="lg:col-span-2">
+				<p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Compare</p>
+				<nav class="mt-4 grid gap-2.5 text-sm" aria-label="Footer compare">
+					<a class="text-slate-400 transition hover:text-white" href="/compare/vs-superside/">vs Superside</a>
+					<a class="text-slate-400 transition hover:text-white" href="/resources/engineering-staffing-alternative/">Staffing Alternative</a>
+					<a class="text-slate-400 transition hover:text-white" href="/resources/remote-staffing-agency/">Remote Staffing</a>
 				</nav>
 			</div>
 
@@ -66,11 +72,9 @@ const bookingExternal = isExternalUrl(bookingUrl);
 					<a class="text-slate-400 transition hover:text-white" href="/how-it-works/">How It Works</a>
 					<a class="text-slate-400 transition hover:text-white" href="/about/how-we-vet/">How We Vet</a>
 					<a class="text-slate-400 transition hover:text-white" href="/about/our-guarantee/">Our Guarantee</a>
-					<a class="text-slate-400 transition hover:text-white" href="/compare/vs-superside/">Compare: vs Superside</a>
 					<a
 						class="text-slate-400 transition hover:text-white"
-						href="/#contact"
-						data-open-tell-us="footer-contact"
+						href="/get-started/"
 					>
 						Contact Us
 					</a>
@@ -81,7 +85,7 @@ const bookingExternal = isExternalUrl(bookingUrl);
 		{/* Legal disclaimer */}
 		<div class="mt-12 rounded-xl border border-slate-800/60 bg-slate-900/30 px-5 py-4">
 			<p class="text-xs leading-relaxed text-slate-500">
-				<strong class="font-semibold text-slate-400">Disclaimer:</strong> LatAm Scalers connects US businesses with independent professionals based in Latin America. We are not a staffing agency, employer of record, or payroll provider. All specialists are engaged as independent contractors. Clients remain responsible for defining scope, reviewing deliverables, and maintaining all professional certifications and licensure requirements applicable to their jurisdiction and industry.
+				<strong class="font-semibold text-slate-400">Disclaimer:</strong> LatAm Scalers is a Dedicated Talent Partner connecting US companies with pre-vetted LATAM independent contractors. We are not a staffing agency, employer of record, or employment agency. All specialists are engaged as independent contractors. Clients remain responsible for defining scope, reviewing deliverables, and maintaining all professional certifications and licensure requirements applicable to their jurisdiction and industry.
 			</p>
 		</div>
 

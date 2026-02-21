@@ -9,7 +9,7 @@ const brand = 'LatAm Scalers';
 const meta = {
 	title: 'CAD Drafting Services â€” Dedicated Drafters for US Architecture & Engineering Firms | LatAm Scalers',
 	description:
-		'Professional CAD drafting services and outsourcing for US firms. Dedicated LATAM drafters for AutoCAD, Revit, and production workflows. Construction documents, details, and deliverables. From ~$3,500/mo.',
+		'Professional CAD drafting for US architecture and engineering firms. Dedicated LATAM drafters for AutoCAD, Revit, and production workflows. Construction documents, details, and deliverables. From ~$3,500/mo.',
 };
 
 const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
@@ -52,6 +52,10 @@ const faqs = [
 		a: 'We support AutoCAD (DWG), Revit (RVT), PDF, and common AEC formats. Drafters work in the tools you use â€” AutoCAD, Revit, Civil 3D, Bluebeam â€” and deliver in your preferred format.',
 	},
 	{
+		q: 'Who owns design authority and stamping?',
+		a: 'You retain full design authority and stamping responsibility. Our drafters produce work under your direction. We screen for IBC, ASCE 7, NFPA familiarity and code-specific experience. All deliverables require review and approval by your licensed professionals.',
+	},
+	{
 		q: 'What does pricing look like?',
 		a: 'Dedicated drafters start at approximately $3,500/month for full-time. Part-time and project-based engagements are available. Custom quotes provided based on scope and volume.',
 	},
@@ -90,7 +94,7 @@ const faqJsonLd = {
 						CAD Drafting Services â€” Dedicated Drafters for US Architecture &amp; Engineering Firms
 					</h1>
 					<p class="mt-5 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
-						Professional CAD drafting services and outsourcing for US firms. Dedicated LATAM drafters in AutoCAD and Revit â€” construction documents, details, and production workflows. US timezone overlap. Vetted. Month-to-month flexibility.
+						Professional CAD drafting for US architecture and engineering firms. Dedicated LATAM drafters in AutoCAD and Revit â€” construction documents, details, and production workflows. US timezone overlap. Vetted. Month-to-month flexibility.
 					</p>
 
 					<div class="mt-8 flex flex-wrap gap-3">
@@ -114,15 +118,24 @@ const faqJsonLd = {
 			</div>
 		</section>
 
+		<!-- AEC micro-clarifier -->
+		<div class="bg-slate-950 border-b border-slate-800">
+			<div class="mx-auto max-w-6xl px-6 py-4">
+				<p class="text-xs leading-relaxed text-slate-400 text-center sm:text-sm">
+					Our specialists produce work under the direction of your licensed professionals. All documents require review and stamping by your PE/RA.
+				</p>
+			</div>
+		</div>
+
 		<!-- Service overview (bg-slate-950) -->
 		<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="overview-heading">
 			<div class="mx-auto max-w-6xl px-6">
 				<div class="js-fade-in max-w-2xl">
 					<h2 id="overview-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
-						What We Provide
-					</h2>
-					<p class="mt-4 text-base leading-relaxed text-slate-400">
-						Professional CAD drafting services for US architecture and engineering firms. Whether you need ongoing drafting support or want to outsource production work to dedicated specialists, we provide vetted LATAM drafters who integrate into your workflow.
+						Your Dedicated CAD Drafting Specialists
+				</h2>
+				<p class="mt-4 text-base leading-relaxed text-slate-400">
+					Professional CAD drafting services for US architecture and engineering firms. Whether you need ongoing drafting support or want to outsource production work to dedicated specialists, we provide vetted LATAM drafters who integrate into your workflow.
 					</p>
 					<p class="mt-4 text-base leading-relaxed text-slate-400">
 						Our drafters produce construction documents, plans, sections, elevations, details, and schedules in AutoCAD and Revit. They work to your BEP, templates, and deliverable standards â€” under the direction of your licensed professionals. Ideal for firms scaling production without adding overhead or for outsourcing drafting to a reliable partner.

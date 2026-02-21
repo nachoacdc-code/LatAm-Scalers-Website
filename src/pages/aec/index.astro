@@ -22,12 +22,12 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? import.meta.env.PUBLI
 const aecRoles = [
 	{ label: 'BIM Coordinator', href: '/roles/bim-coordinator/' },
 	{ label: 'Revit Drafter', href: '/roles/revit-drafter/' },
-	{ label: 'CAD Technician', href: '/roles/' },
-	{ label: 'MEP Modeler', href: '/roles/' },
 	{ label: 'Architectural Designer', href: '/roles/architectural-designer/' },
-	{ label: 'Structural Drafter', href: '/roles/' },
-	{ label: 'Civil 3D Specialist', href: '/roles/' },
-	{ label: 'Construction Admin Support', href: '/roles/' },
+	{ label: 'CAD Technician', href: '/roles/?category=aec' },
+	{ label: 'MEP Modeler', href: '/roles/?category=aec' },
+	{ label: 'Structural Drafter', href: '/roles/?category=aec' },
+	{ label: 'Civil 3D Specialist', href: '/roles/?category=aec' },
+	{ label: 'Construction Admin Support', href: '/roles/?category=aec' },
 ];
 
 const tools = [
@@ -94,7 +94,7 @@ const faqJsonLd = {
 						Accept More Projects Without Adding Overhead
 					</h1>
 					<p class="mt-5 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
-						Dedicated LATAM AEC specialists â€” BIM coordinators, Revit drafters, CAD technicians â€” who integrate into your workflow. US timezone overlap. Vetted. Month-to-month flexibility.
+						Dedicated LATAM AEC specialists â€” BIM coordinators, Revit drafters, CAD technicians â€” pre-vetted, US-code fluent, timezone-aligned. Starting in under a week. Month-to-month flexibility.
 					</p>
 
 					<div class="mt-8 flex flex-wrap gap-3">
@@ -141,26 +141,33 @@ const faqJsonLd = {
 					</p>
 				</div>
 
-				<div class="mt-10 grid gap-4 sm:grid-cols-3">
+				<div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
 					<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
 						<p class="text-3xl font-semibold text-slate-100">94%</p>
-						<p class="mt-2 text-sm font-semibold text-slate-100">workforce shortage</p>
+						<p class="mt-2 text-sm font-semibold text-slate-100">unfilled positions</p>
 						<p class="mt-2 text-sm leading-relaxed text-slate-400">
-							of AEC firms report difficulty finding qualified talent.
+							of AEC firms have unfilled engineering and design positions.
 						</p>
 					</div>
 					<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
 						<p class="text-3xl font-semibold text-slate-100">51%</p>
-						<p class="mt-2 text-sm font-semibold text-slate-100">project delays</p>
+						<p class="mt-2 text-sm font-semibold text-slate-100">turning down work</p>
 						<p class="mt-2 text-sm leading-relaxed text-slate-400">
-							due to staffing constraints and capacity bottlenecks.
+							of firms are declining projects due to staffing shortages.
 						</p>
 					</div>
 					<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
 						<p class="text-3xl font-semibold text-slate-100">62%</p>
-						<p class="mt-2 text-sm font-semibold text-slate-100">increased costs</p>
+						<p class="mt-2 text-sm font-semibold text-slate-100">BIM talent gap</p>
 						<p class="mt-2 text-sm leading-relaxed text-slate-400">
-							as firms pay premium rates for last-minute temp help.
+							specifically struggle with BIM and digital documentation talent.
+						</p>
+					</div>
+					<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+						<p class="text-3xl font-semibold text-slate-100">26%</p>
+						<p class="mt-2 text-sm font-semibold text-slate-100">declining profitable work</p>
+						<p class="mt-2 text-sm leading-relaxed text-slate-400">
+							of firms are turning away profitable projects they could execute with more capacity.
 						</p>
 					</div>
 				</div>
@@ -172,7 +179,7 @@ const faqJsonLd = {
 			<div class="mx-auto max-w-6xl px-6">
 				<div class="js-fade-in max-w-2xl">
 					<h2 id="aec-solution-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
-						What We Provide
+						Your Dedicated AEC Specialists
 					</h2>
 					<p class="mt-4 text-base leading-relaxed text-slate-400">
 						Dedicated AEC specialists integrated into your workflow. <strong class="text-slate-100">NOT</strong> a staffing agency. <strong class="text-slate-100">NOT</strong> a freelancer marketplace.
@@ -211,7 +218,7 @@ const faqJsonLd = {
 					</p>
 				</div>
 
-				<div class="mt-10 grid gap-5 md:grid-cols-2">
+				<div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
 					<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
 						<p class="text-xs font-semibold uppercase tracking-wide text-aec">Individual Specialists</p>
 						<h3 class="mt-3 text-lg font-semibold text-slate-100">Dedicated AEC Talent</h3>
@@ -227,6 +234,22 @@ const faqJsonLd = {
 							Custom pod configurations â€” BIM + MEP + structural, or other combinations â€” for higher throughput and parallel execution.
 						</p>
 						<p class="mt-4 text-sm font-semibold text-aec">Custom pricing</p>
+					</div>
+					<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+						<p class="text-xs font-semibold uppercase tracking-wide text-aec">Pre-Paid Hourly Blocks</p>
+						<h3 class="mt-3 text-lg font-semibold text-slate-100">Flexible Hour Packages</h3>
+						<p class="mt-3 text-sm leading-relaxed text-slate-400">
+							40, 80, 120, or 160+ hour blocks for overflow, audits, or one-off deliverables without a monthly commitment.
+						</p>
+						<p class="mt-4 text-sm font-semibold text-aec">Flexible pricing</p>
+					</div>
+					<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+						<p class="text-xs font-semibold uppercase tracking-wide text-aec">Direct Hire Placement</p>
+						<h3 class="mt-3 text-lg font-semibold text-slate-100">Hire Directly</h3>
+						<p class="mt-3 text-sm leading-relaxed text-slate-400">
+							We source and vet — you hire directly. Ideal for firms that prefer to bring talent in-house.
+						</p>
+						<p class="mt-4 text-sm font-semibold text-aec">Placement fee</p>
 					</div>
 				</div>
 			</div>
@@ -286,7 +309,7 @@ const faqJsonLd = {
 			<div class="mx-auto max-w-6xl px-6">
 				<div class="js-fade-in max-w-2xl">
 					<h2 id="aec-matrix-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
-						What You Keep vs. What We Handle
+						Your Licensed Team Retains vs. Your Dedicated LATAM Specialist Handles
 					</h2>
 					<p class="mt-4 text-base leading-relaxed text-slate-400">
 						Clear roles mean better trust and smoother delivery. This is how we operate.
@@ -297,8 +320,8 @@ const faqJsonLd = {
 					<table class="w-full min-w-[480px] rounded-2xl border border-slate-800 bg-slate-900/40 shadow-lg shadow-black/20 overflow-hidden">
 						<thead>
 							<tr class="border-b border-slate-800 bg-slate-900/40">
-								<th class="px-6 py-4 text-left text-sm font-semibold text-slate-100">You Keep</th>
-								<th class="px-6 py-4 text-left text-sm font-semibold text-slate-100">We Handle</th>
+								<th class="px-6 py-4 text-left text-sm font-semibold text-slate-100">Your Licensed Team Retains</th>
+								<th class="px-6 py-4 text-left text-sm font-semibold text-slate-100">Your Dedicated LATAM Specialist Handles</th>
 							</tr>
 						</thead>
 						<tbody class="text-sm">
