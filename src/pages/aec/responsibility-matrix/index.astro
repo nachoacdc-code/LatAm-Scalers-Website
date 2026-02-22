@@ -1,0 +1,574 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import MetaHead from '../../../components/MetaHead.astro';
+import ContactHub from '../../../components/ContactHub.astro';
+import { BOOKING_URL, isExternalUrl } from '../../../lib/cta';
+
+const brand = 'LatAm Scalers';
+
+const meta = {
+	title: 'AEC Responsibility Matrix – What You Keep vs. What We Handle | LatAm Scalers',
+	description:
+		'Clear division of responsibility between your US-licensed professionals and your dedicated LATAM AEC specialists. PE/RA stamping stays with you. Production capacity scales with us.',
+};
+
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/aec/responsibility-matrix/', baseUrl).toString();
+
+const bookingUrl = BOOKING_URL;
+const bookingExternal = isExternalUrl(bookingUrl);
+
+const coreMatrix = [
+	{ yours: 'Design leadership + conceptual development', ours: '2D drafting + sheet development' },
+	{ yours: 'Code compliance + stamping (PE/RA)', ours: 'Permit-set production under your direction' },
+	{ yours: 'Final QA + coordination review', ours: 'BIM model development + maintenance' },
+	{ yours: 'Site inspection + construction admin', ours: 'Redlines + design revisions' },
+	{ yours: 'Client-facing project management', ours: 'Visualization + rendering' },
+	{ yours: 'Engineering judgment + design decisions', ours: 'Clash detection + coordination support' },
+];
+
+const mepMatrix = [
+	{ yours: 'System selection + engineering calculations', ours: 'Revit MEP modeling — ductwork, piping, electrical layouts' },
+	{ yours: 'Code review (IMC, IPC, NEC, NFPA)', ours: 'Equipment schedules, load calculations (under PE direction)' },
+	{ yours: 'Coordination sign-off + PE stamp', ours: 'Clash detection, coordination drawings, trade coordination' },
+	{ yours: 'Submittal review + RFI responses', ours: 'Shop drawing production, as-built documentation' },
+];
+
+const structuralMatrix = [
+	{ yours: 'Structural analysis + member sizing', ours: 'Revit Structure / AutoCAD production drawings' },
+	{ yours: 'Connection design + PE stamp', ours: 'Connection details, framing plans, foundation drawings' },
+	{ yours: 'Code compliance (ASCE 7, ACI, AISC)', ours: 'Quantity takeoffs, reinforcement schedules' },
+	{ yours: 'Construction observation', ours: 'Shop drawing review support, as-built updates' },
+];
+
+const architecturalMatrix = [
+	{ yours: 'Design intent + conceptual direction', ours: 'Floor plans, elevations, sections, details' },
+	{ yours: 'Code review (IBC, ADA, local zoning)', ours: 'Permit-set production, code-compliant documentation' },
+	{ yours: 'Client presentations + RA stamp', ours: 'Renderings, 3D views, presentation packages' },
+	{ yours: 'Specification coordination', ours: 'Door/window/finish schedules, assembly details' },
+];
+
+const objections = [
+	{
+		q: 'Can LATAM specialists understand US building codes?',
+		a: 'Yes. We screen for IBC, ASCE 7, NFPA familiarity and code-specific project experience. Your specialist works within your code compliance framework, BEP standards, and firm templates. They execute production — your licensed professionals retain code compliance authority.',
+		verdict: 'Trainable and screenable',
+	},
+	{
+		q: 'Can LATAM specialists stamp or seal documents?',
+		a: 'No. Stamping requires US state PE/RA licensure. That professional responsibility stays with your licensed engineer or architect. We provide production capacity; you provide oversight and sign-off. This is the same division of responsibility used by every multi-office AEC firm with junior staff.',
+		verdict: 'Non-negotiable boundary',
+	},
+	{
+		q: 'What about state-specific licensing requirements?',
+		a: 'PE/RA licensing is state-specific — your engineer of record must be licensed in the project state. Our specialists work under that framework. For multi-state projects, your licensed professionals manage the jurisdictional requirements while our specialists handle the production workload across all projects.',
+		verdict: 'Your PE/RA handles',
+	},
+	{
+		q: 'How does quality control work?',
+		a: 'Your firm retains final QA authority. Our specialists follow your BEP, templates, checklists, and QA procedures. The review cycle — redlines, markups, corrections — mirrors what you already do with any junior or mid-level staff. Your PE/RA signs off on all deliverables.',
+		verdict: 'Your existing QA process',
+	},
+	{
+		q: 'Is this actually different from what we already do internally?',
+		a: 'No — that\'s the point. 60–70% of daily AEC production is location-agnostic under PE oversight. The delegated design principle is institutionalized AEC practice: the Engineer of Record establishes performance criteria and retains liability; technicians and specialists execute production under that framework. We\'re adding capacity to your existing workflow, not changing it.',
+		verdict: 'Same workflow, more capacity',
+	},
+];
+
+const faqs = [
+	{
+		q: 'Can remote AEC specialists produce construction documents to US standards?',
+		a: 'Yes. We vet for proficiency in US building codes (IBC, ASCE 7, NFPA), firm-standard BEPs, and tools like Revit, AutoCAD, and Bluebeam. Our specialists produce permit-ready construction documents under your licensed professional\'s review and stamping authority.',
+	},
+	{
+		q: 'What software do your specialists use?',
+		a: 'Revit (MEP, Structure, Architecture), AutoCAD, Civil 3D, Navisworks, Bluebeam, ACC/BIM 360, Tekla, and more. We match to your exact software stack and work in your project environment.',
+	},
+	{
+		q: 'How do you vet for US code knowledge?',
+		a: 'Our 5-stage vetting process includes a technical assessment specific to AEC: Revit/AutoCAD proficiency testing, BEP familiarity evaluation, and US code knowledge screening. We verify experience with IBC, ASCE 7, NFPA, and discipline-specific standards before presenting any candidate.',
+	},
+	{
+		q: 'What if a specialist doesn\'t meet our quality standards?',
+		a: 'Engagements are month-to-month. We offer a free replacement guarantee — if the fit or quality isn\'t right, we replace the specialist at no additional cost to keep your production moving.',
+	},
+	{
+		q: 'How does IP ownership work?',
+		a: 'All work product is assigned to your firm through our contractor agreements. The IP assignment chain (Contractor → LatAm Scalers → Client) includes explicit work-for-hire and assignment language. Your deliverables are your deliverables.',
+	},
+	{
+		q: 'Do we need to change our workflow?',
+		a: 'No. Your specialist works in your Revit environment, follows your BEP, uses your templates, and participates in your review cycles. The integration is designed to feel like adding a team member, not adopting a new process.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'AEC Responsibility Matrix',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqs.map((f) => ({
+		'@type': 'Question',
+		name: f.q,
+		acceptedAnswer: { '@type': 'Answer', text: f.a },
+	})),
+};
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
+
+	<main>
+
+	<!-- Hero -->
+	<section class="relative overflow-hidden bg-slate-950 py-16 sm:py-24" aria-labelledby="hero-heading">
+		<div class="mx-auto max-w-6xl px-6">
+			<div class="js-fade-in">
+				<p class="text-sm font-semibold uppercase tracking-widest text-aec">Trust &amp; Compliance</p>
+				<h1 id="hero-heading" class="mt-4 text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
+					What You Keep vs. What We Handle
+				</h1>
+				<p class="mt-5 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
+					US engineering practice has a built-in regulatory boundary between licensed work and production work. We operate within that boundary — your PE/RA retains all authority; our specialists deliver the production capacity.
+				</p>
+
+				<div class="mt-8 flex flex-wrap gap-3">
+					<a
+						href={bookingUrl}
+						{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+						class="inline-flex min-h-[48px] items-center justify-center rounded bg-sky-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+						data-book-call
+					>
+						Book an AEC Scoping Call
+					</a>
+					<a
+						href="/aec/"
+						class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-slate-700 bg-slate-900/60 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+					>
+						← Back to AEC Solutions
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- AEC micro-clarifier -->
+	<div class="bg-slate-950 border-b border-slate-800">
+		<div class="mx-auto max-w-6xl px-6 py-4">
+			<p class="text-xs leading-relaxed text-slate-400 text-center sm:text-sm">
+				Our specialists produce work under the direction of your licensed professionals. All documents require review and stamping by your PE/RA.
+			</p>
+		</div>
+	</div>
+
+	<!-- The Delegated Design Principle -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="principle-heading">
+		<div class="mx-auto max-w-6xl px-6">
+			<div class="js-fade-in max-w-2xl">
+				<p class="text-sm font-semibold uppercase tracking-widest text-aec">The Principle</p>
+				<h2 id="principle-heading" class="mt-3 text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+					The Delegated Design Principle
+				</h2>
+				<p class="mt-4 text-base leading-relaxed text-slate-400">
+					The Structural Engineer of Record (SEOR) establishes performance criteria and retains liability. Technicians and specialists execute production under that framework. This is <strong class="text-slate-100">institutionalized AEC practice</strong> — not a novel model.
+				</p>
+				<p class="mt-4 text-base leading-relaxed text-slate-400">
+					Every multi-office AEC firm operates this way. Junior engineers, drafters, and modelers produce work under the direction and review of licensed professionals. Geography doesn't change the workflow — <strong class="text-slate-100">60–70% of daily AEC production is location-agnostic</strong> under PE oversight.
+				</p>
+			</div>
+
+			<div class="mt-10 grid gap-4 sm:grid-cols-3">
+				<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+					<p class="text-3xl font-semibold text-slate-100">60–70%</p>
+					<p class="mt-2 text-sm font-semibold text-slate-100">location-agnostic</p>
+					<p class="mt-2 text-sm leading-relaxed text-slate-400">
+						of daily AEC production time can be performed remotely under PE oversight.
+					</p>
+				</div>
+				<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+					<p class="text-3xl font-semibold text-slate-100">94%</p>
+					<p class="mt-2 text-sm font-semibold text-slate-100">firms with unfilled roles</p>
+					<p class="mt-2 text-sm leading-relaxed text-slate-400">
+						of AEC firms have unfilled engineering and design positions right now.
+					</p>
+				</div>
+				<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+					<p class="text-3xl font-semibold text-slate-100">2:1</p>
+					<p class="mt-2 text-sm font-semibold text-slate-100">retirement ratio</p>
+					<p class="mt-2 text-sm leading-relaxed text-slate-400">
+						Retirees outnumber new entrants in specialty AEC roles. 41% of workers expected to retire by 2031.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Core Responsibility Matrix -->
+	<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="core-matrix-heading">
+		<div class="mx-auto max-w-6xl px-6">
+			<div class="js-fade-in max-w-2xl">
+				<p class="text-sm font-semibold uppercase tracking-widest text-aec">Core Matrix</p>
+				<h2 id="core-matrix-heading" class="mt-3 text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+					Responsibility Matrix
+				</h2>
+				<p class="mt-4 text-base leading-relaxed text-slate-400">
+					Clear division of responsibility between your US-licensed team and your dedicated LATAM specialist. This framework applies across all AEC disciplines.
+				</p>
+			</div>
+
+			<div class="js-fade-in mt-10 overflow-x-auto">
+				<table class="w-full min-w-[480px] rounded-2xl border border-slate-800 bg-slate-900/40 shadow-lg shadow-black/20 overflow-hidden">
+					<thead>
+						<tr class="border-b border-slate-800 bg-slate-900/60">
+							<th class="px-6 py-4 text-left text-sm font-semibold text-slate-100">Your Licensed Team Retains</th>
+							<th class="px-6 py-4 text-left text-sm font-semibold text-slate-100">Your Dedicated LATAM Specialist Handles</th>
+						</tr>
+					</thead>
+					<tbody class="text-sm">
+						{coreMatrix.map((row, i) => (
+							<tr class={i < coreMatrix.length - 1 ? 'border-b border-slate-800' : ''}>
+								<td class="px-6 py-4 text-slate-300">
+									<span class="mr-2 text-aec" aria-hidden="true">●</span>{row.yours}
+								</td>
+								<td class="px-6 py-4 text-slate-300">
+									<span class="mr-2 text-sky-400" aria-hidden="true">●</span>{row.ours}
+								</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</section>
+
+	<!-- Discipline-Specific Matrices -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="discipline-matrix-heading">
+		<div class="mx-auto max-w-6xl px-6">
+			<div class="js-fade-in max-w-2xl">
+				<p class="text-sm font-semibold uppercase tracking-widest text-aec">By Discipline</p>
+				<h2 id="discipline-matrix-heading" class="mt-3 text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+					Discipline-Specific Responsibility Breakdown
+				</h2>
+				<p class="mt-4 text-base leading-relaxed text-slate-400">
+					Each AEC discipline has specific deliverables and compliance boundaries. Here's how responsibility divides for MEP, Structural, and Architectural work.
+				</p>
+			</div>
+
+			<!-- MEP Matrix -->
+			<div class="js-fade-in mt-10">
+				<h3 class="text-lg font-semibold text-slate-100 mb-4">
+					<span class="text-aec">●</span> MEP Engineering
+				</h3>
+				<div class="overflow-x-auto">
+					<table class="w-full min-w-[480px] rounded-2xl border border-slate-800 bg-slate-900/40 shadow-lg shadow-black/20 overflow-hidden">
+						<thead>
+							<tr class="border-b border-slate-800 bg-slate-900/60">
+								<th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-400">Your Licensed PE Retains</th>
+								<th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-400">Your LATAM MEP Specialist Handles</th>
+							</tr>
+						</thead>
+						<tbody class="text-sm">
+							{mepMatrix.map((row, i) => (
+								<tr class={i < mepMatrix.length - 1 ? 'border-b border-slate-800' : ''}>
+									<td class="px-6 py-4 text-slate-400">{row.yours}</td>
+									<td class="px-6 py-4 text-slate-400">{row.ours}</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<!-- Structural Matrix -->
+			<div class="js-fade-in mt-10">
+				<h3 class="text-lg font-semibold text-slate-100 mb-4">
+					<span class="text-aec">●</span> Structural Engineering
+				</h3>
+				<div class="overflow-x-auto">
+					<table class="w-full min-w-[480px] rounded-2xl border border-slate-800 bg-slate-900/40 shadow-lg shadow-black/20 overflow-hidden">
+						<thead>
+							<tr class="border-b border-slate-800 bg-slate-900/60">
+								<th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-400">Your Licensed SE/PE Retains</th>
+								<th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-400">Your LATAM Structural Specialist Handles</th>
+							</tr>
+						</thead>
+						<tbody class="text-sm">
+							{structuralMatrix.map((row, i) => (
+								<tr class={i < structuralMatrix.length - 1 ? 'border-b border-slate-800' : ''}>
+									<td class="px-6 py-4 text-slate-400">{row.yours}</td>
+									<td class="px-6 py-4 text-slate-400">{row.ours}</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<!-- Architectural Matrix -->
+			<div class="js-fade-in mt-10">
+				<h3 class="text-lg font-semibold text-slate-100 mb-4">
+					<span class="text-aec">●</span> Architecture
+				</h3>
+				<div class="overflow-x-auto">
+					<table class="w-full min-w-[480px] rounded-2xl border border-slate-800 bg-slate-900/40 shadow-lg shadow-black/20 overflow-hidden">
+						<thead>
+							<tr class="border-b border-slate-800 bg-slate-900/60">
+								<th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-400">Your Licensed RA Retains</th>
+								<th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-400">Your LATAM Architectural Specialist Handles</th>
+							</tr>
+						</thead>
+						<tbody class="text-sm">
+							{architecturalMatrix.map((row, i) => (
+								<tr class={i < architecturalMatrix.length - 1 ? 'border-b border-slate-800' : ''}>
+									<td class="px-6 py-4 text-slate-400">{row.yours}</td>
+									<td class="px-6 py-4 text-slate-400">{row.ours}</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Objections Addressed -->
+	<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="objections-heading">
+		<div class="mx-auto max-w-6xl px-6">
+			<div class="js-fade-in max-w-2xl">
+				<p class="text-sm font-semibold uppercase tracking-widest text-aec">Objections Addressed</p>
+				<h2 id="objections-heading" class="mt-3 text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+					The Questions AEC Firms Ask First
+				</h2>
+				<p class="mt-4 text-base leading-relaxed text-slate-400">
+					Code compliance and PE/RA stamping are the #1 and #2 concerns we hear from AEC firms evaluating nearshore talent. Here are direct answers.
+				</p>
+			</div>
+
+			<div class="mt-10 grid gap-4">
+				{objections.map((item) => (
+					<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+						<div class="flex items-start justify-between gap-4 flex-wrap">
+							<h3 class="text-base font-semibold text-slate-100">{item.q}</h3>
+							<span class="inline-flex shrink-0 items-center rounded-full border border-slate-700 bg-slate-800/60 px-3 py-1 text-xs font-semibold text-aec">
+								{item.verdict}
+							</span>
+						</div>
+						<p class="mt-4 text-sm leading-relaxed text-slate-400">{item.a}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- How We Vet for Code Knowledge -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="vetting-heading">
+		<div class="mx-auto max-w-6xl px-6">
+			<div class="js-fade-in max-w-2xl">
+				<p class="text-sm font-semibold uppercase tracking-widest text-aec">Quality Assurance</p>
+				<h2 id="vetting-heading" class="mt-3 text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+					How We Vet for US Code &amp; Standards Knowledge
+				</h2>
+				<p class="mt-4 text-base leading-relaxed text-slate-400">
+					Every AEC specialist goes through our 5-stage vetting process with AEC-specific technical assessment.
+				</p>
+			</div>
+
+			<div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+				<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+					<p class="text-xs font-semibold uppercase tracking-wide text-aec">Stage 1</p>
+					<p class="mt-3 text-sm font-semibold text-slate-100">Experience Screen</p>
+					<p class="mt-2 text-xs leading-relaxed text-slate-400">Project history, discipline depth, US-standard project experience.</p>
+				</div>
+				<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+					<p class="text-xs font-semibold uppercase tracking-wide text-aec">Stage 2</p>
+					<p class="mt-3 text-sm font-semibold text-slate-100">Language &amp; Culture</p>
+					<p class="mt-2 text-xs leading-relaxed text-slate-400">Fluent English assessment + US business culture familiarity evaluation.</p>
+				</div>
+				<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+					<p class="text-xs font-semibold uppercase tracking-wide text-aec">Stage 3</p>
+					<p class="mt-3 text-sm font-semibold text-slate-100">Technical Assessment</p>
+					<p class="mt-2 text-xs leading-relaxed text-slate-400">Revit/AutoCAD proficiency test, BEP familiarity, US code knowledge (IBC, ASCE 7, NFPA).</p>
+				</div>
+				<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+					<p class="text-xs font-semibold uppercase tracking-wide text-aec">Stage 4</p>
+					<p class="mt-3 text-sm font-semibold text-slate-100">Portfolio &amp; Work Samples</p>
+					<p class="mt-2 text-xs leading-relaxed text-slate-400">Real deliverables evaluated by AEC category specialists — not just years of experience.</p>
+				</div>
+				<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+					<p class="text-xs font-semibold uppercase tracking-wide text-aec">Stage 5</p>
+					<p class="mt-3 text-sm font-semibold text-slate-100">Interview &amp; References</p>
+					<p class="mt-2 text-xs leading-relaxed text-slate-400">Behavioral interview for communication and reliability. Professional references verified.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- The Workflow -->
+	<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="workflow-heading">
+		<div class="mx-auto max-w-6xl px-6">
+			<div class="js-fade-in max-w-2xl">
+				<p class="text-sm font-semibold uppercase tracking-widest text-aec">In Practice</p>
+				<h2 id="workflow-heading" class="mt-3 text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+					How It Works Day-to-Day
+				</h2>
+				<p class="mt-4 text-base leading-relaxed text-slate-400">
+					Your dedicated LATAM specialist integrates into your existing production workflow. No new processes — just more capacity.
+				</p>
+			</div>
+
+			<div class="mt-10 grid gap-5 md:grid-cols-2">
+				<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+					<p class="text-xs font-semibold uppercase tracking-wide text-aec">Onboarding</p>
+					<h3 class="mt-3 text-lg font-semibold text-slate-100">Align on Your Standards</h3>
+					<p class="mt-3 text-sm leading-relaxed text-slate-400">
+						We align on your BEP, templates, deliverable standards, naming conventions, and QA cadence. Your specialist gets access to your project environment, Revit standards, and review processes.
+					</p>
+				</div>
+				<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+					<p class="text-xs font-semibold uppercase tracking-wide text-aec">Production</p>
+					<h3 class="mt-3 text-lg font-semibold text-slate-100">Execute Under Your Direction</h3>
+					<p class="mt-3 text-sm leading-relaxed text-slate-400">
+						Your specialist works in your Revit environment during your working hours. They receive redlines and markups, produce updates, and deliver through your existing handoff workflow.
+					</p>
+				</div>
+				<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+					<p class="text-xs font-semibold uppercase tracking-wide text-aec">Review</p>
+					<h3 class="mt-3 text-lg font-semibold text-slate-100">Your QA, Your Sign-Off</h3>
+					<p class="mt-3 text-sm leading-relaxed text-slate-400">
+						Your PE/RA reviews all deliverables per your firm's QA checklist. Coordination review, code compliance check, and stamping authority remain entirely with your licensed team.
+					</p>
+				</div>
+				<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+					<p class="text-xs font-semibold uppercase tracking-wide text-aec">Guarantee</p>
+					<h3 class="mt-3 text-lg font-semibold text-slate-100">Month-to-Month, Replace Anytime</h3>
+					<p class="mt-3 text-sm leading-relaxed text-slate-400">
+						No long-term contracts. If the specialist doesn't meet your quality standards, we provide a free replacement. Engagements are month-to-month with full flexibility.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Legal disclaimer -->
+	<section class="bg-slate-950 py-8 sm:py-10" aria-label="Legal disclaimer">
+		<div class="mx-auto max-w-6xl px-6">
+			<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 px-6 py-5 sm:px-8 sm:py-6">
+				<p class="text-xs font-semibold uppercase tracking-wide text-aec mb-3">Important Disclosure</p>
+				<p class="text-sm leading-relaxed text-slate-400">
+					Our LATAM specialists are proficient in US building codes and work in your software stack. They cannot stamp or seal documents — that professional responsibility stays with your licensed US engineer or architect. We provide the production capacity; you provide the oversight. All work product requires review and approval by your PE/RA before submission.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- FAQ -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="faq-heading">
+		<div class="mx-auto max-w-6xl px-6">
+			<div class="js-fade-in max-w-2xl">
+				<h2 id="faq-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+					Frequently Asked Questions
+				</h2>
+				<p class="mt-4 text-base leading-relaxed text-slate-400">
+					Compliance, quality, and workflow questions from AEC firms.
+				</p>
+			</div>
+
+			<div class="mt-10 grid gap-3">
+				{faqs.map((item) => (
+					<details class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+						<summary class="cursor-pointer list-none text-sm font-semibold text-slate-100 [&::-webkit-details-marker]:hidden">
+							{item.q}
+						</summary>
+						<p class="mt-4 pt-4 text-sm leading-relaxed text-slate-400 border-t border-slate-800">{item.a}</p>
+					</details>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- CTA -->
+	<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="cta-heading">
+		<div class="mx-auto max-w-6xl px-6">
+			<div class="js-fade-in rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900/60 to-slate-950 p-8 text-center shadow-xl sm:p-12">
+				<h2 id="cta-heading" class="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+					Ready to Add AEC Capacity — Without Changing Your Workflow?
+				</h2>
+				<p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slate-300">
+					Book a scoping call to discuss your firm's standards, roles, and compliance requirements. We'll walk through exactly how a dedicated specialist integrates into your QA process.
+				</p>
+				<div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+					<a
+						href={bookingUrl}
+						{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+						class="inline-flex min-h-[48px] items-center justify-center rounded bg-sky-600 px-8 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+						data-book-call
+					>
+						Book an AEC Scoping Call
+					</a>
+					<a
+						href="/#contact"
+						class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-slate-700 bg-slate-900/60 px-8 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+						data-open-tell-us="matrix-cta"
+					>
+						Tell Us What You Need
+					</a>
+				</div>
+				<p class="mt-5 text-xs text-slate-500">Month-to-month · Free replacement guarantee · No long-term contracts</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- Contact -->
+	<section id="contact" class="bg-slate-950 pb-20 pt-16 sm:pb-24 sm:pt-20" aria-labelledby="contact-heading">
+		<div class="mx-auto max-w-6xl px-6">
+			<div class="js-fade-in max-w-2xl">
+				<p class="text-sm font-semibold uppercase tracking-widest text-sky-300">Get in touch</p>
+				<h2 id="contact-heading" class="mt-3 text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+					Let's Discuss Your Compliance Requirements
+				</h2>
+				<p class="mt-4 text-base leading-relaxed text-slate-400">
+					Share your firm's standards, tools, and compliance needs — we'll show you exactly how our specialists integrate into your QA workflow.
+				</p>
+			</div>
+
+			<ContactHub subject="${brand} – AEC responsibility matrix inquiry" defaultCategory="aec" defaultMessage="I'd like to understand how your specialists integrate with our QA and compliance workflow." />
+		</div>
+	</section>
+
+	</main>
+
+	<style>
+	.js-fade-in {
+		opacity: 0;
+		transform: translateY(20px);
+		transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+	}
+	.js-fade-in.is-visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	</style>
+
+	<script is:inline>
+	(function () {
+		var els = document.querySelectorAll('.js-fade-in');
+		if (!els.length) return;
+		var io = new IntersectionObserver(function (entries) {
+			entries.forEach(function (e) {
+				if (e.isIntersecting) {
+					e.target.classList.add('is-visible');
+					io.unobserve(e.target);
+				}
+			});
+		}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+		els.forEach(function (el) { io.observe(el); });
+	})();
+	</script>
+</Layout>
