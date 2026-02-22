@@ -1,0 +1,339 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import MetaHead from '../../../components/MetaHead.astro';
+import ContactHub from '../../../components/ContactHub.astro';
+import { BOOKING_URL, isExternalUrl } from '../../../lib/cta';
+
+const brand = 'LatAm Scalers';
+
+const meta = {
+	title: 'Marketing Talent for Agencies – White-Label Specialists for Client Delivery | LatAm Scalers',
+	description:
+		'Dedicated LATAM marketing specialists for agencies. White-label SEO, paid media, HubSpot, and lifecycle specialists embedded in your client delivery. $2K–$10K/mo per account. From ~$2,500/mo.',
+};
+
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/marketing/for-agencies/', baseUrl).toString();
+
+const bookingUrl = BOOKING_URL;
+const bookingExternal = isExternalUrl(bookingUrl);
+
+const roles = [
+	{ title: 'Marketing Ops Specialist', desc: 'HubSpot portal management for multiple client accounts — white-label, SLA-compliant, juggling 20+ concurrent clients.', href: '/roles/marketing-ops-specialist/' },
+	{ title: 'SEO Specialist', desc: 'Technical SEO, content strategy, and organic growth execution for agency client accounts. 12,100/mo searches.', href: '/roles/seo-specialist/' },
+	{ title: 'Lifecycle Email Specialist', desc: 'Email and SMS execution for client programs — campaign production, flow builds, and performance reporting.', href: '/roles/lifecycle-email-specialist/' },
+	{ title: 'Analytics Specialist', desc: 'GA4, Looker, and attribution dashboards for agency clients. White-label reporting at scale.', href: '/roles/analytics-specialist/' },
+	{ title: 'Social Media Manager', desc: 'Content production, scheduling, and community management for agency client social programs.', href: '/roles/social-media-manager/' },
+];
+
+const useCases = [
+	{ label: 'Overflow capacity', desc: 'Client wins create immediate resourcing gaps. Add dedicated marketing specialists in under a week — without the US hiring cycle — to handle overflow without turning down revenue.' },
+	{ label: 'White-label delivery model', desc: 'Your clients see your agency. Our specialists work behind your brand, in your tools, following your processes. Reliability and consistency over genius — that\'s the agency promise.' },
+	{ label: 'HubSpot admin at scale', desc: 'Managing HubSpot portals for 10+ clients simultaneously requires a dedicated operator. Our HubSpot specialists maintain multiple client portals, handle automation, and deliver the reporting you promised.' },
+	{ label: 'Margin protection', desc: '$2,000–$10,000/month per agency account. A dedicated specialist at $2,500–$3,500/month serves 3–5 accounts — protecting your margin while delivering quality.' },
+];
+
+const tools = [
+	{ name: 'HubSpot', desc: 'Multi-portal management, client automation, and white-label reporting for agency accounts.' },
+	{ name: 'SEMrush / Ahrefs', desc: 'SEO audits, keyword research, and backlink analysis for client organic programs.' },
+	{ name: 'GA4 / Looker Studio', desc: 'Analytics dashboards and white-label reporting for client marketing performance.' },
+	{ name: 'Meta / Google Ads', desc: 'Paid media management and white-label campaign execution for agency clients.' },
+	{ name: 'Klaviyo / Mailchimp', desc: 'Email platform management for agency clients across DTC and service businesses.' },
+	{ name: 'Asana / Monday / ClickUp', desc: 'Agency project management tools — your workflow, your client organization.' },
+];
+
+const faqs = [
+	{
+		q: 'Can your specialists work under our agency brand with our clients?',
+		a: 'Yes. Our specialists operate as invisible white-label delivery capacity — under your brand, in your client\'s tools, following your agency processes. Clients interact with your agency; we provide the specialist execution. This is the standard model for agencies managing more client accounts than their US team can handle.',
+	},
+	{
+		q: 'How do you handle quality consistency across multiple client accounts?',
+		a: 'We prioritize reliability over genius — the agency standard. Your dedicated specialist builds familiarity with each client\'s brand, preferences, and performance benchmarks over time. The dedicated model (not shared/rotating) is what enables this consistency.',
+	},
+	{
+		q: 'Can one specialist handle multiple client accounts simultaneously?',
+		a: 'Yes — agencies commonly have one specialist manage 3–5 accounts. The key is capacity planning: each account\'s volume, complexity, and SLA requirements determine the right ratio. We help you think through this during scoping.',
+	},
+	{
+		q: 'What is the typical agency billing model with your specialists?',
+		a: 'Agencies typically bill clients $2,000–$10,000/month per account for specialist services. A dedicated LATAM specialist at $2,500–$3,500/month serving 3–5 accounts generates $6,000–$50,000 in client billing — protecting margin while delivering quality.',
+	},
+	{
+		q: 'How fast can specialists onboard to a new client account?',
+		a: 'Our specialists are designed for rapid onboarding — 24 hours for access, 48–72 hours for context. They\'ve worked in agency environments and understand how to get productive quickly across multiple client contexts.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Marketing Talent for Agencies',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqs.map((f) => ({
+		'@type': 'Question',
+		name: f.q,
+		acceptedAnswer: { '@type': 'Answer', text: f.a },
+	})),
+};
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
+
+	<main>
+
+	<!-- Hero -->
+	<section class="relative overflow-hidden bg-slate-950 py-16 sm:py-24" aria-labelledby="hero-heading">
+		<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in">
+		<p class="text-sm font-semibold uppercase tracking-widest text-marketing">For Agencies</p>
+		<h1 id="hero-heading" class="mt-4 text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
+			White-Label Marketing Specialists for Agencies
+		</h1>
+		<p class="mt-5 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
+			Scale client delivery without scaling US headcount. Dedicated LATAM marketing specialists — SEO, HubSpot, lifecycle, analytics — embedded in your delivery model under your brand. From ~$2,500/mo.
+		</p>
+		<div class="mt-8 flex flex-wrap gap-3">
+		<a
+			href={bookingUrl}
+			{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+			class="inline-flex min-h-[48px] items-center justify-center rounded bg-sky-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+			data-book-call
+		>
+			Book an Agency Scoping Call
+		</a>
+		<a
+			href="/#contact"
+			class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-slate-700 bg-slate-900/40 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+			data-open-tell-us="agency-marketing-hero"
+		>
+			Tell Us What You Need
+		</a>
+		</div>
+		</div>
+		</div>
+	</section>
+
+	<!-- The Agency Delivery Problem -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="problem-heading">
+		<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in max-w-2xl">
+		<h2 id="problem-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+			Agency Growth Is Capped by Delivery Capacity
+		</h2>
+		<p class="mt-4 text-base leading-relaxed text-slate-400">
+			You win the client. Then you're under-resourced to deliver. US hiring takes 3–6 months and adds $60,000+ in salary overhead. The only way to scale revenue without scaling headcount costs is dedicated LATAM specialists.
+		</p>
+		</div>
+		<div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+		<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+			<p class="text-3xl font-semibold text-slate-100">20+</p>
+			<p class="mt-2 text-sm font-semibold text-slate-100">concurrent clients</p>
+			<p class="mt-2 text-sm leading-relaxed text-slate-400">Mid-market agencies managing 20+ client accounts simultaneously need scalable delivery.</p>
+		</div>
+		<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+			<p class="text-3xl font-semibold text-slate-100">$2K–$10K</p>
+			<p class="mt-2 text-sm font-semibold text-slate-100">per account/month</p>
+			<p class="mt-2 text-sm leading-relaxed text-slate-400">Typical agency billing rate per client account for specialist marketing services.</p>
+		</div>
+		<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+			<p class="text-3xl font-semibold text-slate-100">50–60%</p>
+			<p class="mt-2 text-sm font-semibold text-slate-100">cost savings</p>
+			<p class="mt-2 text-sm leading-relaxed text-slate-400">LATAM specialists vs. US equivalent — same quality, protected agency margins.</p>
+		</div>
+		<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+			<p class="text-3xl font-semibold text-slate-100">24hr</p>
+			<p class="mt-2 text-sm font-semibold text-slate-100">onboarding</p>
+			<p class="mt-2 text-sm leading-relaxed text-slate-400">New client access and ramp in 24 hours — not 90-day US hiring cycles.</p>
+		</div>
+		</div>
+		</div>
+	</section>
+
+	<!-- Use Cases -->
+	<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="use-cases-heading">
+		<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in max-w-2xl">
+		<h2 id="use-cases-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+			How Agencies Use LatAm Scalers
+		</h2>
+		</div>
+		<div class="mt-10 grid gap-5 sm:grid-cols-2">
+		{useCases.map((uc) => (
+		<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+			<p class="text-xs font-semibold uppercase tracking-wide text-marketing">{uc.label}</p>
+			<p class="mt-3 text-sm leading-relaxed text-slate-400">{uc.desc}</p>
+		</div>
+		))}
+		</div>
+		</div>
+	</section>
+
+	<!-- Roles -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="roles-heading">
+		<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in max-w-2xl">
+		<h2 id="roles-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+			Agency Marketing Roles We Place
+		</h2>
+		</div>
+		<div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+		{roles.map((role) => (
+		<a
+			href={role.href}
+			class="js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20 transition hover:border-marketing/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+		>
+			<h3 class="text-sm font-semibold text-slate-100 group-hover:text-marketing">{role.title}</h3>
+			<p class="mt-2 text-sm leading-relaxed text-slate-400">{role.desc}</p>
+			<p class="mt-3 text-xs font-semibold text-sky-300 group-hover:text-sky-200">View role &#8594;</p>
+		</a>
+		))}
+		</div>
+		</div>
+	</section>
+
+	<!-- Tools -->
+	<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="tools-heading">
+		<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in max-w-2xl">
+		<h2 id="tools-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+			Tools Your Specialists Will Use
+		</h2>
+		</div>
+		<div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+		{tools.map((tool) => (
+		<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+			<p class="text-sm font-semibold text-slate-100">{tool.name}</p>
+			<p class="mt-2 text-sm leading-relaxed text-slate-400">{tool.desc}</p>
+		</div>
+		))}
+		</div>
+		</div>
+	</section>
+
+	<!-- Pricing -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="pricing-heading">
+		<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in max-w-2xl">
+		<h2 id="pricing-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+			Pricing Guidance
+		</h2>
+		<p class="mt-4 text-base leading-relaxed text-slate-400">
+			Dedicated agency marketing specialists from <strong class="text-slate-100">~$2,500–$3,500/month</strong>. A specialist at $3,000/month serving 3–4 client accounts at $2,000–$4,000 each generates $6,000–$16,000+ in client billing. Multi-seat agency configurations custom-quoted.
+		</p>
+		<a
+			href="/how-pricing-works/"
+			class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-sky-300 transition hover:text-sky-200/80 focus:outline-none focus-visible:underline"
+		>
+			See how pricing works <span aria-hidden="true">&rarr;</span>
+		</a>
+		</div>
+		</div>
+	</section>
+
+	<!-- FAQ -->
+	<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="faq-heading">
+		<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in max-w-2xl">
+		<h2 id="faq-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+			Frequently Asked Questions
+		</h2>
+		</div>
+		<div class="mt-10 grid gap-3">
+		{faqs.map((item) => (
+		<details class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+			<summary class="cursor-pointer list-none text-sm font-semibold text-slate-100 [&::-webkit-details-marker]:hidden">
+			{item.q}
+			</summary>
+			<p class="mt-4 pt-4 text-sm leading-relaxed text-slate-400 border-t border-slate-800">{item.a}</p>
+		</details>
+		))}
+		</div>
+		</div>
+	</section>
+
+	<!-- CTA -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="cta-heading">
+		<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-8 text-center shadow-xl sm:p-12">
+		<h2 id="cta-heading" class="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+			Ready to Scale Agency Delivery Without Scaling Headcount?
+		</h2>
+		<p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slate-300">
+			Book a call to discuss your client count, service mix, and current delivery capacity gaps.
+		</p>
+		<div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+		<a
+			href={bookingUrl}
+			{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+			class="inline-flex min-h-[48px] items-center justify-center rounded bg-sky-600 px-8 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+			data-book-call
+		>
+			Book an Agency Scoping Call
+		</a>
+		<a
+			href="/#contact"
+			class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-slate-700 bg-slate-900/40 px-8 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+			data-open-tell-us="agency-marketing-cta"
+		>
+			Tell Us What You Need
+		</a>
+		</div>
+		<p class="mt-5 text-xs text-slate-400">Month-to-month · Free replacement guarantee · No long-term contracts</p>
+		</div>
+		</div>
+	</section>
+
+	<!-- Contact -->
+	<section id="contact" class="bg-slate-950 pb-20 pt-16 sm:pb-24 sm:pt-20" aria-labelledby="contact-heading">
+		<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in max-w-2xl">
+			<p class="text-sm font-semibold uppercase tracking-widest text-sky-300">Get in touch</p>
+			<h2 id="contact-heading" class="mt-3 text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+			Let's Talk Agency Marketing Talent
+			</h2>
+			<p class="mt-4 text-base leading-relaxed text-slate-400">
+			Tell us your client count, service mix, and delivery constraints — we'll match you with the right specialists.
+			</p>
+		</div>
+		<ContactHub subject="${brand} – Agency marketing inquiry" defaultCategory="marketing" defaultMessage="We're an agency looking for dedicated white-label marketing specialists." />
+		</div>
+	</section>
+
+	</main>
+
+	<style>
+	.js-fade-in {
+		opacity: 0;
+		transform: translateY(20px);
+		transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+	}
+	.js-fade-in.is-visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	</style>
+
+	<script is:inline>
+	(function () {
+		var els = document.querySelectorAll('.js-fade-in');
+		if (!els.length) return;
+		var io = new IntersectionObserver(function (entries) {
+		entries.forEach(function (e) {
+			if (e.isIntersecting) {
+			e.target.classList.add('is-visible');
+			io.unobserve(e.target);
+			}
+		});
+		}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+		els.forEach(function (el) { io.observe(el); });
+	})();
+	</script>
+</Layout>

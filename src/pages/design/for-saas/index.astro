@@ -1,0 +1,373 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import MetaHead from '../../../components/MetaHead.astro';
+import ContactHub from '../../../components/ContactHub.astro';
+import { BOOKING_URL, isExternalUrl } from '../../../lib/cta';
+
+const brand = 'LatAm Scalers';
+
+const meta = {
+	title: 'Design Talent for SaaS Companies – Dedicated LATAM Designers | LatAm Scalers',
+	description:
+		'Dedicated LATAM designers for SaaS growth teams. Growth product designers, UI/UX specialists, and lifecycle designers who own activation and conversion metrics. From $2,800/mo — not $15K+/Superside.',
+};
+
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/design/for-saas/', baseUrl).toString();
+
+const bookingUrl = BOOKING_URL;
+const bookingExternal = isExternalUrl(bookingUrl);
+
+const roles = [
+	{ title: 'Growth Product Designer', desc: 'Owns activation, conversion lift, and feature adoption metrics. "Hypothesis → test → learn" workflow. Figma + analytics tools.', href: '/roles/growth-product-designer/' },
+	{ title: 'UI/UX Designer', desc: 'User research, wireframes, prototypes, and design system contributions for product features and flows.', href: '/roles/ui-ux-designer/' },
+	{ title: 'Brand/Visual Designer', desc: 'Brand identity, marketing site design, and visual consistency across product and demand gen.', href: '/roles/brand-visual-designer/' },
+	{ title: 'Motion Graphics Specialist', desc: 'Product animations, onboarding walkthroughs, and explainer videos for SaaS product marketing.', href: '/roles/motion-graphics-specialist/' },
+	{ title: 'Presentation Designer', desc: 'Investor decks, sales enablement, and pitch materials for fundraising and enterprise sales cycles.', href: '/roles/presentation-designer/' },
+];
+
+const useCases = [
+	{ label: 'Test velocity bottleneck', desc: 'Your PMs have hypotheses backed up in a queue. A dedicated growth designer unblocks test velocity — running 2–3x more experiments per sprint without adding engineering overhead.' },
+	{ label: 'Activation stagnation', desc: 'NRR below 110%? Churn above 5%? A growth product designer audits your onboarding, redesigns activation flows, and owns the metrics — not just the pixels.' },
+	{ label: 'First design hire', desc: '1–25 person SaaS teams: the first designer needs to be a 3–6yr autonomous IC who covers product, brand, and marketing. We match that profile specifically.' },
+	{ label: 'Design systems at scale', desc: '80–150 person teams building across multiple product lines need consistency. Design systems specialists reduce component debt and speed up feature shipping.' },
+];
+
+const tools = [
+	{ name: 'Figma', desc: 'UI design, prototyping, design systems, and component libraries.' },
+	{ name: 'Mixpanel / Amplitude', desc: 'Product analytics integration — designers who read funnel data and act on it.' },
+	{ name: 'Framer / Webflow', desc: 'Landing pages, marketing site design, and interactive prototypes.' },
+	{ name: 'Adobe CC', desc: 'Brand assets, marketing creative, and visual identity work.' },
+	{ name: 'After Effects / Lottie', desc: 'Product animations, onboarding microinteractions, and explainer content.' },
+	{ name: 'Miro / FigJam', desc: 'User journey mapping, design sprints, and collaborative workshops.' },
+];
+
+const faqs = [
+	{
+		q: 'What is a growth product designer and how is it different from a regular UX designer?',
+		a: 'A growth product designer explicitly owns measurable business outcomes — activation rate, conversion lift, NRR — not just UI quality. They run hypothesis-driven experiments, analyze funnel data, and iterate on flows based on results. This "hypothesis → test → learn" orientation is now standard in SaaS job postings at the growth stage.',
+	},
+	{
+		q: 'What size SaaS company is this right for?',
+		a: 'We serve SaaS teams from 1-person founding teams to 200-person growth stages. The engagement scales with your needs: a generalist IC for early-stage, a growth product designer for test velocity at 25–80 employees, and design systems specialists for teams 80+.',
+	},
+	{
+		q: 'How do your designers integrate with our product team?',
+		a: 'They embed directly in your workflow — Figma, Slack, Jira/Linear, whatever your stack is. They attend standups, participate in sprint planning, and operate as a full team member. The only difference is their location.',
+	},
+	{
+		q: 'How does this compare to Superside for SaaS?',
+		a: 'Superside starts at $15,000+/month, requires an annual commitment, and operates via a pooled queue — you get assigned team members, not a dedicated person who knows your product. Our dedicated growth designers start at $4,500–$6,000/month, are month-to-month, and work exclusively for you.',
+	},
+	{
+		q: 'What does pricing look like for SaaS design talent?',
+		a: 'Dedicated SaaS designers range from $2,800–$6,000/month depending on seniority and specialization. Growth product designers and design systems specialists are at the higher end. All month-to-month with a free replacement guarantee.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Design Talent for SaaS Companies',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqs.map((f) => ({
+		'@type': 'Question',
+		name: f.q,
+		acceptedAnswer: { '@type': 'Answer', text: f.a },
+	})),
+};
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
+
+	<main>
+
+	<!-- Hero -->
+	<section class="relative overflow-hidden bg-slate-950 py-16 sm:py-24" aria-labelledby="hero-heading">
+		<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in">
+		<p class="text-sm font-semibold uppercase tracking-widest text-design">For SaaS Companies</p>
+		<h1 id="hero-heading" class="mt-4 text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
+			Dedicated Designers for SaaS Growth Teams
+		</h1>
+		<p class="mt-5 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
+			Growth product designers who own activation and conversion metrics — not just UI polish. Dedicated, embedded in your product team, from $2,800/mo. Not $15,000+/month for a subscription queue.
+		</p>
+		<div class="mt-8 flex flex-wrap gap-3">
+		<a
+			href={bookingUrl}
+			{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+			class="inline-flex min-h-[48px] items-center justify-center rounded bg-sky-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+			data-book-call
+		>
+			Book a SaaS Design Scoping Call
+		</a>
+		<a
+			href="/#contact"
+			class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-slate-700 bg-slate-900/40 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+			data-open-tell-us="saas-design-hero"
+		>
+			Tell Us What You Need
+		</a>
+		</div>
+		</div>
+		</div>
+	</section>
+
+	<!-- Problem -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="problem-heading">
+		<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in max-w-2xl">
+		<h2 id="problem-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+			SaaS Design Bottlenecks Slow Growth
+		</h2>
+		<p class="mt-4 text-base leading-relaxed text-slate-400">
+			UX hiring takes 45% longer than other roles. Your product roadmap is blocked. Experiments aren't shipping. And Superside wants $15,000+/month for a pooled queue.
+		</p>
+		</div>
+		<div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+		<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+			<p class="text-3xl font-semibold text-slate-100">45%</p>
+			<p class="mt-2 text-sm font-semibold text-slate-100">longer hiring cycles</p>
+			<p class="mt-2 text-sm leading-relaxed text-slate-400">UX/UI hiring takes 45% longer than general roles.</p>
+		</div>
+		<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+			<p class="text-3xl font-semibold text-slate-100">25%</p>
+			<p class="mt-2 text-sm font-semibold text-slate-100">of Design targeting</p>
+			<p class="mt-2 text-sm leading-relaxed text-slate-400">SaaS is the largest single segment of Design demand.</p>
+		</div>
+		<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+			<p class="text-3xl font-semibold text-slate-100">$15K+</p>
+			<p class="mt-2 text-sm font-semibold text-slate-100">Superside entry</p>
+			<p class="mt-2 text-sm leading-relaxed text-slate-400">The next best managed option costs $15K+/month with an annual lock-in.</p>
+		</div>
+		<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+			<p class="text-3xl font-semibold text-slate-100">NRR &gt;110%</p>
+			<p class="mt-2 text-sm font-semibold text-slate-100">growth designer impact</p>
+			<p class="mt-2 text-sm leading-relaxed text-slate-400">Top SaaS teams use design to drive net revenue retention, not just aesthetics.</p>
+		</div>
+		</div>
+		</div>
+	</section>
+
+	<!-- Use Cases -->
+	<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="use-cases-heading">
+		<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in max-w-2xl">
+		<h2 id="use-cases-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+			How SaaS Teams Use LatAm Scalers
+		</h2>
+		</div>
+		<div class="mt-10 grid gap-5 sm:grid-cols-2">
+		{useCases.map((uc) => (
+		<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+			<p class="text-xs font-semibold uppercase tracking-wide text-design">{uc.label}</p>
+			<p class="mt-3 text-sm leading-relaxed text-slate-400">{uc.desc}</p>
+		</div>
+		))}
+		</div>
+		</div>
+	</section>
+
+	<!-- Roles -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="roles-heading">
+		<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in max-w-2xl">
+		<h2 id="roles-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+			Design Roles We Place for SaaS
+		</h2>
+		<p class="mt-4 text-base leading-relaxed text-slate-400">
+			Specialists vetted for SaaS-specific product and growth workflows.
+		</p>
+		</div>
+		<div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+		{roles.map((role) => (
+		<a
+			href={role.href}
+			class="js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20 transition hover:border-design/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+		>
+			<h3 class="text-sm font-semibold text-slate-100 group-hover:text-design">{role.title}</h3>
+			<p class="mt-2 text-sm leading-relaxed text-slate-400">{role.desc}</p>
+			<p class="mt-3 text-xs font-semibold text-sky-300 group-hover:text-sky-200">View role &#8594;</p>
+		</a>
+		))}
+		</div>
+		</div>
+	</section>
+
+	<!-- Tools -->
+	<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="tools-heading">
+		<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in max-w-2xl">
+		<h2 id="tools-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+			Tools Your Designer Will Use
+		</h2>
+		</div>
+		<div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+		{tools.map((tool) => (
+		<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+			<p class="text-sm font-semibold text-slate-100">{tool.name}</p>
+			<p class="mt-2 text-sm leading-relaxed text-slate-400">{tool.desc}</p>
+		</div>
+		))}
+		</div>
+		</div>
+	</section>
+
+	<!-- Engagement Options -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="engagement-heading">
+		<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in max-w-2xl">
+		<h2 id="engagement-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+			Engagement Options for SaaS Teams
+		</h2>
+		</div>
+		<div class="mt-10 grid gap-5 md:grid-cols-2">
+		<a href="/design/dedicated/" class="js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20 transition hover:border-design/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300">
+			<p class="text-xs font-semibold uppercase tracking-wide text-design">Dedicated Designer</p>
+			<h3 class="mt-3 text-lg font-semibold text-slate-100">Dedicated Growth or Product Designer</h3>
+			<p class="mt-3 text-sm leading-relaxed text-slate-400">
+			Full-time (40h/week) — a growth product designer or UI/UX specialist embedded in your product team, attending standups, shipping experiments.
+			</p>
+			<p class="mt-4 text-sm font-semibold text-design">From ~$2,800/mo</p>
+			<p class="mt-3 text-xs font-semibold text-sky-300 group-hover:text-sky-200">Learn more &#8594;</p>
+		</a>
+		<a href="/design/pm-led/" class="js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20 transition hover:border-design/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300">
+			<p class="text-xs font-semibold uppercase tracking-wide text-design">PM-Led Team</p>
+			<h3 class="mt-3 text-lg font-semibold text-slate-100">Managed Creative Team</h3>
+			<p class="mt-3 text-sm leading-relaxed text-slate-400">
+			Product designer + marketing designer + PM — for SaaS teams that need design across product, demand gen, and brand simultaneously.
+			</p>
+			<p class="mt-4 text-sm font-semibold text-design">Custom pricing</p>
+			<p class="mt-3 text-xs font-semibold text-sky-300 group-hover:text-sky-200">Learn more &#8594;</p>
+		</a>
+		</div>
+		</div>
+	</section>
+
+	<!-- Pricing -->
+	<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="pricing-heading">
+		<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in max-w-2xl">
+		<h2 id="pricing-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+			Pricing Guidance
+		</h2>
+		<p class="mt-4 text-base leading-relaxed text-slate-400">
+			SaaS designers from <strong class="text-slate-100">$2,800–$6,000/month</strong> depending on specialization — vs. Superside at $15,000+/month or a US senior designer at $120,000+/year. Month-to-month, free replacement guarantee.
+		</p>
+		<a
+			href="/how-pricing-works/"
+			class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-sky-300 transition hover:text-sky-200/80 focus:outline-none focus-visible:underline"
+		>
+			See how pricing works <span aria-hidden="true">&rarr;</span>
+		</a>
+		</div>
+		</div>
+	</section>
+
+	<!-- FAQ -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="faq-heading">
+		<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in max-w-2xl">
+		<h2 id="faq-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+			Frequently Asked Questions
+		</h2>
+		</div>
+		<div class="mt-10 grid gap-3">
+		{faqs.map((item) => (
+		<details class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+			<summary class="cursor-pointer list-none text-sm font-semibold text-slate-100 [&::-webkit-details-marker]:hidden">
+			{item.q}
+			</summary>
+			<p class="mt-4 pt-4 text-sm leading-relaxed text-slate-400 border-t border-slate-800">{item.a}</p>
+		</details>
+		))}
+		</div>
+		</div>
+	</section>
+
+	<!-- CTA -->
+	<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="cta-heading">
+		<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-8 text-center shadow-xl sm:p-12">
+		<h2 id="cta-heading" class="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+			Ready to Accelerate Your SaaS Design Output?
+		</h2>
+		<p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slate-300">
+			Book a call to discuss your product stage, team structure, and design priorities.
+		</p>
+		<div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+		<a
+			href={bookingUrl}
+			{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+			class="inline-flex min-h-[48px] items-center justify-center rounded bg-sky-600 px-8 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+			data-book-call
+		>
+			Book a SaaS Design Call
+		</a>
+		<a
+			href="/#contact"
+			class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-slate-700 bg-slate-900/40 px-8 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+			data-open-tell-us="saas-design-cta"
+		>
+			Tell Us What You Need
+		</a>
+		</div>
+		<p class="mt-5 text-xs text-slate-400">Month-to-month · Free replacement guarantee · No long-term contracts</p>
+		</div>
+		</div>
+	</section>
+
+	<!-- Contact -->
+	<section id="contact" class="bg-slate-950 pb-20 pt-16 sm:pb-24 sm:pt-20" aria-labelledby="contact-heading">
+		<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in max-w-2xl">
+			<p class="text-sm font-semibold uppercase tracking-widest text-sky-300">Get in touch</p>
+			<h2 id="contact-heading" class="mt-3 text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+			Let's Talk SaaS Design Talent
+			</h2>
+			<p class="mt-4 text-base leading-relaxed text-slate-400">
+			Tell us your product stage, team size, and design priorities — we'll match you with vetted specialists.
+			</p>
+		</div>
+		<ContactHub subject="${brand} – SaaS design inquiry" defaultCategory="design" defaultMessage="We're a SaaS company looking for dedicated design talent." />
+		</div>
+	</section>
+
+	</main>
+
+	<style>
+	.js-fade-in {
+		opacity: 0;
+		transform: translateY(20px);
+		transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+	}
+	.js-fade-in.is-visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	</style>
+
+	<script is:inline>
+	(function () {
+		var els = document.querySelectorAll('.js-fade-in');
+		if (!els.length) return;
+		var io = new IntersectionObserver(function (entries) {
+		entries.forEach(function (e) {
+			if (e.isIntersecting) {
+			e.target.classList.add('is-visible');
+			io.unobserve(e.target);
+			}
+		});
+		}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+		els.forEach(function (el) { io.observe(el); });
+	})();
+	</script>
+</Layout>

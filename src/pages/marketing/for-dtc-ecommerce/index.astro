@@ -1,0 +1,339 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import MetaHead from '../../../components/MetaHead.astro';
+import ContactHub from '../../../components/ContactHub.astro';
+import { BOOKING_URL, isExternalUrl } from '../../../lib/cta';
+
+const brand = 'LatAm Scalers';
+
+const meta = {
+	title: 'Marketing Talent for DTC & E-commerce Brands – Klaviyo, Paid Media & Lifecycle Specialists | LatAm Scalers',
+	description:
+		'Dedicated LATAM marketing specialists for DTC and e-commerce brands. Klaviyo-certified lifecycle specialists, paid media managers, and analytics specialists. 5% churn reduction = 25–95% profit increase. From ~$2,500/mo.',
+};
+
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/marketing/for-dtc-ecommerce/', baseUrl).toString();
+
+const bookingUrl = BOOKING_URL;
+const bookingExternal = isExternalUrl(bookingUrl);
+
+const roles = [
+	{ title: 'Lifecycle Email Specialist', desc: 'Klaviyo flows, segmentation, campaigns, and A/B testing. The 20–30% of DTC revenue that lives in email — owned, not outsourced.', href: '/roles/lifecycle-email-specialist/' },
+	{ title: 'Marketing Ops Specialist', desc: 'Klaviyo + Shopify integration, attribution setup, and the data infrastructure that connects ad spend to LTV.', href: '/roles/marketing-ops-specialist/' },
+	{ title: 'Analytics Specialist', desc: 'Triple Whale / Northbeam, GA4, and MMM for DTC attribution as third-party cookies disappear. +27% pay premium.', href: '/roles/analytics-specialist/' },
+	{ title: 'Social Media Manager', desc: 'Organic social, UGC coordination, and community management across TikTok, Instagram, and Meta. 1,600/mo searches for this role.', href: '/roles/social-media-manager/' },
+	{ title: 'Growth Marketing Manager', desc: 'CAC optimization, retention economics, and cross-channel growth programs for DTC brands at the $10–50M revenue stage.', href: '/roles/growth-marketing-manager/' },
+];
+
+const useCases = [
+	{ label: 'Email driving <15% of revenue', desc: 'Well-run DTC brands generate 20–30% of revenue from email. A Klaviyo-certified lifecycle specialist builds the flows, segments, and campaigns that close that gap.' },
+	{ label: 'Retention economics', desc: 'A 5% improvement in customer retention increases profits by up to 95%. A lifecycle manager owns the full retention stack — onboarding, win-back, churn prevention, and LTV optimization.' },
+	{ label: 'Attribution blindness after iOS 14', desc: 'Third-party cookie deprecation is fragmenting DTC attribution. An analytics specialist implements Triple Whale, Northbeam, or MMM to restore visibility into what\'s actually working.' },
+	{ label: 'Paid media scaling', desc: 'A dedicated paid media specialist owns Meta and Google performance — not a shared agency account manager. Platform algorithm changes hit fast; you need someone who lives in your accounts daily.' },
+];
+
+const tools = [
+	{ name: 'Klaviyo', desc: 'Email, SMS, push, and CDP — the DTC lifecycle platform. 350+ integrations, Shopify-native.' },
+	{ name: 'Triple Whale / Northbeam', desc: 'DTC-specific attribution and analytics for multi-touch measurement.' },
+	{ name: 'Meta Ads', desc: 'Paid social performance management, creative testing, and ROAS optimization.' },
+	{ name: 'Google Ads', desc: 'Search, Shopping, and Performance Max for DTC acquisition.' },
+	{ name: 'Shopify', desc: 'E-commerce platform integration for lifecycle triggers, segmentation, and revenue tracking.' },
+	{ name: 'GA4', desc: 'Web analytics, conversion tracking, and audience building for DTC brand properties.' },
+];
+
+const faqs = [
+	{
+		q: 'Why is Klaviyo expertise so valuable for DTC brands?',
+		a: 'Klaviyo has become the standard DTC lifecycle platform — 350+ integrations, native Shopify connection, email + SMS + push + CDP in one platform. Klaviyo-certified specialists command a premium because they combine technical platform knowledge (flows, segmentation, deliverability) with retention economics expertise (LTV, churn, RFM modeling). Klaviyo expert keywords command $55–70 CPC, reflecting the scarcity.',
+	},
+	{
+		q: 'How much revenue impact can a lifecycle specialist have?',
+		a: 'For well-run DTC brands, email and SMS drive 20–30% of total revenue. If you\'re below that, you\'re leaving money on the table. Additionally, a 5% improvement in customer retention increases profits by 25–95% (Bain & Company research). A dedicated lifecycle specialist owns these levers as measurable business outcomes.',
+	},
+	{
+		q: 'What does a DTC analytics specialist do differently from a general analyst?',
+		a: 'DTC analytics specialists understand the specific attribution challenges of e-commerce — iOS 14 signal loss, cross-channel multi-touch attribution, post-purchase survey methodology, and tools like Triple Whale and Northbeam that are purpose-built for DTC. They build media mix models and incrementality tests that replace last-click attribution as the primary decision-making framework.',
+	},
+	{
+		q: 'Can one specialist cover both email and paid media?',
+		a: 'At the $10M-$50M revenue stage, you\'re better served by two dedicated specialists — one for lifecycle/email and one for paid media. The skill sets, platforms, and mental models are genuinely different. We help you sequence and prioritize based on where your biggest revenue opportunity is.',
+	},
+	{
+		q: 'What does pricing look like?',
+		a: 'DTC marketing specialists from ~$2,500–$3,500/month full-time. Klaviyo-certified lifecycle specialists and analytics specialists with Triple Whale/Northbeam experience at the higher end. All month-to-month with free replacement guarantee.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Marketing Talent for DTC & E-commerce Brands',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqs.map((f) => ({
+		'@type': 'Question',
+		name: f.q,
+		acceptedAnswer: { '@type': 'Answer', text: f.a },
+	})),
+};
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
+
+	<main>
+
+	<!-- Hero -->
+	<section class="relative overflow-hidden bg-slate-950 py-16 sm:py-24" aria-labelledby="hero-heading">
+		<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in">
+		<p class="text-sm font-semibold uppercase tracking-widest text-marketing">For DTC &amp; E-commerce</p>
+		<h1 id="hero-heading" class="mt-4 text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
+			Dedicated Marketing Specialists for DTC &amp; E-commerce Brands
+		</h1>
+		<p class="mt-5 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
+			A 5% improvement in customer retention increases profits by up to 95%. Klaviyo-certified lifecycle specialists, paid media managers, and analytics experts — dedicated to your brand, not shared across clients. From ~$2,500/mo.
+		</p>
+		<div class="mt-8 flex flex-wrap gap-3">
+		<a
+			href={bookingUrl}
+			{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+			class="inline-flex min-h-[48px] items-center justify-center rounded bg-sky-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+			data-book-call
+		>
+			Book a DTC Marketing Scoping Call
+		</a>
+		<a
+			href="/#contact"
+			class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-slate-700 bg-slate-900/40 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+			data-open-tell-us="dtc-marketing-hero"
+		>
+			Tell Us What You Need
+		</a>
+		</div>
+		</div>
+		</div>
+	</section>
+
+	<!-- Problem -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="problem-heading">
+		<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in max-w-2xl">
+		<h2 id="problem-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+			DTC Growth Stalls When Retention and Attribution Break
+		</h2>
+		<p class="mt-4 text-base leading-relaxed text-slate-400">
+			You've solved acquisition. Now you need lifecycle and measurement. Email underperforming. Attribution broken. Churn slowly killing profitability. These are solved by dedicated specialists, not agency reports.
+		</p>
+		</div>
+		<div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+		<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+			<p class="text-3xl font-semibold text-slate-100">20–30%</p>
+			<p class="mt-2 text-sm font-semibold text-slate-100">of DTC revenue from email</p>
+			<p class="mt-2 text-sm leading-relaxed text-slate-400">Well-run DTC brands. If you're below this, you have an optimization opportunity.</p>
+		</div>
+		<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+			<p class="text-3xl font-semibold text-slate-100">95%</p>
+			<p class="mt-2 text-sm font-semibold text-slate-100">profit increase</p>
+			<p class="mt-2 text-sm leading-relaxed text-slate-400">A 5% improvement in customer retention can increase profits by up to 95%.</p>
+		</div>
+		<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+			<p class="text-3xl font-semibold text-slate-100">+20% YoY</p>
+			<p class="mt-2 text-sm font-semibold text-slate-100">lifecycle demand</p>
+			<p class="mt-2 text-sm leading-relaxed text-slate-400">Lifecycle marketing demand growing +20% YoY across DTC — reflecting how much it drives profit.</p>
+		</div>
+		<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+			<p class="text-3xl font-semibold text-slate-100">90%</p>
+			<p class="mt-2 text-sm font-semibold text-slate-100">attribution broken</p>
+			<p class="mt-2 text-sm leading-relaxed text-slate-400">Third-party cookie deprecation is fragmenting attribution for 90% of DTC brands by 2026.</p>
+		</div>
+		</div>
+		</div>
+	</section>
+
+	<!-- Use Cases -->
+	<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="use-cases-heading">
+		<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in max-w-2xl">
+		<h2 id="use-cases-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+			How DTC Brands Use LatAm Scalers
+		</h2>
+		</div>
+		<div class="mt-10 grid gap-5 sm:grid-cols-2">
+		{useCases.map((uc) => (
+		<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+			<p class="text-xs font-semibold uppercase tracking-wide text-marketing">{uc.label}</p>
+			<p class="mt-3 text-sm leading-relaxed text-slate-400">{uc.desc}</p>
+		</div>
+		))}
+		</div>
+		</div>
+	</section>
+
+	<!-- Roles -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="roles-heading">
+		<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in max-w-2xl">
+		<h2 id="roles-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+			DTC Marketing Roles We Place
+		</h2>
+		</div>
+		<div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+		{roles.map((role) => (
+		<a
+			href={role.href}
+			class="js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20 transition hover:border-marketing/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+		>
+			<h3 class="text-sm font-semibold text-slate-100 group-hover:text-marketing">{role.title}</h3>
+			<p class="mt-2 text-sm leading-relaxed text-slate-400">{role.desc}</p>
+			<p class="mt-3 text-xs font-semibold text-sky-300 group-hover:text-sky-200">View role &#8594;</p>
+		</a>
+		))}
+		</div>
+		</div>
+	</section>
+
+	<!-- Tools -->
+	<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="tools-heading">
+		<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in max-w-2xl">
+		<h2 id="tools-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+			Tools Your DTC Specialist Will Use
+		</h2>
+		</div>
+		<div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+		{tools.map((tool) => (
+		<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+			<p class="text-sm font-semibold text-slate-100">{tool.name}</p>
+			<p class="mt-2 text-sm leading-relaxed text-slate-400">{tool.desc}</p>
+		</div>
+		))}
+		</div>
+		</div>
+	</section>
+
+	<!-- Pricing -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="pricing-heading">
+		<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in max-w-2xl">
+		<h2 id="pricing-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+			Pricing Guidance
+		</h2>
+		<p class="mt-4 text-base leading-relaxed text-slate-400">
+			DTC marketing specialists from <strong class="text-slate-100">~$2,500–$3,500/month</strong> full-time. Klaviyo-certified and analytics specialists at the higher end. All month-to-month with free replacement guarantee.
+		</p>
+		<a
+			href="/how-pricing-works/"
+			class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-sky-300 transition hover:text-sky-200/80 focus:outline-none focus-visible:underline"
+		>
+			See how pricing works <span aria-hidden="true">&rarr;</span>
+		</a>
+		</div>
+		</div>
+	</section>
+
+	<!-- FAQ -->
+	<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="faq-heading">
+		<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in max-w-2xl">
+		<h2 id="faq-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+			Frequently Asked Questions
+		</h2>
+		</div>
+		<div class="mt-10 grid gap-3">
+		{faqs.map((item) => (
+		<details class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+			<summary class="cursor-pointer list-none text-sm font-semibold text-slate-100 [&::-webkit-details-marker]:hidden">
+			{item.q}
+			</summary>
+			<p class="mt-4 pt-4 text-sm leading-relaxed text-slate-400 border-t border-slate-800">{item.a}</p>
+		</details>
+		))}
+		</div>
+		</div>
+	</section>
+
+	<!-- CTA -->
+	<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="cta-heading">
+		<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-8 text-center shadow-xl sm:p-12">
+		<h2 id="cta-heading" class="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+			Ready to Build Your DTC Retention Engine?
+		</h2>
+		<p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slate-300">
+			Book a call to discuss your revenue stage, current Klaviyo setup, and retention metrics.
+		</p>
+		<div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+		<a
+			href={bookingUrl}
+			{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+			class="inline-flex min-h-[48px] items-center justify-center rounded bg-sky-600 px-8 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+			data-book-call
+		>
+			Book a DTC Marketing Call
+		</a>
+		<a
+			href="/#contact"
+			class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-slate-700 bg-slate-900/40 px-8 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+			data-open-tell-us="dtc-marketing-cta"
+		>
+			Tell Us What You Need
+		</a>
+		</div>
+		<p class="mt-5 text-xs text-slate-400">Month-to-month · Free replacement guarantee · No long-term contracts</p>
+		</div>
+		</div>
+	</section>
+
+	<!-- Contact -->
+	<section id="contact" class="bg-slate-950 pb-20 pt-16 sm:pb-24 sm:pt-20" aria-labelledby="contact-heading">
+		<div class="mx-auto max-w-6xl px-6">
+		<div class="js-fade-in max-w-2xl">
+			<p class="text-sm font-semibold uppercase tracking-widest text-sky-300">Get in touch</p>
+			<h2 id="contact-heading" class="mt-3 text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+			Let's Talk DTC Marketing Talent
+			</h2>
+			<p class="mt-4 text-base leading-relaxed text-slate-400">
+			Tell us your revenue stage, current Klaviyo setup, and where retention/attribution is breaking — we'll match you with the right specialists.
+			</p>
+		</div>
+		<ContactHub subject="${brand} – DTC marketing inquiry" defaultCategory="marketing" defaultMessage="We're a DTC/e-commerce brand looking for dedicated marketing specialists." />
+		</div>
+	</section>
+
+	</main>
+
+	<style>
+	.js-fade-in {
+		opacity: 0;
+		transform: translateY(20px);
+		transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+	}
+	.js-fade-in.is-visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	</style>
+
+	<script is:inline>
+	(function () {
+		var els = document.querySelectorAll('.js-fade-in');
+		if (!els.length) return;
+		var io = new IntersectionObserver(function (entries) {
+		entries.forEach(function (e) {
+			if (e.isIntersecting) {
+			e.target.classList.add('is-visible');
+			io.unobserve(e.target);
+			}
+		});
+		}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+		els.forEach(function (el) { io.observe(el); });
+	})();
+	</script>
+</Layout>
