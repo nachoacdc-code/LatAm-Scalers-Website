@@ -9,7 +9,7 @@ const brand = 'LatAm Scalers';
 const meta = {
 	title: 'AEC Talent Solutions | Dedicated BIM, Revit, CAD Specialists | LatAm Scalers',
 	description:
-		'Dedicated AEC specialists for US architecture and engineering firms. BIM coordinators, Revit drafters, CAD technicians – vetted, US timezone-aligned, month-to-month flexibility.',
+		'Dedicated AEC specialists for US architecture and engineering firms — BIM coordinators, Revit modelers, MEP engineers, Civil 3D drafters. Pre-vetted, US-code fluent, timezone-aligned. Month-to-month flexibility.',
 };
 
 const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
@@ -40,24 +40,28 @@ const tools = [
 
 const faqs = [
 	{
-		q: 'How do remote AEC specialists adapt to our firm standards?',
-		a: 'We align on your BEP, templates, deliverable standards, and QA cadence during onboarding. Specialists work inside your workflow with redlines, markups, and checklists – all documents require review and stamping by your PE/RA.',
+		q: 'Can remote LATAM specialists understand US building codes?',
+		a: 'Yes. We screen for IBC, ASCE 7, and NFPA familiarity and code-specific project experience. Your specialist works within your code compliance framework, BEP standards, and QA cadence — with redlines, markups, and checklists.',
 	},
 	{
 		q: 'How quickly can we start?',
-		a: 'We typically present vetted AEC options in 48 hours. Once access and scope are confirmed, onboarding is designed to be fast so you can start production quickly.',
+		a: 'We present vetted candidates within 48 hours of understanding your requirements. Most specialists start in under one week.',
 	},
 	{
-		q: 'What tools and file formats do you support?',
-		a: 'We support Revit, AutoCAD, Navisworks, ACC, BIM 360, and common rendering tools. Specialists work in your preferred file formats and handoff standards.',
+		q: 'What software do your specialists use?',
+		a: 'Revit (MEP, Structure, Architecture), AutoCAD, Civil 3D, Navisworks, Bluebeam, ACC/BIM 360, Tekla, and more. We match to your exact tool stack and handoff standards.',
 	},
 	{
-		q: 'Are specialists licensed? Who stamps documents?',
-		a: 'Our specialists produce work under the direction of your licensed professionals. All documents require review and stamping by your PE/RA – we never provide stamps or assume sign-off responsibility.',
+		q: 'Can your specialists stamp or seal US documents?',
+		a: 'No. Stamping requires US state PE/RA licensure and stays with your licensed professional. Our specialists produce work under your direction — we provide the production capacity; you provide the oversight.',
 	},
 	{
-		q: 'What if the fit is not right?',
-		a: 'Engagements are month-to-month. We offer a free replacement guarantee to keep delivery moving if the fit isn\'t right.',
+		q: 'What if the specialist doesn\'t work out?',
+		a: 'Month-to-month engagements allow you to request a replacement anytime — no waiting period. For direct hire placements, we include a 90-day replacement guarantee at no extra cost.',
+	},
+	{
+		q: 'What does our licensed team retain vs. what does the specialist handle?',
+		a: 'Your licensed team retains design authority, code compliance, stamping, final QA, and client-facing project management. Your dedicated LATAM specialist handles production modeling, drafting, sheet development, BIM coordination, redline revisions, visualization, and clash detection — all within your BEP standards and under your licensed professional\'s direction.',
 	},
 ];
 
@@ -91,10 +95,10 @@ const faqJsonLd = {
 				<div class="js-fade-in">
 					<p class="text-sm font-semibold uppercase tracking-widest text-aec">AEC Talent Solutions</p>
 					<h1 id="aec-hero-heading" class="mt-4 text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
-						Accept More Projects Without Adding Overhead
+						Accept More Projects — Add AEC Capacity in Days, Not Months
 					</h1>
 					<p class="mt-5 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
-						Dedicated LATAM AEC specialists – BIM coordinators, Revit drafters, CAD technicians – pre-vetted, US-code fluent, timezone-aligned. Starting in under a week. Month-to-month flexibility.
+						Dedicated BIM coordinators, Revit modelers, MEP specialists, and Civil 3D drafters — pre-vetted, US-code fluent, timezone-aligned. Your next team member starts in under a week. 50–70% less than local hires.
 					</p>
 
 					<div class="mt-8 flex flex-wrap gap-3">
@@ -118,26 +122,15 @@ const faqJsonLd = {
 			</div>
 		</section>
 
-		<!-- SECTION 2 – AEC MICRO-CLARIFIER (bg-slate-950) -->
-		<section class="bg-slate-950 py-8 sm:py-10" aria-label="AEC clarification">
-			<div class="mx-auto max-w-6xl px-6">
-				<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 px-6 py-5 text-center sm:px-8 sm:py-6">
-					<p class="text-sm leading-relaxed text-white/90 sm:text-base">
-						Our specialists produce work under the direction of your licensed professionals. All documents require review and stamping by your PE/RA.
-					</p>
-				</div>
-			</div>
-		</section>
-
 		<!-- SECTION 3 – PROBLEM (bg-slate-950) -->
 		<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="aec-problem-heading">
 			<div class="mx-auto max-w-6xl px-6">
 				<div class="js-fade-in max-w-2xl">
 					<h2 id="aec-problem-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
-						The AEC Workforce Crisis Is Getting Worse
+						Record Demand, Historic Opportunity
 					</h2>
 					<p class="mt-4 text-base leading-relaxed text-slate-400">
-						Firms are turning down work they can't staff. Demand is growing; the local talent pipeline isn't keeping up.
+						AEC demand is surging and the capacity gap keeps growing. The firms that add production capacity now will capture the next decade of growth.
 					</p>
 				</div>
 
@@ -182,7 +175,7 @@ const faqJsonLd = {
 						Your Dedicated AEC Specialists
 					</h2>
 					<p class="mt-4 text-base leading-relaxed text-slate-400">
-						Dedicated AEC specialists integrated into your workflow. <strong class="text-slate-100">NOT</strong> a staffing agency. <strong class="text-slate-100">NOT</strong> a freelancer marketplace.
+						Your Dedicated Talent Partner for AEC production — specialists embedded in your workflow, your BEP, your tools. One dedicated specialist, fully integrated into your team.
 					</p>
 					<ul class="mt-6 grid gap-3 sm:grid-cols-2">
 						<li class="flex items-start gap-2 rounded-xl border border-slate-800 bg-slate-900/40 p-4 shadow-lg shadow-black/20">
@@ -297,7 +290,7 @@ const faqJsonLd = {
 						<p class="text-xs font-semibold uppercase tracking-wide text-aec">Individual Specialists</p>
 						<h3 class="mt-3 text-lg font-semibold text-slate-100">Dedicated AEC Talent</h3>
 						<p class="mt-3 text-sm leading-relaxed text-slate-400">
-							Full-time (40h/week) or part-time (20h/week) BIM coordinators, Revit drafters, CAD technicians – embedded into your team.
+							Dedicated full-time (40h) or part-time (20h) — BIM coordinators, Revit modelers, CAD drafters — embedded in your BEP, your tools, your standards.
 						</p>
 						<p class="mt-4 text-sm font-semibold text-aec">From ~$3,500/mo</p>
 						<p class="mt-3 text-xs font-semibold text-sky-300 group-hover:text-sky-200">Full details &#8594;</p>
@@ -381,53 +374,15 @@ const faqJsonLd = {
 			</div>
 		</section>
 
-		<!-- ROUTING SECTION D – TRUST & COMPLIANCE (bg-slate-900/40) -->
-		<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="aec-trust-heading">
-			<div class="mx-auto max-w-6xl px-6">
-				<div class="js-fade-in max-w-2xl">
-					<p class="text-sm font-semibold uppercase tracking-widest text-aec">Trust &amp; Compliance</p>
-					<h2 id="aec-trust-heading" class="mt-3 text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
-						Clear Responsibility, Zero Ambiguity
-					</h2>
-					<p class="mt-4 text-base leading-relaxed text-slate-400">
-						US code compliance and PE/RA stamping stay with your licensed professionals. Our specialists deliver the production capacity — under your direction, in your workflow.
-					</p>
-				</div>
-				<div class="mt-10 grid gap-4 sm:grid-cols-2">
-					<a
-						href="/aec/responsibility-matrix/"
-						class="js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20 transition hover:border-aec/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
-					>
-						<p class="text-xs font-semibold uppercase tracking-wide text-aec">Responsibility Matrix</p>
-						<h3 class="mt-3 text-lg font-semibold text-slate-100">What You Keep vs. What We Handle</h3>
-						<p class="mt-3 text-sm leading-relaxed text-slate-400">
-							Complete breakdown by discipline — MEP, Structural, Architectural — showing exactly what your PE/RA retains and what your LATAM specialist delivers.
-						</p>
-						<p class="mt-4 text-xs font-semibold text-sky-300 group-hover:text-sky-200">View the full matrix &#8594;</p>
-					</a>
-					<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
-						<p class="text-xs font-semibold uppercase tracking-wide text-aec">The Bottom Line</p>
-						<h3 class="mt-3 text-lg font-semibold text-slate-100">Same Workflow, More Capacity</h3>
-						<p class="mt-3 text-sm leading-relaxed text-slate-400">
-							60–70% of daily AEC production is location-agnostic under PE oversight. Your specialist integrates into your existing BEP, templates, QA checklists, and review cycles.
-						</p>
-						<p class="mt-4 text-sm text-slate-500">
-							All documents require review and stamping by your PE/RA.
-						</p>
-					</div>
-				</div>
-			</div>
-		</section>
-
 		<!-- SECTION 6 – ROLE SHOWCASE (bg-slate-950) -->
-		<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="aec-roles-heading">
+		<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="aec-roles-heading">
 			<div class="mx-auto max-w-6xl px-6">
 				<div class="js-fade-in max-w-2xl">
 					<h2 id="aec-roles-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
-						AEC Roles We Place
+						AEC Roles We Match
 					</h2>
 					<p class="mt-4 text-base leading-relaxed text-slate-400">
-						Browse role pages for details – or tell us what you need and we'll match accordingly.
+						Each role page covers tools, deliverables, and standards — or tell us your scope and we'll match you with the right specialist.
 					</p>
 				</div>
 
@@ -446,7 +401,7 @@ const faqJsonLd = {
 		</section>
 
 		<!-- SECTION 7 – TOOLS & DELIVERABLES (bg-slate-900/40) -->
-		<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="aec-tools-heading">
+		<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="aec-tools-heading">
 			<div class="mx-auto max-w-6xl px-6">
 				<div class="js-fade-in max-w-2xl">
 					<h2 id="aec-tools-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
@@ -468,49 +423,6 @@ const faqJsonLd = {
 			</div>
 		</section>
 
-		<!-- SECTION 8 – RESPONSIBILITY MATRIX (bg-slate-950) -->
-		<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="aec-matrix-heading">
-			<div class="mx-auto max-w-6xl px-6">
-				<div class="js-fade-in max-w-2xl">
-					<h2 id="aec-matrix-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
-						Your Licensed Team Retains vs. Your Dedicated LATAM Specialist Handles
-					</h2>
-					<p class="mt-4 text-base leading-relaxed text-slate-400">
-						Clear roles mean better trust and smoother delivery. This is how we operate.
-					</p>
-				</div>
-
-				<div class="js-fade-in mt-10 overflow-x-auto">
-					<table class="w-full min-w-[480px] rounded-2xl border border-slate-800 bg-slate-900/40 shadow-lg shadow-black/20 overflow-hidden">
-						<thead>
-							<tr class="border-b border-slate-800 bg-slate-900/40">
-								<th class="px-6 py-4 text-left text-sm font-semibold text-slate-100">Your Licensed Team Retains</th>
-								<th class="px-6 py-4 text-left text-sm font-semibold text-slate-100">Your Dedicated LATAM Specialist Handles</th>
-							</tr>
-						</thead>
-						<tbody class="text-sm">
-							<tr class="border-b border-slate-800">
-								<td class="px-6 py-4 text-slate-400">Design authority, sign-off, stamping</td>
-								<td class="px-6 py-4 text-slate-400">Production, modeling, drafting, coordination support</td>
-							</tr>
-							<tr class="border-b border-slate-800">
-								<td class="px-6 py-4 text-slate-400">BEP, templates, standards</td>
-								<td class="px-6 py-4 text-slate-400">Execution within your standards, QA to your checklist</td>
-							</tr>
-							<tr class="border-b border-slate-800">
-								<td class="px-6 py-4 text-slate-400">Redlines, markups, direction</td>
-								<td class="px-6 py-4 text-slate-400">Iterative updates, version control, handoff</td>
-							</tr>
-							<tr>
-								<td class="px-6 py-4 text-slate-400">Client communication, project management</td>
-								<td class="px-6 py-4 text-slate-400">Vetting, matching, onboarding, replacement guarantee</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</section>
-
 		<!-- SECTION 9 – WHY LATAM FOR AEC (bg-slate-900/40) -->
 		<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="aec-why-latam-heading">
 			<div class="mx-auto max-w-6xl px-6">
@@ -519,7 +431,7 @@ const faqJsonLd = {
 						Why LATAM for AEC
 					</h2>
 					<p class="mt-4 text-base leading-relaxed text-slate-400">
-						LATAM specialists deliver the quality and alignment US firms need – without the cost and hiring friction.
+						The LATAM nearshore model gives US firms the production capacity they need — with timezone overlap, English fluency, and 50–70% cost savings vs. local hires.
 					</p>
 				</div>
 
@@ -632,7 +544,7 @@ const faqJsonLd = {
 						Let's Talk About Your AEC Needs
 					</h2>
 					<p class="mt-4 text-base leading-relaxed text-slate-400">
-						Share your roles, tools, and timeline – we'll suggest the best engagement model and match you with vetted specialists.
+						Share your roles, tools, and timeline — we'll scope the right engagement and connect you with a vetted specialist who fits your workflow.
 					</p>
 				</div>
 

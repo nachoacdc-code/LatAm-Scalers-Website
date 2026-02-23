@@ -238,6 +238,7 @@ const bookingExternal = isExternalUrl(bookingUrl);
 				<div aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;pointer-events:none;">
 					<label for="t-website">Website</label>
 					<input id="t-website" name="website" tabindex="-1" autocomplete="off" />
+					<input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
 				</div>
 
 				<input type="hidden" name="_subject" value="" data-tell-us-subject />
@@ -292,12 +293,12 @@ const bookingExternal = isExternalUrl(bookingUrl);
 (function () {
   function getSourcePageLabel() {
     var path = (window.location.pathname || '/').replace(/\/$/, '') || '/';
-    var map = { '/': 'Homepage', '/aec': 'AEC hub', '/design': 'Design hub', '/marketing': 'Marketing hub', '/get-started': 'Get Started' };
+    var map = { '/': 'Homepage', '/aec': 'AEC', '/design': 'Design', '/marketing': 'Marketing', '/get-started': 'Get Started' };
     if (map[path]) return map[path];
-    if (path.startsWith('/aec/')) return 'AEC hub – ' + path.replace('/aec/', '').replace(/-/g, ' ');
-    if (path.startsWith('/design/')) return 'Design hub – ' + path.replace('/design/', '').replace(/-/g, ' ');
-    if (path.startsWith('/marketing/')) return 'Marketing hub – ' + path.replace('/marketing/', '').replace(/-/g, ' ');
-    if (path.startsWith('/roles/')) return 'Role page – ' + path.replace('/roles/', '').replace(/-/g, ' ');
+    if (path.startsWith('/aec/')) return 'AEC – ' + path.replace('/aec/', '').replace(/-/g, ' ');
+    if (path.startsWith('/design/')) return 'Design – ' + path.replace('/design/', '').replace(/-/g, ' ');
+    if (path.startsWith('/marketing/')) return 'Marketing – ' + path.replace('/marketing/', '').replace(/-/g, ' ');
+    if (path.startsWith('/roles/')) return 'Role – ' + path.replace('/roles/', '').replace(/-/g, ' ');
     return path || 'Unknown';
   }
 
@@ -494,6 +495,8 @@ const bookingExternal = isExternalUrl(bookingUrl);
     // Honeypot — silent discard
     var hp = form.querySelector('[name="website"]');
     if (hp && hp.value) { closeDialog(); return; }
+    var gotcha = form.querySelector('[name="_gotcha"]');
+    if (gotcha && gotcha.value) { closeDialog(); return; }
 
     if (!form.checkValidity()) {
       form.reportValidity();
@@ -511,9 +514,22 @@ const bookingExternal = isExternalUrl(bookingUrl);
 
     // reCAPTCHA v3 token
     try {
-      var siteKey = document.documentElement.dataset.recaptchaSiteKey || '';
-      if (siteKey && window.grecaptcha && recaptchaToken) {
-        var token = await window.grecaptcha.execute(siteKey, { action: 'tell_us_modal' });
+      var siteKey = (document.documentElement.dataset.recaptchaSiteKey || '').trim();
+      if (siteKey && recaptchaToken) {
+        var token = await new Promise(function (resolve, reject) {
+          var timer = setTimeout(function () { reject(new Error('reCAPTCHA timeout')); }, 6000);
+          function run() {
+            if (window.grecaptcha && window.grecaptcha.ready) {
+              window.grecaptcha.ready(function () {
+                clearTimeout(timer);
+                window.grecaptcha.execute(siteKey, { action: 'tell_us_modal' }).then(resolve, reject);
+              });
+            } else {
+              setTimeout(run, 150);
+            }
+          }
+          run();
+        });
         recaptchaToken.value = token;
       }
     } catch (_) {}
@@ -521,7 +537,7 @@ const bookingExternal = isExternalUrl(bookingUrl);
     try {
       var pageLabel = getSourcePageLabel();
       if (sourcePage) sourcePage.value = pageLabel;
-      if (subjectInput) subjectInput.value = 'New LatAm Scalers Lead from ' + pageLabel;
+      if (subjectInput) subjectInput.value = 'New LatAm Scalers Lead';
       if (submissionUrl) submissionUrl.value = window.location.href;
       try {
         var locRes = await Promise.race([
