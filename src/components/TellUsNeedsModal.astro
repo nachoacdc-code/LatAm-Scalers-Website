@@ -242,6 +242,8 @@ const bookingExternal = isExternalUrl(bookingUrl);
 
 				<input type="hidden" name="_subject" value="" data-tell-us-subject />
 				<input type="hidden" name="source_page" value="" data-tell-us-source-page />
+				<input type="hidden" name="submission_url" value="" data-tell-us-submission-url />
+				<input type="hidden" name="submission_location" value="" data-tell-us-submission-location />
 				<input type="hidden" name="page_url" value="" data-tell-us-page-url />
 				<input type="hidden" name="cta_source" value="" data-tell-us-cta-source />
 				<input type="hidden" name="cta_role" value="" data-tell-us-cta-role />
@@ -314,6 +316,8 @@ const bookingExternal = isExternalUrl(bookingUrl);
   var pageUrl     = dialog.querySelector('[data-tell-us-page-url]');
   var sourcePage  = dialog.querySelector('[data-tell-us-source-page]');
   var subjectInput = dialog.querySelector('[data-tell-us-subject]');
+  var submissionUrl = dialog.querySelector('[data-tell-us-submission-url]');
+  var submissionLocation = dialog.querySelector('[data-tell-us-submission-location]');
   var ctaSource   = dialog.querySelector('[data-tell-us-cta-source]');
   var ctaRole     = dialog.querySelector('[data-tell-us-cta-role]');
   var emailInput  = dialog.querySelector('[data-work-email-modal]');
@@ -348,9 +352,10 @@ const bookingExternal = isExternalUrl(bookingUrl);
     setStatus('', 'info');
     if (submitBtn) submitBtn.removeAttribute('disabled');
     var pageLabel = getSourcePageLabel();
-    if (pageUrl)     pageUrl.value     = window.location.href;
-    if (sourcePage)  sourcePage.value = pageLabel;
-    if (subjectInput) subjectInput.value = 'New LatAm Scalers Lead from ' + pageLabel;
+    if (pageUrl)        pageUrl.value        = window.location.href;
+    if (submissionUrl)  submissionUrl.value  = window.location.href;
+    if (sourcePage)     sourcePage.value     = pageLabel;
+    if (subjectInput)   subjectInput.value   = 'New LatAm Scalers Lead from ' + pageLabel;
     if (ctaSource)   ctaSource.value   = sourceLabel || '';
     if (ctaRole)     ctaRole.value     = roleLabel   || '';
     // Pre-select category if provided
@@ -517,6 +522,12 @@ const bookingExternal = isExternalUrl(bookingUrl);
       var pageLabel = getSourcePageLabel();
       if (sourcePage) sourcePage.value = pageLabel;
       if (subjectInput) subjectInput.value = 'New LatAm Scalers Lead from ' + pageLabel;
+      if (submissionUrl) submissionUrl.value = window.location.href;
+      var locPromise = fetch('https://ipapi.co/json/').then(function (r) { return r.json(); })
+        .then(function (d) { return (d && d.city && d.country_name) ? d.city + ', ' + d.country_name : (d && d.country_name) ? d.country_name : ''; })
+        .catch(function () { return ''; });
+      var loc = await Promise.race([locPromise, new Promise(function (res) { setTimeout(function () { res(''); }, 2500); })]);
+      if (submissionLocation && loc) submissionLocation.value = loc;
       var fd = new FormData(form);
       var res = await fetch(action, {
         method: 'POST',

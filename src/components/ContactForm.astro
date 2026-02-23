@@ -96,13 +96,17 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
 				class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
 				id={`${formId}-website-url`}
 				name="company_website"
-				type="url"
+				type="text"
 				inputmode="url"
 				autocomplete="url"
-				placeholder="https://yourcompany.com"
+				placeholder="yourcompany.com"
 				required
 				aria-required="true"
+				data-company-website
 			/>
+			<p class="mt-1 hidden text-xs text-rose-400" data-website-error aria-live="polite">
+				Please enter a valid website (e.g. yourcompany.com)
+			</p>
 		</div>
 
 		<div class="sm:col-span-1">
@@ -273,6 +277,8 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
 
 	<input type="hidden" name="_subject" value="" data-subject />
 	<input type="hidden" name="source_page" value="" data-source-page />
+	<input type="hidden" name="submission_url" value="" data-submission-url />
+	<input type="hidden" name="submission_location" value="" data-submission-location />
 	{redirectTo ? <input type="hidden" name="_redirect" value={redirectTo} /> : null}
 	{role ? <input type="hidden" name="role" value={role} /> : null}
 	<input type="hidden" name="g-recaptcha-response" data-recaptcha-token />
@@ -332,14 +338,34 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
     return path || 'Unknown';
   }
 
+  function normalizeCompanyWebsite(input) {
+    var s = (input || '').trim().toLowerCase();
+    if (!s) return '';
+    s = s.replace(/^(https?:\/\/)?(www\.)?/, '');
+    s = s.replace(/\/.*$/, '');
+    if (!s) return '';
+    return 'https://' + s;
+  }
+
+  function isValidDomain(input) {
+    var s = (input || '').trim();
+    if (!s || s.length < 4) return false;
+    var domain = s.replace(/^(https?:\/\/)?(www\.)?/, '').split('/')[0].split('?')[0];
+    return /^[a-z0-9][a-z0-9.-]*\.[a-z]{2,}$/i.test(domain) && domain.indexOf('..') === -1;
+  }
+
   document.querySelectorAll('[data-contact-form]').forEach(function (form) {
     var emailInput = form.querySelector('[data-work-email]');
     var emailError = form.querySelector('[data-email-error]');
+    var websiteInput = form.querySelector('[data-company-website]');
+    var websiteError = form.querySelector('[data-website-error]');
     var submitBtn  = form.querySelector('[data-submit-btn]');
     var formNote   = form.querySelector('[data-form-note]');
     var recaptchaToken = form.querySelector('[data-recaptcha-token]');
     var sourcePageInput = form.querySelector('[data-source-page]');
     var subjectInput = form.querySelector('[data-subject]');
+    var submissionUrlInput = form.querySelector('[data-submission-url]');
+    var submissionLocationInput = form.querySelector('[data-submission-location]');
     var hiringCheckbox = form.querySelector('[name="is_hiring_company"]');
 
     if (hiringCheckbox) {
@@ -366,12 +392,31 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
       });
     }
 
+    if (websiteInput && websiteError) {
+      websiteInput.addEventListener('blur', function () {
+        if (websiteInput.value.trim() && !isValidDomain(websiteInput.value)) {
+          websiteError.classList.remove('hidden');
+          websiteInput.setAttribute('aria-invalid', 'true');
+        } else {
+          websiteError.classList.add('hidden');
+          websiteInput.removeAttribute('aria-invalid');
+        }
+      });
+    }
+
     form.addEventListener('submit', async function (e) {
       e.preventDefault();
 
       if (emailInput && isFreeDomain(emailInput.value)) {
         emailError && emailError.classList.remove('hidden');
         emailInput.focus();
+        return;
+      }
+
+      if (websiteInput && !isValidDomain(websiteInput.value)) {
+        websiteError && websiteError.classList.remove('hidden');
+        websiteInput.setAttribute('aria-invalid', 'true');
+        websiteInput.focus();
         return;
       }
 
@@ -392,6 +437,20 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
       if (submitBtn) submitBtn.setAttribute('disabled', 'disabled');
       if (formNote) formNote.textContent = 'Sending…';
 
+      if (websiteInput) {
+        var normalized = normalizeCompanyWebsite(websiteInput.value);
+        websiteInput.value = normalized;
+      }
+
+      var locationPromise = fetch('https://ipapi.co/json/')
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          if (d && d.city && d.country_name) return d.city + ', ' + d.country_name;
+          if (d && d.country_name) return d.country_name;
+          return '';
+        })
+        .catch(function () { return ''; });
+
       try {
         var siteKey = document.documentElement.dataset.recaptchaSiteKey || '';
         if (siteKey && window.grecaptcha && recaptchaToken) {
@@ -404,6 +463,9 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
         var pageLabel = getSourcePageLabel();
         if (sourcePageInput) sourcePageInput.value = pageLabel;
         if (subjectInput) subjectInput.value = 'New LatAm Scalers Lead from ' + (pageLabel || form.dataset.fallbackSubject || 'website');
+        if (submissionUrlInput) submissionUrlInput.value = window.location.href;
+        var loc = await Promise.race([locationPromise, new Promise(function (res) { setTimeout(function () { res(''); }, 2500); })]);
+        if (submissionLocationInput && loc) submissionLocationInput.value = loc;
         var fd = new FormData(form);
         if (!fd.get('category')) fd.set('category', 'not-specified');
         if (!fd.get('timeline')) fd.set('timeline', 'flexible');
