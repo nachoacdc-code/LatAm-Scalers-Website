@@ -31,16 +31,20 @@ const roles = [
 ];
 
 const tools = [
-	{ name: 'Figma', desc: 'UI design, prototyping, and design systems – industry standard for product and web design.' },
-	{ name: 'Adobe CC', desc: 'Photoshop, Illustrator, InDesign for marketing creative, brand assets, and print.' },
-	{ name: 'After Effects', desc: 'Motion graphics, video post-production, and animated content for digital and social.' },
-	{ name: 'Webflow', desc: 'No-code web design and development for marketing sites and landing pages.' },
+	{ name: 'Figma', desc: 'UI design, prototyping, and design systems — industry standard for product and web design.' },
+	{ name: 'Adobe Creative Cloud', desc: 'Photoshop, Illustrator, InDesign, and XD for marketing creative, brand assets, print, and UI.' },
+	{ name: 'After Effects & Lottie', desc: 'Motion graphics, animated content, micro-interactions, and video post-production.' },
+	{ name: 'Webflow & Framer', desc: 'No-code web design and development for marketing sites, landing pages, and interactive prototypes.' },
+	{ name: 'PowerPoint, Google Slides & Keynote', desc: 'Pitch decks, investor presentations, sales enablement, and client-facing deliverables.' },
+	{ name: 'Canva', desc: 'Rapid social media assets, templates, and brand-consistent marketing materials at scale.' },
+	{ name: 'Sketch', desc: 'UI and interface design — common in teams with established Sketch-based design systems.' },
+	{ name: 'Miro & FigJam', desc: 'Collaborative whiteboarding, workshops, user journey mapping, and design thinking sessions.' },
 ];
 
 const faqs = [
 	{
-		q: 'How is this different from other design subscriptions?',
-		a: 'Our Managed Creative Teams are a subscription — a simple monthly retainer with no long-term commitment. The difference is what you get: the same dedicated designers assigned exclusively to your brand, complementary multi-skill teams, one PM as your single point of contact, and flexible engagement options you can scale or pause anytime. No rotating queues, no credit packs, no annual lock-ins.',
+		q: 'How are your Managed Creative Teams different from other design subscriptions?',
+		a: 'Our Managed Creative Teams are a subscription — a simple monthly retainer with no long-term commitment. The difference is what you get: the same dedicated designers assigned exclusively to your brand, complementary multi-skill teams, one PM as your single point of contact, and flexible engagement options you can scale or pause anytime. No rotating queues, no credit packs, no annual lock-ins. And if you\'d rather bring a dedicated designer directly into your team — full-time, part-time, or hourly — without the management layer, we do that too.',
 	},
 	{
 		q: 'Can we start with one designer and scale to a team?',
@@ -169,6 +173,49 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com
 			</div>
 		</section>
 
+		<!-- ROUTING SECTION B – CHOOSE YOUR MODEL (bg-slate-900/40) -->
+		<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="engagement-heading">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="max-w-2xl">
+					<p class="text-sm font-semibold uppercase tracking-widest text-design">How to Engage</p>
+					<h2 id="engagement-heading" class="mt-3 text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+						Choose Your Model
+					</h2>
+					<p class="mt-4 text-base leading-relaxed text-slate-400">
+						Embedded dedicated designer or PM-led managed team – both with month-to-month flexibility and a free replacement guarantee.
+					</p>
+				</div>
+				<div class="mt-10 grid gap-6 md:grid-cols-2">
+					<a
+						href="/design/managed-creative-teams/"
+						class="group relative rounded-2xl border border-sky-500/30 bg-gradient-to-br from-slate-900/80 to-slate-950 p-6 shadow-lg shadow-sky-900/10 transition hover:border-sky-400/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+					>
+						<span class="absolute -top-3 left-5 rounded-full bg-sky-600 px-3 py-0.5 text-[0.65rem] font-bold uppercase tracking-wider text-white">Most Popular</span>
+						<p class="text-xs font-semibold uppercase tracking-wide text-sky-300">Managed Creative Teams</p>
+						<h3 class="mt-3 text-lg font-semibold text-slate-100">Managed Creative Teams</h3>
+						<p class="mt-3 text-sm leading-relaxed text-slate-400">
+							A dedicated PM manages intake, prioritization, and delivery. Multiple designers, clear workflow, predictable turnaround — less coordination on your side.
+						</p>
+						<p class="mt-4 text-sm font-semibold text-sky-300">From $2,800/mo</p>
+						<p class="mt-3 text-xs font-semibold text-sky-300 group-hover:text-sky-200">Full details &#8594;</p>
+					</a>
+					<a
+						href="/design/dedicated/"
+						class="group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20 transition hover:border-design/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+					>
+						<p class="text-xs font-semibold uppercase tracking-wide text-design">Dedicated Designer Seat</p>
+						<h3 class="mt-3 text-lg font-semibold text-slate-100">Dedicated Individual Designers</h3>
+						<p class="mt-3 text-sm leading-relaxed text-slate-400">
+							One designer embedded in your team, working exclusively on your brand. Best for ongoing product, marketing, or brand work with tight collaboration.
+						</p>
+						<p class="mt-4 text-sm font-semibold text-design">From ~$2,800/mo</p>
+						<p class="mt-3 text-xs font-semibold text-sky-300 group-hover:text-sky-200">Full details &#8594;</p>
+					</a>
+				</div>
+				<p class="mt-6 text-sm text-slate-500">Also available: pre-paid hourly blocks (40&#8211;160+ hrs) and direct hire. <a href="/get-started/" class="text-sky-400 transition hover:text-sky-300">Get in touch &#8594;</a></p>
+			</div>
+		</section>
+
 		<!-- ROUTING SECTION A – DESIGN SERVICES BY NEED (bg-slate-950) -->
 		<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="design-services-heading">
 			<div class="mx-auto max-w-6xl px-6">
@@ -231,48 +278,6 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com
 			</div>
 		</section>
 
-		<!-- ROUTING SECTION B – CHOOSE YOUR MODEL (bg-slate-900/40) -->
-		<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="engagement-heading">
-			<div class="mx-auto max-w-6xl px-6">
-				<div class="max-w-2xl">
-					<p class="text-sm font-semibold uppercase tracking-widest text-design">How to Engage</p>
-					<h2 id="engagement-heading" class="mt-3 text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
-						Choose Your Model
-					</h2>
-					<p class="mt-4 text-base leading-relaxed text-slate-400">
-						Embedded dedicated designer or PM-led managed team – both with month-to-month flexibility and a free replacement guarantee.
-					</p>
-				</div>
-				<div class="mt-10 grid gap-6 md:grid-cols-2">
-					<a
-						href="/design/managed-creative-teams/"
-						class="group relative rounded-2xl border border-sky-500/30 bg-gradient-to-br from-slate-900/80 to-slate-950 p-6 shadow-lg shadow-sky-900/10 transition hover:border-sky-400/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
-					>
-						<span class="absolute -top-3 left-5 rounded-full bg-sky-600 px-3 py-0.5 text-[0.65rem] font-bold uppercase tracking-wider text-white">Most Popular</span>
-						<p class="text-xs font-semibold uppercase tracking-wide text-sky-300">Managed Creative Teams</p>
-						<h3 class="mt-3 text-lg font-semibold text-slate-100">Managed Creative Teams</h3>
-						<p class="mt-3 text-sm leading-relaxed text-slate-400">
-							A dedicated PM manages intake, prioritization, and delivery. Multiple designers, clear workflow, predictable turnaround — less coordination on your side.
-						</p>
-						<p class="mt-4 text-sm font-semibold text-sky-300">From $2,800/mo</p>
-						<p class="mt-3 text-xs font-semibold text-sky-300 group-hover:text-sky-200">Full details &#8594;</p>
-					</a>
-					<a
-						href="/design/dedicated/"
-						class="group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20 transition hover:border-design/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
-					>
-						<p class="text-xs font-semibold uppercase tracking-wide text-design">Dedicated Designer Seat</p>
-						<h3 class="mt-3 text-lg font-semibold text-slate-100">Dedicated Individual Designers</h3>
-						<p class="mt-3 text-sm leading-relaxed text-slate-400">
-							One designer embedded in your team, working exclusively on your brand. Best for ongoing product, marketing, or brand work with tight collaboration.
-						</p>
-						<p class="mt-4 text-sm font-semibold text-design">From ~$2,800/mo</p>
-						<p class="mt-3 text-xs font-semibold text-sky-300 group-hover:text-sky-200">Full details &#8594;</p>
-					</a>
-				</div>
-				<p class="mt-6 text-sm text-slate-500">Also available: pre-paid hourly blocks (40&#8211;160+ hrs) and direct hire placement. <a href="/get-started/" class="text-sky-400 transition hover:text-sky-300">Get in touch &#8594;</a></p>
-			</div>
-		</section>
 		<!-- ROUTING SECTION C - BUILT FOR YOUR BUSINESS (bg-slate-900/40) -->
 		<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="design-icp-heading">
 			<div class="mx-auto max-w-6xl px-6">
@@ -331,6 +336,24 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com
 					<p class="mt-3 text-sm leading-relaxed text-slate-400">Presentation and brand designers for pitch decks, investor materials, and client deliverables.</p>
 					<p class="mt-4 text-xs font-semibold text-sky-300 group-hover:text-sky-200">Explore &#8594;</p>
 				</a>
+				<a
+					href="/design/for-franchise-teams/"
+					class="js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20 transition hover:border-design/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+				>
+					<p class="text-xs font-semibold uppercase tracking-wide text-design">Franchises</p>
+					<h3 class="mt-3 text-lg font-semibold text-slate-100">Franchise &amp; Multi-Location Teams</h3>
+					<p class="mt-3 text-sm leading-relaxed text-slate-400">Brand-consistent creative across locations — templates, local adaptations, and campaign production at scale.</p>
+					<p class="mt-4 text-xs font-semibold text-sky-300 group-hover:text-sky-200">Explore &#8594;</p>
+				</a>
+				<a
+					href="/design/for-retail-chains/"
+					class="js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20 transition hover:border-design/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+				>
+					<p class="text-xs font-semibold uppercase tracking-wide text-design">Retail</p>
+					<h3 class="mt-3 text-lg font-semibold text-slate-100">Retail &amp; Product Brands</h3>
+					<p class="mt-3 text-sm leading-relaxed text-slate-400">High-volume campaign production, seasonal creative, and packaging design for retail and product brands.</p>
+					<p class="mt-4 text-xs font-semibold text-sky-300 group-hover:text-sky-200">Explore &#8594;</p>
+				</a>
 			</div>
 			</div>
 		</section>
@@ -365,9 +388,9 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com
 					Tools & Deliverables
 				</h2>
 				<p class="mt-4 max-w-2xl text-base leading-relaxed text-slate-400">
-					Our designers work in the tools you use – Figma, Adobe CC, After Effects, Webflow, and more.
+					Our designers work in your tools — we match on stack proficiency during scoping so there's zero ramp-up friction.
 				</p>
-				<div class="mt-10 grid gap-6 sm:grid-cols-2">
+				<div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
 					{tools.map((t) => (
 						<div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
 							<h3 class="text-lg font-semibold text-design">{t.name}</h3>
@@ -385,14 +408,40 @@ const calendlyUrl = import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com
 					Pricing
 				</h2>
 				<p class="mt-4 max-w-2xl text-base leading-relaxed text-slate-400">
-					Managed Creative Teams from <strong class="text-slate-100">$2,800/mo</strong>. Dedicated individual designers in the same range. 50–70% savings vs. traditional alternatives — transparent monthly seats, no credit packs, no hidden fees.
+					Transparent monthly seats — 50–70% savings vs. traditional alternatives. No credit packs, no hidden fees, no long-term lock-ins.
 				</p>
-				<a
-					href="/how-pricing-works/"
-					class="mt-6 inline-flex items-center text-sm font-semibold text-sky-300 transition hover:text-sky-200/80"
-				>
-					How pricing works →
-				</a>
+				<div class="mt-10 grid gap-6 md:grid-cols-2">
+					<div class="relative rounded-2xl border border-sky-500/30 bg-gradient-to-br from-slate-900/80 to-slate-950 p-6 shadow-lg shadow-sky-900/10">
+						<span class="absolute -top-3 left-5 rounded-full bg-sky-600 px-3 py-0.5 text-[0.65rem] font-bold uppercase tracking-wider text-white">Most Popular</span>
+						<p class="text-sm font-semibold uppercase tracking-wide text-sky-300">Managed Creative Teams</p>
+						<p class="mt-4 text-3xl font-bold text-white">From $2,800<span class="text-lg font-medium text-slate-400">/mo</span></p>
+						<ul class="mt-5 space-y-2.5">
+							<li class="flex items-start gap-2 text-sm text-slate-300"><span class="mt-0.5 text-sky-400">&#10003;</span> Dedicated PM + designer(s)</li>
+							<li class="flex items-start gap-2 text-sm text-slate-300"><span class="mt-0.5 text-sky-400">&#10003;</span> Multi-skill team composition</li>
+							<li class="flex items-start gap-2 text-sm text-slate-300"><span class="mt-0.5 text-sky-400">&#10003;</span> Intake, prioritization &amp; QC included</li>
+							<li class="flex items-start gap-2 text-sm text-slate-300"><span class="mt-0.5 text-sky-400">&#10003;</span> Month-to-month, scale anytime</li>
+							<li class="flex items-start gap-2 text-sm text-slate-300"><span class="mt-0.5 text-sky-400">&#10003;</span> Free replacement guarantee</li>
+						</ul>
+						<a href="/design/managed-creative-teams/" class="mt-6 inline-flex w-full items-center justify-center rounded bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300">
+							Learn more &#8594;
+						</a>
+					</div>
+					<div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+						<p class="text-sm font-semibold uppercase tracking-wide text-design">Dedicated Designers</p>
+						<p class="mt-4 text-3xl font-bold text-white">From ~$2,800<span class="text-lg font-medium text-slate-400">/mo</span></p>
+						<ul class="mt-5 space-y-2.5">
+							<li class="flex items-start gap-2 text-sm text-slate-300"><span class="mt-0.5 text-design">&#10003;</span> One designer, your brand only</li>
+							<li class="flex items-start gap-2 text-sm text-slate-300"><span class="mt-0.5 text-design">&#10003;</span> Full-time, part-time, or hourly</li>
+							<li class="flex items-start gap-2 text-sm text-slate-300"><span class="mt-0.5 text-design">&#10003;</span> Embedded in your team &amp; tools</li>
+							<li class="flex items-start gap-2 text-sm text-slate-300"><span class="mt-0.5 text-design">&#10003;</span> Month-to-month, scale anytime</li>
+							<li class="flex items-start gap-2 text-sm text-slate-300"><span class="mt-0.5 text-design">&#10003;</span> Free replacement guarantee</li>
+						</ul>
+						<a href="/design/dedicated/" class="mt-6 inline-flex w-full items-center justify-center rounded-xl border border-slate-700 bg-slate-900/60 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300">
+							Learn more &#8594;
+						</a>
+					</div>
+				</div>
+				<p class="mt-6 text-center text-sm text-slate-500">Also available: pre-paid hourly blocks and direct hire. <a href="/how-pricing-works/" class="text-sky-400 transition hover:text-sky-300">See how pricing works &#8594;</a></p>
 			</div>
 		</section>
 
