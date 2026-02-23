@@ -11,11 +11,12 @@ export function isCalendlyUrl(url: string) {
 	return /calendly\.com/i.test(url);
 }
 
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xzdakggg';
+
 export function getFormspreeAction() {
 	const raw = import.meta.env.PUBLIC_FORMSPREE_ACTION ?? '';
-	if (!raw) return '';
-	if (raw.includes('yourFormId')) return '';
-	return raw;
+	if (raw && !raw.includes('yourFormId')) return raw;
+	return FORMSPREE_ENDPOINT;
 }
 
 export type CTAContext = 'aec' | 'design' | 'marketing' | 'role' | 'general';

@@ -10,10 +10,11 @@ export type Props = {
 	defaultMessage?: string;
 };
 
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xzdakggg';
 const action =
 	Astro.props.action ??
 	import.meta.env.PUBLIC_FORMSPREE_ACTION ??
-	'';
+	FORMSPREE_ENDPOINT;
 
 const redirectTo = Astro.props.redirectTo ?? '';
 const subject = Astro.props.subject ?? 'LatAm Scalers — new inquiry';
@@ -351,7 +352,7 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
     var s = (input || '').trim();
     if (!s || s.length < 4) return false;
     var domain = s.replace(/^(https?:\/\/)?(www\.)?/, '').split('/')[0].split('?')[0];
-    return /^[a-z0-9][a-z0-9.-]*\.[a-z]{2,}$/i.test(domain) && domain.indexOf('..') === -1;
+    return domain.length >= 4 && domain.indexOf('.') > 0 && /^[a-z0-9][a-z0-9.-]*\.[a-z0-9][a-z0-9.-]+$/i.test(domain);
   }
 
   document.querySelectorAll('[data-contact-form]').forEach(function (form) {
@@ -437,39 +438,40 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
       if (submitBtn) submitBtn.setAttribute('disabled', 'disabled');
       if (formNote) formNote.textContent = 'Sending…';
 
-      if (websiteInput) {
-        var normalized = normalizeCompanyWebsite(websiteInput.value);
-        websiteInput.value = normalized;
-      }
-
-      var locationPromise = fetch('https://ipapi.co/json/')
-        .then(function (r) { return r.json(); })
-        .then(function (d) {
-          if (d && d.city && d.country_name) return d.city + ', ' + d.country_name;
-          if (d && d.country_name) return d.country_name;
-          return '';
-        })
-        .catch(function () { return ''; });
-
       try {
-        var siteKey = document.documentElement.dataset.recaptchaSiteKey || '';
-        if (siteKey && window.grecaptcha && recaptchaToken) {
-          var token = await window.grecaptcha.execute(siteKey, { action: 'contact_form' });
-          recaptchaToken.value = token;
+        if (websiteInput) {
+          var normalized = normalizeCompanyWebsite(websiteInput.value);
+          websiteInput.value = normalized;
         }
-      } catch (_) {}
 
-      try {
         var pageLabel = getSourcePageLabel();
         if (sourcePageInput) sourcePageInput.value = pageLabel;
         if (subjectInput) subjectInput.value = 'New LatAm Scalers Lead from ' + (pageLabel || form.dataset.fallbackSubject || 'website');
         if (submissionUrlInput) submissionUrlInput.value = window.location.href;
-        var loc = await Promise.race([locationPromise, new Promise(function (res) { setTimeout(function () { res(''); }, 2500); })]);
-        if (submissionLocationInput && loc) submissionLocationInput.value = loc;
+
+        try {
+          var locRes = await Promise.race([
+            fetch('https://ipapi.co/json/').then(function (r) { return r.json(); }).catch(function () { return null; }),
+            new Promise(function (r) { setTimeout(function () { r(null); }, 1500); })
+          ]);
+          if (locRes && locRes.city && locRes.country_name && submissionLocationInput) {
+            submissionLocationInput.value = locRes.city + ', ' + locRes.country_name;
+          }
+        } catch (_) {}
+
+        try {
+          var siteKey = document.documentElement.dataset.recaptchaSiteKey || '';
+          if (siteKey && window.grecaptcha && recaptchaToken) {
+            var token = await window.grecaptcha.execute(siteKey, { action: 'contact_form' });
+            recaptchaToken.value = token;
+          }
+        } catch (_) {}
+
         var fd = new FormData(form);
         if (!fd.get('category')) fd.set('category', 'not-specified');
         if (!fd.get('timeline')) fd.set('timeline', 'flexible');
         if (!fd.get('budget_range')) fd.set('budget_range', 'not-specified');
+
         var res = await fetch(action, {
           method: 'POST',
           body: fd,
@@ -488,9 +490,9 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
             formNote.style.color = 'rgb(252 165 165)';
           }
         }
-      } catch (_) {
+      } catch (err) {
         if (formNote) {
-          formNote.textContent = 'Network error — please try again.';
+          formNote.textContent = 'Something went wrong. Please try again or book a call.';
           formNote.style.color = 'rgb(252 165 165)';
         }
       } finally {
