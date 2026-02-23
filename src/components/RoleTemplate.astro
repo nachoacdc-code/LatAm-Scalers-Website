@@ -1,4 +1,4 @@
----
+﻿---
 import ContactHub from './ContactHub.astro';
 import { BOOKING_URL, isExternalUrl } from '../lib/cta';
 
@@ -124,7 +124,7 @@ const defaultInterest = category === 'aec' ? 'aec' : category === 'design' ? 'de
 			<ul class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
 				{skills.map((skill) => (
 					<li class="js-fade-in flex items-start gap-2 rounded-xl border border-slate-800 bg-slate-900/40 p-4">
-						<span class={`shrink-0 font-bold ${categoryColors[category]}`} aria-hidden="true">âœ“</span>
+						<span class={`shrink-0 font-bold ${categoryColors[category]}`} aria-hidden="true">&#x2713;</span>
 						<span class="text-sm text-slate-300">{skill}</span>
 					</li>
 				))}
@@ -224,7 +224,7 @@ const defaultInterest = category === 'aec' ? 'aec' : category === 'design' ? 'de
 		<ul class="mt-8 grid gap-3 sm:grid-cols-2">
 			{deliverables.map((d) => (
 				<li class="js-fade-in flex items-start gap-3 rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3">
-					<span class={`mt-0.5 shrink-0 text-sm font-bold ${categoryColors[category]}`} aria-hidden="true">âœ“</span>
+					<span class={`mt-0.5 shrink-0 text-sm font-bold ${categoryColors[category]}`} aria-hidden="true">&#x2713;</span>
 					<span class="text-sm text-slate-300">{d}</span>
 				</li>
 			))}
