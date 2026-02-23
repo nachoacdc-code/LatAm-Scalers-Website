@@ -533,10 +533,12 @@ const bookingExternal = isExternalUrl(bookingUrl);
         }
       } catch (_) {}
       var fd = new FormData(form);
+      if (!fd.get('g-recaptcha-response')) fd.delete('g-recaptcha-response');
       var res = await fetch(action, {
         method: 'POST',
         body: fd,
         headers: { Accept: 'application/json' },
+        referrerPolicy: 'strict-origin-when-cross-origin',
       });
       if (res.ok) {
         setStatus('Thanks — we received your details and will reply within 48 hours.', 'success');
