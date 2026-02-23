@@ -1,0 +1,133 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import MetaHead from '../../../components/MetaHead.astro';
+import RoleTemplate from '../../../components/RoleTemplate.astro';
+
+const brand = 'LatAm Scalers';
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/roles/web-designer/', baseUrl).toString();
+
+const meta = {
+	title: 'Hire a Dedicated Web Designer — Pre-Vetted LATAM Talent for US Teams | LatAm Scalers',
+	description:
+		'Hire a dedicated web designer for US companies. Website design, landing pages, responsive layouts, and design-to-code handoff using Figma, Webflow, and Framer. Pre-vetted LATAM talent. From ~$2,800/mo.',
+};
+
+const faq = [
+	{
+		question: 'What does a dedicated Web Designer produce?',
+		answer:
+			'A dedicated Web Designer creates website layouts, landing pages, responsive page templates, and marketing site designs. They work in Figma for design and prototyping, and many also build directly in Webflow or Framer — delivering production-ready pages without requiring a separate developer for marketing sites.',
+	},
+	{
+		question: 'Can they build in Webflow or Framer, or just design in Figma?',
+		answer:
+			'Many of our Web Designers are hybrid design-build specialists who work natively in Webflow, Framer, or both. During the scoping call, we confirm whether you need design-only (Figma handoff to your dev team) or design-and-build (the designer publishes directly in your CMS). We match accordingly.',
+	},
+	{
+		question: 'How is this different from a UI/UX Designer?',
+		answer:
+			'A Web Designer focuses on marketing websites, landing pages, and content-driven pages — optimizing for visual impact, conversion, and brand consistency. A UI/UX Designer focuses on product interfaces, user flows, and interaction design for SaaS or app experiences. Some designers span both, but we match based on your primary need.',
+	},
+	{
+		question: 'Can they maintain and update an existing site?',
+		answer:
+			'Yes. Dedicated Web Designers handle ongoing site maintenance: new page creation, layout updates, A/B test variants, blog templates, and CMS content structuring. Having the same designer on your site every week means consistent quality and faster turnaround as they learn your system.',
+	},
+	{
+		question: 'What does pricing look like?',
+		answer:
+			'Dedicated Web Designers start at approximately $2,800/month for full-time (40h/week). Part-time options are available. Pricing depends on the skill profile required (design-only vs. design-and-build), platform expertise (Webflow, Framer, WordPress), and seniority level.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Web Designer',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faq.map((f) => ({
+		'@type': 'Question',
+		name: f.question,
+		acceptedAnswer: { '@type': 'Answer', text: f.answer },
+	})),
+};
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
+
+	<RoleTemplate
+		role="Web Designer"
+		category="design"
+		hubHref="/design/"
+		hubLabel="Design Talent Hub"
+		h1="Hire a Dedicated Web Designer — Pre-Vetted LATAM Talent for US Teams"
+		subheadline="Dedicated web designers for marketing sites, landing pages, and responsive layouts. Figma design, Webflow/Framer build, or both. Same designer on your site every week. Month-to-month."
+		atAGlance={[
+			{ label: 'Category', value: 'Design' },
+			{ label: 'Tools', value: 'Figma, Webflow, Framer, WordPress' },
+			{ label: 'Pricing', value: 'From ~$2,800/mo' },
+			{ label: 'Availability', value: 'FT (40h) or PT (20h)' },
+		]}
+		overview="Your dedicated Web Designer owns your website's visual execution — from new page designs to ongoing layout updates and landing page production. Unlike freelancers or agencies billing per project, a dedicated designer learns your brand system, CMS structure, and conversion patterns deeply, producing faster and more consistent work over time. Many of our Web Designers are hybrid design-build specialists who deliver production-ready pages directly in Webflow or Framer."
+		skills={[
+			'Website page design and responsive layouts',
+			'Landing page design and conversion optimization',
+			'Webflow development and CMS configuration',
+			'Framer design and interactive prototyping',
+			'Figma design systems and component libraries',
+			'Design-to-development handoff and spec documentation',
+			'A/B test variant design for marketing pages',
+			'Blog and content page template creation',
+			'Mobile-first responsive design',
+			'Brand consistency across web properties',
+		]}
+		whyRemote="Web design is digital-native and output-driven — making it ideal for dedicated remote work. Your Web Designer delivers page designs, Webflow builds, or Figma handoffs during your business hours, with revision cycles that fit within a single working day. LATAM timezone overlap (0–3 hours behind EST/CST) means real-time collaboration on feedback and iteration."
+		engagementOptions={[
+			{
+				title: 'Dedicated Individual Web Designer',
+				description:
+					'Full-time (40h/week) or part-time (20h/week) Web Designer dedicated to your marketing site and web properties. Learns your brand, CMS, and conversion goals for consistent, high-quality output.',
+				pricing: 'From ~$2,800/mo',
+			},
+			{
+				title: 'PM-Led Managed Creative Team',
+				description:
+					'For teams needing web design alongside brand, social, or motion work: a PM-coordinated team with web design as a core capability. All working exclusively on your brand.',
+				pricing: 'From ~$2,800/mo (Starter tier)',
+			},
+		]}
+		tools={[
+			{ name: 'Figma', description: 'Website design, prototyping, responsive layouts, and design system components.' },
+			{ name: 'Webflow', description: 'No-code website building, CMS configuration, responsive development, and publishing.' },
+			{ name: 'Framer', description: 'Interactive website design and build with animations, transitions, and CMS integration.' },
+			{ name: 'WordPress', description: 'Theme customization, page building, and CMS management for WordPress-based sites.' },
+			{ name: 'Adobe Photoshop', description: 'Image optimization, hero graphics, and visual asset production for web.' },
+			{ name: 'Google Analytics / Hotjar', description: 'Performance analysis and user behavior insights to inform design decisions.' },
+		]}
+		deliverables={[
+			'Website page designs (homepage, product, about, pricing, etc.)',
+			'Landing page designs optimized for conversion',
+			'Webflow or Framer production-ready builds',
+			'Responsive layouts across desktop, tablet, and mobile',
+			'Blog and content page templates',
+			'A/B test variant pages for marketing experiments',
+			'Figma design files with developer handoff specs',
+			'CMS content structure and template configuration',
+		]}
+		pricing="Dedicated Web Designers start at approximately $2,800/month for full-time (40h/week). Part-time (20h/week) arrangements are available. For teams needing web design as part of a broader creative output, our PM-Led Managed Creative Teams start from the same price point with additional capacity."
+		relatedRoles={[
+			{ title: 'UI/UX Designer', href: '/roles/ui-ux-designer/', category: 'design' },
+			{ title: 'Brand & Visual Designer', href: '/roles/brand-visual-designer/', category: 'design' },
+			{ title: 'Managed Creative Teams', href: '/design/managed-creative-teams/', category: 'design' },
+		]}
+		faq={faq}
+	/>
+</Layout>

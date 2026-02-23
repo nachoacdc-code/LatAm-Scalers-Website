@@ -1,0 +1,133 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import MetaHead from '../../../components/MetaHead.astro';
+import RoleTemplate from '../../../components/RoleTemplate.astro';
+
+const brand = 'LatAm Scalers';
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/roles/construction-admin-support/', baseUrl).toString();
+
+const meta = {
+	title: 'Hire Dedicated Construction Admin Support — Pre-Vetted LATAM Talent for US AEC Firms | LatAm Scalers',
+	description:
+		'Hire dedicated construction administration support for US architecture and engineering firms. RFIs, submittals, document control, project coordination, and closeout documentation. Pre-vetted LATAM talent. From ~$2,500/mo.',
+};
+
+const faq = [
+	{
+		question: 'What does Construction Admin Support handle?',
+		answer:
+			'Construction Admin Support manages the documentation and coordination workflows that keep projects moving after design: processing RFIs, logging and tracking submittals, maintaining document control systems, coordinating field observation reports, managing punch lists, and organizing closeout documentation. They work in your project management platform under your project manager or architect of record\'s direction.',
+	},
+	{
+		question: 'Is this a project management role or an administrative role?',
+		answer:
+			'It\'s a documentation and coordination role. Your Construction Admin Support specialist doesn\'t make design or construction decisions — they keep the document flow organized so your PMs, architects, and engineers can focus on decisions rather than paperwork. Think of it as your project\'s operations backbone.',
+	},
+	{
+		question: 'What platforms do they work in?',
+		answer:
+			'Our Construction Admin Support specialists are proficient in Procore, Autodesk Construction Cloud (ACC/BIM 360), PlanGrid, Bluebeam, and standard office tools. We match platform experience to your specific tech stack during the scoping call.',
+	},
+	{
+		question: 'Can they handle multiple projects simultaneously?',
+		answer:
+			'Yes. Experienced Construction Admin specialists routinely manage documentation workflows across 3–5 concurrent projects, depending on project size and CA activity volume. For firms with very high project counts, we can configure a dedicated CA pod.',
+	},
+	{
+		question: 'What is the cost savings vs. a US-based Construction Admin coordinator?',
+		answer:
+			'US-based Construction Admin coordinators typically cost $55,000–$80,000/year fully loaded. LATAM-based equivalents through LatAm Scalers start at approximately $2,500/month ($30,000/year) — a savings of 50–70% while maintaining the same documentation rigor and responsiveness.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Construction Admin Support',
+	description: meta.description,
+	provider: { '@type': 'Organization', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faq.map((f) => ({
+		'@type': 'Question',
+		name: f.question,
+		acceptedAnswer: { '@type': 'Answer', text: f.answer },
+	})),
+};
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
+
+	<RoleTemplate
+		role="Construction Admin Support"
+		category="aec"
+		hubHref="/aec/"
+		hubLabel="AEC Talent Hub"
+		h1="Hire Dedicated Construction Admin Support — Pre-Vetted LATAM Talent"
+		subheadline="Dedicated construction administration specialists for US architecture and engineering firms. RFIs, submittals, document control, punch lists, and closeout packages. US timezone. Vetted. Month-to-month."
+		atAGlance={[
+			{ label: 'Category', value: 'AEC — Construction Administration' },
+			{ label: 'Tools', value: 'Procore, ACC/BIM 360, PlanGrid, Bluebeam' },
+			{ label: 'Pricing', value: 'From ~$2,500/mo' },
+			{ label: 'Availability', value: 'FT (40h) or PT (20h)' },
+		]}
+		overview="Your dedicated Construction Admin Support specialist keeps project documentation organized and flowing — so your architects, engineers, and PMs can focus on decisions instead of paperwork. They process RFIs, track submittals, maintain document control logs, coordinate field observation reports, and compile closeout packages. Working in your project management platform during your business hours, they integrate directly into your CA workflow at 50%+ lower cost than a US-based hire."
+		skills={[
+			'RFI processing, tracking, and response coordination',
+			'Submittal logging, review routing, and status tracking',
+			'Document control and version management',
+			'Field observation report coordination and distribution',
+			'Punch list creation, tracking, and closeout',
+			'Project correspondence management and filing',
+			'Meeting minutes and action item tracking',
+			'Closeout documentation and O&M manual compilation',
+			'Change order documentation support',
+			'Drawing distribution and revision log maintenance',
+		]}
+		whyRemote="Construction administration is documentation-intensive and platform-based — making it ideal for dedicated remote work. Your CA specialist works in Procore, ACC, or your firm\'s project management system during your US business hours, processing RFIs, submittals, and coordination items in real time. LATAM timezone overlap (0&ndash;3 hours behind EST/CST) ensures same-day responsiveness on time-sensitive items."
+		engagementOptions={[
+			{
+				title: 'Dedicated Individual CA Specialist',
+				description:
+					'Full-time (40h/week) or part-time (20h/week) Construction Admin specialist embedded in your team. Manages documentation workflows across your active projects in your project management platform.',
+				pricing: 'From ~$2,500/mo',
+			},
+			{
+				title: 'Construction Admin Pod',
+				description:
+					'Two or more CA specialists for firms with high project volume or large-scale projects requiring dedicated documentation support across multiple project managers.',
+				pricing: 'Custom — based on team size and project count',
+			},
+		]}
+		tools={[
+			{ name: 'Procore', description: 'Project management, RFI/submittal tracking, document control, and field coordination.' },
+			{ name: 'Autodesk Construction Cloud (ACC)', description: 'Cloud-based document management, design review, and project coordination.' },
+			{ name: 'BIM 360', description: 'Legacy Autodesk platform for document management, model coordination, and field data.' },
+			{ name: 'PlanGrid', description: 'Field-focused document management, punch lists, and drawing version control.' },
+			{ name: 'Bluebeam Revu', description: 'PDF markup, document comparison, and construction drawing review.' },
+			{ name: 'Microsoft Office / Google Workspace', description: 'Correspondence, spreadsheets, meeting minutes, and documentation templates.' },
+		]}
+		deliverables={[
+			'RFI logs with status tracking and response summaries',
+			'Submittal logs with review routing and approval status',
+			'Document control registers and distribution records',
+			'Field observation report summaries and coordination logs',
+			'Punch list tracking sheets with completion status',
+			'Meeting minutes with action items and deadlines',
+			'Closeout documentation packages and O&M manual assembly',
+			'Change order documentation and correspondence files',
+		]}
+		pricing="Dedicated Construction Admin Support starts at approximately $2,500/month for full-time engagement (40h/week). Part-time (20h/week) and multi-specialist pod configurations are also available. Pricing varies based on project count, platform complexity, and CA activity volume."
+		relatedRoles={[
+			{ title: 'BIM Coordinator', href: '/roles/bim-coordinator/', category: 'aec' },
+			{ title: 'Architectural Designer', href: '/roles/architectural-designer/', category: 'aec' },
+			{ title: 'CAD Technician', href: '/roles/cad-technician/', category: 'aec' },
+		]}
+		faq={faq}
+	/>
+</Layout>
