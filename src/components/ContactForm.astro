@@ -32,6 +32,7 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
 	aria-label="Contact form"
 	novalidate
 	data-contact-form
+	data-fallback-subject={subject}
 >
 	<p class="mb-5 text-xs text-slate-500">
 		All fields marked <span class="text-rose-400">*</span> are required.
@@ -270,7 +271,8 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
 		<input id={`${formId}-website`} name="website" tabindex="-1" autocomplete="off" />
 	</div>
 
-	<input type="hidden" name="_subject" value={subject} />
+	<input type="hidden" name="_subject" value="" data-subject />
+	<input type="hidden" name="source_page" value="" data-source-page />
 	{redirectTo ? <input type="hidden" name="_redirect" value={redirectTo} /> : null}
 	{role ? <input type="hidden" name="role" value={role} /> : null}
 	<input type="hidden" name="g-recaptcha-response" data-recaptcha-token />
@@ -309,12 +311,43 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
     'ymail.com','mail.com','zoho.com','inbox.com','gmx.com',
   ]);
 
+  function getSourcePageLabel() {
+    var path = (window.location.pathname || '/').replace(/\/$/, '') || '/';
+    var map = {
+      '/': 'Homepage',
+      '/aec': 'AEC hub',
+      '/design': 'Design hub',
+      '/marketing': 'Marketing hub',
+      '/get-started': 'Get Started',
+      '/how-it-works': 'How it works',
+      '/how-pricing-works': 'Pricing',
+      '/about/how-we-vet': 'About – How we vet',
+      '/about/our-guarantee': 'About – Guarantee',
+    };
+    if (map[path]) return map[path];
+    if (path.startsWith('/aec/')) return 'AEC hub – ' + path.replace('/aec/', '').replace(/-/g, ' ');
+    if (path.startsWith('/design/')) return 'Design hub – ' + path.replace('/design/', '').replace(/-/g, ' ');
+    if (path.startsWith('/marketing/')) return 'Marketing hub – ' + path.replace('/marketing/', '').replace(/-/g, ' ');
+    if (path.startsWith('/roles/')) return 'Role page – ' + path.replace('/roles/', '').replace(/-/g, ' ');
+    return path || 'Unknown';
+  }
+
   document.querySelectorAll('[data-contact-form]').forEach(function (form) {
     var emailInput = form.querySelector('[data-work-email]');
     var emailError = form.querySelector('[data-email-error]');
     var submitBtn  = form.querySelector('[data-submit-btn]');
     var formNote   = form.querySelector('[data-form-note]');
     var recaptchaToken = form.querySelector('[data-recaptcha-token]');
+    var sourcePageInput = form.querySelector('[data-source-page]');
+    var subjectInput = form.querySelector('[data-subject]');
+    var hiringCheckbox = form.querySelector('[name="is_hiring_company"]');
+
+    if (hiringCheckbox) {
+      hiringCheckbox.setCustomValidity('Please confirm you\'re a company looking to hire LATAM talent.');
+      hiringCheckbox.addEventListener('change', function () {
+        hiringCheckbox.setCustomValidity(hiringCheckbox.checked ? '' : 'Please confirm you\'re a company looking to hire LATAM talent.');
+      });
+    }
 
     function isFreeDomain(email) {
       var parts = (email || '').split('@');
@@ -368,7 +401,13 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
       } catch (_) {}
 
       try {
+        var pageLabel = getSourcePageLabel();
+        if (sourcePageInput) sourcePageInput.value = pageLabel;
+        if (subjectInput) subjectInput.value = 'New LatAm Scalers Lead from ' + (pageLabel || form.dataset.fallbackSubject || 'website');
         var fd = new FormData(form);
+        if (!fd.get('category')) fd.set('category', 'not-specified');
+        if (!fd.get('timeline')) fd.set('timeline', 'flexible');
+        if (!fd.get('budget_range')) fd.set('budget_range', 'not-specified');
         var res = await fetch(action, {
           method: 'POST',
           body: fd,

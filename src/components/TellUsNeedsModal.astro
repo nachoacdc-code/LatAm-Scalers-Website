@@ -240,7 +240,8 @@ const bookingExternal = isExternalUrl(bookingUrl);
 					<input id="t-website" name="website" tabindex="-1" autocomplete="off" />
 				</div>
 
-				<input type="hidden" name="_subject" value={subject} />
+				<input type="hidden" name="_subject" value="" data-tell-us-subject />
+				<input type="hidden" name="source_page" value="" data-tell-us-source-page />
 				<input type="hidden" name="page_url" value="" data-tell-us-page-url />
 				<input type="hidden" name="cta_source" value="" data-tell-us-cta-source />
 				<input type="hidden" name="cta_role" value="" data-tell-us-cta-role />
@@ -287,6 +288,17 @@ const bookingExternal = isExternalUrl(bookingUrl);
 
 <script is:inline>
 (function () {
+  function getSourcePageLabel() {
+    var path = (window.location.pathname || '/').replace(/\/$/, '') || '/';
+    var map = { '/': 'Homepage', '/aec': 'AEC hub', '/design': 'Design hub', '/marketing': 'Marketing hub', '/get-started': 'Get Started' };
+    if (map[path]) return map[path];
+    if (path.startsWith('/aec/')) return 'AEC hub – ' + path.replace('/aec/', '').replace(/-/g, ' ');
+    if (path.startsWith('/design/')) return 'Design hub – ' + path.replace('/design/', '').replace(/-/g, ' ');
+    if (path.startsWith('/marketing/')) return 'Marketing hub – ' + path.replace('/marketing/', '').replace(/-/g, ' ');
+    if (path.startsWith('/roles/')) return 'Role page – ' + path.replace('/roles/', '').replace(/-/g, ' ');
+    return path || 'Unknown';
+  }
+
   var FREE_DOMAINS = new Set([
     'gmail.com','yahoo.com','hotmail.com','outlook.com','live.com',
     'icloud.com','me.com','aol.com','msn.com','protonmail.com',
@@ -300,12 +312,22 @@ const bookingExternal = isExternalUrl(bookingUrl);
   var status      = dialog.querySelector('[data-tell-us-status]');
   var submitBtn   = dialog.querySelector('[data-tell-us-submit]');
   var pageUrl     = dialog.querySelector('[data-tell-us-page-url]');
+  var sourcePage  = dialog.querySelector('[data-tell-us-source-page]');
+  var subjectInput = dialog.querySelector('[data-tell-us-subject]');
   var ctaSource   = dialog.querySelector('[data-tell-us-cta-source]');
   var ctaRole     = dialog.querySelector('[data-tell-us-cta-role]');
   var emailInput  = dialog.querySelector('[data-work-email-modal]');
   var emailError  = dialog.querySelector('[data-modal-email-error]');
   var categorySel = dialog.querySelector('[data-tell-us-category]');
   var recaptchaToken = dialog.querySelector('[data-recaptcha-token-modal]');
+  var hiringCheckbox = dialog.querySelector('[name="is_us_company"]');
+
+  if (hiringCheckbox) {
+    hiringCheckbox.setCustomValidity('Please confirm you\'re a company looking to hire LATAM talent.');
+    hiringCheckbox.addEventListener('change', function () {
+      hiringCheckbox.setCustomValidity(hiringCheckbox.checked ? '' : 'Please confirm you\'re a company looking to hire LATAM talent.');
+    });
+  }
 
   function isFreeDomain(email) {
     var parts = (email || '').split('@');
@@ -325,9 +347,12 @@ const bookingExternal = isExternalUrl(bookingUrl);
   function openDialog(sourceLabel, roleLabel, category) {
     setStatus('', 'info');
     if (submitBtn) submitBtn.removeAttribute('disabled');
-    if (pageUrl)   pageUrl.value   = window.location.href;
-    if (ctaSource) ctaSource.value = sourceLabel || '';
-    if (ctaRole)   ctaRole.value   = roleLabel   || '';
+    var pageLabel = getSourcePageLabel();
+    if (pageUrl)     pageUrl.value     = window.location.href;
+    if (sourcePage)  sourcePage.value = pageLabel;
+    if (subjectInput) subjectInput.value = 'New LatAm Scalers Lead from ' + pageLabel;
+    if (ctaSource)   ctaSource.value   = sourceLabel || '';
+    if (ctaRole)     ctaRole.value     = roleLabel   || '';
     // Pre-select category if provided
     if (categorySel && category) {
       for (var i = 0; i < categorySel.options.length; i++) {
@@ -489,6 +514,9 @@ const bookingExternal = isExternalUrl(bookingUrl);
     } catch (_) {}
 
     try {
+      var pageLabel = getSourcePageLabel();
+      if (sourcePage) sourcePage.value = pageLabel;
+      if (subjectInput) subjectInput.value = 'New LatAm Scalers Lead from ' + pageLabel;
       var fd = new FormData(form);
       var res = await fetch(action, {
         method: 'POST',
