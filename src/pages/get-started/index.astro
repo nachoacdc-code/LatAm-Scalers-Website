@@ -32,6 +32,29 @@ const trustPoints = [
 	{ stat: '∞', label: 'Free replacement guarantee – no limits', link: null },
 ];
 
+const faqs = [
+	{
+		q: 'How do you vet your specialists?',
+		a: 'Every specialist goes through a 5-stage process: resume and portfolio review, technical skills assessment, English communication evaluation, soft-skills and culture-fit interview, and a live work-sample exercise. Fewer than 3% of applicants are accepted.',
+	},
+	{
+		q: 'What if the specialist isn\'t a good fit?',
+		a: 'We offer a free replacement guarantee with no limits. Because our engagements are month-to-month, you can request a replacement at any time — no lock-in contracts, no waiting periods.',
+	},
+	{
+		q: 'How much does it cost?',
+		a: 'Dedicated monthly engagements start at roughly $2,500/mo for marketing specialists, $2,800/mo for PM-led design teams, and $3,500/mo for AEC specialists. There are no placement fees, no hidden costs, and no long-term commitments.',
+	},
+	{
+		q: 'How quickly can I have someone working?',
+		a: 'We typically present a vetted shortlist within 48 hours and most placements start within one week. If you need someone faster, book a scoping call so we can prioritize your request.',
+	},
+	{
+		q: 'Are these employees or independent contractors?',
+		a: 'All specialists are pre-vetted LATAM independent contractors engaged through back-to-back service agreements. LatAm Scalers is not a staffing agency or employer of record — you direct the work while we handle vetting, contracts, and ongoing support.',
+	},
+];
+
 const webPageJsonLd = {
 	'@context': 'https://schema.org',
 	'@type': 'WebPage',
@@ -40,10 +63,20 @@ const webPageJsonLd = {
 	url: canonical,
 	isPartOf: { '@type': 'WebSite', name: brand, url: baseUrl },
 };
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqs.map((f) => ({
+		'@type': 'Question',
+		name: f.q,
+		acceptedAnswer: { '@type': 'Answer', text: f.a },
+	})),
+};
 ---
 
 <Layout>
-	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[webPageJsonLd]} />
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[webPageJsonLd, faqJsonLd]} />
 
 	<main>
 
@@ -164,6 +197,36 @@ const webPageJsonLd = {
 					<a href="#contact-heading" class="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-slate-700 px-6 py-2.5 text-sm font-semibold text-slate-300 transition hover:border-sky-500 hover:text-white" data-scroll-to-calendly>
 						Book a scoping call
 					</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- FAQ -->
+		<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="faq-heading">
+			<div class="mx-auto max-w-3xl px-6">
+				<div class="js-fade-in text-center">
+					<h2 id="faq-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+						Common Questions
+					</h2>
+					<p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slate-400">
+						Quick answers to what hiring managers ask most before getting started.
+					</p>
+				</div>
+
+				<div class="mt-10 space-y-3">
+					{faqs.map((faq) => (
+						<details class="js-fade-in group rounded-2xl border border-slate-800 bg-slate-950/40 shadow-lg shadow-black/20">
+							<summary class="flex cursor-pointer items-center justify-between gap-4 px-6 py-5 text-sm font-semibold text-slate-100 transition hover:text-white [&::-webkit-details-marker]:hidden">
+								<span>{faq.q}</span>
+								<svg class="h-4 w-4 shrink-0 text-slate-500 transition-transform group-open:rotate-45" viewBox="0 0 16 16" fill="currentColor">
+									<path d="M8 1a1 1 0 0 1 1 1v5h5a1 1 0 1 1 0 2H9v5a1 1 0 1 1-2 0V9H2a1 1 0 0 1 0-2h5V2a1 1 0 0 1 1-1z"/>
+								</svg>
+							</summary>
+							<div class="px-6 pb-5 text-sm leading-relaxed text-slate-400">
+								{faq.a}
+							</div>
+						</details>
+					))}
 				</div>
 			</div>
 		</section>
