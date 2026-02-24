@@ -343,6 +343,53 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
 
 <script is:inline>
 (function () {
+  // Lazy reCAPTCHA loader — injects script on first form interaction, not at page load
+  function ensureRecaptcha() {
+    if (window.__recaptchaLoading) return window.__recaptchaLoading;
+    var siteKey = (document.documentElement.dataset.recaptchaSiteKey || '').trim();
+    if (!siteKey) return Promise.resolve();
+    ['https://www.google.com','https://www.gstatic.com'].forEach(function (origin) {
+      if (!document.querySelector('link[rel="preconnect"][href="' + origin + '"]')) {
+        var l = document.createElement('link');
+        l.rel = 'preconnect';
+        l.href = origin;
+        l.crossOrigin = 'anonymous';
+        document.head.appendChild(l);
+      }
+    });
+    window.__recaptchaLoading = new Promise(function (resolve) {
+      if (window.grecaptcha) { resolve(); return; }
+      var s = document.createElement('script');
+      s.src = 'https://www.google.com/recaptcha/api.js?render=' + siteKey;
+      s.async = true;
+      s.onload = function () { resolve(); };
+      s.onerror = function () { resolve(); };
+      document.head.appendChild(s);
+    });
+    return window.__recaptchaLoading;
+  }
+
+  // Trigger lazy load on first form interaction
+  var contactForms = document.querySelectorAll('[data-contact-form]');
+  var recaptchaTriggered = false;
+  function triggerRecaptcha() {
+    if (recaptchaTriggered) return;
+    recaptchaTriggered = true;
+    ensureRecaptcha();
+  }
+  contactForms.forEach(function (f) {
+    f.addEventListener('focusin', triggerRecaptcha, { once: true });
+  });
+
+  // Also trigger when contact section enters viewport (500px ahead)
+  var contactSection = document.getElementById('contact');
+  if (contactSection && 'IntersectionObserver' in window) {
+    var rcObs = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) { rcObs.disconnect(); triggerRecaptcha(); }
+    }, { rootMargin: '500px' });
+    rcObs.observe(contactSection);
+  }
+
   // Progressive disclosure: toggle optional fields
   document.querySelectorAll('[data-toggle-optional]').forEach(function (btn) {
     btn.addEventListener('click', function () {

@@ -291,6 +291,32 @@ const bookingExternal = isExternalUrl(bookingUrl);
 
 <script is:inline>
 (function () {
+  // Lazy reCAPTCHA loader — shared with ContactForm, only injects script once
+  function ensureRecaptcha() {
+    if (window.__recaptchaLoading) return window.__recaptchaLoading;
+    var siteKey = (document.documentElement.dataset.recaptchaSiteKey || '').trim();
+    if (!siteKey) return Promise.resolve();
+    ['https://www.google.com','https://www.gstatic.com'].forEach(function (origin) {
+      if (!document.querySelector('link[rel="preconnect"][href="' + origin + '"]')) {
+        var l = document.createElement('link');
+        l.rel = 'preconnect';
+        l.href = origin;
+        l.crossOrigin = 'anonymous';
+        document.head.appendChild(l);
+      }
+    });
+    window.__recaptchaLoading = new Promise(function (resolve) {
+      if (window.grecaptcha) { resolve(); return; }
+      var s = document.createElement('script');
+      s.src = 'https://www.google.com/recaptcha/api.js?render=' + siteKey;
+      s.async = true;
+      s.onload = function () { resolve(); };
+      s.onerror = function () { resolve(); };
+      document.head.appendChild(s);
+    });
+    return window.__recaptchaLoading;
+  }
+
   function getSourcePageLabel() {
     var path = (window.location.pathname || '/').replace(/\/$/, '') || '/';
     var map = { '/': 'Homepage', '/aec': 'AEC', '/design': 'Design', '/marketing': 'Marketing', '/get-started': 'Get Started' };
@@ -350,6 +376,7 @@ const bookingExternal = isExternalUrl(bookingUrl);
   }
 
   function openDialog(sourceLabel, roleLabel, category) {
+    ensureRecaptcha();
     setStatus('', 'info');
     if (submitBtn) submitBtn.removeAttribute('disabled');
     var pageLabel = getSourcePageLabel();
