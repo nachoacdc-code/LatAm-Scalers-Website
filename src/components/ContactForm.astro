@@ -139,22 +139,6 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
 			/>
 		</div>
 
-		<div class="sm:col-span-2">
-			<label class="flex cursor-pointer items-start gap-3">
-				<input
-					type="checkbox"
-					name="is_hiring_company"
-					value="yes"
-					class="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-700 bg-slate-950/60 text-sky-600 focus:ring-sky-300 focus:ring-offset-slate-950"
-					required
-					aria-required="true"
-				/>
-				<span class="text-sm text-slate-300">
-					I'm a company looking to hire dedicated LATAM talent. <span class="text-rose-400">*</span>
-				</span>
-			</label>
-		</div>
-
 		<div class="sm:col-span-1">
 			<label class="text-sm font-medium text-slate-200" for={`${formId}-phone`}>
 				Phone number
@@ -280,15 +264,31 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
 	{role ? <input type="hidden" name="role" value={role} /> : null}
 	<input type="hidden" name="g-recaptcha-response" data-recaptcha-token />
 
-	<div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-		<button
-			type="submit"
-			class="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-sky-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 disabled:opacity-60"
-			data-submit-btn
-		>
-			Get my vetted shortlist
-		</button>
-		<p class="text-xs text-slate-500" data-form-note aria-live="polite"></p>
+	<div class="mt-6 flex flex-col gap-4">
+		<label class="flex cursor-pointer items-start gap-3">
+			<input
+				type="checkbox"
+				name="is_hiring_company"
+				value="yes"
+				class="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-700 bg-slate-950/60 text-sky-600 focus:ring-sky-300 focus:ring-offset-slate-950"
+				required
+				aria-required="true"
+			/>
+			<span class="text-sm text-slate-300">
+				I'm a company looking to hire dedicated LATAM talent. <span class="text-rose-400">*</span>
+			</span>
+		</label>
+
+		<div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+			<button
+				type="submit"
+				class="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-sky-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 disabled:opacity-60"
+				data-submit-btn
+			>
+				Get my vetted shortlist
+			</button>
+			<p class="text-xs text-slate-500" data-form-note aria-live="polite"></p>
+		</div>
 	</div>
 </form>
 
