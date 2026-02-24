@@ -10,6 +10,10 @@ export default defineConfig({
   // Set SITE="https://your-domain.com" in your environment for production.
   site: process.env.SITE ?? 'https://latamscalers.com',
 
+  build: {
+    inlineStylesheets: 'always',
+  },
+
   // Optimized images via built-in astro:assets using sharp.
   image: {
     service: {
