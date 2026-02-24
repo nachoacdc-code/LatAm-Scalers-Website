@@ -184,7 +184,6 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
 				name="is_hiring_company"
 				value="yes"
 				class="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-700 bg-slate-950/60 text-sky-600 focus:ring-sky-300 focus:ring-offset-slate-950"
-				checked
 				required
 				aria-required="true"
 			/>
@@ -366,7 +365,7 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
     var hiringCheckbox = form.querySelector('[name="is_hiring_company"]');
 
     if (hiringCheckbox) {
-      hiringCheckbox.setCustomValidity(hiringCheckbox.checked ? '' : 'Please confirm you\'re a company looking to hire LATAM talent.');
+      hiringCheckbox.setCustomValidity('Please confirm you\'re a company looking to hire LATAM talent.');
       hiringCheckbox.addEventListener('change', function () {
         hiringCheckbox.setCustomValidity(hiringCheckbox.checked ? '' : 'Please confirm you\'re a company looking to hire LATAM talent.');
       });
