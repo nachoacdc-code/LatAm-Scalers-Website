@@ -62,6 +62,30 @@ const differentiators = [
 	{ title: '50–70% cost savings', desc: 'Compared to equivalent US-based talent. No staffing agency markup.', link: '/how-pricing-works/' },
 ];
 
+const faqs = [
+	{
+		q: 'Is LatAm Scalers a remote staffing agency?',
+		a: 'No. We are a Dedicated Talent Partner — not a staffing agency, employer of record, or freelance marketplace. Instead of sending rotating contractors from a broad pool, we provide pre-vetted LATAM independent contractors who embed into your team on a dedicated, month-to-month basis.',
+	},
+	{
+		q: 'What categories of talent do you provide?',
+		a: 'We specialize in three categories: AEC (BIM coordinators, Revit drafters, CAD technicians, MEP modelers), Creative & Design (UI/UX, brand, motion designers, and PM-led managed creative teams), and Marketing (SEO, paid media, HubSpot/MarOps, content, lifecycle). Each category has its own vetting track and specialist matching.',
+	},
+	{
+		q: 'How quickly can you match me with a specialist?',
+		a: 'Most clients receive a vetted shortlist within 48 hours and have their specialist starting within one week. Our pre-vetted talent pool means you skip the months-long hiring process typical of traditional staffing or in-house recruiting.',
+	},
+	{
+		q: 'What if the specialist isn\'t the right fit?',
+		a: 'We replace them at no extra cost — anytime during your monthly engagement. For month-to-month contractor engagements, the flexibility to replace is structural. You are never locked in.',
+	},
+	{
+		q: 'How does pricing compare to a traditional staffing agency?',
+		a: 'LATAM-based specialists provide US-quality output at 50–70% less than equivalent US-based talent. Traditional staffing agencies layer 30–50% markup on top of the specialist\'s rate. Our model eliminates that overhead — you pay for the talent, not the agency\'s margins.',
+		link: '/how-pricing-works/',
+	},
+];
+
 const webPageJsonLd = {
 	'@context': 'https://schema.org',
 	'@type': 'WebPage',
@@ -70,10 +94,20 @@ const webPageJsonLd = {
 	url: canonical,
 	isPartOf: { '@type': 'WebSite', name: brand, url: baseUrl },
 };
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqs.map((f) => ({
+		'@type': 'Question',
+		name: f.q,
+		acceptedAnswer: { '@type': 'Answer', text: f.a },
+	})),
+};
 ---
 
 <Layout>
-	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[webPageJsonLd]} />
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[webPageJsonLd, faqJsonLd]} />
 
 	<main>
 
@@ -81,12 +115,15 @@ const webPageJsonLd = {
 		<section class="relative overflow-hidden bg-slate-950 py-16 sm:py-24" aria-labelledby="hero-heading">
 			<div class="mx-auto max-w-6xl px-6">
 				<div class="js-fade-in text-center">
-					<p class="text-sm font-semibold uppercase tracking-widest text-sky-300">Remote staffing alternative</p>
+					<p class="text-sm font-semibold uppercase tracking-widest text-sky-300">For US companies hiring remote talent</p>
 					<h1 id="hero-heading" class="mt-4 text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
 						Not a Staffing Agency — A Better Way to Add Remote Talent
 					</h1>
 					<p class="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
 						Traditional staffing agencies send rotating contractors from broad pools. We provide dedicated, pre-vetted LATAM specialists who embed into your US team — in AEC, design, or marketing.
+					</p>
+					<p class="mx-auto mt-3 max-w-xl text-sm text-slate-500">
+						Pre-vetted LATAM independent contractors — dedicated monthly engagements, not payroll staffing.
 					</p>
 
 					<div class="mt-8 flex flex-wrap items-center justify-center gap-3">
@@ -167,15 +204,44 @@ const webPageJsonLd = {
 			</div>
 		</section>
 
+		<!-- FAQ -->
+		<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="faq-heading">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="js-fade-in max-w-2xl">
+					<h2 id="faq-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+						Frequently Asked Questions
+					</h2>
+				</div>
+
+				<div class="mt-10 grid gap-3">
+					{faqs.map((item) => (
+						<details class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+							<summary class="cursor-pointer list-none text-sm font-semibold text-slate-100 [&::-webkit-details-marker]:hidden">
+								{item.q}
+							</summary>
+							<div class="mt-4 border-t border-slate-800 pt-4">
+								<p class="text-sm leading-relaxed text-slate-400">{item.a}</p>
+								{item.link && (
+									<a href={item.link} class="mt-2 inline-flex text-xs font-semibold text-sky-300 transition hover:text-sky-200/80">
+										Learn more →
+									</a>
+								)}
+							</div>
+						</details>
+					))}
+				</div>
+			</div>
+		</section>
+
 		<!-- CTA -->
-		<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="cta-heading">
+		<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="cta-heading">
 			<div class="mx-auto max-w-6xl px-6">
 				<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-8 text-center shadow-xl sm:p-12">
 					<h2 id="cta-heading" class="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-						Not Sure Where to Start?
+						Not Sure Which Category Fits?
 					</h2>
 					<p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slate-300">
-						Book a 15-minute call. Tell us what you need and we'll point you to the right solution — no obligation.
+						Tell us what you need — roles, tools, timeline — and we'll point you to the right solution. No obligation, no sales pitch.
 					</p>
 					<div class="mt-8 flex flex-wrap items-center justify-center gap-4">
 						<a
@@ -184,13 +250,13 @@ const webPageJsonLd = {
 							class="inline-flex min-h-[48px] items-center justify-center rounded bg-sky-600 px-8 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
 							data-book-call
 						>
-							Book a 30-Minute Call
+							Book a 30-Minute Scoping Call
 						</a>
 						<a
 							href="/get-started/"
 							class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-slate-700 bg-slate-900/40 px-8 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
 						>
-							Tell Us Your Needs
+							Tell Us What You Need
 						</a>
 					</div>
 					<p class="mt-5 text-xs text-slate-400">Pre-vetted specialists · Month-to-month · Free replacement guarantee</p>

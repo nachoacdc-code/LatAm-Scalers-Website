@@ -1,0 +1,406 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import MetaHead from '../../../components/MetaHead.astro';
+import ContactHub from '../../../components/ContactHub.astro';
+import { BOOKING_URL, isExternalUrl } from '../../../lib/cta';
+
+const brand = 'LatAm Scalers';
+
+const meta = {
+	title: 'Creative Staffing Alternative – Dedicated LATAM Design Specialists | LatAm Scalers',
+	description:
+		'Looking for a creative staffing agency? LatAm Scalers provides a better alternative: dedicated, pre-vetted LATAM designers — UI/UX, brand, motion, and PM-led managed creative teams. 50–70% savings vs US.',
+};
+
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
+const canonical = new URL('/resources/creative-staffing-alternative/', baseUrl).toString();
+
+const bookingUrl = BOOKING_URL;
+const bookingExternal = isExternalUrl(bookingUrl);
+
+const staffingLimitations = [
+	{ title: 'Rotating designers', desc: 'Creative staffing agencies send different designers for different projects. Your brand voice resets every time.' },
+	{ title: 'No brand consistency', desc: 'Pooled designers work across dozens of clients. They don\'t learn your brand guidelines, design system, or visual language.' },
+	{ title: 'Markup-heavy pricing', desc: 'Traditional agencies layer 30–50% markup on top of the designer\'s rate. You\'re paying for their overhead, not your creative work.' },
+	{ title: 'Surface-level vetting', desc: 'Most agencies check portfolios and references. Few run Figma proficiency tests, design system audits, or timed creative exercises.' },
+	{ title: 'No coordination layer', desc: 'Once placed, you manage the designer directly — including intake, feedback loops, and QA. That\'s 10–15 hours a week of your time.' },
+	{ title: 'Limited specialization', desc: 'Staffing pools are broad. The designer you get may be a generalist, not the UX specialist or motion expert your project demands.' },
+];
+
+const latamAdvantages = [
+	{ title: 'Dedicated designers', desc: 'The same designer works exclusively on your projects. They learn your brand, tools, and preferences — and improve over time.' },
+	{ title: 'Pre-vetted for your discipline', desc: 'Our 5-stage vetting includes tool-specific assessments. A UX designer we present has passed a Figma prototyping exercise, not just a portfolio review.' },
+	{ title: 'PM-led managed teams', desc: 'Optional Project Manager handles intake, routing, and first-pass QC. You spend 3–5 hours a week with the PM instead of 10–15 managing designers directly.' },
+	{ title: '50–70% cost savings', desc: 'Dedicated LATAM designers at $2,800–$8,000/mo vs. enterprise managed services at $15,000+/mo. No staffing agency markup.' },
+	{ title: 'Free replacement guarantee', desc: 'If a designer isn\'t the right fit, we replace them at no cost. Anytime for monthly engagements.' },
+	{ title: 'Month-to-month flexibility', desc: 'No annual contracts. Scale up for campaign surges, scale down in quieter periods. Start with one designer, grow into a full team.' },
+];
+
+const faqs = [
+	{
+		q: 'Is LatAm Scalers a creative staffing agency?',
+		a: 'No — and that\'s intentional. We don\'t operate a staffing pool or rotate designers across clients. We provide dedicated, pre-vetted LATAM designers who embed into your team on a month-to-month basis. You get the consistency of a full-time hire with the flexibility of a contractor.',
+	},
+	{
+		q: 'What design specializations do you cover?',
+		a: 'UI/UX design, brand and visual design, web design, motion graphics, illustration, and creative direction. Each specialization has its own vetting track — a brand designer is evaluated differently than a UX designer.',
+	},
+	{
+		q: 'What is a PM-led managed creative team?',
+		a: 'A dedicated team of designers with an included Project Manager who handles intake, routing, coordination, and first-pass quality checks. You retain final creative approval. The PM is SLA insurance — ensuring deadlines are met and brand guidelines are followed consistently.',
+	},
+	{
+		q: 'How does this compare to design subscription services like Superside or Design Pickle?',
+		a: 'Design subscriptions use pooled, rotating designers working across many clients simultaneously. Our model provides dedicated designers who learn your brand. PM-led teams start at $2,800/mo vs. Superside\'s $15,000+/mo — with 160+ hours of dedicated capacity vs. ~40 hours in a queue.',
+	},
+	{
+		q: 'How quickly can you match me with a designer?',
+		a: 'Most clients receive a vetted shortlist within 48 hours and have their designer starting within one week. Our pre-vetted talent pool means you skip the weeks-long hiring process typical of traditional staffing or in-house recruiting.',
+	},
+];
+
+const webPageJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'WebPage',
+	name: meta.title,
+	description: meta.description,
+	url: canonical,
+	isPartOf: { '@type': 'WebSite', name: brand, url: baseUrl },
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqs.map((f) => ({
+		'@type': 'Question',
+		name: f.q,
+		acceptedAnswer: { '@type': 'Answer', text: f.a },
+	})),
+};
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[webPageJsonLd, faqJsonLd]} />
+
+	<main>
+
+		<!-- Hero -->
+		<section class="relative overflow-hidden bg-slate-950 py-16 sm:py-24" aria-labelledby="hero-heading">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="js-fade-in">
+					<p class="text-sm font-semibold uppercase tracking-widest text-design">Creative staffing alternative</p>
+					<h1 id="hero-heading" class="mt-4 text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
+						A Better Alternative to Creative Staffing Agencies
+					</h1>
+					<p class="mt-5 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
+						Creative staffing agencies send rotating designers who never learn your brand. We provide dedicated, pre-vetted LATAM designers — or full PM-led creative teams — with 50–70% cost savings and month-to-month flexibility.
+					</p>
+
+					<div class="mt-8 flex flex-wrap gap-3">
+						<a
+							href={bookingUrl}
+							{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+							class="inline-flex min-h-[48px] items-center justify-center rounded bg-sky-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+							data-book-call
+						>
+							Book a Design Scoping Call
+						</a>
+						<a
+							href="/design/"
+							class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-slate-700 bg-slate-900/40 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+						>
+							Explore Design Solutions &rarr;
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Design market context -->
+		<section class="border-b border-slate-800/60 bg-slate-950 py-12 sm:py-14" aria-label="Design market context">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="js-fade-in text-center">
+					<p class="text-sm font-semibold uppercase tracking-widest text-design/80">The design hiring challenge</p>
+					<p class="mx-auto mt-3 max-w-2xl text-base leading-relaxed text-slate-400">
+						UX/UI hiring takes 45% longer than general roles. Design subscription queues can't deliver brand consistency. Your team needs dedicated creative capacity — fast.
+					</p>
+				</div>
+				<div class="mt-8 grid gap-4 sm:grid-cols-3">
+					<div class="js-fade-in rounded-2xl border border-design/20 bg-design/5 p-6 text-center">
+						<p class="text-3xl font-bold text-design">45%</p>
+						<p class="mt-2 text-sm text-slate-400">longer hiring cycles for UX/UI roles compared to general positions</p>
+					</div>
+					<div class="js-fade-in rounded-2xl border border-design/20 bg-design/5 p-6 text-center">
+						<p class="text-3xl font-bold text-design">80%</p>
+						<p class="mt-2 text-sm text-slate-400">of quality design listings require senior-level experience</p>
+					</div>
+					<div class="js-fade-in rounded-2xl border border-design/20 bg-design/5 p-6 text-center">
+						<p class="text-3xl font-bold text-design">75%</p>
+						<p class="mt-2 text-sm text-slate-400">of website credibility judgments are influenced by design quality</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- The problem with traditional creative staffing -->
+		<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="problem-heading">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="js-fade-in max-w-2xl">
+					<h2 id="problem-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+						The Limitations of Creative Staffing Agencies
+					</h2>
+					<p class="mt-4 text-base leading-relaxed text-slate-400">
+						Creative staffing agencies serve a purpose — but for brands and teams that need consistent, high-quality design output, the traditional model falls short.
+					</p>
+				</div>
+
+				<div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+					{staffingLimitations.map((item) => (
+						<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+							<h3 class="text-sm font-semibold text-slate-100">{item.title}</h3>
+							<p class="mt-2 text-sm leading-relaxed text-slate-400">{item.desc}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<!-- The alternative: dedicated LATAM designers -->
+		<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="alternative-heading">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="js-fade-in max-w-2xl">
+					<h2 id="alternative-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+						The Alternative: Dedicated LATAM Designers
+					</h2>
+					<p class="mt-4 text-base leading-relaxed text-slate-400">
+						Instead of rotating designers from a staffing pool, work with a dedicated creative professional who knows your brand, tools, and standards — exclusively.
+					</p>
+				</div>
+
+				<div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+					{latamAdvantages.map((item) => (
+						<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+							<span class="text-design" aria-hidden="true">&#x2713;</span>
+							<h3 class="mt-2 text-sm font-semibold text-slate-100">{item.title}</h3>
+							<p class="mt-2 text-sm leading-relaxed text-slate-400">{item.desc}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<!-- Pricing comparison -->
+		<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="pricing-heading">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="js-fade-in max-w-2xl">
+					<h2 id="pricing-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+						Cost Comparison: Staffing Agency vs. Dedicated LATAM Designer
+					</h2>
+				</div>
+
+				<div class="mt-10 overflow-x-auto">
+					<table class="js-fade-in w-full text-left text-sm">
+						<thead>
+							<tr class="border-b border-slate-800">
+								<th class="pb-4 pr-6 font-semibold text-slate-300"></th>
+								<th class="pb-4 pr-6 font-semibold text-slate-400">Creative Staffing Agency</th>
+								<th class="pb-4 pr-6 font-semibold text-slate-400">Design Subscription</th>
+								<th class="pb-4 font-semibold text-design">LatAm Scalers</th>
+							</tr>
+						</thead>
+						<tbody class="text-slate-400">
+							<tr class="border-b border-slate-800/60">
+								<td class="py-4 pr-6 font-medium text-slate-300">Monthly cost</td>
+								<td class="py-4 pr-6">$7,000–$12,000+/mo</td>
+								<td class="py-4 pr-6">$499–$2,399/mo</td>
+								<td class="py-4 text-design">From $2,800/mo (PM-led)</td>
+							</tr>
+							<tr class="border-b border-slate-800/60">
+								<td class="py-4 pr-6 font-medium text-slate-300">Dedicated hours/mo</td>
+								<td class="py-4 pr-6">160h (dedicated)</td>
+								<td class="py-4 pr-6">~40h (queued)</td>
+								<td class="py-4 text-design">160h+ (dedicated)</td>
+							</tr>
+							<tr class="border-b border-slate-800/60">
+								<td class="py-4 pr-6 font-medium text-slate-300">Designer continuity</td>
+								<td class="py-4 pr-6">Rotating</td>
+								<td class="py-4 pr-6">Rotating pool</td>
+								<td class="py-4 text-design">Same person, dedicated</td>
+							</tr>
+							<tr class="border-b border-slate-800/60">
+								<td class="py-4 pr-6 font-medium text-slate-300">PM coordination</td>
+								<td class="py-4 pr-6">None</td>
+								<td class="py-4 pr-6">Enterprise only ($15k+)</td>
+								<td class="py-4 text-design">Included</td>
+							</tr>
+							<tr class="border-b border-slate-800/60">
+								<td class="py-4 pr-6 font-medium text-slate-300">Commitment</td>
+								<td class="py-4 pr-6">Contract-dependent</td>
+								<td class="py-4 pr-6">Monthly / Annual</td>
+								<td class="py-4 text-design">Month-to-month</td>
+							</tr>
+							<tr>
+								<td class="py-4 pr-6 font-medium text-slate-300">Specialization</td>
+								<td class="py-4 pr-6">Broad pool</td>
+								<td class="py-4 pr-6">Generic pool</td>
+								<td class="py-4 text-design">Specialty-matched</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<div class="js-fade-in mt-6">
+					<a href="/how-pricing-works/" class="inline-flex text-sm font-semibold text-sky-300 transition hover:text-sky-200/80">
+						See how our pricing works →
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- Design roles we provide -->
+		<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="roles-heading">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="js-fade-in max-w-2xl">
+					<h2 id="roles-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+						Design Roles We Provide
+					</h2>
+					<p class="mt-4 text-base leading-relaxed text-slate-400">
+						Designers vetted for specific creative disciplines — not generalists from a broad staffing pool.
+					</p>
+				</div>
+
+				<div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+					<a href="/design/hire-ux-designer/" class="js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20 transition hover:-translate-y-1 hover:shadow-xl">
+						<p class="text-sm font-semibold text-slate-100 group-hover:text-white">UI/UX Designers</p>
+						<p class="mt-2 text-xs text-slate-400">Figma, prototyping, user research · Product & growth design</p>
+						<p class="mt-3 text-xs font-semibold text-design">View role &rarr;</p>
+					</a>
+					<a href="/design/hire-brand-designer/" class="js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20 transition hover:-translate-y-1 hover:shadow-xl">
+						<p class="text-sm font-semibold text-slate-100 group-hover:text-white">Brand / Visual Designers</p>
+						<p class="mt-2 text-xs text-slate-400">Brand identity, visual systems, marketing collateral · Adobe Suite, Figma</p>
+						<p class="mt-3 text-xs font-semibold text-design">View role &rarr;</p>
+					</a>
+					<a href="/design/managed-creative-teams/" class="js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20 transition hover:-translate-y-1 hover:shadow-xl">
+						<p class="text-sm font-semibold text-slate-100 group-hover:text-white">PM-Led Managed Teams</p>
+						<p class="mt-2 text-xs text-slate-400">PM + dedicated designers · Intake, routing, QC included</p>
+						<p class="mt-3 text-xs font-semibold text-design">From $2,800/mo &rarr;</p>
+					</a>
+					<a href="/roles/ui-ux-designer/" class="js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20 transition hover:-translate-y-1 hover:shadow-xl">
+						<p class="text-sm font-semibold text-slate-100 group-hover:text-white">Motion Designers</p>
+						<p class="mt-2 text-xs text-slate-400">After Effects, Lottie, video editing · Ad creative, social, product</p>
+						<p class="mt-3 text-xs font-semibold text-design">View role &rarr;</p>
+					</a>
+					<a href="/roles/brand-visual-designer/" class="js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20 transition hover:-translate-y-1 hover:shadow-xl">
+						<p class="text-sm font-semibold text-slate-100 group-hover:text-white">Web Designers</p>
+						<p class="mt-2 text-xs text-slate-400">Webflow, Figma, responsive design · Landing pages, marketing sites</p>
+						<p class="mt-3 text-xs font-semibold text-design">View role &rarr;</p>
+					</a>
+					<a href="/design/" class="js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20 transition hover:-translate-y-1 hover:shadow-xl">
+						<p class="text-sm font-semibold text-slate-100 group-hover:text-white">All Design Roles</p>
+						<p class="mt-2 text-xs text-slate-400">Browse the full range of creative specialists we provide</p>
+						<p class="mt-3 text-xs font-semibold text-design">Explore Design solutions &rarr;</p>
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- FAQ -->
+		<section class="bg-slate-900/40 py-16 sm:py-20" aria-labelledby="faq-heading">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="js-fade-in max-w-2xl">
+					<h2 id="faq-heading" class="text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+						Frequently Asked Questions
+					</h2>
+				</div>
+
+				<div class="mt-10 grid gap-3">
+					{faqs.map((item) => (
+						<details class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-6 shadow-lg shadow-black/20">
+							<summary class="cursor-pointer list-none text-sm font-semibold text-slate-100 [&::-webkit-details-marker]:hidden">
+								{item.q}
+							</summary>
+							<p class="mt-4 pt-4 text-sm leading-relaxed text-slate-400 border-t border-slate-800">{item.a}</p>
+						</details>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<!-- CTA -->
+		<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="cta-heading">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="js-fade-in rounded-2xl border border-slate-800 bg-slate-900/40 p-8 text-center shadow-xl sm:p-12">
+					<h2 id="cta-heading" class="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+						Stop Managing a Design Backlog — Add Dedicated Creative Capacity
+					</h2>
+					<p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slate-300">
+						Your design queue is growing and brand consistency is slipping. What if you could add a dedicated designer or a full PM-led creative team — starting this week?
+					</p>
+					<div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+						<a
+							href={bookingUrl}
+							{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+							class="inline-flex min-h-[48px] items-center justify-center rounded bg-sky-600 px-8 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+							data-book-call
+						>
+							Book a Design Scoping Call
+						</a>
+						<a
+							href="/get-started/"
+							class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-slate-700 bg-slate-900/40 px-8 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+						>
+							Get Started
+						</a>
+					</div>
+					<p class="mt-5 text-xs text-slate-400">50–70% savings · Month-to-month · Free replacement guarantee</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Contact -->
+		<section id="contact" class="bg-slate-900/40 pb-20 pt-16 sm:pb-24 sm:pt-20" aria-labelledby="contact-heading">
+			<div class="mx-auto max-w-6xl px-6">
+				<div class="js-fade-in max-w-2xl">
+					<p class="text-sm font-semibold uppercase tracking-widest text-sky-300">Get in touch</p>
+					<h2 id="contact-heading" class="mt-3 text-3xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+						Tell Us About Your Design Needs
+					</h2>
+					<p class="mt-4 text-base leading-relaxed text-slate-400">
+						Share your design needs, tools, and timeline — we'll match you with pre-vetted creative specialists.
+					</p>
+				</div>
+
+				<ContactHub subject={`${brand} – creative staffing alternative inquiry`} defaultCategory="design" />
+			</div>
+		</section>
+
+	</main>
+
+	<style>
+		.js-fade-in {
+			opacity: 0;
+			transform: translateY(20px);
+			transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+		}
+		.js-fade-in.is-visible {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	</style>
+
+	<script is:inline>
+		(function () {
+			var els = document.querySelectorAll('.js-fade-in');
+			if (!els.length) return;
+			var io = new IntersectionObserver(function (entries) {
+				entries.forEach(function (e) {
+					if (e.isIntersecting) {
+						e.target.classList.add('is-visible');
+						io.unobserve(e.target);
+					}
+				});
+			}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+			els.forEach(function (el) { io.observe(el); });
+		})();
+	</script>
+</Layout>
