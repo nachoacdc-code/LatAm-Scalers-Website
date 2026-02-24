@@ -79,65 +79,43 @@ const hubId = `hub-${Math.random().toString(36).slice(2, 8)}`;
 					</button>
 				</div>
 
-				{/* ── VETTING FUNNEL — trust visual (no client logos yet) ── */}
-				<a href="/about/how-we-vet/" class="mt-4 flex items-center gap-3 rounded-xl border border-slate-800/60 bg-slate-950/40 px-4 py-3 transition hover:border-sky-500/30 hover:bg-slate-900/60">
-					<div class="flex shrink-0 items-center gap-1">
-						<span class="text-lg font-bold text-sky-400">500+</span>
-						<span class="text-[0.65rem] font-medium uppercase tracking-wider text-slate-500">applicants</span>
-					</div>
-					<svg class="h-4 w-4 shrink-0 text-slate-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.06l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/></svg>
-					<div class="flex shrink-0 items-center gap-1">
-						<span class="text-sm font-semibold text-slate-300">5-stage</span>
-						<span class="text-[0.65rem] font-medium uppercase tracking-wider text-slate-500">screening</span>
-					</div>
-					<svg class="h-4 w-4 shrink-0 text-slate-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.06l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"/></svg>
-					<div class="flex shrink-0 items-center gap-1">
-						<span class="text-lg font-bold text-emerald-400">&lt;3%</span>
-						<span class="text-[0.65rem] font-medium uppercase tracking-wider text-slate-500">placed</span>
-					</div>
-					<span class="ml-auto text-xs font-medium text-sky-400">How we vet →</span>
-				</a>
-
 				{/* ── BENEFITS — below tabs so CTAs stay priority ── */}
-				<div class="mt-auto border-t border-slate-800/60 pt-5">
-					<p class="mb-3 text-sm font-semibold text-slate-200">Built for US teams that need to move fast</p>
-					<div class="grid grid-cols-2 gap-3">
-						<div class="flex items-start gap-2">
-							<span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-400">
-								<svg class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>
-							</span>
-							<div>
-								<p class="text-sm font-semibold text-slate-200">Matched in under one week</p>
-								<p class="text-xs text-slate-500">Vetted shortlist in 48 hours</p>
-							</div>
+				<div class="mt-auto grid grid-cols-2 gap-3 border-t border-slate-800/60 pt-5">
+					<div class="flex items-start gap-2">
+						<span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-400">
+							<svg class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>
+						</span>
+						<div>
+							<p class="text-xs font-semibold text-slate-200">Matched in under one week</p>
+							<p class="text-[0.7rem] text-slate-500">Vetted shortlist in 48 hours</p>
 						</div>
-						<div class="flex items-start gap-2">
-							<span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-sky-500/15 text-sky-400">
-								<svg class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>
-							</span>
-							<div>
-								<p class="text-sm font-semibold text-slate-200">Month-to-month, no lock-in</p>
-								<p class="text-xs text-slate-500">Scale up or pause anytime</p>
-							</div>
+					</div>
+					<div class="flex items-start gap-2">
+						<span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-sky-500/15 text-sky-400">
+							<svg class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>
+						</span>
+						<div>
+							<p class="text-xs font-semibold text-slate-200">Month-to-month, no lock-in</p>
+							<p class="text-[0.7rem] text-slate-500">Scale up or pause anytime</p>
 						</div>
-						<div class="flex items-start gap-2">
-							<span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-400">
-								<svg class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>
-							</span>
-							<div>
-								<p class="text-sm font-semibold text-slate-200">Free replacement guarantee</p>
-								<p class="text-xs text-slate-500">We fix the fit — at no cost</p>
-							</div>
+					</div>
+					<div class="flex items-start gap-2">
+						<span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-400">
+							<svg class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>
+						</span>
+						<div>
+							<p class="text-xs font-semibold text-slate-200">Free replacement guarantee</p>
+							<p class="text-[0.7rem] text-slate-500">We fix the fit — at no cost</p>
 						</div>
-						<a href="/about/how-we-vet/" class="flex items-start gap-2 transition hover:opacity-90">
-							<span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-sky-500/15 text-sky-400">
-								<svg class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>
-							</span>
-							<div>
-								<p class="text-sm font-semibold text-slate-200">50–70% cost savings</p>
-								<p class="text-xs text-slate-500 underline decoration-slate-600 transition hover:decoration-sky-400">&lt;3% pass our vetting →</p>
-							</div>
-						</a>
+					</div>
+					<div class="flex items-start gap-2">
+						<span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-sky-500/15 text-sky-400">
+							<svg class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>
+						</span>
+						<div>
+							<p class="text-xs font-semibold text-slate-200">50–70% cost savings</p>
+							<p class="text-[0.7rem] text-slate-500">&lt;3% pass our vetting</p>
+						</div>
 					</div>
 				</div>
 
