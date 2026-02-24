@@ -190,33 +190,13 @@ const widgetId = `cal-inline-${Math.random().toString(36).slice(2, 9)}`;
 	    }
 	  }
 
-	  // --- Intelligent Lazy Loading ---
+	  // --- Lazy Loading (user-interaction only, no eager viewport loading) ---
 
-	  // 1. Register in global preloader registry (ContactHub triggers this)
+	  // 1. Register in global preloader registry (ContactHub tab-click triggers this)
 	  if (!window._latamCalendlyPreloaders) window._latamCalendlyPreloaders = [];
 	  window._latamCalendlyPreloaders.push(load);
 
-	  // 2. Observe the nearest contact section (not the hidden panel itself)
-	  var observeTarget = (
-	    container.closest('[data-contact-hub]') ||
-	    container.closest('#contact') ||
-	    document.getElementById('contact') ||
-	    container
-	  );
-
-	  if ('IntersectionObserver' in window) {
-	    var obs = new IntersectionObserver(
-	      function (entries) {
-	        if (entries[0].isIntersecting) { obs.disconnect(); load(); }
-	      },
-	      { rootMargin: '500px' }
-	    );
-	    obs.observe(observeTarget);
-	  } else {
-	    load();
-	  }
-
-	  // 3. Pre-warm on hover of any primary CTA
+	  // 2. Pre-warm on hover of any primary CTA
 	  function onCTAHover(e) {
 	    var t = e.target && e.target.closest ? e.target.closest(
 	      '[data-book-call],[data-scroll-to-contact],[data-open-tell-us]'

@@ -213,20 +213,6 @@ const hubId = `hub-${Math.random().toString(36).slice(2, 8)}`;
       }, 100);
     };
 
-    // Pre-warm Calendly when contact hub enters the viewport (400px ahead)
-    if ('IntersectionObserver' in window) {
-      var preloadObs = new IntersectionObserver(
-        function (entries) {
-          if (entries[0].isIntersecting) {
-            preloadObs.disconnect();
-            var preloaders = window._latamCalendlyPreloaders || [];
-            preloaders.forEach(function (fn) { try { fn(); } catch (e) {} });
-          }
-        },
-        { rootMargin: '400px' }
-      );
-      preloadObs.observe(hub);
-    }
   });
 })();
 </script>
