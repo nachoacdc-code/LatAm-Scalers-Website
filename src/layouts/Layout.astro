@@ -6,6 +6,8 @@ import TellUsNeedsModal from '../components/TellUsNeedsModal.astro';
 import StickyCTA from '../components/StickyCTA.astro';
 
 const recaptchaSiteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY ?? '';
+const gaMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID ?? '';
+const gscVerification = import.meta.env.PUBLIC_GSC_VERIFICATION ?? '';
 ---
 
 <!doctype html>
@@ -16,7 +18,17 @@ const recaptchaSiteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY ?? '';
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
+		{gscVerification && <meta name="google-site-verification" content={gscVerification} />}
 		<slot name="head" />
+		{gaMeasurementId && (
+			<script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}></script>
+			<script is:inline define:vars={{ gaMeasurementId }}>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', gaMeasurementId);
+			</script>
+		)}
 	</head>
 	<body class="min-h-screen bg-slate-950 text-slate-100 antialiased">
 		<Nav />
