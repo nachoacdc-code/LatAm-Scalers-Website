@@ -292,6 +292,55 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
 	</div>
 </form>
 
+{/* Success panel — hidden until form submits successfully */}
+<div class="hidden rounded-2xl border border-emerald-500/20 bg-slate-900/40 p-6 sm:p-8" data-success-panel aria-live="polite">
+	<div class="flex items-center gap-3">
+		<span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-500/15">
+			<svg class="h-5 w-5 text-emerald-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd"/></svg>
+		</span>
+		<div>
+			<p class="text-lg font-semibold text-white">Your request is in good hands.</p>
+			<p class="mt-0.5 text-sm text-slate-400">Here's what happens next:</p>
+		</div>
+	</div>
+
+	<div class="mt-6 grid gap-4 sm:grid-cols-3">
+		<div class="flex items-start gap-3">
+			<span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-slate-800 bg-slate-950/40 text-xs font-semibold text-sky-300">1</span>
+			<div>
+				<p class="text-sm font-semibold text-slate-200">Confirmation & scoping</p>
+				<p class="mt-1 text-xs leading-relaxed text-slate-400">We'll reach out within a few hours to confirm receipt and clarify any details.</p>
+			</div>
+		</div>
+		<div class="flex items-start gap-3">
+			<span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-slate-800 bg-slate-950/40 text-xs font-semibold text-sky-300">2</span>
+			<div>
+				<p class="text-sm font-semibold text-slate-200">Vetted shortlist in 48h</p>
+				<p class="mt-1 text-xs leading-relaxed text-slate-400">We'll present 1–3 pre-vetted specialists matched to your tools, standards, and timeline.</p>
+			</div>
+		</div>
+		<div class="flex items-start gap-3">
+			<span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-slate-800 bg-slate-950/40 text-xs font-semibold text-sky-300">3</span>
+			<div>
+				<p class="text-sm font-semibold text-slate-200">Start within 1 week</p>
+				<p class="mt-1 text-xs leading-relaxed text-slate-400">Meet top matches for a fit check — or skip interviews and start immediately.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="mt-6 rounded-xl border border-sky-500/20 bg-sky-950/30 px-5 py-4">
+		<p class="text-sm font-semibold text-slate-200">Want to speed things up?</p>
+		<p class="mt-1 text-xs text-slate-400">Book a scoping call now and we can start matching during the call.</p>
+		<button
+			type="button"
+			class="mt-3 inline-flex min-h-[40px] items-center justify-center rounded-lg bg-sky-600 px-5 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+			data-success-book-call
+		>
+			Book a 30-min scoping call
+		</button>
+	</div>
+</div>
+
 <script is:inline>
 (function () {
   // Progressive disclosure: toggle optional fields
@@ -492,11 +541,27 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
         });
 
         if (res.ok) {
-          if (formNote) {
+          form.reset();
+          var successPanel = form.parentElement && form.parentElement.querySelector('[data-success-panel]');
+          if (successPanel) {
+            form.style.display = 'none';
+            successPanel.classList.remove('hidden');
+            successPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+            var bookCallBtn = successPanel.querySelector('[data-success-book-call]');
+            if (bookCallBtn) {
+              bookCallBtn.addEventListener('click', function () {
+                var hub = form.closest('[data-contact-hub]');
+                if (hub) hub.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                setTimeout(function () {
+                  if (window.latamHub && window.latamHub.activateCalendly) window.latamHub.activateCalendly();
+                }, 300);
+              });
+            }
+          } else if (formNote) {
             formNote.textContent = 'Thanks — we received your message and will reply shortly.';
             formNote.style.color = 'rgb(110 231 183)';
           }
-          form.reset();
         } else {
           if (formNote) {
             formNote.textContent = 'Something went wrong. Please try again or book a call.';
