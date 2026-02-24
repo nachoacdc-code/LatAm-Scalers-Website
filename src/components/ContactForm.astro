@@ -41,6 +41,7 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
 
 	<div class="grid gap-4 sm:grid-cols-2">
 
+		<!-- Progressive commitment: low-friction first, high-value qualifying early -->
 		<div class="sm:col-span-1">
 			<label class="text-sm font-medium text-slate-200" for={`${formId}-name`}>
 				Full name <span class="text-rose-400">*</span>
@@ -89,23 +90,18 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
 			/>
 		</div>
 
-		<div class="sm:col-span-1">
-			<label class="text-sm font-medium text-slate-200" for={`${formId}-website-url`}>
-				Company website
+		<div class="sm:col-span-2">
+			<label class="text-sm font-medium text-slate-200" for={`${formId}-message`}>
+				What do you need help with? <span class="text-rose-400">*</span>
 			</label>
-			<input
-				class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-				id={`${formId}-website-url`}
-				name="company_website"
-				type="text"
-				inputmode="url"
-				autocomplete="url"
-				placeholder="yourcompany.com"
-				data-company-website
-			/>
-			<p class="mt-1 hidden text-xs text-rose-400" data-website-error aria-live="polite">
-				Please enter a valid website (e.g. yourcompany.com)
-			</p>
+			<textarea
+				class="mt-2 min-h-24 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+				id={`${formId}-message`}
+				name="message"
+				placeholder="Describe the role, tools, and what success looks like for you."
+				required
+				aria-required="true"
+			>{defaultMessage}</textarea>
 		</div>
 
 		<div class="sm:col-span-1">
@@ -129,6 +125,37 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
 		</div>
 
 		<div class="sm:col-span-1">
+			<label class="text-sm font-medium text-slate-200" for={`${formId}-position`}>
+				Your role / position <span class="text-rose-400">*</span>
+			</label>
+			<input
+				class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+				id={`${formId}-position`}
+				name="position"
+				autocomplete="organization-title"
+				placeholder="e.g. VP of Engineering, Design Director"
+				required
+				aria-required="true"
+			/>
+		</div>
+
+		<div class="sm:col-span-2">
+			<label class="flex cursor-pointer items-start gap-3">
+				<input
+					type="checkbox"
+					name="is_hiring_company"
+					value="yes"
+					class="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-700 bg-slate-950/60 text-sky-600 focus:ring-sky-300 focus:ring-offset-slate-950"
+					required
+					aria-required="true"
+				/>
+				<span class="text-sm text-slate-300">
+					I'm a company looking to hire dedicated LATAM talent. <span class="text-rose-400">*</span>
+				</span>
+			</label>
+		</div>
+
+		<div class="sm:col-span-1">
 			<label class="text-sm font-medium text-slate-200" for={`${formId}-phone`}>
 				Phone number
 			</label>
@@ -144,18 +171,22 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
 		</div>
 
 		<div class="sm:col-span-1">
-			<label class="text-sm font-medium text-slate-200" for={`${formId}-position`}>
-				Your role / position <span class="text-rose-400">*</span>
+			<label class="text-sm font-medium text-slate-200" for={`${formId}-website-url`}>
+				Company website
 			</label>
 			<input
 				class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-				id={`${formId}-position`}
-				name="position"
-				autocomplete="organization-title"
-				placeholder="e.g. VP of Engineering, Design Director"
-				required
-				aria-required="true"
+				id={`${formId}-website-url`}
+				name="company_website"
+				type="text"
+				inputmode="url"
+				autocomplete="url"
+				placeholder="yourcompany.com"
+				data-company-website
 			/>
+			<p class="mt-1 hidden text-xs text-rose-400" data-website-error aria-live="polite">
+				Please enter a valid website (e.g. yourcompany.com)
+			</p>
 		</div>
 
 		<div class="sm:col-span-1">
@@ -175,36 +206,6 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
 				<option value="industry-event">Industry Event</option>
 				<option value="other">Other</option>
 			</select>
-		</div>
-
-		<div class="sm:col-span-2">
-			<label class="flex cursor-pointer items-start gap-3">
-			<input
-				type="checkbox"
-				name="is_hiring_company"
-				value="yes"
-				class="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-700 bg-slate-950/60 text-sky-600 focus:ring-sky-300 focus:ring-offset-slate-950"
-				required
-				aria-required="true"
-			/>
-				<span class="text-sm text-slate-300">
-					I'm a company looking to hire dedicated LATAM talent. <span class="text-rose-400">*</span>
-				</span>
-			</label>
-		</div>
-
-		<div class="sm:col-span-2">
-			<label class="text-sm font-medium text-slate-200" for={`${formId}-message`}>
-				What do you need help with? <span class="text-rose-400">*</span>
-			</label>
-			<textarea
-				class="mt-2 min-h-24 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-				id={`${formId}-message`}
-				name="message"
-				placeholder="Describe the role, tools, and what success looks like for you."
-				required
-				aria-required="true"
-			>{defaultMessage}</textarea>
 		</div>
 
 		{/* Expandable optional fields — progressive disclosure */}
