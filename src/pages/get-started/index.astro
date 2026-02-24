@@ -26,7 +26,7 @@ const steps = [
 ];
 
 const trustPoints = [
-	{ stat: '<3%', label: 'Placement rate – rigorous 5-stage vetting', link: '/about/how-we-vet/' },
+	{ stat: '<3%', label: 'of applicants pass our 5-stage vetting', link: '/about/how-we-vet/' },
 	{ stat: '48h', label: 'Typical time to present vetted options', link: null },
 	{ stat: '$0', label: 'Placement fee on monthly engagements', link: '/how-pricing-works/' },
 	{ stat: '∞', label: 'Free replacement guarantee – no limits', link: null },
@@ -50,15 +50,18 @@ const webPageJsonLd = {
 		<!-- Hero -->
 		<section class="relative overflow-hidden bg-slate-950 py-16 sm:py-24" aria-labelledby="hero-heading">
 			<div class="mx-auto max-w-6xl px-6">
-				<div class="js-fade-in text-center">
-					<p class="text-sm font-semibold uppercase tracking-widest text-sky-300">Get started</p>
-					<h1 id="hero-heading" class="mt-4 text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
-						Let's Find the Right Talent for Your Team
-					</h1>
-					<p class="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
-						Book a 30-minute scoping call to discuss your needs, or share your requirements below and we'll reach out with vetted options within 48 hours.
-					</p>
-				</div>
+			<div class="js-fade-in text-center">
+				<p class="text-sm font-semibold uppercase tracking-widest text-sky-300">Get started</p>
+				<h1 id="hero-heading" class="mt-4 text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
+					Vetted LATAM Specialists for Your US Team — Matched in Under One Week
+				</h1>
+				<p class="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
+					Book a 30-minute scoping call, or tell us what you need — we'll present a vetted shortlist of AEC, Design, or Marketing specialists within 48 hours. Month-to-month. Free replacement guarantee.
+				</p>
+				<p class="mx-auto mt-3 max-w-xl text-xs tracking-wide text-slate-500">
+					Pre-vetted LATAM independent contractors — dedicated monthly engagements, not payroll staffing.
+				</p>
+			</div>
 
 				<!-- Quick steps -->
 				<div class="mt-12 grid gap-4 sm:grid-cols-3">
@@ -153,6 +156,21 @@ const webPageJsonLd = {
 			</div>
 		</section>
 
+		<!-- Return CTA -->
+		<section class="bg-slate-950 py-10">
+			<div class="mx-auto max-w-6xl px-6 text-center">
+				<p class="text-lg font-semibold text-slate-200">Ready to get started?</p>
+				<div class="mt-4 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+					<a href="#contact-heading" class="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-sky-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-sky-500">
+						Tell us your needs
+					</a>
+					<a href="#contact-heading" class="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-slate-700 px-6 py-2.5 text-sm font-semibold text-slate-300 transition hover:border-sky-500 hover:text-white" data-scroll-to-calendly>
+						Book a scoping call
+					</a>
+				</div>
+			</div>
+		</section>
+
 		<!-- Category quick links -->
 		<section class="bg-slate-950 py-16 sm:py-20" aria-labelledby="explore-heading">
 			<div class="mx-auto max-w-6xl px-6">
@@ -215,6 +233,16 @@ const webPageJsonLd = {
 				});
 			}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 			els.forEach(function (el) { io.observe(el); });
+
+			document.querySelectorAll('[data-scroll-to-calendly]').forEach(function (link) {
+				link.addEventListener('click', function () {
+					setTimeout(function () {
+						if (window.latamHub && window.latamHub.activateCalendly) {
+							window.latamHub.activateCalendly();
+						}
+					}, 100);
+				});
+			});
 		})();
 	</script>
 </Layout>

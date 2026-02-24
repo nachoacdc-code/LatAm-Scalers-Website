@@ -91,7 +91,7 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
 
 		<div class="sm:col-span-1">
 			<label class="text-sm font-medium text-slate-200" for={`${formId}-website-url`}>
-				Company website <span class="text-rose-400">*</span>
+				Company website
 			</label>
 			<input
 				class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
@@ -101,8 +101,6 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
 				inputmode="url"
 				autocomplete="url"
 				placeholder="yourcompany.com"
-				required
-				aria-required="true"
 				data-company-website
 			/>
 			<p class="mt-1 hidden text-xs text-rose-400" data-website-error aria-live="polite">
@@ -132,7 +130,7 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
 
 		<div class="sm:col-span-1">
 			<label class="text-sm font-medium text-slate-200" for={`${formId}-phone`}>
-				Phone number <span class="text-rose-400">*</span>
+				Phone number
 			</label>
 			<input
 				class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
@@ -142,8 +140,6 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
 				inputmode="tel"
 				autocomplete="tel"
 				placeholder="+1 (555) 000-0000"
-				required
-				aria-required="true"
 			/>
 		</div>
 
@@ -164,16 +160,14 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
 
 		<div class="sm:col-span-1">
 			<label class="text-sm font-medium text-slate-200" for={`${formId}-source`}>
-				How did you hear about us? <span class="text-rose-400">*</span>
+				How did you hear about us?
 			</label>
 			<select
 				class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2.5 text-sm text-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
 				id={`${formId}-source`}
 				name="attribution_source"
-				required
-				aria-required="true"
 			>
-				<option value="" selected disabled>Select…</option>
+				<option value="" selected>Select…</option>
 				<option value="google">Google Search</option>
 				<option value="linkedin">LinkedIn</option>
 				<option value="ai-llm">AI Assistant (ChatGPT, Claude, Gemini…)</option>
@@ -185,14 +179,15 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
 
 		<div class="sm:col-span-2">
 			<label class="flex cursor-pointer items-start gap-3">
-				<input
-					type="checkbox"
-					name="is_hiring_company"
-					value="yes"
-					class="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-700 bg-slate-950/60 text-sky-600 focus:ring-sky-300 focus:ring-offset-slate-950"
-					required
-					aria-required="true"
-				/>
+			<input
+				type="checkbox"
+				name="is_hiring_company"
+				value="yes"
+				class="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-700 bg-slate-950/60 text-sky-600 focus:ring-sky-300 focus:ring-offset-slate-950"
+				checked
+				required
+				aria-required="true"
+			/>
 				<span class="text-sm text-slate-300">
 					I'm a company looking to hire dedicated LATAM talent. <span class="text-rose-400">*</span>
 				</span>
@@ -291,7 +286,7 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
 			class="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-sky-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 disabled:opacity-60"
 			data-submit-btn
 		>
-			Send message
+			Get my vetted shortlist
 		</button>
 		<p class="text-xs text-slate-500" data-form-note aria-live="polite"></p>
 	</div>
@@ -371,7 +366,7 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
     var hiringCheckbox = form.querySelector('[name="is_hiring_company"]');
 
     if (hiringCheckbox) {
-      hiringCheckbox.setCustomValidity('Please confirm you\'re a company looking to hire LATAM talent.');
+      hiringCheckbox.setCustomValidity(hiringCheckbox.checked ? '' : 'Please confirm you\'re a company looking to hire LATAM talent.');
       hiringCheckbox.addEventListener('change', function () {
         hiringCheckbox.setCustomValidity(hiringCheckbox.checked ? '' : 'Please confirm you\'re a company looking to hire LATAM talent.');
       });
@@ -415,7 +410,7 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
         return;
       }
 
-      if (websiteInput && !isValidDomain(websiteInput.value)) {
+      if (websiteInput && websiteInput.value.trim() && !isValidDomain(websiteInput.value)) {
         websiteError && websiteError.classList.remove('hidden');
         websiteInput.setAttribute('aria-invalid', 'true');
         websiteInput.focus();
@@ -442,7 +437,7 @@ const formId = `cf-${Math.random().toString(36).slice(2, 9)}`;
       if (formNote) formNote.textContent = 'Sending…';
 
       try {
-        if (websiteInput) {
+        if (websiteInput && websiteInput.value.trim()) {
           var normalized = normalizeCompanyWebsite(websiteInput.value);
           websiteInput.value = normalized;
         }
