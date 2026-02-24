@@ -17,7 +17,12 @@ export default defineConfig({
     }
   },
 
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      filter: (page) =>
+        !page.includes('/about/our-guarantee/') && !page.includes('/compare/vs-superside/')
+    })
+  ],
   vite: {
     plugins: [tailwindcss()]
   }
