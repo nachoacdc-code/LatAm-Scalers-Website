@@ -4,83 +4,239 @@ import MetaHead from '../../components/MetaHead.astro';
 const brand = 'LatAm Scalers';
 
 const meta = {
-	title: `Terms & Conditions | ${brand}`,
+	title: `Terms of Service | ${brand}`,
 	description:
-		'Terms and conditions for using LatAm Scalers services and website. Review key policies on usage, payments, liability, and more.',
+		'Terms of service governing your use of the LatAm Scalers website and services. Clear, plain-language terms covering scope, payments, liability, IP, and more.',
 };
 
-const baseUrl = Astro.site ?? 'https://talentcompany-site.vercel.app';
+const baseUrl = Astro.site ?? 'https://latam-scalers-website.vercel.app';
 const canonical = new URL('/terms/', baseUrl).toString();
+const contactEmail = 'ignacio@latamscalers.com';
 ---
 
 <Layout>
 	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} />
 
-	<main class="mx-auto max-w-6xl px-6 py-12 sm:py-14">
+	<main class="mx-auto max-w-4xl px-6 py-12 sm:py-14">
 		<header class="max-w-3xl">
 			<p class="text-sm font-semibold tracking-wide text-sky-300">Legal</p>
-			<h1 class="mt-4 text-4xl font-semibold tracking-tight text-white sm:text-5xl">Terms &amp; Conditions</h1>
+			<h1 class="mt-4 text-4xl font-semibold tracking-tight text-white sm:text-5xl">Terms of Service</h1>
 			<p class="mt-4 text-sm leading-relaxed text-slate-300 sm:text-base">
-				{/* NOTE: Placeholder content. Replace with your counsel-approved terms. */}
-				Effective date: <span class="text-slate-200">TODO</span>
+				Effective date: <span class="text-slate-200">[Effective Date]</span> &middot;
+				Last updated: <span class="text-slate-200">[Last Updated Date]</span>
 			</p>
 		</header>
 
 		<div class="mt-10 grid gap-4">
+
 			<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-				<h2 class="text-lg font-semibold text-white">Overview</h2>
-				<p class="mt-3 text-sm leading-relaxed text-slate-300">
-					TODO: Describe the services, who the terms apply to, and how updates are communicated.
-				</p>
+				<h2 class="text-lg font-semibold text-white">1. Introduction and acceptance</h2>
+				<div class="mt-3 space-y-3 text-sm leading-relaxed text-slate-300">
+					<p>
+						These Terms of Service (&ldquo;Terms&rdquo;) are a binding agreement between you (&ldquo;Client,&rdquo; &ldquo;you,&rdquo; or &ldquo;your&rdquo;) and LatAm Scalers (&ldquo;Company,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;). By accessing or using our website at <a href="/" class="text-sky-400 underline hover:text-sky-300">latamscalers.com</a> (the &ldquo;Website&rdquo;) or engaging our services, you agree to be bound by these Terms, our <a href="/privacy/" class="text-sky-400 underline hover:text-sky-300">Privacy Policy</a>, and our <a href="/cookies/" class="text-sky-400 underline hover:text-sky-300">Cookie Policy</a>.
+					</p>
+					<p>
+						If you are entering into these Terms on behalf of an organization, you represent and warrant that you have authority to bind that organization. If you do not agree, please do not use our Website or services.
+					</p>
+					<p>
+						We may update these Terms from time to time. We will notify you of material changes by posting a notice on the Website or by email at least 30&nbsp;days before the changes take effect. Your continued use of our Website or services after the effective date of any update constitutes your acceptance of the revised Terms.
+					</p>
+				</div>
 			</section>
 
 			<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-				<h2 class="text-lg font-semibold text-white">Services</h2>
-				<p class="mt-3 text-sm leading-relaxed text-slate-300">
-					TODO: Define offerings (individuals, teams, PM-led delivery), scope boundaries, and deliverable expectations.
-				</p>
+				<h2 class="text-lg font-semibold text-white">2. Definitions</h2>
+				<div class="mt-3 text-sm leading-relaxed text-slate-300">
+					<ul class="space-y-2">
+						<li><strong class="text-slate-100">&ldquo;Services&rdquo;</strong> means the talent-matching, vetting, and ongoing contractor-relationship services provided by LatAm Scalers, as further described in any individual service agreement between us.</li>
+						<li><strong class="text-slate-100">&ldquo;Contractor&rdquo;</strong> or <strong class="text-slate-100">&ldquo;Specialist&rdquo;</strong> means any independent contractor sourced and vetted by us who performs work for you.</li>
+						<li><strong class="text-slate-100">&ldquo;Service Agreement&rdquo;</strong> means a separate written agreement between you and LatAm Scalers that specifies the scope, pricing, and terms of a particular engagement.</li>
+						<li><strong class="text-slate-100">&ldquo;Work Product&rdquo;</strong> means all deliverables, documents, designs, code, models, and other materials created by a Contractor in the course of an engagement.</li>
+						<li><strong class="text-slate-100">&ldquo;Confidential Information&rdquo;</strong> means any non-public information disclosed by one party to the other, including business plans, client data, technical data, pricing, and trade secrets.</li>
+					</ul>
+				</div>
 			</section>
 
 			<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-				<h2 class="text-lg font-semibold text-white">Payments, billing, and refunds</h2>
-				<p class="mt-3 text-sm leading-relaxed text-slate-300">
-					TODO: Include billing cadence, invoices, late fees, refunds/credits, and month-to-month terms.
-				</p>
+				<h2 class="text-lg font-semibold text-white">3. Description of services</h2>
+				<div class="mt-3 space-y-3 text-sm leading-relaxed text-slate-300">
+					<p>
+						LatAm Scalers is a Dedicated Talent Partner that connects businesses with pre-vetted independent contractors from Latin America. We provide talent-matching, vetting, and ongoing contractor-relationship management services.
+					</p>
+					<p>
+						The specific scope, deliverables, pricing, and timeline for each engagement are governed by the applicable Service Agreement between you and LatAm Scalers. These Terms provide the general framework; in the event of a conflict, the Service Agreement controls.
+					</p>
+				</div>
 			</section>
 
 			<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-				<h2 class="text-lg font-semibold text-white">Confidentiality and IP</h2>
-				<p class="mt-3 text-sm leading-relaxed text-slate-300">
-					TODO: Address confidentiality, ownership of work product, and permitted use.
-				</p>
+				<h2 class="text-lg font-semibold text-white">4. Eligibility and account responsibilities</h2>
+				<div class="mt-3 space-y-3 text-sm leading-relaxed text-slate-300">
+					<p>
+						Our services are available only to businesses and their authorized representatives. By using our services, you represent that: (a)&nbsp;you are at least 18&nbsp;years old; (b)&nbsp;you have the legal authority to enter into these Terms on behalf of your organization; and (c)&nbsp;the information you provide to us is accurate and complete.
+					</p>
+					<p>
+						You are responsible for maintaining the confidentiality of any account credentials, access tokens, or other information used to interact with our services, and for all activity that occurs under your account.
+					</p>
+				</div>
+			</section>
+
+			<section class="rounded-2xl border border-sky-500/30 bg-sky-950/20 p-6">
+				<h2 class="text-lg font-semibold text-white">5. Independent contractor relationship</h2>
+				<div class="mt-3 space-y-3 text-sm leading-relaxed text-slate-300">
+					<p>
+						<strong class="text-slate-100">All specialists engaged through LatAm Scalers are independent contractors.</strong> They are not employees of LatAm Scalers, your company, or any other entity. LatAm Scalers is not a staffing agency, employer of record, or employment agency.
+					</p>
+					<p>
+						Contractors maintain autonomy over how they perform their work. You define the project scope, deliverables, and acceptance criteria; the Contractor determines the methods, tools, and work schedule used to complete them.
+					</p>
+					<p>
+						You are solely responsible for: (a)&nbsp;determining appropriate worker classification under applicable federal, state, and local laws; (b)&nbsp;consulting with your legal and tax advisors regarding classification requirements; and (c)&nbsp;ensuring that your engagement with Contractors does not create an employment relationship.
+					</p>
+				</div>
 			</section>
 
 			<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-				<h2 class="text-lg font-semibold text-white">Acceptable use</h2>
-				<p class="mt-3 text-sm leading-relaxed text-slate-300">
-					TODO: Prohibited activities, security expectations, and compliance requirements.
-				</p>
+				<h2 class="text-lg font-semibold text-white">6. Payments, billing, and refunds</h2>
+				<div class="mt-3 space-y-3 text-sm leading-relaxed text-slate-300">
+					<p>
+						Service fees, billing cadence, and payment terms are specified in your Service Agreement. Unless otherwise agreed in writing:
+					</p>
+					<ul class="ml-4 list-disc space-y-1.5">
+						<li>Invoices are issued monthly and due within 15&nbsp;days of the invoice date.</li>
+						<li>Late payments accrue interest at 1.5&nbsp;% per month (or the maximum rate permitted by law, whichever is lower).</li>
+						<li>All fees are stated in U.S. Dollars and are exclusive of applicable taxes.</li>
+					</ul>
+					<p>
+						Engagements are month-to-month unless a different term is specified in your Service Agreement. Refund and credit policies, if any, are governed by your Service Agreement.
+					</p>
+				</div>
 			</section>
 
 			<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-				<h2 class="text-lg font-semibold text-white">Disclaimers and limitation of liability</h2>
-				<p class="mt-3 text-sm leading-relaxed text-slate-300">
-					TODO: Standard B2B disclaimers and liability caps (counsel-reviewed).
-				</p>
+				<h2 class="text-lg font-semibold text-white">7. Intellectual property</h2>
+				<div class="mt-3 space-y-3 text-sm leading-relaxed text-slate-300">
+					<p>
+						Subject to payment in full, all Work Product created by Contractors under your engagement is assigned from the Contractor to LatAm Scalers and from LatAm Scalers to you, as set forth in the applicable Service Agreement. LatAm Scalers retains no ownership interest in your Work Product.
+					</p>
+					<p>
+						Each party retains ownership of its pre-existing intellectual property. We grant you a limited, non-exclusive, non-transferable license to use our Website and any materials we provide solely for the purpose of evaluating and using our services.
+					</p>
+				</div>
 			</section>
 
 			<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-				<h2 class="text-lg font-semibold text-white">Termination</h2>
-				<p class="mt-3 text-sm leading-relaxed text-slate-300">
-					TODO: Termination rules, notice periods, and post-termination obligations.
-				</p>
+				<h2 class="text-lg font-semibold text-white">8. Confidentiality</h2>
+				<div class="mt-3 space-y-3 text-sm leading-relaxed text-slate-300">
+					<p>
+						Each party agrees to hold the other&rsquo;s Confidential Information in strict confidence and to use it only for the purposes contemplated by these Terms or the applicable Service Agreement. Neither party will disclose Confidential Information to third parties except to its employees, contractors, or advisors who need to know and are bound by obligations at least as protective as these.
+					</p>
+					<p>
+						These confidentiality obligations do not apply to information that: (a)&nbsp;is or becomes publicly available through no fault of the receiving party; (b)&nbsp;was known to the receiving party before disclosure; (c)&nbsp;is independently developed without use of or reference to the disclosing party&rsquo;s Confidential Information; or (d)&nbsp;is required to be disclosed by law, provided that the receiving party gives prompt notice when legally permitted.
+					</p>
+					<p>Confidentiality obligations survive termination of these Terms for a period of three (3)&nbsp;years.</p>
+				</div>
 			</section>
 
 			<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-				<h2 class="text-lg font-semibold text-white">Governing law</h2>
-				<p class="mt-3 text-sm leading-relaxed text-slate-300">TODO: Jurisdiction, venue, and dispute resolution.</p>
+				<h2 class="text-lg font-semibold text-white">9. Acceptable use</h2>
+				<div class="mt-3 space-y-3 text-sm leading-relaxed text-slate-300">
+					<p>When using our Website, you agree not to:</p>
+					<ul class="ml-4 list-disc space-y-1.5">
+						<li>Use the Website for any unlawful purpose or in violation of these Terms.</li>
+						<li>Attempt to gain unauthorized access to any part of the Website or its underlying systems.</li>
+						<li>Reverse-engineer, decompile, or disassemble any part of the Website.</li>
+						<li>Scrape, crawl, or use automated tools to extract data from the Website without our prior written consent.</li>
+						<li>Interfere with or disrupt the Website&rsquo;s integrity or performance.</li>
+						<li>Transmit viruses, malware, or other harmful code.</li>
+					</ul>
+				</div>
 			</section>
+
+			<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+				<h2 class="text-lg font-semibold text-white">10. Disclaimers and limitation of liability</h2>
+				<div class="mt-3 space-y-3 text-sm leading-relaxed text-slate-300">
+					<p>
+						<strong class="text-slate-100">AS-IS BASIS.</strong> The Website and services are provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo; without warranties of any kind, whether express, implied, or statutory, including implied warranties of merchantability, fitness for a particular purpose, and non-infringement.
+					</p>
+					<p>
+						<strong class="text-slate-100">NO GUARANTEES.</strong> We do not guarantee: (a)&nbsp;specific project outcomes or deliverable quality; (b)&nbsp;Contractor performance, availability, or continued engagement; or (c)&nbsp;compliance with specific industry standards or regulations.
+					</p>
+					<p>
+						<strong class="text-slate-100">PROFESSIONAL SERVICES.</strong> LatAm Scalers does not provide services requiring professional licensure (such as professional engineering stamps, architectural seals, or legal advice). Clients retain all professional liability for deliverables that require licensed oversight.
+					</p>
+					<p>
+						<strong class="text-slate-100">LIABILITY CAP.</strong> To the maximum extent permitted by law, LatAm Scalers&rsquo; total aggregate liability arising out of or relating to these Terms or any Service Agreement shall not exceed the amounts paid by you to us during the twelve (12)&nbsp;months immediately preceding the event giving rise to the claim.
+					</p>
+					<p>
+						<strong class="text-slate-100">EXCLUSION OF DAMAGES.</strong> In no event shall either party be liable for indirect, incidental, consequential, special, or punitive damages, or for loss of profits, revenue, data, or business opportunity, regardless of the theory of liability.
+					</p>
+				</div>
+			</section>
+
+			<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+				<h2 class="text-lg font-semibold text-white">11. Indemnification</h2>
+				<div class="mt-3 space-y-3 text-sm leading-relaxed text-slate-300">
+					<p>
+						Each party agrees to indemnify, defend, and hold harmless the other party and its officers, directors, and employees from and against any third-party claims, damages, losses, and expenses (including reasonable attorneys&rsquo; fees) arising out of or relating to: (a)&nbsp;the indemnifying party&rsquo;s breach of these Terms; (b)&nbsp;the indemnifying party&rsquo;s negligence or willful misconduct; or (c)&nbsp;the indemnifying party&rsquo;s violation of applicable law.
+					</p>
+				</div>
+			</section>
+
+			<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+				<h2 class="text-lg font-semibold text-white">12. Termination</h2>
+				<div class="mt-3 space-y-3 text-sm leading-relaxed text-slate-300">
+					<p>
+						Either party may terminate these Terms or any Service Agreement with thirty (30)&nbsp;days&rsquo; prior written notice to the other party. We may terminate immediately if you breach these Terms and fail to cure the breach within fifteen (15)&nbsp;days of written notice.
+					</p>
+					<p>
+						Upon termination: (a)&nbsp;you remain responsible for payment for all services rendered through the effective date of termination; (b)&nbsp;each party shall return or destroy the other&rsquo;s Confidential Information; and (c)&nbsp;the provisions regarding intellectual property, confidentiality, limitation of liability, indemnification, and governing law survive termination.
+					</p>
+				</div>
+			</section>
+
+			<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+				<h2 class="text-lg font-semibold text-white">13. Governing law and dispute resolution</h2>
+				<div class="mt-3 space-y-3 text-sm leading-relaxed text-slate-300">
+					<p>
+						These Terms are governed by the laws of the state in which the Company maintains its principal place of business, without regard to conflict-of-law principles.
+					</p>
+					<p>
+						Before initiating any formal dispute-resolution proceeding, the parties agree to attempt in good faith to resolve any dispute through direct negotiation for a period of thirty (30)&nbsp;days. If the dispute is not resolved, it shall be submitted to binding arbitration under the Commercial Arbitration Rules of the American Arbitration Association (AAA). The arbitration shall be conducted by a single arbitrator in the state where the Company maintains its principal place of business.
+					</p>
+					<p>
+						<strong class="text-slate-100">CLASS ACTION WAIVER.</strong> You agree that any dispute resolution proceedings will be conducted only on an individual basis and not in a class, consolidated, or representative action.
+					</p>
+				</div>
+			</section>
+
+			<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+				<h2 class="text-lg font-semibold text-white">14. Changes to these Terms</h2>
+				<div class="mt-3 text-sm leading-relaxed text-slate-300">
+					<p>
+						We reserve the right to modify these Terms at any time. Material changes will be posted on the Website with an updated &ldquo;Last updated&rdquo; date, and we will provide at least thirty (30)&nbsp;days&rsquo; notice before the changes take effect. Your continued use of the Website or services after the effective date of any changes constitutes acceptance of the revised Terms.
+					</p>
+				</div>
+			</section>
+
+			<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+				<h2 class="text-lg font-semibold text-white">15. Contact information</h2>
+				<div class="mt-3 text-sm leading-relaxed text-slate-300">
+					<p>If you have questions about these Terms, please contact us at:</p>
+					<p class="mt-2">
+						<strong class="text-slate-100">Email:</strong>{' '}
+						<a href={`mailto:${contactEmail}`} class="text-sky-400 underline hover:text-sky-300">{contactEmail}</a>
+					</p>
+					<p class="mt-1">
+						<strong class="text-slate-100">Mail:</strong> [Company Address]
+					</p>
+				</div>
+			</section>
+
 		</div>
+
+		<footer class="mt-10 text-xs text-slate-500">
+			<p>See also: <a href="/privacy/" class="text-sky-400 underline hover:text-sky-300">Privacy Policy</a> &middot; <a href="/cookies/" class="text-sky-400 underline hover:text-sky-300">Cookie Policy</a></p>
+		</footer>
 	</main>
 </Layout>
-
