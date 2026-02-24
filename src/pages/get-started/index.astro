@@ -217,6 +217,29 @@ const webPageJsonLd = {
 		}
 	</style>
 
+	{/* Sticky mobile CTA bar — appears after 25% scroll, hides when form is in view */}
+	<div
+		class="fixed inset-x-0 bottom-0 z-50 translate-y-full border-t border-slate-800 bg-slate-950/95 px-4 py-3 backdrop-blur-sm transition-transform duration-300 lg:hidden"
+		data-sticky-cta
+		aria-label="Quick actions"
+	>
+		<div class="mx-auto flex max-w-md items-center gap-3">
+			<a
+				href="#contact-heading"
+				class="flex-1 rounded-xl bg-sky-600 py-2.5 text-center text-sm font-semibold text-white shadow-sm transition hover:bg-sky-500"
+			>
+				Tell us your needs
+			</a>
+			<a
+				href="#contact-heading"
+				class="flex-1 rounded-xl border border-slate-700 py-2.5 text-center text-sm font-semibold text-slate-300 transition hover:border-sky-500 hover:text-white"
+				data-scroll-to-calendly
+			>
+				Book a call
+			</a>
+		</div>
+	</div>
+
 	<script is:inline>
 		(function () {
 			var els = document.querySelectorAll('.js-fade-in');
@@ -240,6 +263,35 @@ const webPageJsonLd = {
 					}, 100);
 				});
 			});
+
+			// Sticky mobile CTA bar
+			var stickyBar = document.querySelector('[data-sticky-cta]');
+			if (!stickyBar) return;
+			var contactSection = document.getElementById('contact-heading');
+			var formVisible = false;
+			var pastThreshold = false;
+
+			if (contactSection) {
+				var formObs = new IntersectionObserver(function (entries) {
+					formVisible = entries[0].isIntersecting;
+					updateBar();
+				}, { rootMargin: '100px' });
+				formObs.observe(contactSection);
+			}
+
+			function updateBar() {
+				if (pastThreshold && !formVisible) {
+					stickyBar.classList.remove('translate-y-full');
+				} else {
+					stickyBar.classList.add('translate-y-full');
+				}
+			}
+
+			window.addEventListener('scroll', function () {
+				var scrollPct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+				pastThreshold = scrollPct > 0.25;
+				updateBar();
+			}, { passive: true });
 		})();
 	</script>
 </Layout>
