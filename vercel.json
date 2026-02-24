@@ -3,6 +3,14 @@
 	"buildCommand": "npm run build",
 	"outputDirectory": "dist",
 	"framework": "astro",
+	"redirects": [
+		{
+			"source": "/:path(.*)",
+			"has": [{ "type": "host", "value": "www.latamscalers.com" }],
+			"destination": "https://latamscalers.com/:path",
+			"permanent": true
+		}
+	],
 	"headers": [
 		{
 			"source": "/(.*)",
