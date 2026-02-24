@@ -85,10 +85,10 @@ const faqJsonLd = {
 			<div class="mx-auto max-w-6xl px-6">
 			<div class="js-fade-in text-center">
 				<p class="text-sm font-semibold uppercase tracking-widest text-sky-300">Get started</p>
-				<h1 id="hero-heading" class="mt-4 text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.25rem]">
+				<h1 id="hero-heading" class="mt-4 text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.25rem]" data-hero-h1>
 					Vetted LATAM Specialists for Your US Team — Matched in Under One Week
 				</h1>
-				<p class="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
+				<p class="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg" data-hero-sub>
 					Book a 30-minute scoping call, or tell us what you need — we'll present a vetted shortlist of AEC, Design, or Marketing specialists within 48 hours. Month-to-month. Free replacement guarantee.
 				</p>
 			</div>
@@ -305,6 +305,56 @@ const faqJsonLd = {
 
 	<script is:inline>
 		(function () {
+			// Category-aware personalization
+			var catConfig = {
+				aec: {
+					h1: 'Vetted LATAM AEC Specialists for Your US Team — Matched in Under One Week',
+					sub: 'Book a 30-minute scoping call, or tell us what you need — we\u2019ll present a vetted shortlist of BIM coordinators, Revit drafters, and CAD technicians within 48 hours. Month-to-month. Free replacement guarantee.',
+					btn: 'Get my vetted AEC shortlist'
+				},
+				design: {
+					h1: 'Vetted LATAM Design Specialists for Your US Team — Matched in Under One Week',
+					sub: 'Book a 30-minute scoping call, or tell us what you need — we\u2019ll present a vetted shortlist of UI/UX designers, brand designers, and motion designers within 48 hours. Month-to-month. Free replacement guarantee.',
+					btn: 'Get my vetted design shortlist'
+				},
+				marketing: {
+					h1: 'Vetted LATAM Marketing Specialists for Your US Team — Matched in Under One Week',
+					sub: 'Book a 30-minute scoping call, or tell us what you need — we\u2019ll present a vetted shortlist of SEO specialists, PPC managers, and content marketers within 48 hours. Month-to-month. Free replacement guarantee.',
+					btn: 'Get my vetted marketing shortlist'
+				}
+			};
+
+			var cat = new URLSearchParams(window.location.search).get('cat');
+			if (!cat) {
+				var ref = (document.referrer || '').replace(/^https?:\/\/[^/]+/, '');
+				if (/^\/aec(\/|$)/.test(ref)) cat = 'aec';
+				else if (/^\/design(\/|$)/.test(ref)) cat = 'design';
+				else if (/^\/marketing(\/|$)/.test(ref)) cat = 'marketing';
+			}
+
+			var cfg = cat && catConfig[cat];
+			if (cfg) {
+				var h1 = document.querySelector('[data-hero-h1]');
+				var sub = document.querySelector('[data-hero-sub]');
+				var btn = document.querySelector('[data-submit-btn]');
+				if (h1) h1.textContent = cfg.h1;
+				if (sub) sub.textContent = cfg.sub;
+				if (btn) btn.textContent = cfg.btn;
+
+				var catSelect = document.querySelector('[name="category"]');
+				if (catSelect) {
+					catSelect.value = cat;
+					var optToggle = document.querySelector('[data-toggle-optional]');
+					var optPanel = document.querySelector('[data-optional-fields]');
+					if (optToggle && optPanel && optPanel.classList.contains('hidden')) {
+						optPanel.classList.remove('hidden');
+						optToggle.setAttribute('aria-expanded', 'true');
+						var chevron = optToggle.querySelector('[data-chevron]');
+						if (chevron) chevron.style.transform = 'rotate(180deg)';
+					}
+				}
+			}
+
 			var els = document.querySelectorAll('.js-fade-in');
 			if (!els.length) return;
 			var io = new IntersectionObserver(function (entries) {
