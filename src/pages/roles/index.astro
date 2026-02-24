@@ -448,9 +448,34 @@ const categoryColors: Record<string, string> = {
 					</div>
 				</div>
 
-				<!-- Empty state (shown when no matching filter) -->
-				<div id="roles-empty" class="hidden py-16 text-center">
-					<p class="text-slate-400">No roles match this filter.</p>
+				<!-- Empty state (shown when no matching filter/search) -->
+				<div id="roles-empty" class="hidden py-16">
+					<div class="mx-auto max-w-xl rounded-2xl border border-slate-800 bg-slate-950 p-6 text-center sm:p-10">
+						<svg class="mx-auto h-10 w-10 text-slate-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+							<path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+						</svg>
+						<h3 class="mt-4 text-lg font-semibold text-white">Can't find the right role?</h3>
+						<p class="mt-2 text-sm leading-relaxed text-slate-400">
+							<span id="roles-empty-query"></span>We place specialists across AEC, design, and marketing beyond what's listed here. Tell us what you need and we'll match you.
+						</p>
+						<div class="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+							<a
+								href={bookingUrl}
+								{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+								class="inline-flex min-h-[44px] items-center justify-center rounded bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+								data-book-call
+							>
+								Book a 30-Min Call
+							</a>
+							<a
+								href="/#contact"
+								class="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-slate-700 bg-slate-900/40 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+								data-open-tell-us="roles-empty-cta"
+							>
+								Tell Us What You Need
+							</a>
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -533,6 +558,7 @@ const categoryColors: Record<string, string> = {
 		var cards = document.querySelectorAll('.role-card');
 		var sections = document.querySelectorAll('.category-section');
 		var emptyState = document.getElementById('roles-empty');
+		var emptyQueryEl = document.getElementById('roles-empty-query');
 		var searchInput = document.getElementById('roles-search');
 		var clearBtn = document.getElementById('roles-search-clear');
 		var countEl = document.getElementById('roles-search-count');
@@ -571,6 +597,11 @@ const categoryColors: Record<string, string> = {
 
 			if (emptyState) {
 				emptyState.classList.toggle('hidden', visible > 0);
+				if (emptyQueryEl) {
+					emptyQueryEl.textContent = query
+						? 'No roles matching \u201c' + searchInput.value.trim() + '\u201d \u2014 but that\u2019s okay. '
+						: '';
+				}
 			}
 
 			if (clearBtn) {
