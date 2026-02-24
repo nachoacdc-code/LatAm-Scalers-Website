@@ -330,6 +330,30 @@ const categoryColors: Record<string, string> = {
 						Marketing <span class="ml-1 tabular-nums opacity-80">({roles.filter(r => r.category === 'marketing').length})</span>
 					</button>
 				</div>
+
+				<!-- Search input -->
+				<div class="mt-6 relative max-w-md">
+					<label for="roles-search" class="sr-only">Search roles</label>
+					<svg class="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+						<path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+					</svg>
+					<input
+						id="roles-search"
+						type="search"
+						autocomplete="off"
+						placeholder="Search roles… e.g. Revit, HubSpot, BIM"
+						class="w-full rounded-full border border-slate-700 bg-slate-900/60 py-2.5 pl-10 pr-10 text-sm text-white placeholder-slate-500 transition focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500/40"
+					/>
+					<button
+						type="button"
+						id="roles-search-clear"
+						class="absolute right-3 top-1/2 -translate-y-1/2 hidden rounded-full p-0.5 text-slate-500 transition hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+						aria-label="Clear search"
+					>
+						<svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
+					</button>
+				</div>
+				<p id="roles-search-count" class="mt-2 hidden text-xs text-slate-500"></p>
 			</div>
 		</section>
 
@@ -345,11 +369,12 @@ const categoryColors: Record<string, string> = {
 						<div class="h-px flex-1 bg-aec/20"></div>
 					</div>
 					<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-						{roles.filter(r => r.category === 'aec').map((r) => (
-							<a
-								href={r.href}
-								data-category={r.category}
-								class="role-card js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:bg-slate-900 hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+					{roles.filter(r => r.category === 'aec').map((r) => (
+						<a
+							href={r.href}
+							data-category={r.category}
+							data-keywords={`${r.label} ${r.description} ${r.categoryLabel}`.toLowerCase()}
+							class="role-card js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:bg-slate-900 hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
 							>
 								<span class={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold ${categoryColors[r.category]}`}>
 									{r.categoryLabel}
@@ -373,11 +398,12 @@ const categoryColors: Record<string, string> = {
 						<div class="h-px flex-1 bg-design/20"></div>
 					</div>
 					<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-						{roles.filter(r => r.category === 'design').map((r) => (
-							<a
-								href={r.href}
-								data-category={r.category}
-								class="role-card js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:bg-slate-900 hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+					{roles.filter(r => r.category === 'design').map((r) => (
+						<a
+							href={r.href}
+							data-category={r.category}
+							data-keywords={`${r.label} ${r.description} ${r.categoryLabel}`.toLowerCase()}
+							class="role-card js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:bg-slate-900 hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
 							>
 								<span class={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold ${categoryColors[r.category]}`}>
 									{r.categoryLabel}
@@ -401,11 +427,12 @@ const categoryColors: Record<string, string> = {
 						<div class="h-px flex-1 bg-marketing/20"></div>
 					</div>
 					<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-						{roles.filter(r => r.category === 'marketing').map((r) => (
-							<a
-								href={r.href}
-								data-category={r.category}
-								class="role-card js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:bg-slate-900 hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+					{roles.filter(r => r.category === 'marketing').map((r) => (
+						<a
+							href={r.href}
+							data-category={r.category}
+							data-keywords={`${r.label} ${r.description} ${r.categoryLabel}`.toLowerCase()}
+							class="role-card js-fade-in group rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:bg-slate-900 hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
 							>
 								<span class={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold ${categoryColors[r.category]}`}>
 									{r.categoryLabel}
@@ -481,6 +508,9 @@ const categoryColors: Record<string, string> = {
 	.role-card[hidden] {
 		display: none;
 	}
+	.category-section[hidden] {
+		display: none;
+	}
 </style>
 
 <script is:inline>
@@ -499,47 +529,85 @@ const categoryColors: Record<string, string> = {
 			els.forEach(function (el) { io.observe(el); });
 		}
 
-		// Filter tabs
 		var btns = document.querySelectorAll('.filter-btn');
 		var cards = document.querySelectorAll('.role-card');
 		var sections = document.querySelectorAll('.category-section');
 		var emptyState = document.getElementById('roles-empty');
+		var searchInput = document.getElementById('roles-search');
+		var clearBtn = document.getElementById('roles-search-clear');
+		var countEl = document.getElementById('roles-search-count');
+		var totalCards = cards.length;
+		var activeFilter = 'all';
+
+		function applyFilters() {
+			var query = (searchInput ? searchInput.value : '').toLowerCase().trim();
+			var visible = 0;
+			var sectionVisible = {};
+
+			cards.forEach(function (card) {
+				var cat = card.getAttribute('data-category');
+				var catMatch = activeFilter === 'all' || cat === activeFilter;
+				var searchMatch = !query || (card.getAttribute('data-keywords') || '').indexOf(query) !== -1;
+
+				if (catMatch && searchMatch) {
+					card.removeAttribute('hidden');
+					card.classList.add('is-visible');
+					visible++;
+					sectionVisible[cat] = true;
+				} else {
+					card.setAttribute('hidden', '');
+				}
+			});
+
+			sections.forEach(function (section) {
+				var cat = section.getAttribute('data-section');
+				var catAllowed = activeFilter === 'all' || activeFilter === cat;
+				if (catAllowed && sectionVisible[cat]) {
+					section.removeAttribute('hidden');
+				} else {
+					section.setAttribute('hidden', '');
+				}
+			});
+
+			if (emptyState) {
+				emptyState.classList.toggle('hidden', visible > 0);
+			}
+
+			if (clearBtn) {
+				clearBtn.classList.toggle('hidden', !query);
+			}
+
+			if (countEl) {
+				if (query) {
+					countEl.textContent = visible + ' of ' + totalCards + ' roles';
+					countEl.classList.remove('hidden');
+				} else {
+					countEl.classList.add('hidden');
+				}
+			}
+		}
 
 		btns.forEach(function (btn) {
 			btn.addEventListener('click', function () {
-				var filter = btn.getAttribute('data-filter');
-
-				// Update active state
+				activeFilter = btn.getAttribute('data-filter');
 				btns.forEach(function (b) { b.classList.remove('active'); });
 				btn.classList.add('active');
-
-				// Show/hide cards
-				var visible = 0;
-				cards.forEach(function (card) {
-					var match = filter === 'all' || card.getAttribute('data-category') === filter;
-					if (match) {
-						card.removeAttribute('hidden');
-						visible++;
-					} else {
-						card.setAttribute('hidden', '');
-					}
-				});
-
-				// Show/hide category sections
-				sections.forEach(function (section) {
-					var sectionCat = section.getAttribute('data-section');
-					var show = filter === 'all' || filter === sectionCat;
-					if (show) {
-						section.removeAttribute('hidden');
-					} else {
-						section.setAttribute('hidden', '');
-					}
-				});
-
-				if (emptyState) {
-					emptyState.classList.toggle('hidden', visible > 0);
-				}
+				applyFilters();
 			});
 		});
+
+		if (searchInput) {
+			searchInput.addEventListener('input', applyFilters);
+		}
+
+		if (clearBtn) {
+			clearBtn.addEventListener('click', function () {
+				if (searchInput) {
+					searchInput.value = '';
+					searchInput.focus();
+				}
+				applyFilters();
+			});
+		}
 	})();
 </script>
